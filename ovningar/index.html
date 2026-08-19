@@ -355,12 +355,28 @@ footer{margin-top:80px;padding:96px 0 40px;background:var(--mist);border-top:1px
 #mittprogram .mp-huvud2{border-left:3px solid var(--teal);padding-left:18px;margin-bottom:8px}
 #mittprogram h2{margin:.2em 0 .3em}
 #bytkod{font-size:.88rem;color:var(--teal-ink)}
-body.kodad #kodgrind,body.kodad section[data-block]{display:none}
+section[data-block]{display:none}
+body.kodad #kodgrind{display:none}
 body.kodad section[data-block].aktiv{display:block}
 body.kodad #mittprogram{display:block}
 @media(prefers-reduced-motion:no-preference){#mittprogram{animation:fadein .5s ease}}
 @keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 </style>
+<style media="print">
+nav,footer,.crumb,#kodgrind,.eyebrow,.mp-knappar,#bytkod,.cta-row{display:none!important}
+body{background:#fff}
+header.page{padding-top:0}
+details{display:block}
+details>*{display:block!important}
+details summary{font-weight:600;list-style:none}
+summary::-webkit-details-marker{display:none}
+section[data-block].aktiv{break-inside:avoid-page}
+.tranlogg{display:block!important}
+.tranlogg table{width:100%;border-collapse:collapse;font-size:.8rem}
+.tranlogg th,.tranlogg td{border:1px solid #bbb;padding:6px 4px;text-align:center}
+.tranlogg td:first-child,.tranlogg th:first-child{text-align:left}
+</style>
+<style>.tranlogg{display:none}.mp-knappar{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}</style>
 </head>
 <body>
 <a class="skip" href="#huvud">Till innehållet</a>
@@ -388,7 +404,7 @@ body.kodad #mittprogram{display:block}
 <a href="/priser/"><strong>Friskvård / massage</strong><span>975 kr</span></a>
 <a href="/injektioner/"><strong>Konsultation injektion</strong><span>890 kr</span></a>
 </div><div class="mp-fot"><a class="mp-alla" href="/tjanster/">Alla tjänster &amp; priser →</a><a class="mp-kamp" href="https://www.bokadirekt.se/boka-tjanst/kansei-rehabcenter-48847/helhetsanalys-med-ultraljudsundersokning-3397169" target="_blank" rel="noopener" data-cta="mega-kampanj">Kampanj: Helhetsanalys 990 kr →</a></div></div></li>
-<li><a href="/blogg/">Kunskapsbank</a></li>
+<li><a href="/blogg/">Kunskapsbank</a></li><li><a href="/ovningar/">Övningar</a></li>
 <li class="dtop"><a href="/om-oss/">Om oss</a></li>
 <li class="mob"><a href="/fragor-och-svar/">Frågor &amp; svar</a></li>
 <li class="mob"><a href="/patientinformation/">Patientinformation</a></li>
@@ -433,7 +449,26 @@ body.kodad #mittprogram{display:block}
 <p class="kodetikett">Ditt program</p>
 <h2 id="mp-titel"></h2>
 <p id="mp-under" class="muted"></p>
-<a href="#" id="bytkod">Ange en annan kod</a>
+<div class="mp-knappar"><button class="btn btn-teal" id="skrivut" type="button">Skriv ut / spara som PDF</button><a href="#" id="bytkod" class="btn btn-ghost">Ange en annan kod</a></div>
+<div id="klinikmatris" hidden>
+<h2 style="margin-top:24px">Översikt</h2>
+<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:.88rem">
+<tr style="text-align:left;border-bottom:2px solid var(--line-2)"><th style="padding:8px 6px">Nr</th><th>Program</th><th>Område</th><th>Karaktär</th></tr>
+<tr><td style="padding:7px 6px"><a href="#p1">1</a></td><td>Höft- & bäckenstabilitet</td><td>Höft & bäcken</td><td>Kontroll</td></tr>
+<tr><td style="padding:7px 6px"><a href="#p2">2</a></td><td>Ländrygg, grundprogram</td><td>Rygg</td><td>Rörlighet + uthållighet</td></tr>
+<tr><td style="padding:7px 6px"><a href="#p3">3</a></td><td>Knäartros</td><td>Knä</td><td>Styrka</td></tr>
+<tr><td style="padding:7px 6px"><a href="#p4">4</a></td><td>Axel</td><td>Axel</td><td>Kuff + skulderblad</td></tr>
+<tr><td style="padding:7px 6px"><a href="#p5">5</a></td><td>Hälsena</td><td>Fot & häl</td><td>Senbelastning</td></tr>
+<tr><td style="padding:7px 6px"><a href="#p6">6</a></td><td>Nacke & skuldror</td><td>Nacke</td><td>Uthållighet + rörlighet</td></tr>
+<tr><td style="padding:7px 6px"><a href="#p7">7</a></td><td>Tennisarmbåge</td><td>Armbåge</td><td>Excentrisk senbelastning</td></tr>
+<tr><td style="padding:7px 6px"><a href="#p8">8</a></td><td>Plantarfascia</td><td>Fot & häl</td><td>Senbelastning</td></tr>
+<tr><td style="padding:7px 6px"><a href="#p9">9</a></td><td>Frusen skuldra</td><td>Axel</td><td>Rörlighet, fasstyrd</td></tr>
+<tr><td style="padding:7px 6px"><a href="#p10">10</a></td><td>Knäsenan</td><td>Knä</td><td>Senbelastning</td></tr>
+<tr><td style="padding:7px 6px"><a href="#p11">11</a></td><td>Baksida lår</td><td>Höft & lår</td><td>Excentrisk, hög fart sist</td></tr>
+<tr><td style="padding:7px 6px"><a href="#p12">12</a></td><td>Fotled</td><td>Fot & häl</td><td>Rörlighet + styrka</td></tr>
+</table></div>
+<p style="margin-top:14px;font-size:.9rem"><strong>Tillägg:</strong> <a href="#t1">+1 Andning</a> · <a href="#t2">+2 Balans & proprioception</a> · <a href="#t3">+3 Nervglidning</a> · <a href="#t4">+4 Bröstrygg & rörlighet</a> &nbsp;|&nbsp; <strong>Nivåer:</strong> A försiktig start · B uppbyggnad · C full belastning</p>
+</div>
 </div>
 </section>
 
@@ -471,6 +506,14 @@ body.kodad #mittprogram{display:block}
 <p>Avbryt och hör av dig vid ny utstrålande smärta, domningar eller kraftlöshet, eller vid en tydlig smärtökning som inte lägger sig inom ett dygn.</p>
 <div class="cta-row"><a class="btn btn-teal" href="https://www.bokadirekt.se/places/kansei-rehabcenter-48847" target="_blank" rel="noopener">Boka uppföljning</a><a class="btn btn-ghost" href="mailto:info@kansei.se">Mejla en fråga</a></div>
 </section>
+<div class="tranlogg"><h2 style="margin-top:26px">Träningslogg · fyra veckor</h2>
+<p>Kryssa vid genomfört pass. Ta med loggen till uppföljningen.</p>
+<table><tr><th>Vecka</th><th>Pass 1</th><th>Pass 2</th><th>Pass 3</th><th>Pass 4</th><th>Känning dagen efter (0–10)</th></tr>
+<tr><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr></table>
+<p style="margin-top:10px;font-size:.85rem">Kansei Rehabcenter · Upplandsgatan 26 · info@kansei.se · kansei.se/ovningar</p></div>
 </main>
 </div>
 <script src="../config.js" defer></script>
@@ -573,13 +616,25 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     var till=(m[3].match(/\+[1-4]/g)||[]).map(function(x){return x.slice(1)});
     return {p:m[1],n:m[2],t:till};
   }
+  function aterstall(){
+    document.querySelectorAll('.mp-inject').forEach(function(el){el.remove()});
+    document.querySelectorAll('[data-orig]').forEach(function(el){el.textContent=el.getAttribute('data-orig');el.removeAttribute('data-orig')});
+    var ns=document.getElementById('nivasektion');
+    ns.parentNode.insertBefore(ns, document.getElementById('p1'));
+  }
+  function rubrik(el, ny){
+    if(!el.getAttribute('data-orig'))el.setAttribute('data-orig', el.textContent);
+    el.textContent=ny;
+  }
   function visa(k){
+    aterstall();
     document.querySelectorAll('[data-block]').forEach(function(el){el.classList.remove('aktiv')});
     if(k.bibliotek){
       document.querySelectorAll('[data-block]').forEach(function(el){el.classList.add('aktiv')});
       ['A','B','C'].forEach(function(L){document.getElementById('n'+L).style.display='block'});
       document.getElementById('mp-titel').textContent='Hela biblioteket';
       document.getElementById('mp-under').textContent='Klinikvy · alla program, nivåer och tillägg';
+      document.getElementById('klinikmatris').hidden=false;
       document.body.classList.add('kodad');
       try{history.replaceState(null,'',location.pathname)}catch(e){}
       window.scrollTo({top:0,behavior:'instant'});
@@ -587,11 +642,28 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     }
     var p=document.getElementById('p'+k.p); if(p)p.classList.add('aktiv');
     var ns=document.getElementById('nivasektion'); ns.classList.add('aktiv');
+    if(p){
+      p.parentNode.insertBefore(ns, p);
+      rubrik(ns.querySelector('h2'), 'Din dosering · Nivå '+k.n);
+      rubrik(p.querySelector('h2'), 'Så fungerar ditt program');
+      var d0=p.querySelector('details');
+      if(d0){
+        var h=document.createElement('h3');h.className='mp-inject';h.textContent='Dina övningar';
+        h.style.cssText='margin:30px 0 4px;font-size:1.3rem';
+        var tips=document.createElement('p');tips.className='mp-inject muted';tips.style.fontSize='.9rem';
+        tips.textContent='Gör övningarna i ordning. Öppna varje övning för utförande, vanliga fel och nästa steg.';
+        d0.parentNode.insertBefore(h, d0);d0.parentNode.insertBefore(tips, d0);
+      }
+    }
     ['A','B','C'].forEach(function(L){document.getElementById('n'+L).style.display=(L===k.n?'block':'none')});
     var d=document.querySelector('#n'+k.n+' details'); if(d)d.setAttribute('open','');
-    if(k.t.length){document.getElementById('tillintro').classList.add('aktiv');}
+    if(k.t.length){
+      var ti=document.getElementById('tillintro'); ti.classList.add('aktiv');
+      rubrik(ti.querySelector('h2'), k.t.length>1?'Dina tillägg':'Ditt tillägg');
+    }
     k.t.forEach(function(nr){var el=document.getElementById('t'+nr); if(el)el.classList.add('aktiv')});
     document.getElementById('riktsektion').classList.add('aktiv');
+    document.getElementById('klinikmatris').hidden=true;
     document.getElementById('mp-titel').textContent=k.p+' · '+NAMN['p'+k.p];
     var u='Nivå '+k.n; if(k.t.length)u+=' · Tillägg: '+k.t.map(function(n){return '+'+n+' '+TILLN['t'+n]}).join(', ');
     document.getElementById('mp-under').textContent=u;
@@ -605,8 +677,12 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     if(!k){fel.hidden=false;return}
     fel.hidden=true;visa(k);
   });
+  document.getElementById('skrivut').addEventListener('click',function(){
+    document.querySelectorAll('section[data-block].aktiv details, #n'+((document.getElementById('mp-under').textContent.match(/Nivå ([ABC])/)||[])[1]||'A')+' details').forEach(function(d){d.setAttribute('open','')});
+    window.print();
+  });
   document.getElementById('bytkod').addEventListener('click',function(e){
-    e.preventDefault();document.body.classList.remove('kodad');
+    e.preventDefault();document.body.classList.remove('kodad');document.getElementById('klinikmatris').hidden=true;aterstall();
     ['A','B','C'].forEach(function(L){document.getElementById('n'+L).style.display=''});
     try{history.replaceState(null,'',location.pathname)}catch(e){}
     falt.value='';falt.focus();

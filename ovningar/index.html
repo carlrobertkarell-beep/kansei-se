@@ -400,6 +400,28 @@ body.kodad .nivstege [data-niv].niv-akt{opacity:1;font-weight:600}
 #kbKod{font-family:var(--mono);font-size:1.7rem;font-weight:600;letter-spacing:.08em;background:var(--paper);border-radius:10px;padding:8px 18px;min-width:120px;text-align:center}
 </style>
 <style>.laskort{background:var(--mist);border-radius:12px;padding:14px 16px;font-size:.92rem}.laskort p{margin:.4em 0}.laskort em{font-style:normal;color:var(--teal-ink);font-weight:600}</style>
+<style>
+.km-filter{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0 4px}
+.km-leg{font-size:.78rem;color:var(--dim)}
+.km-rad{display:flex;gap:9px;align-items:baseline;margin:6px 0;width:100%;text-align:left;background:none;border:1px solid transparent;border-radius:10px;padding:6px 8px;cursor:pointer;font:inherit;color:inherit}
+.km-rad:hover{border-color:var(--line-2)}
+.km-rad.vald{background:var(--paper);border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.km-rad>span:nth-child(2){flex:1;font-size:.88rem}
+.km-typ{font-family:var(--mono);font-size:.68rem;color:var(--dim)}
+.km-kod{font-family:var(--mono);background:var(--paper);border:1px solid var(--line-2);border-radius:6px;padding:1px 8px;cursor:pointer;font-size:.85rem}
+.km-kod:hover{border-color:var(--teal)}
+#kbBar{display:none}
+body.bibliotek #kbBar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:12px;align-items:center;flex-wrap:wrap;background:var(--ink);color:var(--paper);padding:12px clamp(16px,4vw,40px);box-shadow:0 -6px 24px rgba(16,24,32,.25)}
+body.bibliotek{padding-bottom:150px}
+.kbb-prog{display:flex;gap:10px;align-items:baseline;min-width:200px;flex:1}
+.kbb-prog strong{font-size:.95rem}
+#kbbLas{color:#7fd6cb;font-size:.85rem}
+#kbBar .kb-chip{background:transparent;color:var(--paper);border-color:rgba(247,249,250,.35)}
+#kbBar .kb-chip.vald{background:var(--teal);border-color:var(--teal)}
+#kbBar #kbKod{font-family:var(--mono);font-size:1.35rem;font-weight:600;letter-spacing:.06em;background:rgba(247,249,250,.12);border-radius:9px;padding:5px 14px;min-width:96px;text-align:center}
+#kbBar .btn{border-color:rgba(247,249,250,.4);color:var(--paper)}
+@media print{#kbBar{display:none!important}}
+</style>
 </head>
 <body>
 <a class="skip" href="#huvud">Till innehållet</a>
@@ -475,53 +497,42 @@ body.kodad .nivstege [data-niv].niv-akt{opacity:1;font-weight:600}
 <p class="mp-sign">Utformat och medicinskt granskat av Carl-Robert Kårell, leg. naprapat · Byggt på aktuella belastnings- och rehabiliteringsprinciper · Uppdaterad augusti 2026</p>
 <div class="mp-knappar"><button class="btn btn-teal" id="skrivut" type="button">Skriv ut / spara som PDF</button><a href="#" id="bytkod" class="btn btn-ghost">Ange en annan kod</a></div>
 <div id="klinikmatris" hidden>
-<div id="kodbyggare">
-<h2 style="margin-top:24px">Sätt ihop en kod</h2>
-<div class="kb-rad"><span class="kb-etikett">Program</span><div class="kb-chips" id="kbP"></div></div>
-<div class="kb-rad"><span class="kb-etikett">Nivå</span><div class="kb-chips" id="kbN"></div></div>
-<div class="kb-rad"><span class="kb-etikett">Tillägg</span><div class="kb-chips" id="kbT"></div></div>
-<div class="kb-ut">
-<code id="kbKod">–</code>
-<button class="btn btn-ghost" id="kbKopiera" type="button" disabled>Kopiera</button>
-<a class="btn btn-ghost" id="kbForhands" target="_blank" rel="noopener" hidden>Se som patient →</a>
+<h2 style="margin-top:24px">Välj program</h2>
+<div class="km-filter">
+<button type="button" class="kb-chip km-f vald" data-f="alla">Alla</button>
+<button type="button" class="kb-chip km-f" data-f="F">Funktion</button>
+<button type="button" class="kb-chip km-f" data-f="S">Struktur</button>
+<span class="km-leg">F = funktionsmönster · S = strukturspecifikt · klicka på ett program, välj sedan nivå nedan</span>
 </div>
-</div>
-<h2 style="margin-top:24px">Översikt · per region</h2>
-<style>
-.km-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:14px}
-.km-kort{background:var(--mist);border-radius:14px;padding:14px 16px}
-.km-kort h3{margin:0 0 8px;font-size:1.02rem}
-.km-rad{display:flex;gap:8px;align-items:baseline;margin:6px 0}
-.km-nr{font-family:var(--mono);font-weight:600;color:var(--paper);background:var(--teal);border-radius:8px;padding:2px 9px;text-decoration:none;flex-shrink:0}
-.km-rad span{font-size:.88rem}
-.km-kombo{margin-top:18px;font-size:.9rem;line-height:1.8}
-.km-kombo code{font-family:var(--mono);background:var(--mist);border-radius:6px;padding:1px 7px}
-</style>
 <div class="km-grid">
 <div class="km-kort"><h3>Rygg & nacke</h3>
-<div class="km-rad"><a class="km-nr" href="#p2">2</a><span>Ländrygg · rörlighet + uthållighet</span></div>
-<div class="km-rad"><a class="km-nr" href="#p6">6</a><span>Nacke & skuldror · uthållighet</span></div></div>
+<button type="button" class="km-rad" data-p="2" data-typ="F"><span class="km-nr">2</span><span>Ländrygg · rörlighet + uthållighet</span><span class="km-typ">F</span></button>
+<button type="button" class="km-rad" data-p="6" data-typ="F"><span class="km-nr">6</span><span>Nacke & skuldror · uthållighet</span><span class="km-typ">F</span></button></div>
 <div class="km-kort"><h3>Axel</h3>
-<div class="km-rad"><a class="km-nr" href="#p4">4</a><span>Axel · kuff + skulderblad (svag)</span></div>
-<div class="km-rad"><a class="km-nr" href="#p9">9</a><span>Frusen skuldra · rörlighet (stel)</span></div></div>
+<button type="button" class="km-rad" data-p="4" data-typ="S"><span class="km-nr">4</span><span>Axel · kuff + skulderblad (svag)</span><span class="km-typ">S</span></button>
+<button type="button" class="km-rad" data-p="9" data-typ="S"><span class="km-nr">9</span><span>Frusen skuldra · rörlighet (stel)</span><span class="km-typ">S</span></button></div>
 <div class="km-kort"><h3>Armbåge & käke</h3>
-<div class="km-rad"><a class="km-nr" href="#p7">7</a><span>Tennisarmbåge · excentrisk sena (golfarm: spegel)</span></div>
-<div class="km-rad"><a class="km-nr" href="#p14">14</a><span>Käke · vila + kontroll</span></div></div>
+<button type="button" class="km-rad" data-p="7" data-typ="S"><span class="km-nr">7</span><span>Tennisarmbåge · sena (golfarm: spegel)</span><span class="km-typ">S</span></button>
+<button type="button" class="km-rad" data-p="14" data-typ="S"><span class="km-nr">14</span><span>Käke · vila + kontroll</span><span class="km-typ">S</span></button></div>
 <div class="km-kort"><h3>Höft & lår</h3>
-<div class="km-rad"><a class="km-nr" href="#p1">1</a><span>Höft-/bäckenstabilitet · kontroll</span></div>
-<div class="km-rad"><a class="km-nr" href="#p13">13</a><span>Höftartros · styrka + rörlighet</span></div>
-<div class="km-rad"><a class="km-nr" href="#p11">11</a><span>Baksida lår · excentrisk, fart sist</span></div></div>
+<button type="button" class="km-rad" data-p="1" data-typ="F"><span class="km-nr">1</span><span>Höft-/bäckenstabilitet · kontroll</span><span class="km-typ">F</span></button>
+<button type="button" class="km-rad" data-p="13" data-typ="S"><span class="km-nr">13</span><span>Höftartros · styrka + rörlighet</span><span class="km-typ">S</span></button>
+<button type="button" class="km-rad" data-p="11" data-typ="S"><span class="km-nr">11</span><span>Baksida lår · excentrisk, fart sist</span><span class="km-typ">S</span></button></div>
 <div class="km-kort"><h3>Knä</h3>
-<div class="km-rad"><a class="km-nr" href="#p3">3</a><span>Knäartros · styrka</span></div>
-<div class="km-rad"><a class="km-nr" href="#p10">10</a><span>Knäsenan · senbelastning</span></div></div>
+<button type="button" class="km-rad" data-p="3" data-typ="S"><span class="km-nr">3</span><span>Knäartros · styrka</span><span class="km-typ">S</span></button>
+<button type="button" class="km-rad" data-p="10" data-typ="S"><span class="km-nr">10</span><span>Knäsenan · senbelastning</span><span class="km-typ">S</span></button></div>
 <div class="km-kort"><h3>Fot & häl</h3>
-<div class="km-rad"><a class="km-nr" href="#p5">5</a><span>Hälsena · senbelastning</span></div>
-<div class="km-rad"><a class="km-nr" href="#p8">8</a><span>Plantarfascia · senbelastning</span></div>
-<div class="km-rad"><a class="km-nr" href="#p12">12</a><span>Fotled · rörlighet + styrka</span></div></div>
+<button type="button" class="km-rad" data-p="5" data-typ="S"><span class="km-nr">5</span><span>Hälsena · senbelastning</span><span class="km-typ">S</span></button>
+<button type="button" class="km-rad" data-p="8" data-typ="S"><span class="km-nr">8</span><span>Plantarfascia · senbelastning</span><span class="km-typ">S</span></button>
+<button type="button" class="km-rad" data-p="12" data-typ="S"><span class="km-nr">12</span><span>Fotled · rörlighet + styrka</span><span class="km-typ">S</span></button></div>
 </div>
-<p class="km-kombo"><strong>Tillägg:</strong> <a href="#t1">+1 Andning</a> · <a href="#t2">+2 Balans</a> · <a href="#t3">+3 Nervglidning</a> · <a href="#t4">+4 Bröstrygg/rörlighet</a><br>
-<strong>Nivåer:</strong> A försiktig start · B uppbyggnad · C full belastning (styr dos <em>och</em> variant)<br>
-<strong>Vanliga kombinationer:</strong> <code>2 +3</code> rygg med nervkomponent · <code>12 +2</code> fotled efter stukning · <code>6 +1</code> nacke med andningsdrivet mönster · <code>10 +4</code> knäsena med stel kedja ovanför · <code>1 +2</code> höftkontroll med balansbrist</p>
+<p class="km-kombo"><strong>Snabbval, vanliga kombinationer:</strong>
+<button type="button" class="km-kod" data-p="2" data-t="3">2 +3</button> rygg med nervkomponent ·
+<button type="button" class="km-kod" data-p="12" data-t="2">12 +2</button> fotled efter stukning ·
+<button type="button" class="km-kod" data-p="6" data-t="1">6 +1</button> nacke, andningsdrivet ·
+<button type="button" class="km-kod" data-p="10" data-t="4">10 +4</button> knäsena, stel kedja ·
+<button type="button" class="km-kod" data-p="1" data-t="2">1 +2</button> höftkontroll, balansbrist<br>
+<strong>Tillägg:</strong> +1 Andning · +2 Balans · +3 Nervglidning · +4 Bröstrygg/rörlighet &nbsp; <strong>Nivåer:</strong> A start · B uppbyggnad · C full (styr dos <em>och</em> variant)</p>
 </div>
 </div>
 </section>
@@ -676,6 +687,14 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
   els.forEach(function(e){io.observe(e)});
 })();
 </script>
+<div id="kbBar">
+<div class="kbb-prog"><span class="kodetikett" style="margin:0">Valt</span><strong id="kbbNamn">Välj program ovan</strong><a id="kbbLas" href="#" hidden>Läs ↓</a></div>
+<div class="kb-chips" id="kbN"><button type="button" class="kb-chip" data-n="A">A</button><button type="button" class="kb-chip" data-n="B">B</button><button type="button" class="kb-chip" data-n="C">C</button></div>
+<div class="kb-chips" id="kbT"><button type="button" class="kb-chip" data-t="1">+1</button><button type="button" class="kb-chip" data-t="2">+2</button><button type="button" class="kb-chip" data-t="3">+3</button><button type="button" class="kb-chip" data-t="4">+4</button></div>
+<code id="kbKod">–</code>
+<button class="btn btn-ghost" id="kbKopiera" type="button" disabled>Kopiera</button>
+<a class="btn btn-ghost" id="kbForhands" target="_blank" rel="noopener" hidden>Se som patient →</a>
+</div>
 <script>/* KODVY */
 (function(){
   var NAMN={p1:'Höft- & bäckenstabilitet',p2:'Ländrygg, grundprogram',p3:'Knäartros',p4:'Axel',p5:'Hälsena',p6:'Nacke & skuldror',p7:'Tennisarmbåge',p8:'Plantarfascia',p9:'Frusen skuldra',p10:'Knäsenan',p11:'Baksida lår',p12:'Fotled',p13:'Höftartros',p14:'Käke'};
@@ -691,6 +710,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     return {p:m[1],n:m[2],t:till};
   }
   function aterstall(){
+    document.body.classList.remove('bibliotek');
     document.querySelectorAll('.mp-inject').forEach(function(el){el.remove()});
     document.querySelectorAll('.nivstege .niv-akt').forEach(function(el){el.classList.remove('niv-akt')});
     document.querySelectorAll('[data-orig]').forEach(function(el){el.textContent=el.getAttribute('data-orig');el.removeAttribute('data-orig')});
@@ -710,6 +730,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       document.getElementById('mp-titel').textContent='Hela biblioteket';
       document.getElementById('mp-under').textContent='Klinikvy · alla program, nivåer och tillägg';
       document.getElementById('klinikmatris').hidden=false;
+      document.body.classList.add('bibliotek');
       document.body.classList.add('kodad');
       try{history.replaceState(null,'',location.pathname)}catch(e){}
       window.scrollTo({top:0,behavior:'instant'});
@@ -794,32 +815,50 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
   });
   // ===== KODBYGGAREN (klinikvy) =====
   (function(){
-    var P=document.getElementById('kbP'),N=document.getElementById('kbN'),T=document.getElementById('kbT');
-    if(!P)return;
+    var NAMN2={1:'Höft- & bäckenstabilitet',2:'Ländrygg, grundprogram',3:'Knäartros',4:'Axel',5:'Hälsena',6:'Nacke & skuldror',7:'Tennisarmbåge',8:'Plantarfascia',9:'Frusen skuldra',10:'Knäsenan',11:'Baksida lår',12:'Fotled',13:'Höftartros',14:'Käke'};
+    var matris=document.getElementById('klinikmatris'), bar=document.getElementById('kbBar');
+    if(!matris||!bar)return;
     var val={p:null,n:null,t:[]};
-    for(var i=1;i<=14;i++){var b=document.createElement('button');b.type='button';b.className='kb-chip';b.textContent=i;b.setAttribute('data-v',i);P.appendChild(b);}
-    ['A','B','C'].forEach(function(L){var b=document.createElement('button');b.type='button';b.className='kb-chip';b.textContent=L;b.setAttribute('data-v',L);N.appendChild(b);});
-    for(var j=1;j<=4;j++){var b2=document.createElement('button');b2.type='button';b2.className='kb-chip';b2.textContent='+'+j;b2.setAttribute('data-v',j);T.appendChild(b2);}
     function rita(){
-      P.querySelectorAll('.kb-chip').forEach(function(c){c.classList.toggle('vald', c.getAttribute('data-v')===String(val.p))});
-      N.querySelectorAll('.kb-chip').forEach(function(c){c.classList.toggle('vald', c.getAttribute('data-v')===val.n)});
-      T.querySelectorAll('.kb-chip').forEach(function(c){c.classList.toggle('vald', val.t.indexOf(c.getAttribute('data-v'))>-1)});
+      matris.querySelectorAll('.km-rad').forEach(function(r){r.classList.toggle('vald', r.getAttribute('data-p')===String(val.p))});
+      bar.querySelectorAll('[data-n]').forEach(function(c){c.classList.toggle('vald', c.getAttribute('data-n')===val.n)});
+      bar.querySelectorAll('[data-t]').forEach(function(c){c.classList.toggle('vald', val.t.indexOf(c.getAttribute('data-t'))>-1)});
+      var namn=document.getElementById('kbbNamn'), las=document.getElementById('kbbLas');
+      if(val.p){namn.textContent=val.p+' · '+NAMN2[val.p]; las.hidden=false; las.href='#p'+val.p;}
+      else {namn.textContent='Välj program ovan'; las.hidden=true;}
       var ut=document.getElementById('kbKod'), kop=document.getElementById('kbKopiera'), fh=document.getElementById('kbForhands');
       if(val.p&&val.n){
-        var kod=val.p+val.n+val.t.sort().map(function(x){return ' +'+x}).join('');
-        ut.textContent=kod; kop.disabled=false;
-        fh.hidden=false; fh.href=location.pathname+'#'+val.p+val.n+val.t.map(function(x){return '+'+x}).join('');
-      } else { ut.textContent='–'; kop.disabled=true; fh.hidden=true; }
+        ut.textContent=val.p+val.n+val.t.slice().sort().map(function(x){return ' +'+x}).join('');
+        kop.disabled=false; fh.hidden=false;
+        fh.href=location.pathname+'#'+val.p+val.n+val.t.slice().sort().map(function(x){return '+'+x}).join('');
+      } else {ut.textContent='–'; kop.disabled=true; fh.hidden=true;}
     }
-    P.addEventListener('click',function(e){var v=e.target.getAttribute&&e.target.getAttribute('data-v');if(v){val.p=(String(val.p)===v?null:v);rita()}});
-    N.addEventListener('click',function(e){var v=e.target.getAttribute&&e.target.getAttribute('data-v');if(v){val.n=(val.n===v?null:v);rita()}});
-    T.addEventListener('click',function(e){var v=e.target.getAttribute&&e.target.getAttribute('data-v');if(v){var ix=val.t.indexOf(v);ix>-1?val.t.splice(ix,1):val.t.push(v);rita()}});
+    matris.addEventListener('click',function(e){
+      var rad=e.target.closest&&e.target.closest('.km-rad');
+      if(rad){var p=rad.getAttribute('data-p'); val.p=(String(val.p)===p?null:p); rita(); return;}
+      var kod=e.target.closest&&e.target.closest('.km-kod');
+      if(kod){val.p=kod.getAttribute('data-p'); val.t=[kod.getAttribute('data-t')]; rita();
+        if(!val.n){document.getElementById('kbBar').scrollIntoView({block:'end'})} return;}
+      var f=e.target.closest&&e.target.closest('.km-f');
+      if(f){var typ=f.getAttribute('data-f');
+        matris.querySelectorAll('.km-f').forEach(function(x){x.classList.toggle('vald',x===f)});
+        matris.querySelectorAll('.km-rad').forEach(function(r){r.style.display=(typ==='alla'||r.getAttribute('data-typ')===typ)?'':'none'});
+        matris.querySelectorAll('.km-kort').forEach(function(k){
+          var synliga=[].slice.call(k.querySelectorAll('.km-rad')).some(function(r){return r.style.display!=='none'});
+          k.style.display=synliga?'':'none';
+        });}
+    });
+    bar.addEventListener('click',function(e){
+      var n=e.target.getAttribute&&e.target.getAttribute('data-n');
+      if(n){val.n=(val.n===n?null:n);rita();return;}
+      var t=e.target.getAttribute&&e.target.getAttribute('data-t');
+      if(t){var ix=val.t.indexOf(t);ix>-1?val.t.splice(ix,1):val.t.push(t);rita();}
+    });
     document.getElementById('kbKopiera').addEventListener('click',function(){
       var kod=document.getElementById('kbKod').textContent;
       var done=function(){var b=document.getElementById('kbKopiera');b.textContent='Kopierad ✓';setTimeout(function(){b.textContent='Kopiera'},1500)};
       if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(kod).then(done,done)}else{done()}
     });
-    rita();
   })();
   function franHash(){
     var h=decodeURIComponent(location.hash.slice(1));
@@ -830,5 +869,6 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
   franHash();
 })();
 </script>
+
 </body>
 </html>

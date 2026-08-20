@@ -375,6 +375,10 @@ section[data-block].aktiv{break-inside:avoid-page}
 .tranlogg table{width:100%;border-collapse:collapse;font-size:.8rem}
 .tranlogg th,.tranlogg td{border:1px solid #bbb;padding:6px 4px;text-align:center}
 .tranlogg td:first-child,.tranlogg th:first-child{text-align:left}
+.tranlogg .ovkol{width:38%}
+.tranlogg .smal{width:34px}
+.tranlogg h3{margin:18px 0 6px;font-size:1rem}
+.tranlogg .loggkod{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#555;margin:0 0 4px}
 </style>
 <style>.tranlogg{display:none}.mp-knappar{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}</style>
 <style>
@@ -716,8 +720,34 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     if(!k){fel.hidden=false;return}
     fel.hidden=true;visa(k);
   });
+  function byggLogg(){
+    var box=document.querySelector('.tranlogg'); if(!box)return;
+    var titel=document.getElementById('mp-titel').textContent;
+    var under=document.getElementById('mp-under').textContent;
+    var rader='';
+    document.querySelectorAll('section[data-block=program].aktiv details summary').forEach(function(su){
+      rader+='<tr><td class="ovkol">'+su.textContent+'</td><td></td><td></td></tr>';
+    });
+    document.querySelectorAll('section[data-block=tillagg].aktiv').forEach(function(sec){
+      var t=sec.querySelector('h2').textContent;
+      sec.querySelectorAll('details summary').forEach(function(su){
+        rader+='<tr><td class="ovkol">'+t.split('·')[0].trim()+' · '+su.textContent+'</td><td></td><td></td></tr>';
+      });
+    });
+    var veckor='';
+    for(var v=1;v<=4;v++){veckor+='<tr><td>'+v+'</td><td></td><td></td><td></td><td></td><td></td></tr>';}
+    box.innerHTML='<p class="loggkod">Kansei Rehabcenter · '+titel+' · '+under+'</p>'
+      +'<h3>Dina övningar och belastning</h3>'
+      +'<p>Anteckna vilket motstånd eller vilken vikt du börjar med, och ändringar du gör längs vägen.</p>'
+      +'<table><tr><th class="ovkol">Övning</th><th>Start (vikt/motstånd)</th><th>Justeringar</th></tr>'+rader+'</table>'
+      +'<h3>Genomförda pass</h3>'
+      +'<p>Kryssa vid genomfört pass, oavsett om din uppföljning är om några dagar eller några veckor.</p>'
+      +'<table><tr><th class="smal">Vecka</th><th>Pass 1</th><th>Pass 2</th><th>Pass 3</th><th>Pass 4</th><th>Känning dagen efter (0–10)</th></tr>'+veckor+'</table>'
+      +'<p style="margin-top:10px;font-size:.85rem">Ta med loggen till uppföljningen, eller mejla en bild på den till info@kansei.se · kansei.se/ovningar</p>';
+  }
   document.getElementById('skrivut').addEventListener('click',function(){
     document.querySelectorAll('section[data-block].aktiv details, #n'+((document.getElementById('mp-under').textContent.match(/Nivå ([ABC])/)||[])[1]||'A')+' details').forEach(function(d){d.setAttribute('open','')});
+    byggLogg();
     window.print();
   });
   document.getElementById('bytkod').addEventListener('click',function(e){

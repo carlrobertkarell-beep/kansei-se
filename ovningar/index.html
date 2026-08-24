@@ -345,7 +345,7 @@ footer{margin-top:80px;padding:96px 0 40px;background:var(--mist);border-top:1px
 <script type="speculationrules">{"prerender":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}</script>
 <meta name="robots" content="noindex, follow">
 <style>
-#kodgrind .kodkort{background:var(--mist);border-radius:18px;padding:34px 28px;text-align:center;margin-bottom:26px}
+#kodgrind .kodkort{background:var(--mist);border-radius:18px;padding:30px 28px;text-align:left;margin-bottom:26px}
 .kodetikett{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-ink);margin:0 0 14px}
 #kodform{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 #kodfalt{font-family:var(--mono);font-size:1.5rem;letter-spacing:.12em;text-align:center;text-transform:uppercase;width:min(300px,100%);padding:14px 16px;border:1px solid var(--line-2);border-radius:12px;background:var(--paper);color:var(--ink)}
@@ -363,7 +363,7 @@ body.kodad #mittprogram{display:block}
 @keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 </style>
 <style media="print">
-nav,footer,.crumb,#kodgrind,.eyebrow,.mp-knappar,#bytkod,.cta-row,#pfaqsektion,.fab,#kbBar,#klinikmatris{display:none!important}
+nav,footer,.crumb,#kodgrind,.eyebrow,.mp-knappar,#bytkod,.cta-row,#pfaqsektion,.fab,#kbBar,#klinikmatris,#digilogg{display:none!important}
 @page{margin:12mm 12mm}
 #varforsektion{display:none!important}
 h2{break-after:avoid;font-size:15pt}
@@ -450,7 +450,8 @@ body.bibliotek{padding-bottom:150px}
 .kbb-et{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,249,250,.65)}
 #kbBar .kb-chip{background:transparent;color:var(--paper);border-color:rgba(247,249,250,.35)}
 #kbBar .kb-chip.vald{background:var(--teal);border-color:var(--teal)}
-#kbBar #kbKod{font-family:var(--mono);font-size:1.35rem;font-weight:600;letter-spacing:.06em;background:rgba(247,249,250,.12);border-radius:9px;padding:5px 14px;min-width:96px;text-align:center}
+#kbBar #kbKod{font-family:var(--mono);font-size:1.05rem;letter-spacing:.05em;background:rgba(247,249,250,.08);border-radius:9px;padding:5px 12px;text-align:center;opacity:.8}
+#kbBar #kbPat{font-family:var(--mono);font-size:1.5rem;font-weight:700;letter-spacing:.14em;background:var(--teal);border-radius:9px;padding:6px 16px;text-align:center}
 #kbBar .btn{border-color:rgba(247,249,250,.4);color:var(--paper)}
 @media print{#kbBar{display:none!important}}
 </style>
@@ -460,6 +461,18 @@ body.bibliotek{padding-bottom:150px}
 .vmf p{font-size:.94rem;margin:.5em 0}
 .vmf.undvik{border-left-color:var(--ink)}
 .utrust{font-size:.9rem;color:var(--dim);margin:10px 0 0}
+#dlGrid{display:grid;grid-template-columns:repeat(14,1fr);gap:6px;max-width:420px;margin:18px 0 8px}
+.dl-dag{aspect-ratio:1;border-radius:6px;background:var(--line);position:relative}
+.dl-dag.pass{background:var(--teal)}
+.dl-dag.pass span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--paper);font-family:var(--mono);font-size:.6rem}
+#dlKChips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+#dlKChips button{font-family:var(--mono);border:1px solid var(--line-2);background:var(--paper);border-radius:8px;padding:6px 11px;cursor:pointer;font-size:.95rem}
+#dlKChips button:hover{border-color:var(--teal)}
+#digilogg .btn{margin-top:6px}
+.fav-chip{font-family:var(--mono);background:var(--paper);border:1px solid var(--line-2);border-radius:8px;padding:3px 6px 3px 10px;cursor:pointer;font-size:.85rem;margin:0 6px 6px 0;display:inline-flex;align-items:center;gap:7px}
+.fav-chip:hover{border-color:var(--teal)}
+.fav-x{color:var(--dim);padding:0 3px;font-size:1rem;line-height:1}
+.fav-x:hover{color:var(--ink)}
 </style>
 <style>section[data-block]:not(#mittprogram){max-width:700px}
 #klinikmatris,#kbBar{max-width:none}
@@ -538,7 +551,8 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <p id="mp-under" class="muted"></p>
 <p class="mp-sign">Utformat och medicinskt granskat av Carl-Robert Kårell, leg. naprapat · Byggt på aktuella belastnings- och rehabiliteringsprinciper · Uppdaterad augusti 2026</p>
 <div class="mp-knappar"><button class="btn btn-teal" id="skrivut" type="button">Skriv ut / spara som PDF</button><a href="#" id="bytkod" class="btn btn-ghost">Ange en annan kod</a></div>
-<div id="klinikmatris" hidden><div class="kv-tabbar"><button type="button" class="kb-chip kv-tab vald" data-panel="panelBP">Blueprints</button><button type="button" class="kb-chip kv-tab" data-panel="panelReg">Regioner</button><button type="button" class="kb-chip kv-tab" data-panel="panelTill">Tillägg</button></div><p class="kv-snabb"><strong>Snabbval:</strong> <button type="button" class="km-kod" data-p="2" data-t="3">2 +3</button> rygg m. nervkomponent · <button type="button" class="km-kod" data-p="12" data-t="2">12 +2</button> stukning · <button type="button" class="km-kod" data-p="6" data-t="1">6 +1</button> nacke, andningsdrivet · <button type="button" class="km-kod" data-p="10" data-t="4">10 +4</button> knäsena, stel kedja · <button type="button" class="km-kod" data-p="1" data-t="2">1 +2</button> höftkontroll, balansbrist<span class="km-leg" style="margin-left:10px">Nivåer: A start · B uppbyggnad · C full</span></p><div id="panelBP" class="kv-panel"><div class="bp-block"><p class="bp-grupp">Rygg & bäcken</p><button type="button" class="bp-rad" data-p="2" data-t=""><span>LCS – Lower Crossed Syndrome</span><span class="bp-kod">→ 2</span></button><button type="button" class="bp-rad" data-p="2" data-t="2"><span>SI-ledsyndrom</span><span class="bp-kod">→ 2 +2</span></button><button type="button" class="bp-rad" data-p="2" data-t="2"><span>Lumbopelvis instabilitet</span><span class="bp-kod">→ 2 +2</span></button><button type="button" class="bp-rad" data-p="2" data-t="3"><span>Lumbal radikulopati (L4–S1)</span><span class="bp-kod">→ 2 +3</span></button><p class="bp-not">färska/tilltagande bortfall: läkare först</p><button type="button" class="bp-rad" data-p="2" data-t="4"><span>Layer Syndrome</span><span class="bp-kod">→ 2 +4</span></button><p class="bp-not">ofta även 6 som parallellkod</p></div><div class="bp-block"><p class="bp-grupp">Höft & lår</p><button type="button" class="bp-rad" data-p="1" data-t=""><span>Lateralt höftmönster</span><span class="bp-kod">→ 1</span></button><button type="button" class="bp-rad" data-p="1" data-t=""><span>GTPS – Gluteus medius-tendinopati</span><span class="bp-kod">→ 1</span></button><p class="bp-not">kompressionsreglerna i undvik-blocket är kärnan</p><button type="button" class="bp-rad" data-p="1" data-t=""><span>FAI – Femoroacetabulärt impingement</span><span class="bp-kod">→ 1</span></button><p class="bp-not">pausa djupa höftböjningar; strukturfyndet styr</p><button type="button" class="bp-rad" data-p="1" data-t="3"><span>Piriformis syndrom</span><span class="bp-kod">→ 1 +3</span></button><button type="button" class="bp-rad" data-p="11" data-t=""><span>Proximal hamstringentesi</span><span class="bp-kod">→ 11</span></button><p class="bp-not">undvik stretch och djupböjd belastning initialt</p></div><div class="bp-block"><p class="bp-grupp">Knä</p><button type="button" class="bp-rad" data-p="3" data-t=""><span>Knäartros (OA)</span><span class="bp-kod">→ 3</span></button><button type="button" class="bp-rad" data-p="1" data-t=""><span>Patellofemoralt smärtmönster</span><span class="bp-kod">→ 1</span></button><p class="bp-not">höftdelen bär; knästyrka från 3 vid behov</p><button type="button" class="bp-rad" data-p="1" data-t=""><span>IT-band / Lateralt knämönster</span><span class="bp-kod">→ 1</span></button><p class="bp-not">halvera löpdosen initialt</p><button type="button" class="bp-rad" data-p="3" data-t=""><span>Medialt knämönster</span><span class="bp-kod">→ 3</span></button><button type="button" class="bp-rad" data-p="10" data-t=""><span>Patellar tendinopati</span><span class="bp-kod">→ 10</span></button></div><div class="bp-block"><p class="bp-grupp">Fot & underben</p><button type="button" class="bp-rad" data-p="8" data-t=""><span>Plantar fasciit</span><span class="bp-kod">→ 8</span></button><button type="button" class="bp-rad" data-p="5" data-t=""><span>Achillestendinopati</span><span class="bp-kod">→ 5</span></button></div><div class="bp-block"><p class="bp-grupp">Axel</p><button type="button" class="bp-rad" data-p="4" data-t=""><span>Skulder-impingement</span><span class="bp-kod">→ 4</span></button><button type="button" class="bp-rad" data-p="9" data-t=""><span>Fryst axel / Adhesiv kapsulit</span><span class="bp-kod">→ 9</span></button><button type="button" class="bp-rad" data-p="4" data-t=""><span>Rotatorkuffruptur</span><span class="bp-kod">→ 4</span></button><p class="bp-not">startnivå A; större ruptur → läkare före</p></div><div class="bp-block"><p class="bp-grupp">Arm & hand</p><button type="button" class="bp-rad" data-p="7" data-t=""><span>Lateral epikondylalgi</span><span class="bp-kod">→ 7</span></button><button type="button" class="bp-rad" data-p="7" data-t=""><span>Medial epikondylalgi</span><span class="bp-kod">→ 7</span></button><p class="bp-not">spegelvarianten, se programnoten</p><button type="button" class="bp-rad" data-p="6" data-t="3,5"><span>Karpaltunnelmönster</span><span class="bp-kod">→ 6 +3 +5</span></button><p class="bp-not">nattskena är förstahandsåtgärd</p><button type="button" class="bp-rad" data-p="15" data-t=""><span>De Quervain</span><span class="bp-kod">→ 15</span></button><p class="bp-not">vid vilovärk/nattvärk: överväg skena, se undvik-blocket</p></div><div class="bp-block"><p class="bp-grupp">Nacke & huvud</p><button type="button" class="bp-rad" data-p="6" data-t="4"><span>UCS – Upper Crossed Syndrome</span><span class="bp-kod">→ 6 +4</span></button><button type="button" class="bp-rad" data-p="6" data-t="1,6"><span>Cervikogen huvudvärk</span><span class="bp-kod">→ 6 +1 +6</span></button><button type="button" class="bp-rad" data-p="6" data-t="3"><span>Cervikal radikulopati</span><span class="bp-kod">→ 6 +3</span></button><p class="bp-not">bortfallsregeln gäller</p><button type="button" class="bp-rad" data-p="6" data-t="1,3"><span>TOS – Thoracic Outlet Syndrome</span><span class="bp-kod">→ 6 +1 +3</span></button></div><div class="bp-block"><p class="bp-grupp">Käke</p><button type="button" class="bp-rad" data-p="14" data-t=""><span>TMJ-dysfunktion</span><span class="bp-kod">→ 14</span></button></div><div class="bp-block"><p class="bp-grupp">Övergripande</p><div class="bp-rad bp-dod"><span>Central sensitisering</span><span class="bp-kod">–</span></div><p class="bp-not">utbildning + gradering; regionprogram på nivå A</p></div></div><div id="panelReg" class="kv-panel" hidden>
+<div id="klinikmatris" hidden><p class="kv-snabb" id="favrad" hidden><strong>Mina koder:</strong> <span id="favlista"></span></p>
+<div class="kv-tabbar"><button type="button" class="kb-chip kv-tab vald" data-panel="panelBP">Blueprints</button><button type="button" class="kb-chip kv-tab" data-panel="panelReg">Regioner</button><button type="button" class="kb-chip kv-tab" data-panel="panelTill">Tillägg</button></div><p class="kv-snabb"><strong>Snabbval:</strong> <button type="button" class="km-kod" data-p="2" data-t="3">2 +3</button> rygg m. nervkomponent · <button type="button" class="km-kod" data-p="12" data-t="2">12 +2</button> stukning · <button type="button" class="km-kod" data-p="6" data-t="1">6 +1</button> nacke, andningsdrivet · <button type="button" class="km-kod" data-p="10" data-t="4">10 +4</button> knäsena, stel kedja · <button type="button" class="km-kod" data-p="1" data-t="2">1 +2</button> höftkontroll, balansbrist<span class="km-leg" style="margin-left:10px">Nivåer: A start · B uppbyggnad · C full</span></p><div id="panelBP" class="kv-panel"><div class="bp-block"><p class="bp-grupp">Rygg & bäcken</p><button type="button" class="bp-rad" data-p="2" data-t=""><span>LCS – Lower Crossed Syndrome</span><span class="bp-kod">→ 2</span></button><button type="button" class="bp-rad" data-p="2" data-t="2"><span>SI-ledsyndrom</span><span class="bp-kod">→ 2 +2</span></button><button type="button" class="bp-rad" data-p="2" data-t="2"><span>Lumbopelvis instabilitet</span><span class="bp-kod">→ 2 +2</span></button><button type="button" class="bp-rad" data-p="2" data-t="3"><span>Lumbal radikulopati (L4–S1)</span><span class="bp-kod">→ 2 +3</span></button><p class="bp-not">färska/tilltagande bortfall: läkare först</p><button type="button" class="bp-rad" data-p="2" data-t="4"><span>Layer Syndrome</span><span class="bp-kod">→ 2 +4</span></button><p class="bp-not">ofta även 6 som parallellkod</p></div><div class="bp-block"><p class="bp-grupp">Höft & lår</p><button type="button" class="bp-rad" data-p="1" data-t=""><span>Lateralt höftmönster</span><span class="bp-kod">→ 1</span></button><button type="button" class="bp-rad" data-p="1" data-t=""><span>GTPS – Gluteus medius-tendinopati</span><span class="bp-kod">→ 1</span></button><p class="bp-not">kompressionsreglerna i undvik-blocket är kärnan</p><button type="button" class="bp-rad" data-p="1" data-t=""><span>FAI – Femoroacetabulärt impingement</span><span class="bp-kod">→ 1</span></button><p class="bp-not">pausa djupa höftböjningar; strukturfyndet styr</p><button type="button" class="bp-rad" data-p="1" data-t="3"><span>Piriformis syndrom</span><span class="bp-kod">→ 1 +3</span></button><button type="button" class="bp-rad" data-p="11" data-t=""><span>Proximal hamstringentesi</span><span class="bp-kod">→ 11</span></button><p class="bp-not">undvik stretch och djupböjd belastning initialt</p></div><div class="bp-block"><p class="bp-grupp">Knä</p><button type="button" class="bp-rad" data-p="3" data-t=""><span>Knäartros (OA)</span><span class="bp-kod">→ 3</span></button><button type="button" class="bp-rad" data-p="1" data-t=""><span>Patellofemoralt smärtmönster</span><span class="bp-kod">→ 1</span></button><p class="bp-not">höftdelen bär; knästyrka från 3 vid behov</p><button type="button" class="bp-rad" data-p="1" data-t=""><span>IT-band / Lateralt knämönster</span><span class="bp-kod">→ 1</span></button><p class="bp-not">halvera löpdosen initialt</p><button type="button" class="bp-rad" data-p="3" data-t=""><span>Medialt knämönster</span><span class="bp-kod">→ 3</span></button><button type="button" class="bp-rad" data-p="10" data-t=""><span>Patellar tendinopati</span><span class="bp-kod">→ 10</span></button></div><div class="bp-block"><p class="bp-grupp">Fot & underben</p><button type="button" class="bp-rad" data-p="8" data-t=""><span>Plantar fasciit</span><span class="bp-kod">→ 8</span></button><button type="button" class="bp-rad" data-p="5" data-t=""><span>Achillestendinopati</span><span class="bp-kod">→ 5</span></button></div><div class="bp-block"><p class="bp-grupp">Axel</p><button type="button" class="bp-rad" data-p="4" data-t=""><span>Skulder-impingement</span><span class="bp-kod">→ 4</span></button><button type="button" class="bp-rad" data-p="9" data-t=""><span>Fryst axel / Adhesiv kapsulit</span><span class="bp-kod">→ 9</span></button><button type="button" class="bp-rad" data-p="4" data-t=""><span>Rotatorkuffruptur</span><span class="bp-kod">→ 4</span></button><p class="bp-not">startnivå A; större ruptur → läkare före</p></div><div class="bp-block"><p class="bp-grupp">Arm & hand</p><button type="button" class="bp-rad" data-p="7" data-t=""><span>Lateral epikondylalgi</span><span class="bp-kod">→ 7</span></button><button type="button" class="bp-rad" data-p="7" data-t=""><span>Medial epikondylalgi</span><span class="bp-kod">→ 7</span></button><p class="bp-not">spegelvarianten, se programnoten</p><button type="button" class="bp-rad" data-p="6" data-t="3,5"><span>Karpaltunnelmönster</span><span class="bp-kod">→ 6 +3 +5</span></button><p class="bp-not">nattskena är förstahandsåtgärd</p><button type="button" class="bp-rad" data-p="15" data-t=""><span>De Quervain</span><span class="bp-kod">→ 15</span></button><p class="bp-not">vid vilovärk/nattvärk: överväg skena, se undvik-blocket</p></div><div class="bp-block"><p class="bp-grupp">Nacke & huvud</p><button type="button" class="bp-rad" data-p="6" data-t="4"><span>UCS – Upper Crossed Syndrome</span><span class="bp-kod">→ 6 +4</span></button><button type="button" class="bp-rad" data-p="6" data-t="1,6"><span>Cervikogen huvudvärk</span><span class="bp-kod">→ 6 +1 +6</span></button><button type="button" class="bp-rad" data-p="6" data-t="3"><span>Cervikal radikulopati</span><span class="bp-kod">→ 6 +3</span></button><p class="bp-not">bortfallsregeln gäller</p><button type="button" class="bp-rad" data-p="6" data-t="1,3"><span>TOS – Thoracic Outlet Syndrome</span><span class="bp-kod">→ 6 +1 +3</span></button></div><div class="bp-block"><p class="bp-grupp">Käke</p><button type="button" class="bp-rad" data-p="14" data-t=""><span>TMJ-dysfunktion</span><span class="bp-kod">→ 14</span></button></div><div class="bp-block"><p class="bp-grupp">Övergripande</p><div class="bp-rad bp-dod"><span>Central sensitisering</span><span class="bp-kod">–</span></div><p class="bp-not">utbildning + gradering; regionprogram på nivå A</p></div></div><div id="panelReg" class="kv-panel" hidden>
 <div class="km-filter">
 <button type="button" class="kb-chip km-f vald" data-f="alla">Alla</button>
 <button type="button" class="kb-chip km-f" data-f="F">Funktion</button>
@@ -550,7 +564,7 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 
 <section id="nivasektion" data-block="niva">
 <h2 id="nivaer">Nivåerna</h2>
-<p>Bokstaven i din kod styr två saker: doseringen nedan och svårighetsvarianten i varje program, den markerade raden i programmets nivåstege. Bokstaven sattes vid besöket, efter besvärets skede, din belastningstolerans och vad du ska tillbaka till. Byt inte nivå på egen hand, uppflyttning sker vid uppföljning eller efter kontakt med oss. Anger ditt program en egen doseringsrad gäller den före tabellen här. Och är du van att träna: bokstaven mäter inte din kapacitet utan besvärets skede, en vältränad kropp kan mycket väl starta på A när vävnaden är retad. Lägg ambitionen i utförandekvaliteten och riktmärkena, uppflyttningen styrs av hur vävnaden svarar, och den går exakt så fort som svaret tillåter.</p>
+<p>Din nivå styr två saker: doseringen nedan och svårighetsvarianten i varje program, den markerade raden i programmets nivåstege. Nivån sattes vid besöket, efter besvärets skede, din belastningstolerans och vad du ska tillbaka till. Byt inte nivå på egen hand, uppflyttning sker vid uppföljning eller efter kontakt med oss. Anger ditt program en egen doseringsrad gäller den före tabellen här. Och är du van att träna: nivån mäter inte din kapacitet utan besvärets skede, en vältränad kropp kan mycket väl starta på A när vävnaden är retad. Lägg ambitionen i utförandekvaliteten och riktmärkena, uppflyttningen styrs av hur vävnaden svarar, och den går exakt så fort som svaret tillåter.</p>
 <div id="nA"><details><summary>Nivå A · försiktig start</summary><p>Låg belastning med full precision: samma övningar, samma krav på utförande, doserat för vävnad som just nu behöver ro. A är ett skede, inte ett omdöme, och används tidigt i förloppet, vid uttalad smärta eller efter uppehåll.</p><p style="color:var(--teal-ink);font-size:.85rem">Dosering: 2 set × 10 lugna repetitioner · dagligen eller varannan dag · smärta upp till 3 av 10 under övningen är acceptabelt, den ska ha lagt sig till nästa dag</p></details></div><div id="nB"><details><summary>Nivå B · uppbyggnad</summary><p>Måttlig belastning. Här ligger de flesta större delen av tiden, och det är här förändringen sker.</p><p style="color:var(--teal-ink);font-size:.85rem">Dosering: 3 set × 10–12 repetitioner · 3–4 gånger i veckan · lägg till motstånd när sista repetitionen känns lätt</p></details></div><div id="nC"><details><summary>Nivå C · full belastning</summary><p>Full belastning, skedet närmast återgång. Dosen ligger nära ett riktigt träningspass och varianterna är de tyngsta, inte för att du är vältränad, utan för att vävnaden nu tål att bevisa det. Riktmärkena i övningarna är kvitton på att den håller för det du ska tillbaka till. Kräver att nivå B går utan besvärsökning.</p><p style="color:var(--teal-ink);font-size:.85rem">Dosering: 3–4 set × 6–8 repetitioner med tydligt motstånd · 3 gånger i veckan · vila minst en dag mellan passen</p></details></div>
 <p class="pris-rad">Vid osäkerhet: mejla oss hellre än att gissa</p>
 </section>
@@ -587,7 +601,7 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <section id="p15" data-block="program"><h2>15 · Handled & tumme</h2><p class="muted" style="font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase">Arm & hand</p><p>Programmet bygger tålighet i handledens och tummens senor, för grepp, lyft och vardagens vridningar. Det används vid retade sensklidor kring tummens bas och handled, och som grund när handen behöver tåla mer igen.</p><p><strong>Så är programmet byggt:</strong> Logiken är senlogik i miniatyr: tumsidans och handledens senor svarar på lugn, regelbunden belastning i skonsamma banor, och retas av plötsliga, upprepade grepp i vinklade lägen, lyft av små barn är en klassisk utlösare. Programmet börjar i den skonsammaste riktningen, tummen uppåt, och bygger utåt därifrån. Rörelserna ska vara i det närmaste smärtfria; här gäller hellre lätt och dagligen än tungt och sällan.</p><p class="nivstege"><strong>Nivåerna i det här programmet:</strong><br><span data-niv="A"><b>A</b> · korta hävarmar, ingen eller minimal vikt, endast smärtfria banor</span><br><span data-niv="B"><b>B</b> · grundutförandena med lätt vikt</span><br><span data-niv="C"><b>C</b> · längre hävarm, något tyngre vikt, grepp och lyft i olika handledsvinklar</span></p><p class="utrust"><strong>Det här behöver du:</strong> En lätt hammare eller stekspade, en liten vikt (konservburk), och en mjuk boll.</p><p class="pris-rad">Dosering i det här programmet: lätt belastning, gärna dagligen · inom smärtfritt eller nästan smärtfritt · reaktion som sitter i nästa dag betyder ett steg tillbaka</p><div class="vmf"><h3>Det som håller besväret vid liv</h3><p>Tummens och handledens senor retas av det upprepade vinklade greppet: mobilscrollande med tummen, lyft av barn med handleden knickad åt tumsidan, nystartade repetitiva projekt som stickning, skruvande eller trädgård. Det är sällan ett enskilt lyft som är problemet, det är tusen små likadana.</p><p>Motmedlen: lyft med underarmarna under barnet i stället för med tumgreppet, växla hand för mobilen eller scrolla med pekfingret, och ge nya handintensiva projekt en invänjningsvecka.</p></div><div class="vmf undvik"><h3>Under programtiden: pausa och undvik</h3><p>Pausa maxgrepp och tumintensiva verktyg där det går, sekatör, sax i långa pass, tunga kannor i tumgrepp. Lyft det som går med båda händerna och neutral handled. Väcker besväret dig på natten eller värker i vila kan en stödskena vara aktuell, ta upp det vid uppföljningen.</p></div><details><summary>1 · Hammarlyft</summary><p><strong>Varför:</strong> Tumsidans senor tränas här i sin skonsammaste riktning, det är programmets motor och den rörelse som brukar tåla belastning först.</p><p><strong>Utförande:</strong> Håll en lätt hammare eller stekspade med tummen uppåt och armbågen intill kroppen. Lyft redskapet genom att vinkla handleden uppåt mot tumsidan, sänk sedan långsamt under tre sekunder.</p><p style="color:var(--teal-ink)"><strong>Tänk på:</strong> Sänkningen är den värdefulla delen. Greppa högt upp på skaftet i början, det ger kort hävarm och snäll belastning.</p><p class="muted" style="font-size:.9rem"><strong>Nästa steg:</strong> Greppa längre ner på skaftet för längre hävarm, därefter något tyngre redskap.</p></details><details><summary>2 · Handledsböj och sträck</summary><p><strong>Varför:</strong> Fulla, lugna rörelser i båda riktningarna håller senskidorna smidiga och bygger grundtåligheten som allt grepp vilar på.</p><p><strong>Utförande:</strong> Underarmen på ett bord med handen utanför kanten, en lätt vikt i handen. Böj handleden långsamt uppåt, sänk lika långsamt. Vänd sedan greppet och upprepa åt andra hållet.</p><p style="color:var(--teal-ink)"><strong>Tänk på:</strong> Rörelsen ska vara jämn och utan hugg. Domnar handen eller stickar det: mindre rörelseuttag.</p><p class="muted" style="font-size:.9rem"><strong>Nästa steg:</strong> Något tyngre vikt när båda riktningarna går utan efterkänning.</p></details><details><summary>3 · Tummens rörlighet</summary><p><strong>Varför:</strong> Tummen behöver hela sitt rörelseomfång för att greppet ska fördelas rätt, en stel tumme lastar senorna snett.</p><p><strong>Utförande:</strong> För tummen tvärs över handflatan tills den når lillfingrets bas, håll tre sekunder, för den sedan tillbaka och spreta ut den så långt det känns bra.</p><p style="color:var(--teal-ink)"><strong>Tänk på:</strong> Mjukt och smärtfritt, det här är rörlighet, inte styrka.</p><p class="muted" style="font-size:.9rem"><strong>Nästa steg:</strong> Behåll som daglig rutin, ingen progression behövs.</p></details><details><summary>4 · Grepputhållighet med neutral handled</summary><p><strong>Varför:</strong> Greppet är målet med hela programmet, och neutral handled är den position där det ska byggas först.</p><p><strong>Utförande:</strong> Håll handleden rak, kläm en mjuk boll med måttlig kraft, håll fem sekunder, släpp långsamt helt.</p><p style="color:var(--teal-ink)"><strong>Tänk på:</strong> Måttlig kraft betyder ungefär halv styrka. Det är uthålligheten som tränas, inte maxgreppet.</p><p class="muted" style="font-size:.9rem"><strong>Nästa steg:</strong> Fler klämningar, därefter grepp i lätt vinklade handledslägen.</p></details></section>
 <section id="tillintro" data-block="tillintro">
 <h2 id="tillagg">Tillägg (+)</h2>
-<p>Ibland innehåller din kod ett plus, till exempel <strong>2A +1</strong>. Tillägget är en mindre modul som kompletterar huvudprogrammet, och det ordineras bara när undersökningen visat att det tillför något i just ditt fall. Tilläggen doseras som det står vid varje övning, oberoende av din nivåbokstav.</p>
+<p>Ibland innehåller din kod ett plus, till exempel <strong>2A +1</strong>. Tillägget är en mindre modul som kompletterar huvudprogrammet, och det ordineras bara när undersökningen visat att det tillför något i just ditt fall. Tilläggen doseras som det står vid varje övning, oberoende av din nivå.</p>
 </section>
 <section id="t1" data-block="tillagg"><h2>+1 · Andning</h2><p>Tränar in ett lugnare, mer diafragmalt andningsmönster. Ordineras när andningen bedöms bidra till spänning eller påverka bålens funktion, ett vanligt men förbisett underhållande moment.</p><details><summary>Bukandning i ryggläge</summary><p>Ligg på rygg med böjda knän, en hand på magen och en på bröstet. Andas in genom näsan så att magen lyfter handen medan bröstkorgen ligger relativt stilla. Lång, lugn utandning.</p><p style="color:var(--teal-ink);font-size:.85rem">Dosering: 2–3 minuter, morgon och kväll</p></details><details><summary>Sidoutvidgning</summary><p>Sitt eller stå med händerna på nedre revbenens sidor. Andas in mot händerna så att revbenen vidgas åt sidorna.</p><p style="color:var(--teal-ink);font-size:.85rem">Dosering: 10 lugna andetag, gärna före träningspasset</p></details><details><summary>Förlängd utandning</summary><p>Andas in i fyra sekunder, ut i sex till åtta. Näsan in, gärna läppbroms ut.</p><p style="color:var(--teal-ink);font-size:.85rem">Dosering: 5 andetag varje gång du sätter dig efter att ha rest dig, som vardagspåminnelse</p></details></section>
 <section id="t2" data-block="tillagg"><h2>+2 · Balans & proprioception</h2><p>Tränar fotens, fotledens och höftens samspel med balanssinnet. Ordineras efter fotledsskador, vid nedsatt enbensbalans och inför återgång till underlag som kräver reaktion.</p><details><summary>Enbensstående</summary><p>Stå på ett ben, lätt böjt knä, blicken framåt. Fingerstöd mot vägg vid behov, minska stödet successivt.</p><p style="color:var(--teal-ink);font-size:.85rem">Dosering: 3 × 30 sekunder per ben, dagligen</p></details><details><summary>Enbensstående med huvudrörelse</summary><p>Samma position, vrid lugnt huvudet åt sidorna utan att tappa balansen.</p><p style="color:var(--teal-ink);font-size:.85rem">Dosering: 3 × 20 sekunder per ben, när grundvarianten är stabil</p></details><details><summary>Viktförflyttning på mjukt underlag</summary><p>Stå på hopvikt handduk eller balansdyna, för vikten lugnt mellan fötterna och ut på ett ben.</p><p style="color:var(--teal-ink);font-size:.85rem">Dosering: 2 minuter, varannan dag</p></details></section>
@@ -596,6 +610,15 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <section id="t5" data-block="tillagg"><h2>+5 · Handled & grepp</h2><p>Bygger uthållighet och tålighet i handled och grepp. Ordineras vid nervpåverkan i handen, senbesvär kring handled och tumme, eller när armbågsrehabiliteringen behöver stöd nedifrån. Rörelserna ska vara helt smärtfria, symtom som domningar under övningen betyder mindre rörelseuttag.</p><details><summary>Handledsböj och sträck med lätt vikt</summary><p><strong>Varför:</strong> Lugna, fulla rörelser håller senskidorna smidiga och bygger grundtålighet i underarmens muskulatur.</p><p><strong>Utförande:</strong> Underarmen på ett bord med handen utanför kanten, en lätt vikt eller konservburk i handen. Böj handleden långsamt uppåt, sänk lika långsamt. Vänd greppet och upprepa åt andra hållet.</p><p style="color:var(--teal-ink);font-size:.85rem">Dosering: 10 lugna repetitioner åt vardera håll, dagligen</p></details><details><summary>Grepputhållighet</summary><p><strong>Varför:</strong> Greppet är handens vardagsfunktion, uthållighet här avlastar både handled och armbåge.</p><p><strong>Utförande:</strong> Kläm en mjuk boll eller hoprullad strumpa med måttlig kraft, håll fem sekunder, släpp långsamt helt.</p><p style="color:var(--teal-ink);font-size:.85rem">Dosering: 10 klämningar, 1–2 gånger dagligen</p></details><details><summary>Hammarlyft</summary><p><strong>Varför:</strong> Tränar tumsidans senor i deras skonsammaste riktning, viktigt vid besvär kring tummens bas.</p><p><strong>Utförande:</strong> Håll en lätt hammare eller stekspade med tummen uppåt, armbågen intill kroppen. Lyft redskapet genom att vinkla handleden uppåt mot tumsidan, sänk kontrollerat.</p><p style="color:var(--teal-ink);font-size:.85rem">Dosering: 8–10 repetitioner, dagligen</p></details></section>
 <section id="t6" data-block="tillagg"><h2>+6 · Blick & nacke</h2><p>Tränar samspelet mellan ögon, nacke och balanssinne. Ordineras vid nackrelaterad huvudvärk, yrselkänsla från nacken eller när nackens djupa system behöver återfå sin precision. En lätt, snabbt övergående yrselkänsla under övningen är väntad, kraftig eller kvarstående yrsel är stoppsignal.</p><details><summary>Blickfixering med huvudrörelse</summary><p><strong>Varför:</strong> Nackens känsel och ögonens stabilisering samarbetar i varje huvudvridning, det samspelet går att träna upp igen.</p><p><strong>Utförande:</strong> Håll en punkt i ögonhöjd, en tejpbit på väggen fungerar. Fixera blicken på punkten och vrid huvudet långsamt åt sidorna medan blicken ligger kvar stilla på punkten.</p><p style="color:var(--teal-ink);font-size:.85rem">Dosering: 30 sekunder, 2–3 gånger dagligen</p></details><details><summary>Blickhopp</summary><p><strong>Varför:</strong> Snabba, precisa ögonrörelser med stilla huvud tränar den del av systemet som huvudrörelsen inte når.</p><p><strong>Utförande:</strong> Sätt upp två punkter en halvmeter isär i ögonhöjd. Håll huvudet stilla och flytta blicken i hopp mellan punkterna.</p><p style="color:var(--teal-ink);font-size:.85rem">Dosering: 20 blickhopp, 2 gånger dagligen</p></details><details><summary>Följerörelse</summary><p><strong>Varför:</strong> Mjuk koordination mellan öga och nacke i samma riktning, den lugnande motvikten till de två första.</p><p><strong>Utförande:</strong> Håll tummen framför dig, följ den med både blick och huvud i en långsam liggande åtta.</p><p style="color:var(--teal-ink);font-size:.85rem">Dosering: 30 sekunder, dagligen</p></details></section>
 
+<section id="digilogg" data-block="dlogg">
+<h2>Logga dina pass här</h2>
+<p>Bocka av när du tränat, så bygger sidan din logg. Dagen efter frågar den hur kroppen svarade, den siffran är guld vid uppföljningen. Loggen sparas i den här webbläsaren på den här enheten, papperets logg fungerar precis lika bra om du hellre kryssar med penna.</p>
+<button id="dlBocka" class="btn btn-teal" type="button">Bocka av dagens pass</button>
+<div id="dlKanning" hidden><p style="margin-top:16px"><strong>Hur kändes kroppen dagen efter passet <span id="dlKDatum"></span>?</strong> 0 är ingenting, 10 är värsta tänkbara.</p><div id="dlKChips"></div></div>
+<div id="dlGrid" aria-hidden="true"></div>
+<p id="dlSummering" class="muted"></p>
+<a id="dlMejla" class="btn btn-ghost" hidden>Mejla loggen till oss</a>
+</section>
 <section id="varforsektion" data-block="varfor">
 <h2>Fungerar det verkligen?</h2>
 <p>Rimlig fråga. Övningar känns odramatiska jämfört med behandlingar som görs åt en, och effekten syns inte dag tre. Men för de flesta besvär i det här biblioteket är riktad träning förstahandsvalet i internationella behandlingsriktlinjer, före injektioner och före kirurgi. Inte för att det är billigast, utan för att det är det som ger bäst resultat över tid.</p>
@@ -612,13 +635,13 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <h2>Därför finns ett återbesök</h2>
 <p>Vi säger det som det är: övningarna är halva behandlingen. Den andra halvan är utvärderingen av hur din kropp svarar på dem.</p>
 <p>Din kod är en startdos, satt utifrån en enda undersökning. Hur snart den behöver utvärderas beror på besväret, för vissa handlar det om dagar, för andra om veckor. Vi sa vad som gäller för dig vid besöket. Vid uppföljningen finns något som inte fanns första gången: ditt svar på belastningen. Det är den informationen som avgör om nivån ska höjas, varianten bytas eller planen läggas om, och den bedömningen går inte att göra på egen hand, lika lite som vi kunde gissa den i förväg.</p>
-<p>Träningsloggen på utskriften är byggd för exakt det mötet. Fyll i den och ta med den, så justeras programmet efter facit istället för känsla. Kommer du inte in: mejla en bild på loggen till info@kansei.se, så säger vi ärligt om du klarar dig vidare på egen hand eller om det är värt ett besök.</p>
+<p>Träningsloggen, den digitala här på sidan eller utskriftens, är byggd för exakt det mötet. Fyll i den och ta med den, så justeras programmet efter facit istället för känsla. Kommer du inte in: mejla en bild på loggen till info@kansei.se, så säger vi ärligt om du klarar dig vidare på egen hand eller om det är värt ett besök.</p>
 <div class="cta-row"><a class="btn btn-teal" href="https://www.bokadirekt.se/places/kansei-rehabcenter-48847" target="_blank" rel="noopener">Boka uppföljning</a><a class="btn btn-ghost" href="mailto:info@kansei.se?subject=Min träningslogg">Mejla loggen</a></div>
 </section>
 <section id="pfaqsektion" data-block="pfaq">
 <h2>Vanliga frågor om din plan</h2>
 <p>Svaren nedan täcker det patienter oftast undrar. Hittar du inte din fråga: spara den till uppföljningen, det är precis vad den är till för. Gäller det något akut, se Smärta under träningen ovan.</p>
-<details><summary>Jag missade några dagar, ska jag börja om från noll?</summary><p>Nej. Fortsätt där du är. Vävnad tappar inte veckors anpassning på några dagars uppehåll. Efter ett längre avbrott, mer än en till två veckor, backar du ett steg i belastning första passet och känner efter dagen därpå.</p></details><details><summary>Det gjorde mer ont dagen efter, har jag förstört något?</summary><p>Nästan säkert inte. Träningsvärk och viss känning är väntat när vävnad belastas på nytt sätt. Regeln: har känningen lagt sig inom ett dygn var dosen rätt eller nära rätt. Håller den i sig längre, backa ett steg i belastning nästa pass och fortsätt därifrån.</p></details><details><summary>Smärtan är borta, kan jag sluta träna nu?</summary><p>Symtomfri är inte samma sak som färdigtränad. Smärtan brukar släppa innan vävnaden nått full tålighet, och det är i det glappet återfall sker. Fortsätt enligt planen fram till uppföljningen, där avgörs hur nedtrappningen ska se ut.</p></details><details><summary>Jag har inget gummiband eller vikter hemma.</summary><p>Träningsband finns för runt hundralappen i sport- och apoteksbutiker och är värt köpet. Tills dess: gör bandövningarna utan band i långsammare tempo. Där vikt anges fungerar en ryggsäck med böcker eller vattenflaskor precis lika bra som hantlar.</p></details><details><summary>Kan jag träna annat samtidigt, gym, löpning, padel?</summary><p>Oftast ja, aktivitet är i grunden bra för dig. Två regler: programmet går först i veckans prioritering, och det som direkt provocerar ditt besvär pausas eller anpassas fram till uppföljningen, vi nämnde vid besöket vad det gäller för dig. Osäker på en specifik aktivitet: spara frågan till uppföljningen.</p></details><details><summary>Kan jag göra fler set eller träna oftare för snabbare resultat?</summary><p>Nej, och det är inte försiktighetsprat: mer är inte bättre, rätt dos är bättre. Vävnaden byggs om mellan passen, inte under dem. Dubbel dos ger inte dubbel effekt, den ökar bara risken att reta besväret och tappa veckor. Lägg ambitionen på kvaliteten i varje repetition i stället, där ger den utdelning.</p></details><details><summary>Ska jag träna båda sidorna eller bara den med besvär?</summary><p>Om inget annat sades vid besöket: den besvärade sidan enligt doseringen, och gärna den friska sidan med något färre set. Den friska sidan är din referens för hur rörelsen ska kännas, och det håller sidorna jämna.</p></details><details><summary>Behöver jag värma upp först?</summary><p>Ingen separat uppvärmning krävs, programmen inleder med de skonsammaste momenten av just det skälet. Känns kroppen kall: några minuters promenad eller ett par lätta genomkörningar av första övningen räcker gott.</p></details><details><summary>När byter jag nivå, och får jag göra det själv?</summary><p>Bokstaven byts vid uppföljningen eller efter kontakt med oss, inte på egen hand, eftersom bytet ska grundas på hur din kropp svarat. Progressionen inom din nivå sköter du däremot själv: det är Nästa steg-raderna i varje övning, och regeln är kontrollerat två pass i rad innan du tar dem.</p></details><details><summary>Min partner har samma besvär, kan hen köra samma program?</summary><p>Nej, och det är inte snålhet. Koden är satt efter en undersökning av dig: samma symtom kan ha olika orsaker, och samma orsak kan behöva olika dos. En undersökning ger ett program som faktiskt är deras, allt annat är en gissning med lånad kod.</p></details><details><summary>Jag har glömt min kod.</summary><p>Mejla oss från adressen du bokade med så skickar vi den. Spara den sedan i mobilens anteckningar, då finns den alltid med på gymmet.</p></details></section>
+<details><summary>Jag missade några dagar, ska jag börja om från noll?</summary><p>Nej. Fortsätt där du är. Vävnad tappar inte veckors anpassning på några dagars uppehåll. Efter ett längre avbrott, mer än en till två veckor, backar du ett steg i belastning första passet och känner efter dagen därpå.</p></details><details><summary>Det gjorde mer ont dagen efter, har jag förstört något?</summary><p>Nästan säkert inte. Träningsvärk och viss känning är väntat när vävnad belastas på nytt sätt. Regeln: har känningen lagt sig inom ett dygn var dosen rätt eller nära rätt. Håller den i sig längre, backa ett steg i belastning nästa pass och fortsätt därifrån.</p></details><details><summary>Smärtan är borta, kan jag sluta träna nu?</summary><p>Symtomfri är inte samma sak som färdigtränad. Smärtan brukar släppa innan vävnaden nått full tålighet, och det är i det glappet återfall sker. Fortsätt enligt planen fram till uppföljningen, där avgörs hur nedtrappningen ska se ut.</p></details><details><summary>Jag har inget gummiband eller vikter hemma.</summary><p>Träningsband finns för runt hundralappen i sport- och apoteksbutiker och är värt köpet. Tills dess: gör bandövningarna utan band i långsammare tempo. Där vikt anges fungerar en ryggsäck med böcker eller vattenflaskor precis lika bra som hantlar.</p></details><details><summary>Kan jag träna annat samtidigt, gym, löpning, padel?</summary><p>Oftast ja, aktivitet är i grunden bra för dig. Två regler: programmet går först i veckans prioritering, och det som direkt provocerar ditt besvär pausas eller anpassas fram till uppföljningen, vi nämnde vid besöket vad det gäller för dig. Osäker på en specifik aktivitet: spara frågan till uppföljningen.</p></details><details><summary>Kan jag göra fler set eller träna oftare för snabbare resultat?</summary><p>Nej, och det är inte försiktighetsprat: mer är inte bättre, rätt dos är bättre. Vävnaden byggs om mellan passen, inte under dem. Dubbel dos ger inte dubbel effekt, den ökar bara risken att reta besväret och tappa veckor. Lägg ambitionen på kvaliteten i varje repetition i stället, där ger den utdelning.</p></details><details><summary>Ska jag träna båda sidorna eller bara den med besvär?</summary><p>Om inget annat sades vid besöket: den besvärade sidan enligt doseringen, och gärna den friska sidan med något färre set. Den friska sidan är din referens för hur rörelsen ska kännas, och det håller sidorna jämna.</p></details><details><summary>Behöver jag värma upp först?</summary><p>Ingen separat uppvärmning krävs, programmen inleder med de skonsammaste momenten av just det skälet. Känns kroppen kall: några minuters promenad eller ett par lätta genomkörningar av första övningen räcker gott.</p></details><details><summary>När byter jag nivå, och får jag göra det själv?</summary><p>Nivån byts vid uppföljningen eller efter kontakt med oss, inte på egen hand, eftersom bytet ska grundas på hur din kropp svarat. Progressionen inom din nivå sköter du däremot själv: det är Nästa steg-raderna i varje övning, och regeln är kontrollerat två pass i rad innan du tar dem.</p></details><details><summary>Min partner har samma besvär, kan hen köra samma program?</summary><p>Nej, och det är inte snålhet. Koden är satt efter en undersökning av dig: samma symtom kan ha olika orsaker, och samma orsak kan behöva olika dos. En undersökning ger ett program som faktiskt är deras, allt annat är en gissning med lånad kod.</p></details><details><summary>Jag har glömt min kod.</summary><p>Mejla oss från adressen du bokade med så skickar vi den. Spara den sedan i mobilens anteckningar, då finns den alltid med på gymmet.</p></details></section>
 
 <div class="tranlogg"><h2 style="margin-top:26px">Träningslogg · fram till din uppföljning</h2>
 <p>Kryssa vid genomfört pass, oavsett om din uppföljning är om några dagar eller några veckor. Ta med loggen, eller mejla en bild på den.</p>
@@ -721,9 +744,11 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
 <span class="kbb-et">Nivå</span><div class="kb-chips" id="kbN"><button type="button" class="kb-chip" data-n="A">A</button><button type="button" class="kb-chip" data-n="B">B</button><button type="button" class="kb-chip" data-n="C">C</button></div>
 <span class="kbb-et">Tillägg</span><div class="kb-chips" id="kbT"><button type="button" class="kb-chip" data-t="1">+1</button><button type="button" class="kb-chip" data-t="2">+2</button><button type="button" class="kb-chip" data-t="3">+3</button><button type="button" class="kb-chip" data-t="4">+4</button><button type="button" class="kb-chip" data-t="5">+5</button><button type="button" class="kb-chip" data-t="6">+6</button></div>
 <code id="kbKod">–</code>
+<span class="kbb-et">Patientkod</span><code id="kbPat">–</code>
 <button class="btn btn-ghost" id="kbKopiera" type="button" disabled>Kopiera</button>
 <a class="btn btn-ghost" id="kbForhands" target="_blank" rel="noopener" hidden>Se som patient →</a>
 <a class="btn btn-teal" id="kbMejla" hidden>Mejla till patient →</a>
+<button class="btn btn-ghost" id="kbSpara" type="button" hidden>☆ Spara</button>
 </div>
 <script>/* KODVY */
 (function(){
@@ -731,9 +756,31 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
   var TILLN={t1:'Andning',t2:'Balans & proprioception',t3:'Nervglidning',t4:'Bröstrygg & rörlighet',t5:'Handled & grepp',t6:'Blick & nacke'};
   var form=document.getElementById('kodform'),falt=document.getElementById('kodfalt'),fel=document.getElementById('kodfel');
   if(!form)return;
+  var ALFA='ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+  function pkoda(p,nIdx,mask){
+    var value=((p-1)*3+nIdx)*64+mask;
+    var v=(value*2657+911)%4093;
+    var c=[ALFA[Math.floor(v/961)%31],ALFA[Math.floor(v/31)%31],ALFA[v%31]];
+    var chk=(v+ALFA.indexOf(c[0])+ALFA.indexOf(c[1])+ALFA.indexOf(c[2]))%31;
+    return c.join('')+ALFA[chk];
+  }
+  function pdekoda(st){
+    if(!/^[A-Z2-9]{4}$/.test(st))return null;
+    var ix=[0,1,2,3].map(function(i){return ALFA.indexOf(st[i])});
+    if(ix.indexOf(-1)>-1)return null;
+    var v=ix[0]*961+ix[1]*31+ix[2];
+    if((v+ix[0]+ix[1]+ix[2])%31!==ix[3])return null;
+    var value=((v-911)*1542)%4093; if(value<0)value+=4093;
+    if(value>=2880)return null;
+    var pn=Math.floor(value/64), mask=value%64;
+    var p=Math.floor(pn/3)+1, n='ABC'[pn%3], t=[];
+    for(var b=1;b<=6;b++){if(mask&(1<<(b-1)))t.push(String(b));}
+    return {p:String(p),n:n,t:t};
+  }
   function tolka(str){
-    var st=(str||'').toUpperCase().replace(/[,\s]+/g,'');
+    var st=(str||'').toUpperCase().replace(/[,\s\-]+/g,'');
     if(st==='CRK1926APLIO')return {bibliotek:true};
+    var pk=pdekoda(st); if(pk)return pk;
     var m=st.match(/^(1[0-5]|[1-9])([ABC])((?:\+[1-6])*)$/);
     if(!m)return null;
     var till=(m[3].match(/\+[1-6]/g)||[]).map(function(x){return x.slice(1)});
@@ -772,6 +819,9 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       p.parentNode.insertBefore(ns, p);
       rubrik(ns.querySelector('h2'), 'Din dosering · Nivå '+k.n);
       rubrik(p.querySelector('h2'), 'Så fungerar ditt program');
+      var __m=0;(k.t||[]).forEach(function(x){__m|=(1<<(parseInt(x,10)-1))});
+      __patKod=pkoda(parseInt(k.p,10),'ABC'.indexOf(k.n),__m);
+      dlRender();
       p.querySelectorAll('.nivstege [data-niv]').forEach(function(el){el.classList.toggle('niv-akt', el.getAttribute('data-niv')===k.n)});
       var d0=p.querySelector('details');
       if(d0){
@@ -790,6 +840,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     }
     k.t.forEach(function(nr){var el=document.getElementById('t'+nr); if(el)el.classList.add('aktiv')});
     document.getElementById('varforsektion').classList.add('aktiv');
+    document.getElementById('digilogg').classList.add('aktiv');
     document.getElementById('riktsektion').classList.add('aktiv');
     document.getElementById('uppfoljning').classList.add('aktiv');
     document.getElementById('pfaqsektion').classList.add('aktiv');
@@ -807,6 +858,62 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     if(!k){fel.hidden=false;return}
     fel.hidden=true;visa(k);
   });
+  var __patKod=null;
+  function dagStr(d){var t=new Date(d.getTime()-d.getTimezoneOffset()*60000);return t.toISOString().slice(0,10)}
+  function dlLas(){try{return JSON.parse(localStorage.getItem('kanseiLogg_'+__patKod)||'[]')}catch(e){return []}}
+  function dlSkriv(a){try{localStorage.setItem('kanseiLogg_'+__patKod,JSON.stringify(a))}catch(e){}}
+  function dlDatumFin(iso){var d=new Date(iso+'T12:00:00');return d.getDate()+' '+['jan','feb','mar','apr','maj','jun','jul','aug','sep','okt','nov','dec'][d.getMonth()]}
+  function dlRender(){
+    var sek=document.getElementById('digilogg'); if(!sek||!__patKod)return;
+    var logg=dlLas(), idag=dagStr(new Date());
+    var idagPass=logg.some(function(e){return e.d===idag});
+    var kn=document.getElementById('dlBocka');
+    kn.textContent=idagPass?'Avbockat idag ✓ (tryck för att ångra)':'Bocka av dagens pass';
+    kn.classList.toggle('btn-teal',!idagPass); kn.classList.toggle('btn-ghost',idagPass);
+    var senasteOfylld=null;
+    for(var i=logg.length-1;i>=0;i--){if(logg[i].k==null&&logg[i].d<idag){senasteOfylld=logg[i];break}}
+    var kbox=document.getElementById('dlKanning');
+    if(senasteOfylld){
+      kbox.hidden=false;
+      document.getElementById('dlKDatum').textContent=dlDatumFin(senasteOfylld.d);
+      var chips=document.getElementById('dlKChips');
+      if(!chips.children.length){for(var v=0;v<=10;v++){var b=document.createElement('button');b.type='button';b.textContent=v;b.setAttribute('data-k',v);chips.appendChild(b)}}
+    } else kbox.hidden=true;
+    var grid=document.getElementById('dlGrid'); grid.innerHTML='';
+    var map={}; logg.forEach(function(e){map[e.d]=e});
+    for(var dg=27;dg>=0;dg--){
+      var d=new Date(); d.setDate(d.getDate()-dg); var iso=dagStr(d);
+      var ruta=document.createElement('div'); ruta.className='dl-dag';
+      var e=map[iso];
+      if(e){ruta.classList.add('pass'); if(e.k!=null){var sp=document.createElement('span');sp.textContent=e.k;ruta.appendChild(sp)} ruta.title=dlDatumFin(iso)+(e.k!=null?' · känning '+e.k:'')}
+      else ruta.title=dlDatumFin(iso);
+      grid.appendChild(ruta);
+    }
+    var sum=document.getElementById('dlSummering');
+    if(logg.length){
+      var kv=logg.filter(function(e){return e.k!=null}).map(function(e){return e.k});
+      sum.textContent=logg.length+' pass loggade · senaste '+dlDatumFin(logg[logg.length-1].d)+(kv.length?' · känning i snitt '+(kv.reduce(function(a,b){return a+b},0)/kv.length).toFixed(1):'');
+      var mej=document.getElementById('dlMejla'); mej.hidden=false;
+      var rader=logg.map(function(e){return dlDatumFin(e.d)+' · pass'+(e.k!=null?' · känning dagen efter: '+e.k:'')}).join('\n');
+      mej.href='mailto:info@kansei.se?subject='+encodeURIComponent('Träningslogg '+__patKod)+'&body='+encodeURIComponent('Hej!\n\nMin logg för kod '+__patKod+':\n\n'+rader+'\n\nHälsningar');
+    } else {sum.textContent='Inga pass loggade ännu.'; document.getElementById('dlMejla').hidden=true;}
+  }
+  (function(){
+    var kn=document.getElementById('dlBocka'); if(!kn)return;
+    kn.addEventListener('click',function(){
+      var logg=dlLas(), idag=dagStr(new Date());
+      var ix=logg.findIndex(function(e){return e.d===idag});
+      if(ix>-1)logg.splice(ix,1); else logg.push({d:idag,k:null});
+      logg.sort(function(a,b){return a.d<b.d?-1:1});
+      dlSkriv(logg); dlRender();
+    });
+    document.getElementById('dlKChips').addEventListener('click',function(e){
+      var v=e.target.getAttribute&&e.target.getAttribute('data-k'); if(v==null)return;
+      var logg=dlLas(), idag=dagStr(new Date());
+      for(var i=logg.length-1;i>=0;i--){if(logg[i].k==null&&logg[i].d<idag){logg[i].k=parseInt(v,10);break}}
+      dlSkriv(logg); dlRender();
+    });
+  })();
   function byggLogg(){
     var box=document.querySelector('.tranlogg'); if(!box)return;
     var titel=document.getElementById('mp-titel').textContent;
@@ -865,20 +972,23 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       var ut=document.getElementById('kbKod'), kop=document.getElementById('kbKopiera'), fh=document.getElementById('kbForhands');
       if(val.p&&val.n){
         ut.textContent=val.p+val.n+val.t.slice().sort().map(function(x){return ' +'+x}).join('');
+        var mask=0; val.t.forEach(function(x){mask|=(1<<(parseInt(x,10)-1))});
+        var pat=pkoda(parseInt(val.p,10),'ABC'.indexOf(val.n),mask);
+        document.getElementById('kbPat').textContent=pat;
         kop.disabled=false; fh.hidden=false;
-        fh.href=location.pathname+'#'+val.p+val.n+val.t.slice().sort().map(function(x){return '+'+x}).join('');
+        fh.href=location.pathname+'#'+pat;
         var mej=document.getElementById('kbMejla');
-        var kodStr=ut.textContent;
-        var lank='https://www.kansei.se/ovningar/%23'+encodeURIComponent(val.p+val.n)+val.t.slice().sort().map(function(x){return '%2B'+x}).join('');
+        var kodStr=pat;
+        var lank='https://www.kansei.se/ovningar/#'+pat;
         var body='Hej!\n\nTack för besöket idag. Här kommer din kod till övningsbanken: '+kodStr
-          +'\n\nGå till kansei.se/ovningar och skriv in koden, eller klicka direkt:\n'+decodeURIComponent(lank.replace(/%23/,'#').replace(/%2B/g,'+'))
+          +'\n\nGå till kansei.se/ovningar och skriv in koden, eller klicka direkt:\n'+lank
           +'\n\nDär finns dina övningar med dosering, vad som pausas under programtiden, och en utskrift med träningslogg.'
           +'\n\nVi ses för uppföljning [datum] – ta med loggen, eller mejla en bild på den, så justerar jag programmet efter hur din kropp svarat.'
           +'\n\nHör av dig om något känns oklart.'
           +'\n\nMed vänliga hälsningar,\nCarl-Robert Kårell\nLeg. naprapat · Kansei Rehabcenter';
         mej.hidden=false;
         mej.href='mailto:?subject='+encodeURIComponent('Din plan efter dagens besök')+'&body='+encodeURIComponent(body);
-      } else {ut.textContent='–'; kop.disabled=true; fh.hidden=true; document.getElementById('kbMejla').hidden=true;}
+      } else {ut.textContent='–'; document.getElementById('kbPat').textContent='–'; kop.disabled=true; fh.hidden=true; document.getElementById('kbMejla').hidden=true;}
     }
     matris.addEventListener('click',function(e){
       var tab=e.target.closest&&e.target.closest('.kv-tab');
@@ -916,8 +1026,43 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       var t=e.target.getAttribute&&e.target.getAttribute('data-t');
       if(t){var ix=val.t.indexOf(t);ix>-1?val.t.splice(ix,1):val.t.push(t);rita();}
     });
+    function favLas(){try{return JSON.parse(localStorage.getItem('kanseiFavoriter')||'[]')}catch(e){return []}}
+    function favSkriv(a){try{localStorage.setItem('kanseiFavoriter',JSON.stringify(a))}catch(e){}}
+    function favTxt(f){return f.p+f.n+f.t.slice().sort().map(function(x){return ' +'+x}).join('')}
+    function favRender(){
+      var favs=favLas(), rad=document.getElementById('favrad'), lista=document.getElementById('favlista');
+      rad.hidden=!favs.length; lista.innerHTML='';
+      favs.forEach(function(f,i){
+        var c=document.createElement('button');c.type='button';c.className='fav-chip';c.setAttribute('data-fi',i);
+        c.innerHTML=favTxt(f)+'<span class="fav-x" data-fx="'+i+'">×</span>';
+        lista.appendChild(c);
+      });
+      var sp=document.getElementById('kbSpara');
+      if(val.p&&val.n){
+        sp.hidden=false;
+        var finns=favs.some(function(f){return favTxt(f)===favTxt({p:val.p,n:val.n,t:val.t})});
+        sp.textContent=finns?'★ Sparad':'☆ Spara'; sp.disabled=finns;
+      } else sp.hidden=true;
+    }
+    document.getElementById('kbSpara').addEventListener('click',function(){
+      if(!(val.p&&val.n))return;
+      var favs=favLas();
+      favs.push({p:String(val.p),n:val.n,t:val.t.slice().sort()});
+      if(favs.length>12)favs.shift();
+      favSkriv(favs); favRender();
+    });
+    document.getElementById('favlista').addEventListener('click',function(e){
+      var x=e.target.getAttribute&&e.target.getAttribute('data-fx');
+      if(x!=null){var favs=favLas();favs.splice(parseInt(x,10),1);favSkriv(favs);favRender();return;}
+      var chip=e.target.closest&&e.target.closest('.fav-chip');
+      if(chip){var f=favLas()[parseInt(chip.getAttribute('data-fi'),10)];
+        if(f){val.p=f.p;val.n=f.n;val.t=f.t.slice();rita();}}
+    });
+    var gammalRita=rita;
+    rita=function(){gammalRita();favRender();};
+    favRender();
     document.getElementById('kbKopiera').addEventListener('click',function(){
-      var kod=document.getElementById('kbKod').textContent;
+      var kod=document.getElementById('kbPat').textContent;
       var done=function(){var b=document.getElementById('kbKopiera');b.textContent='Kopierad ✓';setTimeout(function(){b.textContent='Kopiera'},1500)};
       if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(kod).then(done,done)}else{done()}
     });

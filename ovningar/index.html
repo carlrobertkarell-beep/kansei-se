@@ -494,7 +494,7 @@ body.bibliotek{padding-bottom:150px}
 #passBar{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:var(--paper);z-index:60;cursor:pointer;overflow:hidden}
 #pbFyll{position:absolute;top:0;bottom:0;left:0;width:0%;background:var(--teal);transition:width .35s ease,left .35s ease}
 #pbFyllEj{position:absolute;top:0;bottom:0;left:0;width:0%;background:var(--guld);transition:width .35s ease,left .35s ease}
-#pbInner{position:relative;display:flex;justify-content:space-between;align-items:center;padding:15px 20px;font-family:var(--mono);font-size:.92rem;letter-spacing:.05em}
+#pbInner{position:relative;display:flex;justify-content:flex-start;align-items:center;gap:14px;padding:15px 20px;font-family:var(--mono);font-size:.92rem;letter-spacing:.05em;max-width:760px;margin:0 auto}
 
 body.kodad:not(.bibliotek) .fab{bottom:74px}
 @media print{#passBar{display:none!important}}
@@ -669,7 +669,7 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 </div>
 </div>
 <p class="mp-sign">Utformat och medicinskt granskat av Carl-Robert Kårell, leg. naprapat · Byggt på aktuella belastnings- och rehabiliteringsprinciper · Uppdaterad augusti 2026</p>
-<div class="mp-knappar"><button class="btn btn-teal" id="skrivut" type="button">Skriv ut / spara som PDF</button><a href="#" id="bytkod" class="btn btn-ghost">Ange en annan kod</a></div>
+<div class="mp-knappar"><button class="btn btn-teal" id="tillovningar" type="button">Till mina övningar</button><button class="btn btn-ghost" id="skrivut" type="button">Skriv ut / spara som PDF</button><a href="#" id="bytkod" class="btn btn-ghost">Ange en annan kod</a></div>
 </div>
 <div id="klinikmatris" hidden><p class="kv-snabb" id="favrad" hidden><strong>Mina koder:</strong> <span id="favlista"></span></p>
 <div class="kv-tabbar"><button type="button" class="kb-chip kv-tab vald" data-panel="panelBP">Blueprints</button><button type="button" class="kb-chip kv-tab" data-panel="panelTill">Tillägg</button></div><div class="kv-snabb"><span class="kbb-et2">Snabbval</span><button type="button" class="km-kod snabb-chip" data-p="2" data-t="3"><b>2 +3</b><span>Rygg, nervkomponent</span></button><button type="button" class="km-kod snabb-chip" data-p="12" data-t="2"><b>12 +2</b><span>Fotled efter stukning</span></button><button type="button" class="km-kod snabb-chip" data-p="6" data-t="1"><b>6 +1</b><span>Nacke, andningsdrivet</span></button><button type="button" class="km-kod snabb-chip" data-p="10" data-t="4"><b>10 +4</b><span>Knäsena, stel kedja</span></button><button type="button" class="km-kod snabb-chip" data-p="1" data-t="2"><b>1 +2</b><span>Höftkontroll, balansbrist</span></button><span class="km-leg">Nivåer: A start · B uppbyggnad · C full</span></div><div id="panelBP" class="kv-panel"><input id="bpSok" type="text" placeholder="Sök blueprint eller program..." autocomplete="off"><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-2 3 2 6 0 9s2 6 0 9"/><path d="M9 6h2M13 11h2M9 16h2"/></svg><span>Rygg & bäcken</span></p><button type="button" class="bp-rad" data-p="2" data-t=""><span>LCS – Lower Crossed Syndrome</span><span class="bp-kod">→ 2</span></button><button type="button" class="bp-rad" data-p="2" data-t="2"><span>SI-ledsyndrom</span><span class="bp-kod">→ 2 +2</span></button><button type="button" class="bp-rad" data-p="2" data-t="2"><span>Lumbopelvis instabilitet</span><span class="bp-kod">→ 2 +2</span></button><button type="button" class="bp-rad" data-p="2" data-t="3"><span>Lumbal radikulopati (L4–S1)</span><span class="bp-kod">→ 2 +3</span></button><p class="bp-not">färska/tilltagande bortfall: läkare först</p><button type="button" class="bp-rad" data-p="2" data-t="4"><span>Layer Syndrome</span><span class="bp-kod">→ 2 +4</span></button><p class="bp-not">ofta även 6 som parallellkod</p></div><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8c-1 6 3 7 5 10M19 8c1 6-3 7-5 10M5 8c3-2 11-2 14 0"/><path d="M12 9v4"/></svg><span>Höft & lår</span></p><button type="button" class="bp-rad" data-p="1" data-t=""><span>Lateralt höftmönster</span><span class="bp-kod">→ 1</span></button><button type="button" class="bp-rad" data-p="1" data-t=""><span>GTPS – Gluteus medius-tendinopati</span><span class="bp-kod">→ 1</span></button><p class="bp-not">kompressionsreglerna i undvik-blocket är kärnan</p><button type="button" class="bp-rad" data-p="1" data-t=""><span>FAI – Femoroacetabulärt impingement</span><span class="bp-kod">→ 1</span></button><p class="bp-not">pausa djupa höftböjningar; strukturfyndet styr</p><button type="button" class="bp-rad" data-p="1" data-t="3"><span>Piriformis syndrom</span><span class="bp-kod">→ 1 +3</span></button><button type="button" class="bp-rad" data-p="13" data-t=""><span>Höftartros (direktprogram)</span><span class="bp-kod">→ 13</span></button><button type="button" class="bp-rad" data-p="11" data-t=""><span>Proximal hamstringentesi</span><span class="bp-kod">→ 11</span></button><p class="bp-not">undvik stretch och djupböjd belastning initialt</p></div><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4l3 7-3 9"/><circle cx="12" cy="11" r="2.1"/></svg><span>Knä</span></p><button type="button" class="bp-rad" data-p="3" data-t=""><span>Knäartros (OA)</span><span class="bp-kod">→ 3</span></button><p class="bp-not">medial som lateral artros, ofta menisk- och benpåverkan med effusion; A-nivåns isometriska ingång är skriven för det retade knät</p><button type="button" class="bp-rad" data-p="1" data-t=""><span>Patellofemoralt smärtmönster</span><span class="bp-kod">→ 1</span></button><p class="bp-not">höftdelen bär; knästyrka från 3 vid behov</p><button type="button" class="bp-rad" data-p="1" data-t=""><span>IT-band / Lateralt knämönster</span><span class="bp-kod">→ 1</span></button><p class="bp-not">halvera löpdosen initialt</p><button type="button" class="bp-rad" data-p="1" data-t=""><span>Medialt knämönster</span><span class="bp-kod">→ 1</span></button><p class="bp-not">belastningsmönster, inte artros: svag gluteus medius och valgusdrift, höftkontrollen bär; vid pronationsdrift klicka även Fotled (12)</p><button type="button" class="bp-rad" data-p="10" data-t=""><span>Patellar tendinopati</span><span class="bp-kod">→ 10</span></button></div><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h9c3 0 5-1.5 5-4"/><path d="M8 17V9c0-2 1-3 2-3"/></svg><span>Fot & underben</span></p><button type="button" class="bp-rad" data-p="8" data-t=""><span>Plantar fasciit</span><span class="bp-kod">→ 8</span></button><button type="button" class="bp-rad" data-p="5" data-t=""><span>Achillestendinopati</span><span class="bp-kod">→ 5</span></button><button type="button" class="bp-rad" data-p="12" data-t="2"><span>Fotled efter stukning (direktprogram)</span><span class="bp-kod">→ 12 +2</span></button></div><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19c0-7 5-9 10-9h4c2 0 4 2 4 4v5"/><circle cx="16" cy="13" r="1.8"/></svg><span>Axel</span></p><button type="button" class="bp-rad" data-p="4" data-t=""><span>Skulder-impingement</span><span class="bp-kod">→ 4</span></button><button type="button" class="bp-rad" data-p="9" data-t=""><span>Fryst axel / Adhesiv kapsulit</span><span class="bp-kod">→ 9</span></button><button type="button" class="bp-rad" data-p="4" data-t=""><span>Rotatorkuffruptur</span><span class="bp-kod">→ 4</span></button><p class="bp-not">startnivå A; större ruptur → läkare före</p></div><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5l7 5-4 8"/><circle cx="12" cy="10" r="1.9"/><path d="M8 18l-1 3"/></svg><span>Arm & hand</span></p><button type="button" class="bp-rad" data-p="7" data-t=""><span>Lateral epikondylalgi</span><span class="bp-kod">→ 7</span></button><button type="button" class="bp-rad" data-p="7" data-t=""><span>Medial epikondylalgi</span><span class="bp-kod">→ 7</span></button><p class="bp-not">spegelvarianten, se programnoten</p><button type="button" class="bp-rad" data-p="6" data-t="3,5"><span>Karpaltunnelmönster</span><span class="bp-kod">→ 6 +3 +5</span></button><p class="bp-not">nattskena är förstahandsåtgärd</p><button type="button" class="bp-rad" data-p="15" data-t=""><span>De Quervain</span><span class="bp-kod">→ 15</span></button><p class="bp-not">vid vilovärk/nattvärk: överväg skena, se undvik-blocket</p></div><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="3.6"/><path d="M10 11l-1 5M14 11l1 5"/><path d="M4 20c3-3 13-3 16 0"/></svg><span>Nacke & huvud</span></p><button type="button" class="bp-rad" data-p="6" data-t="4"><span>UCS – Upper Crossed Syndrome</span><span class="bp-kod">→ 6 +4</span></button><button type="button" class="bp-rad" data-p="6" data-t="1,6"><span>Cervikogen huvudvärk</span><span class="bp-kod">→ 6 +1 +6</span></button><button type="button" class="bp-rad" data-p="6" data-t="3"><span>Cervikal radikulopati</span><span class="bp-kod">→ 6 +3</span></button><p class="bp-not">bortfallsregeln gäller</p><button type="button" class="bp-rad" data-p="6" data-t="1,3"><span>TOS – Thoracic Outlet Syndrome</span><span class="bp-kod">→ 6 +1 +3</span></button></div><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6c0-3.5 12-3.5 12 0v4c0 5-3 8-6 8s-6-3-6-8z"/><circle cx="6.6" cy="10" r="1.1"/><circle cx="17.4" cy="10" r="1.1"/><path d="M9.5 13h5"/></svg><span>Käke</span></p><button type="button" class="bp-rad" data-p="14" data-t=""><span>TMJ-dysfunktion</span><span class="bp-kod">→ 14</span></button></div><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2.3"/><path d="M12 8v6M6 11l6-2 6 2M12 14l-4 6M12 14l4 6"/></svg><span>Övergripande</span></p><div class="bp-rad bp-dod"><span>Central sensitisering</span><span class="bp-kod">–</span></div><p class="bp-not">utbildning + gradering; regionprogram på nivå A</p></div></div><div id="panelTill" class="kv-panel" hidden><button type="button" class="tk-rad" data-t="1"><span class="km-nr">+1</span><span><strong>Andning</strong><br><small>Diafragmalt mönster och lugnare andning. Vid spänningsdrivna besvär i nacke, bål och käke.</small></span></button><button type="button" class="tk-rad" data-t="2"><span class="km-nr">+2</span><span><strong>Balans & proprioception</strong><br><small>Enbensfunktion och positionssinne. Efter fotledsskador och vid nedsatt balans.</small></span></button><button type="button" class="tk-rad" data-t="3"><span class="km-nr">+3</span><span><strong>Nervglidning</strong><br><small>Mjuka glidövningar för irriterad nervvävnad. Vid utstrålning, domningar, radikulopati.</small></span></button><button type="button" class="tk-rad" data-t="4"><span class="km-nr">+4</span><span><strong>Bröstrygg & rörlighet</strong><br><small>Rörlighet i kedjan ovanför besväret. När stel bröstrygg eller höft lastar grannleden.</small></span></button><button type="button" class="tk-rad" data-t="5"><span class="km-nr">+5</span><span><strong>Handled & grepp</strong><br><small>Uthållighet i handled och grepp. Vid karpaltunnel, tumbesvär och som armbågsstöd.</small></span></button><button type="button" class="tk-rad" data-t="6"><span class="km-nr">+6</span><span><strong>Blick & nacke</strong><br><small>Ögon-nacke-koordination. Vid cervikogen huvudvärk och nackrelaterad yrselkänsla.</small></span></button><p class="bp-grupp" style="margin-top:22px"><span>Injektionsmoduler</span></p><button type="button" class="tk-rad" data-t="7"><span class="km-nr">P↑</span><span><strong>Inför PRP</strong><br><small>Förberedelser: läkemedelsstopp, vätska, praktiskt. Skickas före behandlingsdagen.</small></span></button><button type="button" class="tk-rad" data-t="8"><span class="km-nr">P↓</span><span><strong>Efter PRP</strong><br><small>Tidslinje dag 0–3, 4–7, vecka 2+. NSAID-stopp fyra veckor, programmet pausas och återupptas.</small></span></button><button type="button" class="tk-rad" data-t="9"><span class="km-nr">H↑</span><span><strong>Inför hyaluronsyra</strong><br><small>Enkla förberedelser, blodförtunnande flaggas. Skickas före behandlingsdagen.</small></span></button><button type="button" class="tk-rad" data-t="10"><span class="km-nr">H↓</span><span><strong>Efter hyaluronsyra</strong><br><small>48 timmars lugn, därefter program enligt kod. Vid kombination gäller PRP-reglerna.</small></span></button></div></div>
@@ -747,6 +747,7 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <p class="muted" id="dlvAnkare" style="font-size:.82rem"></p>
 </div>
 <div id="dlKanning" hidden><p style="margin-top:16px"><strong>Hur kändes kroppen dagen efter passet <span id="dlKDatum"></span>?</strong> 0 är ingenting, 10 är värsta tänkbara.</p><div id="dlKChips"></div></div>
+<p id="dlManad" class="dl-manad"></p>
 <div id="dlGrid"></div>
 <p class="dl-hjalp muted">Tryck på en dag i kalendern för att rätta den. Du kan lägga till ett pass du glömt bocka av, ändra känningen eller ta bort en dag, utan att röra resten av loggen.</p>
 <div id="dlDagPanel" hidden>
@@ -887,7 +888,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
 <div id="passToast" hidden><span id="ptText"></span><span class="pt-lank">Visa loggen →</span></div>
 <div id="passBar" hidden>
 <div id="pbFyll"></div><div id="pbFyllEj"></div>
-<div id="pbInner"><span id="pbText">Dagens pass</span><span id="pbAntal"></span></div>
+<div id="pbInner"><span id="pbText">Dagens pass</span><span id="pbAntal"></span><span id="pbHint">Tryck för nästa övning</span></div>
 </div>
 <div id="kbBar">
 <div class="kbr">
@@ -1008,6 +1009,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       document.getElementById('mp-under').textContent='Klinikvy · alla program, nivåer och tillägg';
       document.getElementById('klinikmatris').hidden=false;
       document.body.classList.add('bibliotek');
+    var __tk=document.getElementById('tillovningar'); if(__tk)__tk.hidden=true;
       document.body.classList.add('kodad');
       try{history.replaceState(null,'',location.pathname)}catch(e){}
       window.scrollTo({top:0,behavior:'instant'});
@@ -1028,8 +1030,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       k.t.forEach(function(tn){var ts=document.getElementById('t'+tn); if(ts)ts.querySelectorAll('.nivstege [data-niv]').forEach(function(el){el.classList.toggle('niv-akt', el.getAttribute('data-niv')===k.n)});});
       var d0=p.querySelector('details');
       if(d0){
-        var h=document.createElement('h3');h.className='mp-inject';h.textContent='Dina övningar';
-        h.style.cssText='margin:30px 0 4px;font-size:1.3rem';
+        var h=document.createElement('h3');h.className='mp-inject ov-rubrik';h.textContent='Dina övningar';
         var tips=document.createElement('div');tips.className='mp-inject laskort';
         tips.innerHTML='<p><strong>Så läser du varje övning.</strong> <em>Varför</em> förklarar vad övningen gör i just ditt program. <em>Utförande</em> är steg för steg. <em>Tänk på</em> är det vanligaste felet, läs den innan första försöket. <em>Nästa steg</em> är din progression: ta det när nuvarande variant känns kontrollerad två pass i rad, inte tidigare.</p><p><strong>Rätt känsla</strong> är arbete, tryck eller sträck i det område övningen anger. Huggande smärta, domningar eller stickningar är fel känsla, se Smärta under träningen längst ner. Gör övningarna i den ordning de står.</p>';
         d0.parentNode.insertBefore(h, d0);d0.parentNode.insertBefore(tips, d0);
@@ -1056,6 +1057,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     document.getElementById('uppfoljning').classList.add('aktiv');
     document.getElementById('pfaqsektion').classList.add('aktiv');
     document.getElementById('klinikmatris').hidden=true;
+    if(window.__stadaSidan)window.__stadaSidan();
     passInit();
     a2hsInit();
     veckaRender();
@@ -1131,8 +1133,13 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     var grid=document.getElementById('dlGrid'); grid.innerHTML='';
     var map={}; logg.forEach(function(e){map[e.d]=e});
     ['M','T','O','T','F','L','S'].forEach(function(vb){var h=document.createElement('div');h.className='dl-vd';h.textContent=vb;grid.appendChild(h)});
+
     var idag0=new Date(); var wd=(idag0.getDay()+6)%7;
     var start=new Date(); start.setDate(start.getDate()-wd-21);
+    var MAN=['januari','februari','mars','april','maj','juni','juli','augusti','september','oktober','november','december'];
+    var slutD=new Date(start); slutD.setDate(start.getDate()+27);
+    var manEl=document.getElementById('dlManad');
+    if(manEl)manEl.textContent=(start.getMonth()===slutD.getMonth()?MAN[start.getMonth()]:MAN[start.getMonth()]+' – '+MAN[slutD.getMonth()])+' '+slutD.getFullYear();
     for(var dg=0;dg<28;dg++){
       var d=new Date(start); d.setDate(start.getDate()+dg); var iso=dagStr(d);
       var ruta=document.createElement('div'); ruta.className='dl-dag';
@@ -1145,7 +1152,9 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
         var sp=document.createElement('span');sp.textContent=(e.k!=null?e.k:'✓');ruta.appendChild(sp);
         ruta.title=dlDatumFin(iso)+(typeof e.g==='number'?' · '+e.g+' övningar'+(e.e?', '+e.e+' ej gjorda':''):'')+(e.k!=null?' · känning '+e.k:'');
       } else {var dd=document.createElement('span');dd.className='dl-dnum';dd.textContent=d.getDate();ruta.appendChild(dd);ruta.title=dlDatumFin(iso);}
-      if(d<=idag0){ruta.setAttribute('data-d',iso);ruta.setAttribute('role','button');ruta.setAttribute('tabindex','0');}
+      if(d<=idag0){ruta.setAttribute('data-d',iso);ruta.setAttribute('role','button');ruta.setAttribute('tabindex','0');
+        ruta.setAttribute('aria-label',dlDatumFin(iso)+(e?', pass loggat':', inget pass'));
+        if(iso===__dpDag)ruta.classList.add('vald');}
       grid.appendChild(ruta);
     }
     var lista=document.getElementById('dlLista'), listRub=document.getElementById('dlListRub');
@@ -1209,9 +1218,13 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     if(!__patKod)return;
     var idag=dagStr(new Date()); if(iso>idag)return;
     __dpDag=iso;
+    document.querySelectorAll('#dlGrid .dl-dag').forEach(function(x){x.classList.toggle('vald', x.getAttribute('data-d')===iso)});
+    document.querySelectorAll('.dl-rad').forEach(function(x){x.classList.toggle('vald', x.getAttribute('data-d')===iso)});
     var logg=dlLas(), e=null; logg.forEach(function(x){if(x.d===iso)e=x});
     var box=document.getElementById('dlDagPanel');
-    document.getElementById('dlDpDatum').textContent=dlDatumFin(iso)+(iso===idag?' · idag':'');
+    var VD=['söndag','måndag','tisdag','onsdag','torsdag','fredag','lördag'];
+    var dObj=new Date(iso+'T12:00:00');
+    document.getElementById('dlDpDatum').textContent=(iso===idag?'Idag':VD[dObj.getDay()])+' '+dlDatumFin(iso);
     var tot=(e&&typeof e.g==='number')?e.g+(e.e||0):null;
     document.getElementById('dlDpInfo').textContent=e?(typeof e.g==='number'?e.g+' av '+tot+' övningar avbockade'+(e.e?', '+e.e+' markerade som ej gjorda':''):'Passet är avbockat som helhet.'):'Ingen träning loggad den här dagen.';
     var kn=document.getElementById('dlDpPass');
@@ -1226,7 +1239,9 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     box.hidden=false;
     box.scrollIntoView({behavior:'smooth',block:'center'});
   }
-  function dpStang(){__dpDag=null;var b=document.getElementById('dlDagPanel');if(b)b.hidden=true}
+  function dpStang(){__dpDag=null;
+    document.querySelectorAll('#dlGrid .dl-dag.vald,.dl-rad.vald').forEach(function(x){x.classList.remove('vald')});
+    var b=document.getElementById('dlDagPanel');if(b)b.hidden=true}
   document.addEventListener('click',function(ev){
     var d=ev.target.closest&&ev.target.closest('#dlGrid .dl-dag[data-d], .dl-rad[data-d]');
     if(d){dpOppna(d.getAttribute('data-d'));return}
@@ -1327,7 +1342,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
         if(ts){
           var t=document.createElement('button');
           t.type='button'; t.className='ovtimer mp-inject'; t.setAttribute('data-sek',ts);
-          t.innerHTML='<svg class="ovring" viewBox="0 0 36 36" aria-hidden="true"><circle class="ovring-bg" cx="18" cy="18" r="15.5"/><circle class="ovring-fg" cx="18" cy="18" r="15.5"/><text class="ovring-txt" x="18" y="18" text-anchor="middle" dominant-baseline="central">'+ts+'</text></svg><span class="ovt-txt">Starta hållet, '+ts+' sekunder</span>';
+          t.innerHTML='<svg class="ovring" viewBox="0 0 36 36" aria-hidden="true"><circle class="ovring-bg" cx="18" cy="18" r="15.5"/><circle class="ovring-fg" cx="18" cy="18" r="15.5"/><text class="ovring-txt" x="18" y="18" text-anchor="middle" dominant-baseline="central">'+ts+'</text></svg><span class="ovt-txt"><small>Tidtagare</small>Starta hållet på '+ts+' sekunder</span>';
           d.appendChild(t);
         }
       });
@@ -1374,6 +1389,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       window.__varKlar=klart;
       pb.classList.toggle('klar', klart);
       document.getElementById('pbText').textContent=klart?'Pass klart · loggat ✓':'Dagens pass';
+      var hint=document.getElementById('pbHint'); if(hint)hint.textContent=klart?'Visa loggen':'Tryck för nästa övning';
       document.getElementById('pbAntal').textContent=gA+' / '+alla.length+(eA?' · '+eA+' ej':'');
     } else pb.hidden=true;
     if(kanLogga && alla.length && markerade===alla.length && gA>0){
@@ -1416,20 +1432,20 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
         el.classList.remove('gar','klar');
         var fg=el.querySelector('.ovring-fg'); if(fg)fg.style.strokeDashoffset='0';
         var tx=el.querySelector('.ovring-txt'); if(tx)tx.textContent=sek;
-        var lb=el.querySelector('.ovt-txt'); if(lb)lb.textContent='Starta hållet, '+sek+' sekunder';
+        var lb=el.querySelector('.ovt-txt'); if(lb)lb.innerHTML='<small>Tidtagare</small>Starta hållet på '+sek+' sekunder';
       }
       if(__ovTimer){cancelAnimationFrame(__ovTimer.raf); nolla(__ovTimer.el); var samma=(__ovTimer.el===t); __ovTimer=null; if(samma)return;}
       var total=parseInt(t.getAttribute('data-sek'),10)*1000, slut=Date.now()+total;
       var fg=t.querySelector('.ovring-fg'), tx=t.querySelector('.ovring-txt'), lb=t.querySelector('.ovt-txt');
       t.classList.add('gar');
-      if(lb)lb.textContent='Tryck för att stoppa';
+      if(lb)lb.innerHTML='<small>Räknar ned</small>Tryck för att stoppa';
       (function tick(){
         var kvarMs=slut-Date.now();
         if(kvarMs<=0){
           if(fg)fg.style.strokeDashoffset=OMK;
           if(tx)tx.textContent='✓';
           t.classList.remove('gar'); t.classList.add('klar');
-          if(lb)lb.textContent='Klart, byt sida eller gå vidare';
+          if(lb)lb.innerHTML='<small>Klart</small>Byt sida eller gå vidare';
           if(navigator.vibrate)navigator.vibrate([120,60,120]);
           __ovTimer=null;
           setTimeout(function(){if(!__ovTimer||__ovTimer.el!==t)nolla(t)},3500);
@@ -1473,6 +1489,11 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     if(typeof byggLogg==='function')byggLogg();
   }
   window.addEventListener('beforeprint',prepPrint);
+  document.getElementById('tillovningar').addEventListener('click',function(){
+    var m=document.querySelector('section[data-block="program"].aktiv .ov-rubrik')
+        ||document.querySelector('.aktiv details[data-ovid]');
+    if(m)m.scrollIntoView({behavior:'smooth',block:'start'});
+  });
   document.getElementById('skrivut').addEventListener('click',function(){
     prepPrint();
     window.print();
@@ -1836,6 +1857,197 @@ body.bibliotek #bpSok{background:var(--yta)}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',stada); else stada();
   window.__ovStada=stada;
 })();</script>
+
+
+<script>/* v59b: gör sidan skummbar, prosan fälls ihop och övningarna får en tydlig start */
+(function(){
+  function harTecken(el){return el&&el.textContent.replace(/\s/g,'').length>0}
+
+  function fallIhop(el, rubrik, oppen){
+    if(!el||el.dataset.fallt)return null;
+    var d=document.createElement('details');
+    d.className='lasmer';
+    if(oppen)d.setAttribute('open','');
+    var sum=document.createElement('summary');
+    sum.textContent=rubrik;
+    d.appendChild(sum);
+    el.parentNode.insertBefore(d,el);
+    d.appendChild(el);
+    el.dataset.fallt='1';
+    return d;
+  }
+
+  /* .vmf-rutorna har redan en h3 som duger som rubrik */
+  function vmfTillDetails(box){
+    if(!box||box.dataset.fallt)return;
+    var h3=box.querySelector('h3'); if(!h3)return;
+    var d=document.createElement('details');
+    d.className='lasmer vmf-lasmer'+(box.classList.contains('undvik')?' undvik':'');
+    var sum=document.createElement('summary');
+    sum.textContent=h3.textContent;
+    d.appendChild(sum);
+    box.parentNode.insertBefore(d,box);
+    h3.remove();
+    while(box.firstChild)d.appendChild(box.firstChild);
+    box.remove();
+    d.dataset.fallt='1';
+  }
+
+  function stadaProgram(sx){
+    if(sx.dataset.stadat)return;
+    sx.dataset.stadat='1';
+    /* "Så är programmet byggt" och liknande fördjupningar fälls ihop */
+    [].slice.call(sx.querySelectorAll(':scope > p')).forEach(function(pp){
+      var st=pp.querySelector('strong');
+      if(!st)return;
+      var t=st.textContent.replace(/:\s*$/,'').trim();
+      if(/^Så är programmet byggt$/i.test(t)){
+        st.remove();
+        fallIhop(pp,'Så är programmet byggt');
+      }
+    });
+    [].slice.call(sx.querySelectorAll(':scope > .vmf')).forEach(vmfTillDetails);
+  }
+
+  function stadaNiva(){
+    var sx=document.getElementById('nivasektion'); if(!sx||sx.dataset.stadat)return;
+    var ps=[].slice.call(sx.querySelectorAll(':scope > p'));
+    /* första stycket står kvar, resten samlas under en rad */
+    var rest=ps.slice(1).filter(function(x){return !x.classList.contains('dosrad')&&harTecken(x)});
+    if(!rest.length)return;
+    sx.dataset.stadat='1';
+    var d=document.createElement('details');
+    d.className='lasmer';
+    var sum=document.createElement('summary'); sum.textContent='Mer om hur nivån används';
+    d.appendChild(sum);
+    rest[0].parentNode.insertBefore(d,rest[0]);
+    rest.forEach(function(x){d.appendChild(x)});
+  }
+
+  function stadaSektion(id,rubrik,behallForsta){
+    var sx=document.getElementById(id); if(!sx||sx.dataset.stadat)return;
+    var ps=[].slice.call(sx.querySelectorAll(':scope > p')).filter(harTecken);
+    var rest=ps.slice(behallForsta||1).filter(function(x){return !x.classList.contains('mp-inject')&&!x.classList.contains('dl-rytm')});
+    if(rest.length<2)return;
+    sx.dataset.stadat='1';
+    var d=document.createElement('details'); d.className='lasmer';
+    var sum=document.createElement('summary'); sum.textContent=rubrik;
+    d.appendChild(sum);
+    rest[0].parentNode.insertBefore(d,rest[0]);
+    rest.forEach(function(x){d.appendChild(x)});
+  }
+
+  window.__stadaSidan=function(){
+    document.querySelectorAll('section[data-block="program"].aktiv').forEach(stadaProgram);
+    stadaNiva();
+    stadaSektion('riktsektion','Läs hela genomgången');
+    stadaSektion('uppfoljning','Mer om uppföljningen');
+    stadaSektion('digilogg','Så sparas loggen',2);
+    if(window.__ovStada)window.__ovStada();
+  };
+  /* huvudskriptet körs före det här blocket vid direktlänk, så kör en gång vid start */
+  function starta(){ if(document.body.classList.contains('kodad'))window.__stadaSidan(); }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',starta); else starta();
+})();</script>
+
+
+<style id="v59b-ux">
+/* ===== 1. Övningskortets innerspalt: allt ligger i samma textkolumn ===== */
+/* all text i samma spalt, tonade rutor inskjutna till samma kant */
+body.kodad .aktiv details[data-ovid]>*:not(summary){padding-left:18px;padding-right:18px;margin-left:0;margin-right:0}
+body.kodad .aktiv details[data-ovid]>*:last-child{margin-bottom:18px!important}
+.ov-varfor,.ov-gor{margin:16px 0 0!important}
+.ov-nasta{margin:15px 0 0!important;padding-top:14px!important}
+.ov-tank,body.kodad .aktiv details .updos{margin:16px 18px 0!important;padding:13px 17px!important;border-radius:11px!important}
+body.kodad .aktiv details .ovtimer{margin:18px 18px 0!important;padding:14px 18px!important;width:auto}
+
+/* ===== 2. Tidtagaren: eget fält, syns och rör sig ===== */
+body.kodad .ovtimer{display:flex;width:100%;align-items:center;gap:16px;margin:18px 0 0;padding:14px 18px;
+  border:1px solid var(--line-2);border-radius:14px;background:var(--mist);color:var(--ink);
+  font-family:var(--body);font-size:.95rem;text-align:left;transition:background .2s,border-color .2s}
+body.kodad .ovtimer:hover{border-color:var(--teal)}
+body.kodad .ovtimer.gar{background:var(--ink);border-color:var(--ink);color:#fff}
+body.kodad .ovtimer.klar{background:var(--teal);border-color:var(--teal);color:#fff}
+.ovring{width:54px;height:54px;flex-shrink:0;transform:rotate(-90deg)}
+.ovring-bg{fill:none;stroke:var(--line-2);stroke-width:3.2}
+.ovtimer.gar .ovring-bg{stroke:rgba(255,255,255,.22)}
+.ovtimer.klar .ovring-bg{stroke:rgba(255,255,255,.3)}
+.ovring-fg{fill:none;stroke:var(--teal);stroke-width:3.2;stroke-linecap:round;stroke-dasharray:97.389;stroke-dashoffset:0;transition:stroke-dashoffset .12s linear}
+.ovtimer.gar .ovring-fg{stroke:#7FD8C4}
+.ovtimer.klar .ovring-fg{stroke:#fff}
+.ovring-txt{transform:rotate(90deg);transform-origin:18px 18px;font-family:var(--mono);font-size:10.5px;font-weight:700;fill:var(--teal-ink)}
+.ovtimer.gar .ovring-txt{fill:#fff}
+.ovtimer.klar .ovring-txt{fill:#fff}
+.ovt-txt{font-size:.95rem;line-height:1.35}
+.ovt-txt small{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;opacity:.6;margin-bottom:3px}
+
+/* ===== 3. Läs mer: prosan tar en rad i stället för en skärm ===== */
+.lasmer{border:none!important;background:none!important;box-shadow:none!important;margin:10px 0!important;padding:0!important}
+.lasmer>summary{display:flex;align-items:center;gap:9px;list-style:none;cursor:pointer;padding:11px 0;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.lasmer>summary::-webkit-details-marker{display:none}
+.lasmer>summary::after{content:"+";margin-left:auto;font-size:1.05rem;color:var(--teal-ink);opacity:.6}
+.lasmer[open]>summary::after{content:"–"}
+.lasmer[open]>summary{border-bottom-color:transparent;color:var(--ink)}
+.lasmer>summary:hover{color:var(--ink)}
+.lasmer>*:not(summary){font-size:.93rem;color:var(--dim);margin:.7em 0}
+.lasmer.vmf-lasmer>summary{color:var(--teal-ink)}
+.lasmer.vmf-lasmer.undvik>summary{color:var(--guld-djup)}
+.lasmer[open]>*:not(summary):last-child{padding-bottom:14px;border-bottom:1px solid var(--line)}
+
+/* ===== 4. "Dina övningar" som tydlig startpunkt ===== */
+.ov-rubrik{display:flex;align-items:baseline;gap:12px;margin:34px 0 6px!important;font-size:1.45rem!important;
+  padding-top:20px;border-top:2px solid var(--teal)}
+.ov-rubrik .ovprog{margin-left:auto!important;font-size:.78rem!important}
+#tillovningar{scroll-margin-top:90px}
+
+/* ===== 5. Kalendern: vald dag syns, idag är en prick ===== */
+#dlGrid{max-width:420px;gap:8px}
+.dl-manad{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:16px 0 6px}
+body.kodad .dl-dag{border-radius:11px;transition:transform .12s,box-shadow .12s}
+body.kodad .dl-dag[data-d]:hover{outline:none;transform:translateY(-1px);box-shadow:0 3px 9px rgba(16,24,32,.13)}
+body.kodad .dl-dag.idag{box-shadow:none}
+body.kodad .dl-dag.idag::after{content:"";position:absolute;left:50%;bottom:5px;transform:translateX(-50%);
+  width:4px;height:4px;border-radius:50%;background:var(--guld)}
+body.kodad .dl-dag.pass.idag::after{background:#fff}
+body.kodad .dl-dag.vald{box-shadow:0 0 0 2px var(--ink);transform:translateY(-1px);z-index:2}
+body.kodad .dl-dag .dl-dnum{color:var(--dim);font-size:.7rem}
+.dl-rad.vald{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+#dlDagPanel{animation:dpIn .22s ease}
+@keyframes dpIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* ===== 6. Passbaren: räknaren intill fyllningen ===== */
+#passBar{border-top:1px solid rgba(255,255,255,.1)}
+#pbText{flex-shrink:0}
+#pbAntal{font-weight:600}
+#pbHint{margin-left:auto;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.5;white-space:nowrap}
+@media(max-width:560px){#pbHint{display:none}}
+
+
+/* ===== 7. När koden är inne: sidhuvudet krymper, programmet tar över ===== */
+body.kodad header.page{padding-bottom:0}
+body.kodad header.page .intro{display:none}
+body.kodad header.page .eyebrow{display:none}
+body.kodad header.page h1{font-size:1.5rem;margin-bottom:14px;opacity:.55;font-weight:400}
+body.kodad .crumb{margin-bottom:4px}
+
+/* knapparna i programkortet: en primär, resten diskreta */
+.mp-knappar{align-items:center}
+body.kodad #skrivut,body.kodad #bytkod{font-size:.82rem;padding:9px 16px}
+body.kodad #tillovningar{font-size:1rem;padding:14px 26px;width:100%;max-width:340px}
+@media(min-width:620px){body.kodad #tillovningar{width:auto}}
+
+@media print{
+  .lasmer,.lasmer>*{border:none!important}
+  .lasmer>summary{font-size:11pt!important;letter-spacing:0!important;text-transform:none!important;font-weight:600!important;color:#000!important;font-family:var(--display)!important;padding:6px 0!important;border-top:none!important;border-bottom:none!important}
+  .lasmer>summary::after{display:none}
+  .ov-rubrik{border-top:1px solid #999!important;padding-top:10px!important;margin-top:16px!important}
+  #tillovningar,.dl-manad{display:none!important}
+  body.kodad header.page .intro,body.kodad header.page .eyebrow{display:block!important}
+  body.kodad header.page h1{font-size:20pt!important;opacity:1!important}
+}
+</style>
 
 </body>
 </html>

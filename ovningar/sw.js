@@ -1,5 +1,5 @@
 /* Kansei Övningsbanken · offline-cache · v73 */
-var V='kansei-ovningar-v75';
+var V='kansei-ovningar-v77';
 self.addEventListener('install',function(e){
   self.skipWaiting();
   e.waitUntil(caches.open(V).then(function(c){return c.addAll(['./','./index.html'])}));

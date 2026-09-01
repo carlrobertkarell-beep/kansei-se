@@ -1892,7 +1892,8 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
           var t=document.createElement('button');
           t.type='button'; t.className='ovtimer mp-inject'; t.setAttribute('data-sek',ts);
           t.innerHTML='<svg class="ovring" viewBox="0 0 36 36" aria-hidden="true"><circle class="ovring-bg" cx="18" cy="18" r="15.5"/><circle class="ovring-fg" cx="18" cy="18" r="15.5"/><text class="ovring-txt" x="18" y="18" text-anchor="middle" dominant-baseline="central">'+ts+'</text></svg><span class="ovt-txt"><small>Tidtagare</small>Starta hållet på '+ts+' sekunder</span>';
-          d.appendChild(t);
+          var dos=d.querySelector('.ov-niva');
+          if(dos)dos.appendChild(t); else d.appendChild(t);
         }
       });
       var h=sx.querySelector('h3.mp-inject')||sx.querySelector('h2');
@@ -1912,11 +1913,9 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       b.setAttribute('aria-label', g?'Gjord, tryck för att markera ej gjord':(e?'Ej gjord, tryck för att rensa':'Markera övningen'));
     });
     document.querySelectorAll('.ovprog').forEach(function(pr){
-      var sx=pr.closest('section');
-      var dets=[].slice.call(sx.querySelectorAll('details[data-ovid]'));
-      var g=dets.filter(function(d){return st.g.indexOf(d.getAttribute('data-ovid'))>-1}).length;
-      var e=dets.filter(function(d){return st.e.indexOf(d.getAttribute('data-ovid'))>-1}).length;
-      pr.textContent=g+' ✓ av '+dets.length+(e?' · '+e+' ej gjorda':'');
+      var g=alla.filter(function(d){return st.g.indexOf(d.getAttribute('data-ovid'))>-1}).length;
+      var e=alla.filter(function(d){return st.e.indexOf(d.getAttribute('data-ovid'))>-1}).length;
+      pr.textContent=g+' ✓ av '+alla.length+(e?' · '+e+' ej gjorda':'');
     });
     var gA=alla.filter(function(d){return st.g.indexOf(d.getAttribute('data-ovid'))>-1}).length;
     var eA=alla.filter(function(d){return st.e.indexOf(d.getAttribute('data-ovid'))>-1}).length;
@@ -3371,28 +3370,45 @@ if('serviceWorker' in navigator && location.protocol!=='file:' && (!navigator.we
     'p15-3':['3 sekunder, 5 repetitioner','3 sekunder, 10 repetitioner','Daglig rutin, 10 repetitioner'],
     'p15-4':['3 sekunder med halv kraft, 8 klämningar','5 sekunder, 10 klämningar','Fler klämningar i lätt vinklade handledslägen']
   };
-  var NAMN={A:'Nivå A · grund',B:'Nivå B · uppbyggnad',C:'Nivå C · belastning'};
+  var NAMN={A:'Din dosering · Nivå A',B:'Din dosering · Nivå B',C:'Din dosering · Nivå C'};
   var TID={'p1-3':[15,30,30],'p2-4':[10,20,40],'p2-5':[20,30,30],'p8-5':[20,30,45],'p9-1':[30,60,60],'p9-3':[10,15,25],'p9-4':[10,15,15],'p10-1':[20,40,55],'p14-1':[60,60,60]};
   function timerSatt(d,sek){
     d.setAttribute('data-timer',sek);
-    var t=d.querySelector('.ovtimer'); if(!t||t.getAttribute('data-sek')==String(sek))return;
+    var t=d.querySelector('.ovtimer'); if(!t)return;
+    var dos=d.querySelector('.ov-niva'); if(dos&&t.parentNode!==dos)dos.appendChild(t);
+    if(t.getAttribute('data-sek')==String(sek))return;
     t.setAttribute('data-sek',sek);
     var tx=t.querySelector('.ovring-txt'); if(tx)tx.textContent=sek;
     var lab=t.querySelector('.ovt-txt'); if(lab)lab.innerHTML='<small>Tidtagare</small>Starta hållet på '+sek+' sekunder';
   }
   function rad(niva,txt){return '<span class="ov-etikett ov-niva-et">'+NAMN[niva]+'</span><span>'+txt+'</span>'}
+  function panelSatt(d,el){
+    var fig=d.querySelector('.ov-figrad');
+    if(fig&&fig.nextSibling)d.insertBefore(el,fig.nextSibling);
+    else{var su=d.querySelector('summary'); if(su&&su.nextSibling)d.insertBefore(el,su.nextSibling); else d.appendChild(el);}
+    var ex=d.querySelector('.updos:not([data-doskalla])')||d.querySelector('.updos[data-doskalla]');
+    if(ex){var k=document.createElement('div'); k.className='updos'; k.textContent=ex.textContent; el.appendChild(k);
+      ex.setAttribute('data-doskalla',''); ex.hidden=true;}
+  }
   function rita(){
     document.querySelectorAll('.ov-niva').forEach(function(x){x.remove()});
+    document.querySelectorAll('[data-doskalla]').forEach(function(x){x.hidden=false});
     var progs=window.__nivaProgs||[], bib=document.body.classList.contains('bibliotek');
     var nivaAv={}; progs.forEach(function(pr){nivaAv['p'+pr.p]=pr.n});
     document.querySelectorAll('.aktiv details[data-ovid]').forEach(function(d){
-      var id=d.getAttribute('data-ovid'), v=V[id]; if(!v)return;
-      var sekt=id.split('-')[0], n=nivaAv[sekt];
+      var id=d.getAttribute('data-ovid'), v=V[id];
       var el=document.createElement('div'); el.className='ov-niva mp-inject';
-      if(bib||!n){el.classList.add('alla'); el.innerHTML=['A','B','C'].map(function(L,i){return '<p>'+rad(L,v[i])+'</p>'}).join('');}
-      else {el.innerHTML='<p>'+rad(n,v['ABC'.indexOf(n)])+'</p>'; if(TID[id])timerSatt(d,TID[id]['ABC'.indexOf(n)]);}
-      var gor=d.querySelector('.ov-gor');
-      if(gor&&gor.nextSibling)d.insertBefore(el,gor.nextSibling); else d.appendChild(el);
+      if(v){
+        var sekt=id.split('-')[0], n=nivaAv[sekt];
+        if(bib||!n){el.classList.add('alla'); el.innerHTML='<p class="dos-rubrik">Dosering per nivå</p>'+['A','B','C'].map(function(L,i){return '<p>'+rad(L,v[i])+'</p>'}).join('');}
+        else {el.innerHTML='<p>'+rad(n,v['ABC'.indexOf(n)])+'</p>'; if(TID[id])timerSatt(d,TID[id]['ABC'.indexOf(n)]);}
+      } else {
+        var dr=d.querySelector('.dosrad'); if(!dr)return;
+        el.innerHTML='<p><span class="ov-etikett ov-niva-et">Din dosering</span><span>'+dr.textContent.replace(/^Dosering:\s*/i,'')+'</span></p>';
+        dr.setAttribute('data-doskalla',''); dr.hidden=true;
+      }
+      panelSatt(d,el);
+      var t=d.querySelector('.ovtimer'); if(t&&t.parentNode!==el)el.appendChild(t);
     });
   }
   window.__nivaRader=rita;
@@ -3400,14 +3416,36 @@ if('serviceWorker' in navigator && location.protocol!=='file:' && (!navigator.we
 
 
 <style id="v77-niva">
-.ov-niva{margin:12px 18px 0!important;padding:12px 16px!important;background:var(--teal-soft);border:1px solid rgba(13,123,111,.22);border-radius:12px}
-.ov-niva p{margin:0;font-size:.92rem;color:var(--ink);line-height:1.55;display:flex;flex-direction:column;gap:3px}
-.ov-niva p+p{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(13,123,111,.25)}
-.ov-niva .ov-niva-et{color:var(--teal-ink)}
-.ov-niva p>span:last-child{color:var(--ink)!important}
-.ov-niva.alla .ov-niva-et{color:var(--dim)}
+.ov-niva{margin:14px 18px 0!important;padding:12px 16px 14px!important;background:var(--guld-soft);border:1px solid rgba(176,141,87,.42);border-left:4px solid var(--guld);border-radius:14px;box-shadow:0 1px 2px rgba(16,32,42,.04)}
+.ov-niva p{margin:0;font-size:.98rem;color:var(--ink);line-height:1.6;display:flex;flex-direction:column;gap:4px}
+.ov-niva p+p{margin-top:9px;padding-top:9px;border-top:1px dashed rgba(176,141,87,.4)}
+.ov-niva .ov-niva-et{color:var(--guld-djup);font-weight:700}
+.ov-niva p>span:last-child{color:var(--ink)!important;font-weight:500}
+.ov-niva .dos-rubrik{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--guld-djup);font-weight:700;margin-bottom:2px}
+.ov-niva.alla .ov-niva-et{color:var(--guld-djup);opacity:.75;font-weight:600}
+.ov-niva .updos{margin:10px 0 0!important;padding:8px 0 0!important;border-left:none!important;border-top:1px dashed rgba(176,141,87,.4);border-radius:0!important;background:none!important;font-size:.86rem}
+.ov-niva .ovtimer{display:inline-flex;width:auto;margin:12px 0 0!important;padding:9px 18px 9px 9px!important;border:1px solid var(--teal);border-radius:999px!important;background:var(--yta)}
 #plInne .pl-kort>.ov-niva{margin-left:22px!important;margin-right:22px!important}
-@media print{.ovtimer{display:none!important}.ov-niva{background:none!important;border:none;border-left:2px solid #999;border-radius:0;margin:4px 14px 0!important;padding:2px 10px!important}.ov-niva p{font-size:9.5pt;line-height:1.35}.ov-niva p+p{margin-top:2px;padding-top:2px;border:none}}
+@media print{.ovtimer{display:none!important}.ov-niva{background:none!important;border:none!important;border-left:2px solid #999!important;border-radius:0!important;box-shadow:none!important;margin:3px 14px 0!important;padding:1px 8px!important}.ov-niva p{font-size:9.5pt;line-height:1.28;display:block}.ov-niva p+p{margin-top:1px;padding-top:1px;border:none}.ov-niva .ov-niva-et{display:inline;margin-right:6px}.ov-niva .updos{margin:1px 0 0!important;padding:1px 0 0!important;border:none!important;font-size:9pt}.ov-niva .dos-rubrik{display:none}}
+</style>
+
+
+<style id="v79-fab">
+body.kodad #fabWrap,body.bibliotek #fabWrap,body.pl-oppen #fabWrap,body.kb-oppen #fabWrap{display:none!important}
+#dlFragor{scroll-margin-top:130px}
+</style>
+
+
+<style id="v80-kort">
+[data-doskalla]{display:none!important}
+body.kodad .aktiv details[data-ovid]{border:1px solid var(--line);border-radius:18px;background:var(--yta);box-shadow:0 1px 2px rgba(16,32,42,.04);transition:box-shadow .2s,border-color .2s}
+body.kodad .aktiv details[data-ovid][open]{box-shadow:0 8px 28px rgba(16,32,42,.08);border-color:var(--line-2)}
+body.kodad .aktiv details[data-ovid]>summary{padding:17px 62px 17px 18px}
+body.kodad .aktiv details[data-ovid]>summary .ovtitel{font-family:var(--display);font-size:1.16rem;letter-spacing:-.01em;color:var(--ink)}
+body.kodad .aktiv details[data-ovid]>summary .ovnr{font-family:var(--mono);font-size:.72rem;font-weight:700;color:var(--guld-djup);background:var(--guld-soft);border:1px solid rgba(176,141,87,.4);width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;margin-right:12px;flex:0 0 auto}
+.ov-figrad .ovfig{background:var(--mist);border:none;border-radius:16px;padding:10px 26px}
+#plInne .pl-titel{font-size:1.45rem;letter-spacing:-.01em;padding:20px 24px 16px}
+#plInne .pl-kort{box-shadow:0 10px 34px rgba(16,32,42,.08)}
 </style>
 
 </body>

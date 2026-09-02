@@ -12,7 +12,7 @@
 <meta property="og:image" content="https://www.kansei.se/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F7F9FA"><meta name="color-scheme" content="only light">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com https://maps.google.com; connect-src 'self' https://*.google-analytics.com https://plausible.io; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' https://www.google.com https://maps.google.com; connect-src 'self' https://*.google-analytics.com https://plausible.io; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -593,6 +593,67 @@ body.kodad .progfaq{background:var(--mist)}
 body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bottom:40px}}</style>
 </head>
 <body>
+<script>/* Kansei QR: bytemod, felnivå M, version 1-10, alla masker med straffvärdering. Fristående. */
+(function(){
+  var EC_M=[null,[10,1],[16,1],[26,1],[18,2],[24,2],[16,4],[18,4],[22,4],[22,5],[26,5]];
+  var TOT=[null,26,44,70,100,134,172,196,242,292,346];
+  var ALIGN=[null,[],[6,18],[6,22],[6,26],[6,30],[6,34],[6,22,38],[6,24,42],[6,26,46],[6,28,50]];
+  function cap(v){return TOT[v]-EC_M[v][0]*EC_M[v][1]}
+  var EXP=[],LOG=[];(function(){var x=1;for(var i=0;i<255;i++){EXP[i]=x;LOG[x]=i;x<<=1;if(x&0x100)x^=0x11D;}for(var j=255;j<512;j++)EXP[j]=EXP[j-255];})();
+  function mul(a,b){return (a&&b)?EXP[LOG[a]+LOG[b]]:0}
+  function rsGen(n){var g=[1];for(var i=0;i<n;i++){var ng=new Array(g.length+1).fill(0);for(var j=0;j<g.length;j++){ng[j]^=g[j];ng[j+1]^=mul(g[j],EXP[i]);}g=ng;}return g}
+  function rsEnc(data,n){var g=rsGen(n),res=new Array(n).fill(0);for(var i=0;i<data.length;i++){var f=data[i]^res.shift();res.push(0);if(f)for(var j=0;j<n;j++)res[j]^=mul(g[j+1],f);}return res}
+  function bytes(str){var out=[];for(var i=0;i<str.length;i++){var c=str.charCodeAt(i);if(c<0x80)out.push(c);else if(c<0x800){out.push(0xC0|(c>>6),0x80|(c&63));}else{out.push(0xE0|(c>>12),0x80|((c>>6)&63),0x80|(c&63));}}return out}
+  function build(str){
+    var data=bytes(str), v=1; while(v<=10&&cap(v)<data.length+(v<10?2:3)){v++} if(v>10)return null;
+    var bits=[];function put(val,n){for(var i=n-1;i>=0;i--)bits.push((val>>i)&1)}
+    put(4,4); put(data.length,v<10?8:16); data.forEach(function(b){put(b,8)});
+    var capB=cap(v)*8; put(0,Math.min(4,capB-bits.length)); while(bits.length%8)bits.push(0);
+    var pads=[0xEC,0x11],pi=0; while(bits.length<capB){put(pads[pi],8);pi^=1}
+    var cw=[];for(var i=0;i<bits.length;i+=8){var b=0;for(var j=0;j<8;j++)b=(b<<1)|bits[i+j];cw.push(b)}
+    var ecn=EC_M[v][0], nb=EC_M[v][1], tot=TOT[v], shortLen=Math.floor(tot/nb)-ecn, nLong=tot%nb, blocks=[], k=0;
+    for(var b2=0;b2<nb;b2++){var len=shortLen+(b2<nb-nLong?0:1);var d=cw.slice(k,k+len);k+=len;blocks.push({d:d,e:rsEnc(d,ecn)})}
+    var out=[];var maxD=shortLen+1;
+    for(var i2=0;i2<maxD;i2++)blocks.forEach(function(bl){if(i2<bl.d.length)out.push(bl.d[i2])});
+    for(var i3=0;i3<ecn;i3++)blocks.forEach(function(bl){out.push(bl.e[i3])});
+    var N=v*4+17, M=[],F=[];for(var y=0;y<N;y++){M.push(new Array(N).fill(0));F.push(new Array(N).fill(false))}
+    function set(x,y,val){M[y][x]=val?1:0;F[y][x]=true}
+    function finder(cx,cy){for(var dy=-4;dy<=4;dy++)for(var dx=-4;dx<=4;dx++){var x=cx+dx,y=cy+dy;if(x<0||y<0||x>=N||y>=N)continue;var d=Math.max(Math.abs(dx),Math.abs(dy));set(x,y,d!==2&&d!==4)}}
+    finder(3,3);finder(N-4,3);finder(3,N-4);
+    for(var i4=0;i4<N;i4++){if(!F[6][i4])set(i4,6,i4%2===0);if(!F[i4][6])set(6,i4,i4%2===0)}
+    var al=ALIGN[v];for(var a=0;a<al.length;a++)for(var b3=0;b3<al.length;b3++){var ax=al[a],ay=al[b3];if(F[ay][ax])continue;for(var dy2=-2;dy2<=2;dy2++)for(var dx2=-2;dx2<=2;dx2++)set(ax+dx2,ay+dy2,Math.max(Math.abs(dx2),Math.abs(dy2))!==1)}
+    // reservera format/version
+    for(var i5=0;i5<9;i5++){if(!F[8][i5])set(i5,8,0);if(!F[i5][8])set(8,i5,0)}
+    for(var i6=0;i6<8;i6++){set(N-1-i6,8,0);set(8,N-1-i6,0)} set(8,N-8,1);
+    if(v>=7){for(var i7=0;i7<18;i7++){var x7=N-11+i7%3,y7=Math.floor(i7/3);set(x7,y7,0);set(y7,x7,0)}}
+    // data
+    var bi=0,total=out.length*8,up=true;
+    for(var right=N-1;right>=1;right-=2){if(right===6)right=5;for(var vert=0;vert<N;vert++){var y=up?N-1-vert:vert;for(var c=0;c<2;c++){var x=right-c;if(F[y][x])continue;var bit=bi<total?(out[bi>>3]>>(7-(bi&7)))&1:0;M[y][x]=bit;bi++}}up=!up}
+    var MASK=[function(x,y){return (x+y)%2===0},function(x,y){return y%2===0},function(x,y){return x%3===0},function(x,y){return (x+y)%3===0},function(x,y){return (Math.floor(y/2)+Math.floor(x/3))%2===0},function(x,y){return (x*y)%2+(x*y)%3===0},function(x,y){return ((x*y)%2+(x*y)%3)%2===0},function(x,y){return ((x+y)%2+(x*y)%3)%2===0}];
+    function applyMask(m,inv){for(var y=0;y<N;y++)for(var x=0;x<N;x++)if(!F[y][x]&&MASK[m](x,y))M[y][x]^=1}
+    function fmt(m){var d=(0<<3)|m,r=d<<10;for(var i=14;i>=10;i--)if(r&(1<<i))r^=0x537<<(i-10);var f=((d<<10)|r)^0x5412;
+      for(var i8=0;i8<=5;i8++)set(8,i8,(f>>i8)&1); set(8,7,(f>>6)&1);set(8,8,(f>>7)&1);set(7,8,(f>>8)&1);for(var i9=9;i9<15;i9++)set(14-i9,8,(f>>i9)&1);
+      for(var j=0;j<8;j++)set(N-1-j,8,(f>>j)&1); for(var j2=8;j2<15;j2++)set(8,N-15+j2,(f>>j2)&1); set(8,N-8,1)}
+    function ver(){if(v<7)return;var r=v<<12;for(var i=17;i>=12;i--)if(r&(1<<i))r^=0x1F25<<(i-12);var val=(v<<12)|r;for(var i2=0;i2<18;i2++){var b=(val>>i2)&1,x=N-11+i2%3,y=Math.floor(i2/3);set(x,y,b);set(y,x,b)}}
+    function penalty(){var p=0,y,x;
+      for(y=0;y<N;y++){var run=1;for(x=1;x<N;x++){if(M[y][x]===M[y][x-1]){run++;if(run===5)p+=3;else if(run>5)p++}else run=1}}
+      for(x=0;x<N;x++){var run2=1;for(y=1;y<N;y++){if(M[y][x]===M[y-1][x]){run2++;if(run2===5)p+=3;else if(run2>5)p++}else run2=1}}
+      for(y=0;y<N-1;y++)for(x=0;x<N-1;x++){var s=M[y][x]+M[y][x+1]+M[y+1][x]+M[y+1][x+1];if(s===0||s===4)p+=3}
+      var pat1=[1,0,1,1,1,0,1,0,0,0,0],pat2=[0,0,0,0,1,0,1,1,1,0,1];
+      for(y=0;y<N;y++)for(x=0;x<N-10;x++){var ok1=true,ok2=true;for(var k2=0;k2<11;k2++){if(M[y][x+k2]!==pat1[k2])ok1=false;if(M[y][x+k2]!==pat2[k2])ok2=false}if(ok1||ok2)p+=40}
+      for(x=0;x<N;x++)for(y=0;y<N-10;y++){var o1=true,o2=true;for(var k3=0;k3<11;k3++){if(M[y+k3][x]!==pat1[k3])o1=false;if(M[y+k3][x]!==pat2[k3])o2=false}if(o1||o2)p+=40}
+      var dark=0;for(y=0;y<N;y++)for(x=0;x<N;x++)dark+=M[y][x];var pct=dark*100/(N*N);p+=Math.floor(Math.abs(pct-50)/5)*10;return p}
+    var best=-1,bestP=1e9;
+    for(var m=0;m<8;m++){applyMask(m);fmt(m);ver();var pen=penalty();if(pen<bestP){bestP=pen;best=m}applyMask(m)}
+    applyMask(best);fmt(best);ver();
+    return {n:N,m:M,v:v,mask:best};
+  }
+  function svg(str,px){var q=build(str);if(!q)return '';var N=q.n,pad=2,S=N+pad*2,d='';for(var y=0;y<N;y++)for(var x=0;x<N;x++)if(q.m[y][x])d+='M'+(x+pad)+' '+(y+pad)+'h1v1h-1z';
+    return '<svg class="qr" viewBox="0 0 '+S+' '+S+'" width="'+(px||120)+'" height="'+(px||120)+'" shape-rendering="crispEdges" role="img" aria-label="QR-kod till din plan"><rect width="'+S+'" height="'+S+'" fill="#fff"/><path d="'+d+'" fill="#000"/></svg>'}
+  window.__qr=svg; window.__qrBygg=build;
+})();
+</script>
+
 <a class="skip" href="#huvud">Till innehållet</a>
 <nav aria-label="Huvudmeny"><div class="nav-inner">
 <a class="logo" href="/" aria-label="Kansei Rehabcenter"><svg class="lockup" viewBox="28 152 578 146" aria-hidden="true"><path fill="currentColor" d="M79.54,202.4h40.58L131.92,167c.3-.73.75-1.83,1.25-3.2.44-1.2.64-1.85,1-1.85s.52.72,1,2.15c.44,1.2.85,2.19,1.15,2.9l13.39,35.38H189.5c1.25-.16,2.29.16,2.51.75s-.33,1.21-.91,1.95a7.65,7.65,0,0,1-1.6,1.5L156.71,230l11.59,36c.18,1.57-.09,2.79-.69,3-.33.1-.72-.08-1.4-.4a6.8,6.8,0,0,1-1.3-.8l-30.39-22.39-29.19,21c-.28.17-.71.42-1.24.68-1.29.62-2.18,1-2.71.77-.69-.36-.79-2-.25-3.85l11.4-34.59-31.39-23c-1.73-.73-2.63-2.07-2.37-3A1.71,1.71,0,0,1,79.54,202.4Z"/><path fill="currentColor" fill-opacity=".45" d="M83.74,193.74h30.05l6.8-23.79-31.54,9.86Z"/><path fill="currentColor" fill-opacity=".45" d="M134.25,256.58l20.53,16.53-33.06,12L109.6,274.84Z"/><path fill="currentColor" fill-opacity=".45" d="M66.41,208.34,97.6,233.26,87.34,271.91,55.48,282.57Q61.23,263.39,67,244.19L35.09,219Z"/><path fill="currentColor" d="M270.23,193.85l-28.55,34.23-2.79.1q4.14-15.47,8.27-30.94a2.69,2.69,0,0,0-.65-2.63,2.79,2.79,0,0,0-2.27-.76H222.45L202.75,274h25l7.68-28.45,4.1.1L250.07,274h21q-6.9-17.82-13.81-35.63L289,195.44a1.19,1.19,0,0,0,0-.9,1.16,1.16,0,0,0-.94-.69Z"/><path fill="currentColor" d="M348.73,193.85H296.22L275.45,274.5h25.76l6.6-22.35h15l-6.88,22.35h23.26l17.17-70.07a10.83,10.83,0,0,0-2.4-7.19A10.6,10.6,0,0,0,348.73,193.85Zm-18.15,29.87c-1,4.64-1.93,6.36-2.22,6.86a7.12,7.12,0,0,1-2.46,2.79,6.42,6.42,0,0,1-3.33.81h-9.75a1,1,0,0,1-.66-1.34q2.18-9.06,4.36-18.14l.61-2.54a2.94,2.94,0,0,1,1.11-.92A2.63,2.63,0,0,1,319,211c1.87,0,3.43,0,4.58.09,4.18.24,5.29.72,6,1.52a5.87,5.87,0,0,1,.89,1.52,10.2,10.2,0,0,1,.81,3.66A21.36,21.36,0,0,1,330.58,223.72Z"/><path fill="currentColor" d="M374.11,274.5q4-15.37,7.9-30.73l9,30.73h28q8.73-34.2,17.45-68.4c.08-.25,1.63-5.47-1.86-9.31a9.45,9.45,0,0,0-6.17-2.94l-15.44.2q-4.71,20.67-9.41,41.34l-8.92-34.7a9.83,9.83,0,0,0-8.92-6.84H368.56q-9.39,40.32-18.77,80.65Z"/><path fill="currentColor" d="M501,205.59l-1.2,5.41H467.51a2.06,2.06,0,0,0-.66.24,2.82,2.82,0,0,0-1,.92c0,.28-.48,2.25-.55,2.53q-1.4,6.44-2.78,12.83H491.3c2.44,0,4.25,2.55,3.67,5.19l-9.25,41.79h-21l.08-.3H451.56l-.09.3H428.22l3.53-15.17H469l3-11.67-37.46-.42L447,193.86h45.56a8.21,8.21,0,0,1,6.52,3.39,11.14,11.14,0,0,1,2.08,5.21A8.92,8.92,0,0,1,501,205.59Z"/><path fill="currentColor" d="M512.27,194.15l-19,80.06h50.31l4.4-18.77-24.76.4,3.39-13.77,25,.2L557,224.71H531.24l4-13.59H560l1.6-11.43a9.18,9.18,0,0,0-.3-2.19c-.19-.55-.7-1.26-2.84-2.1a18.62,18.62,0,0,0-6.44-1.25Z"/><path fill="currentColor" d="M572,194.44,551.4,273.9H578l18.37-68.48c.1-.52,1-5.64-2.43-9a8.59,8.59,0,0,0-3.56-2Z"/></svg></a>
@@ -628,7 +689,7 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <li class="mob"><a href="/om-oss/">Teamet</a></li>
 <li><a href="/kontakt/">Kontakt</a></li>
 <li class="m-meta">
-<span class="m-trust">★ 4,8 av 289 omdömen · Legitimerad vård</span>
+<span class="m-trust">★ 4,8 av 301 omdömen · Legitimerad vård</span>
 <span class="m-live" id="mLive" hidden></span>
 <a href="mailto:info@kansei.se">info@kansei.se</a>
 <span class="m-hours">Mån–fre 08–19 · Helg 10–15</span>
@@ -669,13 +730,34 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <div id="mp-under" class="muted"></div>
 </div>
 </div>
-<div class="mp-knappar"><button class="btn btn-teal" id="tillovningar" type="button">Till mina övningar</button><div class="mp-knappar2"><button class="btn btn-ghost" id="skrivut" type="button">Skriv ut / PDF</button><a href="#" id="bytkod" class="btn btn-ghost">Ange en annan kod</a></div></div>
+<div class="mp-knappar"><button class="btn btn-teal" id="startaPass" type="button">Starta dagens pass</button><button class="btn btn-ghost" id="tillovningar" type="button">Visa planen</button><div class="mp-knappar2"><button class="btn btn-ghost" id="skrivut" type="button">Skriv ut / PDF</button><a href="#" id="bytkod" class="btn btn-ghost">Byt kod</a></div></div>
 <p class="mp-sign">Granskat av Carl-Robert Kårell, leg. naprapat<span class="sign-lang"> · Byggt på aktuella belastnings- och rehabiliteringsprinciper</span> · Uppdaterad augusti 2026</p>
 </div>
 <div id="klinikmatris" hidden><p class="kv-snabb" id="favrad" hidden><strong>Mina koder:</strong> <span id="favlista"></span></p>
 <div class="kv-tabbar"><button type="button" class="kb-chip kv-tab vald" data-panel="panelBP">Blueprints</button><button type="button" class="kb-chip kv-tab" data-panel="panelTill">Tillägg</button></div><div class="kv-snabb"><span class="kbb-et2">Snabbval</span><button type="button" class="km-kod snabb-chip" data-p="2" data-t="3"><b>2 +3</b><span>Rygg, nervkomponent</span></button><button type="button" class="km-kod snabb-chip" data-p="12" data-t="2"><b>12 +2</b><span>Fotled efter stukning</span></button><button type="button" class="km-kod snabb-chip" data-p="6" data-t="1"><b>6 +1</b><span>Nacke, andningsdrivet</span></button><button type="button" class="km-kod snabb-chip" data-p="10" data-t="4"><b>10 +4</b><span>Knäsena, stel kedja</span></button><button type="button" class="km-kod snabb-chip" data-p="1" data-t="2"><b>1 +2</b><span>Höftkontroll, balansbrist</span></button><span class="km-leg">Nivåer: A start · B uppbyggnad · C full</span></div><div id="panelBP" class="kv-panel"><input id="bpSok" type="text" placeholder="Sök blueprint eller program..." autocomplete="off"><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c-2 3 2 6 0 9s2 6 0 9"/><path d="M9 6h2M13 11h2M9 16h2"/></svg><span>Rygg & bäcken</span></p><button type="button" class="bp-rad" data-p="2" data-t=""><span>LCS – Lower Crossed Syndrome</span><span class="bp-kod">→ 2</span></button><button type="button" class="bp-rad" data-p="2" data-t="2"><span>SI-ledsyndrom</span><span class="bp-kod">→ 2 +2</span></button><button type="button" class="bp-rad" data-p="2" data-t="2"><span>Lumbopelvis instabilitet</span><span class="bp-kod">→ 2 +2</span></button><button type="button" class="bp-rad" data-p="2" data-t="3"><span>Lumbal radikulopati (L4–S1)</span><span class="bp-kod">→ 2 +3</span></button><p class="bp-not">färska/tilltagande bortfall: läkare först</p><button type="button" class="bp-rad" data-p="2" data-t="4"><span>Layer Syndrome</span><span class="bp-kod">→ 2 +4</span></button><p class="bp-not">ofta även 6 som parallellkod</p></div><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8c-1 6 3 7 5 10M19 8c1 6-3 7-5 10M5 8c3-2 11-2 14 0"/><path d="M12 9v4"/></svg><span>Höft & lår</span></p><button type="button" class="bp-rad" data-p="1" data-t=""><span>Lateralt höftmönster</span><span class="bp-kod">→ 1</span></button><button type="button" class="bp-rad" data-p="1" data-t=""><span>GTPS – Gluteus medius-tendinopati</span><span class="bp-kod">→ 1</span></button><p class="bp-not">kompressionsreglerna i undvik-blocket är kärnan</p><button type="button" class="bp-rad" data-p="1" data-t=""><span>FAI – Femoroacetabulärt impingement</span><span class="bp-kod">→ 1</span></button><p class="bp-not">pausa djupa höftböjningar; strukturfyndet styr</p><button type="button" class="bp-rad" data-p="1" data-t="3"><span>Piriformis syndrom</span><span class="bp-kod">→ 1 +3</span></button><button type="button" class="bp-rad" data-p="13" data-t=""><span>Höftartros (direktprogram)</span><span class="bp-kod">→ 13</span></button><button type="button" class="bp-rad" data-p="11" data-t=""><span>Proximal hamstringentesi</span><span class="bp-kod">→ 11</span></button><p class="bp-not">undvik stretch och djupböjd belastning initialt</p></div><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4l3 7-3 9"/><circle cx="12" cy="11" r="2.1"/></svg><span>Knä</span></p><button type="button" class="bp-rad" data-p="3" data-t=""><span>Knäartros (OA)</span><span class="bp-kod">→ 3</span></button><p class="bp-not">medial som lateral artros, ofta menisk- och benpåverkan med effusion; A-nivåns isometriska ingång är skriven för det retade knät</p><button type="button" class="bp-rad" data-p="1" data-t=""><span>Patellofemoralt smärtmönster</span><span class="bp-kod">→ 1</span></button><p class="bp-not">höftdelen bär; knästyrka från 3 vid behov</p><button type="button" class="bp-rad" data-p="1" data-t=""><span>IT-band / Lateralt knämönster</span><span class="bp-kod">→ 1</span></button><p class="bp-not">halvera löpdosen initialt</p><button type="button" class="bp-rad" data-p="1" data-t=""><span>Medialt knämönster</span><span class="bp-kod">→ 1</span></button><p class="bp-not">belastningsmönster, inte artros: svag gluteus medius och valgusdrift, höftkontrollen bär; vid pronationsdrift klicka även Fotled (12)</p><button type="button" class="bp-rad" data-p="10" data-t=""><span>Patellar tendinopati</span><span class="bp-kod">→ 10</span></button></div><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h9c3 0 5-1.5 5-4"/><path d="M8 17V9c0-2 1-3 2-3"/></svg><span>Fot & underben</span></p><button type="button" class="bp-rad" data-p="8" data-t=""><span>Plantar fasciit</span><span class="bp-kod">→ 8</span></button><button type="button" class="bp-rad" data-p="5" data-t=""><span>Achillestendinopati</span><span class="bp-kod">→ 5</span></button><button type="button" class="bp-rad" data-p="12" data-t="2"><span>Fotled efter stukning (direktprogram)</span><span class="bp-kod">→ 12 +2</span></button></div><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19c0-7 5-9 10-9h4c2 0 4 2 4 4v5"/><circle cx="16" cy="13" r="1.8"/></svg><span>Axel</span></p><button type="button" class="bp-rad" data-p="4" data-t=""><span>Skulder-impingement</span><span class="bp-kod">→ 4</span></button><button type="button" class="bp-rad" data-p="9" data-t=""><span>Fryst axel / Adhesiv kapsulit</span><span class="bp-kod">→ 9</span></button><button type="button" class="bp-rad" data-p="4" data-t=""><span>Rotatorkuffruptur</span><span class="bp-kod">→ 4</span></button><p class="bp-not">startnivå A; större ruptur → läkare före</p></div><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5l7 5-4 8"/><circle cx="12" cy="10" r="1.9"/><path d="M8 18l-1 3"/></svg><span>Arm & hand</span></p><button type="button" class="bp-rad" data-p="7" data-t=""><span>Lateral epikondylalgi</span><span class="bp-kod">→ 7</span></button><button type="button" class="bp-rad" data-p="7" data-t=""><span>Medial epikondylalgi</span><span class="bp-kod">→ 7</span></button><p class="bp-not">spegelvarianten, se programnoten</p><button type="button" class="bp-rad" data-p="6" data-t="3,5"><span>Karpaltunnelmönster</span><span class="bp-kod">→ 6 +3 +5</span></button><p class="bp-not">nattskena är förstahandsåtgärd</p><button type="button" class="bp-rad" data-p="15" data-t=""><span>De Quervain</span><span class="bp-kod">→ 15</span></button><p class="bp-not">vid vilovärk/nattvärk: överväg skena, se undvik-blocket</p></div><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="3.6"/><path d="M10 11l-1 5M14 11l1 5"/><path d="M4 20c3-3 13-3 16 0"/></svg><span>Nacke & huvud</span></p><button type="button" class="bp-rad" data-p="6" data-t="4"><span>UCS – Upper Crossed Syndrome</span><span class="bp-kod">→ 6 +4</span></button><button type="button" class="bp-rad" data-p="6" data-t="1,6"><span>Cervikogen huvudvärk</span><span class="bp-kod">→ 6 +1 +6</span></button><button type="button" class="bp-rad" data-p="6" data-t="3"><span>Cervikal radikulopati</span><span class="bp-kod">→ 6 +3</span></button><p class="bp-not">bortfallsregeln gäller</p><button type="button" class="bp-rad" data-p="6" data-t="1,3"><span>TOS – Thoracic Outlet Syndrome</span><span class="bp-kod">→ 6 +1 +3</span></button></div><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6c0-3.5 12-3.5 12 0v4c0 5-3 8-6 8s-6-3-6-8z"/><circle cx="6.6" cy="10" r="1.1"/><circle cx="17.4" cy="10" r="1.1"/><path d="M9.5 13h5"/></svg><span>Käke</span></p><button type="button" class="bp-rad" data-p="14" data-t=""><span>TMJ-dysfunktion</span><span class="bp-kod">→ 14</span></button></div><div class="bp-block"><p class="bp-grupp"><svg class="reg-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2.3"/><path d="M12 8v6M6 11l6-2 6 2M12 14l-4 6M12 14l4 6"/></svg><span>Övergripande</span></p><div class="bp-rad bp-dod"><span>Central sensitisering</span><span class="bp-kod">–</span></div><p class="bp-not">utbildning + gradering; regionprogram på nivå A</p></div></div><div id="panelTill" class="kv-panel" hidden><button type="button" class="tk-rad" data-t="1"><span class="km-nr">+1</span><span><strong>Andning</strong><br><small>Diafragmalt mönster och lugnare andning. Vid spänningsdrivna besvär i nacke, bål och käke.</small></span></button><button type="button" class="tk-rad" data-t="2"><span class="km-nr">+2</span><span><strong>Balans & proprioception</strong><br><small>Enbensfunktion och positionssinne. Efter fotledsskador och vid nedsatt balans.</small></span></button><button type="button" class="tk-rad" data-t="3"><span class="km-nr">+3</span><span><strong>Nervglidning</strong><br><small>Mjuka glidövningar för irriterad nervvävnad. Vid utstrålning, domningar, radikulopati.</small></span></button><button type="button" class="tk-rad" data-t="4"><span class="km-nr">+4</span><span><strong>Bröstrygg & rörlighet</strong><br><small>Rörlighet i kedjan ovanför besväret. När stel bröstrygg eller höft lastar grannleden.</small></span></button><button type="button" class="tk-rad" data-t="5"><span class="km-nr">+5</span><span><strong>Handled & grepp</strong><br><small>Uthållighet i handled och grepp. Vid karpaltunnel, tumbesvär och som armbågsstöd.</small></span></button><button type="button" class="tk-rad" data-t="6"><span class="km-nr">+6</span><span><strong>Blick & nacke</strong><br><small>Ögon-nacke-koordination. Vid cervikogen huvudvärk och nackrelaterad yrselkänsla.</small></span></button><p class="bp-grupp" style="margin-top:22px"><span>Injektionsmoduler</span></p><button type="button" class="tk-rad" data-t="7"><span class="km-nr">P↑</span><span><strong>Inför PRP</strong><br><small>Förberedelser: läkemedelsstopp, vätska, praktiskt. Skickas före behandlingsdagen.</small></span></button><button type="button" class="tk-rad" data-t="8"><span class="km-nr">P↓</span><span><strong>Efter PRP</strong><br><small>Tidslinje dag 0–3, 4–7, vecka 2+. NSAID-stopp fyra veckor, programmet pausas och återupptas.</small></span></button><button type="button" class="tk-rad" data-t="9"><span class="km-nr">H↑</span><span><strong>Inför hyaluronsyra</strong><br><small>Enkla förberedelser, blodförtunnande flaggas. Skickas före behandlingsdagen.</small></span></button><button type="button" class="tk-rad" data-t="10"><span class="km-nr">H↓</span><span><strong>Efter hyaluronsyra</strong><br><small>48 timmars lugn, därefter program enligt kod. Vid kombination gäller PRP-reglerna.</small></span></button></div></div>
 </section>
 
+<div id="fgModal" hidden role="dialog" aria-modal="true" aria-label="Förhandsgranskning som patient">
+  <div class="fg-ram"><div class="fg-topp"><span>Så ser patienten det på mobil</span><button type="button" id="fgStang" aria-label="Stäng förhandsgranskningen">×</button></div><iframe id="fgRam" title="Förhandsgranskning"></iframe></div>
+</div>
+<div id="korthet" hidden>
+  <p class="kh-et">Din plan i korthet</p>
+  <dl id="khLista"></dl>
+</div>
+<div id="qrPrint" hidden>
+  <div id="qrBild"></div>
+  <div class="qr-text"><b>Skanna för att öppna din plan i mobilen</b><span id="qrKod"></span><span class="qr-url">kansei.se/ovningar</span></div>
+</div>
+<div id="valkKort" hidden>
+  <p class="vk-et">Första gången här</p>
+  <p class="vk-rubrik">Så fungerar din plan</p>
+  <ol class="vk-lista">
+    <li><b>Träning</b> är dagens pass. Tryck <b>Starta dagens pass</b> så visas en övning i taget med figur, dosering och tidtagare.</li>
+    <li><b>Översikt</b> förklarar nivån, vad som pausas och när du ska höra av dig.</li>
+    <li><b>Logg</b> samlar dina pass. Frågorna kommer till dig direkt under flikarna när de behövs, du behöver inte leta.</li>
+  </ol>
+  <button type="button" id="vkKlar" class="btn btn-teal">Jag förstår, visa planen</button>
+</div>
 <div id="bokaKort" hidden>
   <p class="bk-fraga" id="bkRubrik"></p>
   <p class="bk-text" id="bkText"></p>
@@ -684,7 +766,7 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
     <button type="button" id="bkHar" class="bk-har">Jag har redan en tid bokad</button>
   </div>
 </div>
-<nav id="flikar" hidden aria-label="Delar av programmet">
+<nav id="flikar" hidden aria-label="Delar av programmet" role="tablist">
 <button type="button" class="flik" data-flik="oversikt">Översikt</button>
 <button type="button" class="flik vald" data-flik="traning">Träning</button>
 <button type="button" class="flik" data-flik="logg">Logg<span class="flik-prick" hidden></span></button>
@@ -870,10 +952,17 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <div class="dl-panel" id="dlMil" hidden>
   <p class="dl-et">Milstolpar</p>
   <div id="dlMilLista"></div>
+  <div id="dlMilAllt" hidden><b>Alla milstolpar nådda.</b> Det är exakt det uppföljningen är till för: nästa nivå och nya riktmärken sätts i rummet, inte på egen hand. Boka om du inte redan har en tid.</div>
   <p class="dl-hjalp muted" style="margin:10px 0 0">Bocka av när du klarar ett riktmärke. Vi kvitterar dem tillsammans vid uppföljningen, det är där nästa steg bestäms.</p>
 </div>
 
-<div id="dlRemsa" class="dl-remsa" aria-label="De senaste 14 dagarna"></div>
+<div class="dl-panel" id="dlKal" hidden>
+  <div class="dlk-topp"><p class="dl-et" id="dlkManad">Kalender</p><span class="dlk-svit" id="dlkSvit"></span></div>
+  <div class="dlk-vd"><span>M</span><span>T</span><span>O</span><span>T</span><span>F</span><span>L</span><span>S</span></div>
+  <div class="dlk-grid" id="dlkGrid"></div>
+  <p class="dlk-fot"><span class="dlk-prick gjord"></span> Pass loggat <span class="dlk-prick ej"></span> Markerat ej gjort <span class="dlk-prick idag"></span> Idag</p>
+</div>
+<div id="dlRemsa" class="dl-remsa" aria-label="De senaste 14 dagarna" hidden></div>
 <p class="dl-hjalp muted">Tryck på en dag för att rätta den: lägg till ett glömt pass, ändra känningen eller ta bort.</p>
 <div id="dlDagPanel" hidden>
   <button type="button" id="dlDpX" aria-label="Stäng">×</button>
@@ -893,6 +982,8 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
   <p id="dlSummering" class="muted"></p>
   <div class="dl-slut">
     <a id="dlMejla" class="btn btn-ghost" hidden>Mejla loggen till oss</a>
+    <button type="button" id="dlSkriv" class="btn btn-ghost">Skriv ut loggen</button>
+    <button type="button" id="dlDela" class="btn btn-ghost">Dela loggen</button>
     <a href="#" id="dlNoll" class="dl-noll" hidden>Rensa hela loggen</a>
   </div>
   <p class="dl-spara muted">Loggen sparas i din webbläsare och finns kvar när du stänger sidan. Den försvinner om du rensar webbläsardata, använder privat läge eller byter enhet, så mejla den till oss då och då.</p>
@@ -1030,7 +1121,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
   els.forEach(function(e){io.observe(e)});
 })();
 </script>
-<div id="passLage" hidden role="dialog" aria-label="Passläge">
+<div id="passLage" hidden role="dialog" aria-modal="true" aria-label="Passläge"><span id="plLive" class="sr-only" aria-live="polite"></span>
   <div id="plTopp">
     <button type="button" id="plX" aria-label="Stäng passläget">×</button>
     <span id="plSteg"></span>
@@ -1046,6 +1137,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     <div class="pls-ikon">✓</div>
     <h3>Bra jobbat!</h3>
     <p id="plsText"></p>
+    <p id="plsNasta" class="pls-nasta" hidden></p>
     <div class="pls-rad">
       <button type="button" id="plsFortsatt" class="btn btn-teal" hidden>Till första omarkerade</button>
       <button type="button" id="plsFraga" class="btn btn-teal" hidden>Till frågan</button>
@@ -1062,6 +1154,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
 <div class="kbr">
 <span class="kb-grupp" id="stegDiag"><span class="kbb-et">1 · Diagnos</span><strong id="kbbNamn">Välj program ovan</strong><a id="kbbLas" href="#" hidden>Läs ↓</a></span>
 <span class="kb-grupp" id="steg2"><span class="kbb-et">2 · Nivå</span><div class="kb-chips" id="kbN"><button type="button" class="kb-chip" data-n="A">A</button><button type="button" class="kb-chip" data-n="B">B</button><button type="button" class="kb-chip" data-n="C">C</button></div></span>
+<span class="kb-grupp" id="stegKomp" hidden><span class="kbb-et">Nivå per program</span><div class="kb-chips" id="kbKomp"></div></span>
 <span class="kb-grupp" id="steg3"><span class="kbb-et">3 · Tillägg</span><div class="kb-chips" id="kbT"><button type="button" class="kb-chip" data-t="1">+1</button><button type="button" class="kb-chip" data-t="2">+2</button><button type="button" class="kb-chip" data-t="3">+3</button><button type="button" class="kb-chip" data-t="4">+4</button><button type="button" class="kb-chip" data-t="5">+5</button><button type="button" class="kb-chip" data-t="6">+6</button></div></span>
 <span class="kb-grupp" id="steg4"><span class="kbb-et">4 · Injektion</span><div class="kb-chips" id="kbI"><button type="button" class="kb-chip kb-inj" data-t="7">PRP bokad</button><button type="button" class="kb-chip kb-inj" data-t="8">PRP genomförd</button><button type="button" class="kb-chip kb-inj" data-t="9">HA bokad</button><button type="button" class="kb-chip kb-inj" data-t="10">HA genomförd</button></div></span>
 <span class="kb-grupp" id="stegA"><span class="kbb-et">Aktivitet</span><div class="kb-chips" id="kbA"><button type="button" class="kb-chip" data-a="L">Löpning</button><button type="button" class="kb-chip" data-a="G">Gym</button><button type="button" class="kb-chip" data-a="X">CrossFit</button><button type="button" class="kb-chip" data-a="H">Hyrox</button><button type="button" class="kb-chip" data-a="C">Cykel</button><button type="button" class="kb-chip" data-a="P">Promenad</button><button type="button" class="kb-chip" data-a="V">Vandring</button></div></span>
@@ -1076,7 +1169,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
 <div class="kb-hoger">
 <span class="kbb-et">6 · Skicka</span>
 <button class="btn btn-ghost" id="kbKopiera" type="button" disabled>Kopiera</button>
-<a class="btn btn-ghost" id="kbForhands" target="_blank" rel="noopener" hidden>Se som patient →</a>
+<a class="btn btn-ghost" id="kbForhands" target="_blank" rel="noopener" hidden>Se som patient →</a><button type="button" class="btn btn-ghost" id="kbForhandsMobil">Som patient på mobil</button>
 <a class="btn btn-teal" id="kbMejla" hidden>Mejla till patient →</a>
 <button class="btn btn-ghost" id="kbSpara" type="button" hidden>☆ Spara</button>
 </div>
@@ -1128,7 +1221,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
   var __patNamn='', __patVeckor=0, __patDatum='';
   function tolka(str){
     var ra=String(str||'');
-    __patNamn=''; __patVeckor=0; __patDatum=''; __patAkt=[];
+    __patNamn=''; __patVeckor=0; __patDatum=''; __patAkt=[]; __patTag='';
     var mm, varv=0;
     while(varv++<4 && (mm=ra.match(/\.([^.]+)$/))){
       var seg=''; try{seg=decodeURIComponent(mm[1])}catch(e){seg=mm[1]}
@@ -1143,6 +1236,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     }
     var st=ra.toUpperCase().replace(/[,\s\-]+/g,'');
     if(st==='CRK1926APLIO')return {bibliotek:true};
+    if(/^[A-Z2-9]{7,}$/.test(st)&&st.length%5===2){__patTag=st.slice(-2); st=st.slice(0,-2);}
     var pk=pdekoda(st); if(pk)return pk;
     var m=st.match(/^((?:(?:1[0-5]|[1-9])[ABC]){1,3})((?:\+(?:10|[1-9]))*)$/);
     if(!m)return null;
@@ -1193,6 +1287,56 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       var c=document.createElement('span'); c.className='mp-chip akt mp-inject'; c.textContent=AKTNAMN[a]||a;
       u.appendChild(c);
     });
+  }
+  function korthet(){
+    var box=document.getElementById('korthet'), dl=document.getElementById('khLista'); if(!box||!dl)return;
+    box.hidden=true;
+    if(!__patKod||document.body.classList.contains('bibliotek'))return;
+    var progs=window.__milProgs||[], rader=[];
+    var pn=progs.map(function(pr){var h=document.querySelector('#p'+pr.p+' h2'); return (h?h.textContent.trim():'Program '+pr.p)+' · nivå '+pr.n});
+    if(pn.length)rader.push(['Program',pn.join('<br>')]);
+    var till=[].slice.call(document.querySelectorAll('section[data-block="tillagg"].aktiv h2')).map(function(h){return h.textContent.split('·')[0].trim()});
+    if(till.length)rader.push(['Tillägg',till.join(', ')]);
+    if(__patDatum)rader.push(['Återbesök',dlDatumFin(__patDatum)]); else if(__patVeckor)rader.push(['Programtid',__patVeckor+' veckor, uppföljning bokas när tiden går mot sitt slut']); else rader.push(['Programtid','Löpande tills vi ses']);
+    var akt=[].slice.call(document.querySelectorAll('#mp-under .mp-chip.akt')).map(function(c){return c.textContent});
+    if(akt.length)rader.push(['Din träning',akt.join(', ')]);
+    var utr=document.querySelector('section[data-block="program"].aktiv .utrustning, section[data-block="program"].aktiv .ov-utrustning');
+    rader.push(['Kontakt','info@kansei.se, mejla vid ny utstrålande smärta, domningar eller kraftlöshet']);
+    dl.innerHTML=rader.map(function(r){return '<div><dt>'+r[0]+'</dt><dd>'+r[1]+'</dd></div>'}).join('');
+    box.hidden=false;
+  }
+  function qrSatt(){
+    var box=document.getElementById('qrPrint'); if(!box)return;
+    box.hidden=true;
+    if(!__patKod||document.body.classList.contains('bibliotek')||!window.__qr)return;
+    var url='https://www.kansei.se/ovningar/'+location.hash;
+    var sv=window.__qr(url,150); if(!sv)return;
+    document.getElementById('qrBild').innerHTML=sv;
+    document.getElementById('qrKod').textContent='Din kod: '+__patKod;
+    box.hidden=false;
+  }
+  function valkomst(){
+    var k=document.getElementById('valkKort'); if(!k)return;
+    k.hidden=true;
+    if(!__patKod||document.body.classList.contains('bibliotek'))return;
+    var sett=false; try{sett=!!localStorage.getItem('kanseiValk_'+__patKod)}catch(e){}
+    k.hidden=sett;
+  }
+  document.addEventListener('click',function(e){
+    if(e.target.closest&&e.target.closest('#vkKlar')){
+      try{localStorage.setItem('kanseiValk_'+__patKod,'1')}catch(x){}
+      document.getElementById('valkKort').hidden=true;
+    }
+  });
+  function passVecka(){
+    var u=document.getElementById('mp-under'); if(!u||!__patKod)return;
+    u.querySelectorAll('.veckopass').forEach(function(x){x.remove()});
+    var logg=dlLas(); if(!logg.length)return;
+    var nu=new Date(dagStr(new Date())+'T12:00:00'), dag=(nu.getDay()+6)%7, mon=new Date(nu); mon.setDate(nu.getDate()-dag);
+    var monS=dagStr(mon), n=logg.filter(function(e){return e.d>=monS}).length;
+    if(!n)return;
+    var c=document.createElement('span'); c.className='mp-chip veckopass mp-inject'; c.textContent=n+(n===1?' pass':' pass')+' denna vecka';
+    u.appendChild(c);
   }
   function bokaNudge(){
     var kort=document.getElementById('bokaKort'); if(!kort)return;
@@ -1248,6 +1392,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     });
   }
   function flikByt(f, tyst){
+    document.querySelectorAll('#flikar .flik').forEach(function(b){b.setAttribute('role','tab');b.setAttribute('aria-selected',b.getAttribute('data-flik')===f?'true':'false')});
     document.body.setAttribute('data-flik',f);
     document.querySelectorAll('#flikar .flik').forEach(function(b){b.classList.toggle('vald',b.getAttribute('data-flik')===f)});
     try{localStorage.setItem('kanseiFlik_'+__patKod,f)}catch(e){}
@@ -1300,6 +1445,9 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     sek.classList.add('allarader');
   }
   function aterstall(){
+    var __vk=document.getElementById('valkKort'); if(__vk)__vk.hidden=true;
+    var __qp=document.getElementById('qrPrint'); if(__qp)__qp.hidden=true;
+    var __kh=document.getElementById('korthet'); if(__kh)__kh.hidden=true;
     if(document.body.classList.contains('pl-oppen'))plStang();
     var __bk=document.getElementById('bokaKort'); if(__bk)__bk.hidden=true;
     var __fl2=document.getElementById('flikar'); if(__fl2)__fl2.hidden=true;
@@ -1353,7 +1501,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       rubrik(ns.querySelector('h2'), nivU.length===1?'Din dosering · Nivå '+nivU[0]:'Din dosering');
       if(progs.length>1){var radN=document.createElement('p');radN.className='mp-inject';radN.style.cssText='font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;color:var(--teal-ink)';radN.textContent=progs.map(function(pr){return NAMN['p'+pr.p]+': nivå '+pr.n}).join(' · ');ns.insertBefore(radN, ns.querySelector('h2').nextSibling);}
       if(progs.length===1)rubrik(p.querySelector('h2'), 'Så fungerar ditt program');
-      __patKod=pkodaMulti(progs, k.t||[]);
+      __patKod=pkodaMulti(progs, k.t||[])+(__patTag?'-'+__patTag:'');
       dlRender();
       p.querySelectorAll('.nivstege [data-niv]').forEach(function(el){el.classList.toggle('niv-akt', el.getAttribute('data-niv')===k.n)});
       k.t.forEach(function(tn){var ts=document.getElementById('t'+tn); if(ts)ts.querySelectorAll('.nivstege [data-niv]').forEach(function(el){el.classList.toggle('niv-akt', el.getAttribute('data-niv')===k.n)});});
@@ -1394,6 +1542,11 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     window.__milProgs=progs;
     milRender(progs);
     plKnappSatt();
+    aktTre();
+    (function(){document.querySelectorAll('.till-rubrik').forEach(function(x){x.remove()});
+      var forsta=document.querySelector('section[data-block="tillagg"].aktiv details[data-ovid]');
+      if(forsta){var sek=forsta.closest('section'); var h=document.createElement('div'); h.className='till-rubrik mp-inject'; h.innerHTML='<span>Tillägg</span>Utöver programmet, med egen dosering'; sek.parentNode.insertBefore(h,sek);}
+    })();
     passInit();
     a2hsInit();
     veckaRender();
@@ -1437,7 +1590,11 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     document.getElementById('mpIkon').innerHTML=bank?bank.innerHTML:'';
     var mpu=document.getElementById('mp-under'); mpu.innerHTML=chips; mpu.setAttribute('data-txt',u);
     aktChips();
+    passVecka();
     bokaNudge();
+    valkomst();
+    korthet();
+    qrSatt();
     setTimeout(chipSvep,0); setTimeout(chipSvep,300);
     document.body.classList.add('kodad');
     try{history.replaceState(null,'','#'+__patKod+(__patNamn?'.'+encodeURIComponent(__patNamn):'')+(__patVeckor?'.v'+__patVeckor:'')+(__patAkt.length?'.a'+__patAkt.join(''):''))}catch(e){}
@@ -1449,7 +1606,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     if(!k){fel.hidden=false;return}
     fel.hidden=true;visa(k);
   });
-  var __patKod=null;
+  var __patKod=null, __patTag='';
   function dagStr(d){var t=new Date(d.getTime()-d.getTimezoneOffset()*60000);return t.toISOString().slice(0,10)}
   function dlLas(){try{return JSON.parse(localStorage.getItem('kanseiLogg_'+__patKod)||'[]')}catch(e){return []}}
   function dlSkriv(a){try{localStorage.setItem('kanseiLogg_'+__patKod,JSON.stringify(a))}catch(e){}}
@@ -1559,9 +1716,11 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       var mst=milLas(), mAlla=[]; (window.__milProgs||[]).forEach(function(pr){(MILSTOLPAR['p'+pr.p]||[]).forEach(function(m){mAlla.push(m)})});
       var mKlara=mAlla.filter(function(m){return mst[m.id]});
       var mRad=mKlara.length?'\n\nMilstolpar:\n'+mKlara.map(function(m){return '✓ '+m.txt+' ('+dlDatumFin(mst[m.id])+')'}).join('\n'):'';
-      mej.href='mailto:info@kansei.se?subject='+encodeURIComponent('Träningslogg '+__patKod)+'&body='+encodeURIComponent('Hej!\n\nMin logg för kod '+__patKod+':\n\n'+rader+vRad+mRad+'\n\nHälsningar');
+      mej.href='mailto:info@kansei.se?subject='+encodeURIComponent('Träningslogg '+__patKod+(__patNamn?' · '+__patNamn:''))+'&body='+encodeURIComponent('Hej!\n\nMin logg för kod '+__patKod+(__patNamn?' ('+__patNamn+')':'')+':\n\n'+rader+vRad+mRad+'\n\nHälsningar'+(__patNamn?'\n'+__patNamn:''));
     } else {sum.textContent='Inga pass loggade ännu.'; document.getElementById('dlMejla').hidden=true; document.getElementById('dlNoll').hidden=true;}
     if(typeof veckaRender==='function')veckaRender(); else fragorUppdatera();
+    if(typeof passVecka==="function")passVecka();
+    if(typeof kalRender==="function")kalRender();
   }
   (function(){
     var noll=document.getElementById('dlNoll');
@@ -1715,17 +1874,20 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     if(!plLista.length)return;
     document.getElementById('passLage').hidden=false;
     document.body.classList.add('pl-oppen');
+    window.__plFokusTillbaka=document.activeElement;
     var kvar=plOgjorda();
-    if(!kvar.length){plSummering();return}
-    plIx=kvar[0].i;
-    plVisa();
+    if(!kvar.length){plSummering();}
+    else {plIx=kvar[0].i; plVisa();}
+    setTimeout(function(){var x=document.getElementById('plX'); if(x)x.focus()},50);
   }
   function plVisa(){
     var d=plLista[plIx];
     document.getElementById('plSlut').hidden=true;
+    document.body.classList.remove('pl-summering');
     var inne=document.getElementById('plInne'); inne.hidden=false;
     document.getElementById('plFot').hidden=false;
     document.getElementById('plSteg').textContent='Övning '+(plIx+1)+' av '+plLista.length;
+    var lv=document.getElementById('plLive'); if(lv){var su0=d.querySelector('summary'); lv.textContent='Övning '+(plIx+1)+' av '+plLista.length+': '+((su0&&(su0.querySelector('.ovtitel')||su0).textContent)||'').replace(/^\s*\d+\s*[·.]?\s*/,'').trim();}
     plMatare();
     inne.innerHTML='';
     var c=document.createElement('div'); c.className='pl-kort'; c.setAttribute('data-ovid',d.getAttribute('data-ovid'));
@@ -1739,10 +1901,22 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       var ovid=d.getAttribute('data-ovid'), rad=document.createElement('div'); rad.className='pl-faser';
       rad.innerHTML='<figure>'+window.__ovIkon(ovid,96)+'<figcaption>Start</figcaption></figure><figure>'+window.__ovIkon(ovid,96)+'<figcaption>Slut</figcaption></figure>';
       figr.appendChild(rad);
+      var lg=window.__ovLage?window.__ovLage(ovid):''; if(lg){var lp=document.createElement('p'); lp.className='pl-lage'; lp.innerHTML='<span>Utgångsläge</span>'+lg; figr.appendChild(lp);}
+      var hint=document.createElement('button'); hint.type='button'; hint.className='pl-lashint'; hint.innerHTML='Så gör du <span aria-hidden="true">↓</span>';
+      hint.addEventListener('click',function(){var g=c.querySelector('.ov-gor'); if(g)g.scrollIntoView({behavior:'smooth',block:'start'}); hint.classList.add('bort')});
+      figr.appendChild(hint);
+      inne.onscroll=function(){if(inne.scrollTop>120)hint.classList.add('bort')};
       var fig=rad.querySelectorAll('figure');
       window.__figFas(fig[0],0); window.__figFas(fig[1],1);
     }
     if(window.__figSkan)window.__figSkan(inne);
+    var dosP=c.querySelector('.ov-niva');
+    if(dosP){
+      var dosTxt=dosP.textContent, sm=dosTxt.match(/(\d)\s*set/i), setN=sm?parseInt(sm[1],10):0;
+      var vr=document.createElement('div'); vr.className='pl-vila';
+      vr.innerHTML=(setN>1?'<span class="pl-set" data-set="1" data-max="'+setN+'" aria-live="polite">Set <b>1</b> av '+setN+'</span>':'')+'<button type="button" class="pl-vilaknapp" data-sek="60" aria-label="Starta vilotimer, 60 sekunder"><span class="pl-vilaring"></span><span class="pl-vilatxt"><small>Vila mellan set</small>Starta 60 sekunder</span></button>';
+      dosP.appendChild(vr);
+    }
     var kv=plOgjorda(), sista=(kv.length===1&&kv[0].i===plIx), kn=document.getElementById('plKlar');
     kn.textContent=sista?'Klar, logga passet ✓':'Klar ✓';
     kn.classList.toggle('sista',sista);
@@ -1789,13 +1963,23 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     }
     document.getElementById('plsFortsatt').hidden=(kvar===0);
     document.getElementById('plsFraga').hidden=!(kvar===0&&fragaVantar);
+    var st=document.getElementById('plsStang'); st.className='btn '+((kvar===0&&!fragaVantar)?'btn-teal':'btn-ghost'); st.textContent=(kvar===0)?'Klart för idag':'Stäng';
+    var nx=document.getElementById('plsNasta'); if(nx){
+      var v=document.querySelector('.veckachip'), vp=document.querySelector('.veckopass');
+      nx.textContent=(kvar===0)?('Nästa pass enligt din dosering'+(vp?'. '+vp.textContent+'.':'.')+(v?' '+v.textContent+'.':'')):'';
+      nx.hidden=!(kvar===0);
+    }
+    document.body.classList.toggle('pl-summering',true);
   }
   function plStang(){
     document.getElementById('passLage').hidden=true;
-    document.body.classList.remove('pl-oppen');
+    document.body.classList.remove('pl-oppen'); document.body.classList.remove('pl-summering');
+    if(__vila){clearInterval(__vila.iv);__vila=null}
+    var t=window.__plFokusTillbaka; if(t&&t!==document.body&&t.focus&&document.contains(t))t.focus(); else {var st=document.querySelector('.pl-start'); if(st)st.focus()}
   }
   document.addEventListener('click',function(e){
     if(e.target.closest&&e.target.closest('.pl-start')){plStart();return}
+    if(e.target.closest&&e.target.closest('#startaPass')){if(document.body.getAttribute('data-flik')&&document.body.getAttribute('data-flik')!=='traning')flikByt('traning',true); plStart();return}
     if(e.target.closest&&e.target.closest('#plX')){plStang();return}
     if(e.target.closest&&e.target.closest('#plsStang')){plStang();return}
     if(e.target.closest&&e.target.closest('#plsFortsatt')){var kv=plOgjorda(); if(kv.length){plIx=kv[0].i;plVisa();} else plStang(); return}
@@ -1812,7 +1996,77 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
   });
   document.addEventListener('keydown',function(e){
     if(e.key==='Escape'&&document.body.classList.contains('pl-oppen'))plStang();
+    if(e.key==='Tab'&&document.body.classList.contains('pl-oppen')){
+      var f=[].slice.call(document.querySelectorAll('#passLage button:not([hidden]),#passLage a[href],#passLage [tabindex="0"]')).filter(function(x){return x.offsetParent!==null});
+      if(!f.length)return;
+      var first=f[0],last=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===first){last.focus();e.preventDefault();}
+      else if(!e.shiftKey&&document.activeElement===last){first.focus();e.preventDefault();}
+    }
   });
+  var __vila=null;
+  document.addEventListener('click',function(e){
+    var k=e.target.closest&&e.target.closest('.pl-vilaknapp'); if(!k)return;
+    var txt=k.querySelector('.pl-vilatxt'), ring=k.querySelector('.pl-vilaring');
+    if(__vila){clearInterval(__vila.iv);__vila=null;k.classList.remove('gar');txt.innerHTML='<small>Vila mellan set</small>Starta 60 sekunder';ring.style.setProperty('--p','0');return}
+    var sek=parseInt(k.getAttribute('data-sek'),10)||60, slut=Date.now()+sek*1000; k.classList.add('gar');
+    __vila={iv:setInterval(function(){
+      var kvar=Math.max(0,Math.ceil((slut-Date.now())/1000));
+      txt.innerHTML='<small>Vilar</small>'+kvar+' sekunder kvar, tryck för att avbryta';
+      ring.style.setProperty('--p',String(1-kvar/sek));
+      if(kvar<=0){clearInterval(__vila.iv);__vila=null;k.classList.remove('gar');k.classList.add('klar');
+        txt.innerHTML='<small>Vilan är slut</small>Nästa set';
+        var st=k.parentNode.querySelector('.pl-set'); if(st){var n=parseInt(st.getAttribute('data-set'),10),mx=parseInt(st.getAttribute('data-max'),10); if(n<mx){st.setAttribute('data-set',String(n+1));st.innerHTML='Set <b>'+(n+1)+'</b> av '+mx;}}
+        if(navigator.vibrate)navigator.vibrate([120,60,120]);
+        try{var AC=window.AudioContext||window.webkitAudioContext; if(AC){var ac=window.__ac||(window.__ac=new AC()); var o=ac.createOscillator(), g=ac.createGain(); o.type='sine'; o.frequency.value=660; g.gain.value=0.0001; o.connect(g); g.connect(ac.destination); var t0=ac.currentTime; g.gain.exponentialRampToValueAtTime(0.18,t0+0.02); g.gain.exponentialRampToValueAtTime(0.0001,t0+0.4); o.start(t0); o.stop(t0+0.45);}}catch(x){}
+        setTimeout(function(){k.classList.remove('klar');txt.innerHTML='<small>Vila mellan set</small>Starta 60 sekunder';ring.style.setProperty('--p','0')},3000);
+      }
+    },250)};
+  });
+
+  var AKT3={
+    L:{namn:'löprundan',behall:['Lugn jogg på plant underlag','Cykel eller simning som alternativ konditionsdag','Rörlighet och programmet som uppvärmning'],skala:['Distans: högst tio procent mer per vecka','Tempo: samtalstempo tills morgonen efter är tyst','Backar och trappor: en sort i taget'],pausa:['Intervaller och tävlingstempo','Terräng med ojämnt underlag','Två hårda pass i rad']},
+    G:{namn:'gympasset',behall:['Maskiner och kablar som styr banan','Engine: rodd, bike, crosstrainer','Allt som inte pekar mot besväret'],skala:['Fria lyft till teknikvikter, hela vägen kontrollerat','Undvik ytterlägen i den led som besväret sitter i','Volym före intensitet: fler set, lättare'],pausa:['Maxförsök och tunga singlar','Rörelser som ger reaktion dagen efter','Övningar vi pekat ut vid besöket']},
+    X:{namn:'passet i boxen',behall:['Engine: rodd, bike, ski-erg','Core och tekniklätta lyft','Uppvärmning med programmet, alltid'],skala:['Rörelsen som pekar mot besväret till en variant som är tyst dagen efter','Teknikvikter, aldrig RX, tills uppföljningen','Bygg volym före intensitet i den skalade rörelsen'],pausa:['RX och tävlingstempo','Kipping och explosiva varianter av den skalade rörelsen','WOD-tempo på det som gör ont']},
+    H:{namn:'Hyrox-passet',behall:['Löpsträckorna i lugnt tempo','Rodd och ski-erg','Sled push med låg vikt'],skala:['Wall balls och burpee broad jumps till lägre volym','Sled pull och farmers carry med lättare last','Sandbag lunges bara utan reaktion dagen efter'],pausa:['Tävlingssimulering och tidtagning','Stationer vi pekat ut vid besöket','Två hårda pass i rad']},
+    C:{namn:'cykelturen',behall:['Lugn tramp med hög kadens','Plant underlag och sittande klättring','Rullar inomhus med kontrollerad belastning'],skala:['Längd: bygg tio procent per vecka','Backar: sittande, lägre växel','Se över sadelhöjd och räckvidd om besväret sitter i knä eller rygg'],pausa:['Intervaller och stående klättring','Tunga växlar i uppförsbackar','Långpass över det som är tyst dagen efter']},
+    P:{namn:'promenaden',behall:['Dagliga promenader, det är medicin','Plant underlag och bra skor','Programmet före promenaden om det passar'],skala:['Längd före tempo','Trappor och backar stegvis','Stavar om det avlastar'],pausa:['Ingenting i normalfallet','Långa turer som ger reaktion dagen efter']},
+    V:{namn:'vandringen',behall:['Plant och kort med lätt packning','Programmet kvällen före','Stavar för nedförsbackarna'],skala:['Packning: bygg stegvis','Nedförsbackar: kortare kliv, stavar','Höjdmeter före längd'],pausa:['Tung packning i brant terräng','Flerdagarsturer tills uppföljningen har kvitterat']}
+  };
+  function aktTre(){
+    document.querySelectorAll('.akt-tre').forEach(function(x){x.remove()});
+    if(!__patKod||document.body.classList.contains('bibliotek'))return;
+    var progOv=[].slice.call(document.querySelectorAll('section[data-block="program"].aktiv details[data-ovid]')).slice(0,2).map(function(d){var su=d.querySelector('summary');return su?((su.querySelector('.ovtitel')||su).textContent.replace(/^\s*\d+\s*[·.]?\s*/,'').trim()):''}).filter(Boolean);
+    document.querySelectorAll('.akt-kort').forEach(function(k){
+      if(getComputedStyle(k).display==='none')return;
+      var a=AKT3[k.getAttribute('data-akt')]; if(!a)return;
+      var el=document.createElement('div'); el.className='akt-tre mp-inject';
+      var kol=function(rub,lista,cls){return '<div class="akt-kol '+cls+'"><h4>'+rub+'</h4><ul>'+lista.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div>'};
+      el.innerHTML='<p class="akt-tre-et">Så anpassar vi '+a.namn+' efter ditt program</p><div class="akt-tre-kol">'+kol('Behåll',a.behall,'behall')+kol('Skala',a.skala,'skala')+kol('Pausa',a.pausa,'pausa')+'</div>'+(progOv.length?'<p class="akt-varm"><b>Uppvärmning ur programmet:</b> gör '+progOv.map(function(n){return '<i>'+n+'</i>'}).join(' och ')+' innan '+a.namn+', det förbereder exakt det vävnaden ska klara.</p>':'');
+      var tr=k.querySelector('.akt-trappa'); if(tr&&tr.nextSibling)k.insertBefore(el,tr.nextSibling); else k.appendChild(el);
+    });
+  }
+  function kalRender(){
+    var box=document.getElementById('dlKal'), grid=document.getElementById('dlkGrid'); if(!box||!grid)return;
+    if(!__patKod||document.body.classList.contains('bibliotek')){box.hidden=true;return}
+    var logg=dlLas(), per={}; logg.forEach(function(e){per[e.d]=(typeof e.g==='number'&&e.g>0)?'gjord':((e.e&&!e.g)?'ej':'gjord')});
+    var idag=dagStr(new Date()), nu=new Date(idag+'T12:00:00'), y=nu.getFullYear(), m=nu.getMonth();
+    var forsta=new Date(y,m,1), start=(forsta.getDay()+6)%7, dagar=new Date(y,m+1,0).getDate();
+    var MAN=['januari','februari','mars','april','maj','juni','juli','augusti','september','oktober','november','december'];
+    document.getElementById('dlkManad').textContent=MAN[m].charAt(0).toUpperCase()+MAN[m].slice(1)+' '+y;
+    var h=''; for(var i=0;i<start;i++)h+='<span class="dlk-tom"></span>';
+    for(var d=1;d<=dagar;d++){var ds=y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0'); var k=per[ds]||''; h+='<button type="button" class="dlk-dag'+(k?' '+k:'')+(ds===idag?' idag':'')+(ds>idag?' framtid':'')+'" data-d="'+ds+'" aria-label="'+ds+(k==='gjord'?', pass loggat':k==='ej'?', markerat ej gjort':'')+'"><b>'+d+'</b></button>';}
+    grid.innerHTML=h;
+    /* svit: dagar i rad med loggat pass, räknat bakåt från idag eller igår */
+    var svit=0, dag=new Date(nu), kol=idag; if(!per[idag]){dag.setDate(dag.getDate()-1); kol=dagStr(dag);} 
+    while(per[kol]==='gjord'){svit++; dag.setDate(dag.getDate()-1); kol=dagStr(dag);}
+    var langst=0, cur=0, alla=Object.keys(per).filter(function(k){return per[k]==='gjord'}).sort(), prev=null;
+    alla.forEach(function(k){ if(prev){var pd=new Date(prev+'T12:00:00'); pd.setDate(pd.getDate()+1); cur=(dagStr(pd)===k)?cur+1:1;} else cur=1; if(cur>langst)langst=cur; prev=k; });
+    document.getElementById('dlkSvit').textContent=svit>1?(svit+' dagar i rad'):(svit===1?'1 dag i rad':(langst>1?'Längsta svit: '+langst+' dagar':''));
+    box.hidden=false;
+  }
+  var MEDALJ='<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="14" r="6.5" fill="#B08D57" stroke="#fff" stroke-width="1.5"/><path d="M8 2 L12 9 L16 2" fill="none" stroke="#B08D57" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 14 l1.5 1.5 3-3.5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var TROFE='<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0V4z M7 6H4v2a3 3 0 0 0 3 3 M17 6h3v2a3 3 0 0 1-3 3 M12 14v3 M8 20h8 M10 17h4v3h-4z" fill="none" stroke="#B08D57" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>';
   function milLas(){try{return JSON.parse(localStorage.getItem('kanseiMil_'+__patKod)||'{}')}catch(e){return {}}}
   function milSkriv(o){try{localStorage.setItem('kanseiMil_'+__patKod,JSON.stringify(o))}catch(e){}}
   function milRender(progs){
@@ -1824,12 +2078,41 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     lista.innerHTML='';
     alla.forEach(function(m){
       var rad=document.createElement('button'); rad.type='button'; rad.className='mil-rad'+(st[m.id]?' klar':''); rad.setAttribute('data-mil',m.id);
-      rad.innerHTML='<span class="mil-ring">'+(st[m.id]?'✓':'')+'</span><span class="mil-txt">'+m.txt+(st[m.id]?'<small>Klarad '+dlDatumFin(st[m.id])+'</small>':'')+'</span>';
+      rad.innerHTML='<span class="mil-ring">'+(st[m.id]?MEDALJ:'')+'</span><span class="mil-txt">'+m.txt+(st[m.id]?'<small>Klarad '+dlDatumFin(st[m.id])+'</small>':'')+'</span>';
       lista.appendChild(rad);
     });
+    var klara=alla.filter(function(m){return st[m.id]}).length, allt=document.getElementById('dlMilAllt');
+    if(allt){allt.hidden=!(klara===alla.length&&alla.length>0);}
+    var et=box.querySelector('.dl-et'); if(et)et.innerHTML=TROFE+' Milstolpar <span class="mil-rakn">'+klara+' av '+alla.length+'</span>';
     box.hidden=false;
   }
   document.addEventListener('click',function(e){
+    if(e.target.closest&&e.target.closest('#kbForhandsMobil')){
+      e.preventDefault();
+      var fh=document.getElementById('kbForhands'); if(!fh||!fh.getAttribute('href')||fh.getAttribute('href')==='#')return;
+      var m=document.getElementById('fgModal'), fr=document.getElementById('fgRam');
+      fr.src=location.pathname+fh.getAttribute('href').slice(fh.getAttribute('href').indexOf('#'))+'';
+      m.hidden=false; document.body.classList.add('fg-oppen'); return;
+    }
+    if(e.target.closest&&e.target.closest('#fgStang')||(e.target.id==='fgModal')){
+      var m2=document.getElementById('fgModal'); m2.hidden=true; document.getElementById('fgRam').src='about:blank'; document.body.classList.remove('fg-oppen'); return;
+    }
+    if(e.target.closest&&e.target.closest('#dlSkriv')){
+      document.body.classList.add('print-logg');
+      var bort=function(){document.body.classList.remove('print-logg');window.removeEventListener('afterprint',bort)};
+      window.addEventListener('afterprint',bort); setTimeout(bort,4000);
+      window.print(); return;
+    }
+    if(e.target.closest&&e.target.closest('#dlDela')){
+      var mej=document.getElementById('dlMejla'), href=mej?mej.getAttribute('href')||'':'';
+      var body=decodeURIComponent((href.split('&body=')[1]||'')), titel='Träningslogg '+(__patKod||'')+(__patNamn?' · '+__patNamn:'');
+      var kn=e.target.closest('#dlDela');
+      if(navigator.share){navigator.share({title:titel,text:body||titel}).catch(function(){});}
+      else if(navigator.clipboard){navigator.clipboard.writeText(body||titel).then(function(){kn.textContent='Kopierad till urklipp ✓';setTimeout(function(){kn.textContent='Dela loggen'},2500)});}
+      return;
+    }
+    var kd=e.target.closest&&e.target.closest('.dlk-dag');
+    if(kd&&!kd.classList.contains('framtid')&&typeof dpOppna==='function'){dpOppna(kd.getAttribute('data-d'));return}
     var r=e.target.closest&&e.target.closest('.mil-rad');
     if(!r||!__patKod)return;
     var st=milLas(), id=r.getAttribute('data-mil');
@@ -2029,6 +2312,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
           t.classList.remove('gar'); t.classList.add('klar');
           if(lb)lb.innerHTML='<small>Klart</small>Byt sida eller gå vidare';
           if(navigator.vibrate)navigator.vibrate([120,60,120]);
+          try{var AC=window.AudioContext||window.webkitAudioContext; if(AC){var ac=window.__ac||(window.__ac=new AC()); var o=ac.createOscillator(), g=ac.createGain(); o.type='sine'; o.frequency.value=880; g.gain.value=0.0001; o.connect(g); g.connect(ac.destination); var t0=ac.currentTime; g.gain.exponentialRampToValueAtTime(0.18,t0+0.02); g.gain.exponentialRampToValueAtTime(0.0001,t0+0.35); o.start(t0); o.stop(t0+0.4);}}catch(e){}
           __ovTimer=null;
           setTimeout(function(){if(!__ovTimer||__ovTimer.el!==t)nolla(t)},3500);
           return;
@@ -2045,13 +2329,14 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     var titel=document.getElementById('mp-titel').textContent;
     var under=document.getElementById('mp-under').getAttribute('data-txt')||document.getElementById('mp-under').textContent;
     var rader='';
-    document.querySelectorAll('section[data-block=program].aktiv details summary').forEach(function(su){
-      rader+='<tr><td class="ovkol">'+su.textContent+'</td><td></td><td></td></tr>';
+    document.querySelectorAll('section[data-block=program].aktiv details[data-ovid] summary').forEach(function(su){
+      rader+='<tr><td class="ovkol">'+su.textContent.replace(/^\s*\d+\s*/,'').trim()+'</td><td></td><td></td></tr>';
     });
     document.querySelectorAll('section[data-block=tillagg].aktiv').forEach(function(sec){
-      var t=sec.querySelector('h2').textContent;
-      sec.querySelectorAll('details summary').forEach(function(su){
-        rader+='<tr><td class="ovkol">'+t.split('·')[0].trim()+' · '+su.textContent+'</td><td></td><td></td></tr>';
+      var h2=sec.querySelector('h2').cloneNode(true); h2.querySelectorAll('.ovprog,.mp-inject').forEach(function(x){x.remove()});
+      var t=h2.textContent;
+      sec.querySelectorAll('details[data-ovid] summary').forEach(function(su){
+        rader+='<tr><td class="ovkol">'+t.split('·')[0].trim()+' · '+su.textContent.replace(/^\s*\d+\s*/,'').trim()+'</td><td></td><td></td></tr>';
       });
     });
     var veckor='';
@@ -2066,11 +2351,17 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       +'<p style="margin-top:10px;font-size:.85rem">Ta med loggen till uppföljningen, eller mejla en bild på den till info@kansei.se · kansei.se/ovningar</p>';
   }
   function prepPrint(){
-    var niv=(((document.getElementById('mp-under').getAttribute('data-txt')||document.getElementById('mp-under').textContent).match(/Nivå ([ABC])/)||[])[1]||'A');
-    document.querySelectorAll('section[data-block].aktiv details, #n'+niv+' details').forEach(function(d){d.setAttribute('open','')});
+    document.querySelectorAll('section[data-block].aktiv details[data-ovid], .akt-kort details.akt-trappa').forEach(function(d){d.setAttribute('open','')});
     if(typeof byggLogg==='function')byggLogg();
+    if(window.__figFas)window.__figFas(document,0);
+    document.body.classList.add('print-forberedd');
   }
   window.addEventListener('beforeprint',prepPrint);
+  window.addEventListener('afterprint',function(){
+    document.body.classList.remove('print-forberedd');
+    document.querySelectorAll('svg.ovfig [data-static]').forEach(function(el){el.removeAttribute('data-static');el.__reg=false});
+    if(window.__figSkan)window.__figSkan(document);
+  });
   document.getElementById('tillovningar').addEventListener('click',function(){
     if(typeof flikByt==='function'&&document.body.getAttribute('data-flik'))flikByt('traning',true);
     var m=document.querySelector('section[data-block="program"].aktiv .ov-rubrik')
@@ -2092,7 +2383,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     var NAMN2={1:'Höft- & bäckenstabilitet',2:'Ländrygg, grundprogram',3:'Knäartros',4:'Axel',5:'Hälsena',6:'Nacke & skuldror',7:'Tennisarmbåge',8:'Plantarfascia',9:'Frusen skuldra',10:'Knäsenan',11:'Baksida lår',12:'Fotled',13:'Höftartros',14:'Käke',15:'Handled & tumme'};
     var matris=document.getElementById('klinikmatris'), bar=document.getElementById('kbBar');
     if(!matris||!bar)return;
-    var val={rader:[],progs:[],n:null,t:[],a:[]};
+    var val={rader:[],progs:[],n:null,t:[],a:[],nPer:{}};
     matris.querySelectorAll('.bp-rad').forEach(function(r,i){r.setAttribute('data-bi',String(i))});
     function byggProgs(){
       var pl=[]; val.rader.forEach(function(bi){
@@ -2131,11 +2422,25 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       if(val.progs.length){namn.textContent=val.progs.map(function(pp){return pp+' · '+NAMN2[pp]}).join('  +  '); las.hidden=false; las.href='#p'+val.progs[0];}
       else {namn.textContent='Välj program ovan'; las.hidden=true;}
       var ut=document.getElementById('kbKod'), kop=document.getElementById('kbKopiera'), fh=document.getElementById('kbForhands');
+      /* komponist: egen nivå per program när flera valts */
+      var komp=document.getElementById('stegKomp'), kompBox=document.getElementById('kbKomp');
+      if(komp&&kompBox){
+        komp.hidden=!(val.progs.length>1&&val.n);
+        if(!komp.hidden){
+          var vill=val.progs.map(function(pp){return pp+':'+(val.nPer[pp]||val.n)}).join('|');
+          if(kompBox.getAttribute('data-vill')!==vill){
+            kompBox.setAttribute('data-vill',vill);
+            kompBox.innerHTML=val.progs.map(function(pp){var cur=val.nPer[pp]||val.n;return '<span class="kb-komprad"><span class="kb-kompnamn">'+(NAMN['p'+pp]||('Program '+pp))+'</span>'+['A','B','C'].map(function(L){return '<button type="button" class="kb-chip kb-kompn'+(cur===L?' vald':'')+'" data-kp="'+pp+'" data-kn="'+L+'">'+L+'</button>'}).join('')+'</span>'}).join('');
+          }
+        }
+      }
+      var nivFor=function(pp){return (val.progs.length>1&&val.nPer[pp])||val.n};
       if(val.progs.length&&val.n){
-        ut.textContent=val.progs.map(function(pp){return pp+val.n}).join(' ')+val.t.slice().sort(function(a,b){return a-b}).map(function(x){return ' +'+x}).join('');
-        var pat=pkodaMulti(val.progs.map(function(pp){return {p:pp,n:val.n}}), val.t);
-        document.getElementById('kbPat').textContent=pat;
+        ut.textContent=val.progs.map(function(pp){return pp+nivFor(pp)}).join(' ')+val.t.slice().sort(function(a,b){return a-b}).map(function(x){return ' +'+x}).join('');
+        var pat=pkodaMulti(val.progs.map(function(pp){return {p:pp,n:nivFor(pp)}}), val.t);
         var namnIn=(document.getElementById('kbNamn').value||'').trim().replace(/[^A-Za-zÅÄÖåäöÉé\- ]/g,'').slice(0,20);
+        if(namnIn){var hh=0,src=namnIn.toLowerCase()+dagStr(new Date()); for(var hi=0;hi<src.length;hi++){hh=(hh*31+src.charCodeAt(hi))>>>0;} pat=pat+'-'+ALFA[hh%ALFA.length]+ALFA[Math.floor(hh/ALFA.length)%ALFA.length];}
+        document.getElementById('kbPat').textContent=pat;
         var langdVal=document.getElementById('kbVeckor').value;
         var datEl=document.getElementById('kbDatum');
         datEl.hidden=(langdVal!=='datum');
@@ -2161,6 +2466,12 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
         mej.href='mailto:?subject='+encodeURIComponent('Din plan efter dagens besök')+'&body='+encodeURIComponent(body);
       } else {ut.textContent='–'; document.getElementById('kbPat').textContent='–'; kop.disabled=true; fh.hidden=true; document.getElementById('kbMejla').hidden=true;}
     }
+
+    bar.addEventListener('click',function(e){
+      var k=e.target.closest&&e.target.closest('.kb-kompn'); if(!k)return;
+      val.nPer[k.getAttribute('data-kp')]=k.getAttribute('data-kn');
+      rita();
+    });
     matris.addEventListener('click',function(e){
       if(e.target&&e.target.id==='bpSok')return;
       var tab=e.target.closest&&e.target.closest('.kv-tab');
@@ -2199,7 +2510,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     });
     bar.addEventListener('click',function(e){
       var n=e.target.getAttribute&&e.target.getAttribute('data-n');
-      if(n){val.n=(val.n===n?null:n);rita();return;}
+      if(n){val.n=(val.n===n?null:n); val.nPer={};rita();return;}
       var t=e.target.getAttribute&&e.target.getAttribute('data-t');
       if(t){var ix=val.t.indexOf(t);ix>-1?val.t.splice(ix,1):val.t.push(t);rita();return;}
       var a=e.target.getAttribute&&e.target.getAttribute('data-a');
@@ -3193,6 +3504,47 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
   }
   function svg(inne,W){return '<svg class="ovfig" viewBox="0 0 120 84" width="'+(W||120)+'" aria-hidden="true" focusable="false">'
     +'<g fill="none" stroke="'+INK+'" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">'+inne+'</g></svg>'}
+  var LAGE={
+    brygga:'Ryggliggande, knän böjda, fötterna nära rumpan. Höften lyfter.',
+    sidoclam:'Sidoliggande med böjda knän, fötterna ihop. Övre knät öppnar.',
+    sidoben:'Stående på ett ben med lätt stöd. Det andra benet lyfter ut och fram.',
+    enben:'Stående på ett ben, blicken på en fast punkt framför dig.',
+    balansmjuk:'Stående på ett ben på mjukt underlag, blicken framåt.',
+    fyrfota:'På alla fyra, händerna under axlarna, knäna under höfterna. Ryggen rundar och svankar.',
+    fagelhund:'På alla fyra. Motsatt arm och ben sträcks rakt ut, blicken ner.',
+    sidoplanka:'Sidoliggande på underarm och knän. Höften lyfter till rak linje.',
+    utfall:'Halvknästående: främre foten i golvet, bakre knät i golvet. Höften skjuts framåt.',
+    uppresning:'Sittande på stolskanten, fötterna under knäna. Res dig utan händer.',
+    knastrack:'Sittande på stol. Ena benet sträcks rakt fram.',
+    slump:'Sittande på stolskanten, händerna bakom ryggen. Knät sträcks medan blicken lyfts.',
+    stegupp:'Främre foten på ett steg. Tryck upp genom hälen.',
+    vadpress:'Stående, lätt stöd. Upp på tå och långsamt ner.',
+    vadsteg:'Framfoten på ett trappsteg, hälen fri. Upp på tå, sedan hälen under stegets nivå.',
+    rotband:'Stående, armbågen i sidan i rät vinkel. Underarmen roterar utåt mot bandet.',
+    skuldersatt:'Stående avslappnad. Skulderbladen dras ner och bakåt, håll.',
+    framatlyft:'Stående. Armen lyfts rakt fram till axelhöjd, sänks långsamt.',
+    vagglid:'Stående med underarmarna mot väggen. Armarna glider uppåt längs väggen.',
+    pendel:'Framåtlutad med stöd av ena handen. Den fria armen hänger och pendlar.',
+    vaggklattring:'Stående vänd mot väggen. Fingrarna klättrar uppåt.',
+    pinne:'Stående med en pinne i händerna, armbågarna i sidan. Den ena handen förs utåt.',
+    handduk:'Stående med en handduk bakom ryggen, ena handen över axeln. Den nedre handen dras uppåt.',
+    nacke:'Stående eller sittande med rak rygg. Huvudet glider rakt bakåt, hakan in.',
+    nick:'Ryggliggande. Hakan nickar mot bröstet utan att huvudet lyfter.',
+    rodd:'Stående med bandet framför dig. Armbågarna dras bakåt förbi kroppen.',
+    brostrot:'På alla fyra med ena handen bakom nacken. Armbågen roterar upp mot taket.',
+    fotboll:'Sittande, foten på en boll. Rulla under hela fotsulan.',
+    andning:'Ryggliggande med böjda knän, en hand på magen. Magen lyfter på inandning.',
+    djupbo:'Djup knäböj med hälarna i golvet, armarna framåt. Vila i botten.',
+    nervglid:'Stående, armen rakt ut åt sidan med handflatan uppåt. Handleden och huvudet rör sig i motfas.',
+    handled:'Underarmen på ett bord, handen fri utanför kanten. Handen sänks långsamt.',
+    grepp:'Sittande eller stående med en mjuk boll i handen. Kläm och släpp långsamt.',
+    hammare:'Armbågen i sidan, en hammare i handen. Skaftet vrids från sida till sida.',
+    tummen:'Handen öppen framför dig. Tummen förs mot lillfingrets bas.',
+    tasprid:'Foten i golvet. Tårna spretar isär utan att foten lyfter.',
+    kakvila:'Avslappnat ansikte, tungan lätt mot gommen, tänderna isär.',
+    spegel:'Framför en spegel. Gapa rakt ner utan att käken viker av.'
+  };
+  window.__ovLage=function(ovid){var k=KARTA[ovid]; return k?(LAGE[k]||''):''};
   window.__ovIkon=function(ovid,W){var k=KARTA[ovid]; return k?svg(bygg(k),W):''};
   /* ---------- animationsklockan ---------- */
   var REG=[], RM=false; try{RM=matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){}
@@ -3247,6 +3599,7 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
       if(d.querySelector('.ov-figrad'))return;
       var ik=window.__ovIkon(d.getAttribute('data-ovid'),96); if(!ik)return;
       var w=document.createElement('div'); w.className='ov-figrad mp-inject'; w.innerHTML=ik;
+      var lg0=window.__ovLage?window.__ovLage(d.getAttribute('data-ovid')):''; if(lg0)w.setAttribute('title',lg0);
       var su=d.querySelector('summary');
       if(su&&su.nextSibling)d.insertBefore(w,su.nextSibling); else d.appendChild(w);
     });
@@ -3298,7 +3651,9 @@ body.pl-oppen{overflow:hidden}
 #plBladdra button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line-2);background:var(--yta);color:var(--ink);font-size:1.25rem;line-height:1;cursor:pointer;padding:0 0 3px}
 #plBladdra button:hover{background:var(--mist)}
 @media(max-width:560px){#plFot .btn{padding:14px 18px;font-size:.88rem}#plEj{flex:0 1 auto}#plKlar{flex:0 1 auto;min-width:140px}}
-#plSlut{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;text-align:center}
+#plSlut{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center}
+body.pl-summering #passLage{padding:0 20px 20px}
+body.pl-summering #plSlut{margin:auto}
 #plSlut[hidden]{display:none!important}
 .pls-ikon{width:72px;height:72px;border-radius:50%;background:var(--teal);color:#fff;font-size:2rem;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(13,123,111,.35)}
 .pls-ikon.ofull{background:var(--mist);color:var(--dim);box-shadow:none;border:1px solid var(--line-2)}
@@ -3506,6 +3861,228 @@ body.kodad .aktiv details[data-ovid]>summary .ovnr{font-family:var(--mono);font-
 .pl-faser .ovfig{width:96px;padding:4px 10px;background:var(--yta);border:1px solid var(--line);border-radius:10px}
 .pl-faser figcaption{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
 @media(min-width:900px){#plInne .pl-kort>.ov-figrad{flex-direction:column}}
+</style>
+
+
+<style id="v84-valk">
+#valkKort{margin:16px 0 4px;padding:20px 22px;background:var(--yta);border:1px solid var(--line);border-radius:16px;box-shadow:0 6px 24px rgba(16,32,42,.06)}
+#valkKort[hidden]{display:none!important}
+.vk-et{margin:0 0 4px;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-ink);font-weight:700}
+.vk-rubrik{margin:0 0 10px;font-family:var(--display);font-size:1.3rem;color:var(--ink)}
+.vk-lista{margin:0 0 16px;padding-left:20px;color:var(--dim);font-size:.94rem;line-height:1.65}
+.vk-lista li{margin-bottom:6px}
+.vk-lista b{color:var(--ink);font-weight:600}
+#vkKlar{cursor:pointer;font-family:var(--body);font-weight:500;padding:13px 24px}
+#mp-under .mp-chip.veckopass{border-color:rgba(13,123,111,.35);color:var(--teal-ink);background:var(--teal-soft)}
+@media print{#valkKort{display:none!important}}
+</style>
+
+
+<style id="v85-qr-vila">
+#qrPrint{display:none}
+@media print{
+  #qrPrint{display:flex!important;align-items:center;gap:14px;margin:8px 0 12px;padding:10px 12px;border:1px solid #999;border-radius:8px;break-inside:avoid}
+  #qrPrint[hidden]{display:none!important}
+  #qrBild svg{width:34mm;height:34mm}
+  .qr-text{display:flex;flex-direction:column;gap:3px;font-size:10pt}
+  .qr-text b{font-size:11pt}
+  .qr-text .qr-url{font-family:var(--mono);font-size:9pt;color:#444}
+  #qrKod{font-family:var(--mono);font-size:11pt;letter-spacing:.08em}
+}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.pl-vila{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px dashed rgba(176,141,87,.4)}
+.pl-set{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--guld-djup)}
+.pl-set b{font-size:1rem;color:var(--ink)}
+.pl-vilaknapp{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(176,141,87,.6);background:var(--yta);border-radius:999px;padding:8px 16px 8px 8px;cursor:pointer;font-family:var(--body);color:var(--ink);text-align:left}
+.pl-vilaring{--p:0;width:26px;height:26px;border-radius:50%;background:conic-gradient(var(--guld) calc(var(--p)*360deg),var(--guld-soft) 0);border:1px solid rgba(176,141,87,.6);flex:0 0 auto}
+.pl-vilaknapp.klar{border-color:var(--teal);background:var(--teal-soft)}
+.pl-vilatxt{display:flex;flex-direction:column;font-size:.88rem;line-height:1.25}
+.pl-vilatxt small{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--guld-djup)}
+</style>
+
+
+<style id="v85-komp">
+#kbKomp{display:flex;flex-direction:column;gap:6px}
+.kb-komprad{display:flex;align-items:center;gap:6px}
+.kb-kompnamn{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:var(--paper);opacity:.85;min-width:120px}
+.kb-kompn{min-width:34px;padding:6px 10px}
+body.kb-oppen #kbBar #stegKomp{display:block;margin:16px 0}
+</style>
+
+
+<style id="v86-resa">
+body.kodad .crumb,body.kodad header.page{display:none}
+body.kodad #mittprogram{padding-top:18px;padding-bottom:10px!important}
+body.kodad .wrap{padding-top:calc(64px + 12px)}
+.mp-knappar2{flex-direction:row!important;width:100%;align-self:stretch}
+#plX:focus:not(:focus-visible){outline:none;box-shadow:none}
+.mp-knappar{display:flex;flex-direction:column;gap:10px}
+.mp-knappar>.btn{width:100%;justify-content:center}
+.mp-knappar2{display:flex;gap:10px}
+.mp-knappar2 .btn{flex:1;justify-content:center;padding:12px 14px;font-size:.88rem;white-space:nowrap}
+@media(min-width:700px){.mp-knappar{flex-direction:row;flex-wrap:wrap;align-items:center}.mp-knappar>.btn{width:auto}.mp-knappar2{margin-left:auto}.mp-knappar2 .btn{flex:0 0 auto}}
+#valkKort{margin-top:8px}
+#bokaKort{margin-top:8px}
+
+</style>
+
+
+<style id="v86-lage">
+.pl-lage{margin:2px 0 0;max-width:420px;text-align:center;font-size:.9rem;color:var(--dim);line-height:1.55}
+.pl-lage span{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-ink);margin-bottom:2px}
+</style>
+
+
+<style id="v87-print">
+@media print{
+  @page{margin:12mm 12mm 14mm}
+  body{font-size:10.5pt}
+  .crumb,header.page,#flikar,#valkKort,#bokaKort,#dlFragor,#passBar,#passLage,.pl-startrad,.ov-intro,.lasmer,.nivastege,#nA,#nB,#nC,.tabs,#kbBar,#kbmVaxel,#fabWrap{display:none!important}
+  body.kodad #mittprogram{padding:0!important}
+  .mp-huvud2{border:1px solid #bbb;border-radius:8px;padding:10mm 8mm 6mm;box-shadow:none;break-after:avoid}
+  .mp-huvud2 h2{font-size:22pt;margin:2mm 0}
+  .mp-knappar,.mp-knappar2,.mp-sign .sign-lang{display:none!important}
+  #qrPrint{margin:4mm 0 6mm}
+  section[data-block].aktiv{padding:3mm 0 2mm!important;margin:0!important;border:none!important}
+  section[data-block].aktiv>h2{font-size:15pt;margin:4mm 0 1mm;break-after:avoid}
+  section[data-block].aktiv>p{font-size:10pt;line-height:1.4;margin:0 0 2mm}
+  .ov-rubrik{margin:3mm 0 1mm}
+  /* övningskorten: tätt, figur till vänster, ingen luft */
+  body.kodad .aktiv details[data-ovid]{display:block!important;border:1px solid #bbb!important;border-radius:6px!important;box-shadow:none!important;padding:3mm 4mm!important;margin:0 0 3mm!important;break-inside:avoid;overflow:hidden}
+  body.kodad .aktiv details[data-ovid]>summary{padding:0 0 1.5mm!important;border-bottom:1px solid #ddd;margin-bottom:2mm;font-size:12pt}
+  body.kodad .aktiv details[data-ovid]>summary .ovcheck{display:none!important}
+  .ov-figrad{display:block!important;float:left;width:30mm;margin:0 4mm 1mm 0;padding:0!important}
+  .ov-figrad .ovfig{width:30mm;height:auto;padding:2mm;background:none;border:1px solid #ddd;border-radius:4px}
+  .ov-figrad .ovfig .bak{stroke:#9aa}
+  body.kodad .aktiv details[data-ovid]>*:not(summary):not(.ov-figrad){padding-left:0!important;padding-right:0!important}
+  body.kodad .aktiv details[data-ovid]>.ov-nasta{clear:both}
+  .ov-niva{margin:0 0 2mm!important;padding:1.5mm 3mm!important;border:1px solid #b08d57!important;border-left:3px solid #b08d57!important;border-radius:4px!important;background:none!important;box-shadow:none!important}
+  .ov-niva p{font-size:10pt;line-height:1.3;display:block}
+  .ov-niva .ov-niva-et{display:inline;margin-right:4px}
+  .ov-varfor,.ov-gor,.ov-tank,.ov-nasta{font-size:9.5pt!important;line-height:1.38!important;margin:0 0 1.5mm!important}
+  .ov-varfor{font-style:italic}
+  .ov-tank{border-left:2px solid #0D7B6F;padding:1mm 2mm!important;background:none!important;border-radius:0!important}
+  .ov-akt{margin:0 0 1.5mm!important;padding:1mm 2mm!important}
+  .akt-kort{break-inside:avoid;border:1px solid #bbb;padding:3mm 4mm;margin:0 0 3mm}
+  .inj-plan{padding-left:6mm}
+  .tranlogg{break-inside:avoid;margin-top:6mm}
+  .akt-trappa{display:block!important}
+  .akt-trappa ol{margin:1mm 0 0 5mm}
+  .tranlogg table{font-size:9pt}
+  .cta-row{display:none!important}
+}
+</style>
+
+
+<style id="v87-bas">
+button[hidden],.btn[hidden],#plFot[hidden],#plInne[hidden],#plSlut[hidden],#plBladdra[hidden],#plsNasta[hidden],#dlKal[hidden],#korthet[hidden],#dlMilAllt[hidden],#stegKomp[hidden]{display:none!important}
+button,input,select,textarea{font-family:inherit}
+.btn,.kb-chip,.flik,.mil-rad,.dl-chip,#vkKlar,#plsStang,#plsFraga,#plsFortsatt,#plKlar,#plEj,.pl-start,#startaPass,#tillovningar,#skrivut,#bytkod,#dlBocka,#dlMejla,#kbmKlar,#kbmVaxel,.pl-vilaknapp,#bkHar,#bkBoka{font-family:var(--body)!important}
+</style>
+
+
+<style id="v87-sum">
+body.pl-summering #plBladdra,body.pl-summering #plFot{display:none!important}
+#plSlut{max-width:480px;margin:0 auto;background:var(--yta);border:1px solid var(--line);border-radius:22px;box-shadow:0 10px 34px rgba(16,32,42,.08);padding:34px 28px;flex:0 0 auto;align-self:center}
+#passLage.summering{justify-content:center}
+.pls-nasta{margin:2px 0 0;font-size:.9rem;color:var(--dim)}
+.pls-rad{flex-direction:column;width:100%;gap:10px;margin-top:16px}
+.pls-rad .btn{width:100%;justify-content:center}
+@media(min-width:700px){.pls-rad{flex-direction:row;justify-content:center}.pls-rad .btn{width:auto}}
+</style>
+
+
+<style id="v87-hint">
+.pl-lashint{align-self:center;margin-top:4px;border:1px solid var(--teal);background:var(--yta);color:var(--teal-ink);border-radius:999px;padding:9px 18px;font-size:.85rem;cursor:pointer;display:inline-flex;gap:8px;align-items:center;animation:hintPuls 2.2s ease-in-out infinite}
+.pl-lashint.bort{display:none}
+@keyframes hintPuls{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+@media(min-width:900px){.pl-lashint{display:none}}
+@media (prefers-reduced-motion: reduce){.pl-lashint{animation:none}}
+</style>
+
+
+<style id="v87-till">
+.till-rubrik{margin:26px 0 6px;padding-top:18px;border-top:2px solid var(--line-2);font-size:.9rem;color:var(--dim)}
+.till-rubrik span{display:block;font-family:var(--display);font-size:1.35rem;color:var(--ink);margin-bottom:2px}
+body[data-flik]:not([data-flik="traning"]) .till-rubrik{display:none}
+@media print{.till-rubrik{margin:4mm 0 2mm;padding-top:2mm}}
+</style>
+
+
+<style id="v87-logg">
+.dlk-topp{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.dlk-svit{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:var(--teal-ink);background:var(--teal-soft);border:1px solid rgba(13,123,111,.3);border-radius:999px;padding:4px 10px}
+.dlk-svit:empty{display:none}
+.dlk-vd{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-family:var(--mono);font-size:.6rem;color:var(--dim);text-align:center;margin-bottom:4px}
+.dlk-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.dlk-dag,.dlk-tom{aspect-ratio:1;border-radius:10px;border:1px solid var(--line);background:var(--yta);display:flex;align-items:center;justify-content:center;font-size:.82rem;color:var(--ink);cursor:pointer;padding:0}
+.dlk-tom{border:none;background:none;cursor:default}
+.dlk-dag b{font-weight:500}
+.dlk-dag.gjord{background:var(--teal);border-color:var(--teal);color:#fff}
+.dlk-dag.gjord b{font-weight:600}
+.dlk-dag.ej{background:var(--mist);border-color:var(--line-2);color:var(--dim)}
+.dlk-dag.idag{box-shadow:0 0 0 2px var(--guld)}
+.dlk-dag.framtid{opacity:.4;cursor:default}
+.dlk-fot{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:10px 0 0;font-size:.74rem;color:var(--dim)}
+.dlk-prick{display:inline-block;width:10px;height:10px;border-radius:3px;border:1px solid var(--line)}
+.dlk-prick.gjord{background:var(--teal);border-color:var(--teal)}
+.dlk-prick.ej{background:var(--mist);border-color:var(--line-2)}
+.dlk-prick.idag{box-shadow:0 0 0 2px var(--guld);background:var(--yta)}
+.mil-rakn{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:var(--guld-djup);margin-left:8px}
+#dlMil .dl-et{display:flex;align-items:center;gap:6px}
+.mil-rad.klar .mil-ring{background:none;border:none}
+#dlMilAllt{margin:10px 0 0;padding:12px 14px;background:var(--guld-soft);border:1px solid rgba(176,141,87,.5);border-left:4px solid var(--guld);border-radius:12px;font-size:.9rem;color:var(--ink);line-height:1.55}
+.dl-slut{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+@media print{
+  body.print-logg .mp-huvud2 .mp-knappar,body.print-logg #qrPrint{display:none!important}
+  body.print-logg section[data-block].aktiv:not(#digilogg),body.print-logg .till-rubrik,body.print-logg .tranlogg{display:none!important}
+  body.print-logg #digilogg{display:block!important}
+  body.print-logg #dlMer{display:block!important}
+  body.print-logg #dlMer>summary{display:none}
+  body.print-logg .dl-slut,body.print-logg .dl-spara,body.print-logg #dlDpChips{display:none!important}
+  body.print-logg .dlk-dag.gjord{background:#0D7B6F!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #dlSkriv,#dlDela{display:none!important}
+}
+</style>
+
+
+<style id="v87-akt">
+.akt-tre{margin:14px 0 6px;padding:14px 16px;background:var(--mist);border:1px solid var(--line);border-radius:14px}
+.akt-tre-et{margin:0 0 10px;font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-ink);font-weight:700}
+.akt-tre-kol{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:560px){.akt-tre-kol{grid-template-columns:1fr}}
+.akt-kol{background:var(--yta);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.akt-kol h4{margin:0 0 6px;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase}
+.akt-kol.behall h4{color:var(--teal-ink)}.akt-kol.skala h4{color:var(--guld-djup)}.akt-kol.pausa h4{color:var(--ink)}
+.akt-kol ul{margin:0;padding-left:16px;font-size:.88rem;color:var(--ink);line-height:1.5}
+.akt-kol li{margin-bottom:3px}
+.akt-varm{margin:12px 0 0;font-size:.9rem;color:var(--ink);line-height:1.55;padding:10px 12px;background:var(--guld-soft);border:1px solid rgba(176,141,87,.45);border-left:4px solid var(--guld);border-radius:10px}
+.akt-varm i{font-style:normal;font-weight:600}
+@media print{.akt-tre{break-inside:avoid;background:none;padding:2mm 3mm}.akt-tre-kol{gap:4mm}.akt-kol{padding:1.5mm 2.5mm}.akt-kol ul{font-size:9pt}}
+</style>
+
+
+<style id="v87-korthet">
+#korthet{margin:14px 0 4px;padding:18px 20px;background:var(--yta);border:1px solid var(--line);border-radius:16px}
+body[data-flik]:not([data-flik="oversikt"]) #korthet{display:none}
+.kh-et{margin:0 0 10px;font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-ink);font-weight:700}
+#khLista{margin:0;display:grid;gap:8px}
+#khLista>div{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:start;font-size:.92rem;line-height:1.5;padding-bottom:8px;border-bottom:1px dashed var(--line)}
+#khLista>div:last-child{border-bottom:none;padding-bottom:0}
+#khLista dt{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);padding-top:3px}
+#khLista dd{margin:0;color:var(--ink)}
+@media print{#korthet{break-inside:avoid;margin:4mm 0}}
+</style>
+
+
+<style id="v87-fg">
+#fgModal{position:fixed;inset:0;z-index:400;background:rgba(16,24,32,.6);display:flex;align-items:center;justify-content:center;padding:20px}
+#fgModal[hidden]{display:none!important}
+.fg-ram{width:min(430px,100%);height:min(860px,92vh);background:#111;border-radius:36px;padding:12px;box-shadow:0 30px 80px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:8px}
+.fg-topp{display:flex;align-items:center;justify-content:space-between;color:#fff;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:2px 6px}
+#fgStang{background:#fff;border:none;border-radius:50%;width:30px;height:30px;font-size:1.1rem;cursor:pointer}
+#fgRam{flex:1;border:none;border-radius:26px;background:#fff;width:100%}
+body.fg-oppen{overflow:hidden}
 </style>
 
 </body>

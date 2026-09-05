@@ -1,0 +1,16 @@
+{
+  "name": "Reda by Kansei",
+  "short_name": "Reda",
+  "description": "Din plan från Kansei Rehabcenter, med pass, dosering och logg.",
+  "start_url": "/reda/",
+  "scope": "/reda/",
+  "display": "standalone",
+  "background_color": "#EEF2F3",
+  "theme_color": "#0D7B6F",
+  "lang": "sv",
+  "icons": [
+    {"src": "ikon/reda-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "ikon/reda-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "ikon/reda-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

@@ -1,5 +1,5 @@
 /* Kansei Övningsbanken · offline-cache · v73 */
-var V='kansei-reda-v105';
+var V='kansei-reda-v106';
 self.addEventListener('install',function(e){
   self.skipWaiting();
   e.waitUntil(caches.open(V).then(function(c){return c.addAll(['./','./index.html','./manifest.webmanifest','./ikon/reda-192.png','./ikon/reda-512.png'])}));

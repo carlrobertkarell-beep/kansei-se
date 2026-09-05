@@ -709,16 +709,18 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <div class="wrap">
 <div class="crumb"><a href="/">Hem</a> / Reda</div>
 <header class="page">
-<div class="reda-lockup"><img src="/bilder/reda/mark.svg" alt="" width="52" height="52" class="reda-mark"><h1 class="reda-ord"><img src="/bilder/reda/wordmark.svg" alt="Reda" class="reda-ordbild" width="230" height="96"></h1><span class="reda-by">by Kansei</span></div>
-<p class="eyebrow">Din plan från besöket</p>
-<p class="intro">Reda är träningsprogrammet från ditt besök, i mobilen. Koden du fick låser upp rätt program, rätt nivå och rätt tillägg, och sedan sköter Reda resten.</p>
+<div class="reda-hero">
+  <div class="reda-lockup"><img src="/bilder/reda/mark.svg" alt="" width="64" height="64" class="reda-mark"><h1 class="reda-ord"><img src="/bilder/reda/wordmark.svg" alt="Reda" class="reda-ordbild" width="230" height="96"></h1></div>
+  <p class="reda-tag">Din plan från besöket, i mobilen.</p>
+  <p class="intro">Träningsprogrammet som är byggt efter din undersökning hos Kansei Rehabcenter. Koden i mejlet låser upp rätt program, rätt nivå och rätt tillägg, sedan sköter Reda resten.</p>
+</div>
 </header>
 <main id="huvud">
 <section id="kodgrind">
 <div class="kodkort">
 <p class="kodetikett">Din kod från besöket</p>
 <form id="kodform" autocomplete="off">
-<input id="kodfalt" type="text" inputmode="text" autocapitalize="characters" autocorrect="off" spellcheck="false" aria-label="Din kod" placeholder="Till exempel AG272-FZ" maxlength="24">
+<input id="kodfalt" type="text" inputmode="text" autocapitalize="characters" autocorrect="off" spellcheck="false" aria-label="Din kod" placeholder="Din kod" maxlength="24">
 <button class="btn btn-teal" type="submit">Öppna min plan →</button>
 </form>
 <p id="kiHemma" class="ki-hemma" hidden>Inloggningen i inkorgen är klar. Ange klinikkoden så öppnas den.</p>
@@ -759,7 +761,7 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
   <div class="pp-faq">
     <p class="pp-et">Vanliga frågor</p>
     <details><summary>Kan jag välja ett program själv?</summary><p>Nej, och det är med flit. Samma symtom kan ha olika orsaker, och ett program som hjälper vid en diagnos kan förvärra en annan. Programmet väljs efter undersökningen, och koden är kopplad till just det valet.</p></details>
-    <details><summary>Hur länge gäller koden?</summary><p>Så länge programmet gäller, oftast fram till uppföljningen. Byter vi nivå eller program får du en ny kod, loggen följer med.</p></details>
+    <details><summary>Hur länge gäller koden?</summary><p>Så länge programmet gäller, oftast den programtid som står i kortet. Efter åtta till tolv veckor på samma dos har vävnaden anpassat sig och behöver progression för fortsatt effekt, det är därför Reda säger till när det är dags för nästa steg. Byter vi nivå får du en ny kod, och loggen följer med.</p></details>
     <details><summary>Vad händer om det gör ont?</summary><p>Arbete, tryck och sträck i området är rätt känsla. Huggande smärta, domningar eller stickningar betyder stopp och att du hör av dig. Reagerar kroppen dagen efter anpassar planen dagens dos ett steg ner av sig själv, och du markerar vilken övning som gjorde ont så vi ser det.</p></details>
     <details><summary>Var hamnar mina uppgifter?</summary><p>I din telefon. Ingen inloggning, inget konto, ingen server. Du väljer själv när du vill mejla loggen till oss inför uppföljningen, och du kan flytta den till en ny telefon med en QR-kod.</p></details>
   </div>
@@ -775,7 +777,7 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <div id="mp-under" class="muted"></div>
 </div>
 </div>
-<div class="mp-knappar mp-klinik" id="mpKlinik" hidden><button class="btn btn-teal" id="klBygg" type="button">Bygg program</button><a class="btn btn-ghost" id="klGranska" href="#p1">Granska övningar</a><button class="btn btn-ghost" id="klLas" type="button">Lås klinikvyn</button><p class="mp-startu">Koden kontrolleras mot ett hashvärde och finns inte i klartext på sidan. Lås vyn när du lämnar datorn eller delar skärm.</p></div>
+<div class="mp-knappar mp-klinik" id="mpKlinik" hidden><button class="btn btn-teal" id="klBygg" type="button">Bygg program</button><a class="btn btn-ghost" id="klGranska" href="#p1">Granska övningar</a><button class="btn btn-ghost" id="klLas" type="button">Logga ut</button><p class="mp-startu">Logga ut när du lämnar datorn eller delar skärm, då stängs klinikvyn och inkorgen.</p></div>
 <div class="mp-knappar"><div class="mp-start"><button class="btn btn-teal" id="startaPass" type="button">Starta dagens pass</button><p class="mp-startu">En övning i taget med figur, dosering och tidtagare. Det du markerar där loggas automatiskt.</p></div><button class="btn btn-ghost" id="tillovningar" type="button">Visa planen</button><div class="mp-knappar2"><button class="btn btn-ghost" id="skrivut" type="button">Skriv ut / PDF</button><a href="#" id="bytkod" class="btn btn-ghost">Byt kod</a></div></div>
 <p class="mp-sign">Granskat av Carl-Robert Kårell, leg. naprapat<span class="sign-lang"> · Byggt på aktuella belastnings- och rehabiliteringsprinciper</span> · Uppdaterad augusti 2026</p>
 </div>
@@ -785,6 +787,13 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
   <div id="kiVerktyg"><input type="search" id="kiSok" placeholder="Sök namn eller kod" aria-label="Sök i inkorgen"><label class="ki-filter"><input type="checkbox" id="kiBaraNya" checked> Bara olästa</label><button type="button" id="kiUppdatera" class="btn btn-ghost">Uppdatera</button><button type="button" id="kiLoggaUt" class="btn btn-ghost" hidden>Logga ut</button></div>
   <p id="kiSummering" class="ki-summering"></p>
   <div id="kiLista"></div>
+</div>
+<div id="klJournal" hidden>
+  <p class="kl-et">Ur journalen</p>
+  <p class="muted" style="margin:0 0 10px;font-size:.9rem">Klistra in anteckningen från undersökningen. Reda föreslår program, tillägg, aktivitet och startnivå ur texten, och du bekräftar med ett tryck. Ingenting sparas.</p>
+  <textarea id="klJIn" rows="5" placeholder="Bedömning: LCS med nervsymtom L5, löpare, akut skede..."></textarea>
+  <div class="dl-slut"><button type="button" id="klJTolka" class="btn btn-teal">Föreslå plan</button><button type="button" id="klJRensa" class="btn btn-ghost">Rensa</button></div>
+  <div id="klJUt" hidden></div>
 </div>
 <div id="klLogg" hidden>
   <p class="kl-et">Läs in en patientlogg</p>
@@ -809,12 +818,16 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <div id="figFull" hidden role="dialog" aria-modal="true" aria-label="Figuren i helskärm"><button type="button" id="ffStang" aria-label="Stäng">×</button><div class="ff-inne"></div></div>
 <div id="intro" hidden role="dialog" aria-modal="true" aria-label="Så fungerar din plan">
   <div class="in-kort">
-    <div class="in-prickar" id="inPrickar"></div>
+    <div class="in-topp"><img src="/bilder/reda/mark.svg" alt="" class="reda-mini"><span class="in-steg" id="inStegTxt"></span><button type="button" id="inHoppa" class="in-hoppa">Hoppa över</button></div>
     <div class="in-bild" id="inBild"></div>
-    <p class="in-et" id="inEt"></p>
-    <h3 id="inRubrik"></h3>
-    <p id="inText"></p>
-    <div class="in-rad"><button type="button" id="inHoppa" class="in-hoppa">Hoppa över</button><button type="button" id="inNasta" class="btn btn-teal">Nästa</button></div>
+    <div class="in-inne">
+      <div class="in-prickar" id="inPrickar"></div>
+      <p class="in-et" id="inEt"></p>
+      <h3 id="inRubrik"></h3>
+      <p id="inText"></p>
+      <ul class="in-punkter" id="inPunkter"></ul>
+      <div class="in-rad"><button type="button" id="inNasta" class="btn btn-teal">Nästa</button></div>
+    </div>
   </div>
 </div>
 <div id="bokaKort" hidden>
@@ -843,6 +856,11 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
     <p class="muted dl-ankare" id="dlvAnkare"></p>
   </div>
   <p id="dlTack" class="dl-tack" hidden>Sparat ✓</p>
+</div>
+<div id="tidBanner" hidden>
+  <p class="lb-et" id="tidEt">Dags för nästa steg</p>
+  <p id="tidText"></p>
+  <div class="dl-slut" style="margin-top:10px"><a class="btn btn-teal" id="tidBoka" href="https://www.bokadirekt.se/places/kansei-rehabcenter-48847" target="_blank" rel="noopener">Boka uppföljning</a><a class="btn btn-ghost" href="mailto:info@kansei.se?subject=Nästa steg i min plan">Mejla oss</a></div>
 </div>
 <div id="lugnBanner" hidden>
   <p class="lb-et">Lugnare dag</p>
@@ -1280,8 +1298,8 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
 <code id="kbKod">–</code>
 <span class="kbb-et">Patientkod</span><code id="kbPat">–</code>
 <span class="kbb-et">5 · Namn</span>
-<input id="kbNamn" type="text" maxlength="20" placeholder="Förnamn (valfritt)" autocomplete="off"><input id="kbTagg" type="text" placeholder="Tagg" maxlength="2" autocomplete="off" title="Samma patient som förut: ange de två tecknen efter bindestrecket i den gamla koden, så följer loggen med till den nya" aria-label="Tagg för befintlig patient">
-<select id="kbVeckor"><option value="">Längd: löpande</option><option value="datum">Till återbesök…</option><option value="4">4 veckor</option><option value="6">6 veckor</option><option value="8">8 veckor</option><option value="12">12 veckor</option></select>
+<input id="kbNamn" type="text" maxlength="20" placeholder="Förnamn (valfritt)" autocomplete="off"><input id="kbTagg" type="text" placeholder="ID" maxlength="2" autocomplete="off" title="Patient-ID: de två tecknen efter bindestrecket i patientens kod. Lämna tomt för ny patient, så skapas ett. Ange det vid ny kod till samma patient, så följer loggen med." aria-label="Patient-ID för befintlig patient"><span id="kbKand" class="kb-kand" hidden></span>
+<textarea id="kbKommentar" rows="2" maxlength="400" placeholder="Kommentar till patienten i mejlet (valfritt): vad vi såg, varför den här planen"></textarea><select id="kbVeckor"><option value="">Längd: löpande</option><option value="datum">Till återbesök…</option><option value="4">4 veckor</option><option value="6">6 veckor</option><option value="8">8 veckor</option><option value="12">12 veckor</option></select>
 <input type="date" id="kbDatum" hidden>
 <div class="kb-hoger">
 <span class="kbb-et">6 · Skicka</span>
@@ -1424,6 +1442,21 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     });
   }
   function flyttNot(){if(!window.__loggFlyttad)return; var n=document.getElementById('flyttadNot'); if(!n){n=document.createElement('div'); n.id='flyttadNot'; n.className='ki-hemma'; var fl=document.getElementById('flikar'); if(fl&&fl.parentNode)fl.parentNode.insertBefore(n,fl.nextSibling);} n.textContent='Ny kod, samma plan: din logg från den tidigare koden följer med här. Nivån och doseringen är uppdaterade.'; n.hidden=false; window.__loggFlyttad=null;}
+  /* programtid: efter 8 veckor behövs progression för fortsatt effekt, efter 12 veckor är planen i behov av omvärdering */
+  function tidBanner(){
+    var b=document.getElementById('tidBanner'); if(!b)return; b.hidden=true;
+    if(!__patKod||document.body.classList.contains('bibliotek'))return;
+    var st=''; try{st=localStorage.getItem('kanseiStart_'+__patKod)||''}catch(e){}
+    if(!st){var l=dlLas(); if(l.length)st=l.slice().sort(function(a,b2){return a.d<b2.d?-1:1})[0].d;}
+    if(!st)return;
+    var v=Math.floor((new Date(dagStr(new Date())+'T12:00:00')-new Date(st+'T12:00:00'))/(7*86400000));
+    var mal=__patVeckor||12, t=document.getElementById('tidText'), et=document.getElementById('tidEt');
+    if(v>=mal+4){et.textContent='Planen behöver omvärderas'; t.textContent='Du har tränat i '+v+' veckor på samma program. Det är längre än planen var satt för, och efter tolv veckor på samma dos avtar effekten: vävnaden har anpassat sig och behöver antingen tyngre, längre eller nya uppgifter. Boka en uppföljning så sätter vi nästa steg, eller avslutar om målet är nått.'}
+    else if(v>=mal){et.textContent='Dags för nästa steg'; t.textContent='Du har nått programtidens slut, '+v+' veckor. Träningsstudier visar att styrke- och senvävnad svarar på progression i steg om åtta till tolv veckor, sedan behövs en ny dos för att fortsätta framåt. Skicka loggen och boka uppföljning så bygger vi nästa nivå på det du gjort.'}
+    else if(v>=8&&mal>=10){et.textContent='Åtta veckor, ett bra läge att stämma av'; t.textContent='Åtta veckor är den tid det tar för senor, muskler och nervsystem att ställa om. Om loggen är tyst och känningen låg är du sannolikt redo för nästa nivå tidigare än planerat. Skicka loggen så tittar vi.'}
+    else return;
+    b.hidden=false;
+  }
   function lugnBanner(){
     var b=document.getElementById('lugnBanner'); if(!b)return;
     var l=lugnDag(); b.hidden=!l; if(!l)return;
@@ -1585,6 +1618,67 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     var kod=document.getElementById('klNot').getAttribute('data-kod'), txt=document.getElementById('klNotIn').value, m=document.getElementById('klNotMed'); if(!kod)return;
     NOT.spara(kod,txt).then(function(ok){m.textContent=ok?'Sparad '+dlDatumFin(dagStr(new Date())):'Gick inte att spara'});
   });
+
+  /* nyckelord per rad i blueprinten och per tillägg, aktivitet och skede */
+  var JNYCK=[
+    {namn:'LCS – Lower Crossed Syndrome',p:2,t:[],ord:['lcs','lower crossed','ländrygg','lumbal','lumbago','rygg']},
+    {namn:'SI-ledsyndrom',p:2,t:[2],ord:['si-led','si led','sacroiliaca','sakroiliak','bäckensmärta']},
+    {namn:'Lumbopelvis instabilitet',p:2,t:[2],ord:['instabilitet','lumbopelvis','bäckeninstabil']},
+    {namn:'Lumbal radikulopati (L4–S1)',p:2,t:[3],ord:['radikulopati','ischias','l4','l5','s1','utstrålning','nervrot','diskbråck','slr']},
+    {namn:'Layer Syndrome',p:2,t:[4],ord:['layer']},
+    {namn:'Lateralt höftmönster',p:1,t:[],ord:['lateral höft','höftmönster','trochanter']},
+    {namn:'GTPS – Gluteus medius-tendinopati',p:1,t:[],ord:['gtps','gluteus medius','trokanter','trochanterit']},
+    {namn:'FAI – Femoroacetabulärt impingement',p:1,t:[],ord:['fai','femoroacetabul','impingement höft','cam','pincer']},
+    {namn:'Piriformis syndrom',p:1,t:[3],ord:['piriformis']},
+    {namn:'Höftartros (direktprogram)',p:13,t:[],ord:['höftartros','coxartros','artros höft']},
+    {namn:'Proximal hamstringentesi',p:11,t:[],ord:['hamstring','sittben','tuber']},
+    {namn:'Knäartros (OA)',p:3,t:[],ord:['knäartros','gonartros','artros knä']},
+    {namn:'Patellofemoralt smärtmönster',p:1,t:[],ord:['patellofemoral','pfps','knäskål','främre knä']},
+    {namn:'IT-band / Lateralt knämönster',p:1,t:[],ord:['it-band','itb','iliotibial','lateralt knä']},
+    {namn:'Medialt knämönster',p:1,t:[],ord:['medialt knä','mcl','pes anserin']},
+    {namn:'Patellar tendinopati',p:10,t:[],ord:['patellar','patellasen','hopparknä','jumper']},
+    {namn:'Plantar fasciit',p:8,t:[],ord:['plantar','hälsporre','fasciit']},
+    {namn:'Achillestendinopati',p:5,t:[],ord:['achilles','hälsena','akilles']},
+    {namn:'Fotled efter stukning (direktprogram)',p:12,t:[2],ord:['stukning','fotled','ligament','distorsion']},
+    {namn:'Skulder-impingement',p:4,t:[],ord:['impingement','subacromial','axel','skulder','supraspinatus']},
+    {namn:'Fryst axel / Adhesiv kapsulit',p:9,t:[],ord:['fryst axel','frozen','adhesiv','kapsulit']},
+    {namn:'Rotatorkuffruptur',p:4,t:[],ord:['rotatorkuff','ruptur','kuffruptur']},
+    {namn:'Lateral epikondylalgi',p:7,t:[],ord:['tennisarmbåge','lateral epikondyl','ecrb']},
+    {namn:'Medial epikondylalgi',p:7,t:[],ord:['golfarmbåge','medial epikondyl']},
+    {namn:'Karpaltunnelmönster',p:6,t:[3,5],ord:['karpaltunnel','medianus','domningar i hand']},
+    {namn:'De Quervain',p:15,t:[],ord:['quervain','tumme','finkelstein']},
+    {namn:'UCS – Upper Crossed Syndrome',p:6,t:[4],ord:['ucs','upper crossed','nacke','cervikal','hållning']},
+    {namn:'Cervikogen huvudvärk',p:6,t:[1,6],ord:['huvudvärk','cervikogen','migrän']},
+    {namn:'Cervikal radikulopati',p:6,t:[3],ord:['cervikal radikulopati','c6','c7','utstrålning arm','nervrot cervikal']},
+    {namn:'TOS – Thoracic Outlet Syndrome',p:6,t:[1,3],ord:['tos','thoracic outlet','scalen']},
+    {namn:'TMJ-dysfunktion',p:14,t:[],ord:['tmj','käk','bruxism','käkled']}
+  ];
+  var JTILL={1:['andning','stress','diafragma','hyperventil'],2:['balans','proprioception','vinglig','falltendens'],3:['nerv','domning','stickning','parestesi','utstråln'],4:['hållning','skärm','sittande','stel bröstrygg'],5:['handled','grepp','underarm'],6:['käk','bruxism','tinnitus']};
+  var JAKT={L:['löp','jogg','marathon','springer'],G:['gym','styrke','marklyft','knäböj'],X:['crossfit','wod','box'],H:['hyrox'],C:['cykl','cykel','mtb','racer'],P:['promenad','går ','gång'],V:['vandr','fjäll']};
+  var JNIVA=[['A',['akut','nyligen','uttalad smärta','vilovärk','nattlig','svår','efter uppehåll','inflammat','skede: akut']],['C',['tävling','elit','återgång till','högintensiv','full belastning','länge','kronisk utan']],['B',['subakut','måttlig','uppbyggnad','vardag']]];
+  function journalTolka(txt){
+    var t=' '+txt.toLowerCase().replace(/\s+/g,' ')+' ';
+    var traffar=JNYCK.map(function(r){var poang=0, hit=[]; r.ord.forEach(function(o){if(t.indexOf(o)>-1){poang+=o.length>4?2:1; hit.push(o)}}); return {r:r,poang:poang,hit:hit}}).filter(function(x){return x.poang>0}).sort(function(a,b){return b.poang-a.poang});
+    var till=[]; Object.keys(JTILL).forEach(function(k){if(JTILL[k].some(function(o){return t.indexOf(o)>-1}))till.push(k)});
+    var akt=[]; Object.keys(JAKT).forEach(function(k){if(JAKT[k].some(function(o){return t.indexOf(o)>-1}))akt.push(k)});
+    var niva='B'; if(t.indexOf('subakut')<0){for(var i=0;i<JNIVA.length;i++){if(JNIVA[i][1].some(function(o){return t.indexOf(o)>-1})){niva=JNIVA[i][0];break}}}
+    var veckor=(t.match(/(\d{1,2})\s*veckor/)||[])[1];
+    return {traffar:traffar.slice(0,3),till:till,akt:akt,niva:niva,veckor:veckor?parseInt(veckor,10):null};
+  }
+  document.addEventListener('click',function(e){
+    if(e.target.closest&&e.target.closest('#klJRensa')){document.getElementById('klJIn').value=''; document.getElementById('klJUt').hidden=true; return;}
+    var apply=e.target.closest&&e.target.closest('.klj-anvand');
+    if(apply&&window.__kbPrefill){var o=JSON.parse(apply.getAttribute('data-o')); window.__kbPrefill(o); var kf=document.getElementById('kbKommentar'); if(kf&&o.kommentar)kf.value=o.kommentar; return;}
+    if(!(e.target.closest&&e.target.closest('#klJTolka')))return;
+    var txt=document.getElementById('klJIn').value||'', J=journalTolka(txt), ut=document.getElementById('klJUt');
+    ut.hidden=false;
+    if(!J.traffar.length){ut.innerHTML='<p class="muted">Hittade ingen diagnos i texten. Skriv gärna diagnosens namn som i blueprinten, till exempel "LCS" eller "achillestendinopati".</p>'; return;}
+    ut.innerHTML=J.traffar.map(function(x,i){var t2=x.r.t.slice(); J.till.forEach(function(k){if(t2.indexOf(parseInt(k,10))<0)t2.push(parseInt(k,10))});
+      var kommentar='Vid undersökningen såg vi '+x.r.namn.replace(/\s*[–(].*$/,'')+(J.till.indexOf('3')>-1?' med nervpåverkan':'')+(J.akt.length?', och planen tar hänsyn till din '+({L:'löpning',G:'gymträning',X:'CrossFit',H:'Hyrox',C:'cykling',P:'promenad',V:'vandring'})[J.akt[0]]:'')+'. Startnivå '+J.niva+(J.niva==='A'?', eftersom vävnaden behöver ro först':J.niva==='C'?', eftersom du redan tål belastning':', full övning med måttlig belastning')+'.';
+      var o={progs:[String(x.r.p)],n:J.niva,t:t2.map(String),akt:J.akt,kommentar:kommentar};
+      return '<div class="klj-forslag'+(i===0?' bast':'')+'"><div class="klj-rad1"><b>'+x.r.namn+'</b><span class="ki-kod">program '+x.r.p+'</span><span class="ki-kod">nivå '+J.niva+'</span>'+(t2.length?'<span class="ki-kod">tillägg '+t2.map(function(n){return '+'+n}).join(' ')+'</span>':'')+(J.akt.length?'<span class="ki-kod">'+J.akt.join(' ')+'</span>':'')+'</div><p class="klj-hit">Träff på: '+x.hit.join(', ')+'</p><p class="klj-kom">Kommentar till patienten: '+kommentar+'</p><button type="button" class="btn '+(i===0?'btn-teal':'btn-ghost')+' klj-anvand" data-o=\''+JSON.stringify(o).replace(/'/g,'&#39;')+'\'>Använd i byggaren</button></div>'}).join('');
+  });
+  function klJournalVisa(){var b=document.getElementById('klJournal'); if(b)b.hidden=!document.body.classList.contains('bibliotek');}
   function klLoggVisa(){var b=document.getElementById('klLogg'); if(b)b.hidden=!document.body.classList.contains('bibliotek');}
   function korthet(){
     var box=document.getElementById('korthet'), dl=document.getElementById('khLista'); if(!box||!dl)return;
@@ -1616,22 +1710,24 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     box.hidden=false;
   }
   var INTRO=[
-    {et:'Välkommen till Reda',rub:'Det här är din plan',txt:'Programmet är byggt efter din undersökning, med rätt nivå och rätt tillägg. Övningarna lär du dig här, en i taget, med figur, text och röst. Det tar en minut att se hur sidan fungerar, sedan är den din.',fig:'enben'},
-    {et:'Träning',rub:'Ett pass, en övning i taget',txt:'Tryck Starta dagens pass. Varje övning visas med en figur som rör sig i rätt tempo, din dosering i guld, och en tidtagare där den behövs. Klar eller Kan inte idag, sedan nästa.',fig:'fyrfota'},
-    {et:'Dosering',rub:'Guldrutan är din ordination',txt:'På varje övning står exakt vad som gäller för din nivå: set, repetitioner och hålltider. Nivån sattes vid besöket och flyttas upp vid uppföljningen, inte på egen hand.',fig:'vadpress'},
-    {et:'Logg',rub:'Passet loggas av sig självt',txt:'Det du markerar sparas i din logg med kalender och svit. Ibland väntar en kort fråga direkt under flikarna, om smärta eller hur gårdagens pass kändes. Svara, så blir uppföljningen träffsäker.',fig:'brygga'},
-    {et:'Kontakt',rub:'Vi finns kvar under vägen',txt:'Ny utstrålande smärta, domningar eller kraftlöshet: hör av dig direkt. Annars ses vi vid uppföljningen, och din logg är underlaget. Klart, nu är planen din.',fig:'sidoplanka'}
+    {et:'Välkommen',rub:'Det här är din plan',txt:'Byggd efter din undersökning, med rätt nivå och rätt tillägg. Övningarna lär du dig här, en i taget.',punkter:['Figur i rörelse, text och röst för varje övning','Din dosering i guld på varje kort','Loggen sköter sig själv'],fig:'enben'},
+    {et:'Träning',rub:'Ett pass, en övning i taget',txt:'Tryck Starta dagens pass. Första gången läser du utförandet innan du markerar klar, det är så du lär dig övningen.',punkter:['Klar eller Kan inte idag, sedan nästa','Tidtagare och vilotimer där de behövs','Första passet: halva antalet set'],fig:'fyrfota'},
+    {et:'Känsla',rub:'Här ska det kännas',txt:'Varje övning visar var arbetet ska kännas, på figuren och i ord. Rätt känsla är arbete, tryck eller sträck i området.',punkter:['Huggande smärta, domningar, stickningar: stanna','Markera "gjorde ont" så ser vi vilken övning','Reagerar kroppen dagen efter blir dagens dos lugnare'],fig:'sidoplanka'},
+    {et:'Logg',rub:'Passet loggas av sig självt',txt:'Kalender, kurva och svit. Korta frågor kommer till dig när de behövs, om smärta och hur gårdagens pass kändes.',punkter:['Skicka loggen till oss med ett tryck inför uppföljningen','Lägg passdagarna i kalendern','Byt telefon utan att tappa något'],fig:'brygga'},
+    {et:'Nästa steg',rub:'Vi finns kvar under vägen',txt:'Nivån flyttas upp när loggen visar att kroppen är redo, och Reda säger till när programtiden är slut.',punkter:['Fråga oss om en övning direkt från passet','Ny utstrålande smärta eller kraftlöshet: hör av dig samma dag','Uppföljningen bygger på din logg'],fig:'vadpress'}
   ];
   var __inSteg=0;
   function introVisa(i){
     __inSteg=i; var st=INTRO[i];
     document.getElementById('inEt').textContent=st.et; document.getElementById('inRubrik').textContent=st.rub; document.getElementById('inText').textContent=st.txt;
+    document.getElementById('inPunkter').innerHTML=(st.punkter||[]).map(function(x){return '<li>'+x+'</li>'}).join('');
+    document.getElementById('inStegTxt').textContent=(i+1)+' av '+INTRO.length;
     var bild=document.getElementById('inBild');
     var satt=function(){ if(!window.__ovIkonArketyp){setTimeout(satt,40);return} if(__inSteg!==i)return; bild.innerHTML=window.__ovIkonArketyp(st.fig,200); if(window.__figSkan)window.__figSkan(bild); };
     satt();
     document.getElementById('inPrickar').innerHTML=INTRO.map(function(_,k){return '<span'+(k===i?' class="akt"':'')+'></span>'}).join('');
     var n=document.getElementById('inNasta'); n.textContent=(i===INTRO.length-1)?'Jag förstår, visa planen':'Nästa';
-    document.getElementById('inHoppa').hidden=(i===INTRO.length-1);
+    document.getElementById('inHoppa').hidden=false;
   }
   function introStang(){try{localStorage.setItem('kanseiValk_'+__patKod,'1')}catch(x){} document.getElementById('intro').hidden=true; document.body.classList.remove('intro-oppen'); var st=document.getElementById('startaPass'); if(st)st.focus();}
   function ppFigurer(){
@@ -1829,6 +1925,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     var __kh=document.getElementById('korthet'); if(__kh)__kh.hidden=true;
     var __kl=document.getElementById('klLogg'); if(__kl)__kl.hidden=true;
     var __ki=document.getElementById('klInkorg'); if(__ki)__ki.hidden=true;
+    var __kj=document.getElementById('klJournal'); if(__kj)__kj.hidden=true;
     if(document.body.classList.contains('pl-oppen'))plStang();
     var __bk=document.getElementById('bokaKort'); if(__bk)__bk.hidden=true;
     var __fl2=document.getElementById('flikar'); if(__fl2)__fl2.hidden=true;
@@ -1869,6 +1966,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     aktBibliotek();
     var __tk=document.getElementById('tillovningar'); if(__tk)__tk.hidden=true;
     if(typeof klLoggVisa==='function')klLoggVisa();
+    if(typeof klJournalVisa==='function')klJournalVisa();
     if(typeof kiVisa==='function')kiVisa();
       document.body.classList.add('kodad');
       try{history.replaceState(null,'',location.pathname)}catch(e){}
@@ -1980,7 +2078,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     var __ket=document.querySelector('.mp-huvud2 .kodetikett');
     var __gN=document.getElementById('mpNamn'); if(__gN)__gN.remove();
     if(__patNamn){
-      __ket.innerHTML=document.body.classList.contains('bibliotek')?'Reda · intern vy':'<img src="/bilder/reda/mark.svg" alt="" class="reda-mini"> Reda · din plan';
+      __ket.innerHTML=document.body.classList.contains('bibliotek')?'<img src="/bilder/reda/mark.svg" alt="" class="reda-mini"> Reda · klinik':'<img src="/bilder/reda/mark.svg" alt="" class="reda-mini"> Reda';
       var nEl=document.createElement('p'); nEl.id='mpNamn'; nEl.className='mp-inject'; nEl.textContent='för '+__patNamn;
       var h2El=document.getElementById('mp-titel');
       h2El.parentNode.insertBefore(nEl, h2El.nextSibling);
@@ -1995,6 +2093,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     valkomst();
     korthet();
     lugnBanner();
+    tidBanner();
     flyttNot();
     (function(){var u=document.querySelector('.pl-under'); if(u){var antal=document.querySelectorAll('.aktiv details[data-ovid]').length; u.textContent=antal+' övningar, ungefär '+passTid()+' minuter · '+frekvens().txt.toLowerCase();} if(typeof kortLage==='function')kortLage();})();
     qrSatt();
@@ -3138,6 +3237,14 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
   document.getElementById('klLas').addEventListener('click',function(){if(window.__INK)window.__INK.loggaUt(); try{sessionStorage.removeItem('kanseiInloggad')}catch(x){} document.getElementById('bytkod').click()});
   document.getElementById('klBygg').addEventListener('click',function(){var v=document.getElementById('kbmVaxel'); if(v&&getComputedStyle(v).display!=='none'){v.click();return} var b=document.getElementById('kbBar'); if(b)b.scrollIntoView({behavior:'smooth',block:'end'}); var f=document.getElementById('bpSok'); if(f)f.focus();});
   document.getElementById('klGranska').addEventListener('click',function(e){e.preventDefault(); var t=document.querySelector('.aktiv details[data-ovid]'); if(t)t.scrollIntoView({behavior:'smooth',block:'start'})});
+  (function(){var n=document.getElementById('kbNamn'); if(!n)return; n.addEventListener('input',function(){
+    var v=(n.value||'').trim().toLowerCase(), ut=document.getElementById('kbKand'); if(!ut)return; ut.hidden=true; if(v.length<2||!window.__INK)return;
+    window.__INK.lista().then(function(rader){ if(!rader)return; var tr={}; rader.forEach(function(r){if((r.namn||'').toLowerCase()===v){var id=(r.kod.match(/-([A-Z2-9]{2})$/)||[])[1]; if(id)tr[id]=r.kod}}); var ids=Object.keys(tr); if(!ids.length)return;
+      ut.hidden=false; ut.innerHTML=(ids.length===1?'Det finns redan en '+n.value+' med ID <b>'+ids[0]+'</b> ('+tr[ids[0]]+'). Samma person? ':'Flera patienter heter '+n.value+': '+ids.map(function(i){return '<b>'+i+'</b> ('+tr[i]+')'}).join(', ')+'. ')+ids.map(function(i){return '<button type="button" class="kb-kandv" data-id="'+i+'">Använd '+i+'</button>'}).join(' ')+'<button type="button" class="kb-kandv" data-id="">Ny patient</button>';
+    });
+  });})();
+  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.kb-kandv'); if(!b)return; var t=document.getElementById('kbTagg'); t.value=b.getAttribute('data-id')||''; t.dispatchEvent(new Event('input',{bubbles:true})); document.getElementById('kbKand').hidden=true;});
+  (function(){var k=document.getElementById('kbKommentar'); if(k)k.addEventListener('input',function(){if(window.__kbRita)window.__kbRita()});})();
   (function(){var t=document.getElementById('kbTagg'); if(t)t.addEventListener('input',function(){t.value=t.value.toUpperCase().replace(/[^A-Z2-9]/g,'').slice(0,2); if(window.__kbRita)window.__kbRita();});})();
   (function(){var f=document.getElementById('kodfalt'); if(!f)return; f.addEventListener('input',function(){var v=f.value.toUpperCase().replace(/[^A-Z0-9+.\-ÅÄÖ]/g,''); if(/^[A-Z2-9]{7}$/.test(v))v=v.slice(0,5)+'-'+v.slice(5); if(v!==f.value)f.value=v;});})();
   document.getElementById('bytkod').addEventListener('click',function(e){
@@ -3232,7 +3339,8 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
         var lank='https://www.kansei.se/reda/#'+patLank;
         var MAN=['januari','februari','mars','april','maj','juni','juli','augusti','september','oktober','november','december'];
         var datFin=datIn?(function(d){var dd=new Date(d+'T12:00:00');return dd.getDate()+' '+MAN[dd.getMonth()]})(datIn):'';
-        var body='Hej'+(namnIn?' '+namnIn:'')+'!\n\nTack för besöket. Här är Reda, din plan: träningsprogrammet som är byggt efter det vi såg vid undersökningen.\n\nÖppna den här, den fungerar i mobilens webbläsare och behöver ingen app:\n'+lank
+        var komIn=((document.getElementById('kbKommentar')||{}).value||'').trim();
+        var body='Hej'+(namnIn?' '+namnIn:'')+'!\n\nTack för besöket. Här är Reda, din plan: träningsprogrammet som är byggt efter det vi såg vid undersökningen.'+(komIn?'\n\n'+komIn:'')+'\n\nÖppna den här, den fungerar i mobilens webbläsare och behöver ingen app:\n'+lank
           +'\n\nDin kod, om du hellre skriver in den på kansei.se/reda: '+kodStr
           +'\n\nSå kommer du igång:\n1. Tryck Starta dagens pass. Varje övning visas med en figur som rör sig i rätt tempo, din dosering i guld och en tidtagare där den behövs. Läs utförandet innan du markerar övningen klar första gången, det är så du lär dig den.\n2. Första passet: gör halva antalet set och känn efter dagen efter. Full dos från nästa gång om kroppen är tyst.\n3. Passet loggas av sig självt. Svara på de korta frågorna när de dyker upp, de gör uppföljningen träffsäker.\n4. Lägg planen på hemskärmen (delningsknappen i Safari, Lägg till på hemskärmen), så är den ett tryck bort.'
           +'\n\nRätt känsla är arbete, tryck eller sträck i området. Huggande smärta, domningar eller stickningar betyder stopp, och att du hör av dig till mig.'
@@ -3248,6 +3356,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     window.__kbRita=rita;
     window.__kbPrefill=function(o){
       val.rader=[]; val.t=[]; val.a=[]; val.nPer={}; val.n=o.n||'B';
+      var kk=document.getElementById('kbKommentar'); if(kk)kk.value=o.kommentar||'';
       (o.progs||[]).forEach(function(pp){var r=matris.querySelector('.bp-rad[data-p="'+pp+'"]:not(.bp-dod)'); if(r){val.rader.push(r.getAttribute('data-bi'));}});
       (o.t||[]).forEach(function(x){if(val.t.indexOf(String(x))<0)val.t.push(String(x))});
       val.a=(o.akt||[]).slice();
@@ -4978,6 +5087,7 @@ body.kb-oppen #kbBar #stegNivF,body.kb-oppen #kbBar #stegDelat{display:block;mar
 
 <style id="v89-klinik">
 body.bibliotek .mp-knappar:not(.mp-klinik){display:none!important}
+body:not(.bibliotek) #mpKlinik{display:none!important}
 body.bibliotek #mpKlinik{display:flex!important;flex-wrap:wrap;flex-direction:row;gap:10px;align-items:center}
 body.bibliotek #mpKlinik .btn{width:auto}
 body.bibliotek #mpKlinik .mp-startu{flex-basis:100%;margin:2px 0 0}
@@ -5025,6 +5135,13 @@ body.ff-oppen{overflow:hidden}
 
 
 <style id="v90-lasning">
+body.kodad .aktiv details[data-ovid]{scroll-margin-top:150px}
+#mpIkon{display:none!important}
+.mp-topp{align-items:flex-start}
+.mp-knappar{margin-top:18px}
+.mp-start{gap:8px}
+.mp-knappar2{margin-top:6px}
+@media(min-width:900px){body.kodad .aktiv details[data-ovid]{scroll-margin-top:160px}}
 body.kodad:not(.bibliotek) .aktiv details[data-ovid]>summary .ovcheck{display:none!important}
 body.kodad .aktiv details[data-ovid]>summary{padding-right:18px}
 .ov-status{margin-left:auto;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:4px 9px;flex:0 0 auto}
@@ -5047,6 +5164,11 @@ body.bibliotek .ov-status{display:none}
 .tr-l.pass{width:3px;height:10px;background:#0D7B6F}
 .tr-l.mil{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:8px solid #B08D57;border-radius:0}
 .tr-band{display:inline-block;width:14px;height:10px;background:rgba(13,123,111,.12);border-radius:2px;vertical-align:middle}
+#tidBanner{margin:12px 0 4px;padding:14px 16px;background:var(--teal-soft);border:1px solid rgba(13,123,111,.35);border-left:4px solid var(--teal);border-radius:14px}
+#tidBanner[hidden]{display:none!important}
+#tidBanner .lb-et{color:var(--teal-ink)}
+#tidText{margin:0;font-size:.92rem;line-height:1.6;color:var(--ink)}
+body[data-flik]:not([data-flik="traning"]) #tidBanner{display:none}
 #lugnBanner{margin:12px 0 4px;padding:14px 16px;background:var(--guld-soft);border:1px solid rgba(176,141,87,.5);border-left:4px solid var(--guld);border-radius:14px}
 #lugnBanner[hidden]{display:none!important}
 .lb-et{margin:0 0 4px;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--guld-djup);font-weight:700}
@@ -5251,6 +5373,14 @@ html.i-ram .wrap{padding-top:0}
 
 
 <style id="v103-reda">
+.reda-hero{padding:8px 0 4px}
+.reda-hero .reda-lockup{gap:16px;margin-bottom:14px}
+.reda-hero .reda-mark{width:64px;height:64px;border-radius:15px}
+.reda-hero .reda-ordbild{height:3.1rem}
+.reda-tag{margin:0 0 10px;font-family:var(--display);font-size:1.45rem;letter-spacing:-.01em;color:var(--ink);line-height:1.2}
+.reda-hero .intro{margin:0;max-width:600px}
+@media(max-width:560px){.reda-hero .reda-mark{width:54px;height:54px}.reda-hero .reda-ordbild{height:2.6rem}.reda-tag{font-size:1.25rem}}
+.reda-by{display:none}
 .reda-lockup{display:flex;align-items:center;gap:14px;margin:0 0 6px}
 .reda-mark{width:52px;height:52px;border-radius:12px;box-shadow:0 4px 14px rgba(13,123,111,.25)}
 .reda-ord{margin:0!important;font-family:var(--display);font-weight:500;font-size:2.6rem;letter-spacing:-.02em;line-height:1;display:flex;align-items:baseline}
@@ -5282,6 +5412,44 @@ html.i-ram .reda-lockup{display:none}
 .pl-fraga{text-decoration:underline;text-underline-offset:3px;color:var(--teal-ink)!important}
 body.demo .pl-fraga{display:none}
 @media(min-width:900px){#plInne .pl-kort>.pl-ord{grid-column:1/-1}}
+</style>
+
+
+<style id="v106-intro">
+.in-kort{padding:0;overflow:hidden;width:min(460px,100%);border-radius:26px;text-align:left;align-items:stretch;gap:0}
+.in-topp{display:flex;align-items:center;gap:10px;padding:14px 18px 0;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.in-topp .reda-mini{width:20px;height:20px;border-radius:6px}
+.in-steg{flex:1}
+.in-hoppa{padding:6px 0;font-size:.78rem;letter-spacing:0;text-transform:none}
+.in-bild{margin:12px 18px 0;background:linear-gradient(180deg,var(--mist),#E4EEEC);border-radius:18px;padding:12px 26px;display:flex;justify-content:center}
+.in-bild svg{width:100%;max-width:280px;height:auto}
+.in-inne{padding:18px 22px 20px}
+.in-prickar{justify-content:flex-start;margin-bottom:10px}
+.in-kort h3{font-size:1.55rem;margin:2px 0 8px}
+.in-kort p{font-size:.95rem}
+.in-punkter{margin:12px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+.in-punkter li{position:relative;padding-left:22px;font-size:.9rem;color:var(--ink);line-height:1.5}
+.in-punkter li::before{content:"";position:absolute;left:0;top:.5em;width:12px;height:12px;border-radius:50%;background:var(--teal-soft);box-shadow:inset 0 0 0 3px var(--teal)}
+.in-rad{margin-top:18px;justify-content:flex-end}
+#inNasta{width:100%;justify-content:center;padding:14px 26px;font-size:1rem}
+@media(min-width:560px){#inNasta{width:auto}}
+</style>
+
+
+<style id="v106-journal">
+#klJournal{margin:14px 0 8px;padding:18px 20px;background:var(--yta);border:1px solid var(--guld);border-radius:16px}
+#klJournal[hidden]{display:none!important}
+#klJIn{width:100%;box-sizing:border-box;border:1px solid var(--line-2);border-radius:10px;padding:10px 12px;font-family:var(--body);font-size:.92rem;line-height:1.5;color:var(--ink);background:var(--mist);margin-bottom:10px;resize:vertical}
+#klJUt{margin-top:12px;display:flex;flex-direction:column;gap:10px}
+.klj-forslag{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--yta)}
+.klj-forslag.bast{border-color:var(--teal);border-left-width:4px}
+.klj-rad1{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;margin-bottom:6px}
+.klj-hit{margin:0 0 6px;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;color:var(--dim)}
+.klj-kom{margin:0 0 10px;font-size:.88rem;color:var(--ink);line-height:1.5;padding:8px 10px;background:var(--guld-soft);border-radius:8px}
+#kbKommentar{width:100%;max-width:520px;border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:8px 10px;font-family:var(--body);font-size:.85rem;background:rgba(255,255,255,.08);color:var(--paper);margin:8px 0 4px;resize:vertical}
+#kbKommentar::placeholder{color:rgba(255,255,255,.55)}
+.kb-kand{display:block;margin:6px 0;font-size:.8rem;color:var(--guld);line-height:1.5}
+.kb-kandv{margin-left:6px;border:1px solid rgba(255,255,255,.4);background:none;color:var(--paper);border-radius:999px;padding:3px 10px;font-size:.78rem;cursor:pointer}
 </style>
 
 </body>

@@ -599,7 +599,7 @@ body.kodad #tillintro{padding:20px 0}
 body.kodad #tillintro h2{font-size:1.2rem}
 body.kodad .progfaq{background:var(--mist)}
 body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bottom:40px}}</style>
-</head>
+<style id="nav-reda">.nav-reda{display:inline-flex!important;align-items:center;gap:.4em;vertical-align:middle;line-height:1}.nav-reda-mark{width:1.15em;height:1.15em;display:block}.nav-reda-ord{height:.95em;width:auto;display:block;transform:translateY(.08em)}.nav-reda:hover .nav-reda-ord,.nav-reda:focus .nav-reda-ord{opacity:.8}</style></head>
 <body>
 <script>/* Kansei QR: bytemod, felnivå M, version 1-30, alla masker med straffvärdering. Fristående. */
 (function(){
@@ -688,7 +688,7 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <a href="/priser/"><strong>Friskvård / massage</strong><span>975 kr</span></a>
 <a href="/injektioner/"><strong>Konsultation injektion</strong><span>890 kr</span></a>
 </div><div class="mp-fot"><a class="mp-alla" href="/tjanster/">Alla tjänster &amp; priser →</a><a class="mp-kamp" href="https://www.bokadirekt.se/boka-tjanst/kansei-rehabcenter-48847/helhetsanalys-med-ultraljudsundersokning-3397169" target="_blank" rel="noopener" data-cta="mega-kampanj">Kampanj: Helhetsanalys 990 kr →</a></div></div></li>
-<li><a href="/blogg/">Kunskapsbank</a></li><li><a href="/reda/">Reda</a></li>
+<li><a href="/blogg/">Kunskapsbank</a></li><li><a href="/reda/" class="nav-reda" aria-label="Reda"><img src="/bilder/reda/mark-ram.svg" alt="" class="nav-reda-mark"><img src="/bilder/reda/wordmark.svg" alt="Reda" class="nav-reda-ord"></a></li>
 <li class="dtop"><a href="/om-oss/">Om oss</a></li>
 <li class="mob"><a href="/fragor-och-svar/">Frågor &amp; svar</a></li>
 <li class="mob"><a href="/patientinformation/">Patientinformation</a></li>
@@ -697,7 +697,7 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <li class="mob"><a href="/om-oss/">Teamet</a></li>
 <li><a href="/kontakt/">Kontakt</a></li>
 <li class="m-meta">
-<span class="m-trust">★ 4,8 av 301 omdömen · Legitimerad vård</span>
+<span class="m-trust">★ <span data-omd-betyg>4,8</span> av <span data-omd-antal>301</span> omdömen · Legitimerad vård</span>
 <span class="m-live" id="mLive" hidden></span>
 <a href="mailto:info@kansei.se">info@kansei.se</a>
 <span class="m-hours">Mån–fre 08–19 · Helg 10–15</span>
@@ -756,7 +756,28 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
     <div class="pp-kort"><div class="pp-fig" data-ark="brygga"></div><h3>Loggen sköter sig själv</h3><p>Passen samlas i en kalender med kurva över smärta och känning. Korta frågor kommer till dig när de behövs. Vi läser loggen vid uppföljningen.</p></div>
     <div class="pp-kort"><div class="pp-fig" data-ark="djupbo"></div><h3>Som en app, utan nät</h3><p>Lägg planen på hemskärmen, lägg passdagarna i kalendern med påminnelse, och byt telefon utan att tappa något.</p></div>
   </div>
+  <div class="pp-spread">
+    <p class="pp-et">Möter dig där du är</p>
+    <h3>Samma besvär, tre nivåer, och en väg vidare</h3>
+    <p class="pp-lead">Reda är inte samma övningar som alla får. Varje program finns i tre nivåer med olika utföranden och doser, plus egna övningar för din träning. Den som börjar försiktigt får ro, den som redan tränar hårt får en utmaning, och nivån flyttas när loggen visar att kroppen är redo.</p>
+    <div class="pp-niva">
+      <div class="pp-nkort"><span class="pp-nchip a">Nivå A</span><div class="pp-fig" data-ark="andning"></div><h4>Grund</h4><p>Skonsamt, kort, med stöd. För vävnad som behöver ro först.</p></div>
+      <div class="pp-nkort"><span class="pp-nchip b">Nivå B</span><div class="pp-fig" data-ark="sidoplanka"></div><h4>Uppbyggnad</h4><p>Full övning, måttlig belastning. Här går de flesta.</p></div>
+      <div class="pp-nkort"><span class="pp-nchip c">Nivå C</span><div class="pp-fig" data-ark="stegupp"></div><h4>Belastning</h4><p>Tyngre, längre, progression. För den som vill tillbaka till full fart.</p></div>
+      <div class="pp-nkort"><span class="pp-nchip x">Din träning</span><div class="pp-fig" data-ark="utfall"></div><h4>Aktivitetsövningar</h4><p>Löpning, gym, CrossFit, Hyrox, cykel, vandring: två egna övningar som bygger det just din sport kräver.</p></div>
+    </div>
+  </div>
   <div class="pp-cta"><button type="button" class="btn btn-teal demo-knapp">Se hur ett pass ser ut</button><span class="pp-not">Demo med tre övningar, ingenting sparas.</span></div>
+  <div class="pp-roster">
+    <p class="pp-et">Det patienterna säger</p>
+    <div class="pp-rost-rad">
+      <figure class="pp-rost"><blockquote>Jag hade ont och vågade knappt röra mig. Nu tränar jag igen! Är så glad!</blockquote><figcaption>Ingela N.</figcaption></figure>
+      <figure class="pp-rost"><blockquote>Så himla bra! Jag öppnar appen och ser direkt vad jag ska göra. Inget krångel och jag tränar hemma och känner mig redan mycket bättre.</blockquote><figcaption>Maria S.</figcaption></figure>
+      <figure class="pp-rost"><blockquote>Jag har artros i knät och har varit rädd för att träna. Jag trodde att det kunde bli värre. Men jag fick börja försiktigt och öka lite i taget. Nu är jag starkare och vågar använda knät mer.</blockquote><figcaption>Thomas B.</figcaption></figure>
+      <figure class="pp-rost"><blockquote>Jag har fått behandling förut. Det blev bättre då men sen kom det alltid tillbaka. Nu fick jag övningar i appen också. Jag gör lite varje dag, det känns bra. Jag har mindre ont nu.</blockquote><figcaption>Anette L.</figcaption></figure>
+      <figure class="pp-rost lang"><blockquote>Jag har aldrig varit särskilt bra på att följa träningsprogram. Tidigare har jag fått övningar på papper men efter några dagar har jag glömt bort dem. Med appen blir det annorlunda. Jag får tydliga instruktioner, kan se hur övningarna ska göras och vet vad jag ska fokusera på. Det känns enkelt att komma igång, även de dagar då motivationen inte är på topp. Jag trodde faktiskt inte att jag skulle hålla i träningen så här länge, men nu har det blivit en del av min vardag.</blockquote><figcaption>Jesper K.</figcaption></figure>
+    </div>
+  </div>
   <div class="pp-telefon" id="ppTelefon" hidden><div class="pp-ram"><div class="pp-topp"><span></span></div><iframe id="ppRam" title="Demo av ett pass" loading="lazy"></iframe></div><p class="pp-not">Så här ser passet ut i mobilen. Tryck i ramen, den är levande.</p></div>
   <div class="pp-faq">
     <p class="pp-et">Vanliga frågor</p>
@@ -781,6 +802,11 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <div class="mp-knappar"><div class="mp-start"><button class="btn btn-teal" id="startaPass" type="button">Starta dagens pass</button><p class="mp-startu">En övning i taget med figur, dosering och tidtagare. Det du markerar där loggas automatiskt.</p></div><button class="btn btn-ghost" id="tillovningar" type="button">Visa planen</button><div class="mp-knappar2"><button class="btn btn-ghost" id="skrivut" type="button">Skriv ut / PDF</button><a href="#" id="bytkod" class="btn btn-ghost">Byt kod</a></div></div>
 <p class="mp-sign">Granskat av Carl-Robert Kårell, leg. naprapat<span class="sign-lang"> · Byggt på aktuella belastnings- och rehabiliteringsprinciper</span> · Uppdaterad augusti 2026</p>
 </div>
+<nav id="kflikar" hidden aria-label="Klinikvyns delar" role="tablist">
+  <button type="button" class="kflik" data-kflik="inkorg" role="tab" aria-selected="true">Inkorg<span id="kfNya" class="kf-nya" hidden></span></button>
+  <button type="button" class="kflik" data-kflik="plan" role="tab" aria-selected="false">Ny plan</button>
+  <button type="button" class="kflik" data-kflik="ovningar" role="tab" aria-selected="false">Övningar</button>
+</nav>
 <div id="klInkorg" hidden>
   <div class="ki-topp"><p class="kl-et">Inkorg · inskickade loggar</p><span id="kiLage" class="ki-lage"></span></div>
   <div id="kiLogin" hidden><p class="muted" style="margin:0 0 8px;font-size:.9rem">Logga in med din e-post för att läsa inkorgen. Du får en länk i mejlet.</p><div class="dl-slut"><input type="email" id="kiEpost" placeholder="din@kansei.se" autocomplete="email"><button type="button" id="kiSkickaLank" class="btn btn-teal">Skicka inloggningslänk</button></div><p id="kiLoginNot" class="muted" hidden style="font-size:.88rem;margin:8px 0 0"></p></div>
@@ -838,7 +864,7 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
     <button type="button" id="bkHar" class="bk-har">Jag har redan en tid bokad</button>
   </div>
 </div>
-<nav id="flikar" hidden aria-label="Delar av programmet" role="tablist">
+<nav id="flikar" hidden aria-label="Delar av programmet" role="tablist" data-ikoner="1">
 <button type="button" class="flik" data-flik="oversikt">Översikt</button>
 <button type="button" class="flik vald" data-flik="traning">Träning</button>
 <button type="button" class="flik" data-flik="logg">Logg<span class="flik-prick" hidden></span></button>
@@ -1491,7 +1517,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     var som=e.target.closest&&e.target.closest('.pk-som');
     if(som){var hs=som.getAttribute('data-hash'); if(!hs){alert('Det här inskicket saknar patientens länk, be henne skicka igen från appen.'); return} var m0=document.getElementById('fgModal'), fr0=document.getElementById('fgRam'); fr0.src=location.pathname+'#'+hs; m0.hidden=false; document.body.classList.add('fg-oppen'); return;}
     var nk=e.target.closest&&e.target.closest('.pk-nykod');
-    if(nk&&window.__kbPrefill){window.__kbPrefill({progs:nk.getAttribute('data-progs').split(',').filter(Boolean),n:nk.getAttribute('data-n')||'B',t:nk.getAttribute('data-t').split(',').filter(Boolean),namn:nk.getAttribute('data-namn'),tag:nk.getAttribute('data-tag')}); return;}
+    if(nk&&window.__kbPrefill){if(window.__kflikByt)window.__kflikByt('plan'); window.__kbPrefill({progs:nk.getAttribute('data-progs').split(',').filter(Boolean),n:nk.getAttribute('data-n')||'B',t:nk.getAttribute('data-t').split(',').filter(Boolean),namn:nk.getAttribute('data-namn'),tag:nk.getAttribute('data-tag')}); return;}
     if(e.target.closest&&e.target.closest('#klLoggRensa')){document.getElementById('klLoggIn').value=''; document.getElementById('klLoggUt').hidden=true; return;}
     if(e.target.closest&&e.target.closest('#klJournalKopiera')){var kb=e.target.closest('#klJournalKopiera'); var tx=window.__klJournal||''; if(navigator.clipboard&&tx){navigator.clipboard.writeText(tx).then(function(){kb.textContent='Kopierad ✓'; setTimeout(function(){kb.textContent='Kopiera sammanställningen'},2500)})} return;}
     if(!(e.target.closest&&e.target.closest('#klLoggLas')))return;
@@ -1533,7 +1559,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       var rad=[], flagg=[];
       if(hoga14>=3)flagg.push('Tre eller fler känningar på 4+ senaste två veckorna: backa eller behåll nivån, se över dosen.');
       if(adh!=null&&adh<60)flagg.push('Följsamhet under 60 procent av ordinerat: fråga vad som hindrar innan nivån rörs.');
-      if(Object.keys(ontR).length)flagg.push('Smärta markerad vid: '+Object.keys(ontR).join(', ')+'. Titta på utförandet av den övningen.');
+      if(Object.keys(ontR).length)flagg.push('Smärta markerad vid: '+Object.keys(ontR).map(function(n){var d=[].slice.call(document.querySelectorAll('details[data-ovid]')).filter(function(x){var st=x.querySelector('summary'); return st&&(st.querySelector('.ovtitel')||st).textContent.replace(/^\s*\d+\s*[·.]?\s*/,'').trim()===n})[0]; var f=d&&window.__ovFel?window.__ovFel(d.getAttribute('data-ovid')):null; return n+(f?' (vanligt fel: '+f.split('.')[0].toLowerCase()+')':'')}).join('; ')+'. Fråga hur hon gör den.');
       var uppat=(vecka>=2)&&(snitt14!=null&&snitt14<=2)&&(hoga14===0)&&(adh==null||adh>=70)&&(trendS==null||trendS<=0);
       if(uppat&&niv&&niv!=='C')rad.push('Kriterierna för nästa nivå är uppfyllda: två veckor, känning i snitt '+snitt14.toFixed(1).replace('.',',')+', inga höga svar, god följsamhet. Överväg nivå '+String.fromCharCode(niv.charCodeAt(0)+1)+'.');
       else if(uppat&&niv==='C')rad.push('Nivå C med tyst kropp: tid för avslut, aktivitetsövningar eller uppföljning med nytt mål.');
@@ -1581,6 +1607,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       var veckaSedan=new Date(); veckaSedan.setDate(veckaSedan.getDate()-7);
       var patAlla={}; rader.forEach(function(r){patAlla[(r.kod||'?')+'|'+(r.namn||'')]=1});
       document.getElementById('kiSummering').textContent=Object.keys(patAlla).length+' patienter · '+rader.filter(function(r){return !r.last}).length+' olästa inskick · '+rader.filter(function(r){return new Date(r.skickad)>veckaSedan}).length+' senaste sju dagarna';
+      var nya=rader.filter(function(r){return !r.last}).length, kfn=document.getElementById('kfNya'); if(kfn){kfn.hidden=!nya; kfn.textContent=nya;}
       var sok=(document.getElementById('kiSok').value||'').trim().toLowerCase(), baraNya=document.getElementById('kiBaraNya').checked;
       var per={}; rader.forEach(function(r){var k=(r.kod||'?')+'|'+(r.namn||''); (per[k]=per[k]||{kod:r.kod,namn:r.namn||'',program:r.program||'',rader:[]}).rader.push(r)});
       var grupper=Object.keys(per).map(function(k){var g=per[k]; g.rader.sort(function(a,b){return a.skickad<b.skickad?1:-1}); g.senast=g.rader[0].skickad; g.olasta=g.rader.filter(function(x){return !x.last}).length; return g});
@@ -1600,7 +1627,18 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
   });
   document.addEventListener('input',function(e){ if(e.target&&(e.target.id==='kiSok'))kiRender(); });
   document.addEventListener('change',function(e){ if(e.target&&(e.target.id==='kiBaraNya'))kiRender(); });
-  function kiVisa(){var b=document.getElementById('klInkorg'); if(!b)return; var bib=document.body.classList.contains('bibliotek'); b.hidden=!bib; if(!bib)return;
+  function kflikByt(namn){
+    document.body.setAttribute('data-kflik',namn);
+    document.querySelectorAll('#kflikar .kflik').forEach(function(b){b.setAttribute('aria-selected',b.getAttribute('data-kflik')===namn?'true':'false')});
+    try{sessionStorage.setItem('kanseiKflik',namn)}catch(e){}
+    if(namn==='plan'&&window.__kbRita)window.__kbRita();
+  }
+  window.__kflikByt=kflikByt;
+  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('#kflikar .kflik'); if(b){kflikByt(b.getAttribute('data-kflik')); window.scrollTo({top:document.getElementById('kflikar').getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});}});
+  function kiVisa(){var b=document.getElementById('klInkorg'); if(!b)return; var bib=document.body.classList.contains('bibliotek'); b.hidden=!bib;
+    var kf=document.getElementById('kflikar'); if(kf)kf.hidden=!bib;
+    if(bib){var vald='inkorg'; try{vald=sessionStorage.getItem('kanseiKflik')||'inkorg'}catch(e){} kflikByt(vald);} else document.body.removeAttribute('data-kflik');
+    if(!bib)return;
     if(!(window.KANSEI&&window.KANSEI.inkorg)){var n=0,t=setInterval(function(){n++; if((window.KANSEI&&window.KANSEI.inkorg)||n>30){clearInterval(t); kiRender();}},100); return;}
     kiRender();}
   window.addEventListener('load',function(){ if(document.body.classList.contains('bibliotek'))kiRender(); var m=document.getElementById('dlMejla'), c=INK.cfg(); if(m&&document.body.classList.contains('kodad')&&c.live&&dlLas().length)m.hidden=true; });
@@ -1864,12 +1902,21 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       sx.setAttribute('data-fg',g);
     });
   }
+  (function(){var IK={oversikt:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>',traning:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2"/><path d="M12 7v6l-4 6M12 13l4 6M8 10l4-2 4 2"/></svg>',logg:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>'};
+    function satt(){document.querySelectorAll('#flikar .flik').forEach(function(b){var k=b.getAttribute('data-flik'); if(IK[k]&&!b.querySelector('svg')){var prick=b.querySelector('.flik-prick'); var t=b.textContent.trim(); b.innerHTML=IK[k]+'<span class="flik-txt">'+t+'</span>'; if(prick)b.appendChild(prick);}})}
+    if(document.readyState!=='loading')satt(); else document.addEventListener('DOMContentLoaded',satt);
+  })();
   function flikByt(f, tyst){
     document.querySelectorAll('#flikar .flik').forEach(function(b){b.setAttribute('role','tab');b.setAttribute('aria-selected',b.getAttribute('data-flik')===f?'true':'false')});
     document.body.setAttribute('data-flik',f);
     document.querySelectorAll('#flikar .flik').forEach(function(b){b.classList.toggle('vald',b.getAttribute('data-flik')===f)});
     try{localStorage.setItem('kanseiFlik_'+__patKod,f)}catch(e){}
-    if(!tyst){var fl=document.getElementById('flikar'); if(fl){var top=fl.getBoundingClientRect().top+window.scrollY-(parseInt(getComputedStyle(fl).top,10)||70)-4; window.scrollTo({top:Math.max(0,top),behavior:'smooth'});}}
+    if(!tyst){var fl=document.getElementById('flikar'); if(fl){
+      if(getComputedStyle(fl).position==='fixed'){ /* bottenmeny: scrolla till flikens innehåll, strax under sidhuvudet */
+        var mal=f==='oversikt'?document.getElementById('korthet'):(f==='logg'?document.getElementById('digilogg'):(document.getElementById('lugnBanner')&&!document.getElementById('lugnBanner').hidden?document.getElementById('lugnBanner'):document.querySelector('.aktiv details[data-ovid]')));
+        var anchor=mal?mal:document.querySelector('.mp-huvud2'); var top2=anchor?anchor.getBoundingClientRect().top+window.scrollY-84:0; window.scrollTo({top:Math.max(0,top2),behavior:'smooth'});
+      } else {var top=fl.getBoundingClientRect().top+window.scrollY-(parseInt(getComputedStyle(fl).top,10)||70)-4; window.scrollTo({top:Math.max(0,top),behavior:'smooth'});}
+    }}
   }
   document.addEventListener('click',function(e){
     var b=e.target.closest&&e.target.closest('#flikar .flik');
@@ -1926,6 +1973,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     var __kl=document.getElementById('klLogg'); if(__kl)__kl.hidden=true;
     var __ki=document.getElementById('klInkorg'); if(__ki)__ki.hidden=true;
     var __kj=document.getElementById('klJournal'); if(__kj)__kj.hidden=true;
+    var __kf=document.getElementById('kflikar'); if(__kf)__kf.hidden=true; document.body.removeAttribute('data-kflik');
     if(document.body.classList.contains('pl-oppen'))plStang();
     var __bk=document.getElementById('bokaKort'); if(__bk)__bk.hidden=true;
     var __fl2=document.getElementById('flikar'); if(__fl2)__fl2.hidden=true;
@@ -2252,11 +2300,17 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     });
     document.getElementById('dlKChips').addEventListener('click',function(e){
       var v=e.target.getAttribute&&e.target.getAttribute('data-k'); if(v==null)return;
+      if(e.target.classList.contains('vald'))return; e.target.classList.add('vald'); vib([12]);
+      var boxK=document.getElementById('dlKanning');
+      setTimeout(function(){boxK.classList.add('byt'); setTimeout(function(){boxK.classList.remove('byt'); e.target.classList.remove('vald'); kanningSpara(v)},240)},300);
+      return;
+    });
+    function kanningSpara(v){
       var logg=dlLas(), idag=dagStr(new Date());
       for(var i=logg.length-1;i>=0;i--){if(logg[i].k==null&&logg[i].d<idag){logg[i].k=parseInt(v,10);break}}
       dlSkriv(logg); dlRender(); veckaRender(); if(typeof trendRender==='function')trendRender();
       if(window.__nivaRader)window.__nivaRader(); if(typeof lugnBanner==='function')lugnBanner();
-    });
+    }
   })();
   var __dpDag=null;
   function dpOppna(iso){
@@ -2410,6 +2464,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     else {plIx=kvar[0].i; plVisa();}
     setTimeout(function(){var x=document.getElementById('plX'); if(x)x.focus()},50);
   }
+  function SPEL_reset(){ if(window.__figSpela){window.__figSpela(false); window.__figNoll&&window.__figNoll();} }
   function plVisa(){
     var d=plLista[plIx];
     document.getElementById('plSlut').hidden=true;
@@ -2422,59 +2477,88 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     inne.innerHTML='';
     talStopp();
     var c=document.createElement('div'); c.className='pl-kort';
-    var ordRad=document.createElement('p'); ordRad.className='pl-ord'; ordRad.innerHTML='<img src="/bilder/reda/mark.svg" alt="" class="reda-mini"> Ordinerad för dig efter undersökningen'+((window.__nivaProgs||[]).length?' · nivå '+(window.__nivaProgs[0].n||''):'')+' · granskad av leg. naprapat'; c.setAttribute('data-ovid',d.getAttribute('data-ovid'));
+    var ordRad=document.createElement('p'); ordRad.className='pl-ord'; ordRad.innerHTML='<img src="/bilder/reda/mark.svg" alt="" class="reda-mini"> Ordinerad för dig'+((window.__nivaProgs||[]).length?' · nivå '+(window.__nivaProgs[0].n||''):'')+' · granskad av leg. naprapat'; c.setAttribute('data-ovid',d.getAttribute('data-ovid'));
     var su=d.querySelector('summary');
     var titel=su?((su.querySelector('.ovtitel')||su).textContent.replace(/^\s*\d+\s*[·.]?\s*/,'').trim()):'';
     var th=document.createElement('div'); th.className='pl-titel'; th.textContent=titel; c.appendChild(th);
     [].slice.call(d.children).forEach(function(ch){ if(ch.tagName==='SUMMARY')return; c.appendChild(ch.cloneNode(true)); });
     inne.appendChild(c);
     if(!window.__demo)c.insertBefore(ordRad,c.firstChild);
-    var figr=c.querySelector('.ov-figrad');
+    var figr=c.querySelector('.ov-figrad'), ovid=d.getAttribute('data-ovid');
     if(figr&&window.__ovIkon&&window.__figFas){
-      var ovid=d.getAttribute('data-ovid'), rad=document.createElement('div'); rad.className='pl-faser';
-      rad.innerHTML='<figure>'+window.__ovIkon(ovid,96)+'<figcaption>Start</figcaption></figure><figure>'+window.__ovIkon(ovid,96)+'<figcaption>Slut</figcaption></figure>';
-      figr.appendChild(rad);
-      var lg=window.__ovLage?window.__ovLage(ovid):''; if(lg){var lp=document.createElement('p'); lp.className='pl-lage'; lp.innerHTML='<span>Utgångsläge</span>'+lg; figr.appendChild(lp);}
-      var kn0=window.__ovKann?window.__ovKann(ovid):null; if(kn0){var kp=document.createElement('p'); kp.className='pl-kanntxt'; kp.innerHTML='<span class="pl-kannprick"></span><span><b>Här ska det kännas:</b> '+kn0.txt+'. Känns det någon annanstans, huggande eller stickande, stanna.</span>'; figr.appendChild(kp);}
       var stor=figr.querySelector('svg.ovfig');
       if(stor&&window.__figLager)window.__figLager(figr,ovid);
-      if(stor){var cue=document.createElement('span'); cue.className='pl-cue'; cue.setAttribute('aria-live','polite'); figr.insertBefore(cue,figr.querySelector('.pl-figwrap')||stor);
+      if(stor){var cue=document.createElement('span'); cue.className='pl-cue'; cue.setAttribute('aria-live','polite'); var cl=window.__ovCue?window.__ovCue(ovid):null; if(cl){['upp','ner','hall','vila'].forEach(function(k){cue.setAttribute('data-'+k,cl[k])})} cue.textContent='Tryck på figuren för att starta'; figr.insertBefore(cue,figr.querySelector('.pl-figwrap')||stor);
         var ctl=document.createElement('div'); ctl.className='pl-figctl';
-        ctl.innerHTML='<button type="button" class="pl-slow" aria-pressed="false">Långsamt</button><button type="button" class="pl-takt" aria-pressed="false" aria-label="Ton och vibration vid varje fasbyte">Takt</button><button type="button" class="pl-tyst" aria-pressed="'+(ljudAv()?'true':'false')+'" aria-label="Stäng av alla ljud">'+(ljudAv()?'Ljud av':'Ljud på')+'</button><button type="button" class="pl-full" aria-label="Visa figuren i helskärm">Helskärm</button>'+(window.speechSynthesis?'<button type="button" class="pl-lyssna" aria-pressed="false" aria-label="Läs upp övningen"><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M3 8v4h3l4 3V5L6 8H3z" fill="currentColor"/><path d="M13 7a3.5 3.5 0 0 1 0 6M15 4.5a6.5 6.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Lyssna</span></button>':'');
+        var IK_LJUD='<svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><path d="M3 8v4h3l4 3V5L6 8H3z" fill="currentColor"/><path class="ik-vag" d="M13 7a3.5 3.5 0 0 1 0 6M15 4.5a6.5 6.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="ik-kryss" d="M13 7l5 6M18 7l-5 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+        var I=function(d){return '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+d+'</svg>'};
+        ctl.innerHTML='<button type="button" class="pl-spel" aria-pressed="false"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path class="ik-play" d="M8 5l11 7-11 7z" fill="currentColor"/><path class="ik-paus" d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg><span>Starta</span></button>'
+          +'<button type="button" class="pl-rost" aria-pressed="'+(window.__rostPa?'true':'false')+'" aria-label="Röst som säger lyft, håll och sänk i takt">'+I('<path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4M9 21h6"/>')+'<span>Röst</span></button>'
+          +'<button type="button" class="pl-takt" aria-pressed="false" aria-label="Ton vid varje fasbyte">'+I('<path d="M9 3h6l3 17H6z"/><path d="M12 15L17 6"/><circle cx="12" cy="15" r="1.4" fill="currentColor"/>')+'<span>Takt</span></button>'
+          +'<button type="button" class="pl-slow" aria-pressed="false">'+I('<circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/>')+'<span>Långsamt</span></button>'
+          +'<button type="button" class="pl-tyst ikon" aria-pressed="'+(ljudAv()?'true':'false')+'" aria-label="Ljud av eller på">'+IK_LJUD+'<span>Ljud</span></button>'
+          +'<button type="button" class="pl-full" aria-label="Visa figuren i helskärm">'+I('<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>')+'<span>Helskärm</span></button>'
+          +(window.speechSynthesis?'<button type="button" class="pl-lyssna" aria-pressed="false" aria-label="Läs upp övningens text">'+I('<path d="M5 6h14M5 10h14M5 14h9M5 18h6"/>')+'<span>Läs upp</span></button>':'');
         var efter=figr.querySelector('.pl-figwrap')||stor; figr.insertBefore(ctl,efter.nextSibling);
-        ctl.querySelector('.pl-tyst').addEventListener('click',function(){var av=!ljudAv(); try{localStorage.setItem('kanseiTyst',av?'1':'0')}catch(e){} this.setAttribute('aria-pressed',av?'true':'false'); this.textContent=av?'Ljud av':'Ljud på'; if(!av)ton(880,0.08,0.08);});
+        ctl.querySelector('.pl-tyst').addEventListener('click',function(){var av=!ljudAv(); try{localStorage.setItem('kanseiTyst',av?'1':'0')}catch(e){} this.setAttribute('aria-pressed',av?'true':'false'); if(!av)ton(880,0.08,0.08);});
+        ctl.querySelector('.pl-spel').addEventListener('click',function(){window.__figSpela(!window.__figSpelar()); vib([10]); if(window.__figSpelar())ac();});
+        ctl.querySelector('.pl-rost').addEventListener('click',function(){window.__rostPa=!window.__rostPa; this.setAttribute('aria-pressed',window.__rostPa?'true':'false'); if(window.__rostPa){ac(); window.__rost('upp','Röst på');}});
         ctl.querySelector('.pl-takt').addEventListener('click',function(){var on=this.getAttribute('aria-pressed')!=='true'; this.setAttribute('aria-pressed',on?'true':'false'); window.__taktPa=on; if(on){ac(); ton(880,0.1,0.1);} });
-        ctl.querySelector('.pl-slow').addEventListener('click',function(){var on=this.getAttribute('aria-pressed')!=='true'; this.setAttribute('aria-pressed',on?'true':'false'); this.textContent=on?'Normalt tempo':'Långsamt'; window.__figTempo(on?2:1);});
-        ctl.querySelector('.pl-full').addEventListener('click',function(){var fs=document.getElementById('figFull'), inne=fs.querySelector('.ff-inne'); inne.innerHTML='<span class="pl-cue" data-fas=""></span>'+window.__ovIkon(ovid,360)+'<p class="pl-lage">'+(window.__ovLage?window.__ovLage(ovid):'')+'</p>'; fs.hidden=false; document.body.classList.add('ff-oppen'); if(window.__figLager)window.__figLager(inne,ovid); var kf=window.__ovKann?window.__ovKann(ovid):null; if(kf){var kp2=document.createElement('p'); kp2.className='pl-kanntxt'; kp2.innerHTML='<span class="pl-kannprick"></span><span><b>Här ska det kännas:</b> '+kf.txt+'</span>'; inne.appendChild(kp2);} window.__figSkan(fs);});
+        ctl.querySelector('.pl-slow').addEventListener('click',function(){var on=this.getAttribute('aria-pressed')!=='true'; this.setAttribute('aria-pressed',on?'true':'false'); this.querySelector('span').textContent=on?'Normalt':'Långsamt'; window.__figTempo(on?2:1);});
+        ctl.querySelector('.pl-full').addEventListener('click',function(){
+          var fs=document.getElementById('figFull'), inne2=fs.querySelector('.ff-inne'); var cl2=window.__ovCue?window.__ovCue(ovid):null;
+          var dosT=(c.querySelector('.ov-niva p')||{}).textContent||''; dosT=dosT.replace(/^Din dosering\s*·\s*Nivå\s*[ABC]/,'').trim();
+          inne2.innerHTML='<div class="ff-topp"><span class="ff-titel">'+titel+'</span><span class="ff-dos">'+dosT+'</span></div>'
+            +'<span class="pl-cue" data-fas=""'+(cl2?' data-upp="'+cl2.upp+'" data-ner="'+cl2.ner+'" data-hall="'+cl2.hall+'" data-vila="'+cl2.vila+'"':'')+'></span>'+window.__ovIkon(ovid,360)
+            +'<div class="ff-ctl"></div>'
+            +'<p class="pl-kanntxt"><span class="pl-kannprick"></span><span><b>Här ska det kännas:</b> '+((window.__ovKann&&window.__ovKann(ovid))||{txt:''}).txt+'</span></p>';
+          var ffc=inne2.querySelector('.ff-ctl'); var tm=c.querySelector('.ovtimer'), vk=c.querySelector('.pl-vilaknapp');
+          if(tm){var tb=document.createElement('button'); tb.type='button'; tb.className='ff-knapp'; tb.textContent='Starta hållet, '+tm.getAttribute('data-sek')+' s'; tb.addEventListener('click',function(){tm.click(); tb.textContent=tm.classList.contains('gar')?'Räknar ned, tryck för att avbryta':'Starta hållet, '+tm.getAttribute('data-sek')+' s';}); ffc.appendChild(tb);}
+          if(vk){var vb=document.createElement('button'); vb.type='button'; vb.className='ff-knapp ff-vila'; vb.textContent='Vila 60 s'; vb.addEventListener('click',function(){vk.click(); vb.textContent=vk.classList.contains('gar')?'Vilar, tryck för att avbryta':'Vila 60 s';}); ffc.appendChild(vb);}
+          var sp=document.createElement('button'); sp.type='button'; sp.className='ff-knapp ff-spel pl-spel'; sp.setAttribute('aria-pressed',window.__figSpelar()?'true':'false'); sp.innerHTML='<span>'+(window.__figSpelar()?'Paus':'Starta')+'</span>'; sp.addEventListener('click',function(){window.__figSpela(!window.__figSpelar()); vib([10]); if(window.__figSpelar())ac();}); ffc.insertBefore(sp,ffc.firstChild);
+          ['pl-rost','pl-takt','pl-slow'].forEach(function(cls){var o=ctl.querySelector('.'+cls); if(!o)return; var lbl=function(){return (o.querySelector('span')||o).textContent.trim()}; var b=document.createElement('button'); b.type='button'; b.className='ff-knapp ff-liten'+(o.getAttribute('aria-pressed')==='true'?' pa':''); b.textContent=lbl(); b.addEventListener('click',function(){o.click(); b.textContent=lbl(); b.classList.toggle('pa',o.getAttribute('aria-pressed')==='true')}); ffc.appendChild(b);});
+          var ty=document.createElement('button'); ty.type='button'; ty.className='ff-knapp ff-liten ff-ikon'; ty.setAttribute('aria-label','Ljud av eller på'); ty.innerHTML=IK_LJUD; ty.setAttribute('aria-pressed',ljudAv()?'true':'false'); ty.addEventListener('click',function(){ctl.querySelector('.pl-tyst').click(); ty.setAttribute('aria-pressed',ljudAv()?'true':'false')}); ffc.appendChild(ty);
+          fs.hidden=false; document.body.classList.add('ff-oppen'); if(window.__figLager)window.__figLager(inne2,ovid); window.__figSkan(fs);
+        });
       }
-      var hint=document.createElement('button'); hint.type='button'; hint.className='pl-lashint'; hint.innerHTML='Så gör du <span aria-hidden="true">↓</span>';
-      hint.addEventListener('click',function(){var g=c.querySelector('.ov-gor'); if(g)g.scrollIntoView({behavior:'smooth',block:'start'}); hint.classList.add('bort')});
-      figr.appendChild(hint);
-      inne.onscroll=function(){if(inne.scrollTop>120)hint.classList.add('bort')};
-      var fig=rad.querySelectorAll('figure');
-      window.__figFas(fig[0],0); window.__figFas(fig[1],1);
+      var kn0=window.__ovKann?window.__ovKann(ovid):null; if(kn0){var kp=document.createElement('p'); kp.className='pl-kanntxt'; kp.innerHTML='<span class="pl-kannprick"></span><span><b>Här ska det kännas:</b> '+kn0.txt+'. Känns det någon annanstans, huggande eller stickande, stanna.</span>'; figr.appendChild(kp);}
+      var lg=window.__ovLage?window.__ovLage(ovid):''; if(lg){var lp=document.createElement('p'); lp.className='pl-lage'; lp.innerHTML='<span>Utgångsläge</span>'+lg; figr.appendChild(lp);}
     }
     if(window.__figSkan)window.__figSkan(inne);
+    if(window.__figSpela){SPEL_reset();}
     var dosP=c.querySelector('.ov-niva');
     if(dosP){
       var dosTxt=dosP.textContent, sm=dosTxt.match(/(\d)\s*set/i), setN=sm?parseInt(sm[1],10):0;
+      var repM=dosTxt.match(/om\s+(\d+)|(\d+)\s*(?:repetition|rep\b|varv|lyft|steg|nick)/i), repN=repM?parseInt(repM[1]||repM[2],10):0; if(window.__varvMal)window.__varvMal((repN>0&&repN<=40)?repN:0);
       var perSida=/per (sida|ben|arm|hand|fot)/i.test(dosTxt);
       if(perSida){var ps=document.createElement('p'); ps.className='pl-sida'; ps.innerHTML='<b>Båda sidor.</b> Figuren visar en sida, gör hela doseringen på varje.'; dosP.appendChild(ps);}
-      var stopp=document.createElement('p'); stopp.className='pl-stopp'; stopp.innerHTML='<span>Rätt känsla</span> arbete, tryck eller sträck i området. <span>Stanna</span> vid huggande smärta, domningar eller stickningar, och hör av dig.';
-      dosP.parentNode.insertBefore(stopp,dosP.nextSibling);
       var vr=document.createElement('div'); vr.className='pl-vila';
       vr.innerHTML=(setN>1?'<span class="pl-set" data-set="1" data-max="'+setN+'" aria-live="polite">Set <b>1</b> av '+setN+'</span>':'')+'<button type="button" class="pl-vilaknapp" data-sek="60" data-sida="'+(perSida?'1':'')+'" aria-label="Starta vilotimer, 60 sekunder"><span class="pl-vilaring"></span><span class="pl-vilatxt"><small>Vila mellan set'+(perSida?', byt sida':'')+'</small>Starta 60 sekunder</span></button>';
       dosP.appendChild(vr);
     }
-    if(dosP&&!window.__demo&&!dlLas().length&&!window.__forstaVisad){var fp=document.createElement('p'); fp.className='pl-forsta'; fp.innerHTML='<span>Första passet</span> Gör halva antalet set i dag och känn efter i morgon. Full dos från nästa gång om kroppen är tyst.'; dosP.parentNode.insertBefore(fp,dosP);}
+    /* ordningen: etikett, titel, figurkolumn, textkolumn */
+    var V=document.createElement('div'); V.className='pl-v', H=document.createElement('div'); H.className='pl-h';
+    if(figr)V.appendChild(figr);
+    var forstaP=null; if(dosP&&!window.__demo&&!dlLas().length){forstaP=document.createElement('p'); forstaP.className='pl-forsta'; forstaP.innerHTML='<span>Första passet</span> Gör halva antalet set i dag och känn efter i morgon. Full dos från nästa gång om kroppen är tyst.';}
+    if(dosP)H.appendChild(dosP);
+    if(forstaP)H.appendChild(forstaP);
+    /* på mobil ligger doseringen direkt under figuren, känsla och utgångsläge efter */
+    if(figr&&!window.matchMedia('(min-width: 900px)').matches){var kt=figr.querySelector('.pl-kanntxt'), lt=figr.querySelector('.pl-lage'); if(kt)H.appendChild(kt); if(lt)H.appendChild(lt);}
+    var stopp=document.createElement('p'); stopp.className='pl-stopp'; stopp.innerHTML='<span>Rätt känsla</span> arbete, tryck eller sträck i området. <span>Stanna</span> vid huggande smärta, domningar eller stickningar, och hör av dig.'; H.appendChild(stopp);
+    ['.ov-varfor','.ov-gor','.ov-tank'].forEach(function(sel){c.querySelectorAll(sel).forEach(function(el){H.appendChild(el)})});
+    var felT=window.__ovFel?window.__ovFel(ovid):null; if(felT){var fp=document.createElement('div'); fp.className='pl-fel'; fp.innerHTML='<span class="pl-fel-et">Vanligt fel</span><p>'+felT+'</p>'; H.appendChild(fp);}
+    ['.ov-akt','.ov-nasta'].forEach(function(sel){c.querySelectorAll(sel).forEach(function(el){H.appendChild(el)})});
+    [].slice.call(c.children).forEach(function(ch){ if(ch===th||ch===ordRad||ch===V||ch===H)return; if(ch.classList&&(ch.classList.contains('ov-figrad')))return; if(!H.contains(ch)&&!V.contains(ch))H.appendChild(ch); });
+    c.appendChild(V); c.appendChild(H);
+    inne.onscroll=null;
     var kv=plOgjorda(), sista=(kv.length===1&&kv[0].i===plIx), kn=document.getElementById('plKlar');
-    kn.textContent=sista?'Klar, logga passet ✓':'Klar ✓';
+    kn.textContent=sista?'Klar, logga passet ✓':'Klar, nästa övning →';
     kn.classList.toggle('sista',sista);
     /* första gången en övning visas: Klar väntar tills utförandet är läst */
     var ovidNu=d.getAttribute('data-ovid'), sett=window.__demo?[ovidNu]:settLas(), oläst=sett.indexOf(ovidNu)<0;
     kn.classList.toggle('las',oläst); kn.setAttribute('data-sista',sista?'1':'');
     if(oläst){kn.textContent='Läs utförandet först ↓';
-      var g=c.querySelector('.ov-gor'), fri=function(){if(!kn.classList.contains('las'))return; kn.classList.remove('las'); kn.textContent=kn.getAttribute('data-sista')?'Klar, logga passet ✓':'Klar ✓'; var a=settLas(); if(a.indexOf(ovidNu)<0){a.push(ovidNu); settSkriv(a);} vib([10]);};
+      var g=c.querySelector('.ov-gor'), fri=function(){if(!kn.classList.contains('las'))return; kn.classList.remove('las'); kn.textContent=kn.getAttribute('data-sista')?'Klar, logga passet ✓':'Klar, nästa övning →'; var a=settLas(); if(a.indexOf(ovidNu)<0){a.push(ovidNu); settSkriv(a);} vib([10]);};
       var io=('IntersectionObserver' in window)&&g?new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){fri(); io.disconnect();}})},{root:inne,threshold:0.6}):null;
       if(io)io.observe(g); else fri();
       kn.__fri=fri;
@@ -2580,7 +2664,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     demoSlut();
     if(__vila){clearInterval(__vila.iv);__vila=null}
     try{if(window.__wl){window.__wl.release();window.__wl=null}}catch(e){}
-    talStopp(); window.__taktPa=false;
+    talStopp(); window.__taktPa=false; if(window.__figSpela)window.__figSpela(true);
     var t=window.__plFokusTillbaka; if(t&&t!==document.body&&t.focus&&document.contains(t))t.focus(); else {var st=document.querySelector('.pl-start'); if(st)st.focus()}
   }
   document.addEventListener('click',function(e){
@@ -2620,11 +2704,12 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
 
   window.KANSEI_EVENT=function(namn,props){try{if(window.plausible)window.plausible(namn,{props:props||{}})}catch(e){}};
   function vib(m){try{if(navigator.vibrate)navigator.vibrate(m)}catch(e){}}
+  window.__vib=vib;
   var __ac=null; function ac(){try{var A=window.AudioContext||window.webkitAudioContext; if(!A)return null; __ac=__ac||new A(); if(__ac.state==='suspended')__ac.resume(); return __ac}catch(e){return null}}
   function ljudAv(){try{return localStorage.getItem('kanseiTyst')==='1'}catch(e){return false}}
   function ton(freq,dur,vol){if(ljudAv())return; var c=ac(); if(!c)return; var o=c.createOscillator(), g=c.createGain(); o.type='sine'; o.frequency.value=freq; g.gain.value=0.0001; o.connect(g); g.connect(c.destination); var t0=c.currentTime; g.gain.exponentialRampToValueAtTime(vol||0.14,t0+0.015); g.gain.exponentialRampToValueAtTime(0.0001,t0+(dur||0.12)); o.start(t0); o.stop(t0+(dur||0.12)+0.05);}
   var __tal={aktiv:false,kn:null};
-  function talStopp(){try{if(window.speechSynthesis)speechSynthesis.cancel()}catch(e){} __tal.aktiv=false; if(__tal.kn){__tal.kn.setAttribute('aria-pressed','false'); __tal.kn.querySelector('span').textContent='Lyssna'; __tal.kn.classList.remove('gar');} __tal.kn=null;}
+  function talStopp(){try{if(window.speechSynthesis)speechSynthesis.cancel()}catch(e){} __tal.aktiv=false; if(__tal.kn){__tal.kn.setAttribute('aria-pressed','false'); __tal.kn.querySelector('span').textContent='Läs upp'; __tal.kn.classList.remove('gar');} __tal.kn=null;}
   function talRost(){var r=[]; try{r=speechSynthesis.getVoices()}catch(e){} var sv=r.filter(function(v){return /^sv/i.test(v.lang)}); var pref=sv.find(function(v){return /Alva|Klara|Svenska/i.test(v.name)})||sv[0]; return pref||null;}
   function talStarta(kn,delar){
     if(!window.speechSynthesis){return}
@@ -2641,6 +2726,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     var gor=t('.ov-gor'); if(gor)d.push(gor.replace(/^Utförande:?\s*/,'Så här gör du. '));
     var tank=t('.ov-tank'); if(tank)d.push(tank.replace(/^Tänk på:?\s*/,'Tänk på. '));
     var kt=t('.pl-kanntxt'); if(kt)d.push(kt);
+    var ft=t('.pl-fel p'); if(ft)d.push('Vanligt fel. '+ft);
     var ut=[]; d.forEach(function(x){x=x.replace(/\s{2,}/g,' '); if(!x)return; if(x.length>220){(x.match(/[^.!?]+[.!?]+/g)||[x]).forEach(function(m){ut.push(m.trim())})} else ut.push(x)}); return ut;
   }
   document.addEventListener('click',function(e){
@@ -2651,19 +2737,22 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
   });
   document.addEventListener('visibilitychange',function(){ try{if(document.visibilityState==='visible'&&document.body.classList.contains('pl-oppen')&&navigator.wakeLock&&!window.__wl)navigator.wakeLock.request('screen').then(function(l){window.__wl=l; l.addEventListener('release',function(){window.__wl=null})}).catch(function(){})}catch(e){} });
   window.__taktPa=false;
+  window.__rostPa=false;
+  window.__rost=function(fas,txt){ if(!window.__rostPa||ljudAv()||!window.speechSynthesis||!document.body.classList.contains('pl-oppen'))return; var ord=(txt||'').split('·')[0].replace(/\s*\d+\/\d+\s*$/,'').trim(); if(!ord||fas==='vila')return; try{speechSynthesis.cancel(); var u=new SpeechSynthesisUtterance(ord); u.lang='sv-SE'; var r=talRost(); if(r)u.voice=r; u.rate=1.05; u.volume=0.9; speechSynthesis.speak(u);}catch(e){} };
   window.__takt=function(fas){ if(!window.__taktPa||!document.body.classList.contains('pl-oppen'))return; if(fas==='upp'){ton(880,0.1,0.12);vib([14]);} else if(fas==='ner'){ton(520,0.14,0.12);vib([14,40,14]);} else if(fas==='hall'){ton(700,0.06,0.06);} };
   var __vila=null;
   document.addEventListener('click',function(e){
     var k=e.target.closest&&e.target.closest('.pl-vilaknapp'); if(!k)return;
     var txt=k.querySelector('.pl-vilatxt'), ring=k.querySelector('.pl-vilaring');
-    if(__vila){clearInterval(__vila.iv);__vila=null;k.classList.remove('gar');txt.innerHTML='<small>Vila mellan set</small>Starta 60 sekunder';ring.style.setProperty('--p','0');return}
+    if(__vila){clearInterval(__vila.iv);__vila=null;k.classList.remove('gar');txt.innerHTML='<small>Vila mellan set</small>Starta 60 sekunder';ring.style.setProperty('--p','0'); if(window.__figFrys)window.__figFrys(null); return}
     var sek=parseInt(k.getAttribute('data-sek'),10)||60, slut=Date.now()+sek*1000; k.classList.add('gar');
+    if(window.__figFrys)window.__figFrys(0); if(window.__varvNoll)window.__varvNoll();
     __vila={iv:setInterval(function(){
       var kvar=Math.max(0,Math.ceil((slut-Date.now())/1000));
       if(kvar<=3&&kvar>0&&__vila.sist!==kvar){__vila.sist=kvar; vib([30]); ton(660,0.08,0.08);}
       txt.innerHTML='<small>Vilar</small>'+kvar+' sekunder kvar, tryck för att avbryta';
       ring.style.setProperty('--p',String(1-kvar/sek));
-      if(kvar<=0){clearInterval(__vila.iv);__vila=null;k.classList.remove('gar');k.classList.add('klar');
+      if(kvar<=0){clearInterval(__vila.iv);__vila=null;k.classList.remove('gar');k.classList.add('klar'); if(window.__figFrys)window.__figFrys(null);
         txt.innerHTML='<small>Vilan är slut</small>'+(k.getAttribute('data-sida')?'Nästa set, andra sidan':'Nästa set');
         var st=k.parentNode.querySelector('.pl-set'); if(st){var n=parseInt(st.getAttribute('data-set'),10),mx=parseInt(st.getAttribute('data-max'),10); if(n<mx){st.setAttribute('data-set',String(n+1));st.innerHTML='Set <b>'+(n+1)+'</b> av '+mx;}}
         if(navigator.vibrate)navigator.vibrate([120,60,120]);
@@ -2983,7 +3072,8 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     if(__kanDue){kbox.hidden=false; vbox.hidden=true; et.textContent='En fråga · om gårdagens pass';}
     else if(vDue){kbox.hidden=true; vbox.hidden=false; et.textContent=__vTyp==='bas'?'Två frågor · ditt utgångsläge':(__vTyp==='ater'?'Två frågor · inför återbesöket':'Två frågor · veckans mätning');}
     else {kbox.hidden=true; vbox.hidden=true;}
-    panel.hidden=!nagot;
+    if(nagot){ if(panel.hidden){panel.hidden=false; panel.classList.add('in'); setTimeout(function(){panel.classList.remove('in')},500);} }
+    else if(!panel.hidden&&!panel.classList.contains('ut')){ panel.classList.add('ut'); setTimeout(function(){panel.hidden=true; panel.classList.remove('ut')},480); }
     var prick=document.querySelector('#flikar .flik-prick');
     if(prick)prick.hidden=!nagot;
     panel.classList.toggle('bas',!__kanDue&&__vTyp==='bas');
@@ -3009,13 +3099,17 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
   }
   document.addEventListener('click',function(e){
     var kn=e.target.closest&&e.target.closest('#dlvChips button');
-    if(!kn)return;
+    if(!kn||kn.classList.contains('vald'))return;
     var v=parseInt(kn.getAttribute('data-v'),10);
-    if(__vSmarta==null){__vSmarta=v; veckaRender();}
-    else {
-      var lista=vLas(); var __lg=vLage(); lista.push({d:dagStr(new Date()), s:__vSmarta, f:v, t:(__lg?__lg.typ:'vecka')}); vSkriv(lista);
-      __vSmarta=null; document.getElementById('dlVecka').hidden=true; dlRender();
-    }
+    kn.classList.add('vald'); vib([12]);
+    var box=document.getElementById('dlVecka');
+    setTimeout(function(){
+      if(__vSmarta==null){__vSmarta=v; box.classList.add('byt'); setTimeout(function(){veckaRender(); box.classList.remove('byt'); box.classList.add('in'); setTimeout(function(){box.classList.remove('in')},420)},220);}
+      else {
+        var lista=vLas(); var __lg=vLage(); lista.push({d:dagStr(new Date()), s:__vSmarta, f:v, t:(__lg?__lg.typ:'vecka')}); vSkriv(lista);
+        __vSmarta=null; box.classList.add('byt'); setTimeout(function(){box.hidden=true; box.classList.remove('byt'); dlRender();},260);
+      }
+    },320);
   });
   var __ovTimer=null;
   function ovKey(){return 'kanseiOv_'+__patKod+'_'+dagStr(new Date())}
@@ -3161,8 +3255,9 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
         var tx=el.querySelector('.ovring-txt'); if(tx)tx.textContent=sek;
         var lb=el.querySelector('.ovt-txt'); if(lb)lb.innerHTML='<small>Tidtagare</small>Starta hållet på '+sek+' sekunder';
       }
-      if(__ovTimer){cancelAnimationFrame(__ovTimer.raf); nolla(__ovTimer.el); var samma=(__ovTimer.el===t); __ovTimer=null; if(samma)return;}
+      if(__ovTimer){cancelAnimationFrame(__ovTimer.raf); nolla(__ovTimer.el); var samma=(__ovTimer.el===t); __ovTimer=null; if(window.__figFrys)window.__figFrys(null); if(samma)return;}
       var total=parseInt(t.getAttribute('data-sek'),10)*1000, slut=Date.now()+total;
+      if(window.__figFrys&&document.body.classList.contains('pl-oppen'))window.__figFrys(1);
       var fg=t.querySelector('.ovring-fg'), tx=t.querySelector('.ovring-txt'), lb=t.querySelector('.ovt-txt');
       t.classList.add('gar');
       if(lb)lb.innerHTML='<small>Räknar ned</small>Tryck för att stoppa';
@@ -3174,6 +3269,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
           t.classList.remove('gar'); t.classList.add('klar');
           if(lb)lb.innerHTML='<small>Klart</small>Byt sida eller gå vidare';
           if(navigator.vibrate)navigator.vibrate([120,60,120]);
+          if(window.__figFrys)window.__figFrys(null);
           try{var AC=window.AudioContext||window.webkitAudioContext; if(AC){var ac=window.__ac||(window.__ac=new AC()); var o=ac.createOscillator(), g=ac.createGain(); o.type='sine'; o.frequency.value=880; g.gain.value=0.0001; o.connect(g); g.connect(ac.destination); var t0=ac.currentTime; g.gain.exponentialRampToValueAtTime(0.18,t0+0.02); g.gain.exponentialRampToValueAtTime(0.0001,t0+0.35); o.start(t0); o.stop(t0+0.4);}}catch(e){}
           __ovTimer=null;
           setTimeout(function(){if(!__ovTimer||__ovTimer.el!==t)nolla(t)},3500);
@@ -3235,8 +3331,8 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     window.print();
   });
   document.getElementById('klLas').addEventListener('click',function(){if(window.__INK)window.__INK.loggaUt(); try{sessionStorage.removeItem('kanseiInloggad')}catch(x){} document.getElementById('bytkod').click()});
-  document.getElementById('klBygg').addEventListener('click',function(){var v=document.getElementById('kbmVaxel'); if(v&&getComputedStyle(v).display!=='none'){v.click();return} var b=document.getElementById('kbBar'); if(b)b.scrollIntoView({behavior:'smooth',block:'end'}); var f=document.getElementById('bpSok'); if(f)f.focus();});
-  document.getElementById('klGranska').addEventListener('click',function(e){e.preventDefault(); var t=document.querySelector('.aktiv details[data-ovid]'); if(t)t.scrollIntoView({behavior:'smooth',block:'start'})});
+  document.getElementById('klBygg').addEventListener('click',function(){if(window.__kflikByt)window.__kflikByt('plan'); var v=document.getElementById('kbmVaxel'); if(v&&getComputedStyle(v).display!=='none'){v.click();return} var m=document.getElementById('klinikmatris'); if(m)m.scrollIntoView({behavior:'smooth',block:'start'});});
+  document.getElementById('klGranska').addEventListener('click',function(e){e.preventDefault(); if(window.__kflikByt)window.__kflikByt('ovningar'); setTimeout(function(){var t=document.querySelector('.aktiv details[data-ovid]'); if(t)t.scrollIntoView({behavior:'smooth',block:'start'})},60)});
   (function(){var n=document.getElementById('kbNamn'); if(!n)return; n.addEventListener('input',function(){
     var v=(n.value||'').trim().toLowerCase(), ut=document.getElementById('kbKand'); if(!ut)return; ut.hidden=true; if(v.length<2||!window.__INK)return;
     window.__INK.lista().then(function(rader){ if(!rader)return; var tr={}; rader.forEach(function(r){if((r.namn||'').toLowerCase()===v){var id=(r.kod.match(/-([A-Z2-9]{2})$/)||[])[1]; if(id)tr[id]=r.kod}}); var ids=Object.keys(tr); if(!ids.length)return;
@@ -3947,7 +4043,7 @@ body.kodad #dlFragor{background:var(--guld-soft);border-color:rgba(176,141,87,.4
 .dl-ankare{font-size:.8rem;margin:10px 0 0}
 #dlFragor .dl-chips button{background:#fff}
 #dlFragor .dl-chips button:hover{border-color:var(--guld)}
-#dlKChips button.vald,#dlvChips button.vald{background:var(--guld);border-color:var(--guld);color:#fff}
+#dlKChips button.vald,#dlvChips button.vald{background:var(--ink);border-color:var(--ink);color:#fff}
 #dlvChips{display:flex;flex-wrap:wrap;gap:6px}
 #dlvChips button{width:36px;height:36px;border:1px solid var(--line-2);border-radius:10px;font-family:var(--mono);font-size:.85rem;cursor:pointer;color:var(--ink)}
 #dlKChips button{width:36px;height:36px;border:1px solid var(--line-2);border-radius:10px;font-family:var(--mono);font-size:.85rem;cursor:pointer;color:var(--ink)}
@@ -4306,17 +4402,17 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
     balansmjuk:function(){return {prof:'svaj',dur:5,extra:function(){return '<path class="rekv acc" d="M-16 0 q16 8 32 0"/>'},ey:[-56,5],tree:standT({thL:60,shL:120,ftL:30,uaR:55,faR:65,uaL:125,faL:115}),anim:{shR:-87}}},
     fyrfota:function(){return {prof:'vagga',dur:8,tree:[quadTree({hideTorso:1,xT:'<g transform="translate(10 0)" data-anim=\'{"kind":"scaleY","a0":1,"a1":-1}\'><g transform="translate(-10 0)"><path class="acc" d="M0 0 Q10 -13 20 0"/></g></g>'})],anim:{}}},
     fagelhund:function(){return {prof:'lang',dur:8,tree:[quadTree({accArm:1,accLeg:1,gaze:90})],anim:{uaR:175,faR:180,thR:2,shR:0}}},
-    sidoplanka:function(){return {prof:'lang',dur:9,extra:function(){return '<rect class="rekv" x="28" y="-3" width="14" height="4" rx="2" fill="#E6D7C3" stroke="none"/>'},tree:[
-      N(9,0,{id:'faR'},[N(3,0,{})]),
-      N(10,-90,{id:'uaR'},[
-        N(4,170,{id:'neck'},[N(5,170,{head:1},[blick(-10)])]),
-        N(10,25,{id:'uaL',bak:1},[N(9,25,{id:'faL',bak:1})]),
-        N(20,16,{id:'torso',torso:1,acc:1},[
-          N(16,16,{id:'thR',acc:1},[N(16,0,{id:'shR'},[N(6,0,{})])]),
-          N(16,14,{id:'thL',bak:1},[N(16,-2,{id:'shL',bak:1},[N(6,-2,{bak:1})])])
+    sidoplanka:function(){return {prof:'lang',dur:9,extra:function(){return '<rect class="rekv" x="30" y="-3" width="16" height="4" rx="2" fill="#E6D7C3" stroke="none"/>'},ey:[-38,0],tree:[
+      N(10,0,{id:'faR'},[N(3,0,{})]),
+      N(12,-90,{id:'uaR'},[
+        N(4,176,{id:'neck'},[N(5,178,{head:1},[blick(-8)])]),
+        N(10,-72,{id:'uaL',bak:1},[N(9,-88,{id:'faL',bak:1})]),
+        N(20,24,{id:'torso',torso:1,acc:1},[
+          N(16,14,{id:'thR',acc:1},[N(16,0,{id:'shR'},[N(6,0,{})])]),
+          N(16,12,{id:'thL',bak:1},[N(16,-2,{id:'shL',bak:1},[N(6,-2,{bak:1})])])
         ])
       ])
-    ],anim:{torso:5,thR:30,thL:28,shR:0,shL:-2}}},
+    ],anim:{torso:4,thR:41,thL:39,shR:0,shL:-2,neck:184,uaL:-78}}},
     utfall:function(){return {prof:'hall',dur:7,extra:function(){return '<rect class="rekv" x="-24" y="-3" width="14" height="4" rx="2" fill="#E6D7C3" stroke="none"/>'},ex:[-30,8],tree:standT({shR:-84,thR:178,thL:96,shL:180,ftL:180,torso:-84,uaR:60,faR:30,uaL:100,faL:60,gaze:0}),anim:{shR:-70,thR:184,thL:108,shL:180,ftL:180,torso:-88}}},
     uppresning:function(){return {prof:'hall',dur:8,extra:function(){var hx=-14.5,hy=-14.5;return '<path class="rekv" d="M'+(hx-12)+' '+(hy+3)+' L'+(hx+2)+' '+(hy+3)+' M'+(hx-12)+' '+(hy+3)+' L'+(hx-12)+' '+(hy-20)+' M'+(hx-10)+' '+(hy+3)+' L'+(hx-10)+' 0"/>'},ex:[-28,0],ey:[-36,0],
       tree:standT({shR:-85,thR:175,shL:-85,thL:177,torso:-78,uaR:60,faR:10,uaL:100,faL:20,gaze:20}),anim:{shR:-90,thR:-90,shL:-90,thL:-90,torso:-90,uaR:80,faR:85,ftL:0}}},
@@ -4406,7 +4502,7 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
     var k=Math.min(1.6,104/(maxX-minX+10),66/(maxY-minY+8+(p.lyft||0))); if(k<0.72)k=0.72;
     var rx=Math.round(60-k*(minX+maxX)/2), ry=FL-k*maxY-(p.lyft||0)*k;
     var prof=p.prof||'hall', dur=p.dur||6;
-    var ut='<line x1="6" y1="'+FL+'" x2="114" y2="'+FL+'" stroke="#C9CFD4" stroke-width="2"/>';
+    var ut='<ellipse class="skugga" cx="'+(60).toFixed(1)+'" cy="'+(FL+1.5)+'" rx="'+Math.max(14,Math.min(44,(maxX-minX)*k*0.42)).toFixed(1)+'" ry="2.6" fill="#10202A" opacity=".08"/><line x1="6" y1="'+FL+'" x2="114" y2="'+FL+'" stroke="#C9CFD4" stroke-width="2"/>';
     ut+='<g transform="translate('+rx.toFixed(1)+' '+ry.toFixed(1)+')'+(k!==1?' scale('+k.toFixed(3)+')':'')+'" data-prof="'+prof+'" data-dur="'+dur+'">'+(p.extra?p.extra():'')+h+'</g>';
     return ut;
   }
@@ -4421,6 +4517,57 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
     rodd:['torso',0.75,'mellan skulderbladen'],brostrot:['torso',0.5,'bröstryggen'],fotboll:[null,0,'fotsulan'],djupbo:['thR',0.4,'höfter och ljumskar'],nervglid:['uaR',0.6,'längs armen, mjukt'],
     handled:[null,0,'underarmens ovansida'],grepp:[null,0,'underarmen'],hammare:[null,0,'underarmens utsida'],tummen:[null,0,'tummens muskler'],tasprid:[null,0,'fotens småmuskler'],kakvila:[null,0,'käkmusklerna, avslappnade'],spegel:[null,0,'käkleden'],andning:[null,0,'magen som lyfter']
   };
+  var CUE={
+    brygga:['Lyft höften','Sänk långsamt','Håll uppe'],sidoclam:['Öppna knät','Stäng långsamt','Håll öppet'],sidoben:['Lyft benet','Sänk','Håll'],enben:['Stå stilla','Stå stilla','Håll balansen'],balansmjuk:['Stå stilla','Stå stilla','Håll balansen'],
+    fyrfota:['Svanka · andas in','Runda · andas ut','Stanna kort',1],fagelhund:['Sträck ut','Tillbaka','Håll sträckt'],sidoplanka:['Lyft höften','Sänk','Håll linjen'],utfall:['Skjut höften fram','Tillbaka','Håll sträcket'],uppresning:['Res dig','Sätt dig långsamt','Stå'],
+    knastrack:['Sträck benet','Sänk','Håll sträckt'],slump:['Sträck, titta upp','Släpp','Håll'],stegupp:['Kliv upp','Kliv ner långsamt','Stå'],vadpress:['Upp på tå','Ner långsamt','Håll uppe'],vadsteg:['Upp på tå','Sänk hälen','Håll'],
+    rotband:['Rotera ut','Tillbaka','Håll'],skuldersatt:['Dra ner och bak','Släpp','Håll'],framatlyft:['Lyft armen','Sänk långsamt','Håll'],vagglid:['Glid upp','Glid ner','Håll uppe'],pendel:['Pendla','Pendla','Låt armen hänga'],
+    vaggklattring:['Klättra upp','Klättra ner','Håll'],pinne:['För ut','Tillbaka','Håll'],handduk:['Dra upp','Släpp','Håll'],nacke:['Dra hakan in','Släpp','Håll'],nick:['Nicka','Släpp','Håll'],
+    rodd:['Dra','Släpp fram','Håll ihop'],brostrot:['Rotera upp','Tillbaka','Håll'],fotboll:['Rulla fram','Rulla tillbaka',''],djupbo:['Sjunk ner · andas ut','Res dig','Vila i botten',1],nervglid:['Böj handleden','Tillbaka',''],
+    handled:['Lyft','Sänk långsamt','Håll uppe'],grepp:['Kläm','Släpp långsamt','Håll'],hammare:['Vrid','Vrid tillbaka',''],tummen:['För tummen','Öppna',''],tasprid:['Spreta','Slappna av','Håll'],kakvila:['','','Vila'],spegel:['Gapa','Stäng',''],andning:['Andas in · magen lyfter','Andas ut · långsamt','',1]
+  };
+  window.__ovCue=function(ovid){var k=KARTA[ovid], c=k&&CUE[k]; if(!c)return null; var egen=!!c[3]; return {upp:c[0]+(egen||!c[0]?'':' · andas ut'),ner:c[1]+(egen||!c[1]?'':' · andas in'),hall:c[2]+(egen||!c[2]?'':' · andas lugnt'),vila:'Vila'}};
+  var FEL={
+    brygga:'Ländryggen svankar i toppen för att komma högre. Höften ska lyfta av sätet, inte av ryggen: tänk bäckenet lite bakåt och stanna där sätet arbetar.',
+    sidoclam:'Bäckenet rullar bakåt när knät öppnas, så rörelsen kommer från ryggen i stället för höften. Håll höften stilla, en mindre öppning är rätt.',
+    sidoben:'Benet lyfts framåt och bålen lutar bakåt. Benet ska ligga i linje med kroppen med tårna framåt, hellre ett lägre lyft.',
+    enben:'Höften faller ut åt sidan och knät går inåt. Knät över foten, blicken framåt, låt foten arbeta.',
+    balansmjuk:'Knät låses och andningen hålls. Mjukt knä och lugn andning, det är fotens jobb att balansera.',
+    fyrfota:'Ytterlägena pressas och bara ländryggen rör sig. Rörelsen ska gå kota för kota genom hela ryggen, i det bekväma.',
+    fagelhund:'Bålen roterar och ländryggen svankar när benet sträcks. Höfterna vågräta, benet lägre än ryggen.',
+    sidoplanka:'Höften sjunker eller bålen vrids framåt. Axeln rakt över armbågen, höften fram, en rak linje från huvud till knä.',
+    utfall:'Ländryggen svankar i stället för att höften skjuts fram. Spänn sätet och tippa bäckenet lite bakåt, sträcket ska kännas i höftens framsida.',
+    uppresning:'Händerna hjälper till och uppresningen blir ett kast. Luta fram, tryck genom fötterna, kontrollerat ner.',
+    knastrack:'Sträcker snabbt och låter benet falla. Långsamt ner, lårets framsida ska arbeta hela vägen.',
+    slump:'Nacken böjs framåt och ryggen rundas. Rak rygg och blicken upp, det ska kännas som ett sträck i baksidan, aldrig som stick.',
+    stegupp:'Skjuter ifrån med det nedre benet. Låt det övre benet göra jobbet, knät över foten.',
+    vadpress:'Kort och snabbt, med vikten på lilltåsidan. Långsamt ner, vikten över stortån, full höjd upp.',
+    vadsteg:'Studsar i botten. Sänk hälen kontrollerat under kanten, stanna kort, upp igen.',
+    rotband:'Armbågen lämnar sidan och axeln lyfts. Armbågen intill kroppen, en liten och ren rörelse.',
+    skuldersatt:'Axlarna dras upp mot öronen. Dra ner och bak, håll, släpp, skulderbladen ska glida.',
+    framatlyft:'Axeln lyfts mot örat och ryggen svankar. Lätt vikt, axeln nere, stanna innan smärtvinkeln.',
+    vagglid:'Ländryggen svankar bort från väggen. Ryggen mot väggen, handlederna i kontakt, glid bara så högt som kontakten håller.',
+    pendel:'Armen svängs med muskelkraft. Låt tyngden göra jobbet och kroppen sätta rörelsen, axeln hänger.',
+    vaggklattring:'Axeln lyfts och kroppen lutar bort från väggen. Stå nära, axeln nere, klättra bara till första motståndet.',
+    pinne:'Bålen vrids för att komma längre. Armbågarna intill och bålen stilla, rörelsen sker i axeln.',
+    handduk:'Den friska armen rycker. Lugnt drag, stanna vid sträck, andas.',
+    nacke:'Huvudet nickar neråt i stället för att hakan dras rakt bakåt. Blicken kvar rakt fram, tänk dubbelhaka.',
+    nick:'Huvudet lyfts från underlaget. Bara en liten nick, huvudet ligger kvar.',
+    rodd:'Armarna rycker och axlarna lyfts. Dra med skulderbladen, armbågarna bakåt, axlarna nere.',
+    brostrot:'Rotationen kommer från ländryggen. Sätt dig tillbaka mot hälarna så låser du ländryggen och roterar bröstryggen.',
+    fotboll:'Trycket är så hårt att foten kramas ihop. Måttligt tryck, rulla långsamt, ingen skarp smärta.',
+    djupbo:'Hälarna lyfter och ryggen rundas. Bredare fötter, stöd om det behövs, hälarna i golvet.',
+    nervglid:'Rörelsen tas för långt så det sticker. Stanna innan stick och domning, liten rörelse, mjukt.',
+    handled:'Armbågen böjs för att hjälpa till. Underarmen stilla på stöd, bara handleden rör sig.',
+    grepp:'Klämmer maximalt. Måttlig kraft, långsamt släpp.',
+    hammare:'Vrider med axeln. Armbågen intill, rotationen i underarmen.',
+    tummen:'Tummen tvingas genom smärta. Mjukt, stanna vid obehag.',
+    tasprid:'Hela foten krampar. Slappna av mellan varven.',
+    kakvila:'Tänderna biter ihop. Tungan i gommen, tänderna isär, läpparna ihop.',
+    spegel:'Gapet blir för stort. Litet gap, rak linje i spegeln.',
+    andning:'Bröstkorgen och axlarna lyfter. Magen lyfter först, axlarna stilla.'
+  };
+  window.__ovFel=function(ovid){var k=KARTA[ovid]; return k&&FEL[k]?FEL[k]:null};
   window.__ovKann=function(ovid){var k=KARTA[ovid]; return k&&KANN[k]?{seg:KANN[k][0],fr:KANN[k][1],txt:KANN[k][2]}:null};
   var LAGE={
     brygga:'Ryggliggande, knän böjda, fötterna nära rumpan. Höften lyfter.',
@@ -4485,6 +4632,27 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
   window.__figFas=window.__figFas;
   var TEMPO=1;
   window.__figTempo=function(v){TEMPO=v||1};
+  var VARV={n:0,mal:0,fas:'',sist:0};
+  var SPEL={pa:false,pausAt:0};
+  function spelVisa(){
+    document.querySelectorAll('.pl-spel').forEach(function(b){b.setAttribute('aria-pressed',SPEL.pa?'true':'false'); b.classList.toggle('pa',SPEL.pa); var sp=b.querySelector('span'); if(sp)sp.textContent=SPEL.pa?'Paus':'Starta';});
+    document.querySelectorAll('.pl-figwrap').forEach(function(w){w.classList.toggle('pausad',!SPEL.pa)});
+  }
+  window.__figSpelVisa=spelVisa;
+  window.__figSpela=function(pa){
+    var nu=performance.now();
+    if(pa===SPEL.pa){spelVisa();return}
+    if(pa){ if(SPEL.pausAt){var d=nu-SPEL.pausAt; REG.forEach(function(r){r.t0+=d}); SPEL.pausAt=0;} else {REG.forEach(function(r){r.t0=nu}); VARV.n=0; VARV.sist=0;} SPEL.pa=true; }
+    else { SPEL.pa=false; SPEL.pausAt=nu; }
+    spelVisa();
+  };
+  window.__figSpelar=function(){return SPEL.pa};
+  window.__figNoll=function(){var nu=performance.now(); REG.forEach(function(r){r.t0=nu}); SPEL.pausAt=nu; VARV.n=0; VARV.sist=0;
+    /* visa utgångsläget direkt när figuren står stilla */
+    document.querySelectorAll('#plInne svg.ovfig:not(.ghost) [data-anim], #figFull svg.ovfig:not(.ghost) [data-anim]').forEach(function(el){if(el.hasAttribute('data-static'))return; try{var a=JSON.parse(el.getAttribute('data-anim')); var kind=a.kind||'rotate', v=a.a0, tf=kind==='rotate'?'rotate('+v.toFixed(2)+')':kind==='scaleY'?'scale(1 '+v.toFixed(3)+')':kind==='scale'?'scale('+v.toFixed(3)+')':'translate(0 '+v.toFixed(2)+')'; var m=/^(translate\([^)]*\))/.exec(el.getAttribute('transform')||''); el.setAttribute('transform',(m?m[1]+' ':'')+tf);}catch(e){}});
+  };
+  window.__varvMal=function(m){VARV.mal=m||0; VARV.n=0; VARV.sist=0; VARV.fas='';};
+  window.__varvNoll=function(){VARV.n=0; VARV.sist=0};
   function varde(r,t){
     var f=(t%r.dur)/r.dur, P=r.prof, k=1; while(k<P.length&&P[k][0]<f)k++;
     var A=P[k-1],B=P[k]||A, u=(B[0]===A[0])?0:(f-A[0])/(B[0]-A[0]); u=u<0?0:u>1?1:u; u=u*u*(3-2*u);
@@ -4493,9 +4661,12 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
   }
   function loop(t){
     if(RM){return}
+    if(!SPEL.pa&&!document.body.classList.contains('pl-oppen')){ /* utanför passet rullar figurerna fritt */ }
+    else if(!SPEL.pa){requestAnimationFrame(loop);return}
     for(var i=REG.length-1;i>=0;i--){var r=REG[i];
       if(!r.el.isConnected){REG.splice(i,1);continue}
       if(!r.el.getClientRects().length)continue;
+      if(r.el.hasAttribute('data-static'))continue;
       var v=varde(r,(t-r.t0)/TEMPO), tf;
       if(r.kind==='rotate')tf='rotate('+v.toFixed(2)+')';
       else if(r.kind==='scaleY')tf='scale(1 '+v.toFixed(3)+')';
@@ -4506,7 +4677,10 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
     }
     var cue=document.querySelector('#figFull:not([hidden]) .pl-cue')||document.querySelector('#plInne .pl-cue'); if(cue&&REG.length){
       var svgP=cue.closest('.ov-figrad')||cue.closest('.ff-inne'), r0=null; for(var q=0;q<REG.length;q++){if(svgP&&svgP.contains(REG[q].el)&&!REG[q].el.hasAttribute('data-static')){r0=REG[q];break}}
-      if(r0){var fn=fasNamn(r0,(t-r0.t0)/TEMPO); if(cue.getAttribute('data-fas')!==fn){cue.setAttribute('data-fas',fn); cue.textContent={upp:'Upp · andas ut',hall:'Håll · andas lugnt',ner:'Ner, långsamt · andas in',vila:'Vila'}[fn]; if(window.__takt)window.__takt(fn);}}
+      if(r0){var fn=fasNamn(r0,(t-r0.t0)/TEMPO), rel=((t-r0.t0)/TEMPO)%r0.dur;
+        if(VARV.mal&&rel<VARV.sist-0.5&&!cue.hasAttribute('data-fryst')){VARV.n++; if(VARV.n>=VARV.mal){VARV.n=0; vib([40,60,40]);}}
+        VARV.sist=rel;
+        if(cue.getAttribute('data-fas')!==fn||cue.getAttribute('data-varv')!==String(VARV.n)){cue.setAttribute('data-fas',fn); cue.setAttribute('data-varv',String(VARV.n)); var eg=cue.getAttribute('data-'+fn); var txt=(eg!=null)?eg:({upp:'Upp · andas ut',hall:'Håll · andas lugnt',ner:'Ner, långsamt · andas in',vila:'Vila'}[fn]); var bytt=(cue.getAttribute('data-sistfas')!==fn); cue.setAttribute('data-sistfas',fn); cue.innerHTML=txt+(VARV.mal?' <b class="cue-varv">'+VARV.n+'/'+VARV.mal+'</b>':''); if(bytt&&SPEL.pa&&!cue.hasAttribute('data-fryst')){if(window.__takt)window.__takt(fn); if(window.__rost)window.__rost(fn,txt);}}}
     }
     requestAnimationFrame(loop);
   }
@@ -4514,14 +4688,23 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
   window.__figSkan=skan;
 
   /* spökfigur i utgångsläget bakom den rörliga, och en pil som räknas ur rörelsen */
+  window.__figFrys=function(fas){
+    var stor=document.querySelector('#figFull:not([hidden]) svg.ovfig:not(.ghost)')||document.querySelector('#plInne .pl-figwrap>svg.ovfig');
+    var cue=document.querySelector('#figFull:not([hidden]) .pl-cue')||document.querySelector('#plInne .pl-cue');
+    if(!stor)return;
+    if(fas===null){stor.querySelectorAll('[data-static]').forEach(function(el){el.removeAttribute('data-static'); el.__reg=false}); if(cue)cue.removeAttribute('data-fryst'); skan(stor); return}
+    fas_(stor,fas); if(cue){cue.setAttribute('data-fryst','1'); cue.setAttribute('data-fas',fas?'hall':'vila'); cue.textContent=fas?(cue.getAttribute('data-hall')||'Håll'):'Vila';}
+  };
   function figLager(figr,ovid){
     var stor=figr.querySelector('svg.ovfig'); if(!stor||figr.querySelector('.pl-figwrap'))return;
     var wrap=document.createElement('div'); wrap.className='pl-figwrap'; stor.parentNode.insertBefore(wrap,stor); wrap.appendChild(stor);
+    wrap.addEventListener('click',function(e){ if(!document.body.classList.contains('pl-oppen'))return; if(e.target.closest('.pl-cue'))return; window.__figSpela(!window.__figSpelar()); if(window.__vib)window.__vib([10]); });
+    var spel=document.createElement('div'); spel.className='pl-spelvisa'; spel.innerHTML='<span>▶</span>'; wrap.appendChild(spel);
     var ghost=document.createElement('div'); ghost.className='pl-ghost'; ghost.innerHTML=window.__ovIkon(ovid,stor.getAttribute('width')||300); wrap.insertBefore(ghost,stor);
     var gs=ghost.querySelector('svg'); if(gs){gs.classList.add('ghost'); gs.removeAttribute('width'); gs.removeAttribute('height');} window.__figFas(ghost,0);
     var slut=document.createElement('div'); slut.className='pl-slutdold'; slut.innerHTML=window.__ovIkon(ovid,300); wrap.appendChild(slut); window.__figFas(slut,1);
     var ss=slut.querySelector('svg'); if(ss){ss.removeAttribute('width');ss.removeAttribute('height');}
-    requestAnimationFrame(function(){figPil(wrap,ghost.querySelector('svg'),slut.querySelector('svg'),stor); if(window.__ovKann)figKann(wrap,ghost.querySelector('svg'),stor,window.__ovKann(ovid));});
+    requestAnimationFrame(function(){figPil(wrap,ghost.querySelector('svg'),slut.querySelector('svg'),stor); if(window.__ovKann)figKann(wrap,ghost.querySelector('svg'),stor,window.__ovKann(ovid)); spelVisa();});
   }
   function figPil(wrap,s0,s1,stor){
     try{
@@ -4555,6 +4738,7 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
   }
   window.__figKann=figKann;
   window.__figLager=figLager;
+  function fas_(rot,f){return fas(rot,f)}
   function fas(rot,f){
     (rot||document).querySelectorAll('svg.ovfig [data-anim]').forEach(function(el){
       var a; try{a=JSON.parse(el.getAttribute('data-anim'))}catch(e){return}
@@ -5450,6 +5634,237 @@ body.demo .pl-fraga{display:none}
 #kbKommentar::placeholder{color:rgba(255,255,255,.55)}
 .kb-kand{display:block;margin:6px 0;font-size:.8rem;color:var(--guld);line-height:1.5}
 .kb-kandv{margin-left:6px;border:1px solid rgba(255,255,255,.4);background:none;color:var(--paper);border-radius:999px;padding:3px 10px;font-size:.78rem;cursor:pointer}
+</style>
+
+
+<style id="v107-kort">
+#plFot{gap:10px 14px;padding-bottom:10px}
+#plFot .pl-ont{flex-basis:auto;order:3;padding:4px 6px;font-size:.8rem}
+#plFot .pl-fraga{order:4}
+#plInne .pl-kort{display:grid!important;grid-template-columns:1fr;gap:0;max-width:820px;margin:0 auto}
+#plInne .pl-kort>.pl-ord{grid-column:1!important;grid-row:1!important}
+#plInne .pl-kort>.pl-titel{grid-column:1!important;grid-row:2!important}
+#plInne .pl-kort>.pl-v{grid-column:1!important;grid-row:3!important}
+#plInne .pl-kort>.pl-h{grid-column:1!important;grid-row:4!important}
+#plInne .pl-kort>.pl-ord{grid-area:ord}
+#plInne .pl-kort>.pl-titel{grid-area:titel;padding:16px 22px 14px}
+#plInne .pl-kort>.pl-v{grid-area:v;padding:12px 18px 0}
+#plInne .pl-kort>.pl-h{grid-area:h;padding:0 0 16px}
+#plInne .pl-kort>.pl-v .ov-figrad{padding:0!important}
+#plInne .pl-kort>.pl-v .pl-figwrap{max-width:100%}
+@media(max-width:899px){#plInne .pl-kort>.pl-v .pl-figwrap{max-width:300px}#plInne .pl-kort>.pl-v .pl-figwrap>svg.ovfig{padding:12px 24px}.pl-figctl{margin-top:0}.pl-figctl button{padding:5px 10px;font-size:.74rem}}
+#plInne .pl-kort>.pl-h>.ov-niva{margin-top:14px!important}
+#plInne .pl-kort>.pl-h>.pl-forsta{margin:14px 22px 0!important}
+#plInne .pl-kort>.pl-h>.pl-stopp{margin:10px 22px 0!important}
+#plInne .pl-kort>.pl-h>.pl-kanntxt,#plInne .pl-kort>.pl-h>.pl-lage{margin:12px 22px 0!important;max-width:none;text-align:left;justify-content:flex-start}
+#plInne .pl-kort>.pl-h>.pl-lage span{display:inline;margin-right:6px}
+#plInne .pl-kort>.pl-h>.ov-varfor,#plInne .pl-kort>.pl-h>.ov-gor,#plInne .pl-kort>.pl-h>.ov-tank,#plInne .pl-kort>.pl-h>.ov-nasta,#plInne .pl-kort>.pl-h>.ov-akt{margin-left:22px!important;margin-right:22px!important}
+.pl-faser{display:none!important}
+@media(min-width:900px){
+  #plInne .pl-kort{grid-template-columns:340px 1fr;grid-template-areas:none;column-gap:26px;max-width:960px}
+  #plInne .pl-kort>*{grid-row:auto!important;padding-left:0}
+  #plInne .pl-kort>.pl-ord{grid-column:1/-1!important;grid-row:1!important}
+  #plInne .pl-kort>.pl-titel{grid-column:1/-1!important;grid-row:2!important}
+  #plInne .pl-kort>.pl-v{grid-column:1!important;grid-row:3!important;position:sticky;top:0;align-self:start;padding:6px 0 18px 22px!important}
+  #plInne .pl-kort>.pl-h{grid-column:2!important;grid-row:3!important;padding:0 22px 20px 0!important}
+  #plInne .pl-kort>.pl-h>*{margin-left:0!important;margin-right:0!important}
+  #plInne .pl-kort>.pl-h>.ov-niva{margin-top:6px!important}
+  .pl-lashint{display:none}
+}
+</style>
+
+
+<style id="v108-figur">
+#figFull{background:var(--ink);color:#fff;padding:0}
+.ff-inne{max-width:none;width:100%;height:100%;display:grid;grid-template-rows:auto auto 1fr auto auto;align-items:center;justify-items:center;padding:18px 16px 24px;box-sizing:border-box;gap:8px}
+.ff-topp{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
+.ff-titel{font-family:var(--display);font-size:1.5rem;color:#fff}
+.ff-dos{font-size:.95rem;color:#B9D9D3}
+.ff-inne .pl-cue{position:static;margin:0;align-self:center;font-size:.8rem;padding:8px 18px;background:#fff;color:var(--ink)}
+.ff-inne .pl-cue[data-fas="upp"]{background:#8FD3C8;color:var(--ink)}
+.ff-inne .pl-cue[data-fas="hall"]{background:var(--guld);color:#fff}
+.ff-inne .pl-cue[data-fas="ner"]{background:#fff;color:var(--ink)}
+.ff-inne .pl-figwrap{max-width:min(92vw,560px);width:100%}
+.ff-inne .pl-figwrap>svg.ovfig{background:#1B2E38;padding:22px 30px;border-radius:24px}
+.ff-inne .pl-figwrap>svg.ovfig .bak{stroke:#5C6E78}
+.ff-inne .pl-figwrap>svg.ovfig .lem,.ff-inne .pl-figwrap>svg.ovfig .torso{stroke:#F7F9FA}
+.ff-inne .pl-figwrap>svg.ovfig circle.huvud{fill:#F7F9FA;stroke:#F7F9FA}
+.ff-inne .pl-figwrap>svg.ovfig circle[fill="#F7F9FA"]{fill:#10202A!important}
+.ff-inne .pl-figwrap>svg.ovfig .acc{stroke:#5FD0BF}
+.ff-inne .pl-figwrap>svg.ovfig line[stroke="#C9CFD4"]{stroke:#3A4C56}
+.ff-inne .pl-figwrap>svg.ovfig .skugga{opacity:.35}
+.ff-inne .pl-figwrap>svg.ovfig .rekv{stroke:#4C5F69}
+.ff-inne .pl-ghost svg.ghost line,.ff-inne .pl-ghost svg.ghost path{stroke:#7FBFB4!important;opacity:.35}
+.ff-inne .pl-pil path{stroke:#5FD0BF}
+.ff-inne .pl-kann circle{fill:#5FD0BF}
+.ff-ctl{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.ff-knapp{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;border-radius:999px;padding:12px 20px;font-size:.95rem;cursor:pointer;font-family:var(--body)}
+.ff-knapp.ff-vila{border-color:var(--guld)}
+.ff-knapp.ff-liten{padding:8px 14px;font-size:.82rem}
+.ff-knapp.pa{background:#5FD0BF;color:var(--ink);border-color:#5FD0BF}
+.ff-inne .pl-kanntxt{color:#D7E3E0;max-width:520px;text-align:center;justify-content:center}
+.ff-inne .pl-kanntxt b{color:#fff}
+.ff-inne .pl-kanntxt .pl-kannprick{box-shadow:inset 0 0 0 3px #5FD0BF;background:rgba(95,208,191,.25)}
+#ffStang{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3);color:#fff;z-index:2}
+.cue-varv{margin-left:8px;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;background:rgba(255,255,255,.22);border-radius:6px;padding:1px 6px}
+.ff-inne .pl-cue .cue-varv{background:rgba(16,32,42,.12)}
+</style>
+
+
+<style id="v108-spread">
+.pp-spread{margin:30px 0 8px;padding-top:26px;border-top:1px solid var(--line)}
+.pp-spread h3{margin:0 0 8px;font-family:var(--display);font-size:1.45rem;letter-spacing:-.01em}
+.pp-niva{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+@media(max-width:860px){.pp-niva{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.pp-niva{grid-template-columns:1fr}}
+.pp-nkort{background:var(--yta);border:1px solid var(--line);border-radius:14px;padding:12px 12px 14px;display:flex;flex-direction:column;gap:8px}
+.pp-nkort .pp-fig{margin:0;min-height:96px;padding:4px 10px}
+.pp-nkort h4{margin:0;font-family:var(--display);font-size:1.05rem}
+.pp-nkort p{margin:0;font-size:.86rem;color:var(--dim);line-height:1.5}
+.pp-nchip{align-self:flex-start;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;border-radius:999px;padding:4px 10px;font-weight:700}
+.pp-nchip.a{background:var(--mist);color:var(--dim);border:1px solid var(--line-2)}
+.pp-nchip.b{background:var(--guld);color:#fff}
+.pp-nchip.c{background:var(--ink);color:#fff}
+.pp-nchip.x{background:var(--teal);color:#fff}
+</style>
+
+
+<style id="v109-kflik">
+#kflikar{display:flex;gap:6px;margin:16px 0 14px;padding:6px;background:var(--mist);border:1px solid var(--line);border-radius:999px;position:sticky;top:72px;z-index:30}
+#kflikar[hidden]{display:none!important}
+.kflik{flex:1;border:none;background:none;border-radius:999px;padding:11px 12px;font-size:.95rem;color:var(--dim);cursor:pointer;font-family:var(--body);position:relative}
+.kflik[aria-selected="true"]{background:var(--ink);color:#fff}
+.kf-nya{position:absolute;top:6px;right:10px;min-width:18px;height:18px;border-radius:9px;background:var(--teal);color:#fff;font-family:var(--mono);font-size:.62rem;display:inline-flex;align-items:center;justify-content:center;padding:0 5px}
+.kf-nya[hidden]{display:none!important}
+/* vad varje flik visar */
+body.bibliotek[data-kflik="inkorg"] #klJournal,body.bibliotek[data-kflik="inkorg"] #klinikmatris,body.bibliotek[data-kflik="inkorg"] section[data-block],body.bibliotek[data-kflik="inkorg"] #kbBar,body.bibliotek[data-kflik="inkorg"] #kbmVaxel,body.bibliotek[data-kflik="inkorg"] #flikar,body.bibliotek[data-kflik="inkorg"] .till-rubrik{display:none!important}
+body.bibliotek[data-kflik="plan"] #klInkorg,body.bibliotek[data-kflik="plan"] #klLogg,body.bibliotek[data-kflik="plan"] section[data-block],body.bibliotek[data-kflik="plan"] #flikar,body.bibliotek[data-kflik="plan"] .till-rubrik{display:none!important}
+body.bibliotek[data-kflik="ovningar"] #klInkorg,body.bibliotek[data-kflik="ovningar"] #klLogg,body.bibliotek[data-kflik="ovningar"] #klJournal,body.bibliotek[data-kflik="ovningar"] #klinikmatris,body.bibliotek[data-kflik="ovningar"] #kbBar,body.bibliotek[data-kflik="ovningar"] #kbmVaxel{display:none!important}
+body.bibliotek[data-kflik="ovningar"] #flikar{display:flex}
+</style>
+
+
+<style id="v109-mjuk">
+#dlFragor{transition:opacity .45s ease,transform .45s ease,max-height .5s ease;transform-origin:top}
+#dlFragor.ut{opacity:0;transform:translateY(-8px) scale(.99)}
+#dlFragor.in{animation:mjukIn .5s ease}
+#dlVecka,#dlKanning,#dlTack{transition:opacity .22s ease,transform .22s ease}
+#dlVecka.byt,#dlKanning.byt{opacity:0;transform:translateX(-8px)}
+#dlVecka.in,#dlKanning.in{animation:mjukIn .42s ease}
+@keyframes mjukIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#dlvChips button,#dlkChips button{transition:background .18s ease,color .18s ease,transform .18s ease,border-color .18s ease}
+#dlvChips button.vald,#dlkChips button.vald{background:var(--ink)!important;color:#fff!important;border-color:var(--ink)!important;transform:scale(1.06)}
+#plSlut,.pls-ikon{animation:mjukIn .5s ease}
+.pl-kort{animation:mjukIn .35s ease}
+#passLage{transition:opacity .3s ease}
+.dl-panel,#korthet,#tidBanner,#lugnBanner{animation:mjukIn .45s ease}
+#intro .in-kort{animation:mjukIn .5s ease}
+.in-bild,.in-inne{transition:opacity .25s ease}
+@media (prefers-reduced-motion: reduce){#dlFragor,#dlVecka,#dlKanning,.pl-kort,.dl-panel,#plSlut,.pls-ikon,#intro .in-kort{animation:none!important;transition:none!important}}
+</style>
+
+
+<style id="v109-spel">
+.pl-figctl .pl-spel{display:inline-flex;align-items:center;gap:6px}
+.pl-figctl .pl-spel .ik-paus,.ff-knapp.ff-spel .ik-paus{display:none}
+.pl-figctl .pl-spel[aria-pressed="true"] .ik-play{display:none}
+.pl-figctl .pl-spel[aria-pressed="true"] .ik-paus{display:block}
+.pl-figctl .pl-rost[aria-pressed="true"],.pl-figctl .pl-takt[aria-pressed="true"]{background:var(--teal)!important;color:#fff!important;border-color:var(--teal)!important}
+.pl-figctl .pl-tyst.ikon{padding:6px 9px!important;display:inline-flex;align-items:center}
+.pl-tyst .ik-kryss{display:none}
+.pl-tyst[aria-pressed="true"] .ik-vag{display:none}
+.pl-tyst[aria-pressed="true"] .ik-kryss{display:block}
+.pl-tyst[aria-pressed="true"]{background:var(--mist)!important;color:var(--dim)!important;text-decoration:none!important}
+.pl-figwrap{cursor:pointer}
+.pl-spelvisa{position:absolute;inset:0;z-index:4;display:none;align-items:center;justify-content:center;pointer-events:none}
+.pl-figwrap.pausad .pl-spelvisa{display:flex}
+.pl-spelvisa span{width:58px;height:58px;border-radius:50%;background:rgba(16,32,42,.82);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.3rem;padding-left:4px;box-shadow:0 8px 24px rgba(16,32,42,.25)}
+.pl-figwrap.pausad>svg.ovfig{opacity:.92}
+.ff-knapp.ff-spel{background:#fff;color:var(--ink);border-color:#fff;font-weight:600}
+.ff-knapp.ff-ikon{padding:8px 12px}
+.ff-knapp.ff-ikon .ik-kryss{display:none}
+.ff-knapp.ff-ikon[aria-pressed="true"] .ik-vag{display:none}
+.ff-knapp.ff-ikon[aria-pressed="true"] .ik-kryss{display:block}
+.ff-inne .pl-figwrap.pausad>svg.ovfig{opacity:.85}
+</style>
+
+
+<style id="v110-insta">
+@media(max-width:899px){
+  #plInne .pl-kort>.pl-v{padding:0!important}
+  #plInne .pl-kort>.pl-v .pl-figwrap{max-width:none;border-radius:0}
+  #plInne .pl-kort>.pl-v .pl-figwrap>svg.ovfig{border-radius:0;padding:14px 26px;background:var(--mist)}
+  #plInne .pl-kort>.pl-v .pl-ghost svg,#plInne .pl-kort>.pl-v .pl-slutdold svg,#plInne .pl-kort>.pl-v .pl-pil,#plInne .pl-kort>.pl-v .pl-kann{padding:14px 26px}
+  #plInne .pl-kort>.pl-v .pl-cue{right:12px;top:10px}
+}
+.pl-figctl{display:grid!important;grid-template-columns:repeat(7,1fr);gap:0;padding:8px 6px 4px;margin:0}
+.pl-figctl button{display:flex!important;flex-direction:column;align-items:center;justify-content:flex-start;gap:4px;border:none!important;background:none!important;color:var(--ink)!important;font-size:.58rem!important;font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase;padding:6px 2px!important;border-radius:12px!important;min-width:0}
+.pl-figctl button span{white-space:nowrap}
+.pl-figctl button svg{width:22px;height:22px}
+.pl-figctl .pl-spel{color:var(--teal-ink)!important}
+.pl-figctl .pl-spel[aria-pressed="true"]{color:var(--ink)!important}
+.pl-figctl button[aria-pressed="true"]:not(.pl-spel):not(.pl-tyst){color:var(--teal)!important}
+.pl-figctl button[aria-pressed="true"]:not(.pl-spel):not(.pl-tyst) svg{filter:drop-shadow(0 0 6px rgba(13,123,111,.35))}
+.pl-figctl .pl-tyst[aria-pressed="true"]{color:var(--dim)!important;background:none!important}
+.pl-figctl .pl-lyssna.gar{color:var(--teal)!important}
+@media(min-width:900px){.pl-figctl{grid-template-columns:repeat(4,1fr);row-gap:6px}}
+@media(max-width:899px){
+  body.kodad:not(.bibliotek) #flikar{position:fixed!important;left:0;right:0;bottom:0;top:auto!important;z-index:210;margin:0!important;border-radius:0;border:none;border-top:1px solid var(--line);background:rgba(247,249,250,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:6px 8px calc(6px + env(safe-area-inset-bottom));box-shadow:0 -8px 24px rgba(16,32,42,.06)}
+  body.kodad:not(.bibliotek) #flikar .flik{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 4px;border-radius:12px;font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;background:none;color:var(--dim);position:relative}
+  body.kodad:not(.bibliotek) #flikar .flik[aria-selected="true"]{background:none;color:var(--teal-ink)}
+  body.kodad:not(.bibliotek) #flikar .flik[aria-selected="true"] svg{stroke:var(--teal)}
+  body.kodad:not(.bibliotek) #flikar .flik-prick{position:absolute;top:4px;right:calc(50% - 18px)}
+  body.kodad:not(.bibliotek) main{padding-bottom:calc(88px + env(safe-area-inset-bottom))}
+  body.kodad:not(.bibliotek) #passBar{bottom:calc(68px + env(safe-area-inset-bottom))!important}
+  body.kodad:not(.bibliotek).pl-oppen #flikar,body.kodad:not(.bibliotek).ff-oppen #flikar{display:none!important}
+  body.kodad:not(.bibliotek) .aktiv details[data-ovid]{scroll-margin-top:80px}
+}
+@media(min-width:900px){#flikar[data-ikoner] .flik svg{display:none}}
+</style>
+
+
+<style id="v111-ring">
+.pl-figctl button{font-size:.53rem!important;letter-spacing:.02em}
+@media(max-width:360px){.pl-figctl button{font-size:.48rem!important}}
+/* i passet: tidtagaren och vilan som stora ringar i doseringspanelen */
+#plInne .ov-niva .ovtimer{display:flex;align-items:center;gap:16px;width:100%;box-sizing:border-box;margin:14px 0 0;padding:10px 16px 10px 10px;border-radius:18px;border:1px solid rgba(176,141,87,.45);background:var(--yta)}
+#plInne .ov-niva .ovtimer .ovring{width:72px;height:72px}
+#plInne .ov-niva .ovtimer .ovring circle{r:15.5}
+#plInne .ov-niva .ovtimer .ovring-fg{stroke-width:3.4}
+#plInne .ov-niva .ovtimer .ovring-txt{font-size:10px}
+#plInne .ov-niva .ovtimer .ovt-txt{font-size:1rem;line-height:1.3}
+#plInne .ov-niva .ovtimer .ovt-txt small{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:2px}
+#plInne .ov-niva .ovtimer.gar{background:var(--ink);border-color:var(--ink);color:#fff}
+#plInne .ov-niva .ovtimer.gar .ovt-txt small{color:#B9D9D3}
+#plInne .ov-niva .ovtimer.klar{background:var(--teal-soft);border-color:var(--teal)}
+#plInne .ov-niva .pl-vila{margin-top:10px}
+#plInne .ov-niva .pl-vilaknapp{width:100%;justify-content:flex-start;padding:10px 16px 10px 10px;border-radius:18px}
+#plInne .ov-niva .pl-vilaring{width:56px;height:56px}
+#plInne .ov-niva .pl-vilatxt{font-size:1rem}
+#plInne .ov-niva .pl-set{display:block;margin:12px 0 0;font-size:.9rem}
+@media(min-width:900px){
+  #plInne .pl-kort{grid-template-columns:420px 1fr!important;max-width:1040px!important}
+  #plInne .pl-kort>.pl-v .pl-figwrap{max-width:420px}
+  .ff-inne .pl-figwrap{max-width:min(92vw,680px)}
+}
+</style>
+
+
+<style id="v112-fel-roster">
+.pl-fel{margin:12px 22px 0;padding:12px 14px;border-radius:12px;background:#FBF4EA;border:1px solid rgba(176,141,87,.45);border-left:4px solid var(--guld-djup)}
+.pl-fel-et{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--guld-djup);font-weight:700;margin-bottom:4px}
+.pl-fel p{margin:0;font-size:.92rem;line-height:1.55;color:var(--ink)}
+@media(min-width:900px){#plInne .pl-kort>.pl-h>.pl-fel{margin-left:0!important;margin-right:0!important}}
+.pp-roster{margin:30px 0 8px;padding-top:24px;border-top:1px solid var(--line)}
+.pp-rost-rad{display:flex;align-items:flex-start;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.pp-rost-rad::-webkit-scrollbar{display:none}
+.pp-rost{flex:0 0 min(78vw,300px);scroll-snap-align:start;margin:0;background:var(--yta);border:1px solid var(--line);border-radius:16px;padding:16px 16px 14px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 1px 2px rgba(16,32,42,.04)}
+.pp-rost.lang{flex-basis:min(88vw,420px)}
+.pp-rost blockquote{margin:0 0 12px;font-family:var(--display);font-size:1.05rem;line-height:1.45;color:var(--ink);letter-spacing:-.005em}
+.pp-rost blockquote::before{content:"“";color:var(--guld);margin-right:2px}
+.pp-rost blockquote::after{content:"”";color:var(--guld)}
+.pp-rost figcaption{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+@media(min-width:900px){.pp-rost-rad{flex-wrap:wrap;overflow:visible}.pp-rost{flex:1 1 260px}.pp-rost.lang{flex-basis:100%}}
 </style>
 
 </body>

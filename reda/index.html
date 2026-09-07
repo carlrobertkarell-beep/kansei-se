@@ -799,7 +799,7 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 </div>
 </div>
 <div class="mp-knappar mp-klinik" id="mpKlinik" hidden><button class="btn btn-teal" id="klBygg" type="button">Bygg program</button><a class="btn btn-ghost" id="klGranska" href="#p1">Granska övningar</a><button class="btn btn-ghost" id="klLas" type="button">Logga ut</button><p class="mp-startu">Logga ut när du lämnar datorn eller delar skärm, då stängs klinikvyn och inkorgen.</p></div>
-<div class="mp-knappar"><div class="mp-start"><button class="btn btn-teal" id="startaPass" type="button">Starta dagens pass</button><p class="mp-startu">En övning i taget med figur, dosering och tidtagare. Det du markerar där loggas automatiskt.</p></div><button class="btn btn-ghost" id="tillovningar" type="button">Visa planen</button><div class="mp-knappar2"><button class="btn btn-ghost" id="skrivut" type="button">Skriv ut / PDF</button><a href="#" id="bytkod" class="btn btn-ghost">Byt kod</a></div></div>
+<div class="mp-knappar"><div class="mp-start"><div class="mp-startrad"><button class="btn btn-teal" id="startaPass" type="button">Starta dagens pass</button><button class="btn btn-ghost" id="tillovningar" type="button">Visa planen</button></div><p class="mp-startu">En övning i taget med figur, dosering och tidtagare. Det du markerar där loggas automatiskt.</p></div><div class="mp-knappar2"><button class="btn btn-ghost" id="skrivut" type="button">Skriv ut / PDF</button><a href="#" id="bytkod" class="btn btn-ghost">Byt kod</a></div></div>
 <p class="mp-sign">Granskat av Carl-Robert Kårell, leg. naprapat<span class="sign-lang"> · Byggt på aktuella belastnings- och rehabiliteringsprinciper</span> · Uppdaterad augusti 2026</p>
 </div>
 <nav id="kflikar" hidden aria-label="Klinikvyns delar" role="tablist">
@@ -1903,7 +1903,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     });
   }
   (function(){var IK={oversikt:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>',traning:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2"/><path d="M12 7v6l-4 6M12 13l4 6M8 10l4-2 4 2"/></svg>',logg:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>'};
-    function satt(){document.querySelectorAll('#flikar .flik').forEach(function(b){var k=b.getAttribute('data-flik'); if(IK[k]&&!b.querySelector('svg')){var prick=b.querySelector('.flik-prick'); var t=b.textContent.trim(); b.innerHTML=IK[k]+'<span class="flik-txt">'+t+'</span>'; if(prick)b.appendChild(prick);}})}
+    function satt(){document.querySelectorAll('#flikar .flik').forEach(function(b){var k=b.getAttribute('data-flik'); if(IK[k]&&!b.querySelector('svg')){var prick=b.querySelector('.flik-prick'), pass=b.querySelector('.flik-pass'); var t=(b.querySelector('.flik-txt')||b).textContent.replace(/\d+\/\d+$/,'').trim(); b.innerHTML=IK[k]+'<span class="flik-txt">'+t+'</span>'; if(prick)b.appendChild(prick); if(pass)b.appendChild(pass);}})}
     if(document.readyState!=='loading')satt(); else document.addEventListener('DOMContentLoaded',satt);
   })();
   function flikByt(f, tyst){
@@ -3198,6 +3198,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
       }
       window.__varKlar=klart;
       pb.classList.toggle('klar', klart);
+      (function(){var tf=document.querySelector('#flikar .flik[data-flik="traning"]'); if(!tf)return; var st2=ovLas(), alla2=[].slice.call(document.querySelectorAll('.aktiv details[data-ovid]')), n2=alla2.length, m2=alla2.filter(function(d){var id=d.getAttribute('data-ovid');return st2.g.indexOf(id)>-1||st2.e.indexOf(id)>-1}).length; var m=tf.querySelector('.flik-pass'); if(!m){m=document.createElement('span'); m.className='flik-pass'; tf.appendChild(m);} m.textContent=m2+'/'+n2; m.classList.toggle('klar',klart);})();
       if(typeof kortLage==='function')kortLage();
       document.getElementById('pbText').textContent=klart?'Pass klart · loggat ✓':'Dagens pass';
       var hint=document.getElementById('pbHint'); if(hint)hint.textContent=klart?'Visa loggen':'Tryck för att starta passet';
@@ -4299,7 +4300,7 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
 
 <script>/* v78: artikulerad figurmotor. Kedjor med roten i golvkontakten, leder animeras i JS. */
 (function(){
-  var INK='#10202A', TEAL='#0D7B6F';
+  var INK='#34475A', TEAL='#0D7B6F';
   function N(l,a,o,k){o=o||{};return {l:l,a:a,o:o,k:k||[]}}
   var PROF={
     hall:[[0,0],[.22,1],[.45,1],[.86,0],[1,0]],
@@ -4330,7 +4331,7 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
     h+='</g></g>';
     return h;
   }
-  function blick(g){return N(1,g,{hide:1,x:'<circle cx="2.6" cy="-1" r="1.3" fill="#F7F9FA" stroke="none"/><path d="M7 -1 L12 -1" stroke="'+TEAL+'" stroke-width="1.8" stroke-dasharray="1.6 2.6"/>'})}
+  function blick(g){return N(1,g,{hide:1,x:'<circle cx="2.6" cy="-1" r="1.3" fill="#F7F9FA" stroke="none"/>'})}
   function huvud(neck,g,o){o=o||{};return N(4,neck,{id:'neck'},[N(5,neck,{head:1},g!=null?[blick(g)]:[])])}
   function d(v,def){return v==null?def:v}
   /* stående bas: roten i främre fotleden */
@@ -4388,15 +4389,15 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
         N(16,-10,{id:'thL',bak:1},[N(16,136,{id:'shL',bak:1},[N(6,0,{bak:1})])])
       ])
     ],anim:{torso:-26.7,thR:14.1,shR:136,thL:16,shL:134}}},
-    sidoclam:function(){return {prof:'hall',dur:6,tree:[
+    sidoclam:function(){return {prof:'hall',dur:6,ey:[-40,4],tree:[
       N(4,180,{id:'neck'},[N(5,180,{head:1},[blick(-40)])]),
-      N(10,175,{id:'uaL',bak:1},[N(9,-100,{id:'faL',bak:1})]),
+      N(10,170,{id:'uaL',bak:1},[N(9,-95,{id:'faL',bak:1})]),
       N(20,0,{id:'torso',torso:1},[
-        N(16,55,{id:'thL',bak:1},[N(16,170,{id:'shL',bak:1},[N(6,170,{bak:1})])]),
-        N(16,52,{id:'thR',acc:1},[N(16,168,{id:'shR',acc:1},[N(6,168,{acc:1})])]),
-        N(10,20,{id:'uaR'},[N(9,90,{id:'faR'})])
+        N(16,58,{id:'thL',bak:1},[N(16,172,{id:'shL',bak:1},[N(6,172,{bak:1})])]),
+        N(16,56,{id:'thR',acc:1},[N(16,170,{id:'shR',acc:1},[N(6,170,{acc:1})])]),
+        N(10,30,{id:'uaR'},[N(9,100,{id:'faR'})])
       ])
-    ],anim:{thR:22,shR:140}}},
+    ],anim:{thR:-8,shR:110}}},
     sidoben:function(){return {prof:'hall',dur:6,tree:standT({accL:1,uaR:75,faR:80}),anim:{thL:52,shL:50,ftL:-40}}},
     enben:function(){return {prof:'svaj',dur:5,tree:standT({thL:60,shL:120,ftL:30,uaR:62,faR:72,uaL:118,faL:108}),anim:{shR:-88.4}}},
     balansmjuk:function(){return {prof:'svaj',dur:5,extra:function(){return '<path class="rekv acc" d="M-16 0 q16 8 32 0"/>'},ey:[-56,5],tree:standT({thL:60,shL:120,ftL:30,uaR:55,faR:65,uaL:125,faL:115}),anim:{shR:-87}}},
@@ -4704,7 +4705,7 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
     var gs=ghost.querySelector('svg'); if(gs){gs.classList.add('ghost'); gs.removeAttribute('width'); gs.removeAttribute('height');} window.__figFas(ghost,0);
     var slut=document.createElement('div'); slut.className='pl-slutdold'; slut.innerHTML=window.__ovIkon(ovid,300); wrap.appendChild(slut); window.__figFas(slut,1);
     var ss=slut.querySelector('svg'); if(ss){ss.removeAttribute('width');ss.removeAttribute('height');}
-    requestAnimationFrame(function(){figPil(wrap,ghost.querySelector('svg'),slut.querySelector('svg'),stor); if(window.__ovKann)figKann(wrap,ghost.querySelector('svg'),stor,window.__ovKann(ovid)); spelVisa();});
+    requestAnimationFrame(function(){ if(window.__figLagerPa){figPil(wrap,ghost.querySelector('svg'),slut.querySelector('svg'),stor);} if(window.__ovKann)figKann(wrap,ghost.querySelector('svg'),stor,window.__ovKann(ovid)); spelVisa();});
   }
   function figPil(wrap,s0,s1,stor){
     try{
@@ -4732,12 +4733,12 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
       var a=P(+l.getAttribute('x1'),+l.getAttribute('y1')), b=P(+l.getAttribute('x2'),+l.getAttribute('y2')); if(!a||!b)return;
       var x=a.x+(b.x-a.x)*k.fr, y=a.y+(b.y-a.y)*k.fr;
       var sv=document.createElementNS('http://www.w3.org/2000/svg','svg'); sv.setAttribute('class','pl-kann'); sv.setAttribute('viewBox',stor.getAttribute('viewBox')); sv.setAttribute('preserveAspectRatio',stor.getAttribute('preserveAspectRatio')||'xMidYMid meet');
-      sv.innerHTML='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="9" fill="#0D7B6F" opacity=".16"><animate attributeName="r" values="7;11;7" dur="2.4s" repeatCount="indefinite"/><animate attributeName="opacity" values=".22;.1;.22" dur="2.4s" repeatCount="indefinite"/></circle><circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="2.6" fill="#0D7B6F" opacity=".9"/>';
+      sv.innerHTML='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="8" fill="#E08A4C" opacity=".28"><animate attributeName="r" values="7;9.5;7" dur="3s" repeatCount="indefinite"/></circle><circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="2.4" fill="#E08A4C" opacity=".95"/>';
       wrap.appendChild(sv);
     }catch(e){}
   }
   window.__figKann=figKann;
-  window.__figLager=figLager;
+  window.__figLager=figLager; window.__figLagerPa=false;
   function fas_(rot,f){return fas(rot,f)}
   function fas(rot,f){
     (rot||document).querySelectorAll('svg.ovfig [data-anim]').forEach(function(el){
@@ -5684,7 +5685,9 @@ body.demo .pl-fraga{display:none}
 .ff-inne .pl-cue[data-fas="upp"]{background:#8FD3C8;color:var(--ink)}
 .ff-inne .pl-cue[data-fas="hall"]{background:var(--guld);color:#fff}
 .ff-inne .pl-cue[data-fas="ner"]{background:#fff;color:var(--ink)}
-.ff-inne .pl-figwrap{max-width:min(92vw,560px);width:100%}
+.ff-inne .pl-figwrap{max-width:min(100vw,680px);width:100%}
+@media(max-width:899px) and (orientation:portrait){.ff-inne{padding:12px 0 20px;grid-template-rows:auto auto 1fr auto auto}.ff-inne .pl-figwrap{max-width:100vw}.ff-inne .pl-figwrap>svg.ovfig{border-radius:0;padding:6px 0;transform:scale(1.28);transform-origin:50% 55%}.ff-inne .pl-ghost svg,.ff-inne .pl-slutdold svg,.ff-inne .pl-kann{padding:6px 0;transform:scale(1.28);transform-origin:50% 55%}.ff-inne .ff-ctl{margin-top:26px}.ff-topp,.ff-ctl,.ff-inne .pl-kanntxt{padding:0 14px}}
+@media(orientation:landscape) and (max-height:520px){.ff-inne{grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr;grid-template-areas:"topp topp" "fig ctl";column-gap:16px;padding:10px 16px}.ff-topp{grid-area:topp}.ff-inne .pl-cue{grid-area:topp;justify-self:end}.ff-inne .pl-figwrap{grid-area:fig;max-width:none}.ff-ctl{grid-area:ctl;align-self:center;flex-direction:column}.ff-inne .pl-kanntxt{grid-area:ctl;align-self:end}}
 .ff-inne .pl-figwrap>svg.ovfig{background:#1B2E38;padding:22px 30px;border-radius:24px}
 .ff-inne .pl-figwrap>svg.ovfig .bak{stroke:#5C6E78}
 .ff-inne .pl-figwrap>svg.ovfig .lem,.ff-inne .pl-figwrap>svg.ovfig .torso{stroke:#F7F9FA}
@@ -5769,7 +5772,7 @@ body.bibliotek[data-kflik="ovningar"] #flikar{display:flex}
 .pl-figctl .pl-spel .ik-paus,.ff-knapp.ff-spel .ik-paus{display:none}
 .pl-figctl .pl-spel[aria-pressed="true"] .ik-play{display:none}
 .pl-figctl .pl-spel[aria-pressed="true"] .ik-paus{display:block}
-.pl-figctl .pl-rost[aria-pressed="true"],.pl-figctl .pl-takt[aria-pressed="true"]{background:var(--teal)!important;color:#fff!important;border-color:var(--teal)!important}
+
 .pl-figctl .pl-tyst.ikon{padding:6px 9px!important;display:inline-flex;align-items:center}
 .pl-tyst .ik-kryss{display:none}
 .pl-tyst[aria-pressed="true"] .ik-vag{display:none}
@@ -5865,6 +5868,75 @@ body.bibliotek[data-kflik="ovningar"] #flikar{display:flex}
 .pp-rost blockquote::after{content:"”";color:var(--guld)}
 .pp-rost figcaption{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 @media(min-width:900px){.pp-rost-rad{flex-wrap:wrap;overflow:visible}.pp-rost{flex:1 1 260px}.pp-rost.lang{flex-basis:100%}}
+</style>
+
+
+<style id="v114-lugn">
+.pl-ghost{visibility:hidden}
+.pl-pil{display:none}
+
+/* mobil: en bar, inte två. Passräkningen bor i Träning-fliken, baren är genomskinlig. */
+@media(max-width:899px){
+  body.kodad:not(.bibliotek) #passBar{display:none!important}
+  body.kodad:not(.bibliotek) #flikar{background:rgba(247,249,250,.78);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);padding:4px 8px calc(4px + env(safe-area-inset-bottom));box-shadow:none;border-top:1px solid rgba(16,32,42,.08)}
+  body.kodad:not(.bibliotek) main{padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+  body.kodad:not(.bibliotek) #flikar .flik{padding:5px 4px 4px}
+  .flik-pass{position:absolute;top:2px;right:calc(50% - 26px);font-family:var(--mono);font-size:.56rem;letter-spacing:.02em;background:var(--ink);color:#fff;border-radius:999px;padding:1px 6px;line-height:1.4}
+  .flik-pass.klar{background:var(--teal)}
+}
+@media(min-width:900px){.flik-pass{display:none}}
+/* knapparna i linje, förklaringen under båda */
+.mp-start{display:block!important;width:100%!important;max-width:none!important;flex:1 1 100%}
+.mp-knappar{flex-direction:column;align-items:flex-start!important}
+.mp-knappar2{margin-top:2px}
+@media(min-width:760px){.mp-startrad{flex-wrap:nowrap}.mp-start .mp-startu{max-width:560px}}
+.mp-startrad{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.mp-startrad .btn{margin:0}
+.mp-start .mp-startu{margin-top:8px}
+@media(max-width:480px){.mp-startrad #startaPass{flex:1 1 100%}.mp-startrad #tillovningar{flex:1 1 auto}}
+/* ikonraden: aktivt läge är färg på ikon och etikett, aldrig ett block */
+.pl-figctl button[aria-pressed="true"]{background:none!important;color:var(--teal)!important;border:none!important}
+.pl-figctl button[aria-pressed="true"] svg{filter:none!important}
+.pl-figctl button[aria-pressed="true"]::after{content:"";display:block;width:5px;height:5px;border-radius:50%;background:var(--teal);margin-top:1px}
+.pl-figctl .pl-tyst[aria-pressed="true"]{color:var(--dim)!important}
+.pl-figctl .pl-tyst[aria-pressed="true"]::after{background:var(--dim)}
+.pl-figctl .pl-spel[aria-pressed="true"]{color:var(--ink)!important}
+.pl-figctl .pl-spel[aria-pressed="true"]::after{display:none}
+</style>
+
+
+<style id="v115-figur">
+/* branschens regel: neutral kropp, en varm markering där arbetet sker */
+svg.ovfig .lem,svg.ovfig .torso{stroke:#34475A}
+svg.ovfig circle.huvud{fill:#34475A;stroke:#34475A}
+svg.ovfig .bak{stroke:#B7C2CA}
+svg.ovfig circle.huvud.bak{fill:#B7C2CA;stroke:#B7C2CA}
+svg.ovfig .acc{stroke:#4F7A97}
+svg.ovfig .rekv{stroke:#C9D2D8}
+svg.ovfig .rekv.acc{stroke:#4F7A97}
+svg.ovfig .skugga{opacity:.09}
+svg.ovfig line[stroke="#C9CFD4"]{stroke:#D5DCE1}
+/* varm markering: här arbetar det */
+.pl-kann circle{fill:#E08A4C!important}
+.pl-kanntxt .pl-kannprick{box-shadow:inset 0 0 0 3px #E08A4C;background:rgba(224,138,76,.22)}
+/* helskärm: mörkare botten, kroppen ljus, markeringen varm */
+.ff-inne .pl-figwrap>svg.ovfig .lem,.ff-inne .pl-figwrap>svg.ovfig .torso{stroke:#EEF2F5}
+.ff-inne .pl-figwrap>svg.ovfig circle.huvud{fill:#EEF2F5;stroke:#EEF2F5}
+.ff-inne .pl-figwrap>svg.ovfig .bak{stroke:#6E8290}
+.ff-inne .pl-figwrap>svg.ovfig circle.huvud.bak{fill:#6E8290;stroke:#6E8290}
+.ff-inne .pl-figwrap>svg.ovfig .acc{stroke:#9CC4DC}
+.ff-inne .pl-kann circle{fill:#F0A46A!important}
+.ff-inne .pl-kanntxt .pl-kannprick{box-shadow:inset 0 0 0 3px #F0A46A;background:rgba(240,164,106,.25)}
+.ff-inne .pl-figwrap>svg.ovfig circle[fill="#F7F9FA"]{fill:#1B2E38!important}
+</style>
+
+
+<style id="v115-lasa">
+/* under Träning läser man: ingen tidtagare, ingen vila, doseringen som en rad */
+body.kodad:not(.bibliotek) .aktiv details[data-ovid] .ovtimer,body.kodad:not(.bibliotek) .aktiv details[data-ovid] .pl-vila,body.kodad:not(.bibliotek) .aktiv details[data-ovid] .pl-sida{display:none!important}
+body.kodad:not(.bibliotek) .aktiv details[data-ovid] .ov-niva{padding:12px 14px!important}
+body.kodad:not(.bibliotek) .aktiv details[data-ovid] .ov-niva .dosrad{display:none}
+body.kodad:not(.bibliotek) .aktiv details[data-ovid] .ov-figrad .ovfig{width:72px;height:auto}
 </style>
 
 </body>

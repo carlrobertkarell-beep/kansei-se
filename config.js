@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var tf = head.querySelector('.tf-fot');
   var el;
   if (tf) { el = tf.cloneNode(true); el.className = 'snabb-cta'; head.classList.add('har-snabb'); }
-  else if (!document.body.classList.contains('kodad') && !/\/blogg\//.test(location.pathname)) {
+  else if (!document.body.classList.contains('kodad') && !/\/blogg\//.test(location.pathname) && !/^\/reda\//.test(location.pathname)) {
     el = document.createElement('div'); el.className = 'snabb-cta';
     el.innerHTML = '<a class="btn btn-teal" href="' + (window.KANSEI.bokning || 'https://www.bokadirekt.se/places/kansei-rehabcenter-48847') + '" target="_blank" rel="noopener" data-cta="snabb-generell">Boka tid →</a><span style="font-size:.86rem;color:var(--dim,#5B6B75)">Ingen remiss krävs</span>';
   }

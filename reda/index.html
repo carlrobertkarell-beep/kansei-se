@@ -844,7 +844,7 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <div id="figFull" hidden role="dialog" aria-modal="true" aria-label="Figuren i helskärm"><button type="button" id="ffStang" aria-label="Stäng">×</button><div class="ff-inne"></div></div>
 <div id="intro" hidden role="dialog" aria-modal="true" aria-label="Så fungerar din plan">
   <div class="in-kort">
-    <div class="in-topp"><img src="/bilder/reda/mark.svg" alt="" class="reda-mini"><span class="in-steg" id="inStegTxt"></span><button type="button" id="inHoppa" class="in-hoppa">Hoppa över</button></div>
+    <div class="in-topp"><span class="reda-logo"><img src="/bilder/reda/mark.svg" alt="" class="reda-logo-mark"><img src="/bilder/reda/wordmark.svg" alt="Reda" class="reda-logo-ord"></span><span class="in-steg" id="inStegTxt"></span><button type="button" id="inHoppa" class="in-hoppa">Hoppa över</button></div>
     <div class="in-bild" id="inBild"></div>
     <div class="in-inne">
       <div class="in-prickar" id="inPrickar"></div>
@@ -1767,7 +1767,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     var n=document.getElementById('inNasta'); n.textContent=(i===INTRO.length-1)?'Jag förstår, visa planen':'Nästa';
     document.getElementById('inHoppa').hidden=false;
   }
-  function introStang(){try{localStorage.setItem('kanseiValk_'+__patKod,'1')}catch(x){} document.getElementById('intro').hidden=true; document.body.classList.remove('intro-oppen'); var st=document.getElementById('startaPass'); if(st)st.focus();}
+  function introStang(){try{localStorage.setItem('kanseiValk_'+__patKod,'1')}catch(x){} document.getElementById('intro').hidden=true; document.body.classList.remove('intro-oppen'); var st=document.getElementById('startaPass'); if(st&&st.offsetParent)st.focus(); else {var st2=document.querySelector('.pl-start'); if(st2)st2.focus();}}
   function ppFigurer(){
     document.querySelectorAll('.pp-fig[data-ark]').forEach(function(f){ if(f.querySelector('svg'))return; if(!window.__ovIkonArketyp){setTimeout(ppFigurer,60);return} f.innerHTML=window.__ovIkonArketyp(f.getAttribute('data-ark'),200); if(window.__figSkan)window.__figSkan(f); });
   }
@@ -2126,7 +2126,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     var __ket=document.querySelector('.mp-huvud2 .kodetikett');
     var __gN=document.getElementById('mpNamn'); if(__gN)__gN.remove();
     if(__patNamn){
-      __ket.innerHTML=document.body.classList.contains('bibliotek')?'<img src="/bilder/reda/mark.svg" alt="" class="reda-mini"> Reda · klinik':'<img src="/bilder/reda/mark.svg" alt="" class="reda-mini"> Reda';
+      __ket.innerHTML='<span class="reda-logo"><img src="/bilder/reda/mark.svg" alt="" class="reda-logo-mark"><img src="/bilder/reda/wordmark.svg" alt="Reda" class="reda-logo-ord"></span>'+(document.body.classList.contains('bibliotek')?'<span class="reda-logo-till">· klinik</span>':'');
       var nEl=document.createElement('p'); nEl.id='mpNamn'; nEl.className='mp-inject'; nEl.textContent='för '+__patNamn;
       var h2El=document.getElementById('mp-titel');
       h2El.parentNode.insertBefore(nEl, h2El.nextSibling);
@@ -4386,8 +4386,8 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
   var POSER={
     brygga:function(){return {prof:'hall',dur:7,tree:[
       N(4,200,{id:'neck'},[N(5,205,{head:1},[blick(-90)])]),
-      N(10,40,{id:'uaR'},[N(9,0,{},[N(3,0,{})])]),
-      N(10,46,{id:'uaL',bak:1},[N(9,2,{bak:1})]),
+      N(10,12,{id:'uaR'},[N(9,0,{},[N(3,0,{})])]),
+      N(10,16,{id:'uaL',bak:1},[N(9,2,{bak:1})]),
       N(20,-4,{id:'torso',torso:1,acc:1},[
         N(16,-12,{id:'thR',acc:1},[N(16,138,{id:'shR'},[N(6,0,{}),N(2.5,180,{})])]),
         N(16,-10,{id:'thL',bak:1},[N(16,136,{id:'shL',bak:1},[N(6,0,{bak:1})])])
@@ -4410,14 +4410,13 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
     sidoplanka:function(){return {prof:'lang',dur:9,extra:function(){return '<rect class="rekv" x="30" y="-3" width="16" height="4" rx="2" fill="#E6D7C3" stroke="none"/>'},ey:[-38,0],tree:[
       N(10,0,{id:'faR'},[N(3,0,{})]),
       N(12,-90,{id:'uaR'},[
-        N(4,176,{id:'neck'},[N(5,178,{head:1},[blick2(-30)])]),
-        N(10,-72,{id:'uaL',bak:1},[N(9,-88,{id:'faL',bak:1})]),
+        N(4,172,{id:'neck'},[N(5,174,{head:1},[blick2(-30)])]),
         N(20,24,{id:'torso',torso:1,acc:1},[
           N(16,14,{id:'thR',acc:1},[N(16,0,{id:'shR'},[N(6,0,{})])]),
           N(16,12,{id:'thL',bak:1},[N(16,-2,{id:'shL',bak:1},[N(6,-2,{bak:1})])])
         ])
       ])
-    ],anim:{torso:4,thR:41,thL:39,shR:0,shL:-2,neck:184,uaL:-78}}},
+    ],anim:{torso:4,thR:41,thL:39,shR:0,shL:-2,neck:182}}},
     utfall:function(){return {prof:'hall',dur:7,extra:function(){return '<rect class="rekv" x="-24" y="-3" width="14" height="4" rx="2" fill="#E6D7C3" stroke="none"/>'},ex:[-30,8],tree:standT({shR:-84,thR:178,thL:96,shL:180,ftL:180,torso:-84,uaR:60,faR:30,uaL:100,faL:60,gaze:0}),anim:{shR:-70,thR:184,thL:108,shL:180,ftL:180,torso:-88}}},
     uppresning:function(){return {prof:'hall',dur:8,extra:function(){var hx=-14.5,hy=-14.5;return '<path class="rekv" d="M'+(hx-12)+' '+(hy+3)+' L'+(hx+2)+' '+(hy+3)+' M'+(hx-12)+' '+(hy+3)+' L'+(hx-12)+' '+(hy-20)+' M'+(hx-10)+' '+(hy+3)+' L'+(hx-10)+' 0"/>'},ex:[-28,0],ey:[-36,0],
       tree:standT({shR:-85,thR:175,shL:-85,thL:177,torso:-78,uaR:60,faR:10,uaL:100,faL:20,gaze:20}),anim:{shR:-90,thR:-90,shL:-90,thL:-90,torso:-90,uaR:80,faR:85,ftL:0}}},
@@ -4443,18 +4442,18 @@ body.kodad[data-flik="oversikt"] #passBar,body.kodad[data-flik="oversikt"] #pass
       N(20,-90,{id:'torso',torso:1},[N(10,100,{id:'uaL',bak:1},[N(9,95,{bak:1})]),huvud(-90,0),N(10,80,{id:'uaR'},[N(9,85,{id:'faR'})])])
     ])])])],anim:{ftR:200,shR:-90}}},
     rotband:function(){return {prof:'hall',dur:6,tree:standT({uaR:90,faR:0,hand:0,accR:1,xR:'<line class="acc" x1="3" y1="0" x2="26" y2="0" stroke-dasharray="3 3"/><circle class="acc" cx="28" cy="0" r="2.5"/>'}),anim:{faR:-32}}},
-    skuldersatt:function(){return {prof:'lang',dur:8,tree:standT({uaR:82,faR:88,uaL:98,faL:92,gaze:0}),anim:{uaR:88,uaL:104},extra:function(){return '<g class="markor" transform="translate(-6 -50)"><path class="acc" d="M0 -6 L0 6 M-4 2 L0 6 L4 2"/></g><g class="markor" transform="translate(-13 -46)"><path class="acc" d="M4 -4 L-4 4 M-4 -1 L-4 4 L1 4"/></g>'}}},
+    skuldersatt:function(){return {prof:'lang',dur:8,tree:standT({torso:-84,neck:-72,uaR:78,faR:86,uaL:94,faL:92,gaze:0,accR:1}),anim:{torso:-92,neck:-96,uaR:96,uaL:106}}},
     framatlyft:function(){return {prof:'hall',dur:7,tree:standT({uaR:85,faR:85,accR:1}),anim:{uaR:-15,faR:-15}}},
-    vagglid:function(){return {prof:'hall',dur:7,extra:function(){return '<line class="rekv acc" x1="30" y1="-70" x2="30" y2="0"/>'},ex:[-12,30],ey:[-70,0],tree:standT({uaR:-38,faR:-88,hand:-88,accR:1,uaL:-36,faL:-88}),anim:{uaR:-62,faR:-88,uaL:-60,faL:-88}}},
+    vagglid:function(){return {prof:'hall',dur:7,extra:function(){return '<rect class="rekv" x="12" y="-72" width="5" height="72" fill="#D5DCE1" stroke="none"/>'},ex:[-12,20],ey:[-72,0],tree:standT({torso:-88,uaR:-8,faR:-92,hand:-92,accR:1,uaL:-4,faL:-92,gaze:-10}),anim:{torso:-84,uaR:-52,faR:-92,uaL:-48,faL:-92}}},
     vaggklattring:function(){return {prof:'lang',dur:9,extra:function(){return '<line class="rekv acc" x1="30" y1="-70" x2="30" y2="0"/>'},ex:[-12,30],ey:[-70,0],tree:standT({uaR:-30,faR:-72,hand:-72,accR:1,uaL:105,faL:100}),anim:{uaR:-68,faR:-88}}},
     pendel:function(){return {prof:'jamn',dur:2.6,extra:function(){return '<path class="rekv" d="M8 -30 L34 -30 L34 0"/>'},ex:[-10,34],ey:[-52,0],tree:standT({torso:-35,neck:-40,gaze:60,uaL:20,faL:75,uaR:78,faR:78,accR:1}),anim:{uaR:102,faR:102}}},
     pinne:function(){return {prof:'hall',dur:7,tree:standT({uaR:90,faR:0,hand:0,accR:1,uaL:90,faL:0,xR:'<line class="acc" x1="-16" y1="-1" x2="22" y2="-1"/>'}),anim:{faR:-28}}},
     handduk:function(){return {prof:'hall',dur:7,tree:standT({uaR:-115,faR:70,hand:70,uaL:110,faL:-100,accR:1,xL:'<line class="acc" x1="0" y1="0" x2="-20" y2="-16"/>'}),anim:{uaL:100,faL:-96}}},
-    nacke:function(){return {prof:'hall',dur:5.5,tree:standT({neck:-84,gaze:0}),anim:{neck:-98},extra:function(){return '<g class="markor" transform="translate(-16 -63)"><path class="acc" d="M8 0 L-6 0 M-2 -4 L-6 0 L-2 4"/></g>'},ex:[-24,10]}},
+    nacke:function(){return {prof:'hall',dur:5.5,tree:standT({neck:-70,gaze:0,uaR:95,faR:95,uaL:100,faL:100}),anim:{neck:-100},ex:[-24,10]}},
     nick:function(){return {prof:'hall',dur:7,tree:[N(4,180,{id:'neck'},[N(5,180,{head:1},[blick(-90)])]),supine({})],anim:{neck:166}}},
     andning:function(){return {prof:'andas',dur:10,tree:[N(4,180,{id:'neck'},[N(5,180,{head:1},[blick(-90)])]),supine({})],anim:{},extra:function(){return '<g transform="translate(10 0)" data-anim=\'{"kind":"scale","a0":1,"a1":1.5}\'><path class="rekv acc" d="M-8 -1 q8 -9 16 0"/></g>'}}},
     rodd:function(){return {prof:'hall',dur:5,tree:standT({uaR:0,faR:0,hand:0,accR:1,uaL:0,faL:0,xR:'<line class="acc" x1="3" y1="0" x2="26" y2="0" stroke-dasharray="3 3"/>'}),anim:{uaR:55,faR:-5,uaL:55,faL:-5}}},
-    brostrot:function(){return {prof:'hall',dur:7,ex:[-10,40],ey:[-42,0],tree:[quadTree({accArm:1,gaze:-60})],anim:{uaR:195,faR:195}}},
+    brostrot:function(){return {prof:'hall',dur:7,ex:[-10,40],ey:[-48,0],tree:[quadTree({accArm:1,uaR:70,faR:-127,gaze:-40})],anim:{uaR:-70,faR:110,neck:150}}},
     fotboll:function(){return {prof:'jamn',dur:5,extra:function(){var hx=-14.5,hy=-14.5;return '<path class="rekv" d="M'+(hx-12)+' '+(hy+3)+' L'+(hx+2)+' '+(hy+3)+' M'+(hx-12)+' '+(hy+3)+' L'+(hx-12)+' '+(hy-20)+' M'+(hx-10)+' '+(hy+3)+' L'+(hx-10)+' 0"/>'},ex:[-28,0],ey:[-36,0],
       tree:[N(16,-85,{id:'shL',bak:1},[N(16,175,{id:'thL',bak:1},[
         N(16,10,{id:'thR'},[N(16,78,{id:'shR',acc:1},[N(6,0,{acc:1,x:'<circle class="acc" cx="3" cy="5" r="5.5"/>'})])]),
@@ -5572,7 +5571,7 @@ html.i-ram .wrap{padding-top:0}
 @media(max-width:560px){.reda-hero .reda-mark{width:54px;height:54px}.reda-hero .reda-ordbild{height:2.6rem}.reda-tag{font-size:1.25rem}}
 .reda-by{display:none}
 .reda-lockup{display:flex;align-items:center;gap:14px;margin:0 0 6px}
-.reda-mark{width:52px;height:52px;border-radius:12px;box-shadow:0 4px 14px rgba(13,123,111,.25)}
+.reda-mark{width:52px;height:52px;border-radius:12px;box-shadow:0 4px 14px rgba(52,71,90,.22)}
 .reda-ord{margin:0!important;font-family:var(--display);font-weight:500;font-size:2.6rem;letter-spacing:-.02em;line-height:1;display:flex;align-items:baseline}
 .reda-punkt{display:inline-block;width:.22em;height:.22em;border-radius:50%;background:var(--teal);margin-left:.06em;transform:translateY(-.02em)}
 .reda-by{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);align-self:flex-end;padding-bottom:6px}
@@ -5970,6 +5969,44 @@ body.kodad:not(.bibliotek) .aktiv details[data-ovid] .ov-figrad .ovfig{width:72p
 .pl-spelvisa span{background:rgba(52,71,90,.9)}
 .ff-knapp.pa{background:#E08A4C;border-color:#E08A4C;color:#fff}
 .ff-inne .pl-cue[data-fas="upp"]{background:#F0A46A;color:#1B2E38}
+</style>
+
+
+<style id="v118-intro-kort">
+.reda-logo{display:inline-flex;align-items:center;gap:.4em;vertical-align:middle;line-height:1}
+.reda-logo-mark{width:26px;height:26px;border-radius:7px;display:block}
+.reda-logo-ord{height:19px;width:auto;display:block;transform:translateY(2px)}
+.reda-logo-till{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-left:8px}
+.kodetikett{display:flex;align-items:center;gap:6px}
+/* introt: ett format, innehållet rättar sig */
+.in-kort{height:min(640px,calc(100dvh - 48px));display:grid!important;grid-template-rows:auto 200px 1fr;overflow:hidden}
+.in-topp{height:52px;box-sizing:border-box;align-items:center}
+.in-topp .in-steg{flex:1;margin-left:10px}
+.in-bild{margin:0!important;border-radius:0!important;background:#1B2E38!important;padding:10px 28px!important;display:flex;align-items:center;justify-content:center;height:200px;box-sizing:border-box}
+.in-bild svg{max-width:300px;height:100%;width:auto}
+.in-bild svg .lem,.in-bild svg .torso{stroke:#EEF2F5!important}
+.in-bild svg circle.huvud{fill:#EEF2F5!important;stroke:#EEF2F5!important}
+.in-bild svg .bak{stroke:#6E8290!important}
+.in-bild svg circle.huvud.bak{fill:#6E8290!important;stroke:#6E8290!important}
+.in-bild svg .acc{stroke:#9CC4DC!important}
+.in-bild svg circle[fill="#F7F9FA"]{fill:#1B2E38!important}
+.in-bild svg line[stroke="#C9CFD4"]{stroke:#3A4C56!important}
+.in-bild svg .skugga{opacity:.35}
+.in-bild svg .rekv{stroke:#4C5F69!important}
+.in-inne{display:grid;grid-template-rows:auto auto auto auto 1fr auto;overflow:hidden;min-height:0}
+.in-inne p#inText{margin:0 0 8px}
+.in-punkter{align-content:start;overflow:auto;min-height:0}
+.in-rad{align-self:end}
+@media(max-height:700px){.in-kort{grid-template-rows:auto 160px 1fr}.in-bild{height:160px}}
+/* på Träning och Logg är kortet en rad, planen syns direkt */
+@media(max-width:899px){
+  body.kodad:not(.bibliotek)[data-flik="traning"] .mp-huvud2,body.kodad:not(.bibliotek)[data-flik="logg"] .mp-huvud2{padding:14px 18px!important;gap:6px}
+  body.kodad:not(.bibliotek)[data-flik="traning"] .mp-huvud2 #mp-titel,body.kodad:not(.bibliotek)[data-flik="logg"] .mp-huvud2 #mp-titel{font-size:1.2rem;margin:0}
+  body.kodad:not(.bibliotek)[data-flik="traning"] .mp-huvud2 #mpNamn,body.kodad:not(.bibliotek)[data-flik="logg"] .mp-huvud2 #mpNamn{font-size:1rem;margin:0}
+  body.kodad:not(.bibliotek)[data-flik="traning"] .mp-huvud2 .mp-knappar,body.kodad:not(.bibliotek)[data-flik="logg"] .mp-huvud2 .mp-knappar,
+  body.kodad:not(.bibliotek)[data-flik="traning"] .mp-huvud2 .mp-sign,body.kodad:not(.bibliotek)[data-flik="logg"] .mp-huvud2 .mp-sign,
+  body.kodad:not(.bibliotek)[data-flik="traning"] .mp-huvud2 #mp-under,body.kodad:not(.bibliotek)[data-flik="logg"] .mp-huvud2 #mp-under{display:none!important}
+}
 </style>
 
 </body>

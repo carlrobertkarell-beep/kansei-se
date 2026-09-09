@@ -1,1 +1,1 @@
-{"private":true,"type":"module","dependencies":{"@supabase/supabase-js":"^2.95.0"},"scripts":{"check":"node --check reda-sync-client.mjs"}}
+{"private":true,"type":"module","dependencies":{"@supabase/supabase-js":"2.116.0"},"scripts":{"check":"node --check reda-sync-client.mjs"}}

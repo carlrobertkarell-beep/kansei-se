@@ -1,0 +1,85 @@
+name: Kansei health and change checks
+on:
+  schedule:
+    - cron: '17 4 * * *'
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches: [main]
+    paths: ['.github/kansei/**', '.github/workflows/kansei-health.yml']
+permissions:
+  contents: read
+concurrency:
+  group: kansei-health-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  website-quality:
+    if: github.repository == 'carlrobertkarell-beep/kansei-se'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          path: site
+          persist-credentials: false
+      - name: Read trusted PR base
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          path: baseline
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+      - name: Enforce AI scope using trusted controls
+        if: github.event_name == 'pull_request' && startsWith(github.head_ref, 'kansei-ai/')
+        run: python3 baseline/.github/kansei/guard_ai.py baseline site
+      - name: Guard unit tests
+        run: python3 -m unittest discover -s site/.github/kansei -p 'test_*.py' -v
+      - name: Static SEO checks
+        run: python3 site/.github/scripts/check-seo.py
+      - name: Install pinned browser tester
+        run: |
+          python3 -m pip install --disable-pip-version-check playwright==1.57.0
+          python3 -m playwright install --with-deps chromium
+      - name: Browser test and screenshots
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+          mkdir -p reports
+          if [ "$EVENT_NAME" = schedule ] || [ "$EVENT_NAME" = workflow_dispatch ]; then
+            python3 site/.github/kansei/browser_check.py --output reports/live
+            python3 site/.github/scripts/check-seo.py --live
+          else
+            python3 -m http.server 4173 --bind 127.0.0.1 --directory site > "$RUNNER_TEMP/kansei-candidate.log" 2>&1 &
+            pid=$!
+            trap 'kill "$pid" 2>/dev/null || true' EXIT
+            sleep 1
+            python3 site/.github/kansei/browser_check.py --base http://127.0.0.1:4173 --output reports/candidate
+            if [ "$EVENT_NAME" = push ]; then
+              python3 site/.github/kansei/browser_check.py --output reports/live
+              python3 site/.github/scripts/check-seo.py --live
+            fi
+          fi
+      - name: Baseline screenshots for review
+        if: github.event_name == 'pull_request'
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4174 --bind 127.0.0.1 --directory baseline > "$RUNNER_TEMP/kansei-baseline.log" 2>&1 &
+          pid=$!
+          trap 'kill "$pid" 2>/dev/null || true' EXIT
+          sleep 1
+          python3 site/.github/kansei/browser_check.py --base http://127.0.0.1:4174 --output reports/baseline
+      - name: Keep public-site screenshots for three days
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: kansei-browser-${{ github.run_id }}-${{ github.run_attempt }}
+          path: reports/
+          retention-days: 3
+          if-no-files-found: ignore
+      - name: Result summary
+        if: always()
+        env:
+          RESULT: ${{ job.status }}
+        run: |
+          printf '## Kansei website checks\n\nResult: **%s**\n\nNo paid AI, private analytics, form submissions or automatic merges. Screenshots are evidence for review, not proof of visual quality.\n' "$RESULT" >> "$GITHUB_STEP_SUMMARY"

@@ -1,10 +1,10 @@
 name: Reda 2 prototype checks
 on:
   pull_request:
-    paths: ['reda-2/**', '.github/reda2-tests/**', '.github/workflows/reda2-tests.yml']
+    paths: ['reda-2/**', 'reda-rehab/**', 'config.js', 'sitemap.xml', '.github/reda2-tests/**', '.github/workflows/reda2-tests.yml']
   push:
     branches: [main]
-    paths: ['reda-2/**', '.github/reda2-tests/**', '.github/workflows/reda2-tests.yml']
+    paths: ['reda-2/**', 'reda-rehab/**', 'config.js', 'sitemap.xml', '.github/reda2-tests/**', '.github/workflows/reda2-tests.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -28,6 +28,8 @@ jobs:
         run: python3 .github/reda2-tests/browser_fast_test.py
       - name: Motion graph and renderer browser flows
         run: python3 .github/reda2-tests/browser_motion_test.py
+      - name: Public Reda landing and Kansei homepage integration
+        run: python3 .github/reda2-tests/public_landing_test.py
       - name: Existing site regression checks
         run: python3 .github/scripts/check-seo.py
       - name: Retain test screenshots and results

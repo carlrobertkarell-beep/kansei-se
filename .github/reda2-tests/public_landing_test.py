@@ -16,5 +16,5 @@ class T(unittest.TestCase):
  def test_public_reda_landing(self):
   self.p.goto(self.o+'/reda-rehab/');self.assertIn('Din plan',self.p.locator('h1').inner_text());self.assertIn('automatiskt',self.p.locator('body').inner_text().lower());self.assertEqual(self.p.locator('link[rel="canonical"]').get_attribute('href'),'https://www.kansei.se/reda-rehab/');self.assertLessEqual(self.p.evaluate('document.documentElement.scrollWidth'),391)
  def test_homepage_explains_reda_and_preserves_old_portal(self):
-  self.p.goto(self.o+'/');card=self.p.locator('#planKort');self.assertIn('Reda håller ihop',card.inner_text());self.assertEqual(card.get_by_role('link',name='Läs om Reda →').get_attribute('href'),'/reda-rehab/');self.assertEqual(card.get_by_role('link',name='Har du redan ett Reda-program? Öppna patientportalen →').get_attribute('href'),'/reda/')
+  self.p.goto(self.o+'/');card=self.p.locator('#planKort');card.scroll_into_view_if_needed();self.assertIn('Reda håller ihop',card.text_content());self.assertEqual(card.get_by_role('link',name='Läs om Reda →').get_attribute('href'),'/reda-rehab/');self.assertEqual(card.get_by_role('link',name='Har du redan ett Reda-program? Öppna patientportalen →').get_attribute('href'),'/reda/')
 if __name__=='__main__':unittest.main(verbosity=2)

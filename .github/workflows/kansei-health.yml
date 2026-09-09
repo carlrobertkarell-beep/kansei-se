@@ -32,6 +32,8 @@ jobs:
       - name: Enforce AI scope using trusted controls
         if: github.event_name == 'pull_request' && startsWith(github.head_ref, 'kansei-ai/')
         run: python3 baseline/.github/kansei/guard_ai.py baseline site
+      - name: Guard unit tests
+        run: python3 -m unittest discover -s site/.github/kansei -p 'test_*.py' -v
       - name: Static SEO checks
         run: python3 site/.github/scripts/check-seo.py
       - name: Install pinned browser tester
@@ -53,6 +55,10 @@ jobs:
             trap 'kill "$pid" 2>/dev/null || true' EXIT
             sleep 1
             python3 site/.github/kansei/browser_check.py --base http://127.0.0.1:4173 --output reports/candidate
+            if [ "$EVENT_NAME" = push ]; then
+              python3 site/.github/kansei/browser_check.py --output reports/live
+              python3 site/.github/scripts/check-seo.py --live
+            fi
           fi
       - name: Baseline screenshots for review
         if: github.event_name == 'pull_request'

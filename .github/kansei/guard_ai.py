@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """Run this copy from the trusted base revision, not from the proposed branch."""
 import argparse
+import subprocess
 from pathlib import Path
 from safety import ALLOWED_PATHS, Refused, protected_content, page_facts, validate_text
 
 
 def files(root):
-    return {p.relative_to(root).as_posix(): p for p in root.rglob('*')
-            if p.is_file() and '.git' not in p.relative_to(root).parts}
+    names = subprocess.run(['git', '-C', str(root), 'ls-files', '-z'], check=True, capture_output=True).stdout.decode().split('\0')
+    result = {name: root / name for name in names if name}
+    if any(p.is_symlink() or not p.is_file() for p in result.values()):
+        raise Refused('Unexpected symlink or missing tracked file')
+    return result
 
 
 def guard(before, after):

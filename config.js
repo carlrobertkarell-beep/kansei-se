@@ -22,6 +22,22 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('[data-count="289"]').forEach(function(e){ e.setAttribute('data-count', String(o.antal)); if(e.textContent==='0') e.textContent = '0'; });
 });
 
+// Startsidan: Reda ska vara en tydlig del av rehabiliteringskedjan utan att störa gamla patientportalen /reda/.
+document.addEventListener('DOMContentLoaded', function(){
+  if (location.pathname !== '/' && location.pathname !== '/index.html') return;
+  var card = document.getElementById('planKort'); if (!card) return;
+  var points = card.querySelector('.plan-punkter');
+  if (points) points.innerHTML = '<li>Din individuella plan från behandlaren, i mobilen</li><li>Rätt variant, sida, dos och stöd samlat på ett ställe</li><li>Genomförda och delvisa pass blir underlag för nästa uppföljning</li>';
+  var h = card.querySelector('h3'); if (h) h.textContent = 'Reda håller ihop rehabiliteringen mellan besöken';
+  var p = card.querySelector('.plan-text p'); if (p) p.textContent = 'Reda visar den plan som valts efter din undersökning: en övning i taget, med tydlig dos, instruktion och rörelsedemonstration. Programmet ökar aldrig svårighetsgraden automatiskt. Vid uppföljningen beslutar du och din behandlare om planen ska behållas eller ändras.';
+  var a = card.querySelector('.plan-text .btn');
+  if (a) { a.href='/reda-rehab/'; a.textContent='Läs om Reda →'; }
+  if (!card.querySelector('.reda-portal-link')) {
+    var old=document.createElement('a'); old.className='reda-portal-link'; old.href='/reda/'; old.textContent='Har du redan ett Reda-program? Öppna patientportalen →'; old.style.cssText='display:block;margin-top:12px;font-size:.86rem;color:var(--dim,#5B6B75);text-decoration:underline;text-underline-offset:3px';
+    card.querySelector('.plan-text').appendChild(old);
+  }
+});
+
 // Snabb väg till bokning högst upp på mobil: pris och tjänstens egen bokningsknapp direkt under rubriken.
 document.addEventListener('DOMContentLoaded', function(){
   if (window.innerWidth > 860) return;

@@ -3,7 +3,7 @@ const $=id=>document.getElementById(id), C=window.RedaClinical, P=window.RedaPla
 let selected=null,patients=[],plan=null,draft=null,mfaFactor=null
 function err(e){$('authError').textContent=e?.message||String(e);$('authError').classList.remove('hidden')}
 function clearErr(){$('authError').classList.add('hidden')}
-function escape(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]))}
+function escape(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function setAuth(show){$('auth').classList.toggle('hidden',!show);$('app').classList.toggle('hidden',show);$('logout').classList.toggle('hidden',show)}
 function blueprints(){return Object.values(C?.blueprints||{})}
 function fillBlueprints(){const el=$('blueprint');el.innerHTML=blueprints().map(b=>`<option value="${escape(b.id)}">${escape(b.name)}</option>`).join('')}

@@ -1,0 +1,27 @@
+name: SEO regression checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["pages build and deployment"]
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check HTML, sitemap, JSON-LD and legacy aliases
+        run: python3 .github/scripts/check-seo.py
+      - name: Verify live 404 and redirects after Pages deployment
+        if: github.event_name == 'workflow_run'
+        run: python3 .github/scripts/check-seo.py --live

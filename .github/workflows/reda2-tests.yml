@@ -1,0 +1,36 @@
+name: Reda 2 prototype checks
+on:
+  pull_request:
+    paths: ['reda-2/**', '.github/reda2-tests/**', '.github/workflows/reda2-tests.yml']
+  push:
+    branches: [main]
+    paths: ['reda-2/**', '.github/reda2-tests/**', '.github/workflows/reda2-tests.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reda2-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Exercise, dosage, import and session unit tests
+        run: node --test .github/reda2-tests/core.test.cjs
+      - name: Install browser tester
+        run: |
+          python3 -m pip install --disable-pip-version-check playwright==1.57.0
+          python3 -m playwright install --with-deps chromium
+      - name: Patient and clinician browser flows with fictitious data
+        run: python3 .github/reda2-tests/browser_test.py
+      - name: Existing site regression checks
+        run: python3 .github/scripts/check-seo.py
+      - name: Retain test screenshots and results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: reda2-tests-${{ github.run_id }}
+          path: reda2-test-results/
+          retention-days: 3
+          if-no-files-found: ignore

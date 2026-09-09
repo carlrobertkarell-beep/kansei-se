@@ -11,19 +11,21 @@ permissions:
 jobs:
   reda2-quality:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 14
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
-      - name: Exercise, dosage, import, session and blueprint unit tests
-        run: node --test .github/reda2-tests/core.test.cjs .github/reda2-tests/planner.test.cjs
+      - name: Exercise, dosage, import, session and clinical model unit tests
+        run: node --test .github/reda2-tests/core.test.cjs .github/reda2-tests/planner.test.cjs .github/reda2-tests/clinical-model.test.cjs
       - name: Install browser tester
         run: |
           python3 -m pip install --disable-pip-version-check playwright==1.57.0
           python3 -m playwright install --with-deps chromium
-      - name: Patient and clinician browser flows with fictitious data
+      - name: Patient and detailed clinician browser flows
         run: python3 .github/reda2-tests/browser_test.py
+      - name: Quick prescription browser flows
+        run: python3 .github/reda2-tests/browser_fast_test.py
       - name: Existing site regression checks
         run: python3 .github/scripts/check-seo.py
       - name: Retain test screenshots and results

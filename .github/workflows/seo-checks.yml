@@ -19,9 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - name: Check HTML, sitemap, JSON-LD and legacy aliases
         run: python3 .github/scripts/check-seo.py
-      - name: Verify live 404 and redirects after Pages deployment
-        if: github.event_name == 'workflow_run'
+      # Pages' dynamic workflow may not emit workflow_run. Main-branch pushes
+      # therefore perform the same read-only smoke test with bounded CDN retries.
+      - name: Verify live 404 and legacy redirect responses
+        if: github.event_name != 'pull_request'
         run: python3 .github/scripts/check-seo.py --live

@@ -1,0 +1,28 @@
+/* Reda product system · Kansei DNA, product-first UI. */
+:root{
+  --paper:#f5f7f7;--white:#ffffff;--ink:#10202a;--muted:#617079;--line:#dbe3e6;
+  --green:#0d7b6f;--green-hover:#09675e;--soft:#e9f2f0;--sand:#f1eadf;--warn:#72511f;
+  --radius:18px;--shadow:0 18px 54px rgba(16,32,42,.055);
+  --reda-display:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --reda-ui:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+body{font-family:var(--reda-ui);background:linear-gradient(180deg,#f8faf9 0,#f5f7f7 22rem);color:var(--ink)}
+h1,h2,.brand-word,.stat b,.welcome-illustration .caption{font-family:var(--reda-display)}
+h1,h2{font-weight:500;letter-spacing:-.045em}.eyebrow{letter-spacing:.16em;font-size:.68rem;color:var(--green)}
+.prototype{background:#10202a;color:#dce8e5;min-height:30px;border:0}.prototype a{color:#fff}
+.sidebar{background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-color:rgba(16,32,42,.08)}
+.brand-word{font-size:2.25rem;letter-spacing:-.075em;color:var(--ink)}.brand-caption{letter-spacing:.16em}
+.brand-mark:before,.brand-mark:after{background:var(--green)}
+.nav-item{border-radius:12px}.nav-item[aria-current=page]{background:var(--soft);box-shadow:inset 0 0 0 1px rgba(13,123,111,.08)}
+.card{border-color:rgba(16,32,42,.09);box-shadow:var(--shadow)}
+.today-hero{background:linear-gradient(135deg,#e5f0ed,#f0f4ec);border:1px solid rgba(13,123,111,.08)}
+.hero-text h2{font-size:2.3rem}.hero-meta{color:#52676a}.hero-art:after{color:#53736c;letter-spacing:.19em}
+.btn{border-radius:999px;min-height:50px;padding-left:23px;padding-right:23px;box-shadow:none}.btn.secondary{background:#fff}.btn.secondary:hover{background:#f4f7f7}
+.badge{border-radius:999px;background:#e7f1ef;color:#215f56}.thumb,.program-figure{background:#edf3f2}
+.exercise-row{transition:background .16s ease,transform .16s ease}.exercise-row:hover{background:#f3f7f6}.exercise-row:active{transform:scale(.995)}
+.day-circle{border-color:#d5e0df}.week-day.planned .day-circle{background:#e9f2f0;border-color:#bdd8d3}.week-day.complete .day-circle{background:var(--green)}
+.note-card{background:#f4efe7;border-color:#e7ded0}.callout{background:#eef5f3;border-color:#d6e7e3}
+input,textarea,select{background:#fff;border-color:#ccd8dc;border-radius:12px}.check-label input,.toggle input{accent-color:var(--green)}
+.toast{background:#10202a}.welcome-illustration{background:linear-gradient(145deg,#e3efec,#f2f4ec)}
+@media(max-width:760px){:root{font-size:17px}.content{padding-left:18px;padding-right:18px}.card{border-radius:16px}.today-hero{border-radius:20px}.hero-text h2{font-size:1.9rem}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}

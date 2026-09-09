@@ -1,0 +1,1 @@
+window.REDA_BACKEND=Object.freeze({url:'https://qpliepyxomurzfuqtbtg.supabase.co',publishableKey:'sb_publishable_PnE2NFyDyxTwHt89dUDkRQ_PvHsNNcE',patientUrl:'https://www.kansei.se/reda-2/patient.html',clinicUrl:'https://www.kansei.se/reda-2/klinik-live.html'});

@@ -39,7 +39,7 @@ jobs:
       - name: Install pinned browser tester
         run: |
           python3 -m pip install --disable-pip-version-check playwright==1.57.0
-          python3 -m playwright install --with-deps chromium
+          python3 -m playwright install chromium
       - name: Browser test and screenshots
         env:
           EVENT_NAME: ${{ github.event_name }}

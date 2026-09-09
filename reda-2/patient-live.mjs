@@ -25,4 +25,4 @@ $('login').onclick=async()=>{try{await api.signIn($('email').value.trim(),$('pas
 $('savePassword').onclick=async()=>{try{await api.setPassword($('newPassword').value);$('setPassword').classList.add('hidden');await bootstrap()}catch(e){error(e)}}
 $('logout').onclick=async()=>{await api.signOut();location.reload()};$('start').onclick=start;$('skip').onclick=skip;$('next').onclick=next;$('closePlayer').onclick=pause
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('hidden',x.id!==b.dataset.tab))})
-setAuth(true);api.currentUser().then(async u=>{if(!u)return;const hash=location.hash;if(hash.includes('type=invite')||hash.includes('type=recovery'))$('setPassword').classList.remove('hidden');await bootstrap()}).catch(()=>{})
+setAuth(true);api.currentUser().then(async u=>{if(!u)return;if(u.user_metadata?.reda_invited===true){$('setPassword').classList.remove('hidden');return}await bootstrap()}).catch(()=>{})

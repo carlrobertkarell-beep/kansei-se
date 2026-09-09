@@ -1,6 +1,6 @@
-const test=require('node:test');const assert=require('node:assert/strict');global.window=global;require('../../reda-2/data.js');require('../../reda-2/clinical-model-v2.js');require('../../reda-2/core.js');
+const test=require('node:test');const assert=require('node:assert/strict');global.window=global;require('../../reda-2/data.js');require('../../reda-2/clinical-model-v2.js');require('../../reda-2/clinical-addons.js');require('../../reda-2/core.js');
 test('clinical model exposes ten blueprints',()=>assert.equal(Object.keys(RedaClinical.blueprints).length,10));
-test('expanded bank includes clinical exercise variants',()=>{for(const id of ['quad_iso','step_up','split_squat','soleus','side_step','scaption','neck_rotation','lumbar_extension','wrist_extension','nerve_slider'])assert.ok(RedaData.exercises.some(e=>e.id===id),id);});
+test('expanded bank includes clinical exercise variants',()=>{for(const id of ['quad_iso','step_up','split_squat','soleus','side_step','scaption','neck_rotation','lumbar_extension','wrist_extension','nerve_slider','bird_dog'])assert.ok(RedaData.exercises.some(e=>e.id===id),id);});
 test('progression is clinician only',()=>assert.equal(RedaClinical.progression.rule,'clinician_only'));
 test('all blueprint slots resolve',()=>{for(const bp of Object.values(RedaClinical.blueprints))for(const id of bp.slots)assert.ok(RedaData.exercises.some(e=>e.id===id),`${bp.name}: ${id}`);});
 test('every variant has coherent instruction and dose',()=>{for(const e of RedaData.exercises)for(const v of e.variants){assert.ok(v.steps.length>=3,`${e.id}/${v.id}`);assert.ok(v.dose.sets>=1);assert.ok(v.pose);}});

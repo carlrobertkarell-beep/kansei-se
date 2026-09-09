@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded', function(){
   if (window.innerWidth > 860) return;
   var head = document.querySelector('header.page'); if (!head) return;
   var h1 = head.querySelector('h1'); if (!h1 || head.querySelector('.snabb-cta')) return;
+  // sidor som redan har en bokningsknapp i sidhuvudet, eller direkt efter det, får ingen extra
+  var egenL = [].slice.call(head.querySelectorAll('a[href*="bokadirekt"]')).filter(function(a){ return !a.closest('.tf-fot') && a.getBoundingClientRect().top < window.innerHeight * 0.95; });
+  var egen = egenL.length > 0;
+  if (!egen) { var n = head.nextElementSibling, steg = 0; while (n && steg < 2) { if (n.querySelectorAll) { var ls = [].slice.call(n.querySelectorAll('a[href*="bokadirekt"]')); if (ls.some(function(a){ return a.getBoundingClientRect().top < window.innerHeight * 0.95; })) { egen = true; break; } } n = n.nextElementSibling; steg++; } }
+  if (egen && !head.querySelector('.tf-fot')) return;
   var st = document.createElement('style');
   st.textContent = '.snabb-cta{display:flex;align-items:center;gap:12px;margin:14px 0 4px;flex-wrap:wrap}.snabb-cta .tf-pris{font-family:var(--display,Georgia,serif);font-size:1.5rem;color:var(--ink,#10202A)}.snabb-cta .btn{white-space:nowrap}header.page.har-snabb .tjfakta .tf-fot{display:none}';
   document.head.appendChild(st);

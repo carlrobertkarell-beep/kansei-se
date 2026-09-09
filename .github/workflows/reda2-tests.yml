@@ -16,8 +16,8 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
-      - name: Exercise, dosage, import and session unit tests
-        run: node --test .github/reda2-tests/core.test.cjs
+      - name: Exercise, dosage, import, session and blueprint unit tests
+        run: node --test .github/reda2-tests/core.test.cjs .github/reda2-tests/planner.test.cjs
       - name: Install browser tester
         run: |
           python3 -m pip install --disable-pip-version-check playwright==1.57.0

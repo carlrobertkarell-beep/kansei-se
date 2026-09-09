@@ -26,6 +26,8 @@ jobs:
         run: python3 .github/reda2-tests/browser_test.py
       - name: Quick prescription browser flows
         run: python3 .github/reda2-tests/browser_fast_test.py
+      - name: Clinician workspace and secure sync guardrails
+        run: python3 .github/reda2-tests/clinic_v2_test.py
       - name: Motion graph and renderer browser flows
         run: python3 .github/reda2-tests/browser_motion_test.py
       - name: Public Reda landing and Kansei homepage integration

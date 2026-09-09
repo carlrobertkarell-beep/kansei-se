@@ -1,4 +1,4 @@
-import { withSupabase } from 'npm:@supabase/server@^1'
+import { withSupabase } from 'npm:@supabase/server@1.5.3'
 
 export default {
   fetch: withSupabase({ auth: 'user' }, async (req, ctx) => {

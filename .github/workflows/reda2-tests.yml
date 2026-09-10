@@ -22,7 +22,15 @@ jobs:
         run: |
           sudo systemctl start postgresql.service
           sudo -u postgres createdb reda_ei_test
-          sudo -u postgres psql -d reda_ei_test -f "$GITHUB_WORKSPACE/.github/reda2-tests/response_database_test.sql"
+          python3 - <<'SQL' | sudo -u postgres psql -v ON_ERROR_STOP=1 -d reda_ei_test
+          from pathlib import Path
+          fixture=Path('.github/reda2-tests/response_database_test.sql')
+          for line in fixture.read_text().splitlines():
+              if line.startswith('\\ir '):
+                  print((fixture.parent / line[4:]).read_text())
+              else:
+                  print(line)
+          SQL
       - name: Install browser tester
         run: |
           python3 -m pip install --disable-pip-version-check playwright==1.57.0

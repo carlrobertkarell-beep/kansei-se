@@ -599,7 +599,7 @@ body.kodad #tillintro{padding:20px 0}
 body.kodad #tillintro h2{font-size:1.2rem}
 body.kodad .progfaq{background:var(--mist)}
 body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bottom:40px}}</style>
-<style id="nav-reda">.nav-reda{display:inline-flex!important;align-items:center;gap:.45em;vertical-align:middle;line-height:1}.nav-reda-mark{width:max(1.45em,24px);height:max(1.45em,24px);display:block}.nav-reda-ord{height:max(1.15em,19px);width:auto;display:block;transform:translateY(.1em)}.nav-reda:hover .nav-reda-ord,.nav-reda:focus .nav-reda-ord{opacity:.8}</style></head>
+<style id="nav-reda">.nav-reda-logo{display:block;width:100px;height:30px;max-width:none;object-fit:contain;object-position:left center}.nav-reda{display:inline-flex!important;align-items:center;gap:.45em;vertical-align:middle;line-height:1}.nav-reda-mark{width:max(1.45em,24px);height:max(1.45em,24px);display:block}.nav-reda-ord{height:max(1.15em,19px);width:auto;display:block;transform:translateY(.1em)}.nav-reda:hover .nav-reda-ord,.nav-reda:focus .nav-reda-ord{opacity:.8}</style></head>
 <body>
 <script>/* Kansei QR: bytemod, felnivå M, version 1-30, alla masker med straffvärdering. Fristående. */
 (function(){
@@ -688,7 +688,7 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <a href="/priser/"><strong>Friskvård / massage</strong><span>975 kr</span></a>
 <a href="/injektioner/"><strong>Konsultation injektion</strong><span>890 kr</span></a>
 </div><div class="mp-fot"><a class="mp-alla" href="/tjanster/">Alla tjänster &amp; priser →</a><a class="mp-kamp" href="https://www.bokadirekt.se/boka-tjanst/kansei-rehabcenter-48847/helhetsanalys-med-ultraljudsundersokning-3397169" target="_blank" rel="noopener" data-cta="mega-kampanj">Kampanj: Helhetsanalys 990 kr →</a></div></div></li>
-<li><a href="/blogg/">Kunskapsbank</a></li><li><a href="/reda/" class="nav-reda" aria-label="Reda"><img src="/bilder/reda/mark-ram.svg" alt="" class="nav-reda-mark"><img src="/bilder/reda/wordmark.svg" alt="Reda" class="nav-reda-ord"></a></li>
+<li><a href="/blogg/">Kunskapsbank</a></li><li><a href="/reda-rehab/" class="nav-reda" aria-label="Reda"><img src="/bilder/reda/lockup.svg?v=cross-20260910" alt="Reda" class="nav-reda-logo" width="100" height="30"></a></li>
 <li class="dtop"><a href="/om-oss/">Om oss</a></li>
 <li class="mob"><a href="/fragor-och-svar/">Frågor &amp; svar</a></li>
 <li class="mob"><a href="/patientinformation/">Patientinformation</a></li>
@@ -710,7 +710,7 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <div class="crumb"><a href="/">Hem</a> / Reda</div>
 <header class="page">
 <div class="reda-hero">
-  <div class="reda-lockup"><img src="/bilder/reda/mark.svg" alt="" width="64" height="64" class="reda-mark"><h1 class="reda-ord"><img src="/bilder/reda/wordmark.svg" alt="Reda" class="reda-ordbild" width="230" height="96"></h1></div>
+  <div class="reda-lockup"><img src="/bilder/reda/mark.svg?v=cross-20260910" alt="" width="64" height="64" class="reda-mark"><h1 class="reda-ord"><img src="/bilder/reda/wordmark.svg" alt="Reda" class="reda-ordbild" width="230" height="96"></h1></div>
   <p class="reda-tag">Din plan från besöket, i mobilen.</p>
   <p class="intro">Träningsprogrammet som är byggt efter din undersökning hos Kansei Rehabcenter. Koden i mejlet låser upp rätt program, rätt nivå och rätt tillägg, sedan sköter Reda resten.</p>
 </div>
@@ -844,7 +844,7 @@ body.kodad{padding-bottom:110px}@media(min-width:1021px){body.kodad{padding-bott
 <div id="figFull" hidden role="dialog" aria-modal="true" aria-label="Figuren i helskärm"><button type="button" id="ffStang" aria-label="Stäng">×</button><div class="ff-inne"></div></div>
 <div id="intro" hidden role="dialog" aria-modal="true" aria-label="Så fungerar din plan">
   <div class="in-kort">
-    <div class="in-topp"><span class="reda-logo"><img src="/bilder/reda/mark.svg" alt="" class="reda-logo-mark"><img src="/bilder/reda/wordmark.svg" alt="Reda" class="reda-logo-ord"></span><span class="in-steg" id="inStegTxt"></span><button type="button" id="inHoppa" class="in-hoppa">Hoppa över</button></div>
+    <div class="in-topp"><span class="reda-logo"><img src="/bilder/reda/mark.svg?v=cross-20260910" alt="" class="reda-logo-mark"><img src="/bilder/reda/wordmark.svg" alt="Reda" class="reda-logo-ord"></span><span class="in-steg" id="inStegTxt"></span><button type="button" id="inHoppa" class="in-hoppa">Hoppa över</button></div>
     <div class="in-bild" id="inBild"></div>
     <div class="in-inne">
       <div class="in-prickar" id="inPrickar"></div>
@@ -2126,7 +2126,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     var __ket=document.querySelector('.mp-huvud2 .kodetikett');
     var __gN=document.getElementById('mpNamn'); if(__gN)__gN.remove();
     if(__patNamn){
-      __ket.innerHTML='<span class="reda-logo"><img src="/bilder/reda/mark.svg" alt="" class="reda-logo-mark"><img src="/bilder/reda/wordmark.svg" alt="Reda" class="reda-logo-ord"></span>'+(document.body.classList.contains('bibliotek')?'<span class="reda-logo-till">· klinik</span>':'');
+      __ket.innerHTML='<span class="reda-logo"><img src="/bilder/reda/mark.svg?v=cross-20260910" alt="" class="reda-logo-mark"><img src="/bilder/reda/wordmark.svg" alt="Reda" class="reda-logo-ord"></span>'+(document.body.classList.contains('bibliotek')?'<span class="reda-logo-till">· klinik</span>':'');
       var nEl=document.createElement('p'); nEl.id='mpNamn'; nEl.className='mp-inject'; nEl.textContent='för '+__patNamn;
       var h2El=document.getElementById('mp-titel');
       h2El.parentNode.insertBefore(nEl, h2El.nextSibling);
@@ -2477,7 +2477,7 @@ document.querySelectorAll('a[href="https://www.bokadirekt.se/places/kansei-rehab
     inne.innerHTML='';
     talStopp();
     var c=document.createElement('div'); c.className='pl-kort';
-    var ordRad=document.createElement('p'); ordRad.className='pl-ord'; ordRad.innerHTML='<img src="/bilder/reda/mark.svg" alt="" class="reda-mini"> Ordinerad för dig'+((window.__nivaProgs||[]).length?' · nivå '+(window.__nivaProgs[0].n||''):'')+' · granskad av leg. naprapat'; c.setAttribute('data-ovid',d.getAttribute('data-ovid'));
+    var ordRad=document.createElement('p'); ordRad.className='pl-ord'; ordRad.innerHTML='<img src="/bilder/reda/mark.svg?v=cross-20260910" alt="" class="reda-mini"> Ordinerad för dig'+((window.__nivaProgs||[]).length?' · nivå '+(window.__nivaProgs[0].n||''):'')+' · granskad av leg. naprapat'; c.setAttribute('data-ovid',d.getAttribute('data-ovid'));
     var su=d.querySelector('summary');
     var titel=su?((su.querySelector('.ovtitel')||su).textContent.replace(/^\s*\d+\s*[·.]?\s*/,'').trim()):'';
     var th=document.createElement('div'); th.className='pl-titel'; th.textContent=titel; c.appendChild(th);

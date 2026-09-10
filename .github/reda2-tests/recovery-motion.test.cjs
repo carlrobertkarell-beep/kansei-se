@@ -1,0 +1,18 @@
+const test=require('node:test'),assert=require('node:assert/strict');
+global.RedaFigures={svg:()=>'<svg>legacy</svg>',animate(){},stills(){}};
+require('../../reda-2/session-state.js');require('../../reda-2/session-recovery.js');require('../../reda-2/motion-specs.js');require('../../reda-2/reference-motion.js');
+const S=RedaSession,R=RedaRecovery,F=RedaReferenceMotion;
+const plan={id:'plan-1',version:1,payload:{exercises:[{id:'extension',side:'both',dose:{sets:2}}]}};
+const fresh=()=>S.create(plan.payload.exercises,'session-1','2026-09-10T12:00:00Z');
+const row=s=>({client_session_id:s.id,plan_id:plan.id,plan_version:1,status:s.status,started_at:s.startedAt,completed_at:s.completedAt,payload:{exercises:s.progress}});
+test('server resume preserves round count and session identity after closing the page',()=>{let s=S.mark(fresh(),0,0);const restored=R.choose(plan,[row(s)],null);assert.equal(restored.session.id,s.id);assert.equal(restored.session.progress[0].roundsDone,1);assert.equal(restored.session.progress[0].totalRounds,4)});
+test('pending offline state takes precedence and requests retry',()=>{let s=S.mark(fresh(),0,0);const got=R.choose(plan,[row(fresh())],{planId:plan.id,planVersion:1,session:s,index:0});assert.equal(got.retry,true);assert.equal(got.session.progress[0].roundsDone,1)});
+test('completed server session is never reopened by stale local outbox',()=>{let r=row(fresh());r.completed_at='2026-09-10T13:00:00Z';assert.equal(R.choose(plan,[r],{planId:plan.id,planVersion:1,session:fresh()}).discard,true)});
+test('new plan cannot absorb unfinished old-plan rounds',()=>{assert.equal(R.choose({...plan,id:'plan-2',version:2},[row(fresh())],null).blocked,true)});
+test('invalid or missing exercise progress never silently resets',()=>{const bad=row(fresh());bad.payload.exercises=[];assert.equal(R.choose(plan,[bad],null).blocked,true);const s=fresh();s.progress[0].totalRounds=999;assert.equal(R.valid(s,plan),false)});
+test('outbox is account-scoped and records no plan content',()=>{const data=new Map(),storage={setItem:(k,v)=>data.set(k,v),getItem:k=>data.get(k),removeItem:k=>data.delete(k)};R.write(storage,'user-a',plan,fresh(),0);assert.equal(R.read(storage,'user-b'),null);assert.ok(!JSON.stringify([...data.values()]).includes('payload'));R.clear(storage,'user-a');assert.equal(data.size,0);assert.equal(R.write(null,'user-a',plan,fresh(),0),false)});
+const distance=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1]);
+test('all reference poses preserve leg, torso and arm lengths across the whole movement',()=>{for(const k of F.keys)for(let i=0;i<=100;i++){const q=F.pose(k,i/100);for(const [a,b,length] of [[q.hip,q.knee,72],[q.knee,q.ankle,72],[q.hip,q.shoulder,80],[q.shoulder,q.elbow,38],[q.elbow,q.hand,38]])assert.ok(Math.abs(distance(a,b)-length)<.001,k+' at '+i)}});
+test('chair rise feet, calf toes, bridge shoulder and step-up stance foot remain fixed',()=>{for(let i=0;i<=100;i++){const t=i/100;assert.deepEqual(F.pose('sit-to-stand.support',t).toe,[323,378]);assert.deepEqual(F.pose('calf-raise.bilateral',t).toe,[321,378]);assert.deepEqual(F.pose('bridge.bilateral',t).shoulder,[193,356]);assert.deepEqual(F.pose('step-up.supported',t).ankle,[345,314])}});
+test('reference cycle has real pauses, ascent, descent and a seamless return',()=>{assert.equal(F.phase(0),0);assert.equal(F.phase(.1),0);assert.equal(F.phase(.5),1);assert.equal(F.phase(.99),0);assert.ok(F.phase(.25)>0&&F.phase(.25)<1);assert.ok(F.phase(.8)>0&&F.phase(.8)<1)});
+test('unsupported variants retain their own renderer',()=>{assert.equal(RedaFigures.svg('bridge.single'),'<svg>legacy</svg>');assert.match(RedaFigures.svg('chair-support'),/data-renderer-version="3"/)});

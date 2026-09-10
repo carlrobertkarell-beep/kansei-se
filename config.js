@@ -38,6 +38,22 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 });
 
+// Rehabiliteringssidan: synka den publika Reda-beskrivningen med den säkra patientportalen.
+document.addEventListener('DOMContentLoaded', function(){
+  if (location.pathname !== '/rehabilitering/' && location.pathname !== '/rehabilitering/index.html') return;
+  var card = document.getElementById('planKort'); if (!card) return;
+  var img = card.querySelector('.plan-lockup');
+  if (img) { img.src='/bilder/reda/lockup.svg'; img.alt='Reda'; }
+  var points = card.querySelector('.plan-punkter');
+  if (points) points.innerHTML = '<li>Din individuella plan från behandlaren, i mobilen</li><li>Nivå, variant och dos väljs för den aktuella perioden</li><li>Träningen följs upp inför nästa kliniska bedömning</li>';
+  var label = card.querySelector('.plan-et'); if (label) label.textContent='Reda · din plan mellan besöken';
+  var h = card.querySelector('h3'); if (h) h.textContent='Du ska veta vad du tränar, varför och vad vi följer upp';
+  var p = card.querySelector('.plan-text p');
+  if (p) p.textContent='Efter besöket finns din aktuella rehabiliteringsplan samlad i Reda. Du ser vald övningsvariant, dosering och råd för perioden och kan registrera hur passen genomförts. Reda höjer inte belastningen automatiskt. Progression och större förändringar görs efter ny bedömning tillsammans med din behandlare.';
+  var a = card.querySelector('.plan-text .btn');
+  if (a) { a.href='/reda-rehab/'; a.textContent='Se hur Reda fungerar'; }
+});
+
 // Snabb väg till bokning högst upp på mobil: pris och tjänstens egen bokningsknapp direkt under rubriken.
 document.addEventListener('DOMContentLoaded', function(){
   if (window.innerWidth > 860) return;

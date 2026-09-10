@@ -1,7 +1,7 @@
 import * as api from './secure-browser.mjs'
 const $=id=>document.getElementById(id), F=window.RedaFigures
 let state=null,plan=null,session=null,index=0,stopMotion=null
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]))
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
 function setAuth(show){$('auth').classList.toggle('hidden',!show);$('app').classList.toggle('hidden',show);$('logout').classList.toggle('hidden',show)}
 function error(e){$('authSuccess').classList.add('hidden');$('authError').textContent=e?.message||String(e);$('authError').classList.remove('hidden')}
 function exercises(){return plan?.payload?.exercises||[]}

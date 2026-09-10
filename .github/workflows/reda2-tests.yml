@@ -17,7 +17,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Exercise, dosage, clinical model, graph, motion and intelligence unit tests
-        run: node --test .github/reda2-tests/core.test.cjs .github/reda2-tests/planner.test.cjs .github/reda2-tests/clinical-model.test.cjs .github/reda2-tests/motion-graph.test.cjs .github/reda2-tests/exercise-intelligence.test.cjs
+        run: node --test .github/reda2-tests/core.test.cjs .github/reda2-tests/planner.test.cjs .github/reda2-tests/clinical-model.test.cjs .github/reda2-tests/motion-graph.test.cjs .github/reda2-tests/exercise-intelligence.test.cjs .github/reda2-tests/exercise-quality.test.cjs
       - name: Install browser tester
         run: |
           python3 -m pip install --disable-pip-version-check playwright==1.57.0
@@ -33,6 +33,7 @@ jobs:
           node --check reda-2/secure-browser.mjs
           node --check reda-2/clinic-live.mjs
           node --check reda-2/patient-live.mjs
+          node --check reda-2/figures-intelligence.js
       - name: Motion graph and renderer browser flows
         run: python3 .github/reda2-tests/browser_motion_test.py
       - name: Public Reda landing and Kansei homepage integration

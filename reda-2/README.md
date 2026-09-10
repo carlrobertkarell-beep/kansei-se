@@ -1,6 +1,8 @@
 # Reda 2 · fungerande patient- och klinikprototyp
 
-Byggd 2026-09-09. Fristående `/reda-2/`. Inga ändringar i `/reda/`, dess service worker, programkoder, konfiguration eller localStorage-nycklar.
+Aktuell produktmodell och leveransstatus finns i [PRODUCT-ROADMAP.md](PRODUCT-ROADMAP.md). Exercise Intelligence används i den säkra klinik-/patientvyn och den publika demonstrationen. [Databaskontrakt för återkoppling](secure/TRAINING-RESPONSES.md).
+
+Nedan följer dokumentation för den ursprungliga lokala prototypen, byggd 2026-09-09. Fristående `/reda-2/`. Inga ändringar i `/reda/`, dess service worker, programkoder, konfiguration eller localStorage-nycklar.
 
 ## Prova
 Öppna `index.html` för patientflödet och `klinik.html` för programredigeraren. Vid lokal utveckling: `python -m http.server 8000` i sajtens rot, sedan `/reda-2/`.

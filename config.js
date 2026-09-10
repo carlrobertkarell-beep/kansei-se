@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', function(){
   if (location.pathname !== '/' && location.pathname !== '/index.html') return;
   var card = document.getElementById('planKort'); if (!card) return;
   var points = card.querySelector('.plan-punkter');
-  if (points) points.innerHTML = '<li>Din individuella plan från behandlaren, i mobilen</li><li>Rätt variant, sida, dos och stöd samlat på ett ställe</li><li>Genomförda och delvisa pass blir underlag för nästa uppföljning</li>';
+  if (points) points.innerHTML = '<li>Din individuella plan från behandlaren, i mobilen</li><li>Rätt variant, sida, dos och stöd samlat på ett ställe</li><li>Exercise Intelligence knyter ihop mål, utförande och återkoppling</li>';
   var h = card.querySelector('h3'); if (h) h.textContent = 'Reda håller ihop rehabiliteringen mellan besöken';
-  var p = card.querySelector('.plan-text p'); if (p) p.textContent = 'Reda visar den plan som valts efter din undersökning: en övning i taget, med tydlig dos, instruktion och rörelsedemonstration. Programmet ökar aldrig svårighetsgraden automatiskt. Vid uppföljningen beslutar du och din behandlare om planen ska behållas eller ändras.';
+  var p = card.querySelector('.plan-text p'); if (p) p.textContent = 'Reda samlar din plan, hjälper dig genom träningen och följer hur kroppen svarar. Vi kallar grunden Exercise Intelligence: din kapacitet, ditt mål och din vardag ska prägla upplägget. Nästa version förbereds för lansering, med automatisk progression under utveckling inom behandlarens ramar.';
   var a = card.querySelector('.plan-text .btn');
   if (a) { a.href='/reda-rehab/'; a.textContent='Läs om Reda →'; }
   if (!card.querySelector('.reda-portal-link')) {
@@ -47,11 +47,11 @@ document.addEventListener('DOMContentLoaded', function(){
   var img = card.querySelector('.plan-lockup');
   if (img) { img.src='/bilder/reda/lockup.svg?v=cross-20260910'; img.alt='Reda'; }
   var points = card.querySelector('.plan-punkter');
-  if (points) points.innerHTML = '<li>Din individuella plan från behandlaren, i mobilen</li><li>Nivå, variant och dos väljs för den aktuella perioden</li><li>Träningen följs upp inför nästa kliniska bedömning</li>';
-  var label = card.querySelector('.plan-et'); if (label) label.textContent='Reda · din plan mellan besöken';
+  if (points) points.innerHTML = '<li>Din individuella plan från behandlaren, i mobilen</li><li>Nivå, variant och dos väljs för den aktuella perioden</li><li>Återkoppling om kroppen, genomförandet och annan belastning</li>';
+  var label = card.querySelector('.plan-et'); if (label) label.textContent='Reda · Exercise Intelligence';
   var h = card.querySelector('h3'); if (h) h.textContent='Du ska veta vad du tränar, varför och vad vi följer upp';
   var p = card.querySelector('.plan-text p');
-  if (p) p.textContent='Efter besöket finns din aktuella rehabiliteringsplan samlad i Reda. Du ser vald övningsvariant, dosering och råd för perioden och kan registrera hur passen genomförts. Reda höjer inte belastningen automatiskt. Progression och större förändringar görs efter ny bedömning tillsammans med din behandlare.';
+  if (p) p.textContent='Exercise Intelligence är grunden vi utvecklar för en plan som hänger ihop med ditt mål, din kapacitet och hur träningen fungerar. Nästa version av Reda visar tydligt utförande och samlar återkoppling efter passen. Automatisk progression utvecklas och testas inom behandlarens ramar; den är ännu inte aktiverad för patienter.';
   var a = card.querySelector('.plan-text .btn');
   if (a) { a.href='/reda-rehab/'; a.textContent='Se hur Reda fungerar'; }
 });

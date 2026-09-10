@@ -109,8 +109,8 @@ AI får hjälpa till med strukturering och presentation, men kliniska regler är
 
 ### Kvar före patientpilot
 - Klinisk granskning av alla dosramar, varianter och rörelser, särskilt avancerade varianter.
-- Säker återupptagning efter omladdning, versionsbyte och återställning från servern.
-- Mer fullständig uppföljning mot planerade dagar, historiska planversioner och patientens mål.
+- Återupptagning efter omladdning och versionsbyte levererad i blocket nedan; kvar är konflikter mellan samtidiga enheter och återställning om lokal lagring rensas.
+- Uppföljning mot planerade dagar, historiska planversioner och mål levererad i blocket nedan; större historik och verifiering genom hela det verkliga flödet återstår.
 - Säker diktat/AI-strukturering och senare koppling till journalappen.
 - Verifiering på faktiska telefoner och representativa patienter; användaraktivering inväntar separat klartecken.
 
@@ -127,3 +127,21 @@ AI får hjälpa till med strukturering och presentation, men kliniska regler är
 - Första öppning av appen kräver nätanslutning. Offlinekön skyddar redan påbörjade markeringar; den är inte en komplett offlineapp.
 - Samtidig redigering från flera flikar/enheter, serverkonflikter och återställning när lagringen rensas kräver ett eget testblock.
 - Klinisk granskning av de fem rörelserna innan metoden utökas till fler varianter.
+
+
+## Utvecklingsblock 2026-09-10 · landningssida och återbesök
+- Publika landningssidan har fått en ny struktur: undersökning och behandlare i första vyn, konkret programvisning och tydlig information om åtkomst. Den befintliga patientportalen är fortsatt länkad.
+- Fiktiv visning går från plan till övning, registrerad omgång och uppföljning. Vardag/gym/löpning använder samma planeringsmotor som tidigare. Exemplet skriver inte till lagring eller backend. Ingen automatisk animation startar.
+- Klinikens återbesöksvy visar målet och återbesöksdatumet från vald publicerad planversion. Historiska övningsnamn, varianter, doser och rapporter hämtas från samma version.
+- Återbesöket lyfter tunga/överhoppade övningar, delvis genomförande och belastningsskattning per övning. Jämförelse med planerade dagar räknar högst en träningsdag per datum.
+- Perioden omfattar högst 14 hela kalenderdagar i Stockholm, efter aktiveringsdagen och före nästa versions aktiveringsdag. Pågående dag är inte förfallen. En saknad registrering beskrivs inte som säkert utebliven träning.
+- Den befintliga hämtningen av 30 pass är oförändrad. Om denna gräns kan göra perioden ofullständig visas detta och jämförelsen med planerade dagar döljs. Längre historik kräver fortsatt utveckling.
+- Sena svar vid patientbyte får inte skriva över den valda patientens uppföljning.
+- Tester använder fiktiva data. Ingen ändring av autentisering, databasbehörigheter, patientaktivering eller mejlutskick.
+
+### Kvar i prioriterad ordning efter detta block
+1. Klinisk granskning av referensrörelserna; sedan fortsatt produktion av återstående varianter och bättre stöd/sida/utrustning i hela biblioteket.
+2. Verkligt distributionsprov med testkonto: mejl → engångslänk → genomfört pass → synk → återbesök. Resend är DNS-verifierat, inte därmed sluttestat.
+3. Samtidiga flikar/enheter, konflikter och större historik. Säkerhetskopiering/återställning ska provas före pilot.
+4. Favoriter/senast använda i snabbordination, säker diktat/AI-strukturering och senare journalintegration.
+5. Test på riktiga telefoner och klinisk granskning innan användare aktiveras. Befintliga Reda migreras först efter verifierad pilot.

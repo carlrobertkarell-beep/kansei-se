@@ -150,7 +150,7 @@ AI får hjälpa till med strukturering och presentation, men kliniska regler är
 ## Beslutad affärsriktning · klinik och distans
 Reda ska kunna användas av personer som aldrig besökt Kansei fysiskt. Personlig rehabilitering erbjuds med behandlarbedömning och planerade avstämningar, på klinik, på distans eller i ett kombinerat upplägg. Progression kräver ett behandlarbeslut, men beslutet kräver inte per automatik ett fysiskt återbesök.
 
-Första tänkta distansprodukt: en avgränsad period om 6–8 veckor för en tydlig målgrupp, med första bedömning, individuell startplan, två avstämningar och avslutande uppföljning. 2 490 kr var en prishypotes för senare pilot, inte beslutat publikt pris. Ingen försäljning eller patientaktivering är öppnad.
+Första tänkta distansprodukt: en avgränsad period om 6–8 veckor för en tydlig målgrupp, med första bedömning, individuell startplan, två avstämningar och avslutande uppföljning. Pris och tjänstens exakta omfattning ska fastställas och valideras inför en senare pilot. Ingen försäljning eller patientaktivering är öppnad.
 
 Fristående träningsprogram utan individuell behandlarkontakt är en möjlig separat framtida produkt. Det ska inte blandas ihop med personlig vård. Automatisk individuell progression, generell programbutik och abonnemang ingår inte i den första distansprodukten.
 

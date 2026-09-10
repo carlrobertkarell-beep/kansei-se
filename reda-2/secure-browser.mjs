@@ -4,7 +4,7 @@ if(!cfg?.url||!cfg?.publishableKey) throw new Error('Reda backend saknas')
 export const db=createClient(cfg.url,cfg.publishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}})
 export async function currentUser(){const {data:{user},error}=await db.auth.getUser();if(error)throw error;return user}
 export async function signIn(email,password){const {error}=await db.auth.signInWithPassword({email,password});if(error)throw error}
-export async function signUp(email,password,redirectTo){const {error}=await db.auth.signUp({email,password,options:{emailRedirectTo:redirectTo}});if(error)throw error}
+export async function signUp(){throw new Error('Nya behandlarkonton skapas endast av Reda-administratör.')}
 export async function sendPatientMagicLink(email){const {error}=await db.auth.signInWithOtp({email:String(email||'').trim().toLowerCase(),options:{emailRedirectTo:cfg.patientUrl,shouldCreateUser:false}});if(error)throw error}
 export async function signOut(){await db.auth.signOut()}
 export async function aal(){const {data,error}=await db.auth.mfa.getAuthenticatorAssuranceLevel();if(error)throw error;return data}

@@ -1,0 +1,16 @@
+(function(){'use strict';
+const E=window.RedaProgression,X=window.RedaProgressionExamples,$=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const labels={advance:'Nästa teststeg',hold:'Avvakta med ökning',wait:'Mer underlag eller tid',review:'Bedömning behövs',blocked:'Kan inte prövas',complete:'Ramen är genomgången'};
+let key='daily',model,decision;
+function render(){const input=X.scenario(model,$('labScenario').value);decision=E.evaluate(input);const x=model.plan.exercises[model.index];$('labGoal').textContent=model.profile.title;$('labDescription').textContent=model.profile.description;$('labPrescription').innerHTML=`<strong>${esc(x.name)}</strong>${esc(x.variantLabel)} · ${esc(x.dose.label)}<p>Den här övningen ändras mellan teststegen. Övriga ${model.plan.exercises.length-1} övningar i planen ligger kvar.</p>`;
+ $('labRules').textContent=`Testvärden: ${model.policy.rules.minSuccessfulDays} olika uppföljda träningsdagar, minst ${model.policy.rules.minDaysAtStep} dagar på nivån, underlag högst ${model.policy.rules.maxEvidenceAgeDays} dagar gammalt. Kontrollerat utförande och stabilt svar dagen efter krävs. Alla dossteg är skrivna i förväg.`;
+ $('labEvidence').innerHTML=input.observations.map(r=>`<div class="lab-evidence-row"><span>${esc(E.day(r.completedAt))}</span><span>${r.effort==='heavy'?'För tungt':r.nextDay==='unknown'?'Dagen efter: svar saknas':r.nextDay==='worse'?'Dagen efter: ökade besvär':'Lagom · stabilt dagen efter'}</span></div>`).join('');
+ $('labDecision').innerHTML=`<span class="lab-state" data-action="${decision.action}">${esc(labels[decision.action])}</span><h3>${esc(decision.action==='advance'?'Nästa steg ryms i testramen.':decision.action==='review'?'Här behövs en bedömning.':decision.action==='complete'?'Nästa väg behöver en ny ram.':'Ingen ökning föreslås nu.')}</h3><p>${esc(decision.message)}</p>`+(decision.previewPlan?`<p><b>Förhandsvisning:</b> ${esc(decision.previewPlan.exercises[model.index].dose.label)}. Ingen verklig ordination ändras.</p>`:'');
+ $('labAdvance').hidden=decision.action!=='advance';$('labContinuation').hidden=decision.action!=='complete';$('labPath').innerHTML=model.policy.steps.map(s=>`<li ${s.id===model.state.stepId?'aria-current="step"':''}>${esc(s.label)}<small>${esc(s.plan.exercises[model.index].dose.label)}</small></li>`).join('');
+ const {previewPlan,transitionKey,...audit}=decision;$('labAudit').textContent=JSON.stringify({...audit,explanationBrief:E.explanationBrief(decision)},null,2);
+}
+function reset(profile){key=profile;model=X.example(key);$('labScenario').value='ready';document.querySelectorAll('[data-lab-profile]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.labProfile===key)));render()}
+document.querySelectorAll('[data-lab-profile]').forEach(b=>b.onclick=()=>reset(b.dataset.labProfile));$('labScenario').onchange=render;$('labReset').onclick=()=>reset(key);
+$('labAdvance').onclick=()=>{if(decision.action!=='advance')return;model.plan=decision.previewPlan;model.state={stepId:decision.targetStepId,policyRevision:model.policy.revision,startedAt:model.now};model.now=new Date(Date.parse(model.now)+9*86400000).toISOString();$('labScenario').value='missing';render();$('labScenario').focus({preventScroll:true})};
+reset(key);
+})();

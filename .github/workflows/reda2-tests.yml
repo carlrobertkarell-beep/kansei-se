@@ -17,7 +17,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Exercise, dosage, clinical model, graph, motion and intelligence unit tests
-        run: node --test .github/reda2-tests/core.test.cjs .github/reda2-tests/planner.test.cjs .github/reda2-tests/clinical-model.test.cjs .github/reda2-tests/motion-graph.test.cjs .github/reda2-tests/exercise-intelligence.test.cjs .github/reda2-tests/exercise-quality.test.cjs .github/reda2-tests/prescription-session.test.cjs .github/reda2-tests/recovery-motion.test.cjs .github/reda2-tests/followup.test.cjs .github/reda2-tests/care-path.test.cjs
+        run: node --test .github/reda2-tests/core.test.cjs .github/reda2-tests/planner.test.cjs .github/reda2-tests/clinical-model.test.cjs .github/reda2-tests/motion-graph.test.cjs .github/reda2-tests/exercise-intelligence.test.cjs .github/reda2-tests/exercise-quality.test.cjs .github/reda2-tests/prescription-session.test.cjs .github/reda2-tests/recovery-motion.test.cjs .github/reda2-tests/followup.test.cjs .github/reda2-tests/care-path.test.cjs .github/reda2-tests/progression.test.cjs
       - name: Install browser tester
         run: |
           python3 -m pip install --disable-pip-version-check playwright==1.57.0
@@ -40,6 +40,7 @@ jobs:
           python3 .github/reda2-tests/recovery_browser_test.py
           python3 .github/reda2-tests/followup_browser_test.py
           python3 .github/reda2-tests/care_path_browser_test.py
+          python3 .github/reda2-tests/progression_browser_test.py
       - name: Public Reda landing and Kansei homepage integration
         run: python3 .github/reda2-tests/public_landing_test.py
       - name: Existing site regression checks

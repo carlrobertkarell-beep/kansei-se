@@ -1,103 +1,65 @@
-# Reda · den verkligt stora utvecklingen
+# Reda · beslutad produktmodell
 
-Detta dokument är produktkravet, inte en idélista. Reda ska ersätta merparten av manuellt mailande, skapande och justerande av hemprogram utan att ta kliniska beslut från behandlaren.
+Uppdaterad 2026-09-10 efter Carl-Roberts korrigering. Detta ersätter tidigare krav på ett distanspaket med två avstämningar och en avslutande kontakt, och principen att varje progressionssteg kräver ett nytt behandlarbeslut. Äldre leveransnoteringar längre ned är historik, inte överordnade produktkrav.
 
-## Produktprincip
-**Behandlaren bedömer, ordinerar och beslutar progression. Reda gör ordinationen snabb att skapa, entydig att följa och enkel att utvärdera.**
+## Värdet och affären
+Reda ska ge patienten ett starkt stöd och göra Kansei tydligt annorlunda. Det ska samtidigt minska manuellt planarbete och löpande kontakt, inte bygga ett nytt online-PT-jobb åt behandlaren.
 
-Patientens normala flöde: öppna → förstå → träna → logga → följ aktuell nivå → avstämning på klinik eller distans → ny klinisk bedömning → ny version.
+En första bedömning leder till en startplan och en förberedd väg framåt. När ingen ny kontakt är bokad kan personen fortsätta inom sin aktuella plan. När en ny progressionsperiod är relevant ska två frivilliga vägar finnas:
+- Digital progressionsplan: motorn bär det löpande arbetet inom godkända ramar. Ingen serie av obligatoriska samtal ingår som grundmodell.
+- Fysiskt återbesök: analys, behandling när det är relevant och uppdatering av träningen i Reda.
 
-Klinikens normala flöde: välj blueprint → ange få individuella förutsättningar → granska färdigt förslag → dela. Mål: en vanlig plan ska kunna granskas och delas på cirka 60–90 sekunder efter klinisk bedömning.
+Ett redan bokat relevant återbesök ska inte konkurrera med ett automatiskt köperbjudande. Nya eller försämrade besvär ska leda till rätt bedömningsväg före försäljning. En redan ordinerad plan och historik ska inte låsas bakom förnyad betalning. En avslutad ram betyder inte att rehabiliteringen är färdig.
 
-## 1. Klinisk blueprintmotor
-- Blueprints beskriver funktioner/delmål, inte bara fasta listor av övningar.
-- Samma blueprint ska kunna ge olika övningsvarianter, dos, stöd och presentation.
-- Separata dimensioner: aktuell belastningstolerans, praktisk kapacitet, träningsvana/presentationsbehov, miljö/utrustning och patientens faktiska mål.
-- Ålder och kön får aldrig ensamma styra svårighetsgrad eller ton.
-- Inget automatiskt byte till nästa nivå. Progression kräver behandlarbeslut.
-- Om inga godkända alternativ matchar ska systemet flagga detta, inte hitta på en övning.
+Nya kunder utan tidigare besök är nästa ingång, efter att fortsatt träning från en känd bedömning fungerar. Digitalt inledande underlag behöver bedömas för lämplighet; generiska program får inte presenteras som individuellt undersökt rehabilitering.
 
-## 2. Övningsgraf och variantsystem
-Varje övningsfamilj ska ha kliniskt granskade varianter med stabila ID:n. Variant äger:
-- utgångsläge och stöd
-- sida
-- rörelseinstruktion
-- dosram
-- utrustning
-- animationsspecifikation
-- kort cue
-- fördjupad hjälp
-- tillåtna föregående/nästa varianter för behandlarens progressionsträd
+Pris är inte beslutat. Referensen är 890 kr för ett 45-minutersbesök. Ett digitalt erbjudande ska bära AI-/infrastrukturkostnad och verklig undantagstid och ge ett tydligt värde för personen. Mät behandlarminuter per aktiv person och period, kostnad per prövning, andel som kräver bedömning, faktisk användning och relevant måluppfyllelse före prissättning. Intäkt är inte samma sak som lönsamhet. Obegränsad personlig chatt ska inte smygas in i omfattningen.
 
-Exempel: höftlyft kan ha högre underlag, standard, paus, band, extern belastning, unilateral och fot upphöjd. Att en variant ligger senare i grafen betyder inte att appen får låsa upp den.
+## Motorns ansvar
+Behandlaren bedömer utgångspunkten och godkänner en begränsad progressionsväg i förväg. Motorn prövar stegen mot tillräckligt och aktuellt underlag. Ett nytt besök ska inte krävas bara för ett redan förberett steg.
 
-## 3. Patientpresentation som egen dimension
-Minst tre presentationsprofiler: tydlig guidning, standard och träningsvan. De ändrar språk, detaljnivå och hjälp, aldrig den kliniska dosen. Patienten ska kunna välja mer hjälp utan att ordinationen ändras.
+Motorn behöver skilja mellan:
+1. Nästa steg inom ramen.
+2. Behållen ordination medan mer tid eller underlag behövs.
+3. Behov av ny bedömning eller ändrade förutsättningar.
+4. Slut på den godkända ramen och behov av en fortsatt väg.
 
-## 4. Rörelseillustrationer
-- Ingen filmning av behandlare krävs.
-- Varje godkänd variant ska ha en kontrollerad rörlig illustration med rätt stöd, sida, utrustning, rörelse och pauser.
-- Samma rörelsedata ska kunna renderas som demonstration, långsam visning, stilla steg och träningsguidning.
-- Generativ AI får användas i produktionsflödet för att skapa material, men patienten ska se en versionslåst, kliniskt granskad illustration. Ingen fri videogenerering vid varje öppning.
-- Reduced-motion och stillbildsalternativ ska finnas.
+Ingen kalenderstyrd ökning och ingen belöning i form av tyngre träning bara för att personen kryssat av pass. Träningssvar, teknik/utförande, svaret efter träningen, återhämtning, övrig träning och målriktning ska vägas in. Okänt är inte samma sak som normalt. Inga universella smärtgränser utan kliniskt underlag.
 
-## 5. Patientappen
-- Idag, Mitt program, Uppföljning.
-- En övning i taget under pass.
-- Allt som behövs för genomförandet: variant, sida, stöd, utrustning, dos, vila och hjälp.
-- Påbörjat, delvis genomfört, genomfört, överhoppat och planerad vila skiljs åt.
-- Patienten kan markera lätt/lagom/tung och problem, men detta ändrar aldrig programmet automatiskt.
-- Planerad avstämning och budskapet att nästa progression beslutas vid klinisk uppföljning är en permanent del av planen.
+## Från vardagsfunktion till prestation
+Separata dimensioner: aktuell tolerans, faktisk kapacitet, träningsvana, stöd/presentation, tillgänglig miljö och utrustning, mål, samlad träningsbelastning och återhämtning. Ålder väljer inte nivå.
 
-## 6. Klinikens snabbflöde
-- Favoritblueprints och senast använda först.
-- Lokal/snabb strukturerad input samt senare säker AI-tolkning av diktat.
-- Förslag ska bygga endast på godkända övningsvarianter och behandlarens val.
-- Detaljredigering finns som sekundärt läge.
-- Förhandsvisning visar exakt patientens version.
-- En godkänd plan publiceras utan separat PDF eller manuellt träningsmail.
+Vardagsfunktionen kan behöva handstöd, stora tydliga instruktioner och funktionsmål. Avancerad träning behöver relevanta belastningssteg, träningsvolym, ansträngningsmål och senare periodisering mot aktivitet/tävling. Hyrox kräver att löpning och stationer ingår i den totala belastningsbilden. Det befintliga övningsbiblioteket och den nya simuleringen utgör inte ett färdigt prestationssystem för alla dessa mål.
 
-## 7. Säker distribution och versionshantering
-Före verkliga patienter krävs separat backend med autentisering, behörighet, säker lagring, återställning och revisionslogg. Publika URL-fragment är endast prototyp.
-- Patient har en stabil åtkomst till aktuell godkänd plan.
-- Ny planversion ersätter inte pågående pass mitt i ett träningspass.
-- Historik bevaras.
-- Kliniken kan se mottagen/synkroniserad status utan falska kvitton.
-- Patientidentifierbara hälsouppgifter ska inte ligga i det publika GitHub-repot.
+Första tekniska ramen lagrar kompletta ordinationssteg. Klinikens första editor förbereder ett dossteg för en vald övning. Därefter behövs granskade variantövergångar, extern vikt/intensitet, rörelseutslag, frekvens och kombinerade krav mellan övningar. En hög träningsvana är aldrig i sig tillstånd till ett avancerat steg.
 
-## 8. Uppföljning och klinikdashboard
-Inför återbesök ska Reda sammanfatta:
-- följsamhet mot planerade pass
-- delvisa/överhoppade övningar
-- återkommande problem per övning
-- patientens belastningsskattning
-- patientens mål
-- aktuell programversion
-Dashboarden ska prioritera avvikelser och minska, inte skapa, en ny inkorg.
+## AI:s roll
+AI ska så småningom bära mycket av dialogen: förstå patientens återkoppling, ställa rätt följdfråga, förklara nästa steg, hjälpa med praktiska hinder och sammanfatta undantag för behandlaren. Det är mer än att skriva ett program en gång.
 
-## 9. AI i Reda
-AI får hjälpa till med strukturering och presentation, men kliniska regler är deterministiska och behandlarstyrda.
-- Diktat → strukturerat utkast → behandlargranskning.
-- AI får inte själv diagnostisera, ordinera ny behandling eller progrediera.
-- AI får föreslå formuleringar och matcha till redan godkända alternativ inom tydliga ramar.
-- All AI-användning med verkliga patientdata kräver separat säkerhets- och integritetsarkitektur.
+Språkmodell och progressionsmotor får olika ansvar. AI får inte hitta på en ordination utanför den verifierade ramen. Motorn kontrollerar tillåtna steg, datakvalitet och giltighet. Patientfritext och modellresultat är underlag, inte instruktioner till systemet. Strukturerade uppgifter måste valideras. Vid osäker tolkning ska modellen fråga eller lämna uppgiften okänd, inte fylla i ett lugnande svar.
 
-## 10. Produktionskrav före ersättning av gamla Reda
-1. Klinisk granskning av blueprintbank, varje övningsvariant och animation.
-2. Test på verklig iPhone/iPad/Android och med representativa patienter.
-3. Säker backend och autentisering.
-4. Testad programversionering, backup och återställning.
-5. Kontrollerad migrering av gamla program; gamla Reda tas inte bort innan detta är verifierat.
-6. Patientinformation om vad som sparas, skickas och syns för kliniken måste vara entydig.
-7. Tillgänglighetsgranskning och felhantering.
+Ingen språkmodell är ansluten i detta block. Det finns ett begränsat förklaringskontrakt till en framtida språkmodell. Innan verkliga uppgifter behandlas behövs säker serverintegration, dataminimering, behörigheter, revisionsspår och validering av modellens beteende.
 
-## Nuvarande utvecklingsordning
-**A.** Utöka blueprintbank + övningsgraf + snabbordination.  
-**B.** Bygg animationsspecifikation och kvalitetssäkrat illustrationsbibliotek.  
-**C.** Bygg säker patientdistribution, programversioner och synk.  
-**D.** Bygg klinikdashboard och återbesökssammanfattning.  
-**E.** Lägg till säker diktat/AI-assistans och automatiserad leverans.  
-**F.** Pilot med fiktiva data → intern klinikpilot → liten patientpilot → kontrollerad migrering.
+## Levererat i detta block
+- Kontaktplanering är frivillig. Distans kräver fortfarande registrerad bedömning i gränssnittet men inte sex/åtta veckor eller tre bokade kontakter.
+- Versionsbunden, regelbaserad progressionskärna med kompletta steg, giltighetstid och explicita villkor. Saknade svar, historik från fel steg/version, motstridiga dubletter, pågående pass, samlad belastning och förändrade besvär hanteras separat.
+- Behandlaren kan förbereda ett nästa dossteg med egna villkor och spara det med planutkastet. Ändrad ordination gör ramen inaktuell. Den körs inte i patientvyn.
+- Interaktivt utvecklingsrum: /reda-2/progression-lab.html. Fiktiva fall för vardagsfunktion, Hyrox och avancerad styrka, återkoppling och prövning genom flera steg. Alla doser och villkor är testdata.
+- Landningssidan beskriver den nya riktningen och de två fortsättningsvägarna. Digital försäljning är inte öppen.
+
+## Nästa utvecklingsordning
+1. Klinisk genomgång av modellens tillåtna steg, observationsvillkor och eskalering för en första avgränsad målgrupp. Granska rörelserna parallellt; utöka de fem nya referensfamiljerna efter godkännande.
+2. Säker insamling av uppföljt träningssvar och övrig belastning. Serverägd, versionsbunden ram med verkligt godkännande och bestående bedömningsärenden. Konflikter ska lösas på servern, inte via klientflaggor.
+3. Kör motorn i skuggläge mot kliniska fall: jämför vad den föreslår med vad behandlaren beslutar. Mät både missade avvikelser och onödiga larm.
+4. Anslut AI för strukturerad dialog och tydliga förklaringar inom samma kontrakt. Kliniken får undantag med skäl och underlag, inte en osorterad inkorg.
+5. Säker tillämpning: en idempotent servertransaktion kontrollerar aktuell planversion, ramversion, återkallat godkännande och öppna pass. Nästa steg blir ny historiserad ordination. Perioden och träningsunderlaget nollställs för nästa steg; gammal historik finns kvar.
+6. Fortsatt digital period: tydlig omfattning, rimlig svarsförväntan, pris/betalning och relation till bokade återbesök. Återkommande besvär hanteras före köp. Modellens faktiska undantagstid måste passa affären.
+7. Klinisk/regulatorisk genomgång, faktisk mobiltestning och kontrollerad patientpilot. Ingen användaraktivering före separat klartecken. Gamla Reda behålls under verifierad övergång.
+
+Verkligt distributionsprov, serverkonflikter, större historik, backup/återställning, illustrationer och journalintegration ligger fortsatt kvar. De är inte bortprioriterade eller klara genom denna modelländring.
+
+## Tidigare leveranshistorik
+Äldre text om att all progression sker vid avstämning beskriver dåvarande beteende. Produktmodellen ovan gäller framåt. Den aktiverade patientappen ligger fortfarande kvar på sin publicerade ordination tills den nya motorn validerats och anslutits säkert.
 
 ## Levererat i nästa block · 2026-09-10
 - Fördjupningen från PR 15 ingår: separata rörelsespecifikationer och metadata för avancerade varianter i knä, axel, vad/Achilles och höft. Illustrationerna är fortsatt märkta för klinisk granskning.
@@ -145,26 +107,3 @@ AI får hjälpa till med strukturering och presentation, men kliniska regler är
 3. Samtidiga flikar/enheter, konflikter och större historik. Säkerhetskopiering/återställning ska provas före pilot.
 4. Favoriter/senast använda i snabbordination, säker diktat/AI-strukturering och senare journalintegration.
 5. Test på riktiga telefoner och klinisk granskning innan användare aktiveras. Befintliga Reda migreras först efter verifierad pilot.
-
-
-## Beslutad affärsriktning · klinik och distans
-Reda ska kunna användas av personer som aldrig besökt Kansei fysiskt. Personlig rehabilitering erbjuds med behandlarbedömning och planerade avstämningar, på klinik, på distans eller i ett kombinerat upplägg. Progression kräver ett behandlarbeslut, men beslutet kräver inte per automatik ett fysiskt återbesök.
-
-Första tänkta distansprodukt: en avgränsad period om 6–8 veckor för en tydlig målgrupp, med första bedömning, individuell startplan, två avstämningar och avslutande uppföljning. Pris och tjänstens exakta omfattning ska fastställas och valideras inför en senare pilot. Ingen försäljning eller patientaktivering är öppnad.
-
-Fristående träningsprogram utan individuell behandlarkontakt är en möjlig separat framtida produkt. Det ska inte blandas ihop med personlig vård. Automatisk individuell progression, generell programbutik och abonnemang ingår inte i den första distansprodukten.
-
-### Levererat · kontaktplanering
-- Versionsbunden careJourney i befintligt planinnehåll: kontaktupplägg, 6/8 veckor eller löpande klinikuppföljning, periodstart, dokumenterad bedömningsmarkering och planerade kontakter via klinik/video/telefon.
-- Behandlaren begär datumförslag och granskar dem. Datumen skapar inga bokningar eller möteslänkar.
-- Gränssnittet kan spara ett ofullständigt utkast. Aktiveringsknappen kräver komplett distansplanering och behandlarens bekräftelse av genomförd bedömning. Detta är ett stöd i gränssnittet, inte en ny serverregel eller en ersättning för journalföring.
-- Patientvyn och uppföljningen visar samma planerade kontakter. Passerade datum markeras utan att påstå genomfört besök eller ändra träningsnivån.
-- Befintlig schema 6-plan läses in inför nya ändringar. Kontaktplanering, måltext, individuellt råd och presentationsnivå behåller sparade övningsvarianter, dos och belastning. Byte av patient återställer personliga fält; patientbyte spärras medan sparning/aktivering pågår.
-- Landningssidan beskriver båda kontaktsätten och anger att distansförsäljning ännu inte öppnat. Gamla patientportalen är kvar.
-
-### Nästa steg för en säljbar distansprodukt
-1. Sluttesta säker distribution och patientflöde med internt testkonto.
-2. Definiera målgrupp, bedömningsunderlag, när fysisk undersökning behövs och hur försämring hanteras; behandlargranskning krävs.
-3. Bygga säker insamling av inledande underlag och avstämningssvar, genomförandestatus och beslut. De ska ha egna behörigheter/revisionsspår, inte läggas i publika formulär eller låtsas vara träningspass.
-4. Bokning/videosamtal, information och villkor, fastställt pris och betalning efter att lämpligt upplägg bedömts. Inga boknings- eller leveranskvitton utan verifierad tjänst.
-5. Klinisk och regulatorisk genomgång, faktisk mobiltestning och därefter begränsad betald pilot med uppföljning av resultat, upplevelse och behandlartid.

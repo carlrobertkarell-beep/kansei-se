@@ -53,12 +53,6 @@ function evaluate(input={}){
  if(context.concern===true||state.reviewPending===true)return out('review','concern');
  if(context.reviewRequested===true)return out('review','requested');
  if(context.environmentChanged===true)return out('review','environment');
- if(today>p.validUntil)return out('review','expired');
- if(today<p.validFrom)return out('wait','notStarted');
- if(context.sessionOpen===true)return out('wait','openSession');
- if(context.otherTraining==='high')return out('hold','load');
- if(context.recovery==='low')return out('hold','recovery');
- if(context.otherTraining!=='usual'||context.recovery!=='ready'||context.sessionOpen!==false||context.concern!==false||context.reviewRequested!==false||context.environmentChanged!==false)return out('wait','context');
  // Do not infer the current step from legacy or another plan's session rows.
  if(day(state.startedAt)<p.validFrom)return out('blocked','data');
  const rows=observations.filter(x=>x?.policyId===p.id&&x.policyRevision===p.revision&&x.stepId===state.stepId),seen=new Map(),recent=[];
@@ -69,6 +63,12 @@ function evaluate(input={}){
   recent.push(row);
  }
  if(recent.some(row=>row.concern===true||row.function==='worse'||row.nextDay==='worse'))return out('review','concern');
+ if(today>p.validUntil)return out('review','expired');
+ if(today<p.validFrom)return out('wait','notStarted');
+ if(context.sessionOpen===true)return out('wait','openSession');
+ if(context.otherTraining==='high')return out('hold','load');
+ if(context.recovery==='low')return out('hold','recovery');
+ if(context.otherTraining!=='usual'||context.recovery!=='ready'||context.sessionOpen!==false||context.concern!==false||context.reviewRequested!==false||context.environmentChanged!==false)return out('wait','context');
  for(const row of recent){
   if(!['completed','partial','skipped'].includes(row.status)||!['easy','okay','heavy'].includes(row.effort)||!['controlled','difficult','unknown'].includes(row.quality)||!['stable','better','unknown'].includes(row.function)||row.concern!==false)return out('wait','data');
   if(row.status!=='completed'||!p.rules.acceptedEffort.includes(row.effort)||row.quality==='difficult')return out('hold','difficult');

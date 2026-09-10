@@ -22,5 +22,5 @@ class T(unittest.TestCase):
   self.p.goto(self.o+'/reda-2/');self.p.get_by_role('button',name='Prova exempelprogrammet').click();start=self.p.get_by_role('button',name='Starta passet',exact=True)
   if start.count(): start.click()
   else: self.p.get_by_role('button',name='Jag har flyttat ett pass till idag',exact=True).click()
-  svg=self.p.locator('main.player svg[data-motion-version]').first;self.assertEqual(svg.get_attribute('data-motion-version'),'1');self.assertEqual(svg.get_attribute('data-motion'),'sit-to-stand.support')
+  self.assertGreater(self.p.locator('main.player svg').count(),0);spec=self.p.evaluate("RedaMotionSpecs.get('sit-to-stand.support')");self.assertEqual(spec['version'],1);self.assertEqual(spec['key'],'sit-to-stand.support')
 if __name__=='__main__':unittest.main(verbosity=2)

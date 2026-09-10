@@ -2,6 +2,34 @@
 
 Uppdaterad 2026-09-10 efter Carl-Roberts korrigering. Detta ersätter tidigare krav på ett distanspaket med två avstämningar och en avslutande kontakt, och principen att varje progressionssteg kräver ett nytt behandlarbeslut. Äldre leveransnoteringar längre ned är historik, inte överordnade produktkrav.
 
+## Exercise Intelligence · gemensamt produktbegrepp
+Exercise Intelligence är Redas system för att knyta ihop förutsättningar, övningsval, genomförande, återkoppling och nästa steg. Namnet ska beskriva ett faktiskt sammanhängande beteende. Kundens löfte är att förstå sin plan och få en relevant väg framåt; behandlarens värde är bättre precision, mindre rutinadministration och tydligt underlag när egen bedömning behövs.
+
+Gemensamma regler på alla nivåer:
+- Sparad ordination och planversion är sanningskälla. Presentation, hjälptexter och AI-förklaringar får inte skapa en alternativ dos.
+- Aktuell tolerans, kapacitet, träningsbakgrund, mål och miljö är olika dimensioner. Ålder väljer inte svårighetsgrad. Hyrox är nu ett uttryckligt mål i förslagsmotorn, inte ett färdigt periodiseringssystem.
+- Utförandestöd kan vara kort eller stegvis utan att byta övning eller dos. Rörelsedemonstrationen kan pausas och visas långsammare eller som stillbilder.
+- Efter ett avslutat pass rapporteras kroppens svar, funktion, återhämtning, annan belastning, genomförande och kontaktönskemål. Osäkerhet är ett giltigt svar och får inte tolkas som normalt utfall.
+- Nästa progressionssteg kräver serverägd och giltig ram samt aktuellt underlag. Rapporterade svar är ännu inte automatiskt kopplade till progressionsmotorns prövningar.
+- Försäljning är en frivillig fortsättningsväg. Ingen automatisk försäljning vid försämring, ingen obligatorisk serie avstämningar och inget obegränsat personligt chattlöfte.
+
+### Implementerat i Exercise Intelligence-blocket
+- Gemensam presentationsmodell i klinik, patientvy och publik demonstration. Den förklarar sparade förutsättningar och instruktioner; den påstår inte att återge en språkmodells resonemang.
+- Klinikpanelen lyfter saknad individuell belastning för identifierade övningar med yttre vikt. Detta är en granskningsuppmaning, ännu ingen generell aktiveringsspärr.
+- Sex korta frågor i patientvyn, med kvitto först efter serverbekräftelse. Misslyckad sparning behåller svaren och samma begäran i den öppna sidan. Dessa svar skrivs inte till webbläsarlagring.
+- Separat databasmodell för svar per avslutat pass, serverbunden patient, rapportör och planversion, idempotens och revisionsspår. Stängda delvisa pass och äldre planversioner är tillåtna. Tidigast nästa kalenderdag i Stockholm och högst 14 dagar efter passet är en produktregel för rapportering, inte ett kliniskt progressionsvillkor.
+- Behandlarvyn visar svar för vald planversion och lyfter försämring eller hjälpbehov. Inget svar markerar ett ärende som omhändertaget eller bokar kontakt. Hämtfel visas separat så träningen fortfarande kan användas.
+- Samma begrepp på Kanseis startsida, rehabsida, Redas landningssida och progressionslaboratorium. Publik sexfrågorsdemonstration är fiktiv och lämnar inga sparade svar.
+
+### Nästa mätbara steg
+1. Serverägd godkänd ram och observationskoppling med sessions-, steg- och ramversion. Befintliga svar ska inte retroaktivt bli progressionstillstånd.
+2. Bestående undantagsärenden med ansvar, kvittens och hantering; mät behandlarminuter per aktiv person och mängden onödiga respektive missade avvikelser.
+3. Skuggläge mot granskade fall, sedan begränsad automatisk tillämpning. Mät överensstämmelse med behandlarens beslut innan patientdrift.
+4. AI-dialog som samlar strukturerat underlag och förklarar verifierade beslut. Ingen språkmodell är ansluten ännu.
+5. Kliniskt granskad rörelseproduktion, variantövergångar och aktivitetsspecifik belastning; befintliga nya kontroller ersätter inte bättre illustrationer.
+
+Sparade svar är oföränderliga i detta block. Rättelseflöde, större historik, samtidig användning på flera enheter och faktisk mejl-/inloggningskedja behöver fortsatt arbete före pilot. Inga patienter aktiveras.
+
 ## Värdet och affären
 Reda ska ge patienten ett starkt stöd och göra Kansei tydligt annorlunda. Det ska samtidigt minska manuellt planarbete och löpande kontakt, inte bygga ett nytt online-PT-jobb åt behandlaren.
 
@@ -49,7 +77,7 @@ Ingen språkmodell är ansluten i detta block. Det finns ett begränsat förklar
 
 ## Nästa utvecklingsordning
 1. Klinisk genomgång av modellens tillåtna steg, observationsvillkor och eskalering för en första avgränsad målgrupp. Granska rörelserna parallellt; utöka de fem nya referensfamiljerna efter godkännande.
-2. Säker insamling av uppföljt träningssvar och övrig belastning. Serverägd, versionsbunden ram med verkligt godkännande och bestående bedömningsärenden. Konflikter ska lösas på servern, inte via klientflaggor.
+2. Insamlingen av uppföljt träningssvar finns i Exercise Intelligence-blocket ovan. Nästa del är en serverägd, versionsbunden ram med verkligt godkännande och bestående bedömningsärenden. Konflikter ska lösas på servern, inte via klientflaggor.
 3. Kör motorn i skuggläge mot kliniska fall: jämför vad den föreslår med vad behandlaren beslutar. Mät både missade avvikelser och onödiga larm.
 4. Anslut AI för strukturerad dialog och tydliga förklaringar inom samma kontrakt. Kliniken får undantag med skäl och underlag, inte en osorterad inkorg.
 5. Säker tillämpning: en idempotent servertransaktion kontrollerar aktuell planversion, ramversion, återkallat godkännande och öppna pass. Nästa steg blir ny historiserad ordination. Perioden och träningsunderlaget nollställs för nästa steg; gammal historik finns kvar.

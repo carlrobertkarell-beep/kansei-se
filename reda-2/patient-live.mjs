@@ -1,9 +1,9 @@
 import * as api from './secure-browser.mjs'
 const $=id=>document.getElementById(id), F=window.RedaFigures
 let state=null,plan=null,session=null,index=0,stopMotion=null
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]))
 function setAuth(show){$('auth').classList.toggle('hidden',!show);$('app').classList.toggle('hidden',show);$('logout').classList.toggle('hidden',show)}
-function error(e){$('authError').textContent=e?.message||String(e);$('authError').classList.remove('hidden')}
+function error(e){$('authSuccess').classList.add('hidden');$('authError').textContent=e?.message||String(e);$('authError').classList.remove('hidden')}
 function exercises(){return plan?.payload?.exercises||[]}
 function reviewDate(){return plan?.payload?.reviewDate||plan?.payload?.review?.date||''}
 function doseLabel(x){return x?.dose?.label||[x?.dose?.sets&&`${x.dose.sets} omgångar`,x?.dose?.reps&&`${x.dose.reps} repetitioner`].filter(Boolean).join(' · ')||'Följ ordinationen'}
@@ -21,8 +21,7 @@ async function markRound(i){const p=session.progress[index];p.roundsDone=Math.ma
 async function skip(){const p=session.progress[index];p.status='skipped';showExercise();await sync('partial')}
 async function next(){if(index<exercises().length-1){index++;showExercise();return}const all=session.progress.every(p=>p.status==='completed'),doneAt=new Date().toISOString();await sync(all?'completed':'partial',doneAt);stopMotion?.();$('player').classList.add('hidden');state=await api.patientBootstrap();renderHome();$('sync').textContent=all?'Passet är sparat och synkat':'Passet är sparat som delvis genomfört'}
 async function pause(){if(!session)return;$('player').classList.add('hidden');stopMotion?.();await sync(session.progress.some(p=>p.roundsDone||p.status==='skipped')?'partial':'started')}
-$('login').onclick=async()=>{try{await api.signIn($('email').value.trim(),$('password').value);await bootstrap()}catch(e){error(e)}}
-$('savePassword').onclick=async()=>{try{await api.setPassword($('newPassword').value);$('setPassword').classList.add('hidden');await bootstrap()}catch(e){error(e)}}
+$('magicLink').onclick=async()=>{try{const email=$('email').value.trim();if(!email)throw new Error('Ange din e-postadress');$('magicLink').disabled=true;$('authError').classList.add('hidden');await api.sendPatientMagicLink(email);$('authSuccess').textContent='Klart. Öppna mejlet från Reda och tryck på länken för att öppna ditt program.';$('authSuccess').classList.remove('hidden')}catch(e){error(e)}finally{$('magicLink').disabled=false}}
 $('logout').onclick=async()=>{await api.signOut();location.reload()};$('start').onclick=start;$('skip').onclick=skip;$('next').onclick=next;$('closePlayer').onclick=pause
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('hidden',x.id!==b.dataset.tab))})
-setAuth(true);api.currentUser().then(async u=>{if(!u)return;if(u.user_metadata?.reda_invited===true){$('setPassword').classList.remove('hidden');return}await bootstrap()}).catch(()=>{})
+setAuth(true);api.currentUser().then(async u=>{if(u)await bootstrap()}).catch(()=>{})

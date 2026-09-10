@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function(){
   if (location.pathname !== '/rehabilitering/' && location.pathname !== '/rehabilitering/index.html') return;
   var card = document.getElementById('planKort'); if (!card) return;
   var img = card.querySelector('.plan-lockup');
-  if (img) { img.src='/bilder/reda/lockup.svg'; img.alt='Reda'; }
+  if (img) { img.src='/bilder/reda/lockup.svg?v=cross-20260910'; img.alt='Reda'; }
   var points = card.querySelector('.plan-punkter');
   if (points) points.innerHTML = '<li>Din individuella plan från behandlaren, i mobilen</li><li>Nivå, variant och dos väljs för den aktuella perioden</li><li>Träningen följs upp inför nästa kliniska bedömning</li>';
   var label = card.querySelector('.plan-et'); if (label) label.textContent='Reda · din plan mellan besöken';

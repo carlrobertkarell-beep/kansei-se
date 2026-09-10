@@ -113,3 +113,17 @@ AI får hjälpa till med strukturering och presentation, men kliniska regler är
 - Mer fullständig uppföljning mot planerade dagar, historiska planversioner och patientens mål.
 - Säker diktat/AI-strukturering och senare koppling till journalappen.
 - Verifiering på faktiska telefoner och representativa patienter; användaraktivering inväntar separat klartecken.
+
+## Utvecklingsblock 2026-09-10 · återupptagning och referensrörelser
+- Patientvyn återläser påbörjade pass från servern på samma planversion och återanvänder samma client_session_id.
+- Osynkade omgångar ligger i en separat kö per autentiserat konto på enheten. Kön innehåller pass-/plan-ID, övnings-ID, omgångar och skattning, inga namn, mejladresser eller planinnehåll. Den tas bort efter lyckad synk; utloggning blockeras medan osynkade markeringar finns.
+- Vid byte av plan efter omladdning kan patienten uttryckligen spara och avsluta det äldre passet. Historiken behåller dess ursprungliga planversion. Ett öppet pass byter aldrig ordination mitt i genomförandet.
+- Fem referensfamiljer har fått en ny renderare med fasta segmentlängder, definierade kontaktpunkter och separata start-, rörelse- och slutlägen. Endast de uttryckligen stödda varianterna ersätts; övriga varianter är kvar för fortsatt utveckling.
+- Granskningssida: /reda-2/motion-reference.html. Inget här är kliniskt godkänt.
+- Nya tester täcker geometri, serveråterupptagning, lokal kö, omladdning efter misslyckad synk, versionsbyte och dubbel start. Webbläsartesterna använder en fiktiv server.
+
+### Fortsatt test före pilot
+- Verklig mejlleverans genom Supabase/Resend, engångslänk i användarens e-postklient, patientinloggning och återkoppling till klinikvyn återstår som ett sammanhängande test. DNS i Resend är verifierad; detta är inte samma sak som verifierad leverans.
+- Första öppning av appen kräver nätanslutning. Offlinekön skyddar redan påbörjade markeringar; den är inte en komplett offlineapp.
+- Samtidig redigering från flera flikar/enheter, serverkonflikter och återställning när lagringen rensas kräver ett eget testblock.
+- Klinisk granskning av de fem rörelserna innan metoden utökas till fler varianter.

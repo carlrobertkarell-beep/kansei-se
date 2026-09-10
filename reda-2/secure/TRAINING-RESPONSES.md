@@ -8,7 +8,7 @@ Sex fasta fält med kategoriska svar; ingen fritext. CHECK begränsar typer, nyc
 
 UI kräver avslutat eller stängt delvis genomfört pass, tidigast följande kalenderdag i Stockholm och högst 14 kalenderdagar bakåt. Detta är rapporteringsfönstret, inte en medicinsk progressionsregel. Svar kan höra till en äldre planversion och flyttas aldrig till den nu aktiva. Återkopplingen ändrar inte ordinationen och skapar inte bokning eller bevakat ärende. Den kopplas inte automatiskt till progressionsmotorn ännu.
 
-Den nya API-hämtningen är isolerad från plan/pass: ett fel visar återkopplingsfel, men stoppar inte träningen. Upp till 100 svar hämtas och gränsen framgår i kliniken. Inmatning ligger i minnet under formulärflödet. Misslyckad sparning kan försökas igen med samma begäran medan sidan är öppen; ingen offlinegaranti. Senare rättelser och arkivexport återstår.
+Den nya API-hämtningen är isolerad från plan/pass: ett fel visar återkopplingsfel, men stoppar inte träningen. Upp till 100 svar hämtas och gränsen framgår i kliniken. Inmatning ligger i minnet under formulärflödet. Misslyckad sparning kan försökas igen med samma begäran medan sidan är öppen; ingen offlinegaranti. Patienten kan läsa sina tio senaste svar efter omladdning. Senare rättelser och arkivexport återstår.
 
 ## Verifiering
 `node --test .github/reda2-tests/intelligence-system.test.cjs`

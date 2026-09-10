@@ -7,7 +7,7 @@ class H(http.server.SimpleHTTPRequestHandler):
  def log_message(self,*a):pass
 MOCK="""
 const read=()=>JSON.parse(localStorage.getItem('test-server'));
-export async function currentUser(){return {id:'test-user'}}
+export async function currentUser(){const mode=localStorage.getItem('test-auth');if(mode){const e=Error(mode==='missing'?'Auth session missing!':'Connection failed');e.name=mode==='missing'?'AuthSessionMissingError':'Error';throw e}return {id:'test-user'}}
 export async function patientBootstrap(){return {...read(),userId:'test-user'}}
 export async function saveSession(planId,s){
  if(localStorage.getItem('test-fail')==='yes')throw Error('offline');
@@ -40,6 +40,8 @@ class RecoveryTests(unittest.TestCase):
   self.start_and_mark();self.p.evaluate("const d=JSON.parse(localStorage.getItem('test-server'));d.plan.id='plan-2';d.plan.version=2;localStorage.setItem('test-server',JSON.stringify(d))");self.p.reload();self.p.locator('#closePrevious').wait_for(state='visible');self.assertTrue(self.p.locator('#start').is_disabled());self.p.locator('#closePrevious').click();self.p.wait_for_function("!document.querySelector('#start').disabled");r=self.p.evaluate("JSON.parse(localStorage.getItem('test-server')).sessions[0]");self.assertEqual(r['plan_id'],'plan-1');self.assertEqual(r['plan_version'],1);self.assertEqual(r['status'],'partial');self.p.locator('#start').click();self.assertTrue(self.p.locator('[data-round="0"]').is_enabled())
  def test_duplicate_start_does_not_create_two_sessions(self):
   self.p.locator('#start').evaluate('(el)=>{el.click();el.click()}');self.p.locator('#player').wait_for(state='visible');self.assertEqual(self.p.evaluate("JSON.parse(localStorage.getItem('test-server')).sessions.length"),1)
+ def test_signed_out_is_normal_and_real_errors_remain_visible(self):
+  self.p.evaluate("localStorage.setItem('test-auth','missing')");self.p.reload();self.p.locator('#auth').wait_for(state='visible');self.p.wait_for_timeout(300);self.assertTrue(self.p.locator('#authError').is_hidden());self.assertTrue(self.p.locator('#app').is_hidden());self.p.evaluate("localStorage.setItem('test-auth','network')");self.p.reload();self.p.locator('#authError').wait_for(state='visible');self.assertEqual(self.p.locator('#authError').inner_text(),'Connection failed')
  def test_reference_review_mobile_and_still_frames(self):
   self.p.goto(self.origin+'/reda-2/motion-reference.html');self.assertEqual(self.p.locator('.reference').count(),5);self.assertLessEqual(self.p.evaluate('document.documentElement.scrollWidth'),390);self.p.locator('.reference').nth(2).get_by_role('button',name='Slutläge',exact=True).click();self.assertEqual(self.p.locator('.reference').nth(2).get_by_role('button',name='Slutläge',exact=True).get_attribute('aria-pressed'),'true');self.assertEqual(self.p.locator('svg[data-renderer-version="3"]').count(),5)
 if __name__=='__main__':unittest.main(verbosity=2)

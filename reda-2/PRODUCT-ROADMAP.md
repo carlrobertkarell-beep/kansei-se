@@ -98,3 +98,18 @@ AI får hjälpa till med strukturering och presentation, men kliniska regler är
 **D.** Bygg klinikdashboard och återbesökssammanfattning.  
 **E.** Lägg till säker diktat/AI-assistans och automatiserad leverans.  
 **F.** Pilot med fiktiva data → intern klinikpilot → liten patientpilot → kontrollerad migrering.
+
+## Levererat i nästa block · 2026-09-10
+- Fördjupningen från PR 15 ingår: separata rörelsespecifikationer och metadata för avancerade varianter i knä, axel, vad/Achilles och höft. Illustrationerna är fortsatt märkta för klinisk granskning.
+- Klinikvyn kan justera tillåtna varianter, sida, omgångar, repetitioner, hålltid, vila, tempo och behandlarangiven belastning direkt i förslaget. Variantbyte följer med till instruktion, rörelse och metadata.
+- Motorn släpper inte längre golv-, band- eller gymbegränsningar när ingen variant passar. Ofullständiga förslag markeras och kan inte aktiveras i gränssnittet.
+- Patientens omgångar markeras i ordning, separat per sida. Paus behåller pågående pass i den öppna sidan. Felaktiga synkkvitton har tagits bort; ändringar skickas i ordning och kan provas igen. Ingen garanti för återställning efter omladdning eller stängd flik ännu.
+- Patienten kan rapportera lätt/lagom/för tungt. Kliniken ser tunga och överhoppade övningar inför återbesöket.
+- Redas publika startsida visar fiktiva nivåexempel genom samma planeringsmotor. Inga patienter aktiverade av detta arbete.
+
+### Kvar före patientpilot
+- Klinisk granskning av alla dosramar, varianter och rörelser, särskilt avancerade varianter.
+- Säker återupptagning efter omladdning, versionsbyte och återställning från servern.
+- Mer fullständig uppföljning mot planerade dagar, historiska planversioner och patientens mål.
+- Säker diktat/AI-strukturering och senare koppling till journalappen.
+- Verifiering på faktiska telefoner och representativa patienter; användaraktivering inväntar separat klartecken.

@@ -19,6 +19,7 @@ const manual={
  'scaption.short':['shoulder_elevation','scaption.short',1], 'scaption.mid':['shoulder_elevation','scaption.mid',2], 'scaption.loaded':['shoulder_elevation','scaption.loaded',3],
  'balance.support':['balance','balance.supported',1], 'balance.light':['balance','balance.light-support',2],
  'wall_sit.high':['knee_function','wall-sit.high',1], 'wall_sit.deep':['knee_function','wall-sit.deep',2],
+ 'step_up.support':['knee_function','step-up.supported',1], 'step_up.free':['knee_function','step-up.standard',2],
  'step_up.low':['knee_function','step-up.supported',1], 'step_up.standard':['knee_function','step-up.standard',2], 'step_up.loaded':['knee_function','step-up.loaded',4],
  'step_down.supported':['knee_function','step-down.supported',2], 'step_down.standard':['knee_function','step-down.standard',3],
  'split_squat.supported':['knee_function','split-squat.supported',2], 'split_squat.standard':['knee_function','split-squat.standard',3], 'split_squat.loaded':['knee_function','split-squat.loaded',4],

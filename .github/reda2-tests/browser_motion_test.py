@@ -19,5 +19,8 @@ class T(unittest.TestCase):
  def test_bridge_graph_stills_and_animation(self):
   self.p.locator('#search').fill('Höftlyft');self.p.locator('.node-btn').first.click();self.assertIn('Höftlyft',self.p.locator('.stage h1').inner_text());self.assertEqual(self.p.locator('.still').count(),3);before=self.p.locator('#motion svg g').inner_html();self.p.get_by_role('button',name='Visa rörelsen').click();self.p.wait_for_timeout(650);after=self.p.locator('#motion svg g').inner_html();self.assertNotEqual(before,after);self.p.screenshot(path=str(OUT/'motion-lab-bridge-mobile.png'),full_page=True)
  def test_patient_app_uses_versioned_motion(self):
-  self.p.goto(self.o+'/reda-2/');self.p.get_by_role('button',name='Prova exempelprogrammet').click();self.p.get_by_role('button',name='Starta passet',exact=True).click();svg=self.p.locator('#motion svg');self.assertEqual(svg.get_attribute('data-motion-version'),'1');self.assertEqual(svg.get_attribute('data-motion'),'sit-to-stand.support')
+  self.p.goto(self.o+'/reda-2/');self.p.get_by_role('button',name='Prova exempelprogrammet').click();start=self.p.get_by_role('button',name='Starta passet',exact=True)
+  if start.count(): start.click()
+  else: self.p.get_by_role('button',name='Jag har flyttat ett pass till idag',exact=True).click()
+  svg=self.p.locator('#motion svg');self.assertEqual(svg.get_attribute('data-motion-version'),'1');self.assertEqual(svg.get_attribute('data-motion'),'sit-to-stand.support')
 if __name__=='__main__':unittest.main(verbosity=2)

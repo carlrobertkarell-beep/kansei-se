@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('[data-omd-antal]').forEach(function(e){ e.textContent = o.antal; });
   document.querySelectorAll('[data-omd-betyg]').forEach(function(e){ e.textContent = o.betyg; });
   document.querySelectorAll('[data-count="289"]').forEach(function(e){ e.setAttribute('data-count', String(o.antal)); if(e.textContent==='0') e.textContent = '0'; });
+  // Reda i huvudnavigationen är produkt-/informationsingången. Patientportalen nås separat från Reda-sidan.
+  document.querySelectorAll('a.nav-reda').forEach(function(a){ a.href='/reda-rehab/'; a.setAttribute('title','Reda · rehabilitering mellan besöken'); });
 });
 
 // Startsidan: Reda ska vara en tydlig del av rehabiliteringskedjan utan att störa gamla patientportalen /reda/.

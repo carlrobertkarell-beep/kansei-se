@@ -1,4 +1,4 @@
-import * as api from './secure-browser.mjs'
+import * as api from './secure-browser.mjs?v=20260910-recovery'
 const $=id=>document.getElementById(id), F=window.RedaFigures, S=window.RedaSession, R=window.RedaRecovery
 let state=null,plan=null,session=null,index=0,stopMotion=null, syncQueue=Promise.resolve(), unsynced=false, syncVersion=0, lastSynced=0, starting=false, recoveryBlocked=false, durable=false, previousSession=null
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
@@ -38,9 +38,10 @@ $('magicLink').onclick=async()=>{try{const email=$('email').value.trim();if(!ema
 $('logout').onclick=async()=>{if(unsynced){$('sync').textContent='Synka passet innan du loggar ut.';return}R.clear(localStore(),state?.userId);await api.signOut();location.reload()};$('start').onclick=start;$('skip').onclick=skip;$('next').onclick=next;$('closePlayer').onclick=pause
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('hidden',x.id!==b.dataset.tab))})
 setAuth(true);api.currentUser().then(async u=>{if(u)await bootstrap()}).catch(error)
-$('retrySync').onclick=()=>session&&sync(session.status,session.completedAt);window.addEventListener('beforeunload',e=>{if(unsynced&&!durable){e.preventDefault();e.returnValue=''}});
+async function retry(){if(!session)return;const finished=!!session.completedAt;if(await sync(session.status,session.completedAt)){if(finished){try{await bootstrap()}catch{$('sync').textContent='Passet är sparat. Ladda om sidan för att uppdatera planen.'}}}}
+$('retrySync').onclick=retry;window.addEventListener('beforeunload',e=>{if(unsynced&&!durable){e.preventDefault();e.returnValue=''}});
 
-window.addEventListener('online',()=>{if(unsynced&&session)sync(session.status,session.completedAt)});
+window.addEventListener('online',()=>{if(unsynced&&session)retry()});
 
 $('closePrevious').onclick=async()=>{
  if(!previousSession)return;

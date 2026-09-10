@@ -5,7 +5,7 @@ Detta dokument är produktkravet, inte en idélista. Reda ska ersätta merparten
 ## Produktprincip
 **Behandlaren bedömer, ordinerar och beslutar progression. Reda gör ordinationen snabb att skapa, entydig att följa och enkel att utvärdera.**
 
-Patientens normala flöde: öppna → förstå → träna → logga → följ aktuell nivå → återbesök → ny klinisk bedömning → ny version.
+Patientens normala flöde: öppna → förstå → träna → logga → följ aktuell nivå → avstämning på klinik eller distans → ny klinisk bedömning → ny version.
 
 Klinikens normala flöde: välj blueprint → ange få individuella förutsättningar → granska färdigt förslag → dela. Mål: en vanlig plan ska kunna granskas och delas på cirka 60–90 sekunder efter klinisk bedömning.
 
@@ -47,7 +47,7 @@ Minst tre presentationsprofiler: tydlig guidning, standard och träningsvan. De 
 - Allt som behövs för genomförandet: variant, sida, stöd, utrustning, dos, vila och hjälp.
 - Påbörjat, delvis genomfört, genomfört, överhoppat och planerad vila skiljs åt.
 - Patienten kan markera lätt/lagom/tung och problem, men detta ändrar aldrig programmet automatiskt.
-- Återbesök och budskapet att nästa progression beslutas vid klinisk uppföljning är en permanent del av planen.
+- Planerad avstämning och budskapet att nästa progression beslutas vid klinisk uppföljning är en permanent del av planen.
 
 ## 6. Klinikens snabbflöde
 - Favoritblueprints och senast använda först.
@@ -145,3 +145,26 @@ AI får hjälpa till med strukturering och presentation, men kliniska regler är
 3. Samtidiga flikar/enheter, konflikter och större historik. Säkerhetskopiering/återställning ska provas före pilot.
 4. Favoriter/senast använda i snabbordination, säker diktat/AI-strukturering och senare journalintegration.
 5. Test på riktiga telefoner och klinisk granskning innan användare aktiveras. Befintliga Reda migreras först efter verifierad pilot.
+
+
+## Beslutad affärsriktning · klinik och distans
+Reda ska kunna användas av personer som aldrig besökt Kansei fysiskt. Personlig rehabilitering erbjuds med behandlarbedömning och planerade avstämningar, på klinik, på distans eller i ett kombinerat upplägg. Progression kräver ett behandlarbeslut, men beslutet kräver inte per automatik ett fysiskt återbesök.
+
+Första tänkta distansprodukt: en avgränsad period om 6–8 veckor för en tydlig målgrupp, med första bedömning, individuell startplan, två avstämningar och avslutande uppföljning. 2 490 kr var en prishypotes för senare pilot, inte beslutat publikt pris. Ingen försäljning eller patientaktivering är öppnad.
+
+Fristående träningsprogram utan individuell behandlarkontakt är en möjlig separat framtida produkt. Det ska inte blandas ihop med personlig vård. Automatisk individuell progression, generell programbutik och abonnemang ingår inte i den första distansprodukten.
+
+### Levererat · kontaktplanering
+- Versionsbunden careJourney i befintligt planinnehåll: kontaktupplägg, 6/8 veckor eller löpande klinikuppföljning, periodstart, dokumenterad bedömningsmarkering och planerade kontakter via klinik/video/telefon.
+- Behandlaren begär datumförslag och granskar dem. Datumen skapar inga bokningar eller möteslänkar.
+- Gränssnittet kan spara ett ofullständigt utkast. Aktiveringsknappen kräver komplett distansplanering och behandlarens bekräftelse av genomförd bedömning. Detta är ett stöd i gränssnittet, inte en ny serverregel eller en ersättning för journalföring.
+- Patientvyn och uppföljningen visar samma planerade kontakter. Passerade datum markeras utan att påstå genomfört besök eller ändra träningsnivån.
+- Befintlig schema 6-plan läses in inför nya ändringar. Kontaktplanering, måltext, individuellt råd och presentationsnivå behåller sparade övningsvarianter, dos och belastning. Byte av patient återställer personliga fält; patientbyte spärras medan sparning/aktivering pågår.
+- Landningssidan beskriver båda kontaktsätten och anger att distansförsäljning ännu inte öppnat. Gamla patientportalen är kvar.
+
+### Nästa steg för en säljbar distansprodukt
+1. Sluttesta säker distribution och patientflöde med internt testkonto.
+2. Definiera målgrupp, bedömningsunderlag, när fysisk undersökning behövs och hur försämring hanteras; behandlargranskning krävs.
+3. Bygga säker insamling av inledande underlag och avstämningssvar, genomförandestatus och beslut. De ska ha egna behörigheter/revisionsspår, inte läggas i publika formulär eller låtsas vara träningspass.
+4. Bokning/videosamtal, information och villkor, fastställt pris och betalning efter att lämpligt upplägg bedömts. Inga boknings- eller leveranskvitton utan verifierad tjänst.
+5. Klinisk och regulatorisk genomgång, faktisk mobiltestning och därefter begränsad betald pilot med uppföljning av resultat, upplevelse och behandlartid.

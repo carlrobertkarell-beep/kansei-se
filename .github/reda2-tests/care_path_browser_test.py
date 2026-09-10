@@ -46,6 +46,7 @@ class T(unittest.TestCase):
  def test_progression_frame_saved_as_inactive_draft_and_stale_when_prescription_changes(self):
   self.p.locator('.progression-author summary').click()
   for id,value in [('pathTarget','19'),('pathDays','3'),('pathMinDays','7'),('pathEvidenceDays','14'),('pathFrom','2026-09-10'),('pathUntil','2026-10-22')]:self.p.locator('#'+id).fill(value)
+  out=ROOT/'reda2-test-results';out.mkdir(exist_ok=True);self.p.locator('.progression-author').scroll_into_view_if_needed();self.p.screenshot(path=str(out/'reda-progression-author.png'))
   self.p.locator('[data-save-path]').click();self.assertIn('Ram sparad som utkast',self.p.locator('.progression-saved').inner_text());self.save();d=self.p.evaluate("JSON.parse(localStorage.getItem('care-draft')).payload");self.assertEqual(d['progressionDraft']['mode'],'simulation-only');self.assertEqual(d['exercises'][0]['dose']['reps'],17);self.assertEqual(d['progressionDraft']['steps'][1]['plan']['exercises'][0]['dose']['reps'],19)
   self.p.locator('#goal').fill('Nytt fiktivt mål');self.assertIn('behöver förnyas',self.p.locator('.progression-saved').inner_text());self.p.locator('[data-patient="b"]').click();self.p.wait_for_function("!document.querySelector('#careMode').disabled");self.assertEqual(self.p.locator('.progression-saved').count(),0)
  def test_invalid_contact_order_blocks_activation_without_losing_draft(self):

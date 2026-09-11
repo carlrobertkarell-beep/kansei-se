@@ -2,7 +2,7 @@
 (function(root){'use strict';
 const E=root.RedaProgression,P=root.RedaPlanner,X=root.RedaPaths,clone=x=>JSON.parse(JSON.stringify(x)),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function render(host,plan,onChange){
- if(!host)return;if(!plan){host.replaceChildren();return}
+ if(!host)return;if(!plan?.exercises?.length){host.replaceChildren();return}
  const saved=plan.progressionDraft,base=clone(plan);delete base.progressionDraft;
  if(saved){try{E.validate(saved)}catch{host.innerHTML='<div class="progression-author"><p>Det sparade ramutkastet kan inte läsas. Ordinationen ligger kvar.</p><button type="button" class="btn ghost">Ta bort felaktigt ramutkast</button></div>';host.querySelector('button').onclick=()=>onChange(base);return}}
  const current=!saved||E.binding(base)===E.binding(saved.steps[0].plan);

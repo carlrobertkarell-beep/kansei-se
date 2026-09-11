@@ -38,6 +38,11 @@
       variant('build','Stående, fler repetitioner','Handstöd',['Stå stadigt med händerna på ett stöd.','Lyft det valda benet åt sidan med kontroll.','För tillbaka benet långsamt.'],'Håll överkroppen stilla.',rep(3,12),'abduction')
     ]}
   ];
+  // Base variants predate clinical tags; constraints must also cover these entries.
+  for (const e of exercises) for (const v of e.variants) {
+    if (e.id === 'bridge') v.tags = {...v.tags, floor:true};
+    if (e.id === 'row' || e.id === 'rotation') v.tags = {...v.tags, band:true};
+  }
   const templates = [
     {id:'chair', name:'Stol & stående', detail:'Fyra exempelövningar för ben och balans.', items:[['chair','support','simultaneous'],['extension','easy','both'],['calf','both','simultaneous'],['balance','support','both']]},
     {id:'shoulder', name:'Axel & skuldror', detail:'Två bandövningar att anpassa efter undersökning.', items:[['row','light','simultaneous'],['rotation','light','both']]},

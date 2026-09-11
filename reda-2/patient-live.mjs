@@ -37,6 +37,7 @@ function renderExerciseHelp(x){const h=I.exercise(plan.payload,x),expanded=helpE
 function renderCare(){
  try{
   const c=window.RedaCare.overview(plan.payload),next=c.next;
+  const summary=document.querySelector('.hero .notice summary');if(summary)summary.textContent=next?'Nästa uppföljning · '+next.dateLabel:'Din planerade uppföljning';
   $('reviewText').textContent=next?`${next.label}: ${next.dateLabel} · ${next.contact}. Tid bekräftas separat. Din behandlare bedömer om planen ska ändras.`:c.unconfirmedPast?'De planerade datumen har passerat. Kontakta din behandlare för att bekräfta nästa avstämning.':'Ni kommer överens om nästa avstämning. Din behandlare bedömer nästa steg, på kliniken eller på distans.';
   $('careOverview').innerHTML=`<section class="care-overview"><p class="eyebrow">Ditt kontaktupplägg</p><h3>${esc(c.label)}${c.weeks?' · '+c.weeks+' veckor':''}</h3>${c.weeks?`<p>Planerad period: ${esc(window.RedaCare.displayDate(c.startDate))}–${esc(window.RedaCare.displayDate(c.endDate))}</p>`:''}<p>Här ser du kontakterna i din plan. Bokad tid och eventuell samtalslänk får du separat från Kansei.</p><ol class="care-timeline">${c.points.map((p,i)=>`<li><span class="care-num">${String(i+1).padStart(2,'0')}</span><div><strong>${esc(p.label)}</strong><small>${esc(p.dateLabel)} · ${esc(p.contact)}</small>${p.passed?'<small class="past-contact">Datum passerat · genomförande bekräftas med behandlaren</small>':''}</div></li>`).join('')||'<li><div><strong>Vi planerar nästa kontakt tillsammans.</strong><small>Inget datum är angivet i din plan ännu.</small></div></li>'}</ol><div class="care-preparation"><h4>Inför avstämningen</h4><p>Fundera på vilka övningar som fungerat, vad som varit svårt och hur det går med ditt mål. Dina registreringar är ett underlag när ni följer upp tillsammans.</p></div><p>En avstämning eller avslutad period ändrar inte träningsnivån automatiskt. Nästa steg beslutas med din behandlare.</p><a href="/kontakt/">Kontakta Kansei ↗</a></section>`;
  }catch{$('reviewText').textContent='Kontakta din behandlare för att bekräfta nästa uppföljning.';$('careOverview').innerHTML='<p class="muted">Kontaktplaneringen kunde inte visas. Kontakta Kansei för datum och kontaktform.</p>'}
@@ -75,7 +76,7 @@ $('logout').onclick=async()=>{if(responseForm.isBusy()||reflectionForm.isBusy()|
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{if(b.dataset.tab!=='today')pauseMotion();document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('hidden',x.id!==b.dataset.tab))})
 setAuth(true);api.currentUser().catch(e=>{if(e?.name==='AuthSessionMissingError')return null;throw e}).then(async u=>{if(u)await bootstrap()}).catch(error)
 async function retry(){if(!session)return;const finished=!!session.completedAt;if(await sync(session.status,session.completedAt)){if(finished){try{await bootstrap()}catch{$('sync').textContent='Passet är sparat. Ladda om sidan för att uppdatera planen.'}}}}
-$('retrySync').onclick=retry;window.addEventListener('beforeunload',e=>{if(unsynced&&!durable){e.preventDefault();e.returnValue=''}});
+$('retrySync').onclick=retry;window.addEventListener('beforeunload',e=>{if((unsynced&&!durable)||reflectionForm.isBusy()){e.preventDefault();e.returnValue=''}});
 
 window.addEventListener('online',()=>{if(unsynced&&session)retry()});
 
@@ -96,7 +97,7 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){$('motionPlay').disab
 let evaluating=false,pendingEvaluation=null,evaluationTask=null;
 function evaluateNext(){if(evaluationTask)return evaluationTask;evaluationTask=runEvaluation().finally(()=>{evaluationTask=null});return evaluationTask}
 async function runEvaluation(){
- if(!api.evaluateProgression||!state||evaluating||unsynced||recoveryBlocked||(session&&!session.completedAt))return;
+ if(!api.evaluateProgression||!state||evaluating||unsynced||recoveryBlocked||reflectionForm.isBusy()||(session&&!session.completedAt))return;
  evaluating=true;const patientId=state.patient.id;pendingEvaluation=pendingEvaluation||crypto.randomUUID();
  try{const d=await api.evaluateProgression(patientId,pendingEvaluation);if(state.patient.id!==patientId)return false;
   if(d.applied&&d.result_plan_id){session=null;await bootstrap()}

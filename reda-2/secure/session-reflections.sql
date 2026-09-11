@@ -18,15 +18,13 @@ create index reda_reflections_reporter on public.reda_session_reflections(report
 alter table public.reda_session_reflections enable row level security;
 revoke all on public.reda_session_reflections from public,anon,authenticated;
 grant select on public.reda_session_reflections to authenticated;
-create policy "own session reflection read" on public.reda_session_reflections for select to authenticated
- using(private.reda_is_own_patient(patient_id));
-create policy "assigned clinician reflection read" on public.reda_session_reflections for select to authenticated
- using((select private.reda_is_clinician_aal2()) and private.reda_owns_patient(patient_id));
+create policy "scoped reflection read" on public.reda_session_reflections for select to authenticated
+ using(private.reda_is_own_patient(patient_id) or private.reda_owns_patient(patient_id));
 
 alter table public.reda_review_cases alter column response_id drop not null;
 alter table public.reda_review_cases add column reflection_id uuid references public.reda_session_reflections(id);
 alter table public.reda_review_cases add constraint reda_case_one_source check(num_nonnulls(response_id,reflection_id)=1);
-create unique index reda_case_reflection on public.reda_review_cases(reflection_id) where reflection_id is not null;
+create unique index reda_case_reflection on public.reda_review_cases(reflection_id);
 
 create function private.reda_submit_session_reflection(p_session_id uuid,p_request_id uuid,p_answers jsonb)
 returns jsonb language plpgsql security definer set search_path='' as $$

@@ -74,8 +74,9 @@ $('motionPlay').onclick=playMotion;$('motionSlow').onclick=()=>{motionSlow=!moti
 
 if(matchMedia('(prefers-reduced-motion: reduce)').matches){$('motionPlay').disabled=true;$('motionSlow').disabled=true;$('motionPlay').textContent='Stilla visning';}
 
-let evaluating=false,pendingEvaluation=null;
-async function evaluateNext(){
+let evaluating=false,pendingEvaluation=null,evaluationTask=null;
+function evaluateNext(){if(evaluationTask)return evaluationTask;evaluationTask=runEvaluation().finally(()=>{evaluationTask=null});return evaluationTask}
+async function runEvaluation(){
  if(!api.evaluateProgression||!state||evaluating||unsynced||recoveryBlocked||(session&&!session.completedAt))return;
  evaluating=true;const patientId=state.patient.id;pendingEvaluation=pendingEvaluation||crypto.randomUUID();
  try{const d=await api.evaluateProgression(patientId,pendingEvaluation);pendingEvaluation=null;if(state.patient.id!==patientId)return;

@@ -33,6 +33,7 @@ jobs:
           expand(Path('.github/reda2-tests/response_database_test.sql'))
           expand(Path('.github/reda2-tests/runtime_database_test.sql'))
           SQL
+          python3 .github/reda2-tests/runtime_concurrency_test.py
       - name: Install browser tester
         run: |
           python3 -m pip install --disable-pip-version-check playwright==1.57.0
@@ -57,6 +58,7 @@ jobs:
           python3 .github/reda2-tests/care_path_browser_test.py
           python3 .github/reda2-tests/progression_browser_test.py
           python3 .github/reda2-tests/intelligence_browser_test.py
+          python3 .github/reda2-tests/runtime_browser_test.py
       - name: Public Reda landing and Kansei homepage integration
         run: python3 .github/reda2-tests/public_landing_test.py
       - name: Existing site regression checks

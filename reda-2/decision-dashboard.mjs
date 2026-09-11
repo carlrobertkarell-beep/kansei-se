@@ -76,6 +76,6 @@ export function mountDecisionDashboard(host,{api,onBusy,onOpen,onNew,onEdit,onWo
  q('[data-refresh]').onclick=()=>{if(busy)return;closeDetail();refresh()};q('[data-new]').onclick=()=>onNew?.();q('[data-filter]').onchange=e=>changeFilter(e.target.value);
  q('form').onsubmit=e=>{e.preventDefault();clearTimeout(timer);if(busy)return;search=q('[data-search]').value;offset=0;closeDetail();refresh()};
  q('[data-search]').oninput=e=>{if(busy)return;clearTimeout(timer);const value=e.target.value;timer=setTimeout(()=>{search=value;offset=0;closeDetail();refresh()},250)};
- refresh();
- return {refresh,open,async reveal(id){filter='all';search='';offset=0;q('[data-filter]').value=filter;q('[data-search]').value='';await refresh();if(valid())await open(id)},resetDetail:closeDetail,destroy(){alive=false;++listTicket;++detailTicket;clearTimeout(timer);host.replaceChildren()}};
+ q('[data-filter]').value=filter;refresh();
+ return {refresh,open,async reveal(id){filter='all';search='';offset=0;q('[data-filter]').value=filter;q('[data-search]').value='';host.querySelectorAll('[data-stream]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.stream===filter)));await refresh();if(valid())await open(id)},resetDetail:closeDetail,destroy(){alive=false;++listTicket;++detailTicket;clearTimeout(timer);host.replaceChildren()}};
 }

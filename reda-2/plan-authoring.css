@@ -4,3 +4,5 @@
 @media(max-width:1000px){.patient-mode .workspace.authoring-workspace{grid-template-columns:1fr}.authoring-workspace .plan-panel{position:static;max-height:none}.authoring-workspace .plan-panel .action-stack{position:static}.authoring-workspace .plan-card{padding:18px}}
 
 .authoring-plan-jump{display:none}.authoring-preview [data-motion]{max-width:480px;margin:auto}.authoring-preview [data-motion] svg{width:100%;height:auto}@media(max-width:1000px){.authoring-plan-jump{display:block;width:100%;margin-bottom:18px}.plan-panel{scroll-margin-top:20px}}
+
+.authoring-workspace .plan-panel{grid-column:auto;grid-template-columns:minmax(0,1fr)}.plan-authoring .authoring-check{justify-content:flex-start}.plan-authoring .authoring-check input{width:auto;flex:0 0 auto;margin:0;accent-color:#285a90}.authoring-intro{padding-top:20px}

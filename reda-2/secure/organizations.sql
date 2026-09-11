@@ -100,9 +100,18 @@ create function private.reda_is_own_patient(pid uuid) returns boolean language s
 $$;
 create function private.reda_lock_clinical_patient(pid uuid) returns void language plpgsql security definer set search_path='' as $$
 begin
+ if not private.reda_owns_patient(pid) then raise exception using errcode='42501',message='Patienten är inte tillgänglig.';end if;
  perform 1 from public.reda_organizations o join public.reda_patients p on p.organization_id=o.id where p.id=pid for share of o;
  if not private.reda_owns_patient(pid) then raise exception using errcode='42501',message='Patienten är inte tillgänglig i den här arbetsytan.';end if;
 end$$;
+-- Both staff and patient engine writes serialize with organization/role changes.
+create function private.reda_lock_patient_context(pid uuid) returns void language plpgsql security definer set search_path='' as $$
+begin
+ if not (private.reda_is_own_patient(pid) or private.reda_owns_patient(pid)) then raise exception using errcode='42501',message='Patienten är inte tillgänglig.';end if;
+ perform 1 from public.reda_organizations o join public.reda_patients p on p.organization_id=o.id where p.id=pid for share of o;
+ if not (private.reda_is_own_patient(pid) or private.reda_owns_patient(pid)) then raise exception using errcode='42501',message='Åtkomsten har ändrats.';end if;
+end$$;
+revoke all on function private.reda_lock_patient_context(uuid) from public,anon,authenticated;
 create function private.reda_patient_binding_guard() returns trigger language plpgsql security definer set search_path='' as $$
 begin
  if tg_op='UPDATE' and (new.id,new.organization_id,new.clinician_id) is distinct from (old.id,old.organization_id,old.clinician_id) then raise exception using errcode='23514',message='Patientrelationen kan inte flyttas eller byta ansvarig i detta flöde.';end if;
@@ -168,8 +177,9 @@ declare actor uuid:=private.reda_live_actor();org uuid:=private.reda_request_org
  if m.user_id is null then raise exception using errcode='42501',message='Medlemskapet är inte tillgängligt.';end if;
  if p_revision is distinct from m.revision then raise exception using errcode='40001',message='Teamet har ändrats. Uppdatera innan du försöker igen.';end if;
  if p_role is null or p_role not in ('owner','admin','finance','member') or p_status is null or p_status not in ('active','revoked') or p_clinical_access is null then raise exception using errcode='22023',message='Ogiltig roll eller status.';end if;
+ if p_status='active' and not exists(select 1 from auth.users where id=p_user_id and deleted_at is null and (banned_until is null or banned_until<=now())) then raise exception using errcode='42501',message='Kontot är inte tillgängligt.';end if;
  if p_clinical_access and (not exists(select 1 from public.reda_organizations where id=org and kind='clinic') or not exists(select 1 from public.reda_profiles p join auth.users u on u.id=p.user_id where p.user_id=p_user_id and p.role='clinician' and u.deleted_at is null and (u.banned_until is null or u.banned_until<=now()))) then raise exception using errcode='42501',message='Kontot måste först vara godkänt som behandlare.';end if;
- if m.role='owner' and m.status='active' and (p_role<>'owner' or p_status<>'active') and not exists(select 1 from public.reda_memberships where organization_id=org and role='owner' and status='active' and user_id<>p_user_id) then raise exception using errcode='23514',message='Arbetsytan måste ha minst en aktiv ägare.';end if;
+ if m.role='owner' and m.status='active' and (p_role<>'owner' or p_status<>'active') and not exists(select 1 from public.reda_memberships m join auth.users u on u.id=m.user_id where m.organization_id=org and m.role='owner' and m.status='active' and m.user_id<>p_user_id and u.deleted_at is null and (u.banned_until is null or u.banned_until<=now())) then raise exception using errcode='23514',message='Arbetsytan måste ha minst en aktiv ägare.';end if;
  old_state=jsonb_build_object('role',m.role,'clinical_access',m.clinical_access,'status',m.status,'revision',m.revision);
  if (m.role,m.clinical_access,m.status)=(p_role,p_clinical_access,p_status) then return old_state;end if;
  update public.reda_memberships set role=p_role,clinical_access=p_clinical_access,status=p_status,revision=revision+1,updated_at=now() where organization_id=org and user_id=p_user_id returning jsonb_build_object('role',role,'clinical_access',clinical_access,'status',status,'revision',revision) into new_state;

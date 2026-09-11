@@ -1,5 +1,9 @@
 # Exercise Intelligence – runtime 2026-09-11
 
+## Organisationsblock · 2026-09-11
+
+[WORKSPACES.md](WORKSPACES.md) beskriver de nya arbetsytorna, teamrollerna, patienttilldelningen och serverkontrollerna. Det avsnittet ersätter tidigare antaganden om en enda klinik och automatisk behandlarprofil vid inloggning. Aktivering och inbjudningar är stängda på servern; inga nya patienter eller kliniker ansluts. Befintliga ordinationer och historik bevaras.
+
 ## Nästa arbetsflöde · 2026-09-11
 
 Flerstegsvägar med ändringsjämförelser, individuellt rörelseomfång, klinisk bedömning av motorbeslut, gemensam kliniköversikt och förberedd följdfrågedialog finns nu i koden. Se [INTELLIGENCE-WORKFLOW.md](INTELLIGENCE-WORKFLOW.md) för aktuell omfattning, testmetod och kvarvarande driftsteg. Äldre begränsningar om enstegsredigerare och avsaknad av kliniköversikt nedan är ersatta. Patientaktivering, automatisk tillämpning, AI-anrop och försäljning har inte öppnats.

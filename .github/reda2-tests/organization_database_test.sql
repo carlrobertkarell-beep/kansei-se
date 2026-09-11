@@ -126,7 +126,7 @@ select tests.denied('select reda_my_workspaces()','42501','anonymous workspace d
 reset role;
 
 -- Database integrity, including service-side errors which bypass RLS.
-select tests.denied('insert into reda_sessions(client_session_id,patient_id,plan_id,plan_version,status) values(tests.id(9300),tests.id(11),tests.id(9121),1,''started'')','23503','cross-clinic plan/session link rejected even by privileged writer');
+select tests.denied('insert into reda_sessions(client_session_id,patient_id,plan_id,plan_version,status,started_at) values(tests.id(9300),tests.id(11),tests.id(9121),1,''started'',now())','23503','cross-clinic plan/session link rejected even by privileged writer');
 select tests.denied('insert into reda_plans(patient_id,clinician_id,version,status,payload) values(tests.id(9111),tests.id(4),50,''draft'',''{}'')','23503','cross-assignment prescription binding rejected');
 select tests.denied('update reda_progression_frames set current_plan_id=tests.id(9121) where id=current_setting(''tests.a_frame'')::uuid','23503','frame cannot use another clinic plan');
 select tests.denied('update reda_engine_decisions set result_plan_id=tests.id(9121) where id=current_setting(''tests.a_decision'')::uuid','23503','decision cannot point to another clinic result');

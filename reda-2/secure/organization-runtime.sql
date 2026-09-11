@@ -46,7 +46,7 @@ language plpgsql security definer set search_path='' as $$
 declare actor uuid:=private.reda_live_actor();patient public.reda_patients%rowtype;f public.reda_progression_frames%rowtype;p public.reda_plans%rowtype;d public.reda_engine_decisions%rowtype;
  a text:='wait';code text:='evidence';today date:=(now() at time zone 'Europe/Stockholm')::date;r record;ex jsonb;mark jsonb;latest jsonb;days date[]:='{}';ids uuid[]:='{}';next_id uuid;next_version int;min_days int;can_apply boolean:=false;cutoff timestamptz;
 begin
- if private.reda_is_clinician_aal2() then perform private.reda_lock_clinical_patient(p_patient_id);end if;
+ perform private.reda_lock_patient_context(p_patient_id);
  select * into patient from public.reda_patients where id=p_patient_id and status='active' and (private.reda_is_own_patient(id) or private.reda_owns_patient(id)) for update;
  if patient.id is null or p_request_id is null then raise exception using errcode='42501',message='Patienten är inte tillgänglig.';end if;
  select * into d from public.reda_engine_decisions where request_id=p_request_id;
@@ -110,7 +110,8 @@ begin
   where a.id::text=auth.jwt()->>'session_id' and a.user_id=actor and u.deleted_at is null and (u.banned_until is null or u.banned_until<=now())
  ) then raise exception using errcode='42501',message='Logga in igen för att lämna återkoppling.'; end if;
  if p_request_id is null or p_session_id is null or p_answers is null then raise exception using errcode='22023',message='Återkopplingen är ofullständig.'; end if;
- -- Same patient-first lock order as session saving and engine evaluation.
+ perform private.reda_lock_patient_context((select patient_id from public.reda_sessions where id=p_session_id));
+ -- Organization, then patient, then evidence lock order.
  perform 1 from public.reda_patients p join public.reda_sessions rs on rs.patient_id=p.id where rs.id=p_session_id and private.reda_is_own_patient(p.id) for update of p;
  select rs.* into s from public.reda_sessions rs
  join public.reda_patients p on p.id=rs.patient_id
@@ -217,6 +218,7 @@ begin raise exception using errcode='42501',message='Patientaktivering är inte 
 create function private.reda_sync_session(p_client_session_id uuid,p_plan_id uuid,p_status text,p_started_at timestamptz,p_completed_at timestamptz,p_payload jsonb) returns uuid language plpgsql security definer set search_path='' as $$
 declare actor uuid:=private.reda_live_actor();pid uuid;begin
  select patient_id into pid from public.reda_plans where id=p_plan_id;
+ perform private.reda_lock_patient_context(pid);
  if not private.reda_is_own_patient(pid) then raise exception using errcode='42501',message='Planen är inte tillgänglig.';end if;
  return private.reda_save_session_internal(actor,p_client_session_id,p_plan_id,p_status,p_started_at,p_completed_at,p_payload);
 end$$;

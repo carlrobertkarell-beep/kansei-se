@@ -1,5 +1,9 @@
 # Exercise Intelligence — nästa arbetsflöde
 
+## Organisationsblock · 2026-09-11
+
+[WORKSPACES.md](WORKSPACES.md) beskriver de nya arbetsytorna, teamrollerna, patienttilldelningen och serverkontrollerna. Det avsnittet ersätter tidigare antaganden om en enda klinik och automatisk behandlarprofil vid inloggning. Aktivering och inbjudningar är stängda på servern; inga nya patienter eller kliniker ansluts. Befintliga ordinationer och historik bevaras.
+
 Implementerat 2026-09-11. Denna beskrivning ersätter äldre uppgifter om att redigeraren bara klarar ett dossteg. Patientaktivering, automatisk tillämpning, betalning och externa AI-frågor har inte öppnats av detta arbete.
 
 ## En hel väg, granskad av behandlaren

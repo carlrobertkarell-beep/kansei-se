@@ -22,7 +22,7 @@ export function changeSummary(before,after){
  return changes;
 }
 export function createAuthoringTools(P,D){
- const compatible=(v,c={})=>!(c.floorOK===false&&v.tags?.floor)&&!(c.band===false&&v.tags?.band)&&!(c.equipment==='home'&&v.tags?.gym)&&!(!['run','sport'].includes(c.goalProfile)&&v.tags?.impact);
+ const compatible=(v,c={})=>!(c.floorOK===false&&v.tags?.floor)&&!(c.band===false&&v.tags?.band)&&!(c.equipment==='home'&&v.tags?.gym)&&!(!['run','sport','hyrox'].includes(c.goalProfile)&&v.tags?.impact);
  function exercise(id,context={},variantId){const e=D.exercises.find(x=>x.id===id);if(!e)throw Error('Övningen finns inte i biblioteket.');const v=variantId?e.variants.find(v=>v.id===variantId&&compatible(v,context)):e.variants.find(v=>compatible(v,context));if(!v)throw Error('Ingen variant passar de valda förutsättningarna.');return P.exerciseFor(id,context,v.id)}
  function add(plan,id){if(plan.exercises.length>=12)throw Error('En plan kan innehålla högst 12 övningar.');if(plan.exercises.some(x=>x.id===id))throw Error('Övningen finns redan i planen. Justera sida eller dos där.');const p=cleanProgression(plan);p.exercises.push(exercise(id,p.context));return recheck(p)}
  function remove(plan,index){const p=cleanProgression(plan);p.exercises.splice(index,1);return recheck(p)}

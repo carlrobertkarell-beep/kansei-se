@@ -1,14 +1,14 @@
 import {planReadiness,planFingerprint} from './plan-readiness.mjs?v=1'
 import {renderProcess} from './process-indicator.mjs?v=1'
 import {openSelfPlanPreview} from './self-plan-preview.mjs?v=1'
-import {mountPlanAuthoring} from './plan-authoring.mjs?v=3'
+import {mountPlanAuthoring} from './plan-authoring.mjs?v=4'
 import {emptyPlan,cleanProgression} from './plan-authoring-model.mjs?v=2'
-import {mountDecisionDashboard} from './decision-dashboard.mjs?v=4'
+import {mountDecisionDashboard} from './decision-dashboard.mjs?v=5'
 import {openPatientIntake} from './patient-intake.mjs?v=2'
 import {mountWorkspaceTeam,roleLabels} from './workspace-team.mjs?v=1'
-import * as api from './secure-browser.mjs?v=20260911-workflow2'
-import {mountClinicEngine} from './runtime-ui.mjs?v=3'
-import {mountClinicInbox} from './clinic-inbox.mjs?v=2'
+import * as api from './secure-browser.mjs?v=20260912-loop1'
+import {mountClinicEngine} from './runtime-ui.mjs?v=4'
+import {mountClinicInbox} from './clinic-inbox.mjs?v=3'
 let composer=null,clinicalProfile={},processData={plans:[],sessions:[],responses:[]},savedRecord=null,reviewedPlan="";
 let dashboard=null,inbox=null,team=null,activeWorkspace=null,workspaces=[],workspaceEpoch=0,workspaceBusy=false;
 const $=id=>document.getElementById(id), C=window.RedaClinical, P=window.RedaPlanner

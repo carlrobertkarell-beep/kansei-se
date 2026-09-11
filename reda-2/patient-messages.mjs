@@ -3,15 +3,15 @@ export function mountPatientMessages(host,{api}){
  if(!host||!api.patientMessages)return null;
  let alive=true,busy=false,ticket=0,data=null,pending=null;
  const valid=()=>alive&&host.isConnected,q=s=>host.querySelector(s);
- host.innerHTML='<section class="card reda-messages"><div class="reda-message-heading"><h2>Meddelanden från din behandlare</h2><button class="btn ghost" data-refresh-messages>Uppdatera</button></div><p class="reda-message-status" role="status" aria-live="polite"></p><div class="reda-message-list"></div><form class="reda-reply" hidden><label>Ditt svar<textarea maxlength="1000" rows="3" required placeholder="Skriv ditt svar här."></textarea></label><button type="submit" class="btn primary">Skicka svar till behandlaren</button></form><p class="sub">Här får du svar i Reda. Meddelanden bevakas inte i realtid. Använd klinikens vanliga kontaktväg när du behöver snabb kontakt.</p></section>';
+ host.innerHTML='<details class="card reda-messages"><summary>Meddelanden från din behandlare <span data-message-count></span></summary><div class="reda-message-heading"><button class="btn ghost" data-refresh-messages>Uppdatera</button></div><p class="reda-message-status" role="status" aria-live="polite"></p><div class="reda-message-list"></div><form class="reda-reply" hidden><label>Ditt svar<textarea maxlength="1000" rows="3" required placeholder="Skriv ditt svar här."></textarea></label><button type="submit" class="btn primary">Skicka svar till behandlaren</button></form><p class="sub">Här får du svar i Reda. Meddelanden bevakas inte i realtid. Använd klinikens vanliga kontaktväg när du behöver snabb kontakt.</p></details>';
  const status=text=>{if(valid())q('.reda-message-status').textContent=text};
  function setBusy(value){busy=value;host.querySelectorAll('button,textarea').forEach(el=>el.disabled=value)}
  async function refresh(message=''){
   if(busy)return;const request=++ticket;status('Hämtar meddelanden…');
-  try{const result=await api.patientMessages();if(!valid()||request!==ticket)return;data=result;
+  try{const result=await api.patientMessages();if(!valid()||request!==ticket)return;data=result;q('[data-message-count]').textContent=data.messages.length?'('+data.messages.length+')':'';q('details').open=!!data.reply_to||!!message;
    q('.reda-message-list').innerHTML=data.messages.length?data.messages.map(m=>'<div class="dash-bubble '+(m.kind==='patient'?'from-patient':'')+'"><b>'+esc(m.kind==='patient'?'Ditt svar':'Din behandlare')+'</b><p>'+esc(m.body)+'</p><small>'+esc(new Date(m.created_at).toLocaleString('sv-SE'))+'</small></div>').join(''):'<p>Du har inga meddelanden ännu.</p>';
    q('.reda-reply').hidden=!data.reply_to;status(message||(data.reply_to?'Du kan svara på behandlarens senaste meddelande.':data.messages.length?'Senaste 20 meddelandena visas.':''));
-  }catch(e){if(valid()&&request===ticket){data=null;q('.reda-message-list').replaceChildren();q('.reda-reply').hidden=true;status(message?message+' Uppdatera för att läsa dialogen.':'Meddelandena kunde inte hämtas. Försök med Uppdatera.')}}
+  }catch(e){if(valid()&&request===ticket){data=null;q('details').open=true;q('.reda-message-list').replaceChildren();q('.reda-reply').hidden=true;status(message?message+' Uppdatera för att läsa dialogen.':'Meddelandena kunde inte hämtas. Försök med Uppdatera.')}}
  }
  q('[data-refresh-messages]').onclick=()=>refresh();
  q('form').onsubmit=async e=>{

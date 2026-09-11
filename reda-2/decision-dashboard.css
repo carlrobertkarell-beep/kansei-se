@@ -11,3 +11,4 @@
 @media(max-width:560px){.dash-row,.has-detail .dash-row{grid-template-columns:1fr;gap:14px;padding:16px}.dash-situation,.has-detail .dash-situation{padding:0;border:0}.dash-next{display:block}.dash-next>.dash-actions{margin-top:10px}.dash-proposal>.dash-actions{bottom:-16px}.dash-shortcuts{gap:6px}.dash-chip{font-size:12px}}
 
 .dash-patient-link{font:inherit;font-size:16px;font-weight:600;text-align:left;border:0;background:none;color:#203b64;padding:0;cursor:pointer;overflow-wrap:anywhere}.dash-patient-link:hover{text-decoration:underline;text-underline-offset:3px}
+.dash-contact{display:flex;gap:10px 18px;flex-wrap:wrap}.dash-contact a{color:#315eae;font-size:13px;overflow-wrap:anywhere}

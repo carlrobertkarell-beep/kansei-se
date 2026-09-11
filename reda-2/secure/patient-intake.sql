@@ -163,7 +163,7 @@ language plpgsql stable security definer set search_path='' as $$
 declare actor uuid:=private.reda_live_actor();snap jsonb;result jsonb;begin
  if not private.reda_owns_patient(p_patient_id) then raise exception using errcode='42501',message='Patienten är inte tillgänglig i arbetsytan.';end if;
  snap=private.reda_dashboard_snapshot(p_patient_id);
- select jsonb_build_object('patient',to_jsonb(r)||private.reda_patient_brief(r.patient_id),'token',md5(snap::text),'today',(now() at time zone 'Europe/Stockholm')::date,
+ select jsonb_build_object('patient',to_jsonb(r)||private.reda_patient_brief(r.patient_id),'contact',(select jsonb_build_object('email',pr.email,'phone',pr.phone)from private.reda_patient_profiles pr where pr.patient_id=r.patient_id),'token',md5(snap::text),'today',(now() at time zone 'Europe/Stockholm')::date,
  'plan',case when snap->'plan'='null'::jsonb then null else jsonb_build_object('id',snap->'plan'->'id','version',snap->'plan'->'version','goal',snap->'plan'->'payload'->'goal','exercises',snap->'plan'->'payload'->'exercises') end,
  'cases',coalesce((select jsonb_agg(jsonb_build_object('id',c.id,'code',c.code,'status',c.status,'created_at',c.created_at,'plan_version',tr.plan_version,'answers',tr.answers) order by c.created_at,c.id) from public.reda_review_cases c join public.reda_training_responses tr on tr.id=c.response_id where c.patient_id=p_patient_id and c.status<>'resolved'),'[]'::jsonb),
  'prepared_frame',snap->'plan'->'payload'->'progressionDraft',

@@ -38,12 +38,22 @@ Modellen klassificerar avsikt/övning och tolkar uttryckligt angivna kategorier.
 
 Första utvärderingskandidat: `gpt-5.6-terra`, låg reasoning-nivå, Responses API med strikt JSON-schema, `store:false`, 1 800 output-token-tak och 15 sekunders timeout. Kandidaten valdes för den avgränsade språk-/klassificeringsuppgiften utifrån aktuell officiell dokumentation; den är inte utsedd efter uppmätt resultat i Reda. Ingen dold standardmodell slås på i produktion. Edge Function kräver fortfarande explicit `OPENAI_REDA_MODEL`, API-nyckel och befintlig avstängd AI-flagga.
 
-22 svenska fiktiva fall finns i `evals/dialogue-fixtures.mjs`: vanlig instruktion, dos, sida, vila, lätt nivå, hög träningsvana, utrustning, förenkling, följdfrågor, progression, förändrade besvär, negation, återhämtning, annan träning och försök att kringgå planen.
+26 svenska fiktiva fall finns i `evals/dialogue-fixtures.mjs`: vanlig instruktion, dos, sida, vila, lätt nivå, hög träningsvana, utrustning, förenkling, följdfrågor, progression, förändrade besvär, negation, återhämtning, annan träning och försök att kringgå planen.
 
 - `node reda-2/evals/run-dialogue.mjs` kontrollerar förfrågningarna utan nätverksanrop.
 - `node reda-2/evals/run-dialogue.mjs --live-fixtures` använder endast dessa fasta fiktiva fall och kräver `OPENAI_API_KEY`. Ingen Supabase-koppling, patientaktivering eller ändring av produktionsflaggor ingår. Redovisar fall-id, utfall, svarstid och tokenanvändning; ingen nyckel eller frågetext skrivs i rapporten.
 
-En API-nyckel var inte tillgänglig i utvecklingsmiljön. Enhetstester och simulerade providersvar är kontrollerade; verklig modellkvalitet, svarstid och kostnad är **inte uppmätta**. Att `store:false` används innebär inte automatiskt att leverantörens övriga loggning upphör. Avtal, kontoinställningar, datahantering och information till patienten måste vara klara innan verklig hälsofritext används.
+OpenAI-nyckeln är verifierad från Redas server 2026-09-11. Den första verkliga körningen med 22 fasta fiktiva fall gav 21 godkända och ett underkänt fall: en fråga om vilket ben som är ordinerat klassificerades som utförande, så svaret saknade sidinformationen. [Första körningen](evals/results/2026-09-11-dialogue-baseline.json) bevarar även det underkända utfallet.
+
+Dialogmotor 2.0.1 förtydligar skillnaden mellan ordination (inklusive sida, vila och dos) och rörelseteknik. Fyra extra fall prövar alternativa sidfrågor, följdfrågor, båda sidor och en sidfråga med nytillkommen smärta. Bedömaren är gemensam för lokal och serverbaserad utvärdering och kräver nu även att rätt sparad sidinformation faktiskt finns i svaret.
+
+Omprovet med 2.0.1 gav 22 godkända av 26 försök: två anslutningsfel och två svar som avvisades av valideringen. Ett av de senare felen kunde återskapas: modellen kombinerade `otherTraining` med `no` och `quality` med `worse`. Citatkontrollen godkände citaten, men kategorikontrollen stoppade svaret. [Omprovet](evals/results/2026-09-11-dialogue-side-routing.json) och [den riktade felsökningen](evals/results/2026-09-11-dialogue-diagnostic-retry.json) sparas oförändrade.
+
+Dialogmotor 2.0.2 anger separata tillåtna värden för varje kategori i modellens JSON-schema. Instruktionen förtydligar dessutom att ordinationsfakta inte är träningsåterkoppling, att smärta ensam inte beskriver rörelsekvalitet och att kontaktvägen inte behöver kategoriserade rapporter. Serverns efterkontroll finns kvar.
+
+Den slutliga körningen med 2.0.2 gav **26 av 26 godkända fall**, utan omförsök i den körningen. [Fullständigt resultat](evals/results/2026-09-11-dialogue-verified.json). Medianen för serverns modell-anrop inklusive validering var 1.41 sekunder, högsta tid 2.49 sekunder. Den körningen rapporterade 28 574 input-token och 704 output-token. Detta är inte hela appens svarstid eller en verifierad fakturakostnad.
+
+Körningarna använder fasta fiktiva uppgifter och en tidsbegränsad, separat testväg med JWT-verifiering och ytterligare testbehörighet. Testvägen läser inga patienttabeller och kan inte ändra planer eller produktionsflaggor. Nyckeln hämtas endast inne på servern; rapporterna innehåller inga nycklar eller patientuppgifter. En första uppsättning handskrivna exempel är inte klinisk validering eller ett mått på generell träffsäkerhet. Att `store:false` används innebär inte automatiskt att leverantörens övriga loggning upphör. Avtal, kontoinställningar, datahantering och information till patienten måste vara klara innan verklig hälsofritext används.
 
 Officiella källor kontrollerade 2026-09-11: [modell](https://developers.openai.com/api/docs/models/gpt-5.6-terra), [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs), [datahantering](https://developers.openai.com/api/docs/guides/your-data).
 
@@ -54,7 +64,7 @@ Det tidigare förslaget i `BUSINESS-MODEL.md` kvarstår: inkluderad startplan, f
 ## Kvar före drift med patienter
 
 - Klinisk granskning av hela progressionskedjor för olika kapaciteter och mål.
-- Verklig fiktiv modellutvärdering med tillgänglig projektkonfiguration, följd av medvetet modellval.
+- Bredare, oberoende och kliniskt granskade testfall samt upprepade körningar före slutligt modellval och patientpilot.
 - Distribution och återinloggning från start till mål när patientaktivering godkänns.
 - Arbetsmängd och undantagsfrekvens under en kontrollerad pilot.
 - Separat beslut om automatisk tillämpning, AI-anrop och eventuell försäljning.
@@ -63,6 +73,8 @@ Det tidigare förslaget i `BUSINESS-MODEL.md` kvarstår: inkluderad startplan, f
 
 Första hela kvalitetskörningen på kodversion `2478d88a3fdcd44337cd1c50ec4a7c3339a8d17c`: [GitHub Actions 34569472238](https://github.com/carlrobertkarell-beep/kansei-se/actions/runs/34569472238), godkänd. 155 Node-tester, isolerad PostgreSQL med ägar-/MFA-/sessionskontroller, två samtidiga databasanslutningar samt samtliga tidigare och nya webbläsarflöden gick igenom. Nya flöden omfattar flerstegsutkast, ärendepaginering/filter/fel, ärendebedömning, motorbedömning och lokal samtalshistorik. Providersvar i webbläsartesterna är simulerade.
 
-Supabase-migration `20260911062158 exercise_intelligence_clinic_workflow` är applicerad från `secure/clinic-intelligence.sql`. `reda-dialogue` version 2 är driftsatt med JWT-verifiering; innehållets SHA-256 är `248c820d140b2e16dab296e65b5f321df14d50a8097d4298145673a84fdfe794`.
+Supabase-migration `20260911062158 exercise_intelligence_clinic_workflow` är applicerad från `secure/clinic-intelligence.sql`. `reda-dialogue` version 8 (dialogmotor 2.0.2) är driftsatt med JWT-verifiering; innehållets SHA-256 är `ed76e897c583f7e493d0cec036aefae8b3449e9dc2d28bbc3ff1e574420cdbbc`.
 
 Efterkontroll: en befintlig patient, tre befintliga planer, noll pass, noll träningssvar och noll motorbedömningar. Automatisk tillämpning och AI-frågor är fortsatt avstängda. Ny bedömningstabell har RLS, browserklienten saknar direkt INSERT och anonym åtkomst till kliniköversikten är nekad. Inga nya säkerhetsvarningar från Supabase. Tidigare varning om läckta lösenord och äldre RLS-prestandaråd kvarstår; index på den nya tomma tabellen är ännu oanvända.
+
+Efter API-utvärderingen: 38 lokala dialog-/kontraktstester godkända. Den separata testfunktionen är stängd och svarar HTTP 410 utan att läsa nyckeln eller anropa modellen. Testerna hämtar nyckeln från serverns hemlighetshantering och returnerar inte nyckelvärdet. Produktionsflaggorna `ai_enabled` och `automatic_enabled` är fortsatt `false`; antal patienter (1), planer (3), pass (0) och träningssvar (0) är oförändrade.

@@ -1,0 +1,156 @@
+{
+  "evaluatedOn": "2026-09-11",
+  "capturedAt": "2026-09-11T07:42:10.873799+00:00",
+  "mode": "live-fictional",
+  "model": "gpt-5.6-terra",
+  "engineVersion": "2.0.1",
+  "engineSha256": "74ea2954feb14bf5330bd1b727a59b74211e67771ded523eb00aac335c9eb971",
+  "provider": "OpenAI Responses API",
+  "fixtureSource": "../dialogue-fixtures.mjs",
+  "graderSource": "../score-dialogue.mjs",
+  "limitations": [
+    "One response per authored fictional case unless marked as a diagnostic retry. Not representative clinical validation.",
+    "Latency measures the server-side provider request and validation, not end-to-end patient UX.",
+    "Reported token usage includes only responses received by the test client; a lost response may still have incurred provider usage.",
+    "No real patient data, plan changes or patient activation."
+  ],
+  "summary": {
+    "attempts": 4,
+    "passed": 3,
+    "failed": [
+      "side_safety"
+    ],
+    "transportFailures": 0,
+    "medianLatencyMs": 1469.5,
+    "maxLatencyMs": 1711,
+    "knownInputTokens": 2920,
+    "knownOutputTokens": 216,
+    "tokenUsageIncomplete": false
+  },
+  "results": [
+    {
+      "httpStatus": 200,
+      "id": "advanced",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "too_easy",
+      "exerciseIndex": 0,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1032,
+      "usage": {
+        "inputTokens": 728,
+        "outputTokens": 23
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "equipment",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "equipment",
+      "exerciseIndex": 1,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1232,
+      "usage": {
+        "inputTokens": 723,
+        "outputTokens": 22
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "negative",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "report",
+      "exerciseIndex": null,
+      "reports": [
+        {
+          "field": "nextDay",
+          "value": "settled"
+        },
+        {
+          "field": "recovery",
+          "value": "unknown"
+        }
+      ],
+      "providerStatus": 200,
+      "latencyMs": 1711,
+      "usage": {
+        "inputTokens": 731,
+        "outputTokens": 106
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "side_safety",
+      "model": "gpt-5.6-terra",
+      "pass": false,
+      "error": "request_or_validation_failed",
+      "validationDiagnostics": {
+        "status": "completed",
+        "textCount": 1,
+        "invalidCategoryPairs": [
+          {
+            "field": "otherTraining",
+            "value": "no"
+          },
+          {
+            "field": "quality",
+            "value": "worse"
+          }
+        ],
+        "quotesMatch": true,
+        "reports": [
+          {
+            "field": "otherTraining",
+            "value": "no",
+            "quote": "Bensparken är för höger ben"
+          },
+          {
+            "field": "quality",
+            "value": "worse",
+            "quote": "fått ont i vänster knä"
+          }
+        ]
+      },
+      "providerStatus": 200,
+      "latencyMs": 1707,
+      "usage": {
+        "inputTokens": 738,
+        "outputTokens": 65
+      }
+    }
+  ]
+}

@@ -1,0 +1,704 @@
+{
+  "evaluatedOn": "2026-09-11",
+  "capturedAt": "2026-09-11T07:46:39.705848+00:00",
+  "mode": "live-fictional",
+  "model": "gpt-5.6-terra",
+  "engineVersion": "2.0.2",
+  "engineSha256": "0e3a9fbfa50deed22a99441fc652de85127a879371282c306a8d15ec33abea6d",
+  "provider": "OpenAI Responses API",
+  "fixtureSource": "../dialogue-fixtures.mjs",
+  "graderSource": "../score-dialogue.mjs",
+  "limitations": [
+    "One response per authored fictional case unless marked as a diagnostic retry. Not representative clinical validation.",
+    "Latency measures the server-side provider request and validation, not end-to-end patient UX.",
+    "Reported token usage includes only responses received by the test client; a lost response may still have incurred provider usage.",
+    "No real patient data, plan changes or patient activation."
+  ],
+  "summary": {
+    "attempts": 26,
+    "passed": 26,
+    "failed": [],
+    "transportFailures": 0,
+    "medianLatencyMs": 1413.0,
+    "maxLatencyMs": 2487,
+    "knownInputTokens": 28574,
+    "knownOutputTokens": 704,
+    "tokenUsageIncomplete": false
+  },
+  "results": [
+    {
+      "httpStatus": 200,
+      "id": "purpose",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "purpose",
+      "exerciseIndex": 0,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1531,
+      "usage": {
+        "inputTokens": 1094,
+        "outputTokens": 22
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "execution",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "execution",
+      "exerciseIndex": 0,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1387,
+      "usage": {
+        "inputTokens": 1096,
+        "outputTokens": 22
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "dose",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "dose",
+      "exerciseIndex": 0,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 2429,
+      "usage": {
+        "inputTokens": 1098,
+        "outputTokens": 22
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "side",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "dose",
+      "exerciseIndex": 0,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1268,
+      "usage": {
+        "inputTokens": 1094,
+        "outputTokens": 22
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "rest",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "dose",
+      "exerciseIndex": 1,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1430,
+      "usage": {
+        "inputTokens": 1096,
+        "outputTokens": 22
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "easy",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "too_easy",
+      "exerciseIndex": 0,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 2487,
+      "usage": {
+        "inputTokens": 1096,
+        "outputTokens": 23
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "advanced",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "too_easy",
+      "exerciseIndex": 0,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1254,
+      "usage": {
+        "inputTokens": 1103,
+        "outputTokens": 23
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "equipment",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "equipment",
+      "exerciseIndex": 1,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1553,
+      "usage": {
+        "inputTokens": 1098,
+        "outputTokens": 39
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "support",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "equipment",
+      "exerciseIndex": 0,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 2239,
+      "usage": {
+        "inputTokens": 1100,
+        "outputTokens": 22
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "clarify",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "clarify",
+      "exerciseIndex": 0,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1641,
+      "usage": {
+        "inputTokens": 1102,
+        "outputTokens": 23
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "pronoun",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "clarify",
+      "exerciseIndex": 1,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1393,
+      "usage": {
+        "inputTokens": 1101,
+        "outputTokens": 23
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "progression",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "progression",
+      "exerciseIndex": null,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1374,
+      "usage": {
+        "inputTokens": 1095,
+        "outputTokens": 23
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "worse",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "contact",
+      "exerciseIndex": null,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1374,
+      "usage": {
+        "inputTokens": 1096,
+        "outputTokens": 22
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "new_symptom",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "contact",
+      "exerciseIndex": null,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1464,
+      "usage": {
+        "inputTokens": 1101,
+        "outputTokens": 22
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "assessment",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "contact",
+      "exerciseIndex": null,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1311,
+      "usage": {
+        "inputTokens": 1098,
+        "outputTokens": 22
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "negative",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "report",
+      "exerciseIndex": null,
+      "reports": [
+        {
+          "field": "nextDay",
+          "value": "settled"
+        },
+        {
+          "field": "recovery",
+          "value": "unknown"
+        }
+      ],
+      "providerStatus": 200,
+      "latencyMs": 1506,
+      "usage": {
+        "inputTokens": 1106,
+        "outputTokens": 65
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "training",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "report",
+      "exerciseIndex": null,
+      "reports": [
+        {
+          "field": "otherTraining",
+          "value": "high"
+        }
+      ],
+      "providerStatus": 200,
+      "latencyMs": 2086,
+      "usage": {
+        "inputTokens": 1096,
+        "outputTokens": 43
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "recovery",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "report",
+      "exerciseIndex": null,
+      "reports": [
+        {
+          "field": "recovery",
+          "value": "low"
+        }
+      ],
+      "providerStatus": 200,
+      "latencyMs": 1441,
+      "usage": {
+        "inputTokens": 1096,
+        "outputTokens": 42
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "uncertainty",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "report",
+      "exerciseIndex": null,
+      "reports": [
+        {
+          "field": "nextDay",
+          "value": "unknown"
+        }
+      ],
+      "providerStatus": 200,
+      "latencyMs": 2238,
+      "usage": {
+        "inputTokens": 1097,
+        "outputTokens": 46
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "injection",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "outside_scope",
+      "exerciseIndex": 1,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1314,
+      "usage": {
+        "inputTokens": 1104,
+        "outputTokens": 23
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "outside",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "outside_scope",
+      "exerciseIndex": null,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1333,
+      "usage": {
+        "inputTokens": 1096,
+        "outputTokens": 23
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "history",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "purpose",
+      "exerciseIndex": 0,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1246,
+      "usage": {
+        "inputTokens": 1100,
+        "outputTokens": 22
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "side_explicit",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "dose",
+      "exerciseIndex": 0,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1128,
+      "usage": {
+        "inputTokens": 1101,
+        "outputTokens": 22
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "side_followup",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "dose",
+      "exerciseIndex": 0,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1103,
+      "usage": {
+        "inputTokens": 1101,
+        "outputTokens": 22
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "side_both",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "dose",
+      "exerciseIndex": 1,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1396,
+      "usage": {
+        "inputTokens": 1096,
+        "outputTokens": 22
+      }
+    },
+    {
+      "httpStatus": 200,
+      "id": "side_safety",
+      "model": "gpt-5.6-terra",
+      "pass": true,
+      "checks": {
+        "available": true,
+        "intent": true,
+        "exercise": true,
+        "reports": true,
+        "negation": true,
+        "history": true,
+        "savedSide": true,
+        "noPrescriptionChange": true
+      },
+      "intent": "contact",
+      "exerciseIndex": 0,
+      "reports": [],
+      "providerStatus": 200,
+      "latencyMs": 1728,
+      "usage": {
+        "inputTokens": 1113,
+        "outputTokens": 22
+      }
+    }
+  ]
+}

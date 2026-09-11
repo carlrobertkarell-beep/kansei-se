@@ -1,0 +1,60 @@
+\ir ../../reda-2/secure/clinic-intelligence.sql
+begin;
+-- ROM-only changes are real steps, not text-only labels; original frames stay valid.
+select tests.ok(private.reda_validate_frame(tests.policy()),'existing frame contract remains valid');
+select tests.ok(private.reda_validate_frame(jsonb_set(tests.policy(),'{steps,1,plan}',jsonb_set(tests.plan(8),'{exercises,0,prescribedRange}','"Individually prescribed range"'))),'ROM-only progression is accepted');
+select tests.ok(not private.reda_validate_frame(jsonb_set(tests.policy(),'{steps,1,plan,exercises,0,prescribedRange}','123')),'ROM must be text');
+select tests.ok(not private.reda_validate_frame(jsonb_set(tests.policy(),'{steps,1,plan,exercises,0,prescribedRange}',to_jsonb(repeat('x',161)))),'oversized ROM refused');
+select set_config('tests.decision',(select id::text from reda_engine_decisions where patient_id=tests.id(11) order by created_at,id limit 1),false);
+set role authenticated;
+select tests.login(2);
+select tests.denied('select reda_clinic_inbox()','42501','patient cannot read clinic inbox');
+select tests.denied('select reda_review_decision(current_setting(''tests.decision'')::uuid,''agree'',''Fictional explanation'')','42501','patient cannot judge motor');
+select tests.login(1,'aal1',103);
+select tests.denied('select reda_clinic_inbox()','42501','inbox needs MFA');
+select tests.login(4,'aal2',104);
+select tests.denied('select reda_review_decision(current_setting(''tests.decision'')::uuid,''agree'',''Fictional explanation'')','42501','foreign clinician cannot judge');
+select tests.login(1,'aal2',103);
+select tests.denied('select reda_review_decision(current_setting(''tests.decision'')::uuid,''agree'','' '')','22023','judgment needs explanation');
+select tests.ok(reda_review_decision(current_setting('tests.decision')::uuid,'disagree','Fictional clinical disagreement')->>'verdict'='disagree','clinician judgment saved');
+select tests.ok(reda_review_decision(current_setting('tests.decision')::uuid,'disagree','Fictional clinical disagreement')=reda_review_decision(current_setting('tests.decision')::uuid,'disagree','Fictional clinical disagreement'),'judgment retry idempotent');
+select tests.denied('select reda_review_decision(current_setting(''tests.decision'')::uuid,''agree'',''Changed judgment'')','23505','judgment cannot be silently overwritten');
+select tests.denied('update reda_decision_reviews set verdict=''agree''','42501','direct judgment modification denied');
+select tests.ok((reda_clinic_inbox()->'reviews'->>'disagree')::int=1,'judgment counted once');
+select tests.login(4,'aal2',104);
+select tests.ok((reda_clinic_inbox()->'reviews'->>'disagree')::int=0,'foreign judgment count hidden');
+select tests.ok((select count(*)=0 from reda_decision_reviews),'foreign judgment rows hidden');
+select tests.login(1,'aal2',999);
+select tests.ok((select count(*)=0 from reda_decision_reviews),'revoked session cannot read judgments');
+select tests.denied('select reda_clinic_inbox()','42501','revoked session cannot read inbox');
+reset role;
+-- 28 extra owned cases, plus one foreign case. All names/answers are fictional.
+insert into reda_sessions(id,client_session_id,patient_id,plan_id,plan_version,status,started_at,completed_at)
+select tests.id(2100+i),tests.id(2200+i),tests.id(11),tests.id(22),2,'completed',now()-interval '3 days',now()-interval '2 days' from generate_series(1,28)i;
+insert into reda_training_responses(id,request_id,session_id,patient_id,plan_id,plan_version,reported_by,answers)
+select tests.id(2300+i),tests.id(2400+i),tests.id(2100+i),tests.id(11),tests.id(22),2,tests.id(2),tests.answer()||'{"contact":"yes","environment":"same"}'::jsonb from generate_series(1,28)i;
+insert into reda_sessions(id,client_session_id,patient_id,plan_id,plan_version,status,started_at,completed_at) values(tests.id(2503),tests.id(2504),tests.id(12),tests.id(23),1,'completed',now()-interval '3 days',now()-interval '2 days');
+insert into reda_training_responses(id,request_id,session_id,patient_id,plan_id,plan_version,reported_by,answers) values(tests.id(2501),tests.id(2502),tests.id(2503),tests.id(12),tests.id(23),1,tests.id(3),tests.answer()||'{"contact":"yes","environment":"same"}'::jsonb);
+update reda_review_cases set status='resolved' where patient_id=tests.id(11) and response_id not in(select tests.id(2300+i) from generate_series(1,28)i);
+update reda_review_cases set code='changed_symptoms',created_at=now() where response_id=tests.id(2328);
+update reda_review_cases set status='acknowledged' where response_id=tests.id(2327);
+set role authenticated;
+select tests.login(1,'aal2',103);
+select tests.ok((reda_clinic_inbox()->>'total')::int=28,'unresolved count covers all pages including acknowledged');
+select tests.ok(jsonb_array_length(reda_clinic_inbox()->'cases')=25,'first page bounded to 25');
+select tests.ok(reda_clinic_inbox()->'cases'->0->>'code'='changed_symptoms','symptom case takes work-order priority over older cases');
+select tests.ok(jsonb_array_length(reda_clinic_inbox('unresolved','all',25)->'cases')=3,'next page contains remainder');
+select tests.ok((reda_clinic_inbox('acknowledged')->>'total')::int=1,'status filter server-owned');
+select tests.ok((reda_clinic_inbox('unresolved','changed_symptoms')->>'total')::int=1,'reason filter server-owned');
+select tests.ok(not exists(select 1 from jsonb_array_elements(reda_clinic_inbox()->'cases') x where x->>'patient_id'<>tests.id(11)::text),'no cross-clinician names or answers');
+select tests.denied('select reda_clinic_inbox(''unresolved'',''all'',-1)','22023','negative page refused');
+select tests.login(4,'aal2',104);
+select tests.ok((reda_clinic_inbox()->>'total')::int=1,'other clinician sees own cases only');
+reset role;
+update reda_patients set status='archived' where id=tests.id(11);
+set role authenticated;
+select tests.login(1,'aal2',103);
+select tests.ok((reda_clinic_inbox()->>'total')::int=28,'unresolved archived patient not silently hidden');
+select tests.ok(reda_clinic_inbox()->'cases'->0->>'patient_status'='archived','archive status explicit');
+reset role;
+rollback;

@@ -20,7 +20,7 @@ const messages={
 function canonical(x){if(Array.isArray(x))return '['+x.map(canonical).join(',')+']';if(x&&typeof x==='object')return '{'+Object.keys(x).filter(k=>x[k]!==undefined).sort().map(k=>JSON.stringify(k)+':'+canonical(x[k])).join(',')+'}';return JSON.stringify(x)}
 // Binding is a deterministic comparison key, not a signature or authorization proof.
 function binding(plan){return canonical({schema:plan.schema,context:plan.context,goal:plan.goal,schedule:plan.schedule,exercises:plan.exercises})}
-function training(plan){return canonical(plan.exercises.map(x=>({id:x.id,variantId:x.variantId,side:x.side,dose:Object.fromEntries(['sets','reps','hold','rest','tempo'].map(k=>[k,x.dose[k]])),load:x.prescribedLoad||''})))}
+function training(plan){return canonical(plan.exercises.map(x=>({id:x.id,variantId:x.variantId,side:x.side,dose:Object.fromEntries(['sets','reps','hold','rest','tempo'].map(k=>[k,x.dose[k]])),load:x.prescribedLoad||'',range:x.prescribedRange||''})))}
 function date(s){return typeof s==='string'&&/^20\d\d-\d\d-\d\d$/.test(s)&&!Number.isNaN(Date.parse(s+'T12:00:00Z'))&&new Date(s+'T12:00:00Z').toISOString().slice(0,10)===s}
 function day(s){return new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Stockholm',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(s))}
 function days(a,b){return (Date.parse(a+'T12:00:00Z')-Date.parse(b+'T12:00:00Z'))/DAY}

@@ -1,5 +1,9 @@
 # Reda · beslutad produktmodell
 
+## Nästa arbetsflöde · 2026-09-11
+
+Flerstegsvägar med ändringsjämförelser, individuellt rörelseomfång, klinisk bedömning av motorbeslut, gemensam kliniköversikt och förberedd följdfrågedialog finns nu i koden. Se [INTELLIGENCE-WORKFLOW.md](INTELLIGENCE-WORKFLOW.md) för aktuell omfattning, testmetod och kvarvarande driftsteg. Äldre begränsningar om enstegsredigerare och avsaknad av kliniköversikt nedan är ersatta. Patientaktivering, automatisk tillämpning, AI-anrop och försäljning har inte öppnats.
+
 Uppdaterad 2026-09-11 efter Carl-Roberts korrigering. Detta ersätter tidigare krav på ett distanspaket med två avstämningar och en avslutande kontakt, och principen att varje progressionssteg kräver ett nytt behandlarbeslut. Äldre leveransnoteringar längre ned är historik, inte överordnade produktkrav.
 
 ## Senaste utvecklingsblocket · 2026-09-11

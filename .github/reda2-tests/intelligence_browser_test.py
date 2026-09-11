@@ -33,9 +33,9 @@ class T(unittest.TestCase):
   self.assertLessEqual(self.p.evaluate('document.documentElement.scrollWidth'),self.p.viewport_size['width']);out=ROOT/'reda2-test-results';out.mkdir(exist_ok=True);self.p.screenshot(path=str(out/name),full_page=True)
  def fill(self,host):
   host.locator('[data-open]').click()
-  for i,a in enumerate(['worse','stable','ready','high','unknown','yes']):
+  for i,a in enumerate(['worse','stable','ready','high','unknown','same','yes']):
    expect(host.locator('[data-forward]')).to_be_disabled();host.locator('[data-answer='+a+']').click()
-   if i<5:host.locator('[data-forward]').click()
+   if i<6:host.locator('[data-forward]').click()
  def test_patient_answers_retry_without_loss_and_stay_with_old_plan(self):
   self.p.goto(self.o+'/reda-2/patient.html');self.p.locator('#openResponse').click();h=self.p.locator('#responseForm');self.fill(h);h.locator('[data-forward]').click();expect(h.locator('[role=alert]')).to_contain_text('anslutningen');self.assertEqual(self.p.evaluate('localStorage.length+sessionStorage.length'),0);expect(h.locator('[data-answer=yes]')).to_have_attribute('aria-pressed','true');h.locator('[data-forward]').click();expect(h.locator('.ei-receipt')).to_contain_text('plan v1');expect(self.p.locator('#version')).to_have_text('2');self.assertEqual(self.p.evaluate('eiCalls[0].rid===eiCalls[1].rid'),True);self.assertEqual(self.p.evaluate('eiRows.length'),1);expect(self.p.locator('#responsePrompt')).to_be_hidden();h.locator('.ei-response-history summary').click();expect(h.locator('.ei-response-history')).to_contain_text('Mer besvär än vanligt');self.shot('reda-intelligence-patient-feedback.png')
  def test_help_and_motion_controls_preserve_prescription(self):

@@ -17,7 +17,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Exercise, dosage, clinical model, graph, motion and intelligence unit tests
-        run: node --test .github/reda2-tests/core.test.cjs .github/reda2-tests/planner.test.cjs .github/reda2-tests/clinical-model.test.cjs .github/reda2-tests/motion-graph.test.cjs .github/reda2-tests/exercise-intelligence.test.cjs .github/reda2-tests/exercise-quality.test.cjs .github/reda2-tests/prescription-session.test.cjs .github/reda2-tests/recovery-motion.test.cjs .github/reda2-tests/followup.test.cjs .github/reda2-tests/care-path.test.cjs .github/reda2-tests/progression.test.cjs .github/reda2-tests/intelligence-system.test.cjs .github/reda2-tests/dialogue.test.mjs
+        run: node --test .github/reda2-tests/core.test.cjs .github/reda2-tests/planner.test.cjs .github/reda2-tests/clinical-model.test.cjs .github/reda2-tests/motion-graph.test.cjs .github/reda2-tests/exercise-intelligence.test.cjs .github/reda2-tests/exercise-quality.test.cjs .github/reda2-tests/prescription-session.test.cjs .github/reda2-tests/recovery-motion.test.cjs .github/reda2-tests/followup.test.cjs .github/reda2-tests/care-path.test.cjs .github/reda2-tests/progression.test.cjs .github/reda2-tests/intelligence-system.test.cjs .github/reda2-tests/dialogue.test.mjs .github/reda2-tests/motion-v4.test.cjs
       - name: Isolated database ownership, retry and permission tests
         run: |
           sudo systemctl start postgresql.service

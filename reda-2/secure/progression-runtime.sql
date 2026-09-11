@@ -28,7 +28,7 @@ declare st jsonb; x jsonb; k text; n numeric; baseline jsonb; previous jsonb;beg
  if p->>'schema' is distinct from '1' or p->>'mode' is distinct from 'simulation-only' or coalesce(length(p->>'id'),0)=0 or jsonb_typeof(p->'revision') is distinct from 'number' or (p->>'revision')::numeric<>trunc((p->>'revision')::numeric) or (p->>'revision')::int<1 or length(p::text)>300000 then return false;end if;
  if coalesce(p->>'validFrom','')!~'^20[0-9]{2}-[0-9]{2}-[0-9]{2}$' or coalesce(p->>'validUntil','')!~'^20[0-9]{2}-[0-9]{2}-[0-9]{2}$' or (p->>'validFrom')::date>(p->>'validUntil')::date then return false;end if;
  foreach k in array array['minSuccessfulDays','minDaysAtStep','maxEvidenceAgeDays'] loop
-  n=(p->'rules'->>k)::numeric;if n is null or n<>trunc(n) or n<1 or n>case when k='minSuccessfulDays' then 30 else 60 end then return false;end if;
+  n=(p->'rules'->>k)::numeric;if n is null or n<>trunc(n) or n<1 or n>(case when k='minSuccessfulDays' then 30 else 60 end) then return false;end if;
  end loop;
  if (p->'rules'->>'minSuccessfulDays')::int>(p->'rules'->>'maxEvidenceAgeDays')::int or jsonb_typeof(p->'rules'->'acceptedEffort') is distinct from 'array' or jsonb_array_length(p->'rules'->'acceptedEffort') not between 1 and 2 or exists(select 1 from jsonb_array_elements_text(p->'rules'->'acceptedEffort') e where e not in ('easy','okay')) then return false;end if;
  if jsonb_typeof(p->'steps') is distinct from 'array' or jsonb_array_length(p->'steps') not between 2 and 12 then return false;end if;
@@ -42,7 +42,7 @@ declare st jsonb; x jsonb; k text; n numeric; baseline jsonb; previous jsonb;beg
    if coalesce(length(x->>'id'),0)=0 or coalesce(length(x->>'variantId'),0)=0 or x->>'side' not in ('left','right','both','simultaneous') or x->>'side' is null then return false;end if;
    foreach k in array array['sets','reps','hold','rest','tempo'] loop
     if jsonb_typeof(x->'dose'->k) is distinct from 'number' then return false;end if;n=(x->'dose'->>k)::numeric;
-    if n<>trunc(n) or n<case when k in ('hold','rest') then 0 else 1 end or n>case k when 'sets' then 8 when 'reps' then 100 when 'hold' then 180 when 'rest' then 600 else 60 end then return false;end if;
+    if n<>trunc(n) or n<(case when k in ('hold','rest') then 0 else 1 end) or n>(case k when 'sets' then 8 when 'reps' then 100 when 'hold' then 180 when 'rest' then 600 else 60 end) then return false;end if;
    end loop;
   end loop;
   if previous is not null and (select jsonb_agg(jsonb_build_object('id',e->'id','variantId',e->'variantId','side',e->'side','dose',(e->'dose')-'label','load',e->'prescribedLoad')) from jsonb_array_elements(previous->'exercises') e)=(select jsonb_agg(jsonb_build_object('id',e->'id','variantId',e->'variantId','side',e->'side','dose',(e->'dose')-'label','load',e->'prescribedLoad')) from jsonb_array_elements(st->'plan'->'exercises') e) then return false;end if;
@@ -185,7 +185,7 @@ begin
    for ex in select value from jsonb_array_elements(p.payload->'exercises') loop
     select value into mark from jsonb_array_elements(r.payload->'exercises') where value->>'exerciseId'=ex->>'id';
     if mark is null or (select count(*) from jsonb_array_elements(r.payload->'exercises') where value->>'exerciseId'=ex->>'id')<>1 or mark->>'status' is distinct from 'completed' or jsonb_typeof(mark->'roundsDone') is distinct from 'number' or (mark->>'roundsDone')::numeric<>((ex->'dose'->>'sets')::int*case when ex->>'side'='both' then 2 else 1 end) then a='blocked';code='invalid_session';exit decision;end if;
-    if not (f.policy->'rules'->'acceptedEffort') ? case when mark->>'feedback'='light' then 'easy' else coalesce(mark->>'feedback','') end then a='hold';code='effort';exit decision;end if;
+    if not (f.policy->'rules'->'acceptedEffort') ? (case when mark->>'feedback'='light' then 'easy' else coalesce(mark->>'feedback','') end) then a='hold';code='effort';exit decision;end if;
    end loop;
    days=array_append(days,(r.completed_at at time zone 'Europe/Stockholm')::date);ids=array_append(ids,r.response_id);
   end loop;

@@ -8,9 +8,10 @@ declare actor uuid:=private.reda_live_actor();p public.reda_plans%rowtype;enable
  if p.id is null then raise exception using errcode='42501',message='Den aktuella planen krävs.';end if;
  select ai_enabled into enabled from private.reda_engine_settings;
  if enabled and p_consume then
+  delete from private.reda_dialogue_quota where user_id=actor and substring(bucket from position(':' in bucket)+1 for 10)<to_char((now() at time zone 'UTC')-interval '7 days','YYYY-MM-DD');
   foreach bucket_name in array array['day:'||to_char(now() at time zone 'UTC','YYYY-MM-DD'),'hour:'||to_char(now() at time zone 'UTC','YYYY-MM-DD-HH24')] loop
    insert into private.reda_dialogue_quota(user_id,bucket,calls) values(actor,bucket_name,1) on conflict(user_id,bucket) do update set calls=private.reda_dialogue_quota.calls+1 returning calls into n;
-   if n>case when bucket_name like 'day:%' then 100 else 20 end then raise exception using errcode='54000',message='Gränsen för AI-frågor är nådd. Använd planens instruktioner och återkopplingsfrågor.';end if;
+   if n>(case when bucket_name like 'day:%' then 100 else 20 end) then raise exception using errcode='54000',message='Gränsen för AI-frågor är nådd. Använd planens instruktioner och återkopplingsfrågor.';end if;
   end loop;
  end if;
  select jsonb_build_object('goal',p.payload->'goal','exercises',jsonb_agg(jsonb_build_object('name',x->'name','variantLabel',x->'variantLabel','why',x->'why','instructions',x->'instructions','instruction',x->'instruction','side',x->'side','dose',x->'dose','prescribedLoad',x->'prescribedLoad','focus',x->'focus') order by ord)) into slim from jsonb_array_elements(p.payload->'exercises') with ordinality as e(x,ord);

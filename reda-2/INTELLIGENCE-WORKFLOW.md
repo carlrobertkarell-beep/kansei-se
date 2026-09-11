@@ -58,3 +58,11 @@ Det tidigare förslaget i `BUSINESS-MODEL.md` kvarstår: inkluderad startplan, f
 - Distribution och återinloggning från start till mål när patientaktivering godkänns.
 - Arbetsmängd och undantagsfrekvens under en kontrollerad pilot.
 - Separat beslut om automatisk tillämpning, AI-anrop och eventuell försäljning.
+
+## Verifiering och driftsatt backend
+
+Första hela kvalitetskörningen på kodversion `2478d88a3fdcd44337cd1c50ec4a7c3339a8d17c`: [GitHub Actions 34569472238](https://github.com/carlrobertkarell-beep/kansei-se/actions/runs/34569472238), godkänd. 155 Node-tester, isolerad PostgreSQL med ägar-/MFA-/sessionskontroller, två samtidiga databasanslutningar samt samtliga tidigare och nya webbläsarflöden gick igenom. Nya flöden omfattar flerstegsutkast, ärendepaginering/filter/fel, ärendebedömning, motorbedömning och lokal samtalshistorik. Providersvar i webbläsartesterna är simulerade.
+
+Supabase-migration `20260911062158 exercise_intelligence_clinic_workflow` är applicerad från `secure/clinic-intelligence.sql`. `reda-dialogue` version 2 är driftsatt med JWT-verifiering; innehållets SHA-256 är `248c820d140b2e16dab296e65b5f321df14d50a8097d4298145673a84fdfe794`.
+
+Efterkontroll: en befintlig patient, tre befintliga planer, noll pass, noll träningssvar och noll motorbedömningar. Automatisk tillämpning och AI-frågor är fortsatt avstängda. Ny bedömningstabell har RLS, browserklienten saknar direkt INSERT och anonym åtkomst till kliniköversikten är nekad. Inga nya säkerhetsvarningar från Supabase. Tidigare varning om läckta lösenord och äldre RLS-prestandaråd kvarstår; index på den nya tomma tabellen är ännu oanvända.

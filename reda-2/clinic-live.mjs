@@ -1,6 +1,6 @@
-import {mountDecisionDashboard} from './decision-dashboard.mjs?v=1'
+import {mountDecisionDashboard} from './decision-dashboard.mjs?v=2'
 import {mountWorkspaceTeam,roleLabels} from './workspace-team.mjs?v=1'
-import * as api from './secure-browser.mjs?v=20260911-dashboard1'
+import * as api from './secure-browser.mjs?v=20260911-dashboard2'
 import {mountClinicEngine} from './runtime-ui.mjs?v=3'
 import {mountClinicInbox} from './clinic-inbox.mjs?v=2'
 let dashboard=null,inbox=null,team=null,activeWorkspace=null,workspaces=[],workspaceEpoch=0,workspaceBusy=false;

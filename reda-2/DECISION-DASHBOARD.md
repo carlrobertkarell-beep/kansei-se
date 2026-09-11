@@ -16,6 +16,7 @@ Snabböversikten visar mål, aktuell version, datum, samlade signaler med origin
 
 Förslagen i `engine/clinic-proposals.mjs` bygger på sparad återkoppling, plan och den befintliga regelmotorns resultat. De är inte fria generativa modellsvar och gör inga externa AI-anrop. Varje förslag har motivering, redigerbar anteckning och en förklaring av knappens verkan.
 
+- Meddelande: godkänn och leverera den exakt visade, redigerbara texten inne i Reda till en redan ansluten aktiv patient. Spara en uppföljningsuppgift och kvittera nya signaler i samma transaktion. Inget mejl eller sms skickas.
 - Uppföljning: skapa/uppdatera en intern uppgift med datum och kvittera de visade nya signalerna. Inget meddelande skickas och ingen tid bokas.
 - Genomförd uppföljning: spara behandlarens dokumentation och avsluta uppgiften. Olösta patientsignaler ligger kvar för bedömning.
 - Bedömda signaler: avsluta samtliga visade olösta signaler uttryckligen, med behandlarens anteckning. Avsluta även eventuell tillhörande uppgift.
@@ -23,16 +24,18 @@ Förslagen i `engine/clinic-proposals.mjs` bygger på sparad återkoppling, plan
 - Förberedd ram: visa hela den redan sparade progressionskedjan och godkänn den i granskningsläge. Servern hämtar ramen från den aktuella planens `progressionDraft`; klienten eller en modell får inte leverera en annan ram till snabbåtgärden.
 - Nytt underlag: pröva mot den godkända ramen och visa det sparade motorresultatet. En redan automatiskt tillämpad normal progression skapar ingen ny godkännandepunkt.
 
+Patienten ser meddelandet i sitt program och kan svara på den senaste frågan. Svaret återkommer i behandlarens arbetskö även om uppföljningen ligger i framtiden. Hela dialogen måste uttryckligen bedömas innan motorgrinden för dialog släpper; att skicka, kvittera eller schemalägga räcker inte. Ingen fri meddelandetext används som bekräftad träningsåterkoppling eller som automatisk grund för progression.
+
 Efter en hanteringsåtgärd visar sidan kvittot och öppnar nästa tillgängliga patient på sidan. Prövning och ramgodkännande stannar på samma patient så resultatet går att läsa. Ett fel visas som ett fel; gamla antal ersätts inte med en låtsad tom arbetskö.
 
 ## Samma behörighet hela vägen
 
 RPC:erna kräver en levande autentiserad session, MFA, aktiv behandlarbehörighet i vald organisation och egen patienttilldelning. Ägar-, admin- och ekonomirole räcker inte. Skrivning låser organisationen och sedan patienten, som befintliga kliniska skrivvägar.
 
-En granskning binds med ett serverberäknat fingeravtryck till aktuell plan, aktivitet, återkoppling, samtliga olösta signaler, senaste motorbeslut, ram och uppföljningsuppgift. Nytt underlag eller en konkurrerande åtgärd ger `40001` och kräver att behandlaren läser om förslaget. Samma begärans-ID och identiskt innehåll ger samma kvitto utan dubbla uppgifter eller auditposter. Ett återförsök kontrollerar fortfarande aktuell behörighet. Kvittot är oföränderligt och anteckningen sparas på servern. Inga patientuppgifter läggs i webbläsarlagring av dashboarden.
+En granskning binds med ett serverberäknat fingeravtryck till aktuell plan, aktivitet, återkoppling, samtliga olösta signaler, dialog, senaste motorbeslut, ram och uppföljningsuppgift. Nytt underlag eller en konkurrerande åtgärd ger `40001` och kräver att behandlaren läser om förslaget. Samma begärans-ID och identiskt innehåll ger samma kvitto utan dubbla uppgifter eller auditposter. Ett återförsök kontrollerar fortfarande aktuell behörighet. Kvittot är oföränderligt och anteckningen sparas på servern. Inga patientuppgifter läggs i webbläsarlagring av dashboarden.
 
 ## Driftgräns och verifiering
 
-Det här blocket öppnar inte patientaktivering, inbjudningar, försäljning, automatisk progression eller externa patientfrågor till AI. Meddelandeutkast och ett godkänn/skicka-flöde med leveransstatus ingår ännu inte; gränssnittet säger därför uttryckligen när kontakten är en intern arbetsuppgift.
+Det här blocket öppnar inte patientaktivering, inbjudningar, försäljning, automatisk progression eller externa patientfrågor till AI. Meddelanden levereras inne i Reda först efter behandlarens uttryckliga godkännande. Patientens svar kräver en levande egen patientinloggning. Begärans-ID och exakt text skyddar både utgående meddelanden och svar mot dubbletter. Levererat i Reda betyder inte läst, mejlat eller sms:at.
 
-Kontrollerna använder fiktiva uppgifter: 1 000 patienter, 400 aktiva planer, sökning och sidgränser; grupperade och nytillkomna signaler; planbyte; återförsök; samtidiga godkännanden; MFA och återkallad behörighet; fel och fördröjda svar vid byte av arbetsyta; ett komplett snabbåtgärdsflöde; mobil- och skrivbordslayout. Databastesterna körs i en tom, separat CI-databas. Testdata importeras aldrig till produktionsprojektet.
+Kontrollerna använder fiktiva uppgifter: 1 000 patienter, 400 aktiva planer, sökning och sidgränser; grupperade och nytillkomna signaler; planbyte; återförsök; samtidiga godkännanden; MFA och återkallad behörighet; fel och fördröjda svar vid byte av arbetsyta; ett komplett snabbåtgärdsflöde; leverans och patientens svar; dialogens progressionsstopp; mobil- och skrivbordslayout. Databastesterna körs i en tom, separat CI-databas. Testdata importeras aldrig till produktionsprojektet.

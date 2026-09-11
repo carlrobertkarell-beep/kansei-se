@@ -1,4 +1,6 @@
-import * as api from './secure-browser.mjs?v=20260911-intelligence2'
+import * as api from './secure-browser.mjs?v=20260911-dashboard2'
+import {mountPatientMessages} from './patient-messages.mjs?v=1'
+let messages=null;
 import {mountPlanHelp,decisionText} from './runtime-ui.mjs?v=2'
 const $=id=>document.getElementById(id), F=window.RedaFigures, S=window.RedaSession, R=window.RedaRecovery
 let helpExpanded=null,motionSlow=false,motionPlaying=false;
@@ -36,7 +38,7 @@ async function bootstrap(){
  const restored=R.choose(plan,state.sessions,R.read(localStore(),state.userId));
  if(restored.discard)R.clear(localStore(),state.userId);
  recoveryBlocked=!!restored.blocked;previousSession=restored.previous||null;$('closePrevious').classList.toggle('hidden',!previousSession);session=restored.session||null;index=restored.index||0;
- renderHome();setAuth(false);$('start').disabled=recoveryBlocked;
+ renderHome();setAuth(false);if(!messages)messages=mountPatientMessages($('patientMessages'),{api});$('start').disabled=recoveryBlocked;
  $('start').textContent=session&&!session.completedAt?'Fortsätt påbörjat pass':'Starta passet';
  $('sync').textContent=restored.message||(session?'Ditt påbörjade pass är återställt.':'Synkad med kliniken');
  if(restored.retry)await sync(session.status,session.completedAt);
@@ -52,7 +54,7 @@ async function skip(){if(session?.completedAt)return;const p=session.progress[in
 async function next(){if(session?.completedAt)return;if(index<exercises().length-1){index++;showExercise();if(unsynced)persist();return}$('next').disabled=true;const all=session.progress.every(p=>p.status==='completed'),doneAt=new Date().toISOString();const saved=await sync(all?'completed':'partial',doneAt);stopMotion?.();$('player').classList.add('hidden');$('start').textContent='Starta nytt pass';if(saved){try{state=await api.patientBootstrap();plan=state.plan;renderHome();$('sync').textContent=all?'Passet är sparat och synkat':'Passet är sparat som delvis genomfört'}catch(e){$('sync').textContent='Passet är sparat, men historiken kunde inte uppdateras.'}}}
 async function pause(){if(!session||session.completedAt)return;$('player').classList.add('hidden');stopMotion?.();await sync(session.progress.some(p=>p.roundsDone||p.status==='skipped')?'partial':'started')}
 $('magicLink').onclick=async()=>{try{const email=$('email').value.trim();if(!email)throw new Error('Ange din e-postadress');$('magicLink').disabled=true;$('authError').classList.add('hidden');await api.sendPatientMagicLink(email);$('authSuccess').textContent='Klart. Öppna mejlet från Reda och tryck på länken för att öppna ditt program.';$('authSuccess').classList.remove('hidden')}catch(e){error(e)}finally{$('magicLink').disabled=false}}
-$('logout').onclick=async()=>{if(responseForm.isBusy()){$('sync').textContent='Vänta tills återkopplingen har sparats eller ett felmeddelande visas.';return}if(unsynced){$('sync').textContent='Synka passet innan du loggar ut.';return}R.clear(localStore(),state?.userId);await api.signOut();location.reload()};$('start').onclick=start;$('skip').onclick=skip;$('next').onclick=next;$('closePlayer').onclick=pause
+$('logout').onclick=async()=>{if(responseForm.isBusy()||messages?.isBusy()){$('sync').textContent='Vänta tills återkopplingen har sparats eller ett felmeddelande visas.';return}if(unsynced){$('sync').textContent='Synka passet innan du loggar ut.';return}R.clear(localStore(),state?.userId);await api.signOut();location.reload()};$('start').onclick=start;$('skip').onclick=skip;$('next').onclick=next;$('closePlayer').onclick=pause
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{if(b.dataset.tab!=='today')pauseMotion();document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('hidden',x.id!==b.dataset.tab))})
 setAuth(true);api.currentUser().catch(e=>{if(e?.name==='AuthSessionMissingError')return null;throw e}).then(async u=>{if(u)await bootstrap()}).catch(error)
 async function retry(){if(!session)return;const finished=!!session.completedAt;if(await sync(session.status,session.completedAt)){if(finished){try{await bootstrap()}catch{$('sync').textContent='Passet är sparat. Ladda om sidan för att uppdatera planen.'}}}}

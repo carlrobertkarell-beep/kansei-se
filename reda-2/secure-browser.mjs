@@ -48,3 +48,6 @@ export const reviewDecision=(decisionId,verdict,note)=>rpc('reda_review_decision
 export const dashboard=(search='',filter='priority',offset=0)=>rpc('reda_dashboard',{p_search:search,p_filter:filter,p_offset:offset},clinicalClient());
 export const dashboardPatient=patientId=>rpc('reda_dashboard_patient',{p_patient_id:patientId},clinicalClient());
 export const dashboardAct=({patientId,token,requestId,action,note,due})=>rpc('reda_dashboard_act',{p_patient_id:patientId,p_token:token,p_request_id:requestId,p_action:action,p_note:note,p_due_date:due},clinicalClient());
+
+export const patientMessages=()=>rpc('reda_patient_messages',{},db);
+export const patientReply=(messageId,requestId,body)=>rpc('reda_patient_reply',{p_message_id:messageId,p_request_id:requestId,p_body:body},db);

@@ -54,3 +54,6 @@ export const patientReply=(messageId,requestId,body)=>rpc('reda_patient_reply',{
 
 export const patientProfile=patientId=>rpc('reda_patient_profile',{p_patient_id:patientId},clinicalClient());
 export const savePatientProfile=({patientId=null,requestId,profile,revision=0,duplicateToken=null})=>rpc('reda_save_patient_profile',{p_patient_id:patientId,p_request_id:requestId,p_profile:profile,p_revision:revision,p_duplicate_token:duplicateToken},clinicalClient());
+
+export const authoringLibrary=(favorites=null)=>rpc('reda_authoring_library',{p_favorites:favorites},clinicalClient());
+export const savePlanTemplate=({id,revision,title,payload,archived=false})=>rpc('reda_save_plan_template',{p_id:id,p_revision:revision,p_title:title,p_payload:payload,p_archived:archived},clinicalClient());

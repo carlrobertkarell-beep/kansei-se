@@ -1,0 +1,35 @@
+-- Isolated fictional fixtures; runs after patient intake tests.
+\ir ../../reda-2/secure/plan-authoring.sql
+set role authenticated;
+select tests.login(1,'aal2',103);select tests.workspace('dashboard-test');
+select set_config('tests.recipe','{"schema":1,"exercises":[{"id":"chair","variantId":"support","dose":{"sets":2,"reps":8,"hold":0,"rest":30,"tempo":5}}]}',false);
+select tests.ok(reda_authoring_library()->'templates'='[]','new authoring library is empty');
+select tests.ok(reda_authoring_library('["chair","extension"]')->'favorites'='["chair","extension"]','favorites saved for current clinician and clinic');
+select set_config('tests.template',reda_save_plan_template(tests.id(790001),0,'Fictional recipe',current_setting('tests.recipe')::jsonb)::text,false);
+select tests.ok(reda_save_plan_template(tests.id(790001),0,'Fictional recipe',current_setting('tests.recipe')::jsonb)=current_setting('tests.template')::jsonb,'lost response retry returns same template');
+select tests.ok(jsonb_array_length(reda_authoring_library()->'templates')=1,'retry never duplicates template');
+select tests.denied('select reda_save_plan_template(tests.id(790002),0,''Forbidden patient fields'',current_setting(''tests.recipe'')::jsonb||''{"patientName":"Fictional person"}''::jsonb)','22023','patient identifiers cannot enter reusable payload');
+select tests.denied('select reda_save_plan_template(tests.id(790002),0,''Invalid dose'',jsonb_set(current_setting(''tests.recipe'')::jsonb,''{exercises,0,dose,reps}'',''999''))','22023','numeric dose limits enforced');
+select tests.denied('select reda_save_plan_template(tests.id(790002),0,''Individual load'',jsonb_set(current_setting(''tests.recipe'')::jsonb,''{exercises,0,prescribedLoad}'',''"Patient-specific"''))','22023','individual loads cannot be copied through templates');
+select tests.denied('select reda_authoring_library(''[{"patient":"secret"}]'')','22023','favorites contain only exercise IDs');
+select tests.denied('select * from private.reda_plan_templates','42501','raw templates inaccessible');
+select tests.denied('select * from private.reda_authoring_preferences','42501','raw preferences inaccessible');
+select tests.login(4,'aal2',104);
+select tests.ok(reda_authoring_library()->'templates'='[]'and reda_authoring_library()->'favorites'='[]','colleague cannot read private library');
+select tests.denied('select reda_save_plan_template(tests.id(790001),1,''Overwrite colleague'',current_setting(''tests.recipe'')::jsonb)','42501','colleague cannot edit template');
+select tests.login(1,'aal2',103);select tests.workspace('clinic-b');
+select tests.ok(reda_authoring_library()->'templates'='[]'and reda_authoring_library()->'favorites'='[]','same clinician other clinic has separate library');
+select tests.denied('select reda_save_plan_template(tests.id(790001),1,''Wrong clinic'',current_setting(''tests.recipe'')::jsonb)','42501','other clinic cannot change template');
+select tests.workspace('reda-direct');
+select tests.denied('select reda_authoring_library()','42501','nonclinical account denied');
+select tests.workspace('dashboard-test');select tests.login(1,'aal1',103);
+select tests.denied('select reda_authoring_library()','42501','MFA required for library');
+select tests.denied('select reda_save_plan_template(tests.id(790002),0,''No MFA'',current_setting(''tests.recipe'')::jsonb)','42501','MFA required for templates');
+select tests.login(1,'aal2',103);
+select tests.ok(reda_save_plan_template(tests.id(790001),1,'Updated recipe',current_setting('tests.recipe')::jsonb)->>'revision'='2','revision increments once');
+select tests.denied('select reda_save_plan_template(tests.id(790001),1,''Stale change'',current_setting(''tests.recipe'')::jsonb)','40001','stale template cannot overwrite reviewed version');
+select tests.ok(reda_save_plan_template(tests.id(790001),2,'Updated recipe',current_setting('tests.recipe')::jsonb,true)->>'revision'='3','template archived');
+select tests.ok(reda_authoring_library()->'templates'='[]','archived template disappears from library');
+reset role;
+select tests.ok((select count(*)=1 from private.reda_plan_templates),'retries and access errors never create extra templates');
+select tests.ok(not exists(select 1 from reda_plans where patient_id=current_setting('tests.intake_pid')::uuid),'authoring library does not assign or publish patient plans');

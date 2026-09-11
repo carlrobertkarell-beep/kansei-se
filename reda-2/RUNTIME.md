@@ -1,5 +1,9 @@
 # Exercise Intelligence – runtime 2026-09-11
 
+## Nästa arbetsflöde · 2026-09-11
+
+Flerstegsvägar med ändringsjämförelser, individuellt rörelseomfång, klinisk bedömning av motorbeslut, gemensam kliniköversikt och förberedd följdfrågedialog finns nu i koden. Se [INTELLIGENCE-WORKFLOW.md](INTELLIGENCE-WORKFLOW.md) för aktuell omfattning, testmetod och kvarvarande driftsteg. Äldre begränsningar om enstegsredigerare och avsaknad av kliniköversikt nedan är ersatta. Patientaktivering, automatisk tillämpning, AI-anrop och försäljning har inte öppnats.
+
 ## Vad som är byggt
 
 - Serverägda progressionsramar med klinikerns MFA-godkännande, fullständiga steg, aktuellt plan-ID och separat körläge. Klinikvyn kan granska, godkänna i granskningsläge och återkalla. Ändrad publicerad plan återkallar föregående ram.

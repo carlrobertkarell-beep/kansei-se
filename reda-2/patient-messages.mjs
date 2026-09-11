@@ -18,7 +18,7 @@ export function mountPatientMessages(host,{api}){
   e.preventDefault();if(busy||!data?.reply_to)return;const body=q('textarea').value.trim(),messageId=data.reply_to;
   if(body.length<5){status('Skriv ett svar på minst fem tecken.');return}
   const signature=JSON.stringify([messageId,body]);if(pending?.signature!==signature)pending={signature,id:crypto.randomUUID()};const requestId=pending.id;
-  setBusy(true);status('Skickar ditt svar…');
+  ++ticket;setBusy(true);status('Skickar ditt svar…');
   try{await api.patientReply(messageId,requestId,body);if(!valid())return;pending=null;q('textarea').value='';setBusy(false);await refresh('Ditt svar är levererat i Reda till din behandlare.');}
   catch(e){if(valid()){status(e.message||'Svaret kunde inte skickas. Texten är kvar; försök igen.');if(e.code==='40001'){data=null;q('.reda-reply').hidden=true;pending=null}}}
   finally{if(valid())setBusy(false)}

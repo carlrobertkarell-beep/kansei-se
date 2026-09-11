@@ -26,7 +26,15 @@ SQL-källor, testade tillsammans med grundschemat i en tom PostgreSQL-databas:
 1. `secure/progression-runtime.sql`
 2. `secure/dialogue-runtime.sql`
 
-De appliceras med Supabase MCP som namngivna hanterade migrationer. Faktiska migrationsversioner antecknas efter applicering; inga CLI-migrations-ID hittas på.
+Infört med Supabase MCP som namngivna hanterade migrationer:
+- `20260911045221 exercise_intelligence_progression_runtime`
+- `20260911045230 exercise_intelligence_dialogue_runtime`
+
+Edge-funktionen `reda-dialogue` version 1 är driftsatt med JWT-kontroll. Efterkontrollen bekräftade båda brytarna av, RLS på alla fem nya tabeller, inga direkta sessionsskrivningar för browserrollen och inga nya patienter, planer, pass, svar, ramar eller ärenden skapade av införandet.
+
+CI på `ce5551d170b46dc5922071e153e099aacce21b7d` är grön: 125 Node-tester, isolerade PostgreSQL-tester inklusive två samtidiga anslutningar, de nya och befintliga browserflödena samt SEO-regression. [Verifierad körning](https://github.com/carlrobertkarell-beep/kansei-se/actions/runs/34563747913).
+
+Driftgranskningen visar inga nya säkerhetsvarningar på publika tabeller. De två privata tabellerna har avsiktligt ingen browserpolicy: åtkomst sker genom behörighetskontrollerade serverfunktioner. Supabase visar därför [RLS enabled, no policy](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy) som information. Den sedan tidigare avstängda [kontrollen av läckta lösenord](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection) återstår som Auth-varning. Äldre RLS-prestandaråd och oanvända index på den ännu tomma driftdatan kvarstår; inga behörigheter lättades för att tysta dem.
 
 Edge-filer:
 - `supabase/functions/reda-dialogue/index.ts`

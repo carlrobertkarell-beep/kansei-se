@@ -38,6 +38,11 @@ select tests.ok(reda_evaluate_progression(tests.id(11),tests.id(701))->>'action'
 select tests.ok(reda_evaluate_progression(tests.id(11),tests.id(701))->>'applied'='false','shadow never mutates plan');
 select tests.ok((select count(*)=1 from reda_engine_decisions where request_id=tests.id(701)),'decision request idempotent');
 reset role;
+update auth.users set banned_until=now()+interval '1 day' where id=tests.id(1);
+set role authenticated;
+select tests.ok(reda_evaluate_progression(tests.id(11),tests.id(700))->>'code'='clinician_authority','inactive clinician authority blocks evaluation');
+reset role;
+update auth.users set banned_until=null where id=tests.id(1);
 update reda_sessions set payload=jsonb_set(payload,'{exercises,0,roundsDone}','0') where id=tests.id(41);
 set role authenticated;
 select tests.ok(reda_evaluate_progression(tests.id(11),tests.id(702))->>'code'='invalid_session','marked completion cannot hide missing rounds');
@@ -101,3 +106,21 @@ select tests.denied('select reda_save_session_internal(tests.id(2),tests.id(801)
 reset role;
 select tests.ok((select count(*)=2 from reda_progression_frames where patient_id=tests.id(11)),'frame revisions retained');
 select tests.ok((select count(*)=1 from reda_plans where patient_id=tests.id(11) and status='active'),'exactly one active plan remains');
+update reda_plans set payload=tests.plan(8) where id=tests.id(23);
+select tests.login(4,'aal2',104);
+select reda_approve_frame(tests.id(23),tests.policy());
+-- Service activation must retain access to the frame CHECK without exposing browser writes.
+insert into reda_plans(id,patient_id,clinician_id,version,status,payload) values(tests.id(990),tests.id(12),tests.id(4),2,'draft',tests.plan(8));
+set role service_role;
+select reda_activate_plan_internal(tests.id(990),tests.id(4));
+reset role;
+select tests.ok((select status='active' from reda_plans where id=tests.id(990)),'existing service activation remains usable');
+set role authenticated;
+select tests.login(2);
+select tests.denied('update reda_progression_frames set status=''revoked''','42501','browser cannot write frames');
+select tests.denied('update reda_sessions set payload=''{}''','42501','browser cannot tamper with session evidence');
+select tests.login(3,'aal1',102);
+select tests.ok((select count(*)=0 from reda_engine_decisions),'other patient cannot read decisions');
+select tests.login(2,'aal1',999);
+select tests.denied('select reda_evaluate_progression(tests.id(11),tests.id(995))','42501','revoked login cannot run engine');
+reset role;

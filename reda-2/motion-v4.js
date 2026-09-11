@@ -16,7 +16,7 @@ function pose(key,t){key=aliases[key]||key;t=clamp(t);if(!keys.has(key))return n
  let hip,shoulder,knee,ankle,heel,toe,hand,back;
  const press=key==='leg-press.bilateral';
  if(press){hip=[230,290];shoulder=polar(hip,80,-2.05);ankle=at([305,255],[337,220],t);knee=joint(hip,ankle,72,72,-1);heel=add(ankle,[-4,13]);toe=add(ankle,[21,-11]);hand=[252,258];back={hip:add(hip,[-8,-3]),knee:add(knee,[-8,-3]),ankle:add(ankle,[-8,-3]),heel:add(heel,[-8,-3]),toe:add(toe,[-8,-3])};}
- else{hip=at([288,244],[287,278],t);shoulder=polar(hip,80,-Math.PI/2+.13);ankle=[345,364];heel=[334,378];toe=[372,378];knee=joint(hip,ankle,72,72,-1);hand=add(shoulder,[4,73]);const rear=[208,306];back={hip,knee:joint(hip,rear,72,72,-1),ankle:rear,heel:[223,312],toe:[194,322]};}
+ else{hip=at([300,231],[295,278],t);shoulder=polar(hip,80,-Math.PI/2+.13);ankle=[345,364];heel=[334,378];toe=[372,378];knee=joint(hip,ankle,72,72,-1);hand=add(shoulder,[4,73]);const rear=[208,306];back={hip,knee:joint(hip,rear,72,72,-1),ankle:rear,heel:[223,312],toe:[194,322]};}
  return {hip,shoulder,knee,ankle,heel,toe,hand,elbow:joint(shoulder,hand,38,38,-1),head:add(shoulder,[-1,-36]),back,press,bench:!press,weighted:key.endsWith('loaded')};
 }
 function camera(key){if(key.startsWith('bridge.'))return [128,257,315,143];if(key.startsWith('step-up.'))return [180,12,270,392];if(key.startsWith('knee-extension.'))return [168,130,267,270];if(key.startsWith('leg-press.'))return [155,137,258,268];return [165,65,280,340]}

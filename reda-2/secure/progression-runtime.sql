@@ -167,6 +167,7 @@ begin
  min_days=(f.policy->'rules'->>'minSuccessfulDays')::int;
  cutoff=greatest(f.started_at,((today-(f.policy->'rules'->>'maxEvidenceAgeDays')::int)::timestamp at time zone 'Europe/Stockholm'));
  <<decision>> begin
+  if patient.clinician_id<>f.clinician_id or not exists(select 1 from public.reda_profiles pr join auth.users u on u.id=pr.user_id where pr.user_id=f.clinician_id and pr.role='clinician' and u.deleted_at is null and (u.banned_until is null or u.banned_until<=now())) then a='blocked';code='clinician_authority';exit decision;end if;
   if p.status<>'active' or private.reda_plan_binding(p.payload) is distinct from private.reda_plan_binding(f.policy->'steps'->f.current_step->'plan') then a='blocked';code='version';exit decision;end if;
   if exists(select 1 from public.reda_review_cases where patient_id=patient.id and status<>'resolved') then a='review';code='pending_review';exit decision;end if;
   if today>(f.policy->>'validUntil')::date then a='review';code='expired';exit decision;end if;
@@ -292,3 +293,4 @@ end $$;
 
 grant usage on schema private to service_role;
 grant select,update on public.reda_progression_frames to service_role;
+grant execute on function private.reda_validate_frame(jsonb) to service_role;

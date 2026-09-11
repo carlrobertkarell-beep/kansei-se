@@ -57,3 +57,5 @@ export const savePatientProfile=({patientId=null,requestId,profile,revision=0,du
 
 export const authoringLibrary=(favorites=null)=>rpc('reda_authoring_library',{p_favorites:favorites},clinicalClient());
 export const savePlanTemplate=({id,revision,title,payload,archived=false})=>rpc('reda_save_plan_template',{p_id:id,p_revision:revision,p_title:title,p_payload:payload,p_archived:archived},clinicalClient());
+
+export const savePatientStart=({clinicalContext,delivery,...input})=>savePatientProfile({...input,profile:{...input.profile,clinical_context:clinicalContext,delivery_mode:delivery}});

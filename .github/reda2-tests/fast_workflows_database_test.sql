@@ -1,0 +1,26 @@
+\ir ../../reda-2/secure/fast-workflows.sql
+set role authenticated;
+select tests.login(1,'aal2',103);select tests.workspace('dashboard-test');
+select set_config('tests.start_context','{"stage":"build","capacity":"standard","trainingHistory":"regular","goalProfile":"daily","equipment":"home","floorOK":true,"band":false,"guidance":"guided","side":"left","includedInVisit":true}',false);
+select set_config('tests.start_profile',jsonb_build_object('name','Fictional Quick Patient','email','fast@example.test','focus','Vänster knä','goal','Promenera','clinical_context',current_setting('tests.start_context')::jsonb,'delivery_mode','digital')::text,false);
+select set_config('tests.fast_saved',reda_save_patient_profile(null,tests.id(792001),current_setting('tests.start_profile')::jsonb)::text,false);
+select set_config('tests.fast_pid',current_setting('tests.fast_saved')::jsonb->'patient'->>'id',false);
+select tests.ok(reda_patient_profile(current_setting('tests.fast_pid')::uuid)->'clinical_context'=current_setting('tests.start_context')::jsonb,'quick choices persist exactly with the patient');
+select tests.ok(reda_save_patient_profile(null,tests.id(792001),current_setting('tests.start_profile')::jsonb)=current_setting('tests.fast_saved')::jsonb,'same intake retry never duplicates patient');
+select tests.denied('select reda_save_patient_profile(null,tests.id(792001),jsonb_set(current_setting(''tests.start_profile'')::jsonb,''{clinical_context,side}'',''"right"''))','23505','same retry cannot change confirmed context');
+select tests.denied('select reda_save_patient_profile(null,tests.id(792002),current_setting(''tests.start_profile'')::jsonb-''email'')','22023','digital start requires contact');
+select tests.denied('select reda_save_patient_profile(null,tests.id(792002),current_setting(''tests.start_profile'')::jsonb-''focus'')','22023','patient start requires focus');
+select tests.denied('select reda_save_patient_profile(null,tests.id(792002),current_setting(''tests.start_profile'')::jsonb-''clinical_context'')','22023','patient start requires clinical conditions');
+select tests.denied('select reda_save_patient_profile(null,tests.id(792002),jsonb_set(current_setting(''tests.start_profile'')::jsonb,''{clinical_context,capacity}'',''"invented"''))','22023','unknown clinical selections rejected');
+select tests.ok(reda_save_patient_profile(null,tests.id(792003),(current_setting('tests.start_profile')::jsonb-'email')||jsonb_build_object('name','Fictional Paper Patient','delivery_mode','clinic'))->>'status'='saved','explicit clinic handover can omit electronic contact');
+select tests.ok(reda_dashboard('','ei')->>'total'=reda_dashboard()->'counts'->>'ei','EI queue count matches filtered patients');
+select tests.ok(reda_dashboard('','symptoms')->>'total'=reda_dashboard()->'counts'->>'symptoms','changed symptoms queue matches count');
+select tests.ok(reda_dashboard('','replies')->>'total'=reda_dashboard()->'counts'->>'replies','patient reply queue matches count');
+select tests.ok(reda_dashboard('','reviews')->>'total'=reda_dashboard()->'counts'->>'reviews','due reviews queue matches count');
+select tests.workspace('clinic-b');
+select tests.denied('select reda_patient_profile(current_setting(''tests.fast_pid'')::uuid)','42501','context does not leak across clinics');
+select tests.workspace('dashboard-test');select tests.login(4,'aal2',104);
+select tests.denied('select reda_patient_profile(current_setting(''tests.fast_pid'')::uuid)','42501','other clinician cannot read clinical context');
+select tests.login(1,'aal1',103);
+select tests.denied('select reda_dashboard('''',''ei'')','42501','EI queue requires MFA');
+reset role;

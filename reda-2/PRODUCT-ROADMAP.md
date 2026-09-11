@@ -1,6 +1,16 @@
 # Reda · beslutad produktmodell
 
-Uppdaterad 2026-09-10 efter Carl-Roberts korrigering. Detta ersätter tidigare krav på ett distanspaket med två avstämningar och en avslutande kontakt, och principen att varje progressionssteg kräver ett nytt behandlarbeslut. Äldre leveransnoteringar längre ned är historik, inte överordnade produktkrav.
+Uppdaterad 2026-09-11 efter Carl-Roberts korrigering. Detta ersätter tidigare krav på ett distanspaket med två avstämningar och en avslutande kontakt, och principen att varje progressionssteg kräver ett nytt behandlarbeslut. Äldre leveransnoteringar längre ned är historik, inte överordnade produktkrav.
+
+## Senaste utvecklingsblocket · 2026-09-11
+
+De tre valda delarna är implementerade som ett sammanhängande utvecklingsblock: serverägd progression, begränsad AI-dialog med ärendehantering och omarbetade rörelseillustrationer. Se [runtime och verifiering](RUNTIME.md) för faktisk omfattning, driftläge och kvarvarande arbete. Automatisk tillämpning och modelltrafik är fortsatt av; ingen patientaktivering sker.
+
+[Affärslinje och kalkyl](BUSINESS-MODEL.md): inkluderad start efter besök och frivillig digital fortsättning, prisförslag 690 kr/åtta veckor. Pris, köpflöde och periodrättigheter är inte aktiverade. Behandlarminuter per period är ett centralt pilotmått.
+
+Fortsatt prioritet: kliniskt granskade testfall och rörelser → jämförelse av skuggbeslut → modellval och svensk dialogutvärdering → fullständigt distributionsprov → kontrollerad pilot efter separat klartecken. Avancerad periodisering, journalintegration och resten av rörelsebiblioteket återstår.
+
+Nedan följer tidigare beslut och leveranshistorik; påståenden om dåvarande tekniska läge ersätts av den daterade runtimebeskrivningen ovan.
 
 ## Exercise Intelligence · gemensamt produktbegrepp
 Exercise Intelligence är Redas system för att knyta ihop förutsättningar, övningsval, genomförande, återkoppling och nästa steg. Namnet ska beskriva ett faktiskt sammanhängande beteende. Kundens löfte är att förstå sin plan och få en relevant väg framåt; behandlarens värde är bättre precision, mindre rutinadministration och tydligt underlag när egen bedömning behövs.

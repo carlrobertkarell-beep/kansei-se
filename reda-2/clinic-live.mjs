@@ -1,4 +1,5 @@
-import * as api from './secure-browser.mjs?v=20260910-intelligence'
+import * as api from './secure-browser.mjs?v=20260911-runtime'
+import {mountClinicEngine} from './runtime-ui.mjs?v=1'
 const $=id=>document.getElementById(id), C=window.RedaClinical, P=window.RedaPlanner
 let selected=null,patients=[],plan=null,draft=null,mfaFactor=null
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
@@ -57,7 +58,7 @@ async function renderFollowup(provided){
   const published=data.plans.filter(p=>p.status!=='draft'&&p.activated_at);
   if(!published.length){$('followup').textContent='Ingen aktiverad plan att följa upp ännu.';return}
   const initial=published.find(p=>p.status==='active')||published[0];
-  $('followup').innerHTML='<div class="follow-version"><label for="reviewVersion">Programversion</label><select id="reviewVersion">'+published.map(p=>`<option value="${esc(p.id)}" ${p.id===initial.id?'selected':''}>Version ${p.version}${p.status==='active'?' · aktuell':' · tidigare'}</option>`).join('')+'</select></div><div id="reviewSummary"></div>';
+  $('followup').innerHTML='<div class="follow-version"><label for="reviewVersion">Programversion</label><select id="reviewVersion">'+published.map(p=>`<option value="${esc(p.id)}" ${p.id===initial.id?'selected':''}>Version ${p.version}${p.status==='active'?' · aktuell':' · tidigare'}</option>`).join('')+'</select></div><div id="enginePanel"></div><div id="reviewSummary"></div>';
   const date=d=>d?d.slice(8,10)+'/'+d.slice(5,7)+' '+d.slice(0,4):'Ej bestämt';
   function draw(){
    const f=window.RedaFollowup.build({...data,planId:$('reviewVersion').value}),p=f.plan.payload,issues=f.exercises.filter(x=>x.heavy||x.skipped).sort((a,b)=>(b.heavy+b.skipped)-(a.heavy+a.skipped));
@@ -77,6 +78,7 @@ async function renderFollowup(provided){
    $('reviewSummary').innerHTML=html;
   }
   $('reviewVersion').onchange=draw;draw();
+  mountClinicEngine($('enginePanel'),{api,patientId,active:published.find(p=>p.status==='active'),getPlan:()=>plan,isCurrent:()=>request===followupRequest&&selected?.id===patientId,onApplied:()=>selectPatient(patientId)});
  }catch(e){if(request===followupRequest&&selected?.id===patientId)$('followup').textContent='Kunde inte läsa uppföljning: '+e.message}
 }
 function switchWorkTab(name){document.querySelectorAll('[data-worktab]').forEach(b=>b.classList.toggle('active',b.dataset.worktab===name));$('ordinationView').classList.toggle('hidden',name!=='ordination');$('followupView').classList.toggle('hidden',name!=='followup');if(name==='followup')renderFollowup()}

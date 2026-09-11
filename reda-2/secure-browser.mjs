@@ -44,3 +44,7 @@ export async function dialogue(planId,action,question,conversation){const {data,
 
 export const clinicInbox=(status='unresolved',code='all',offset=0)=>rpc('reda_clinic_inbox',{p_status:status,p_code:code,p_offset:offset});
 export const reviewDecision=(decisionId,verdict,note)=>rpc('reda_review_decision',{p_decision_id:decisionId,p_verdict:verdict,p_note:note});
+
+export const dashboard=(search='',filter='priority',offset=0)=>rpc('reda_dashboard',{p_search:search,p_filter:filter,p_offset:offset},clinicalClient());
+export const dashboardPatient=patientId=>rpc('reda_dashboard_patient',{p_patient_id:patientId},clinicalClient());
+export const dashboardAct=({patientId,token,requestId,action,note,due})=>rpc('reda_dashboard_act',{p_patient_id:patientId,p_token:token,p_request_id:requestId,p_action:action,p_note:note,p_due_date:due},clinicalClient());

@@ -17,8 +17,8 @@ export async function mountClinicEngine(host,{api,patientId,active,getPlan,isCur
   q('[data-approve]')?.addEventListener('click',()=>run(()=>api.approveFrame(active.id,policy),'Ramen är godkänd i granskningsläge.'));
   q('[data-revoke]')?.addEventListener('click',()=>run(()=>api.revokeFrame(frame.id),'Ramen är återkallad.'));
   q('[data-evaluate]')?.addEventListener('click',()=>run(()=>api.evaluateProgression(patientId,crypto.randomUUID()),decisionText));
-  host.querySelectorAll('[data-review-decision]').forEach(b=>b.onclick=()=>run(async()=>{const id=b.dataset.reviewDecision,r=await api.reviewDecision(id,q('[data-verdict="'+id+'"]').value,q('[data-decision-note="'+id+'"]').value);await onCasesChanged?.();return r},'Din bedömning är sparad. Motorbeslutet och ordinationen är oförändrade.'));
-  host.querySelectorAll('[data-case]').forEach(b=>b.onclick=()=>run(async()=>{const r=await api.handleCase(b.dataset.case,b.dataset.state,host.querySelector('[data-note="'+b.dataset.case+'"]').value);await onCasesChanged?.();return r},'Ärendets status är sparad.'));
+  host.querySelectorAll('[data-review-decision]').forEach(b=>b.onclick=()=>run(async()=>{const id=b.dataset.reviewDecision,r=await api.reviewDecision(id,q('[data-verdict="'+id+'"]').value,q('[data-decision-note="'+id+'"]').value);if(valid())await onCasesChanged?.();return r},'Din bedömning är sparad. Motorbeslutet och ordinationen är oförändrade.'));
+  host.querySelectorAll('[data-case]').forEach(b=>b.onclick=()=>run(async()=>{const r=await api.handleCase(b.dataset.case,b.dataset.state,host.querySelector('[data-note="'+b.dataset.case+'"]').value);if(valid())await onCasesChanged?.();return r},'Ärendets status är sparad.'));
  }
  await load();
 }

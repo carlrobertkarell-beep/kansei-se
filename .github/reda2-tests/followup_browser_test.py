@@ -5,7 +5,8 @@ from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[2]
 class H(http.server.SimpleHTTPRequestHandler):
  def log_message(self,*a):pass
-MOCK="""
+from workspaces_fixture import WORKSPACE_MOCK
+MOCK=WORKSPACE_MOCK+"""
 export async function currentUser(){return {id:'fictional-clinician'}}
 export async function aal(){return {currentLevel:'aal2'}}
 export async function claimClinician(){}

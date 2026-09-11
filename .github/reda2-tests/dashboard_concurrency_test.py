@@ -21,3 +21,17 @@ a,b=pair([750002,750003]);assert sum(x.get('error')=='40001' for x in[a,b])==1,(
 assert sql("select count(*) from private.reda_followups where patient_id=tests.id(700010)")=='1'
 assert sql("select count(*) from reda_audit_events where patient_id=tests.id(700010) and action='clinic_action_approved'")=='2'
 print('PASS: simultaneous identical approvals return one receipt; competing approvals reject stale evidence and never duplicate tasks')
+
+def intake_pair(ids,source_id):
+ barrier=threading.Barrier(2)
+ def run(rid):
+  barrier.wait()
+  statement="select reda_save_patient_profile(null,tests.id(%d),jsonb_build_object('name','Concurrent fictional %s','source','other','external_id','%s'));"%(rid,source_id,source_id)
+  return json.loads(sql(login+statement).splitlines()[-1])
+ with concurrent.futures.ThreadPoolExecutor(max_workers=2)as pool:return list(pool.map(run,ids))
+a,b=intake_pair([785001,785002],'parallel-1')
+assert sorted([a['status'],b['status']])==['duplicates','saved'],(a,b)
+a,b=intake_pair([785003,785003],'parallel-2')
+assert a==b and a['status']=='saved',(a,b)
+assert sql("select count(*) from private.reda_patient_profiles where source='other' and external_id in ('parallel-1','parallel-2')")=='2'
+print('PASS: concurrent imports create one patient per source id; identical retries return the same saved patient')

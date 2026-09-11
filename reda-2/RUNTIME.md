@@ -18,7 +18,7 @@
 
 Ramar godkänns i granskningsläge från klinikvyn. Automatisk tillämpning kan inte godkännas via RPC medan den privata brytaren är av. Den publika simuleringen i `progression-engine.js` förblir ett rent utvecklingsverktyg; SQL-rutinen är auktoritativ i den anslutna appen. De använder samma policyformat, men ett godkänt serverobjekt är ett separat krav. `policy.mode=simulation-only` är det äldre serialiseringsformatet, inte en flagga som klienten kan ändra för att få automatisk drift.
 
-En serverprövning kan anropas efter ett sparat svar, inför ett nytt pass och från kliniken. Inga tidsstyrda nattjobb gör en patient tyngre mellan två besök. Appen väntar på en pågående prövning innan den skapar ett nytt pass. Samma request-ID återger samma beslut vid omsändning. Om ett svar saknas avvaktar motorn; ett ärende från en äldre plan kan fortsatt blockera.
+En serverprövning kan anropas efter ett sparat svar, inför ett nytt pass och från kliniken. Inga tidsstyrda nattjobb gör en patient tyngre mellan två besök. Appen väntar på en pågående prövning innan den skapar ett nytt pass. Samma request-ID återger samma beslut vid omsändning. Om kvittot från en prövning eller hämtningen av den nya planen tappas bort startas inget nytt pass. Samma begäran prövas om och den nya versionen hämtas innan start. Om ett svar saknas avvaktar motorn; ett ärende från en äldre plan kan fortsatt blockera.
 
 ## Införande
 

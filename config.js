@@ -21,40 +21,10 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('[data-omd-betyg]').forEach(function(e){ e.textContent = o.betyg; });
   document.querySelectorAll('[data-count="289"]').forEach(function(e){ e.setAttribute('data-count', String(o.antal)); if(e.textContent==='0') e.textContent = '0'; });
   // Reda i huvudnavigationen är produkt-/informationsingången. Patientportalen nås separat från Reda-sidan.
-  document.querySelectorAll('a.nav-reda').forEach(function(a){ a.href='/reda-rehab/'; a.setAttribute('title','Reda · rehabilitering mellan besöken'); });
+  document.querySelectorAll('a.nav-reda').forEach(function(a){ a.href='/reda-rehab/'; a.setAttribute('title','Reda · rehab och träning. Kommer snart.'); });
 });
 
-// Startsidan: Reda ska vara en tydlig del av rehabiliteringskedjan utan att störa gamla patientportalen /reda/.
-document.addEventListener('DOMContentLoaded', function(){
-  if (location.pathname !== '/' && location.pathname !== '/index.html') return;
-  var card = document.getElementById('planKort'); if (!card) return;
-  var points = card.querySelector('.plan-punkter');
-  if (points) points.innerHTML = '<li>Din individuella plan från behandlaren, i mobilen</li><li>Rätt variant, sida, dos och stöd samlat på ett ställe</li><li>Exercise Intelligence knyter ihop mål, utförande och återkoppling</li>';
-  var h = card.querySelector('h3'); if (h) h.textContent = 'Reda håller ihop rehabiliteringen mellan besöken';
-  var p = card.querySelector('.plan-text p'); if (p) p.textContent = 'Reda samlar din plan, hjälper dig genom träningen och följer hur kroppen svarar. Vi kallar grunden Exercise Intelligence: din kapacitet, ditt mål och din vardag ska prägla upplägget. Nästa version förbereds för lansering, med automatisk progression under utveckling inom behandlarens ramar.';
-  var a = card.querySelector('.plan-text .btn');
-  if (a) { a.href='/reda-rehab/'; a.textContent='Läs om Reda →'; }
-  if (!card.querySelector('.reda-portal-link')) {
-    var old=document.createElement('a'); old.className='reda-portal-link'; old.href='/reda/'; old.textContent='Har du redan ett Reda-program? Öppna patientportalen →'; old.style.cssText='display:block;margin-top:12px;font-size:.86rem;color:var(--dim,#5B6B75);text-decoration:underline;text-underline-offset:3px';
-    card.querySelector('.plan-text').appendChild(old);
-  }
-});
-
-// Rehabiliteringssidan: synka den publika Reda-beskrivningen med den säkra patientportalen.
-document.addEventListener('DOMContentLoaded', function(){
-  if (location.pathname !== '/rehabilitering/' && location.pathname !== '/rehabilitering/index.html') return;
-  var card = document.getElementById('planKort'); if (!card) return;
-  var img = card.querySelector('.plan-lockup');
-  if (img) { img.src='/bilder/reda/lockup.svg?v=cross-20260910'; img.alt='Reda'; }
-  var points = card.querySelector('.plan-punkter');
-  if (points) points.innerHTML = '<li>Din individuella plan från behandlaren, i mobilen</li><li>Nivå, variant och dos väljs för den aktuella perioden</li><li>Återkoppling om kroppen, genomförandet och annan belastning</li>';
-  var label = card.querySelector('.plan-et'); if (label) label.textContent='Reda · Exercise Intelligence';
-  var h = card.querySelector('h3'); if (h) h.textContent='Du ska veta vad du tränar, varför och vad vi följer upp';
-  var p = card.querySelector('.plan-text p');
-  if (p) p.textContent='Exercise Intelligence är grunden vi utvecklar för en plan som hänger ihop med ditt mål, din kapacitet och hur träningen fungerar. Nästa version av Reda visar tydligt utförande och samlar återkoppling efter passen. Automatisk progression utvecklas och testas inom behandlarens ramar; den är ännu inte aktiverad för patienter.';
-  var a = card.querySelector('.plan-text .btn');
-  if (a) { a.href='/reda-rehab/'; a.textContent='Se hur Reda fungerar'; }
-});
+// Redas publika kort ligger i sidornas HTML så samma innehåll visas utan JavaScript.
 
 // Snabb väg till bokning högst upp på mobil: pris och tjänstens egen bokningsknapp direkt under rubriken.
 document.addEventListener('DOMContentLoaded', function(){

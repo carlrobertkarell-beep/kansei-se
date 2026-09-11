@@ -1,84 +1,72 @@
-# Reda – affärslinje och prisförslag
+# Reda · affärsmodell för kliniker och privatpersoner
 
-Arbetsförslag 2026-09-11. Inget pris är publicerat, ingen betalning är aktiverad. Underlag: Carl-Roberts mål och nuvarande besökspris 890 kr/45 minuter. Beloppen nedan är antaganden för ett pilotbeslut, inte uppmätt efterfrågan eller utlovad vinst.
+Uppdaterad 2026-09-11 efter Carl-Roberts nya inriktning. Målgrupperna och abonnemang som huvudspår kommer från ägaren. Paket, belopp och mätetal nedan är arbetsförslag inför validering, inte beslutade priser eller aktiverad försäljning. Det tidigare förslaget 690 kr/åtta veckor finns i [historiken](BUSINESS-MODEL-PILOT-HISTORY.md) och styr inte längre affären.
 
-## Rekommendation
+## Positionering
 
-**Låt Reda ingå som en tydlig del av vården. Sälj sedan relevant digital progression, inte appåtkomst eller en bunt samtal.**
+Rehab och hållbar träning för vanliga människor. Hjälp att förstå, genomföra och hålla fast vid relevant träning hemma, på gymmet, ute eller i kombination. Vardagsfunktion, styrka, rörlighet och motivation är kärnan. Ålder avgör inte nivå. Hyrox, CrossFit, elitperiodisering och bodybuilding är inte huvudmålgrupper eller prioriterade utvecklingsspår.
 
-Börja med redan bedömda Kansei-patienter. En enkel första prislinje är **690 kr för åtta veckors digital fortsättning**, engångsbetalning och aktivt val vid en eventuell ny period. Undvik abonnemang tills återkommande behov och faktisk användning har visats. Testa en prislinje i första piloten; olika nivåer utifrån ålder eller diagnos gör erbjudandet svårare att förstå.
+Exercise Intelligence är den gemensamma motorn: förutsättningar → relevant plan → begripligt utförande → träningssvar → tillåtet nästa steg. Det betalbara värdet är kontinuitet och relevant anpassning, inte själva AI-chatten eller fler obligatoriska samtal. God produktkvalitet och lämpligt urval ska bära ekonomin.
 
-| Väg | Kundens värde | Föreslagen ekonomi |
+## Tre vägar, två kommersiella relationer
+
+| Ingång | Kundrelation och betalning | Produkt |
 |---|---|---|
-| Reda efter besöket | Sparad individuell plan, tydliga instruktioner, registrering och återkoppling. Fyra veckors aktivt stöd/progression kan ingå när en lämplig ram godkänts. | Ingår i besöket. Plan och historik finns kvar därefter. Fyra veckor är en kommersiell omfattning, inte en klinisk tidsgräns. |
-| Digital fortsättning | Åtta veckor med relevanta förberedda steg, återkoppling, hjälp att förstå planen och ny version när motorns villkor är uppfyllda. | Prisförslag 690 kr. Inga obligatoriska bokade samtal. Behandlaren hanterar verkliga undantag. |
-| Fysiskt återbesök | Ny analys, behandling när det behövs och uppdaterad Reda-plan. | Nuvarande referens 890 kr/45 minuter. Ny inkluderad startperiod, så kunden inte betalar dubbelt för samma digitala tid. |
-| Fortsätta själv | Behålla ordinerad plan och se historiken. | Ingen fortsatt betalning för att läsa det man redan fått. Giltighet och behov av ny bedömning visas utan att hitta på en ny ordination. |
+| Kanseis patienter | Kansei har vårdrelationen. Kansei använder samma klinikprodukt som andra kliniker. | Behandlarvald plan, uppföljning och progression inom godkänd ram. |
+| Andra klinikers patienter | Kliniken har sin kundrelation och väljer sitt patientpris. Kliniken betalar Reda för plattformen. | Egen arbetsyta, team, egna patienter och mallar, uppföljning och beslutsstöd. |
+| Privatperson direkt till Reda | Reda är säljare och ansvarar för sitt direkterbjudande. Ingen automatisk koppling till Kansei eller annan klinik. | Separat onboarding och självguidat träningsupplägg inom den produktens granskade användningsområde. |
 
-Inkluderad aktiv period ska börja när kunden faktiskt kan öppna sin plan. Den betalda perioden ska börja när en godkänd fortsatt ram finns tillgänglig, inte när en betalningslänk skickas. Åtta veckors tillgång innebär inte åtta kalenderstyrda ökningar. Längre tid, oförändrad nivå eller bedömning kan vara rätt utfall.
+Kansei och Redas direktverksamhet ska ha separata arbetsytor även med samma ägare. Klinikkunder blir inte automatiskt Redas marknadsföringslista. Personen kan ha flera relationer, men en klinik får inte därmed tillgång till personens andra planer. Byte, överföring eller delning måste vara ett uttryckligt flöde. Kundrelation är ett affärsbegrepp; ansvar för personuppgifter följer faktisk behandling och avtal, inte ett påstående om att någon ”äger patientdata”.
 
-## Varför kunden skulle betala
+## Rekommenderade paket att pröva
 
-Värdet är att nästa relevanta steg finns förberett när kroppen och träningen ger underlag för det: mindre gissning, begriplig dos, hjälp med utförandet och kontinuitet efter besöket. Kunden köper inte en garanti om symtomfrihet eller en automatiskt högre träningsnivå. Exercise Intelligence måste visa sitt värde i den faktiskt uppdaterade planen och förklaringen till beslutet.
+En lättbegriplig nivå för privatpersoner med progression, två standardiserade klinikstorlekar. Starta inte med många diagnos- eller AI-nivåer. Säkerhet, läsbarhet och korrekt utförandestöd ingår på alla nivåer.
 
-Grundplanen bör vara tillräckligt bra för att användas utan köp. Fortsättningen ska vara ett ärligt tillägg när det finns ett relevant nästa steg. En plan som är för tunn från början skapar varken förtroende eller god konvertering.
+| Arbetsförslag | Omfattning | Prishypotes inför pilot |
+|---|---|---|
+| Reda Plan | En lämplig startplan och instruktioner. Ingen löpande automatisk anpassning. | Engångspris 349 kr till privatkund. |
+| Reda Fortsätt | Plan, löpande uppföljning och tillåten progression, motivation och digital hjälp. | 249 kr/månad eller 2 490 kr/år till privatkund. Startplan ingår; ingen extra startavgift. |
+| Reda Klinik | Två teamkonton, upp till 50 samtidiga personer med aktivt digitalt stöd, kliniköversikt och motorn. | 990 kr/månad exklusive tillämplig moms. |
+| Reda Klinik Plus | Sex teamkonton, upp till 200 samtidiga personer med aktivt digitalt stöd samt samma kliniska funktioner. | 2 490 kr/månad exklusive tillämplig moms. |
 
-Kundformulering att pröva, ännu inte publicerad:
+Privatkundspriserna är tänkta som totalpriser inklusive tillämplig moms. Momsbehandlingen är inte avgjord. Beloppen ovan är inte marknadsundersökta. Årsbetalning erbjuds först när uppsägning, avbrott och återbetalning fungerar. Börja piloten med månadsalternativet för att mäta faktiskt kvarvarande värde.
 
-> Din plan finns kvar. Om du vill fortsätta utveckla träningen kan du välja åtta veckor med digital progression i Reda. Du får nästa godkända steg när dina pass och din återkoppling ger stöd för det. Behöver vi undersöka eller behandla dig igen bokar du i stället ett återbesök.
+Klinikpaketet inkluderar motorns progression för de aktiva personer kliniken betalar för. Kliniken kan låta patientens digitala stöd ingå i besöket eller sälja en fortsatt period. Reda tar inte dessutom ut ett eget konsumentabonnemang av samma patient för samma stöd. Detta minskar dubbeldebitering och kanalproblem. Senare förmedlad klinikbetalning kräver separat upplägg för säljare, utbetalning och ansvar; den ingår inte i första versionen.
 
-## När ett erbjudande får visas
+En ”aktiv person” betyder en unik person med aktiverad stödperiod i arbetsytan, inte varje öppning eller sparad historik. Antalet visas före aktivering. Uppgradering kräver ett aktivt val; inget oväntat överuttag och ingen automatisk nedstängning av läsning när gränsen nås. Pröva hur hantering av start/slut och proportionering ska fungera innan fakturering byggs.
 
-1. Kunden har en dokumenterad bedömning och en fortsatt ram som faktiskt passar målet och miljön.
-2. Ingen olöst försämring eller ändrad förutsättning behöver bedömas först. Ett sådant ärende går till bedömning, inte till kassan.
-3. Inget relevant återbesök är redan bokat för samma fortsättning. Bokningssystemets uppgift måste vara verifierad; en tom lokal kalender räcker inte.
-4. Det framgår vad perioden omfattar, start/slut, totalpris, hur kontakt fungerar och vad kunden behåller när perioden slutar.
-5. Köp är frivilligt. Ingen automatisk förlängning, förvald betalning eller brådskande köpknapp efter ett dåligt träningssvar.
+## Betald progression utan fel incitament
 
-Om ett redan betalt digitalt upplägg behöver avbrytas för ny bedömning: visa det tydligt och erbjud en skälig hantering av oanvänd tid. Föreslagen enkel princip är att kreditera återstående digitala dagar mot det relevanta återbesöket, högst återbesökets pris, eller hantera återbetalning enligt fastställda villkor. Betalning ska inte bli ett hinder för rätt bedömning. Exakt konsumentvillkor och momsbehandling behöver fastställas för den slutliga tjänsten innan kassan öppnas; de är inte avgjorda av detta prisförslag.
+Progression ingår i en betald stödperiod eller kliniklicens. Det betyder inte att varje ökning kostar extra. Utebliven ökning kan vara rätt beslut; kunden betalar för fortsatt stöd och utvärdering, inte garanterat tyngre träning.
 
-## Din tid avgör om affären fungerar
+- Befintlig köpt/ordinerad plan ska kunna läsas även när stödperioden slutar, enligt fastställd lagrings- och åtkomstpolicy. Historik är inte ett medel för att tvinga fram köp.
+- Försämring, saknat underlag eller behov av ny bedömning får inte utlösa merförsäljning. Säkerhetsinformation och kontaktväg är aldrig betalspärrade.
+- Inkluderad period och köpt period får inte överlappa med dubbel kostnad. På Kansei samordnas fortsättningen med relevanta återbesök när faktisk bokningsinformation finns.
+- Kunden ska se säljare, omfattning, totalpris, nästa debiteringsdag och hur abonnemanget avslutas. Inga förvalda årsavtal eller dolda förlängningar. Slutliga konsumentvillkor granskas före köpstart.
+- Paus för bedömning ska ha begriplig hantering av återstående tid. Ett abonnemang är inte en garanti om att alla kan fortsätta självguidat.
 
-890/45 = **19,78 kr per klinikminut** i möjlig besöksintäkt. Det är en jämförelse för alternativ användning av tiden, inte din lön, vinst eller faktiska marginal. Om tider annars står tomma blir alternativkostnaden lägre. Återbesökets behandlingsvärde ska heller inte reduceras till en digital prisjämförelse.
+## Kalkyl för en verksamhet som kräver lite handpåläggning
 
-Kalkylen antar 690 kr kundpris, 20 kr betalning/hantering och 30 kr teknik/AI per köpt period. De 50 kronorna är en budget att verifiera, inte en leverantörsoffert. Momsutfallet är inte fastställt: därför visas både 0- och 25-procentsscenario. Räkna om när tjänstens faktiska momsbehandling och leverantörskostnader är kända.
+Carl-Roberts referens är 890 kr/45 minuter = cirka 19,78 kr i möjlig besöksintäkt per minut. Det är ett alternativvärde, inte lön eller faktisk marginal. Målet är inte noll kliniskt ansvar utan få onödiga kontakter och ett tydligt ansvar för de undantag som kräver en människa.
 
-| All din tid per köpt period, inklusive godkännande, ärenden och administration | Tidsvärde | Kvar med 0 % moms | Kvar med 25 % moms |
-|---|---:|---:|---:|
-| 3 minuter | 59 kr | 581 kr | 443 kr |
-| **5 minuter** | **99 kr** | **541 kr** | **403 kr** |
-| 10 minuter | 198 kr | 442 kr | 304 kr |
-| 20 minuter | 396 kr | 244 kr | 106 kr |
-| 30 minuter | 593 kr | 47 kr | −91 kr |
+Räkneexempel för 249 kr/månad: vid ett **antaget** momsscenario på 25 % blir intäkten exklusive moms 199,20 kr. Anta 8 kr betalning, 15 kr AI/drift och 2 minuter manuell tid à 19,78 kr. Då återstår cirka **136,64 kr** före kundanskaffning, återbetalningar, utveckling och fasta kostnader. Vid 10 minuter återstår cirka **−21,60 kr**. Detta är en känslighetskalkyl, inte ett besked om momssats, leverantörskostnad eller vinst.
 
-Formel: kundpris / (1 + momssats) − betalning − teknik − minuter × 890/45. Utveckling, fasta kostnader, marknadsföring, återbetalningar och skatt är inte avdragna. Resultatet är ett kalkylerat bidrag efter tidsvärde, inte nettoresultat.
+Mät därför supportminuter per betalande person/månad, eskaleringsandel, återöppnade ärenden, kostnad per aktiv person, återbetalningar, frivilliga avslut och kvarvarande användning. För kliniker mäts dessutom Redas supporttid per arbetsyta, klinikens behandlartid och faktisk användning av betalda platser. Förbättra eller avgränsa erbjudandet om det kräver mycket individuell vårdtid; dölj inte den kostnaden i en billig självhjälpsprodukt.
 
-**Mål för piloten: högst fem minuter i genomsnitt per köpt åttaveckorsperiod.** Exempel på ett målscenario: tre minuter för godkännande/administration hos varje köpare plus ett tiominutersärende hos 20 procent ger fem minuter i snitt. Detta måste mätas; inget i den nuvarande implementationen bevisar den nivån.
+Ett mål att pröva är högst två minuter manuell kommersiell/teknisk support per direktkund och månad i genomsnitt. Kliniska undantag redovisas separat och får inte ransoneras för att nå målet. Ökad intäkt behöver följas tillsammans med meningsfull användning och korrekt hantering av avvikelser.
 
-Med 100 köpta perioder innebär fem minuter per kund totalt 8 timmar och 20 minuter över åtta veckor, cirka 63 minuter per vecka. Vid samma antaganden och 25-procentsscenariot blir bidraget cirka 40 300 kr för hela gruppens period före fasta kostnader och utveckling. Det är ett räkneexempel, inte en försäljningsprognos.
+## Friskvårdsbidrag
 
-Om snittet blir 15–20 minuter ska vi först förbättra urval, instruktioner och ärendehantering. Om fler avstämningar faktiskt behövs är det en annan tjänst med annan omfattning och prissättning. Pressa inte ned den kliniskt nödvändiga tiden för att uppnå kalkylen.
+Skatteverket anger att digitala träningsprogram och vissa andra app-/webbtjänster kan omfattas av skattefri friskvård, även vid användning hemma. Medicinska åtgärder för att förebygga, utreda eller behandla sjukdom eller skada omfattas inte av friskvårdsbidragets regler. Arbetsgivaren avgör vilka aktiviteter den godkänner inom reglerna. Underlaget ska visa aktiviteten. [Skatteverket: friskvård och appar](https://www.skatteverket.se/privat/skatter/arbeteochinkomst/formaner/personalvardmotionochfriskvard.4.7459477810df5bccdd4800014540.html), kontrollerad 2026-09-11.
 
-## Arbetsflödet som gör ekonomin möjlig
+Produktbeslut: skapa en faktiskt avgränsad tränings-/friskvårdstjänst och separat produktkod, omfattning och kvitto från medicinsk rehab/vård. Ett nytt namn gör inte behandling till friskvård. Granska den slutliga tjänsten innan någon Reda-produkt markeras som möjlig friskvård. Ingen generell ”godkänd av Skatteverket”-etikett eller garanti publiceras nu. Eventuell anslutning till friskvårdsförmedlare är ett senare distributionssteg med egna villkor och kostnader.
 
-- Förbered och godkänn relevanta steg vid bedömningen. Spara egna granskade mallar för att senare slippa börja från noll; mallarna ersätter inte patientens bedömning.
-- Motorn sköter prövning, vänteläge, version och kvitto. AI hjälper med frågor och strukturering, men beviljar inte dosökningar.
-- Ärenden behöver skäl, underlag, prioritet, ansvar och tydligt avslut. Kvitterat är inte samma sak som bedömt. Kliniken bestämmer en realistisk bevakningsrutin före pilot; appen lovar inte svar i realtid.
-- Mät separat tid för start, manuell planändring, undantag, teknisk hjälp och betalningsärenden. Ett genomsnitt utan dessa delar riskerar att dölja olönsamheten.
-- Sätt budget och larm för modellkostnad innan AI öppnas. Kvoter begränsar antal frågor; de ersätter inte mätning av tokenkostnad eller ett kostnadstak på kontot.
+## Ordning och nuläge
 
-## Pilot och beslut
+1. Kommer snart på offentliga sidor, fungerande självhjälp och fortsatt befintlig patientportal.
+2. Organisationsmodell, roller och isolering; skilj Redas direktverksamhet från kliniker före ny kundregistrering.
+3. Testade klinikflöden och en avgränsad självguidningsmodell. Lägg inte en fri konsumentonboarding framför dagens kliniska motor.
+4. Läsande assistent och godkännandekö; pröva att den sparar tid utan att blanda ekonomi och medicinsk prioritet.
+5. Rättigheter, betalning, kvitton, uppsägning och fel-/återbetalningsflöden i testläge; därefter separat beslut om pilot.
 
-Föreslagen första kohort: 20–30 redan bedömda kunder med en avgränsad, kliniskt granskad typ av progressionsram. Detta är ett förslag till kommande pilot, ingen aktivering har skett.
-
-Följ under minst en hel betald period: andel som får relevant erbjudande, andel som köper, faktisk användning, genomförda meningsfulla steg, måluppföljning, behandlarminuter, ärendetyper, onödiga larm, missade avvikelser, teknik-/modellkostnad, återbetalningar och återbesök när de är relevanta. Köpandel ensam är inget kvalitetsmått.
-
-**Prioritera först 690 kr/åtta veckor framför flera paket.** Om värdet är högt och den faktiska arbetsinsatsen hålls låg kan vi senare pröva ett högre pris på nästa kohort. Om användningen är låg ska vi förbättra produkten och urvalet innan vi testar prisneddragning. Hög betalvilja ska inte tolkas som klinisk lämplighet.
-
-Nya kunder utan besök är fas två. De behöver en separat ingång för bedömning och lämplighet, och en kalkyl som bär det arbetet. Sälj inte samma fortsättningsprodukt till en okänd person som till en patient vars utgångspunkt och program redan är bedömda.
-
-## Teknik och källor
-
-- Implementationsstatus och kvarvarande införande: [RUNTIME.md](RUNTIME.md). Betalning, periodrättigheter och bokningssynk är inte byggda i detta block.
-- OpenAI:s [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs) styr formatet, men garanterar inte att en tolkning är sann. Därför valideras svaret och inga patientrapporter sparas från dialogen utan separat bekräftelse.
-- OpenAI:s [Your data](https://developers.openai.com/api/docs/guides/your-data) beskriver separat hantering av applikationsdata och missbruksövervakning. `store:false` är inte ett generellt löfte om noll lagring; avtals-/kontoinställningar och databehandling måste vara klara innan verklig hälsofritext används.
+Betalning, abonnemang, organisationsisolering och allmän AI-support är ännu inte implementerade. Patientaktivering, patienternas externa AI och automatisk tillämpning är fortsatt av. Teknisk arkitektur och acceptanskrav: [PLATFORM-ARCHITECTURE.md](PLATFORM-ARCHITECTURE.md).

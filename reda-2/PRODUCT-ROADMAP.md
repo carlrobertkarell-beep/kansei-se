@@ -1,4 +1,22 @@
-# Reda · beslutad produktmodell
+# Reda · produktplan och leveranshistorik
+
+## Aktuell riktning · kliniker och vardagsträning · 2026-09-11
+
+Detta avsnitt ersätter äldre kommersiella rekommendationer och prestationsinriktning nedan. Reda byggs för rehabilitering och hållbar träning i vardagen, hemma/gym/ute eller kombinationer. Hyrox, CrossFit och elitperiodisering är inte prioriterad positionering. Befintliga avancerade testfall och bibliotek tas inte bort eller ändrar redan sparade planer.
+
+Tre ingångar: Kanseis patienter, andra klinikers egna patienter och privatpersoner som köper direkt av Reda. Kliniker behöver separata arbetsytor och teamroller. Kansei och Redas direktverksamhet separeras också. Självguidat träningsupplägg behöver en egen granskad onboarding och policy, inte bara dagens klinikmotor utan behandlare.
+
+Abonnemang är nu huvudspår för privatpersoner och kliniker, med engångsplan som alternativ. Progression ingår i en betald stödperiod/licens; ingen extra avgift per ökning och ingen betalspärr för säkerhetsinformation. [Aktuell affärsmodell och prishypoteser](BUSINESS-MODEL.md) ersätter tidigare råd att undvika abonnemang.
+
+[Plattformsarkitektur och acceptanskrav](PLATFORM-ARCHITECTURE.md) beskriver organisationsisolering, roller, betalrättigheter, läsande AI-analyser, support och godkända åtgärder. Detta är planerat arbete, inte implementerad multiklinikdrift eller försäljning.
+
+Offentliga Reda-sidan är nu en avgränsad kommer-snart-presentation. Samma budskap finns på Kanseis startsida och rehabiliteringssida. En supportsida ger självhjälp och manuell kontakt. Den tidigare interaktiva demonstrationen finns kvar som ett tydligt historiskt, oindexerat utvecklingsexempel i `reda-rehab/forhandsvisning.html` med sina befintliga tester. Den länkas inte från den nya marknadssidan.
+
+Nästa utvecklingsblock: organisations- och rollmodell → stödperioder/säljare → läsande assistent och godkännandekö. Rörelsekvalitet, klinisk granskning, distributionsprov och skuggläge fortsätter som kvalitetskrav före pilot. Betalning, ny patientaktivering, patienternas externa AI och automatisk tillämpning är fortsatt av. API-anslutningen är tekniskt verifierad med fiktiva data; se INTELLIGENCE-WORKFLOW.md för faktiskt driftläge.
+
+---
+
+Följande avsnitt är daterad historik. Ovanstående riktning och de aktuella statusdokumenten gäller vid skillnader.
 
 ## Nästa arbetsflöde · 2026-09-11
 

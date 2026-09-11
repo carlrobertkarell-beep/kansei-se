@@ -1,6 +1,6 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const I=require('../../reda-2/intelligence-system.js'),R=require('../../reda-2/training-response.js');
-const answers={nextDay:'settled',function:'stable',recovery:'ready',otherTraining:'usual',quality:'controlled',contact:'no'};
+const answers={nextDay:'settled',function:'stable',recovery:'ready',otherTraining:'usual',quality:'controlled',environment:'same',contact:'no'};
 test('saved context and instruction stay unchanged across ages and presentation',()=>{
  const plan={goal:'Gå till affären',age:80,context:{stage:'protected',capacity:'high',trainingHistory:'rehab_experienced',goalProfile:'daily',floorOK:false},exercises:[{id:'leg_press',name:'Benpress',instructions:['Min sparade instruktion'],prescribedLoad:'Individuellt vald vikt',dose:{rest:90}}]};
  const before=JSON.stringify(plan),o=I.overview(plan);assert.match(o.focus,/toleransen/);assert.equal(o.constraints.length,1);assert.deepEqual(I.exercise(plan,plan.exercises[0]).steps,['Min sparade instruktion']);assert.equal(I.exercise(plan,plan.exercises[0]).rest,90);assert.deepEqual(I.overview({...plan,age:25,presentation:'trained'}),o);assert.equal(JSON.stringify(plan),before);

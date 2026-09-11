@@ -21,10 +21,18 @@ export function changeSummary(before,after){
  if(before&&JSON.stringify(before.context)!==JSON.stringify(after.context))changes.push('Uppdatera planens förutsättningar');
  return changes;
 }
+export function suggestionContext(...sources){const result={...startProfiles.home.values};for(const source of sources)for(const [key,value]of Object.entries(source||{}))if(value!==''&&value!==undefined&&value!==null)result[key]=value;return result}
+export function planChoices(P,context){
+ if(!context.blueprintId||context.blueprintId==='manual')throw Error('Välj klinisk riktning för att se planförslagen.');
+ const full=P.buildProgram(context),choices=[{id:'complete',title:'Samlad grundplan',detail:'Alla övningar i vald klinisk riktning.',plan:full}];
+ if(full.exercises.length>2){const short=cleanProgression(full);short.exercises=short.exercises.slice(0,Math.min(3,full.exercises.length-1));choices.push({id:'focused',title:'Färre övningar',detail:'Ett kortare pass. Du kan lägga till fler övningar senare.',plan:short})}
+ if(full.exercises.some(x=>x.dose.sets>1)){let light=cleanProgression(full);light.exercises.forEach((x,i)=>{light=P.editExercise(light,i,{sets:1})});choices.push({id:'intro',title:'Mindre träningsvolym',detail:'Samma övningar och utföranden, en omgång per övning.',plan:light})}
+ return choices;
+}
 export function createAuthoringTools(P,D){
  const compatible=(v,c={})=>!(c.floorOK===false&&v.tags?.floor)&&!(c.band===false&&v.tags?.band)&&!(c.equipment==='home'&&v.tags?.gym)&&!(!['run','sport','hyrox'].includes(c.goalProfile)&&v.tags?.impact);
  function exercise(id,context={},variantId){const e=D.exercises.find(x=>x.id===id);if(!e)throw Error('Övningen finns inte i biblioteket.');const v=variantId?e.variants.find(v=>v.id===variantId&&compatible(v,context)):e.variants.find(v=>compatible(v,context));if(!v)throw Error('Ingen variant passar de valda förutsättningarna.');return P.exerciseFor(id,context,v.id)}
- function add(plan,id){if(plan.exercises.length>=12)throw Error('En plan kan innehålla högst 12 övningar.');if(plan.exercises.some(x=>x.id===id))throw Error('Övningen finns redan i planen. Justera sida eller dos där.');const p=cleanProgression(plan);p.exercises.push(exercise(id,p.context));return recheck(p)}
+ function add(plan,id){if(plan.exercises.length>=12)throw Error('En plan kan innehålla högst 12 övningar.');if(plan.exercises.some(x=>x.id===id))throw Error('Övningen finns redan i planen. Justera sida eller dos där.');const p=cleanProgression(plan);p.exercises.push(exercise(id,p.context));const x=p.exercises.at(-1);if(p.context?.side&&P.allowedSides(x.id,x.variantId).includes(p.context.side))x.side=p.context.side;return recheck(p)}
  function remove(plan,index){const p=cleanProgression(plan);p.exercises.splice(index,1);return recheck(p)}
  function move(plan,index,direction){const p=cleanProgression(plan),to=index+direction;if(to<0||to>=p.exercises.length)return p;[p.exercises[index],p.exercises[to]]=[p.exercises[to],p.exercises[index]];return p}
  function fromTemplate(template,context){const p=emptyPlan(context);for(const x of template.exercises){if(p.exercises.some(e=>e.id===x.id))throw Error('Mallen innehåller en dubblerad övning.');p.exercises.push(exercise(x.id,context,x.variantId));p.exercises[p.exercises.length-1]=P.editExercise(p,p.exercises.length-1,x.dose).exercises.at(-1)}return p}

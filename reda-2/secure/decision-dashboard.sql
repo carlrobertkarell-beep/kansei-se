@@ -110,7 +110,7 @@ declare actor uuid:=private.reda_live_actor();snap jsonb;result jsonb;begin
  'cases',coalesce((select jsonb_agg(jsonb_build_object('id',c.id,'code',c.code,'status',c.status,'created_at',c.created_at,'plan_version',tr.plan_version,'answers',tr.answers) order by c.created_at,c.id) from public.reda_review_cases c join public.reda_training_responses tr on tr.id=c.response_id where c.patient_id=p_patient_id and c.status<>'resolved'),'[]'::jsonb),
  'prepared_frame',snap->'plan'->'payload'->'progressionDraft',
  'decision',snap->'decision','frame',case when snap->'frame'='null'::jsonb then null else jsonb_build_object('execution',snap->'frame'->'execution','current_step',snap->'frame'->'current_step','policy',snap->'frame'->'policy') end,
- 'history',coalesce((select jsonb_agg(h.result||jsonb_build_object('created_at',h.created_at) order by h.created_at desc,h.request_id)from(select result,created_at,request_id from private.reda_clinic_action_receipts where patient_id=p_patient_id order by created_at desc,request_id limit 10)h),'[]'::jsonb))into result
+ 'history',coalesce((select jsonb_agg(h.result||jsonb_build_object('created_at',h.created_at) order by h.created_at desc,h.request_id)from(select cr.result,cr.created_at,cr.request_id from private.reda_clinic_action_receipts cr where cr.patient_id=p_patient_id order by cr.created_at desc,cr.request_id limit 10)h),'[]'::jsonb))into result
  from private.reda_dashboard_rows(actor,private.reda_request_organization(),p_patient_id)r;
  return result;
 end$$;

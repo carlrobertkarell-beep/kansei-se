@@ -1,0 +1,23 @@
+import {reflectionLines} from './patient-loop.mjs?v=1';
+import {prescriptionFacts,supportFor} from './everyday-support.mjs?v=1';
+import {dayNames} from './plan-authoring-model.mjs?v=2';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+export function mountSavedSupport(host,{row,plan}){
+ const help=supportFor(row.answers),clinical=row.answers?.barrier!=='none'||row.answers?.support==='yes';
+ host.innerHTML='<section class="saved-support"><p class="support-source">'+reflectionLines(row).map(esc).join(' · ')+'</p><p class="eyebrow">'+(clinical?'Sparat till kliniken':'Inför nästa pass')+'</p><h3>'+esc(help.title)+'</h3><p>'+esc(help.detail)+'</p>'+(help.action==='contact'?'<a class="btn ghost" href="/kontakt/">'+esc(help.label)+'</a>':'<button type="button" class="btn ghost" data-support-guide>'+esc(help.label)+'</button>')+'<div class="support-next"><b>Vad händer sedan?</b><p>'+esc(help.next)+'</p>'+(clinical?'<p>Kliniken har tillgång till ditt sparade svar. Det betyder inte att en behandlare har läst det ännu. Återkopplingen bevakas inte i realtid.</p>':'')+'</div></section>';
+ host.querySelector('[data-support-guide]')?.addEventListener('click',()=>openPlanGuide(plan,{exerciseId:row.answers?.exerciseId,view:help.action==='schedule'?'schedule':'exercise'}));
+}
+
+// Reads the supplied version only. Opening a guide never starts or records training.
+export function openPlanGuide(plan,{exerciseId=null,view='exercise',source='Din sparade plan'}={}){
+ const payload=plan.payload||plan,xs=payload.exercises||[],d=document.createElement('dialog');d.className='plan-guide';
+ let selected=xs.some(x=>x.id===exerciseId)?exerciseId:xs.length===1?xs[0].id:'';
+ d.innerHTML='<header><div><p class="eyebrow">'+esc(source)+(plan.version?' · v'+Number(plan.version):'')+'</p><h2 tabindex="-1">'+(view==='schedule'?'Gör plats för planen':'Hjälp med min övning')+'</h2></div><button type="button" class="btn ghost" data-guide-close>Stäng</button></header>'+(view==='schedule'?'<p>'+esc(payload.goal||'Ditt planerade upplägg')+'</p><ul class="guide-days">'+(payload.schedule?.days||[]).map(day=>'<li>'+esc(dayNames[day])+'</li>').join('')+'</ul><p>Vilken tid brukar fungera de här dagarna? Bestäm gärna en fast punkt i vardagen, till exempel efter frukost.</p><h3>Det här ingår i passet</h3>':'')+'<label>Övning<select data-guide-exercise><option value="">Välj övning</option>'+xs.map(x=>'<option value="'+esc(x.id)+'" '+(selected===x.id?'selected':'')+'>'+esc(x.name)+'</option>').join('')+'</select></label><section data-guide-content></section><p class="guide-source">Här visas instruktionerna i den här planversionen. Att öppna hjälpen registrerar inget pass.</p>';
+ document.body.append(d);const q=s=>d.querySelector(s);
+ function draw(){const x=xs.find(x=>x.id===selected);q('[data-guide-content]').innerHTML=x?'<h3>'+esc(x.name)+'</h3><dl class="guide-facts">'+[...prescriptionFacts(x),...(!x.prescribedLoad&&x.prescription?.load?[['Belastning i utförandet',x.prescription.load]]:[]),...(!x.prescribedRange&&x.prescription?.rom?[['Rörelseomfång i utförandet',x.prescription.rom]]:[])].map(([k,v])=>'<div><dt>'+esc(k)+'</dt><dd>'+esc(v)+'</dd></div>').join('')+'</dl><div data-guide-motion></div>'+(window.RedaFigures&&x.motionKey?'<div class="guide-frames" role="group" aria-label="Se rörelsens delar"><button type="button" data-guide-frame="0" aria-pressed="true">Start</button><button type="button" data-guide-frame="0.5" aria-pressed="false">Mitt i rörelsen</button><button type="button" data-guide-frame="1" aria-pressed="false">Slut</button></div>':'')+'<h4>Steg för steg</h4><ol>'+(x.instructions?.length?x.instructions:[x.instruction].filter(Boolean)).map(s=>'<li>'+esc(s)+'</li>').join('')+'</ol>'+(!x.instructions?.length&&!x.instruction?'<p>Steg för steg saknas i den här planversionen. Be behandlaren om en genomgång.</p>':'')+(x.why?'<p><b>Varför övningen är med:</b> '+esc(x.why)+'</p>':'')+(payload.clinicianNote?'<p class="guide-note"><b>Råd i planen:</b> '+esc(payload.clinicianNote)+'</p>':''):'<p>Välj övningen du vill få hjälp med.</p>';
+  const frame=t=>{if(window.RedaFigures&&x?.motionKey)q('[data-guide-motion]').innerHTML=window.RedaFigures.svg(x.motionKey,t,x.side,x.name)};frame(0);
+  d.querySelectorAll('[data-guide-frame]').forEach(b=>b.onclick=()=>{frame(Number(b.dataset.guideFrame));d.querySelectorAll('[data-guide-frame]').forEach(v=>v.setAttribute('aria-pressed',String(v===b)))});
+ }
+ q('[data-guide-exercise]').onchange=e=>{selected=e.target.value;draw()};q('[data-guide-close]').onclick=()=>d.close();d.addEventListener('close',()=>d.remove());draw();d.showModal();q('h2').focus();return d;
+}

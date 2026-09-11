@@ -1,6 +1,7 @@
+import {mountSavedSupport,openPlanGuide} from './plan-guide.mjs?v=1'
 import * as api from './secure-browser.mjs?v=20260912-loop1'
 import {todayState,pendingReflections} from './patient-loop.mjs?v=1'
-import {mountSessionReflection} from './session-reflection.mjs?v=1'
+import {mountSessionReflection} from './session-reflection.mjs?v=2'
 import {mountPatientMessages} from './patient-messages.mjs?v=1'
 let messages=null;
 import {mountPlanHelp,decisionText} from './runtime-ui.mjs?v=2'
@@ -13,7 +14,7 @@ function error(e){$('authSuccess').classList.add('hidden');$('authError').textCo
 function exercises(){return plan?.payload?.exercises||[]}
 const I=window.RedaIntelligence,TR=window.RedaTrainingResponse;
 const responseForm=window.RedaResponseForm.create($('responseForm'),{submit:(sid,rid,answers)=>api.submitTrainingResponse(sid,rid,answers),onSaved:row=>{state.responses=[...(state.responses||[]).filter(x=>x.session_id!==row.session_id),row];renderResponsePrompt();evaluateNext()}});
-const reflectionForm=mountSessionReflection($('sessionReflection'),{submit:(sid,rid,answers)=>api.submitSessionReflection(sid,rid,answers),onSaved:row=>{state.reflections=[...(state.reflections||[]).filter(x=>x.session_id!==row.session_id),row];renderReflectionPrompt()},onLater:()=>{$('todayTitle').scrollIntoView({block:'start',behavior:'smooth'})}});
+const reflectionForm=mountSessionReflection($('sessionReflection'),{submit:(sid,rid,answers)=>api.submitSessionReflection(sid,rid,answers),onSaved:row=>{state.reflections=[...(state.reflections||[]).filter(x=>x.session_id!==row.session_id),row];renderReflectionPrompt();renderSavedSupport()},onLater:()=>{$('todayTitle').scrollIntoView({block:'start',behavior:'smooth'})}});
 function renderReflectionPrompt(){
  const host=$('reflectionPrompt');if(!api.submitSessionReflection){host.hidden=true;return}
  if(state.reflectionError){host.hidden=false;host.textContent='Dina svar direkt efter passen kunde inte hämtas. Ladda om för att försöka igen.';return}
@@ -22,11 +23,17 @@ function renderReflectionPrompt(){
  $('openReflection')?.addEventListener('click',()=>openReflection(candidate));
 }
 function openReflection(row){if(!row||row.plan_id!==plan.id||state.reflectionError||!api.submitSessionReflection)return;document.querySelector('[data-tab="today"]').click();reflectionForm.show({userId:state.userId,session:row,plan});reflectionForm.focus()}
+function renderSavedSupport(){
+ const row=[...(state.reflections||[])].filter(r=>r.plan_id===plan.id).sort((a,b)=>new Date(b.created_at)-new Date(a.created_at))[0];
+ $('savedSupport').hidden=!row||!!state.reflectionError;
+ if(row&&!state.reflectionError)mountSavedSupport($('savedSupportContent'),{row,plan});else $('savedSupportContent').replaceChildren();
+}
+$('openPlanGuide').onclick=()=>openPlanGuide(plan);
 function renderToday(){
  const view=todayState(plan,state.sessions);$('todayCard').dataset.dayState=view.kind;$('todayTitle').textContent=view.title;$('todayDetail').textContent=view.detail;
  $('todayExercises').innerHTML=exercises().map(x=>'<li>'+esc(x.name)+'</li>').join('');
  if(!session||session.completedAt)$('start').textContent=view.button;
- renderReflectionPrompt();
+ renderReflectionPrompt();renderSavedSupport();
 }
 function renderResponsePrompt(){const n=state.responseError?0:TR.due(state.sessions,state.responses).length;$('responsePrompt').classList.toggle('hidden',!n);$('responsePrompt').innerHTML=n?'<b>Hur svarade kroppen efter träningen?</b><br>Du kan lämna återkoppling på ett tidigare pass.<br><button type="button" class="btn ghost" id="openResponse">Svara på frågorna</button>':'';$('openResponse')?.addEventListener('click',()=>document.querySelector('[data-tab="follow"]').click())}
 function renderIntelligence(){const o=I.overview(plan.payload);$('intelligenceContext').innerHTML='<p class="eyebrow">Din utgångspunkt</p><h3>'+esc(o.goalLabel)+'</h3><p>'+esc(o.contextKnown?o.focus:'Din behandlares sparade ordination visas nedan.')+'</p><details class="ei-plan-context"><summary>Vad planen tar hänsyn till</summary><dl class="ei-axes">'+o.axes.map(x=>'<div><dt>'+esc(x.label)+'</dt><dd>'+esc(x.value)+'</dd></div>').join('')+'</dl><p class="ei-footnote">Exercise Intelligence samlar förutsättningar, övningsval och återkoppling. Du följer alltid den aktuella ordinationen.</p></details>';responseForm.render(state);renderResponsePrompt()}

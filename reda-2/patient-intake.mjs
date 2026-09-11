@@ -36,6 +36,6 @@ export function openPatientIntake({api,patientId=null,onBusy,onSaved,onOpen}){
   finally{saving=false;if(alive){dialog.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=false);q('[data-save]').disabled=q('[data-save]').dataset.stale==='true'}}
  };
  dialog.showModal();onBusy?.(true);
- if(patientId){saving=true;form.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=true);message('Hämtar patientuppgifterna…');api.patientProfile(patientId).then(p=>{if(!alive)return;revision=p.revision;fill(p);message('');form.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=false)}).catch(e=>message(e.message,true)).finally(()=>{saving=false})}else form.elements.name.focus();
+ if(patientId){form.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=true);message('Hämtar patientuppgifterna…');api.patientProfile(patientId).then(p=>{if(!alive)return;revision=p.revision;fill(p);message('');form.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=false)}).catch(e=>message(e.message,true)).finally(()=>{saving=false})}else form.elements.name.focus();
  return {close};
 }

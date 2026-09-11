@@ -32,5 +32,7 @@ for fn in ['activate-plan','save-session','invite-patient','claim-clinician']:
     text=read(f'reda-2/supabase/functions/{fn}/index.ts')
     assert '@supabase/server@1.5.3' in text and 'corsHeaders' in text
 invite=read('reda-2/supabase/functions/invite-patient/index.ts')
-assert 'reda_patient:true' in invite and 'reda_invited:true' not in invite
+assert 'inviteUserByEmail' not in invite and '403' in invite
+assert 'supabaseAdmin' not in read('reda-2/supabase/functions/claim-clinician/index.ts')
+assert 'reda_sync_session' in read('reda-2/supabase/functions/save-session/index.ts')
 print('PASS: secure live Reda client/auth/sync guardrails including passwordless patient access')

@@ -1,5 +1,9 @@
 import { withSupabase } from 'npm:@supabase/server@1.5.3'
 import { corsHeaders } from 'jsr:@supabase/supabase-js@2.116.0/cors'
-const json=(b:unknown,s=200)=>new Response(JSON.stringify(b),{status:s,headers:{...corsHeaders,'Content-Type':'application/json'}})
-const handler=withSupabase({auth:'user'},async(req,ctx)=>{if(req.method!=='POST')return json({error:'Method not allowed'},405);if(ctx.jwtClaims?.aal!=='aal2')return json({error:'MFA required'},403);const actorId=ctx.userClaims?.id;if(!actorId)return json({error:'Sign in required'},401);const {data:profile,error:pErr}=await ctx.supabase.from('reda_profiles').select('role').eq('user_id',actorId).single();if(pErr||profile?.role!=='clinician')return json({error:'Clinician required'},403);const body=await req.json().catch(()=>null),planId=body?.plan_id;if(!planId)return json({error:'Invalid request'},400);const {error}=await ctx.supabaseAdmin.rpc('reda_activate_plan_internal',{p_plan_id:planId,p_actor_id:actorId});if(error)return json({error:'Plan activation failed'},400);return json({ok:true})})
-export default{fetch:(req:Request)=>req.method==='OPTIONS'?new Response('ok',{headers:corsHeaders}):handler(req)}
+const headers={...corsHeaders,'access-control-allow-headers':(corsHeaders['access-control-allow-headers']||'authorization, x-client-info, apikey, content-type')+', x-reda-organization'}
+const json=(body:unknown,status=200)=>new Response(JSON.stringify(body),{status,headers:{...headers,'Content-Type':'application/json'}})
+const handler=withSupabase({auth:'user'},async(req,_ctx)=>{
+ if(req.method!=='POST')return json({error:'Method not allowed'},405);
+ return json({error:'Patientaktivering och inbjudningar är inte öppnade.'},403)
+})
+export default{fetch:(req:Request)=>req.method==='OPTIONS'?new Response('ok',{headers}):handler(req)}

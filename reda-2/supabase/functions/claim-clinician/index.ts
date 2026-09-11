@@ -1,5 +1,12 @@
 import { withSupabase } from 'npm:@supabase/server@1.5.3'
 import { corsHeaders } from 'jsr:@supabase/supabase-js@2.116.0/cors'
-const json=(body:unknown,status=200)=>new Response(JSON.stringify(body),{status,headers:{...corsHeaders,'Content-Type':'application/json'}})
-const handler=withSupabase({auth:'user'},async(_req,ctx)=>{const email=String(ctx.userClaims?.email||'').trim().toLowerCase(),userId=ctx.userClaims?.id;if(!email||!userId)return json({error:'Sign in required'},401);const {data:allowed,error:aErr}=await ctx.supabaseAdmin.from('reda_clinician_allowlist').select('email').eq('email',email).maybeSingle();if(aErr||!allowed)return json({error:'Clinician account is not approved'},403);const {error}=await ctx.supabaseAdmin.from('reda_profiles').upsert({user_id:userId,role:'clinician',display_name:''},{onConflict:'user_id'});if(error)return json({error:'Could not create clinician profile'},500);return json({ok:true})})
-export default{fetch:(req:Request)=>req.method==='OPTIONS'?new Response('ok',{headers:corsHeaders}):handler(req)}
+const headers={...corsHeaders,'access-control-allow-headers':(corsHeaders['access-control-allow-headers']||'authorization, x-client-info, apikey, content-type')+', x-reda-organization'}
+const json=(body:unknown,status=200)=>new Response(JSON.stringify(body),{status,headers:{...headers,'Content-Type':'application/json'}})
+// Existing memberships are the authority. Signing in never restores a revoked role.
+const handler=withSupabase({auth:'user'},async(req,ctx)=>{
+ if(req.method!=='POST')return json({error:'Method not allowed'},405);
+ const {data,error}=await ctx.supabase.rpc('reda_my_workspaces');
+ if(error||!Array.isArray(data)||!data.length)return json({error:'Kontot saknar en aktiv arbetsyta.'},403);
+ return json({ok:true})
+})
+export default{fetch:(req:Request)=>req.method==='OPTIONS'?new Response('ok',{headers}):handler(req)}

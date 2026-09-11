@@ -1,6 +1,6 @@
 # Reda · arbetsytor, assistent och godkända åtgärder
 
-Utvecklingsspecifikation 2026-09-11. Detta är målarkitektur och prioriterad backlog, inte en leverans av betalning, flera kliniker eller autonom support. Aktuell befintlig implementation beskrivs i INTELLIGENCE-WORKFLOW.md och RUNTIME.md.
+Utvecklingsspecifikation 2026-09-11. Organisationsgränser, arbetsytebyte och teamroller är implementerade enligt [WORKSPACES.md](WORKSPACES.md). Övriga delar är målarkitektur och prioriterad backlog, inte en leverans av betalning eller autonom support. Aktuell befintlig implementation beskrivs i INTELLIGENCE-WORKFLOW.md och RUNTIME.md.
 
 ## Utgångspunkt
 
@@ -26,7 +26,7 @@ Kansei är en klinikorganisation. Redas direktverksamhet är en annan arbetsyta/
 
 Servern ska kontrollera både organisation, aktuellt medlemskap, roll och objekttilldelning i varje läsning och åtgärd. Att skicka `organization_id` från klienten är inte bevis på behörighet. Rader som hör ihop ska inte kunna peka på olika organisationer. Köer, bilagor, exporter, AI-kontext, cachenycklar och loggar behöver samma gräns. Organisation eller roll får inte väljas av modellen.
 
-Migration ska ske stegvis: inventera befintliga ägare → skapa verifierad Kansei-organisation → bind befintliga relationer entydigt → kontrollera fullständighet → inför serverkrav/behörighetsregler → byt läsning och skrivning. Ingen automatisk sammanslagning av användare enbart efter namn eller mejl. Inget migreras i detta block.
+Migration ska ske stegvis: inventera befintliga ägare → skapa verifierad Kansei-organisation → bind befintliga relationer entydigt → kontrollera fullständighet → inför serverkrav/behörighetsregler → byt läsning och skrivning. Ingen automatisk sammanslagning av användare enbart efter namn eller mejl. Det införda organisationsblocket och dess verifierade migreringsväg beskrivs i WORKSPACES.md.
 
 ## Två planvägar
 

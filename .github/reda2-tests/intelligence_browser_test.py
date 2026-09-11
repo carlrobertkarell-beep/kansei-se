@@ -5,7 +5,8 @@ from playwright.sync_api import sync_playwright,expect
 ROOT=Path(__file__).resolve().parents[2]
 class H(http.server.SimpleHTTPRequestHandler):
  def log_message(self,*a):pass
-MOCK="""
+from workspaces_fixture import WORKSPACE_MOCK
+MOCK=WORKSPACE_MOCK+"""
 const payload={schema:6,blueprintId:'knee_pf',goal:'Gå till affären',presentation:'guided',context:{stage:'protected',capacity:'supported',goalProfile:'daily',trainingHistory:'new',equipment:'home'},schedule:{days:[1,3,5]},exercises:[{id:'extension',variantId:'seated',name:'Benspark från stol',side:'right',variantLabel:'Sittande',instructions:['Sitt med stöd för ryggen.','Sträck knät enligt din ordination.'],instruction:'Sitt med stöd för ryggen.',dose:{sets:1,reps:5,label:'1 × 5',rest:60},motionKey:'knee-extension.seated'}]};
 window.eiCalls=[];window.eiRows=[];
 const sessions=[{id:'session-1',plan_id:'plan-1',plan_version:1,status:'completed',started_at:'2026-09-08T12:00:00Z',completed_at:'2026-09-08T12:10:00Z',payload:{exercises:[]}}];

@@ -51,3 +51,6 @@ export const dashboardAct=({patientId,token,requestId,action,note,due})=>rpc('re
 
 export const patientMessages=()=>rpc('reda_patient_messages',{},db);
 export const patientReply=(messageId,requestId,body)=>rpc('reda_patient_reply',{p_message_id:messageId,p_request_id:requestId,p_body:body},db);
+
+export const patientProfile=patientId=>rpc('reda_patient_profile',{p_patient_id:patientId},clinicalClient());
+export const savePatientProfile=({patientId=null,requestId,profile,revision=0,duplicateToken=null})=>rpc('reda_save_patient_profile',{p_patient_id:patientId,p_request_id:requestId,p_profile:profile,p_revision:revision,p_duplicate_token:duplicateToken},clinicalClient());

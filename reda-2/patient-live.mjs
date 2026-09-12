@@ -1,8 +1,10 @@
+import {mountActivityLog} from './activity-log.mjs?v=1'
+let activity=null;
 import {approvedOptions,optionPlan} from './plan-options.mjs?v=1'
 window.RedaPlanOptions={optionPlan};
 let selectedOption=null;
 import {mountSavedSupport,openPlanGuide} from './plan-guide.mjs?v=2'
-import * as api from './secure-browser.mjs?v=20260912-loop1'
+import * as api from './secure-browser.mjs?v=20260912-log1'
 import {todayState,pendingReflections} from './patient-loop.mjs?v=2'
 import {mountSessionReflection} from './session-reflection.mjs?v=3'
 import {mountPatientMessages} from './patient-messages.mjs?v=1'
@@ -93,7 +95,7 @@ async function next(){if(session?.completedAt)return;if(index<exercises().length
 async function pause(){if(!session||session.completedAt)return;$('player').classList.add('hidden');stopMotion?.();await sync(session.progress.some(p=>p.roundsDone||p.status==='skipped')?'partial':'started')}
 $('magicLink').onclick=async()=>{try{const email=$('email').value.trim();if(!email)throw new Error('Ange din e-postadress');$('magicLink').disabled=true;$('authError').classList.add('hidden');await api.sendPatientMagicLink(email);$('authSuccess').textContent='Klart. Öppna mejlet från Reda och tryck på länken för att öppna ditt program.';$('authSuccess').classList.remove('hidden')}catch(e){error(e)}finally{$('magicLink').disabled=false}}
 $('logout').onclick=async()=>{if(responseForm.isBusy()||reflectionForm.isBusy()||messages?.isBusy()){$('sync').textContent='Vänta tills återkopplingen har sparats eller ett felmeddelande visas.';return}if(unsynced){$('sync').textContent='Synka passet innan du loggar ut.';return}R.clear(localStore(),state?.userId);await api.signOut();location.reload()};$('start').onclick=start;$('skip').onclick=skip;$('next').onclick=next;$('closePlayer').onclick=pause
-document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{if(b.dataset.tab!=='today')pauseMotion();document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('hidden',x.id!==b.dataset.tab))})
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{if(b.dataset.tab!=='today')pauseMotion();if(b.dataset.tab==='activity'&&state){activity?.destroy();activity=mountActivityLog($('activityContent'),{api,patientId:state.patient.id})}document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('hidden',x.id!==b.dataset.tab))})
 setAuth(true);api.currentUser().catch(e=>{if(e?.name==='AuthSessionMissingError')return null;throw e}).then(async u=>{if(u)await bootstrap()}).catch(error)
 async function retry(){if(!session)return;const finished=!!session.completedAt;if(await sync(session.status,session.completedAt)){if(finished){try{await bootstrap()}catch{$('sync').textContent='Passet är sparat. Ladda om sidan för att uppdatera planen.'}}}}
 $('retrySync').onclick=retry;window.addEventListener('beforeunload',e=>{if((unsynced&&!durable)||reflectionForm.isBusy()){e.preventDefault();e.returnValue=''}});

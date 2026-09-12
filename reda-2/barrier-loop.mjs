@@ -1,5 +1,5 @@
 import {adaptationOptions} from './everyday-support.mjs?v=1';
-import {cleanProgression} from './plan-authoring-model.mjs?v=2';
+import {cleanProgression,createAuthoringTools} from './plan-authoring-model.mjs?v=2';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const barrierPhases={needs_context:'En snabbfråga återstår',ready:'Förslag att granska',trying:'Patienten provar ändringen',check_result:'Inväntar riktat svar',helped:'Hindret blev lättare',needs_review:'Nytt underlag att bedöma',superseded:'Planen har ändrats',handled:'Hanterat av behandlaren'};
 export const outcomeLabels={helped:'Ja, det fungerade',partly:'Delvis',no:'Nej, fortfarande svårt',not_tried:'Har inte kunnat prova'};
@@ -7,12 +7,20 @@ export function contextText(l){const c=l.context;if(!c)return 'Inväntar patient
 export function barrierCandidates(detail,base,P,D,loopId=null){
  if(!base||detail.cases?.some(c=>c.status!=='resolved'&&c.code==='changed_symptoms'))return [];
  const loops=(detail.barriers||[]).filter(l=>(!loopId||l.id===loopId)&&l.phase==='ready'&&!l.blocked&&l.source_plan_id===detail.patient?.plan_id&&l.context);
- return loops.slice(0,1).flatMap(l=>adaptationOptions(P,D,base,l.barrier).filter(x=>l.barrier==='time'||x.id==='band'&&!l.context.band||x.id==='floor'&&!l.context.floorOK||x.id==='home'&&l.context.equipment==='home').map(x=>{
-  const plan=cleanProgression(x.plan);delete plan.planOptions;
+ return loops.slice(0,1).flatMap(l=>{
+  let options=adaptationOptions(P,D,base,l.barrier);
+  if(l.barrier==='equipment'){
+   const adapted=createAuthoringTools(P,D).adapt(base,l.context);
+   adapted.warnings=[...new Set([...(base.warnings||[]).filter(w=>!w.endsWith(': välj en ersättning som passar de nya förutsättningarna.')),...adapted.warnings])];
+   for(const x of adapted.exercises){const old=base.exercises.find(y=>y.id===x.id);if(old?.side!==x.side)adapted.warnings.push(x.name+': sidan ändras. Välj ett utförande med rätt sida.');}
+   options=[{id:'circumstances',title:'Efter patientens förutsättningar',detail:'Plats, gummiband och golvövningar bedöms tillsammans. Bytta utföranden får bibliotekets grunddos; individuell belastning och rörelseomfång behöver granskas.',plan:adapted}];
+  }
+  return options.map(x=>{
+  const plan=cleanProgression(x.plan);delete plan.planOptions;if(l.barrier==='time')plan.context={...plan.context,minutes:l.context.minutes};
   return {...x,id:l.id+':'+x.id,loopId:l.id,barrier:l.barrier,context:l.context,plan,
    title:(l.barrier==='time'?'Mer utrymme i vardagen':'Träning där patienten är')+' · '+x.title,
    detail:contextText(l)+'. '+x.detail+(l.barrier==='time'?' Antalet omgångar minskar; den faktiska passtiden behöver prövas.':'')+' Efter ett pass med ändringen frågar Reda om just hindret blev lättare.'};
- }));
+ });});
 }
 export function clinicBarriersHTML(loops=[]){return loops.length?'<section class="barrier-clinic"><p class="eyebrow">EI följer hela vägen</p>'+loops.slice(0,5).map(l=>'<article><div><b>'+esc(l.barrier==='time'?'Få träningen att rymmas':'Få plats och utrustning att fungera')+'</b><span class="barrier-pill">'+esc(barrierPhases[l.phase])+'</span></div><p>'+esc(contextText(l))+'</p>'+(l.outcome?'<p><b>Patientens svar:</b> '+esc(outcomeLabels[l.outcome])+'</p>':'')+(l.result_version?'<small>Prövar plan v'+Number(l.result_version)+(l.due_date?' · Följ upp uteblivet svar '+esc(l.due_date):'')+'</small>':'')+(l.overdue?'<p class="barrier-overdue">Svar saknas efter uppföljningsdatumet. Stäm av med patienten.</p>':'')+(l.phase==='ready'?'<button type="button" class="btn primary" data-review-barrier="'+esc(l.id)+'">Granska ändringen och uppföljningen</button>':'')+(l.phase==='needs_context'?'<small>Snabbfrågan visas nästa gång patienten öppnar Reda.</small>':'')+'</article>').join('')+'</section>':''}
 

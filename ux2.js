@@ -4,7 +4,7 @@
   const first=main.firstElementChild;
   const wrap=document.createElement('div');
   wrap.innerHTML=`
-<section class="k2-section" id="hjalp-mig-ratt">
+<section class="k2-section k2-entry-section" id="hjalp-mig-ratt">
   <div class="k2-shell">
     <div class="k2-entry">
       <div class="k2-entry-grid">
@@ -13,6 +13,7 @@
           <h2>Du behöver inte veta vilken behandling du ska boka.</h2>
           <p>Berätta vad du söker hjälp för. Vi guidar dig till en rimlig första väg utan att försöka ställa diagnos på webben.</p>
           <div class="k2-actions"><a class="k2-primary" href="/hjalp-mig-boka/">Hjälp mig boka rätt →</a><a class="k2-secondary" href="/tjanster/">Jag vet vad jag söker</a></div>
+          <div class="k2-trustline"><span>Ingen remiss krävs</span><span>Privat vård</span><span>Odenplan, Stockholm</span></div>
         </div>
         <div class="k2-choice-grid" aria-label="Vanliga ingångar">
           <a class="k2-choice" href="/hjalp-mig-boka/"><strong>Jag har ont</strong><span>Men vet inte riktigt vad jag ska boka.</span></a>
@@ -50,7 +51,21 @@
       </div>
       <div class="k2-actions"><a class="k2-primary" href="/ultraljud/">Läs om ultraljud →</a></div>
     </div>
-    <div class="k2-dx-visual" data-k2-image="ultrasound"><div class="k2-dx-placeholder"><b>Här kommer klinikens riktiga ultraljudsbild.</b><span>Vi reserverar ytan nu så att fotografi och kliniskt material kan sättas in utan att layouten behöver byggas om.</span></div></div>
+    <div class="k2-dx-visual" data-k2-image="ultrasound"><div class="k2-dx-placeholder"><b>Diagnostik i realtid.</b><span>Här ersätter vi snart platshållaren med din kliniks riktiga ultraljudsbild.</span></div></div>
+  </div>
+</section>
+<section class="k2-section" id="problem-k2">
+  <div class="k2-shell">
+    <div class="k2-eyebrow">Vanliga problem</div>
+    <h2 class="k2-title">Sök på det du faktiskt känner.</h2>
+    <p class="k2-lead">Kunskapsbanken är byggd runt patientens frågor, inte runt våra behandlingar.</p>
+    <div class="k2-problem-grid">
+      <a href="/kunskapsbank/ont-i-axeln-pa-natten/"><strong>Ont i axeln på natten</strong><span>Vanliga orsaker, vad vi undersöker och när ultraljud kan vara relevant.</span></a>
+      <a href="/kunskapsbank/svullet-kna/"><strong>Svullet knä</strong><span>Effusion, överbelastning, artros och när klinisk bedömning behövs.</span></a>
+      <a href="/kunskapsbank/ont-i-halsenan-pa-morgonen/"><strong>Ont i hälsenan på morgonen</strong><span>Belastning, sensmärta och hur progression brukar planeras.</span></a>
+      <a href="/kunskapsbank/prp-eller-hyaluronsyra-vid-knartros/"><strong>PRP eller hyaluronsyra?</strong><span>Skillnader, användningsområden och varför bedömning kommer före injektion.</span></a>
+    </div>
+    <div class="k2-actions"><a class="k2-secondary" href="/kunskapsbank/">Utforska kunskapsbanken →</a></div>
   </div>
 </section>
 <section class="k2-section" id="reda-koppling">

@@ -1,5 +1,5 @@
-import {openPlanGuide} from './plan-guide.mjs?v=1';
-import {planReadiness,planFingerprint} from './plan-readiness.mjs?v=1';
+import {openPlanGuide} from './plan-guide.mjs?v=2';
+import {planReadiness,planFingerprint} from './plan-readiness.mjs?v=2';
 import {renderProcess} from './process-indicator.mjs?v=1';
 import {emptyPlan,startProfiles,createAuthoringTools} from './plan-authoring-model.mjs?v=2';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

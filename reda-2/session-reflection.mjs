@@ -1,5 +1,5 @@
-import {barriers,supportLabels,normalizeReflection,reflectionLines} from './patient-loop.mjs?v=1';
-import {mountSavedSupport,openPlanGuide} from './plan-guide.mjs?v=1';
+import {barriers,supportLabels,normalizeReflection,reflectionLines} from './patient-loop.mjs?v=2';
+import {mountSavedSupport,openPlanGuide} from './plan-guide.mjs?v=2';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function mountSessionReflection(host,{submit,onSaved,onLater}){
  let context=null,answers={},busy=false,requestId=null,error='',receipt=null,generation=0;

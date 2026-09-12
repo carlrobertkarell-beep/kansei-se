@@ -1,3 +1,5 @@
+import {mountPatientCheckin} from './patient-basis.mjs?v=1'
+let checkin=null;
 import {mountPatientSupport} from './support-workflow.mjs?v=1'
 let support=null;
 import {mountActivityLog} from './activity-log.mjs?v=1'
@@ -6,7 +8,7 @@ import {approvedOptions,optionPlan} from './plan-options.mjs?v=1'
 window.RedaPlanOptions={optionPlan};
 let selectedOption=null;
 import {mountSavedSupport,openPlanGuide} from './plan-guide.mjs?v=2'
-import * as api from './secure-browser.mjs?v=20260912-work1'
+import * as api from './secure-browser.mjs?v=20260912-basis1'
 import {todayState,pendingReflections} from './patient-loop.mjs?v=2'
 import {mountSessionReflection} from './session-reflection.mjs?v=3'
 import {mountPatientMessages} from './patient-messages.mjs?v=2'
@@ -80,7 +82,7 @@ async function bootstrap(){
  const restored=R.choose(plan,state.sessions,R.read(localStore(),state.userId));
  if(restored.discard)R.clear(localStore(),state.userId);
  recoveryBlocked=!!restored.blocked;previousSession=restored.previous||null;$('closePrevious').classList.toggle('hidden',!previousSession);session=restored.session||null;index=restored.index||0;
- renderHome();setAuth(false);if(!messages)messages=mountPatientMessages($('patientMessages'),{api,onSent:()=>support?.refresh()});support?.destroy();support=mountPatientSupport($('patientSupport'),{api,patientId:state.patient.id,onMessages:async()=>{await messages?.refresh();const el=$('patientMessages');el.querySelector('details').open=true;el.scrollIntoView({block:'start',behavior:'smooth'});el.querySelector('textarea')?.focus()}});$('start').disabled=recoveryBlocked;
+ renderHome();setAuth(false);checkin?.destroy();checkin=mountPatientCheckin($('patientCheckin'),{api,patientId:state.patient.id,onSaved:()=>support?.refresh()});if(!messages)messages=mountPatientMessages($('patientMessages'),{api,onSent:()=>support?.refresh()});support?.destroy();support=mountPatientSupport($('patientSupport'),{api,patientId:state.patient.id,onMessages:async()=>{await messages?.refresh();const el=$('patientMessages');el.querySelector('details').open=true;el.scrollIntoView({block:'start',behavior:'smooth'});el.querySelector('textarea')?.focus()}});$('start').disabled=recoveryBlocked;
  $('start').textContent=session&&!session.completedAt?'Fortsätt påbörjat pass':todayState(plan,state.sessions).button;
  $('sync').textContent=restored.message||(session?'Ditt påbörjade pass är återställt.':'Synkad med kliniken');
  if(restored.retry)await sync(session.status,session.completedAt);
@@ -96,11 +98,11 @@ async function skip(){if(session?.completedAt)return;const p=session.progress[in
 async function next(){if(session?.completedAt)return;if(index<exercises().length-1){index++;showExercise();if(unsynced)persist();return}$('next').disabled=true;const all=session.progress.every(p=>p.status==='completed'),doneAt=new Date().toISOString();const saved=await sync(all?'completed':'partial',doneAt);stopMotion?.();$('player').classList.add('hidden');$('start').textContent='Starta nytt pass';if(saved){try{const finishedId=session.id;state=await api.patientBootstrap();plan=state.plan;renderHome();$('sync').textContent=all?'Passet är sparat och synkat':'Passet är sparat som delvis genomfört';openReflection(pendingReflections(plan,state.sessions,state.reflections).find(x=>x.client_session_id===finishedId))}catch(e){$('sync').textContent='Passet är sparat, men historiken kunde inte uppdateras.'}}}
 async function pause(){if(!session||session.completedAt)return;$('player').classList.add('hidden');stopMotion?.();await sync(session.progress.some(p=>p.roundsDone||p.status==='skipped')?'partial':'started')}
 $('magicLink').onclick=async()=>{try{const email=$('email').value.trim();if(!email)throw new Error('Ange din e-postadress');$('magicLink').disabled=true;$('authError').classList.add('hidden');await api.sendPatientMagicLink(email);$('authSuccess').textContent='Klart. Öppna mejlet från Reda och tryck på länken för att öppna ditt program.';$('authSuccess').classList.remove('hidden')}catch(e){error(e)}finally{$('magicLink').disabled=false}}
-$('logout').onclick=async()=>{if(responseForm.isBusy()||reflectionForm.isBusy()||messages?.isBusy()){$('sync').textContent='Vänta tills återkopplingen har sparats eller ett felmeddelande visas.';return}if(unsynced){$('sync').textContent='Synka passet innan du loggar ut.';return}R.clear(localStore(),state?.userId);await api.signOut();location.reload()};$('start').onclick=start;$('skip').onclick=skip;$('next').onclick=next;$('closePlayer').onclick=pause
+$('logout').onclick=async()=>{if(responseForm.isBusy()||reflectionForm.isBusy()||messages?.isBusy()||checkin?.isBusy()){$('sync').textContent='Vänta tills återkopplingen har sparats eller ett felmeddelande visas.';return}if(unsynced){$('sync').textContent='Synka passet innan du loggar ut.';return}R.clear(localStore(),state?.userId);await api.signOut();location.reload()};$('start').onclick=start;$('skip').onclick=skip;$('next').onclick=next;$('closePlayer').onclick=pause
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{if(b.dataset.tab!=='today')pauseMotion();if(b.dataset.tab==='activity'&&state){activity?.destroy();activity=mountActivityLog($('activityContent'),{api,patientId:state.patient.id})}document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('hidden',x.id!==b.dataset.tab))})
 setAuth(true);api.currentUser().catch(e=>{if(e?.name==='AuthSessionMissingError')return null;throw e}).then(async u=>{if(u)await bootstrap()}).catch(error)
 async function retry(){if(!session)return;const finished=!!session.completedAt;if(await sync(session.status,session.completedAt)){if(finished){try{await bootstrap()}catch{$('sync').textContent='Passet är sparat. Ladda om sidan för att uppdatera planen.'}}}}
-$('retrySync').onclick=retry;window.addEventListener('beforeunload',e=>{if((unsynced&&!durable)||reflectionForm.isBusy()){e.preventDefault();e.returnValue=''}});
+$('retrySync').onclick=retry;window.addEventListener('beforeunload',e=>{if((unsynced&&!durable)||reflectionForm.isBusy()||checkin?.isBusy()){e.preventDefault();e.returnValue=''}});
 
 window.addEventListener('online',()=>{if(unsynced&&session)retry()});
 

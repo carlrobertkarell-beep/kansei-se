@@ -1,3 +1,5 @@
+import {mountEISettings} from './ei-settings.mjs?v=1'
+let eiSettings=null;
 import {approvedOptions} from './plan-options.mjs?v=1'
 import {verifyAdaptation} from './everyday-support.mjs?v=1'
 import {planReadiness,planFingerprint} from './plan-readiness.mjs?v=2'
@@ -5,12 +7,12 @@ import {renderProcess} from './process-indicator.mjs?v=1'
 import {openSelfPlanPreview} from './self-plan-preview.mjs?v=3'
 import {mountPlanAuthoring} from './plan-authoring.mjs?v=6'
 import {emptyPlan,cleanProgression} from './plan-authoring-model.mjs?v=2'
-import {mountDecisionDashboard} from './decision-dashboard.mjs?v=9'
+import {mountDecisionDashboard} from './decision-dashboard.mjs?v=10'
 import {openPatientIntake} from './patient-intake.mjs?v=2'
 import {mountWorkspaceTeam,roleLabels} from './workspace-team.mjs?v=1'
-import * as api from './secure-browser.mjs?v=20260912-work1'
-import {mountClinicEngine} from './runtime-ui.mjs?v=5'
-import {mountClinicInbox} from './clinic-inbox.mjs?v=4'
+import * as api from './secure-browser.mjs?v=20260912-basis1'
+import {mountClinicEngine} from './runtime-ui.mjs?v=6'
+import {mountClinicInbox} from './clinic-inbox.mjs?v=5'
 let composer=null,clinicalProfile={},processData={plans:[],sessions:[],responses:[]},savedRecord=null,reviewedPlan="";
 let dashboard=null,inbox=null,team=null,activeWorkspace=null,workspaces=[],workspaceEpoch=0,workspaceBusy=false;
 const $=id=>document.getElementById(id), C=window.RedaClinical, P=window.RedaPlanner
@@ -121,7 +123,7 @@ function switchWorkTab(name){document.querySelectorAll('[data-worktab]').forEach
 async function finishClinicianAuth(){clearErr();const a=await api.aal();if(a.currentLevel!=='aal2'){const f=await api.factors(),verified=f?.totp?.find(x=>x.status==='verified');if(verified){mfaFactor=verified.id;$('mfa').classList.remove('hidden');$('qr').classList.add('hidden');$('secret').textContent='Ange koden från din autentiseringsapp.';return}const enrolled=await api.enrollTotp();mfaFactor=enrolled.id;$('qr').src=enrolled.totp.qr_code;$('qr').classList.remove('hidden');$('secret').textContent='Skanna QR-koden och ange sedan koden.';$('mfa').classList.remove('hidden');return}await api.claimClinician();setAuth(false);await refreshWorkspaces()}
 function clearWorkspace(){
  composer?.destroy();composer=null;$('clinicalWorkspace').classList.remove('authoring-workspace');
- ++workspaceEpoch;++selectionRequest;++followupRequest;dashboard?.destroy();dashboard=null;$('app').classList.remove('dashboard-mode','patient-mode');$('decisionDashboard').replaceChildren();$('backToDashboard').classList.add('hidden');inbox?.destroy();inbox=null;team?.destroy();team=null;
+ ++workspaceEpoch;++selectionRequest;++followupRequest;dashboard?.destroy();dashboard=null;$('app').classList.remove('dashboard-mode','patient-mode');$('decisionDashboard').replaceChildren();$('backToDashboard').classList.add('hidden');inbox?.destroy();inbox=null;team?.destroy();team=null;eiSettings?.destroy();eiSettings=null;
  selected=null;patients=[];plan=null;draft=null;clinicalProfile={};savedRecord=null;reviewedPlan='';processData={plans:[],sessions:[],responses:[]};if($('patientProcess')){$('patientProcess').replaceChildren();$('patientProcess').hidden=true}loadingPatient=false;api.setWorkspace(null);
  $('patients').replaceChildren();$('patientCount').textContent='0 aktiva';$('patientTitle').textContent='Välj patient';
  $('editor').classList.add('hidden');$('noPatient').classList.remove('hidden');
@@ -143,6 +145,7 @@ async function openWorkspace(id,message=''){
   $('workspaceEmpty').classList.remove('workspace-hidden');$('workspaceEmpty').innerHTML=next.kind==='direct'?'<p class="eyebrow">Redas egen verksamhet</p><h2>En egen plats för direktkunder</h2><p>Här samlas Redas framtida försäljning direkt till privatpersoner. Arbetsytan är skapad. Onboarding, köp och träningsupplägg öppnas i senare steg.</p>':'<p class="eyebrow">Din organisationsroll</p><h2>Välkommen till teamet</h2><p>Här ser du teamets roller och behörigheter. Patientuppgifter är tillgängliga för en behörig behandlare med egen patienttilldelning.</p>';
   return;
  }
+ eiSettings=mountEISettings($('eiSettings'),{api,onBusy:value=>{workspaceBusy=value;$('workspaceSelect').disabled=value||working;$('refreshWorkspaces').disabled=value||working;$('logout').disabled=value},onImport:()=>{$('newPatient').click();document.querySelector('.patient-intake [data-mode="file"]')?.click()}});
  $('clinicalWorkspace').classList.remove('workspace-hidden');
  if(typeof api.dashboard==='function'){
   $('app').classList.add('dashboard-mode');

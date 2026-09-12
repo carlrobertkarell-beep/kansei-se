@@ -7,5 +7,5 @@ export function firstSteps(state){
 }
 export function startHTML(state,message=''){
  const steps=firstSteps(state);if(steps.every(s=>s.done)&&!message)return '';
- return '<div class="patient-start"><h3>'+esc(state.plan.version>1?'Din aktuella plan · v'+state.plan.version:'Välkommen till din plan')+'</h3>'+(message?'<p>'+esc(message)+'</p>':'')+'<ol>'+steps.map(s=>'<li>'+(s.done?'✓ ':'')+esc(s.label)+'</li>').join('')+'</ol><p>Du kan pausa ett pass och fortsätta senare. Om något är oklart finns hjälp vid varje övning.</p></div>';
+ return (message?'<p class="patient-plan-message"><span>Från din behandlare</span>'+esc(message)+'</p>':'')+'<details class="patient-start"><summary><span>Din väg genom planen</span><span>'+steps.filter(s=>s.done).length+' av 3 klart</span></summary><h3>'+esc(state.plan.version>1?'Din aktuella plan · v'+state.plan.version:'Välkommen till din plan')+'</h3>'+'<ol>'+steps.map(s=>'<li>'+(s.done?'✓ ':'')+esc(s.label)+'</li>').join('')+'</ol><p>Du kan pausa ett pass och fortsätta senare. Om något är oklart finns hjälp vid varje övning.</p></details>';
 }

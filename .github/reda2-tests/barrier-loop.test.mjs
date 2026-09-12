@@ -1,0 +1,16 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';
+import {emptyPlan,createAuthoringTools} from '../../reda-2/plan-authoring-model.mjs';
+import {barrierCandidates,clinicBarriersHTML,patientBarrierCopy,contextText} from '../../reda-2/barrier-loop.mjs';
+import {planCandidates} from '../../reda-2/plan-review.mjs';
+const ctx={console};ctx.window=ctx;ctx.globalThis=ctx;vm.createContext(ctx);
+for(const f of ['data.js','clinical-model-v2.js','clinical-addons.js','clinical-library-v3.js','exercise-intelligence-knee.js','exercise-intelligence-next.js','exercise-quality.js','core.js','planner.js'])vm.runInContext(fs.readFileSync('reda-2/'+f,'utf8'),ctx);
+const P=ctx.RedaPlanner,D=ctx.RedaData,T=createAuthoringTools(P,D);
+const plan=()=>P.editExercise(T.add(emptyPlan({floorOK:true,band:true,equipment:'gym'}),'extension'),0,{sets:3,side:'left',reps:7,prescribedLoad:'Individuell vikt'});
+const loop={id:'loop',case_id:'case',phase:'ready',source_plan_id:'p',barrier:'time',context:{minutes:10}};
+const detail=l=>({patient:{plan_id:'p'},cases:[],barriers:[l]});
+test('a time reply prepares a reviewable option without promising unmeasured duration',()=>{const p=plan(),before=JSON.stringify(p),c=barrierCandidates(detail(loop),p,P,D)[0];assert.equal(c.loopId,'loop');assert.equal(c.plan.exercises[0].dose.sets,2);assert.equal(c.plan.exercises[0].dose.reps,7);assert.equal(c.plan.exercises[0].side,'left');assert.equal(c.plan.exercises[0].prescribedLoad,'Individuell vikt');assert.equal(JSON.stringify(p),before);assert.match(c.detail,/10 minuter/);assert.match(c.detail,/faktiska passtiden behöver prövas/)});
+test('missing context, wrong plan, blocked or completed loops cannot produce candidates',()=>{for(const l of [{...loop,phase:'needs_context',context:null},{...loop,source_plan_id:'old'},{...loop,blocked:true},{...loop,phase:'helped'}])assert.deepEqual(barrierCandidates(detail(l),plan(),P,D),[])});
+test('new symptoms always block practical adaptation despite an earlier answer',()=>{const d=detail(loop);d.cases=[{code:'changed_symptoms',status:'open'}];assert.deepEqual(barrierCandidates(d,plan(),P,D),[])});
+test('equipment candidates reflect the patients actual constraints',()=>{const c=barrierCandidates(detail({...loop,barrier:'equipment',context:{equipment:'gym',band:false,floorOK:true}}),plan(),P,D);assert.ok(c.every(x=>x.id.endsWith(':band')))});
+test('legacy quick candidate cannot bypass a new unanswered loop',()=>{const d=detail({...loop,phase:'needs_context'});d.cases=[{code:'training_barrier',reflection:{plan_id:'p',answers:{barrier:'time'}}}];assert.deepEqual(planCandidates(d,plan(),P,D),[])});
+test('reported success concerns a practical barrier, never clinical recovery',()=>{assert.match(patientBarrierCopy({...loop,phase:'helped'}).detail,/praktiska hindret/);assert.match(patientBarrierCopy({...loop,phase:'needs_review',outcome:'not_tried'}).detail,/öppen/);assert.match(clinicBarriersHTML([{...loop,context:{minutes:'<script>'}}]),/&lt;script&gt;/);assert.equal(contextText({...loop,context:{minutes:15}}),'15 minuter tillgängligt')});

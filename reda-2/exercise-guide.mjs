@@ -1,0 +1,23 @@
+import {createExerciseCoach} from './exercise-coach.mjs?v=20260912-coach1';
+import {sideLabels,helpSummary} from './exercise-help-model.mjs?v=20260912-coach1';
+const $=id=>document.getElementById(id),F=window.RedaFigures;
+const examples=[
+ {id:'chair',name:'Uppresning från stol',motionKey:'sit-to-stand.support',side:'simultaneous',support:'Stol med armstöd',instructions:['Placera fötterna stadigt framför stolen.','Luta överkroppen framåt och res dig med handstöd.','Sätt dig tillbaka kontrollerat.']},
+ {id:'extension',name:'Benspark från stol',motionKey:'knee-extension.seated',side:'left',support:'Stol med ryggstöd',instructions:['Sitt med låret kvar mot stolen.','Sträck underbenet enligt rörelseomfånget i din plan.','Återgå till startläget.']},
+ {id:'calf',name:'Tåhävning',motionKey:'calf-raise.bilateral',side:'simultaneous',support:'Stabilt handstöd framför kroppen',instructions:['Placera båda fötterna på golvet och ta stöd med händerna.','Lyft hälarna med framfoten kvar i golvet.','Sänk hälarna kontrollerat.']},
+ {id:'bridge',name:'Höftlyft',motionKey:'bridge.bilateral',side:'simultaneous',support:'Matta på golvet',instructions:['Ligg på rygg med böjda knän och fötterna mot underlaget.','Lyft bäckenet enligt instruktionen i din plan.','Sänk tillbaka med skuldror och fötter kvar mot underlaget.']},
+ {id:'step',name:'Step-up med stöd',motionKey:'step-up.supported',side:'left',support:'Stabilt steg och handstöd',instructions:['Placera den sida du tränar på steget.','Kliv upp med handstöd.','Återgå kontrollerat till startläget.']}
+].map(x=>({...x,equipment:x.support,prescribedRange:'Följ det rörelseomfång du och behandlaren har gått igenom.',dose:{sets:2,reps:8,hold:0,rest:45,label:'Fiktivt exempel: 2 omgångar × 8 repetitioner'}}));
+let current=examples[0],stop=null,slow=false,focus=null,position=0;
+function pause(){stop?.();stop=null;$('motionPlay').textContent='Visa rörelsen'}
+function phase(label,id){$('motionPhase').textContent=label;document.querySelectorAll('[data-phase-dot]').forEach(e=>e.dataset.active=String(e.dataset.phaseDot===id))}
+function frame(t){pause();position=t;$('motion').innerHTML=F.svg(current.motionKey,t,current.side,current.name,{focus});phase(t===0?'Startläge':t===1?'Slutläge':'På väg',t===0?'start':t===1?'end':'out');document.querySelectorAll('[data-frame]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.frame)===t)))}
+const coach=createExerciseCoach($('exerciseCoach'),{preview:true,api:{submitExerciseHelp:async(session,id,rid,body)=>{const h={id:rid,...body,exercise:current,exercise_name:current.name,plan_version:1,option_label:'Fiktivt exempel'};return h}},onSaved:h=>{
+ const host=$('guideResult');host.hidden=false;host.replaceChildren();const title=document.createElement('h3');title.textContent=h.outcome==='clear'?'Så skulle din återkoppling registreras':'Så skulle underlaget visas för behandlaren';host.append(title);const list=document.createElement('ul');for(const line of helpSummary(h)){const li=document.createElement('li');li.textContent=line;list.append(li)}host.append(list);
+},onDemonstrate:(t,f,scroll)=>{focus=f;frame(t===null?position:t);if(scroll)$('motionStudio').scrollIntoView({block:'center',behavior:'smooth'})}});
+function choose(){pause();focus=null;current={...examples[Number($('guideExercise').value)]};const bilateral=current.side==='simultaneous';$('guideSide').disabled=bilateral;if(!bilateral)current.side=$('guideSide').value;$('exName').textContent=current.name;$('dose').textContent=current.dose.label;$('motionSide').textContent=sideLabels[current.side];$('guideResult').hidden=true;frame(0);coach.setExercise({plan:{id:'example-'+current.id+'-'+current.side,version:1},exercise:current,sessionId:'preview'});}
+$('guideExercise').innerHTML=examples.map((x,i)=>`<option value="${i}">${x.name}</option>`).join('');$('guideExercise').onchange=choose;$('guideSide').onchange=choose;
+$('motionPlay').onclick=()=>{if(stop){pause();return}if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;stop=F.animate($('motion'),current.motionKey,{seconds:slow?14:7,onPhase:phase,onFrame:t=>{position=t}});$('motionPlay').textContent='Pausa rörelsen';document.querySelectorAll('[data-frame]').forEach(b=>b.setAttribute('aria-pressed','false'))};
+$('motionSlow').onclick=()=>{slow=!slow;$('motionSlow').setAttribute('aria-pressed',String(slow));if(stop){pause();$('motionPlay').click()}};document.querySelectorAll('[data-frame]').forEach(b=>b.onclick=()=>frame(Number(b.dataset.frame)));document.addEventListener('visibilitychange',()=>{if(document.hidden)pause()});
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){$('motionPlay').disabled=true;$('motionSlow').disabled=true}
+choose();

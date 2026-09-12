@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="./plan-review.css?v=1">
 <link rel="stylesheet" href="./barrier-loop.css?v=1">
 <link rel="stylesheet" href="./patient-experience.css?v=1">
+<link rel="stylesheet" href="exercise-coach.css?v=20260912-coach1">
 </head>
 <body class="reda-patient">
 <a class="patient-skip" href="#todayTitle">Till dagens nästa steg</a>
@@ -141,18 +142,24 @@
 </div>
 <button id="closePlayer" class="btn ghost">Pausa</button>
 </div>
-<div id="motion" class="motion">
+<div id="motionStudio" class="motion-studio" tabindex="-1" aria-label="Övningens demonstration">
+<div class="motion-caption"><span>REDA · RÖRELSEGUIDE</span><span id="motionSide" class="motion-side"></span></div>
+<div id="motion" class="motion"></div>
+<div class="motion-guide"><div><b id="motionPhase">Startläge</b><span>Följ rörelsen i din takt</span></div><span class="phase-dots" aria-hidden="true"><i data-phase-dot="start" data-active="true"></i><i data-phase-dot="out"></i><i data-phase-dot="end"></i><i data-phase-dot="back"></i></span></div>
 </div>
 <div class="ei-motion-controls" role="group" aria-label="Styr rörelsevisningen">
 <button type="button" id="motionPlay">Visa rörelsen</button>
 <button type="button" id="motionSlow" aria-pressed="false">Långsammare</button>
 <button type="button" data-motion-frame="0" aria-pressed="true">Startläge</button>
+<button type="button" data-motion-frame="0.5" aria-pressed="false">På väg</button>
 <button type="button" data-motion-frame="1" aria-pressed="false">Slutläge</button>
 </div>
+<p class="motion-notice">Rörelsedemo. Din dos och ditt rörelseomfång står i instruktionen.</p>
 <div class="dose" id="dose">
 </div>
 <p id="instruction">
 </p>
+<div id="exerciseCoach"></div>
 <div id="exerciseHelp" class="ei-help">
 </div>
 <div id="exerciseWhy" class="exercise-why">
@@ -233,9 +240,9 @@
 </script>
 <script src="/reda-2/figures-intelligence.js?v=20260910-recovery">
 </script>
-<script src="/reda-2/reference-motion.js?v=3">
+<script src="/reda-2/reference-motion.js?v=20260912-coach1">
 </script>
-<script src="/reda-2/motion-v4.js?v=4">
+<script src="/reda-2/motion-v4.js?v=20260912-coach1">
 </script>
 <script src="/reda-2/session-state.js?v=20260910-recovery">
 </script>
@@ -249,7 +256,7 @@
 </script>
 <script src="/reda-2/response-form.js?v=1">
 </script>
-<script type="module" src="/reda-2/patient-live.mjs?v=20260912-flow1">
+<script type="module" src="/reda-2/patient-live.mjs?v=20260912-coach1">
 </script>
 </body>
 </html>

@@ -15,19 +15,22 @@ function pose(key,t){t=clamp(t);const spec=M.get(key);if(!keys.has(key))return n
   hand=spec.equipment.includes('armrest')&&t<.30?[247,270]:polar(shoulder,65,.38+1.08*rise);
  }
  else if(spec.kind==='kneeExtension'){
-  hip=[232,288];shoulder=[232,208];knee=[304,288];ankle=polar(knee,shin,(1-t)*Math.PI/2);heel=add(ankle,[-8,12]);toe=add(ankle,[26,12]);hand=[270,267];chair=true;
+  hip=[232,288];shoulder=[232,208];knee=[304,288];ankle=polar(knee,shin,(1-t)*Math.PI/2);
+  // The foot rotates with the lower leg, preserving the ankle position.
+  const rotate=v=>[v[0]*Math.cos(-t*Math.PI/2)-v[1]*Math.sin(-t*Math.PI/2),v[0]*Math.sin(-t*Math.PI/2)+v[1]*Math.cos(-t*Math.PI/2)];
+  heel=add(ankle,rotate([-8,12]));toe=add(ankle,rotate([26,12]));hand=[270,267];chair=true;
   back={hip:[220,288],knee:[292,288],ankle:[292,360],heel:[282,378],toe:[315,378]};
  }
  else if(spec.kind==='calfRaise'){
-  toe=[321,378];const ang=Math.PI+t*.48;heel=polar(toe,36,ang);ankle=add(heel,[11,-14]);hip=add(ankle,[-8,-143]);knee=joint(hip,ankle,thigh,shin,-1);shoulder=add(hip,[0,-torso]);hand=[340,180];rail=true;
+  toe=[321,378];const ang=Math.PI+t*.48;heel=polar(toe,36,ang);ankle=add(heel,[11*Math.cos(t*.48)+14*Math.sin(t*.48),11*Math.sin(t*.48)-14*Math.cos(t*.48)]);hip=add(ankle,[-8,-143]);knee=joint(hip,ankle,thigh,shin,-1);shoulder=add(hip,[0,-torso]);hand=[340,180];rail=true;
  }
  else if(spec.kind==='bridge'){
   // Shoulder remains on the mat; pelvis rotates around it at fixed trunk length.
-  shoulder=[193,356];hip=polar(shoulder,torso,lerp(.05,-.62,t));ankle=[375,361];heel=[365,377];toe=[402,377];knee=joint(hip,ankle,thigh,shin,-1);hand=[267,366];mat=true;
+  shoulder=[193,356];hip=polar(shoulder,torso,lerp(.05,-.38,t));ankle=[375,361];heel=[365,377];toe=[402,377];knee=joint(hip,ankle,thigh,shin,-1);hand=[267,366];mat=true;
  }
  else if(spec.kind==='stepUp'){
   step=true;rail=spec.equipment.includes('support');ankle=[345,314];heel=[333,328];toe=[370,328];hip=at([276,221],[337,171],smooth(t));knee=joint(hip,ankle,thigh,shin,-1);shoulder=polar(hip,torso,-Math.PI/2+.15*(1-t));hand=rail?add(hip,[62,-45]):polar(shoulder,65,1.15);
-  const trailing=at([264,364],[325,314],smooth(t));trailing[1]-=18*Math.sin(Math.PI*t);
+  const trailing=at([264,364],[325,314],smooth(t));trailing[1]-=52*Math.sin(Math.PI*t);
   const k=joint(hip,trailing,thigh,shin,-1);back={knee:k,ankle:trailing,heel:add(trailing,[-9,14]),toe:add(trailing,[25,14])};
  }
  elbow=joint(shoulder,hand,upperArm,forearm,-1);

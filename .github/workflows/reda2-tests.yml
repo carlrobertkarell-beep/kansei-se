@@ -17,7 +17,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Exercise, dosage, clinical model, graph, motion and intelligence unit tests
-        run: node --test .github/reda2-tests/core.test.cjs .github/reda2-tests/planner.test.cjs .github/reda2-tests/clinical-model.test.cjs .github/reda2-tests/motion-graph.test.cjs .github/reda2-tests/exercise-intelligence.test.cjs .github/reda2-tests/exercise-quality.test.cjs .github/reda2-tests/prescription-session.test.cjs .github/reda2-tests/recovery-motion.test.cjs .github/reda2-tests/followup.test.cjs .github/reda2-tests/care-path.test.cjs .github/reda2-tests/progression.test.cjs .github/reda2-tests/intelligence-system.test.cjs .github/reda2-tests/dialogue.test.mjs .github/reda2-tests/motion-v4.test.cjs .github/reda2-tests/progression-paths.test.cjs .github/reda2-tests/dialogue-v2.test.mjs .github/reda2-tests/organization-client.test.mjs .github/reda2-tests/dashboard.test.mjs .github/reda2-tests/patient-intake.test.mjs .github/reda2-tests/plan-authoring.test.mjs .github/reda2-tests/fast-workflows.test.mjs .github/reda2-tests/plan-readiness.test.mjs .github/reda2-tests/patient-loop.test.mjs .github/reda2-tests/everyday-support.test.mjs .github/reda2-tests/plan-options.test.mjs .github/reda2-tests/support-workflow.test.mjs .github/reda2-tests/patient-basis.test.mjs .github/reda2-tests/handover.test.mjs .github/reda2-tests/invitation-edge.test.mjs .github/reda2-tests/barrier-loop.test.mjs
+        run: node --test .github/reda2-tests/core.test.cjs .github/reda2-tests/planner.test.cjs .github/reda2-tests/clinical-model.test.cjs .github/reda2-tests/motion-graph.test.cjs .github/reda2-tests/exercise-intelligence.test.cjs .github/reda2-tests/exercise-quality.test.cjs .github/reda2-tests/prescription-session.test.cjs .github/reda2-tests/recovery-motion.test.cjs .github/reda2-tests/followup.test.cjs .github/reda2-tests/care-path.test.cjs .github/reda2-tests/progression.test.cjs .github/reda2-tests/intelligence-system.test.cjs .github/reda2-tests/dialogue.test.mjs .github/reda2-tests/motion-v4.test.cjs .github/reda2-tests/progression-paths.test.cjs .github/reda2-tests/dialogue-v2.test.mjs .github/reda2-tests/organization-client.test.mjs .github/reda2-tests/dashboard.test.mjs .github/reda2-tests/patient-intake.test.mjs .github/reda2-tests/plan-authoring.test.mjs .github/reda2-tests/fast-workflows.test.mjs .github/reda2-tests/plan-readiness.test.mjs .github/reda2-tests/patient-loop.test.mjs .github/reda2-tests/everyday-support.test.mjs .github/reda2-tests/plan-options.test.mjs .github/reda2-tests/support-workflow.test.mjs .github/reda2-tests/patient-basis.test.mjs .github/reda2-tests/handover.test.mjs .github/reda2-tests/invitation-edge.test.mjs .github/reda2-tests/barrier-loop.test.mjs .github/reda2-tests/exercise-help.test.mjs
       - name: Isolated database ownership, retry and permission tests
         run: |
           sudo systemctl start postgresql.service
@@ -66,6 +66,7 @@ jobs:
           expand(Path('.github/reda2-tests/patient_basis_database_test.sql'))
           expand(Path('.github/reda2-tests/handover_database_test.sql'))
           expand(Path('.github/reda2-tests/barrier_loop_database_test.sql'))
+          expand(Path('.github/reda2-tests/exercise_help_database_test.sql'))
           SQL
           python3 .github/reda2-tests/dashboard_concurrency_test.py
       - name: Install browser tester
@@ -86,6 +87,7 @@ jobs:
           node --check reda-2/figures-intelligence.js
       - name: Motion graph and renderer browser flows
         run: |
+          python3 .github/reda2-tests/exercise_help_browser_test.py
           python3 .github/reda2-tests/barrier_loop_browser_test.py
           python3 .github/reda2-tests/handover_browser_test.py
           python3 .github/reda2-tests/browser_motion_test.py

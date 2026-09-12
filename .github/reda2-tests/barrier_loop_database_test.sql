@@ -69,4 +69,18 @@ select tests.ok(not has_function_privilege('authenticated','private.reda_barrier
 select tests.ok(not has_function_privilege('anon','public.reda_answer_barrier(uuid,uuid,jsonb)','execute'),'anonymous answers denied');
 select tests.ok((select relrowsecurity from pg_class where oid='private.reda_barrier_loops'::regclass),'barrier table has RLS');
 select tests.ok((select not automatic_enabled and not ai_enabled from private.reda_engine_settings),'clinical engine and external AI stay off');
+-- New clinical evidence takes priority over a pending result, including direct RPC calls.
+select tests.barrier_session(960040,(current_setting('tests.loop_publish2')::jsonb->>'plan_id')::uuid);
+set role authenticated;select tests.login(960001,'aal1',960101);
+select reda_submit_session_reflection(tests.id(960040),tests.id(960041),'{"barrier":"time","support":"no","exerciseId":null}');
+select set_config('tests.loop3',reda_patient_barriers(tests.id(960000))->0->>'id',false);
+select reda_answer_barrier(current_setting('tests.loop3')::uuid,tests.id(960042),'{"minutes":15}');
+select tests.login(1,'aal2',103);select tests.workspace('dashboard-test');
+select set_config('tests.loop_publish3',reda_publish_barrier(current_setting('tests.loop3')::uuid,tests.id(960043),reda_dashboard_patient(tests.id(960000))->>'token',tests.plan(8),'Reviewed current circumstances','Your reviewed current plan',current_date+7)::text,false);
+reset role;select tests.barrier_session(960044,(current_setting('tests.loop_publish3')::jsonb->>'plan_id')::uuid);
+set role authenticated;select tests.login(960001,'aal1',960101);
+select reda_submit_session_reflection(tests.id(960044),tests.id(960045),'{"barrier":"symptoms","support":"no","exerciseId":null}');
+select tests.denied('select reda_barrier_outcome(current_setting(''tests.loop3'')::uuid,tests.id(960046),''helped'',tests.id(960044))','40001','new symptom report blocks even a direct success claim');
+select tests.denied('select reda_barrier_outcome(current_setting(''tests.loop3'')::uuid,tests.id(960046),''not_tried'',null)','40001','blocked clinical state cannot be cleared as a practical outcome');
+reset role;
 update reda_organizations set patient_delivery_enabled=false where id=tests.org('dashboard-test');

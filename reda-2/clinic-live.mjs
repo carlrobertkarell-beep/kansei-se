@@ -8,12 +8,12 @@ import {renderProcess} from './process-indicator.mjs?v=1'
 import {openSelfPlanPreview} from './self-plan-preview.mjs?v=3'
 import {mountPlanAuthoring} from './plan-authoring.mjs?v=6'
 import {emptyPlan,cleanProgression} from './plan-authoring-model.mjs?v=2'
-import {mountDecisionDashboard} from './decision-dashboard.mjs?v=12'
+import {mountDecisionDashboard} from './decision-dashboard.mjs?v=20260912-coach1'
 import {openPatientIntake} from './patient-intake.mjs?v=2'
 import {mountWorkspaceTeam,roleLabels} from './workspace-team.mjs?v=1'
-import * as api from './secure-browser.mjs?v=20260912-flow1'
-import {mountClinicEngine} from './runtime-ui.mjs?v=6'
-import {mountClinicInbox} from './clinic-inbox.mjs?v=5'
+import * as api from './secure-browser.mjs?v=20260912-coach1'
+import {mountClinicEngine} from './runtime-ui.mjs?v=20260912-coach1'
+import {mountClinicInbox} from './clinic-inbox.mjs?v=20260912-coach1'
 let composer=null,clinicalProfile={},processData={plans:[],sessions:[],responses:[]},savedRecord=null,reviewedPlan="";
 let dashboard=null,inbox=null,team=null,activeWorkspace=null,workspaces=[],workspaceEpoch=0,workspaceBusy=false;
 const $=id=>document.getElementById(id), C=window.RedaClinical, P=window.RedaPlanner

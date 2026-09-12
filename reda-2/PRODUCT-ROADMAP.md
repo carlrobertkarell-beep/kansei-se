@@ -1,3 +1,7 @@
+## Rörelseguide och hjälp i övningen · 2026-09-12
+
+Rörelsestudio 5 och hjälp kopplad till aktuell övning utvecklas som ett gemensamt block. Patientens förståelse kan registreras eller lämnas över som ett ärende med källövning, planversion och öppnade förklaringar. Se [flöde och gränser](secure/EXERCISE-HELP.md), [prova fiktiv guide](exercise-guide.html) och [rörelsegranskning](motion-reference.html). Klinisk granskning av rörelserna och verkligt distributionsprov återstår. Därefter prioriteras förberedda återbesök och diktat till granskningsbara utkast.
+
 # Reda · produktplan och leveranshistorik
 
 ## Aktuell riktning · kliniker och vardagsträning · 2026-09-11

@@ -1,0 +1,26 @@
+.movement-lesson{--lesson-ink:#203e35;--lesson-muted:#4a6057;color:var(--lesson-ink)}
+.movement-lesson [hidden]{display:none!important}
+.lesson-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:5px;border-radius:15px;background:#e9eee9;margin:0 0 14px}
+.movement-lesson button{font:inherit;font-size:17px;line-height:1.3;min-height:52px;padding:12px 16px;border:1px solid #bac8c1;border-radius:12px;background:#fff;color:var(--lesson-ink);cursor:pointer}
+.lesson-tabs button{font-size:16px;border-color:transparent;background:transparent;padding:12px 8px}
+.lesson-tabs button[aria-pressed=true]{background:#fff;border-color:#c9d5cd;box-shadow:0 2px 5px #223d3410;font-weight:650}
+.movement-lesson .motion-studio{border-radius:18px;background:#f3f4ed;border-color:#d6dfd5}
+.movement-lesson .motion-studio .motion{height:clamp(215px,31vh,300px);min-height:215px;padding:8px 18px 0}
+.movement-lesson .motion-caption{font-size:12px;padding:12px 16px 0}
+.movement-lesson .motion-side{font-size:14px;color:#203e35;background:#fff}
+.lesson-reading,.lesson-watching{background:#fff;border-top:1px solid #dce4dc;padding:18px}
+.lesson-counter{font-size:14px;color:var(--lesson-muted);margin:0 0 8px;font-weight:550}
+.lesson-instruction{font-size:21px!important;line-height:1.5!important;font-weight:500;color:#213e35;margin:0 0 20px!important;min-height:3em}
+.lesson-read-actions{display:flex;gap:8px;flex-wrap:wrap}.lesson-read-actions #lessonNext{background:#203e35;color:#fff;border-color:#203e35;flex:1}
+.movement-lesson .motion-guide{padding:0;align-items:flex-start;gap:15px;min-height:95px}.movement-lesson .motion-guide b{font-size:21px;margin:0 0 5px}.movement-lesson .motion-guide span{font-size:16px;line-height:1.5;display:block}.movement-lesson .motion-guide .lesson-counter{font-size:14px;white-space:nowrap}
+body.reda-patient .movement-lesson .ei-motion-controls{display:grid;grid-template-columns:1fr;gap:8px;margin:16px 0 10px}
+body.reda-patient .movement-lesson .ei-motion-controls button{min-height:54px;font-size:18px;border:1px solid #aebfb5;padding:14px}
+body.reda-patient .movement-lesson .ei-motion-controls #motionPlay{background:#203e35;color:white;border-color:#203e35}
+.lesson-secondary{display:flex;gap:8px;flex-wrap:wrap}.lesson-secondary button{flex:1;font-size:15px}.lesson-secondary button[aria-pressed=true]{background:#e1eee5;border-color:#406650}
+.lesson-stills{margin:12px 0 0}.lesson-stills summary{min-height:48px;display:flex;align-items:center;cursor:pointer;font-size:16px;text-decoration:underline;text-underline-offset:4px}.lesson-frame-buttons{display:flex;flex-wrap:wrap;gap:6px}.lesson-frame-buttons button{flex:1;font-size:15px}.lesson-frame-buttons button[aria-pressed=true]{background:#e1eee5;border-color:#406650}
+.lesson-note{color:var(--lesson-muted);font-size:14px!important;line-height:1.6!important;margin:10px 2px 14px!important}
+.movement-lesson .lesson-ready{display:flex;align-items:center;justify-content:space-between;width:100%;font-size:18px;min-height:56px;border-color:#557e68;background:#eef4ed;font-weight:550}
+.movement-lesson button:disabled{opacity:.48;cursor:default}.movement-lesson button:focus-visible,.movement-lesson summary:focus-visible,.lesson-instruction:focus-visible{outline:3px solid #315bba;outline-offset:3px}
+body.reda-patient #instruction{display:none}.lesson-prescription{margin-top:12px}.lesson-prescription>summary{min-height:52px;display:flex;align-items:center;font-size:16px;cursor:pointer;color:#315443;text-decoration:underline;text-underline-offset:4px}
+@media(min-width:650px){.movement-lesson .motion-studio{display:grid;grid-template-columns:minmax(230px,1fr) minmax(260px,1fr)}.movement-lesson .motion-caption{grid-column:1/-1}.movement-lesson .motion-studio .motion{height:350px;padding:18px 12px}.lesson-reading,.lesson-watching{border-top:0;border-left:1px solid #dce4dc;margin:12px 12px 12px 0;border-radius:12px;align-self:stretch;display:flex;flex-direction:column;justify-content:center}.lesson-reading{min-height:315px}.lesson-instruction{font-size:22px!important}.lesson-read-actions button{font-size:16px;padding:12px}.lesson-read-actions #lessonNext{flex-basis:100%}.lesson-tabs{max-width:510px}}
+@media(prefers-reduced-motion:reduce){.movement-lesson *{transition:none!important;scroll-behavior:auto!important}}

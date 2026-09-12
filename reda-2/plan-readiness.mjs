@@ -1,7 +1,7 @@
 // Shared process rules. Completion is derived from evidence, never from a progress percentage.
 const present=x=>typeof x==='string'&&x.trim().length>1;
 const stable=x=>Array.isArray(x)?x.map(stable):x&&typeof x==='object'?Object.fromEntries(Object.keys(x).sort().map(k=>[k,stable(x[k])])):x;
-export const planFingerprint=p=>JSON.stringify(stable(p?Object.fromEntries(['schema','blueprintId','blueprintName','authoring','context','exercises','goal','clinicianNote','presentation','schedule','reviewDate','careJourney','progressionDraft','progressionFrame'].map(k=>[k,p[k]??null])):null));
+export const planFingerprint=p=>JSON.stringify(stable(p?Object.fromEntries(['schema','blueprintId','blueprintName','authoring','context','exercises','goal','clinicianNote','presentation','schedule','reviewDate','careJourney','progressionDraft','progressionFrame','planOptions'].map(k=>[k,p[k]??null])):null));
 export function planReadiness({audience='clinic',patient={},profile={},plan={},saved=null,active=null,reviewed='',sessions=[],responses=[],checks=[],careIssues=[],activationEnabled=false,deliveryMode='digital',selfConfirmed=false,selfNeedsAssessment=false}={}){
  const worksheet=audience==='worksheet',self=audience==='self',c=plan.context||{},fingerprint=planFingerprint(plan),same=r=>!!r&&planFingerprint(r.payload)===fingerprint;
  const steps=[],add=(id,label,done,detail,action,phase='prepare',blocked=false)=>steps.push({id,label,state:done?'done':blocked?'blocked':'todo',detail,action,phase});

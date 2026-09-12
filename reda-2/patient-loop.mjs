@@ -19,7 +19,7 @@ export function reflectionCode(a){
  if(['time','energy','other'].includes(a.barrier))return 'training_barrier';
  return a.support==='yes'?'requested_contact':null;
 }
-export function reflectionLines(row){return [barriers[row?.answers?.barrier]||'Svaret behöver kontrolleras',supportLabels[row?.answers?.support]?'Önskar hjälp: '+(row.answers.support==='yes'?'Ja':'Nej'):'',row?.exercise_name?'Gäller: '+row.exercise_name:''].filter(Boolean)}
+export function reflectionLines(row){return [barriers[row?.answers?.barrier]||'Svaret behöver kontrolleras',supportLabels[row?.answers?.support]?'Önskar hjälp: '+(row.answers.support==='yes'?'Ja':'Nej'):'',row?.exercise_name?'Gäller: '+row.exercise_name:'',row?.optionLabel?'Pass: '+row.optionLabel:''].filter(Boolean)}
 export const dayKey=time=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Stockholm',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(time));
 export function pendingReflections(plan,sessions=[],reflections=[],now=new Date().toISOString()){
  const answered=new Set(reflections.map(x=>x.session_id)),day=dayKey(now);

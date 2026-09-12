@@ -1,14 +1,15 @@
 /* Minimal, account-scoped outbox. No names, email addresses or plan contents. */
 (function(root){'use strict';
 const prefix='reda:pending-session:v1:';
+function effective(plan,id){try{return id?root.RedaPlanOptions?.optionPlan(plan,id):plan}catch{return null}}
 function valid(s,plan){
- const xs=plan?.payload?.exercises||[];
+ const resolved=effective(plan,s?.optionId);if(!resolved)return false;const xs=resolved.payload?.exercises||[];
  return !!s&&typeof s.id==='string'&&Number.isFinite(Date.parse(s.startedAt))&&['started','partial','completed'].includes(s.status)&&Array.isArray(s.progress)&&s.progress.length===xs.length&&s.progress.every((p,i)=>p.exerciseId===xs[i].id&&Number.isInteger(p.roundsDone)&&p.roundsDone>=0&&p.roundsDone<=root.RedaSession.rounds(xs[i]).length&&p.totalRounds===root.RedaSession.rounds(xs[i]).length&&['pending','partial','completed','skipped'].includes(p.status)&&[null,'light','okay','heavy'].includes(p.feedback??null));
 }
 function fromRow(row,plan){
  const saved=row?.payload?.exercises;
  if(!row||row.completed_at||row.plan_id!==plan.id||row.plan_version!==plan.version||!Array.isArray(saved)||saved.length!==plan.payload.exercises.length||new Set(saved.map(x=>x.exerciseId)).size!==saved.length)return null;
- const s=root.RedaSession.create(plan.payload.exercises,row.client_session_id,row.started_at);
+ const resolved=effective(plan,row.payload?.optionId);if(!resolved)return null;const s=root.RedaSession.create(resolved.payload.exercises,row.client_session_id,row.started_at);if(row.payload?.optionId)s.optionId=row.payload.optionId;
  s.status=row.status;s.progress=s.progress.map(p=>({...p,...saved.find(x=>x.exerciseId===p.exerciseId),totalRounds:p.totalRounds}));
  return valid(s,plan)?s:null;
 }
@@ -16,7 +17,7 @@ function read(storage,userId){try{return JSON.parse(storage.getItem(prefix+userI
 function write(storage,userId,plan,s,index){try{storage.setItem(prefix+userId,JSON.stringify({planId:plan.id,planVersion:plan.version,session:s,index,updatedAt:new Date().toISOString()}));return true}catch{return false}}
 function clear(storage,userId){try{storage.removeItem(prefix+userId)}catch{}}
 function previous(row,pending){
- if(pending?.session){const s=pending.session;return {planId:pending.planId,clientSessionId:s.id,startedAt:s.startedAt,payload:{exercises:s.progress.map(p=>({exerciseId:p.exerciseId,status:p.status,roundsDone:p.roundsDone,feedback:p.feedback}))}}}
+ if(pending?.session){const s=pending.session;return {planId:pending.planId,clientSessionId:s.id,startedAt:s.startedAt,payload:{...(s.optionId?{optionId:s.optionId}:{}),exercises:s.progress.map(p=>({exerciseId:p.exerciseId,status:p.status,roundsDone:p.roundsDone,feedback:p.feedback}))}}}
  return {planId:row.plan_id,clientSessionId:row.client_session_id,startedAt:row.started_at,payload:row.payload};
 }
 function choose(plan,rows,pending){

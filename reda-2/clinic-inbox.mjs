@@ -1,4 +1,4 @@
-import {reflectionLines} from './patient-loop.mjs?v=1';
+import {reflectionLines} from './patient-loop.mjs?v=2';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const labels={changed_symptoms:'Förändrade besvär eller funktion',changed_environment:'Ändrade förutsättningar',requested_contact:'Önskemål om kontakt',execution_help:'Hjälp med utförandet',training_barrier:'Hinder i träningsvardagen'},states={open:'Nytt',acknowledged:'Kvitterat',resolved:'Bedömt'};
 export function mountClinicInbox(host,{api,onOpen,onHandled,onBusy=()=>{}}){

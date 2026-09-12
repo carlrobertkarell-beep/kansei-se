@@ -15,7 +15,7 @@ export function createMovementLesson(host,{onReady=()=>{}}={}){
  function draw(t){if(!exercise)return;const el=$('#motion');if(!F.drawFrame?.(el,key,t,focus))el.innerHTML=F.svg(key,t,side,exercise.name,{focus});el.dataset.position=String(t)}
  const playback=createLessonPlayback({draw,change:s=>{
   host.dataset.playing=String(s.playing);play.disabled=media.matches;play.textContent=media.matches?'Använd stillbilderna':s.playing?'Pausa rörelsen':s.complete?'Visa delen igen':s.progress>0?'Fortsätt visningen':'Visa den här delen';
-  status.textContent=media.matches?'Stilla visning är på. Välj en bild nedan.':s.playing?'Titta i lugn och ro. Du kan pausa när som helst.':s.complete?'Den här delen är klar. Nästa del väntar på dig.':s.progress>0?'Pausad. Fortsätt när du vill.':'Starta när du vill. Visningen stannar efter varje del.';
+  status.textContent=media.matches?'Stilla visning är på. Välj en bild nedan.':s.playing?'Titta i lugn och ro. Du kan pausa när som helst.':s.complete?(part===segments.length-1?'Visningen är klar. Se den igen eller träna själv.':'Den här delen är klar. Nästa del väntar på dig.'):s.progress>0?'Pausad. Fortsätt när du vill.':'Starta när du vill. Visningen stannar efter varje del.';
  }});
  function silence(){if(utterance){utterance.onend=null;utterance.onerror=null;speech?.cancel();utterance=null}$('#lessonListen').textContent='Lyssna'}
  function voices(){voice=localSwedishVoice(speech?.getVoices());$('#lessonListen').hidden=!voice}

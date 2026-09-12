@@ -85,6 +85,7 @@ jobs:
           node --check reda-2/figures-intelligence.js
       - name: Motion graph and renderer browser flows
         run: |
+          python3 .github/reda2-tests/handover_browser_test.py
           python3 .github/reda2-tests/browser_motion_test.py
           python3 .github/reda2-tests/recovery_browser_test.py
           python3 .github/reda2-tests/followup_browser_test.py
@@ -106,7 +107,6 @@ jobs:
           python3 .github/reda2-tests/activity_log_browser_test.py
           python3 .github/reda2-tests/support_workflow_browser_test.py
           python3 .github/reda2-tests/patient_basis_browser_test.py
-          python3 .github/reda2-tests/handover_browser_test.py
       - name: Public Reda landing and Kansei homepage integration
         run: python3 .github/reda2-tests/public_landing_test.py
       - name: Existing site regression checks

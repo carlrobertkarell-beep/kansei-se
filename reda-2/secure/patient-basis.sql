@@ -25,6 +25,8 @@ begin
  perform private.reda_lock_patient_context(p.patient_id);
  perform 1 from public.reda_patients where id=p.patient_id and private.reda_is_own_patient(id)for update;
  if not found then raise exception using errcode='42501',message='Planen är inte tillgänglig.';end if;
+ -- Re-read after the patient lock: an activation may have committed while waiting.
+ select * into p from public.reda_plans where id=p_plan_id;
  if p_request_id is null or jsonb_typeof(p_answers) is distinct from 'object' then raise exception using errcode='22023',message='Kontrollera dina svar.';end if;
  if (select count(*)from jsonb_object_keys(p_answers))<>5 or not p_answers?&array['ability','minutes','equipment','band','floorOK']
  or jsonb_typeof(p_answers->'ability') is distinct from 'number' or (p_answers->>'ability')::numeric not between 0 and 10 or (p_answers->>'ability')::numeric<>trunc((p_answers->>'ability')::numeric)

@@ -1,5 +1,5 @@
 -- Read-only timeline. No rollout flags or patient records are changed.
-create function private.reda_activity_log(p_patient_id uuid,p_category text default 'all',p_from date default null,p_to date default null,p_before_time timestamptz default null,p_before_key text default null)
+create or replace function private.reda_activity_log(p_patient_id uuid,p_category text default 'all',p_from date default null,p_to date default null,p_before_time timestamptz default null,p_before_key text default null)
 returns jsonb language plpgsql stable security definer set search_path='' as $$
 declare actor uuid:=private.reda_live_actor();clinician boolean;timeline_result jsonb;
 begin
@@ -15,6 +15,7 @@ begin
  union all select 'response:'||id,created_at,'feedback','Uppföljning efter träning sparad','Svar om kroppens reaktion',plan_id,plan_version from public.reda_training_responses where patient_id=p_patient_id
  union all select 'reflection:'||id,created_at,'feedback','Svar direkt efter passet sparade',case answers->>'barrier' when 'time' then 'Tiden räckte inte' when 'execution' then 'Svårt att förstå utförandet' when 'equipment' then 'Utrustning eller miljö' when 'symptoms' then 'Besvär under träningen' when 'energy' then 'Orken räckte inte' when 'other' then 'Annat hinder' else 'Inget hinder angivet' end||case when answers->>'support'='yes' then ' · Hjälp efterfrågad' else '' end,plan_id,plan_version from public.reda_session_reflections where patient_id=p_patient_id
  union all select 'message:'||id,created_at,'contact',case when kind='clinician' then 'Meddelande från kliniken' else 'Svar från patienten' end,'Sparat i Redas meddelanden',null,null from private.reda_clinic_messages where patient_id=p_patient_id
+ union all select 'queue:'||id,created_at,'ei','EI lade till en uppföljningsuppgift','Tilldelad behandlaren · Datum '||(metadata->>'due_date'),(metadata->>'plan_id')::uuid,null from public.reda_audit_events where patient_id=p_patient_id and clinician and action='support_task_queued'
  union all select 'task:'||request_id,created_at,'ei',case result->>'action' when 'follow_up' then 'Uppföljning planerad' when 'complete_follow_up' then 'Uppföljning markerad genomförd' when 'resolve_cases' then 'Ärende markerat bedömt' else 'Klinikåtgärd sparad' end,'Sparat av behandlaren i arbetslistan',null,null from private.reda_clinic_action_receipts where patient_id=p_patient_id and clinician and result->>'action' in ('follow_up','complete_follow_up','resolve_cases')
  union all select 'review:'||id,created_at,'ei','EI-bedömning granskad',case verdict when 'agree' then 'Behandlaren instämmer' when 'disagree' then 'Behandlaren gör en annan bedömning' else 'Underlaget bedöms otillräckligt' end,null,null from public.reda_decision_reviews where patient_id=p_patient_id and clinician
  union all select 'ei:'||id,created_at,'ei',case when applied then 'EI-åtgärd genomförd' else 'EI-bedömning registrerad' end,case when applied then 'Utförd åtgärd: ' else 'Ingen automatisk planändring. Bedömning: ' end||action,plan_id,null from public.reda_engine_decisions where patient_id=p_patient_id and clinician
@@ -30,7 +31,7 @@ begin
 end$$;
 revoke all on function private.reda_activity_log(uuid,text,date,date,timestamptz,text) from public,anon,authenticated;
 grant execute on function private.reda_activity_log(uuid,text,date,date,timestamptz,text) to authenticated;
-create function public.reda_activity_log(p_patient_id uuid,p_category text default 'all',p_from date default null,p_to date default null,p_before_time timestamptz default null,p_before_key text default null)
+create or replace function public.reda_activity_log(p_patient_id uuid,p_category text default 'all',p_from date default null,p_to date default null,p_before_time timestamptz default null,p_before_key text default null)
 returns jsonb language sql stable security invoker set search_path='' as $$select private.reda_activity_log(p_patient_id,p_category,p_from,p_to,p_before_time,p_before_key)$$;
 revoke all on function public.reda_activity_log(uuid,text,date,date,timestamptz,text) from public,anon,authenticated;
 grant execute on function public.reda_activity_log(uuid,text,date,date,timestamptz,text) to authenticated;

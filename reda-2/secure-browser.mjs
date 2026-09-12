@@ -63,3 +63,5 @@ export const savePlanTemplate=({id,revision,title,payload,archived=false})=>rpc(
 export const savePatientStart=({clinicalContext,delivery,...input})=>savePatientProfile({...input,profile:{...input.profile,clinical_context:clinicalContext,delivery_mode:delivery}});
 
 export const activityLog=(patientId,{category="all",from=null,to=null,cursor=null,clinician=false}={})=>rpc("reda_activity_log",{p_patient_id:patientId,p_category:category,p_from:from,p_to:to,p_before_time:cursor?.time||null,p_before_key:cursor?.key||null},clinician?clinicalClient():db);
+
+export const patientSupport=patientId=>rpc('reda_patient_support',{p_patient_id:patientId},db);

@@ -1,7 +1,7 @@
 -- Read-only timeline. No rollout flags or patient records are changed.
 create function private.reda_activity_log(p_patient_id uuid,p_category text default 'all',p_from date default null,p_to date default null,p_before_time timestamptz default null,p_before_key text default null)
 returns jsonb language plpgsql stable security definer set search_path='' as $$
-declare actor uuid:=private.reda_live_actor();clinician boolean;result jsonb;
+declare actor uuid:=private.reda_live_actor();clinician boolean;timeline_result jsonb;
 begin
  clinician=coalesce(private.reda_owns_patient(p_patient_id),false);
  if not clinician and not coalesce(private.reda_is_own_patient(p_patient_id),false) then raise exception using errcode='42501',message='Historiken är inte tillgänglig.';end if;
@@ -25,8 +25,8 @@ begin
  and (p_before_time is null or (occurred_at,id)<(p_before_time,p_before_key))
  order by occurred_at desc,id desc limit 51
  ), visible as(select * from page order by occurred_at desc,id desc limit 50)
- select jsonb_build_object('events',coalesce((select jsonb_agg(to_jsonb(v) order by occurred_at desc,id desc)from visible v),'[]'::jsonb),'next_cursor',case when (select count(*) from page)>50 then (select jsonb_build_object('time',occurred_at,'key',id)from visible order by occurred_at,id limit 1) else null end,'billing_connected',false,'audience',case when clinician then 'clinician' else 'patient' end)into result;
- return result;
+ select jsonb_build_object('events',coalesce((select jsonb_agg(to_jsonb(v) order by occurred_at desc,id desc)from visible v),'[]'::jsonb),'next_cursor',case when (select count(*) from page)>50 then (select jsonb_build_object('time',occurred_at,'key',id)from visible order by occurred_at,id limit 1) else null end,'billing_connected',false,'audience',case when clinician then 'clinician' else 'patient' end)into timeline_result;
+ return timeline_result;
 end$$;
 revoke all on function private.reda_activity_log(uuid,text,date,date,timestamptz,text) from public,anon,authenticated;
 grant execute on function private.reda_activity_log(uuid,text,date,date,timestamptz,text) to authenticated;

@@ -1,3 +1,9 @@
+## Sammanhängande patientresa · 2026-09-12
+
+Dagens plan är ingången. Klickbara övningsrader visar ordination och öppnar en separat, läsande förhandsvisning i samma sida. Den kan visa rörelsen och instruktionerna utan att skapa ett träningspass. Starta passet öppnar den befintliga sessionsmodellen; tillbaka återgår till dagens plan med markeringarna kvar. Patientvyn och den publika exempelplanen delar övningsöversikt, förberedelser, förhandsvisning och visuellt språk. Exempelplanen går nu hela vägen från översikt genom tre övningar till avslut, återkoppling och händelser, enbart i sidans minne.
+
+Referenser för produktgranskningen: [PhysiApps patientflöde](https://support.physitrack.com/article/375-what-does-your-patient-see-when-they-log-into-physiapp), [Hinge Healths användarhandledning](https://www.hingehealth.com/user-manual/) och [Medbridge GO](https://www.medbridge.com/care/medbridge-go). Dokumenterade mönster används som jämförelsegrund; vi påstår inte överlägsenhet eller genomförda användartester. Klinisk rörelsegranskning, pilot och driftgränser nedan gäller fortsatt.
+
 ## Rörelseguide och hjälp i övningen · 2026-09-12
 
 Rörelsestudio 5 och hjälp kopplad till aktuell övning utvecklas som ett gemensamt block. Patientens förståelse kan registreras eller lämnas över som ett ärende med källövning, planversion och öppnade förklaringar. Se [flöde och gränser](secure/EXERCISE-HELP.md), [prova fiktiv guide](exercise-guide.html) och [rörelsegranskning](motion-reference.html). Klinisk granskning av rörelserna och verkligt distributionsprov återstår. Därefter prioriteras förberedda återbesök och diktat till granskningsbara utkast.

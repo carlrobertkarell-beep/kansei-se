@@ -2,7 +2,7 @@ import {lessonInstructions,lessonSegments,wholeLessonSequence,focusCamera,create
 import {sideLabels} from './exercise-help-model.mjs?v=20260912-coach1';
 const icon=(name)=>({play:'<path d="m9 5 11 7-11 7Z"/>',pause:'<path d="M8 5v14M16 5v14"/>',expand:'<path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/>',close:'<path d="m6 6 12 12M18 6 6 18"/>',sound:'<path d="m11 4-6 5H2v6h3l6 5ZM16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/>'}[name]||'');
 const glyph=name=>`<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${icon(name)}</svg>`;
-export function createMovementLesson(host){
+export function createMovementLesson(host,{idPrefix=''}={}){
  const F=window.RedaFigures,media=matchMedia('(prefers-reduced-motion: reduce)'),speech=window.speechSynthesis;
  let exercise=null,key='',side='',identity='',instructions=[],segments=[],readIndex=0,part=0,view='whole',focus=null,voice=null,utterance=null,customStill=false;
  const remembered=new Map();host.classList.add('movement-lesson');
@@ -10,8 +10,12 @@ export function createMovementLesson(host){
 
  <dialog id="lessonDetails" class="exercise-sheet" aria-labelledby="lessonDetailsTitle"><div class="sheet-heading"><h2 id="lessonDetailsTitle">Så gör du</h2><button type="button" id="lessonCloseDetails" class="lesson-icon" aria-label="Stäng instruktionen">${glyph('close')}</button></div><div class="sheet-content"><div class="lesson-tabs" role="group" aria-label="Välj förklaring"><button type="button" data-lesson-mode="read" aria-pressed="true">Instruktion</button><button type="button" data-lesson-mode="watch" aria-pressed="false">Rörelsens delar</button></div><div class="lesson-reading"><p class="lesson-counter" id="lessonCounter"></p><p class="lesson-instruction" id="lessonInstruction" tabindex="-1"></p><div class="lesson-read-actions"><button type="button" id="lessonPrevious" aria-label="Föregående instruktion">←</button><button type="button" id="lessonListen" hidden>${glyph('sound')} Lyssna</button><button type="button" id="lessonNext">Nästa</button></div></div><div class="lesson-parts" hidden><p>Välj en del att se i stor bild. Den stannar när delen är klar.</p><div id="lessonParts"></div></div><details class="lesson-stills"><summary>Visa en stillbild</summary><div class="lesson-frame-buttons"><button type="button" data-motion-frame="0" data-frame="0">Startläge</button><button type="button" data-motion-frame="0.5" data-frame="0.5">På väg</button><button type="button" data-motion-frame="1" data-frame="1">Slutläge</button></div></details><p class="lesson-note">Visningen förklarar rörelsen. Följ dos, tempo och rörelseomfång i din plan.</p></div></dialog>
  <dialog id="lessonFocus" class="lesson-focus" aria-label="Förstorad rörelse"><div class="focus-heading"><span id="focusTitle"></span><button type="button" id="lessonCloseFocus" class="lesson-icon" aria-label="Stäng förstorad rörelse">${glyph('close')}</button></div><div class="focus-body"></div></dialog>`;
+ if(idPrefix){
+  for(const el of host.querySelectorAll('[id]'))el.id=idPrefix+el.id;
+  for(const el of host.querySelectorAll('[aria-labelledby]'))el.setAttribute('aria-labelledby',el.getAttribute('aria-labelledby').split(' ').map(id=>idPrefix+id).join(' '));
+ }
  let originalCamera=null;
- const $=s=>host.querySelector(s),play=$('#motionPlay'),status=$('#lessonStatus'),details=$('#lessonDetails'),zoom=$('#lessonFocus'),visual=$('.lesson-media'),anchor=document.createComment('exercise media');visual.before(anchor);
+ const $=s=>host.querySelector(idPrefix?s.replace(/#([\w-]+)/g,(_,id)=>'#'+idPrefix+id):s),play=$('#motionPlay'),status=$('#lessonStatus'),details=$('#lessonDetails'),zoom=$('#lessonFocus'),visual=$('.lesson-media'),anchor=document.createComment('exercise media');visual.before(anchor);
  function draw(t){if(!exercise)return;const el=$('#motion');if(!F.drawFrame?.(el,key,t,focus))el.innerHTML=F.svg(key,t,side,exercise.name,{focus});el.dataset.position=String(t)}
  const playback=createLessonPlayback({draw,change:renderPlayback});
  function renderPlayback(s){

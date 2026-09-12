@@ -1,4 +1,4 @@
-import {openPlanReview} from './plan-review.mjs?v=1'
+import {openPlanReview} from './plan-review.mjs?v=2'
 import {mountEISettings} from './ei-settings.mjs?v=1'
 let eiSettings=null;
 import {approvedOptions} from './plan-options.mjs?v=1'
@@ -8,10 +8,10 @@ import {renderProcess} from './process-indicator.mjs?v=1'
 import {openSelfPlanPreview} from './self-plan-preview.mjs?v=3'
 import {mountPlanAuthoring} from './plan-authoring.mjs?v=6'
 import {emptyPlan,cleanProgression} from './plan-authoring-model.mjs?v=2'
-import {mountDecisionDashboard} from './decision-dashboard.mjs?v=11'
+import {mountDecisionDashboard} from './decision-dashboard.mjs?v=12'
 import {openPatientIntake} from './patient-intake.mjs?v=2'
 import {mountWorkspaceTeam,roleLabels} from './workspace-team.mjs?v=1'
-import * as api from './secure-browser.mjs?v=20260912-handover1'
+import * as api from './secure-browser.mjs?v=20260912-flow1'
 import {mountClinicEngine} from './runtime-ui.mjs?v=6'
 import {mountClinicInbox} from './clinic-inbox.mjs?v=5'
 let composer=null,clinicalProfile={},processData={plans:[],sessions:[],responses:[]},savedRecord=null,reviewedPlan="";

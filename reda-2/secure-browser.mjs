@@ -65,6 +65,10 @@ export const savePatientStart=({clinicalContext,delivery,...input})=>savePatient
 export const activityLog=(patientId,{category="all",from=null,to=null,cursor=null,clinician=false}={})=>rpc("reda_activity_log",{p_patient_id:patientId,p_category:category,p_from:from,p_to:to,p_before_time:cursor?.time||null,p_before_key:cursor?.key||null},clinician?clinicalClient():db);
 
 export const patientSupport=patientId=>rpc('reda_patient_support',{p_patient_id:patientId},db);
+export const patientBarriers=patientId=>rpc('reda_patient_barriers',{p_patient_id:patientId},db);
+export const answerBarrier=(loopId,requestId,context)=>rpc('reda_answer_barrier',{p_loop_id:loopId,p_request_id:requestId,p_context:context},db);
+export const barrierOutcome=(loopId,requestId,outcome,sessionId)=>rpc('reda_barrier_outcome',{p_loop_id:loopId,p_request_id:requestId,p_outcome:outcome,p_session_id:sessionId},db);
+export const publishBarrier=({loopId,requestId,token,payload,note,patientMessage,dueDate})=>rpc('reda_publish_barrier',{p_loop_id:loopId,p_request_id:requestId,p_token:token,p_payload:payload,p_note:note,p_patient_message:patientMessage,p_due_date:dueDate},clinicalClient());
 
 export const myCheckins=patientId=>rpc('reda_my_checkins',{p_patient_id:patientId},db);
 export const submitCheckin=(planId,requestId,answers)=>rpc('reda_submit_checkin',{p_plan_id:planId,p_request_id:requestId,p_answers:answers},db);

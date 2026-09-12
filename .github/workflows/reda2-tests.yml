@@ -87,7 +87,6 @@ jobs:
           node --check reda-2/figures-intelligence.js
       - name: Motion graph and renderer browser flows
         run: |
-          python3 .github/reda2-tests/exercise_help_browser_test.py
           python3 .github/reda2-tests/barrier_loop_browser_test.py
           python3 .github/reda2-tests/handover_browser_test.py
           python3 .github/reda2-tests/browser_motion_test.py
@@ -120,6 +119,28 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: reda2-tests-${{ github.run_id }}
+          path: reda2-test-results/
+          retention-days: 3
+          if-no-files-found: ignore
+
+  mobile-exercise-player:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Install browser tester
+        run: |
+          python3 -m pip install --disable-pip-version-check playwright==1.57.0
+          python3 -m playwright install chromium
+      - name: Phone player, instructions, help, rest and completion
+        run: python3 .github/reda2-tests/exercise_help_browser_test.py
+      - name: Retain phone screenshots
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: reda2-mobile-${{ github.run_id }}
           path: reda2-test-results/
           retention-days: 3
           if-no-files-found: ignore

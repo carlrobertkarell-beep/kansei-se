@@ -1,5 +1,5 @@
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-export function mountPatientMessages(host,{api}){
+export function mountPatientMessages(host,{api,onSent}){
  if(!host||!api.patientMessages)return null;
  let alive=true,busy=false,ticket=0,data=null,pending=null;
  const valid=()=>alive&&host.isConnected,q=s=>host.querySelector(s);
@@ -19,7 +19,7 @@ export function mountPatientMessages(host,{api}){
   if(body.length<5){status('Skriv ett svar på minst fem tecken.');return}
   const signature=JSON.stringify([messageId,body]);if(pending?.signature!==signature)pending={signature,id:crypto.randomUUID()};const requestId=pending.id;
   ++ticket;setBusy(true);status('Skickar ditt svar…');
-  try{await api.patientReply(messageId,requestId,body);if(!valid())return;pending=null;q('textarea').value='';setBusy(false);await refresh('Ditt svar är levererat i Reda till din behandlare.');}
+  try{await api.patientReply(messageId,requestId,body);if(!valid())return;pending=null;q('textarea').value='';setBusy(false);await refresh('Ditt svar är levererat i Reda till din behandlare.');onSent?.();}
   catch(e){if(valid()){status(e.message||'Svaret kunde inte skickas. Texten är kvar; försök igen.');if(e.code==='40001'){data=null;q('.reda-reply').hidden=true;pending=null}}}
   finally{if(valid())setBusy(false)}
  };

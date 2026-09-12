@@ -1,13 +1,15 @@
+import {mountPatientSupport} from './support-workflow.mjs?v=1'
+let support=null;
 import {mountActivityLog} from './activity-log.mjs?v=1'
 let activity=null;
 import {approvedOptions,optionPlan} from './plan-options.mjs?v=1'
 window.RedaPlanOptions={optionPlan};
 let selectedOption=null;
 import {mountSavedSupport,openPlanGuide} from './plan-guide.mjs?v=2'
-import * as api from './secure-browser.mjs?v=20260912-log1'
+import * as api from './secure-browser.mjs?v=20260912-work1'
 import {todayState,pendingReflections} from './patient-loop.mjs?v=2'
 import {mountSessionReflection} from './session-reflection.mjs?v=3'
-import {mountPatientMessages} from './patient-messages.mjs?v=1'
+import {mountPatientMessages} from './patient-messages.mjs?v=2'
 let messages=null;
 import {mountPlanHelp,decisionText} from './runtime-ui.mjs?v=2'
 const $=id=>document.getElementById(id), F=window.RedaFigures, S=window.RedaSession, R=window.RedaRecovery
@@ -19,8 +21,8 @@ function error(e){$('authSuccess').classList.add('hidden');$('authError').textCo
 function sessionPlan(){return plan?optionPlan(plan,session&&!session.completedAt?session.optionId:selectedOption):null}
 function exercises(){return sessionPlan()?.payload?.exercises||[]}
 const I=window.RedaIntelligence,TR=window.RedaTrainingResponse;
-const responseForm=window.RedaResponseForm.create($('responseForm'),{submit:(sid,rid,answers)=>api.submitTrainingResponse(sid,rid,answers),onSaved:row=>{state.responses=[...(state.responses||[]).filter(x=>x.session_id!==row.session_id),row];renderResponsePrompt();evaluateNext()}});
-const reflectionForm=mountSessionReflection($('sessionReflection'),{submit:(sid,rid,answers)=>api.submitSessionReflection(sid,rid,answers),onSaved:row=>{state.reflections=[...(state.reflections||[]).filter(x=>x.session_id!==row.session_id),row];renderReflectionPrompt();renderSavedSupport()},onLater:()=>{$('todayTitle').scrollIntoView({block:'start',behavior:'smooth'})}});
+const responseForm=window.RedaResponseForm.create($('responseForm'),{submit:(sid,rid,answers)=>api.submitTrainingResponse(sid,rid,answers),onSaved:row=>{state.responses=[...(state.responses||[]).filter(x=>x.session_id!==row.session_id),row];renderResponsePrompt();support?.refresh();evaluateNext()}});
+const reflectionForm=mountSessionReflection($('sessionReflection'),{submit:(sid,rid,answers)=>api.submitSessionReflection(sid,rid,answers),onSaved:row=>{state.reflections=[...(state.reflections||[]).filter(x=>x.session_id!==row.session_id),row];renderReflectionPrompt();renderSavedSupport();support?.refresh()},onLater:()=>{$('todayTitle').scrollIntoView({block:'start',behavior:'smooth'})}});
 function renderReflectionPrompt(){
  const host=$('reflectionPrompt');if(!api.submitSessionReflection){host.hidden=true;return}
  if(state.reflectionError){host.hidden=false;host.textContent='Dina svar direkt efter passen kunde inte hämtas. Ladda om för att försöka igen.';return}
@@ -78,7 +80,7 @@ async function bootstrap(){
  const restored=R.choose(plan,state.sessions,R.read(localStore(),state.userId));
  if(restored.discard)R.clear(localStore(),state.userId);
  recoveryBlocked=!!restored.blocked;previousSession=restored.previous||null;$('closePrevious').classList.toggle('hidden',!previousSession);session=restored.session||null;index=restored.index||0;
- renderHome();setAuth(false);if(!messages)messages=mountPatientMessages($('patientMessages'),{api});$('start').disabled=recoveryBlocked;
+ renderHome();setAuth(false);if(!messages)messages=mountPatientMessages($('patientMessages'),{api,onSent:()=>support?.refresh()});support?.destroy();support=mountPatientSupport($('patientSupport'),{api,patientId:state.patient.id,onMessages:async()=>{await messages?.refresh();const el=$('patientMessages');el.querySelector('details').open=true;el.scrollIntoView({block:'start',behavior:'smooth'});el.querySelector('textarea')?.focus()}});$('start').disabled=recoveryBlocked;
  $('start').textContent=session&&!session.completedAt?'Fortsätt påbörjat pass':todayState(plan,state.sessions).button;
  $('sync').textContent=restored.message||(session?'Ditt påbörjade pass är återställt.':'Synkad med kliniken');
  if(restored.retry)await sync(session.status,session.completedAt);

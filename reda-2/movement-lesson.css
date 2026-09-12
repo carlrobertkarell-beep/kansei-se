@@ -4,7 +4,7 @@
 .movement-lesson button,.exercise-sheet button,.lesson-focus button{font:inherit;min-height:48px;line-height:1.35;border:1px solid #d0dcd5;border-radius:14px;padding:10px 14px;background:#fff;color:#203e35;cursor:pointer}
 .movement-lesson button:focus-visible,.exercise-player button:focus-visible,.exercise-sheet :focus-visible{outline:3px solid #3463ad;outline-offset:3px}
 .movement-lesson button:disabled{opacity:.5;cursor:default}
-.lesson-media{display:flex;flex:1;min-height:0;flex-direction:column;gap:8px}
+.lesson-media{display:flex;flex:1;min-height:min-content;flex-direction:column;gap:8px}
 .movement-lesson .motion-studio{position:relative;flex:1;min-height:190px;border:1px solid #dde6d9;border-radius:24px;background:radial-gradient(ellipse at 50% 65%,#e8eee1 0,#f3f5ed 72%);overflow:hidden;display:flex;flex-direction:column}
 .movement-lesson .motion-caption{position:absolute;z-index:1;top:0;left:0;right:0;padding:12px;display:flex;align-items:start;justify-content:space-between;pointer-events:none}
 .motion-caption>*{pointer-events:auto}.movement-lesson .motion-side{font-size:15px;font-weight:650;padding:7px 11px;line-height:1.4;color:#24483d;background:#ffffffdf;border:1px solid #dce7d9;border-radius:10px}
@@ -13,7 +13,7 @@
 .movement-lesson .motion-phase{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:13px;color:#607265;pointer-events:none}
 .movement-lesson .lesson-icon,.exercise-sheet .lesson-icon,.lesson-focus .lesson-icon{width:48px;height:48px;min-width:48px;padding:12px;display:inline-flex;align-items:center;justify-content:center;background:#ffffffdd;border:1px solid #d5e1d3}
 .lesson-icon svg,.lesson-transport svg,#lessonListen svg{width:22px;height:22px;flex:none}
-.lesson-transport{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}.lesson-transport #motionPlay{display:flex;align-items:center;justify-content:center;gap:10px;background:#e8efe7;border-color:#d8e4d5;font-weight:650;min-height:50px;font-size:17px}.lesson-transport #motionSlow{font-size:15px}.lesson-transport #motionSlow[aria-pressed=true]{background:#dbe9dc;border-color:#456c52}
+.lesson-transport{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:7px;flex-shrink:0}.lesson-transport #motionPlay{display:flex;align-items:center;justify-content:center;gap:10px;background:#e8efe7;border-color:#d8e4d5;font-weight:650;min-height:50px;font-size:17px}.lesson-transport #motionSlow,.lesson-transport #lessonGuided{font-size:15px;padding:10px 11px}.lesson-transport #motionSlow[aria-pressed=true]{background:#dbe9dc;border-color:#456c52}
 .lesson-status{font-size:12px!important;line-height:1.4!important;min-height:1.4em;margin:0!important;text-align:center;color:#63766c}
 .movement-lesson .lesson-cue{display:flex;align-items:center;justify-content:space-between;gap:16px;border:0;border-radius:0;padding:3px 2px 5px;text-align:left;background:transparent;min-height:58px}.lesson-cue small{display:block;color:#5c7466;font-size:12px;font-weight:550;margin-bottom:3px}.lesson-cue b{display:block;font-weight:450;font-size:17px;line-height:1.45}.lesson-cue>span:last-child{font-size:22px;flex:none}
 .exercise-sheet{box-sizing:border-box;width:min(100%,620px);max-width:100%;max-height:88dvh;margin:auto auto 0;border:0;border-radius:26px 26px 0 0;padding:0;color:#203e35;background:#fff;box-shadow:0 -15px 70px #162b3125;overscroll-behavior:contain}
@@ -28,3 +28,7 @@
 @media(prefers-reduced-motion:reduce){.movement-lesson *,.exercise-player *{scroll-behavior:auto!important;transition:none!important}}
 
 .exercise-player button,.exercise-sheet button{min-width:0;overflow-wrap:anywhere}.exercise-sheet .lesson-tabs button{min-width:0}
+
+.movement-lesson .motion-studio .motion{position:absolute;inset:0;height:100%;flex:none}
+.lesson-status{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%);min-height:0}
+.focus-body .lesson-transport{grid-template-columns:minmax(0,1fr) auto}

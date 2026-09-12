@@ -40,3 +40,12 @@ export function createLessonPlayback({draw,change=()=>{},clock=()=>performance.n
   still(position){pause();segment={from:position,to:position,seconds:10};progress=0;paint();change(state())}
  };
 }
+
+// A close view is a paused inspection only. Playing restores the fixed movement camera.
+export function focusCamera(pose){
+ const names=['head','shoulder','elbow','hand','hip','knee','ankle','heel','toe'];
+ const points=[...names.map(n=>pose?.[n]),...names.map(n=>pose?.back?.[n])].filter(p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite));
+ if(points.length<3)return null;
+ const xs=points.map(p=>p[0]),ys=points.map(p=>p[1]);
+ return [Math.min(...xs)-36,Math.min(...ys)-36,Math.max(...xs)-Math.min(...xs)+72,Math.max(...ys)-Math.min(...ys)+72];
+}

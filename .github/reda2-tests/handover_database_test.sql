@@ -57,4 +57,13 @@ select tests.ok(current_setting('tests.third')::jsonb->>'frame_continued'='true'
 select tests.ok((select current_step=1 and status='approved' and execution='shadow' from reda_progression_frames where id=current_setting('tests.handover_frame')::uuid),'manual approval advances one step without enabling automatic execution');
 select tests.denied('select reda_publish_reviewed(tests.id(950000),tests.id(950452),reda_dashboard_patient(tests.id(950000))->>''token'',(current_setting(''tests.third'')::jsonb->>''plan_id'')::uuid,tests.plan(14),''Reviewed next step'',''Your next reviewed step'',null,(current_setting(''tests.handover_decision'')::jsonb->>''id'')::uuid)','40001','old eligible decision cannot advance a second time');
 reset role;
+insert into reda_patients(id,organization_id,clinician_id,display_name)values(tests.id(950005),tests.org('dashboard-test'),tests.id(1),'Fictional expired invitation');
+insert into private.reda_patient_profiles(patient_id,focus)values(tests.id(950005),'Fictional knee');
+set role authenticated;select tests.login(1,'aal2',103);
+select reda_publish_reviewed(tests.id(950005),tests.id(950501),reda_dashboard_patient(tests.id(950005))->>'token',null,tests.plan(8),'Reviewed expired fixture','Your fictional plan','other-handover@example.test');
+reset role;update private.reda_handovers set expires_at=now()-interval '1 second' where patient_id=tests.id(950005);
+set role authenticated;select tests.login(950002,'aal1',950102);select tests.ok(reda_claim_patient_access()->>'status'='unavailable','expired invitation grants no patient access');
+reset role;update private.reda_handovers set expires_at=now()+interval '7 days' where patient_id=tests.id(950005);
 update reda_organizations set patient_delivery_enabled=false where id=tests.org('dashboard-test');
+set role authenticated;select tests.login(950002,'aal1',950102);select tests.ok(reda_claim_patient_access()->>'status'='unavailable','closed clinic delivery prevents claiming a still-current invitation');
+reset role;

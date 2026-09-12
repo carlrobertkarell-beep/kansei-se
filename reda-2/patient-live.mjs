@@ -26,7 +26,7 @@ function sessionPlan(){return plan?optionPlan(plan,session&&!session.completedAt
 function exercises(){return sessionPlan()?.payload?.exercises||[]}
 const I=window.RedaIntelligence,TR=window.RedaTrainingResponse;
 const responseForm=window.RedaResponseForm.create($('responseForm'),{submit:(sid,rid,answers)=>api.submitTrainingResponse(sid,rid,answers),onSaved:row=>{state.responses=[...(state.responses||[]).filter(x=>x.session_id!==row.session_id),row];renderResponsePrompt();support?.refresh();evaluateNext()}});
-const reflectionForm=mountSessionReflection($('sessionReflection'),{submit:(sid,rid,answers)=>api.submitSessionReflection(sid,rid,answers),onSaved:row=>{state.reflections=[...(state.reflections||[]).filter(x=>x.session_id!==row.session_id),row];renderReflectionPrompt();renderSavedSupport();support?.refresh()},onLater:()=>{$('todayTitle').scrollIntoView({block:'start',behavior:'smooth'})}});
+const reflectionForm=mountSessionReflection($('sessionReflection'),{submit:(sid,rid,answers)=>api.submitSessionReflection(sid,rid,answers),onSaved:row=>{state.reflections=[...(state.reflections||[]).filter(x=>x.session_id!==row.session_id),row];renderReflectionPrompt();renderSavedSupport();$('patientStart').innerHTML=startHTML(state,planMessage);support?.refresh()},onLater:()=>{$('todayTitle').scrollIntoView({block:'start',behavior:'smooth'})}});
 function renderReflectionPrompt(){
  const host=$('reflectionPrompt');if(!api.submitSessionReflection){host.hidden=true;return}
  if(state.reflectionError){host.hidden=false;host.textContent='Dina svar direkt efter passen kunde inte hämtas. Ladda om för att försöka igen.';return}

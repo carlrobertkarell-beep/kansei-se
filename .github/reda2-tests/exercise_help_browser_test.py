@@ -74,6 +74,7 @@ class Patient(RecoveryTests):
    self.p.set_viewport_size({'width':width,'height':height});self.assertTrue(self.p.evaluate('document.documentElement.scrollWidth<=innerWidth+1'))
    for selector in ['#motionPlay','#lessonExpand','#openExerciseHelp','[data-round="0"]']:
     box=self.p.locator(selector).bounding_box();self.assertGreaterEqual(box['height'],44);self.assertLessEqual(box['y']+box['height'],height)
+   body_height=self.p.locator('#motion').evaluate('(el)=>{const r=[...el.querySelectorAll(".motion-human-profile,.motion-active-leg")].map(e=>e.getBoundingClientRect());return Math.max(...r.map(x=>x.bottom))-Math.min(...r.map(x=>x.top))}');self.assertGreaterEqual(body_height,170 if width==360 else 240)
    self.shot('phone-'+str(width)+'-ready.png')
   self.p.set_viewport_size({'width':844,'height':390});self.shot('phone-landscape.png');self.assertTrue(self.p.evaluate('document.documentElement.scrollWidth<=innerWidth+1'));box=self.p.locator('[data-round="0"]').bounding_box();self.assertLessEqual(box['y']+box['height'],390)
  def test_large_text_can_scroll_without_clipping_instructions_or_actions(self):

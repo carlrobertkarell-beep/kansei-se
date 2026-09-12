@@ -27,3 +27,5 @@ body.reda-patient .exercise-player #effort{margin:0 0 4px;padding:0;border:0;dis
 .exercise-player .player-titleline{margin-top:5px}
 .exercise-player .coach-answer ol{font-size:17px;line-height:1.6}.exercise-player .coach-actions button{font-size:16px!important;min-height:48px!important}
 @media(orientation:landscape) and (max-height:560px){body.reda-patient .exercise-player,body.reda-patient #player.exercise-player{height:100dvh;min-height:360px;grid-template-rows:auto minmax(0,1fr)}.exercise-player #movementLesson{height:calc(100dvh - 24px);min-height:330px}.exercise-player .motion-studio{min-height:220px}.exercise-player .player-dock{padding-bottom:0}}
+
+.player-topline .player-icon{display:grid;place-items:center;flex-shrink:0}.player-icon svg{width:22px;height:22px}

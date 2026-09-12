@@ -63,10 +63,11 @@ class Patient(RecoveryTests):
  def test_skip_and_pause_are_explicit_and_restore_home_navigation(self):
   self.p.locator('#openPlayerOptions').click();self.p.locator('#skip').click();expect(self.p.locator('#playerOptions')).not_to_be_visible();expect(self.p.locator('#next')).to_be_enabled();self.p.locator('#closePlayer').click();expect(self.p.locator('.nav')).to_be_visible();expect(self.p.locator('#start')).to_be_focused()
  def test_preview_is_the_same_player_for_all_five_families_without_any_save(self):
+  storage_before=self.p.evaluate('JSON.stringify([Object.entries(localStorage),Object.entries(sessionStorage)])')
   self.p.goto(self.origin+'/reda-2/exercise-guide.html')
   for n in range(5):
    self.p.locator('#openPlayerOptions').click();self.p.locator('#guideExercise').select_option(str(n));expect(self.p.locator('#playerOptions')).not_to_be_visible();self.p.locator('#lessonGuided').click();self.p.locator('.lesson-stills summary').click();self.p.locator('[data-frame="1"]').click();expect(self.p.locator('#motion svg')).to_have_attribute('data-renderer-version','5');self.assertTrue(self.p.evaluate('document.documentElement.scrollWidth<=innerWidth+1'));self.shot('phone-family-'+str(n)+'.png')
-  self.topic('execution');self.p.locator('[data-coach-contact]').click();self.p.locator('[data-coach-form] [type=submit]').click();expect(self.p.locator('#guideResult')).to_contain_text('Så skulle underlaget visas');expect(self.p.locator('[data-coach-status]')).to_contain_text('Inget har skickats eller sparats');self.assertEqual(self.p.evaluate('localStorage.length+sessionStorage.length'),0)
+  self.topic('execution');self.p.locator('[data-coach-contact]').click();self.p.locator('[data-coach-form] [type=submit]').click();expect(self.p.locator('#guideResult')).to_contain_text('Så skulle underlaget visas');expect(self.p.locator('[data-coach-status]')).to_contain_text('Inget har skickats eller sparats');self.assertEqual(self.p.evaluate('JSON.stringify([Object.entries(localStorage),Object.entries(sessionStorage)])'),storage_before)
  def test_small_and_large_phones_keep_primary_controls_on_screen(self):
   self.p.goto(self.origin+'/reda-2/exercise-guide.html')
   for width,height in [(360,640),(390,844),(430,932)]:

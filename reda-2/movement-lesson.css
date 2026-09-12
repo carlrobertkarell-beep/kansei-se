@@ -32,3 +32,8 @@
 .movement-lesson .motion-studio .motion{position:absolute;inset:0;height:100%;flex:none}
 .lesson-status{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%);min-height:0}
 .focus-body .lesson-transport{grid-template-columns:minmax(0,1fr) auto}
+
+/* Text enlargement may make controls wrap; it must never compress or cover them. */
+.lesson-transport{display:flex;flex-wrap:wrap}.lesson-transport button{flex:1 1 auto;min-width:max-content}.lesson-read-actions{flex-wrap:wrap}
+.movement-lesson .motion-studio{min-height:max(190px,14em)}
+.movement-lesson .motion-studio .motion{padding-top:max(44px,3.6em);padding-bottom:max(26px,2em)}

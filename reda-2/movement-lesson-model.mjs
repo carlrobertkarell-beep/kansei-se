@@ -15,9 +15,20 @@ export function lessonSegments(key){
  return [{label:'Ut från startläget',from:0,to:1,seconds:10},{label:'Tillbaka till startläget',from:1,to:0,seconds:12}];
 }
 export function localSwedishVoice(voices=[]){return voices.find(v=>v.localService===true&&/^sv(?:[-_]|$)/i.test(v.lang))||null}
+export function wholeLessonSequence(key){
+ const parts=lessonSegments(key),total=parts.reduce((n,s)=>n+s.seconds,0);
+ const sequence=[{from:0,to:0,seconds:1}];
+ parts.forEach((s,i)=>{sequence.push({...s,seconds:s.seconds/total*12});if(i===parts.length-2)sequence.push({from:s.to,to:s.to,seconds:1})});
+ return {sequence,seconds:14};
+}
+function positionAt(segment,progress){
+ let selected=segment,t=progress;
+ if(segment.sequence){let elapsed=progress*segment.seconds;selected=segment.sequence.at(-1);t=1;for(const part of segment.sequence){if(elapsed<part.seconds){selected=part;t=elapsed/part.seconds;break}elapsed-=part.seconds}}
+ return selected.from+(selected.to-selected.from)*(t*t*(3-2*t));
+}
 export function createLessonPlayback({draw,change=()=>{},clock=()=>performance.now(),request=cb=>requestAnimationFrame(cb),cancel=id=>cancelAnimationFrame(id)}){
  let segment={from:0,to:1,seconds:10},progress=0,playing=false,slow=false,raf=null,last=0;
- const state=()=>({position:segment.from+(segment.to-segment.from)*(progress*progress*(3-2*progress)),progress,playing,slow,complete:progress>=1});
+ const state=()=>({position:positionAt(segment,progress),progress,playing,slow,complete:progress>=1});
  function paint(){draw(state().position)}
  function advance(now){if(playing){progress=clamp(progress+Math.max(0,now-last)/(1000*segment.seconds*(slow?1.5:1)));last=now;paint()}}
  function pause(){if(!playing)return;advance(clock());playing=false;cancel(raf);raf=null;change(state())}

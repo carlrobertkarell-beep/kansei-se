@@ -45,6 +45,8 @@ Gemensamma regler på alla nivåer:
 - Sparad ordination och planversion är sanningskälla. Presentation, hjälptexter och AI-förklaringar får inte skapa en alternativ dos.
 - Aktuell tolerans, kapacitet, träningsbakgrund, mål och miljö är olika dimensioner. Ålder väljer inte svårighetsgrad. Hyrox är nu ett uttryckligt mål i förslagsmotorn, inte ett färdigt periodiseringssystem.
 - Utförandestöd kan vara kort eller stegvis utan att byta övning eller dos. Rörelsedemonstrationen kan pausas och visas långsammare eller som stillbilder.
+- Patientens övning börjar med dos, sida och valet att börja träna direkt. En hel demonstration spelas en gång och stannar; stegvis läsning, lokal uppläsning och separata rörelsedelar väljs vid behov. Visning är aldrig ett kvitto på förståelse eller utförd träning.
+- Val av guidning hålls i sidans minne per planversion, planalternativ och övning. Det följer med vid sidbyte och när man återvänder under samma sidbesök; omladdning återställer valet. Ingen åldersbaserad nivå, ny lokal hälsolagring eller automatisk ordinationsändring införs.
 - Efter ett avslutat pass rapporteras kroppens svar, funktion, återhämtning, annan belastning, genomförande och kontaktönskemål. Osäkerhet är ett giltigt svar och får inte tolkas som normalt utfall.
 - Nästa progressionssteg kräver serverägd och giltig ram samt aktuellt underlag. Rapporterade svar är ännu inte automatiskt kopplade till progressionsmotorns prövningar.
 - Försäljning är en frivillig fortsättningsväg. Ingen automatisk försäljning vid försämring, ingen obligatorisk serie avstämningar och inget obegränsat personligt chattlöfte.

@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="./barrier-loop.css?v=1">
 <link rel="stylesheet" href="./patient-experience.css?v=1">
 <link rel="stylesheet" href="exercise-coach.css?v=20260912-coach1">
-<link rel="stylesheet" href="movement-lesson.css?v=1">
+<link rel="stylesheet" href="movement-lesson.css?v=2">
 </head>
 <body class="reda-patient">
 <a class="patient-skip" href="#todayTitle">Till dagens nästa steg</a>
@@ -143,11 +143,14 @@
 </div>
 <button id="closePlayer" class="btn ghost">Pausa</button>
 </div>
-<div id="movementLesson"></div>
 <div class="dose" id="dose">
 </div>
+<div id="movementLesson"></div>
 <p id="instruction">
 </p>
+<p class="lesson-rounds-note">Markera en omgång när du har gjort den.</p>
+<div id="rounds" class="rounds">
+</div>
 <div id="exerciseCoach"></div>
 <details class="lesson-prescription"><summary>Hela instruktionen och din ordination</summary>
 <div id="exerciseHelp" class="ei-help">
@@ -155,8 +158,6 @@
 <div id="exerciseWhy" class="exercise-why">
 </div>
 </details>
-<div id="rounds" class="rounds">
-</div>
 <fieldset id="effort" class="effort">
 <legend>Hur kändes övningen?</legend>
 <button type="button" data-effort="light">Lätt</button>
@@ -247,7 +248,7 @@
 </script>
 <script src="/reda-2/response-form.js?v=1">
 </script>
-<script type="module" src="/reda-2/patient-live.mjs?v=20260912-lesson1">
+<script type="module" src="/reda-2/patient-live.mjs?v=20260912-flex2">
 </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-import {createMovementLesson} from './movement-lesson.mjs?v=1';
+import {createMovementLesson} from './movement-lesson.mjs?v=2';
 import {createExerciseCoach} from './exercise-coach.mjs?v=20260912-coach1';
 import {sideLabels,helpSummary} from './exercise-help-model.mjs?v=20260912-coach1';
 const $=id=>document.getElementById(id),F=window.RedaFigures;

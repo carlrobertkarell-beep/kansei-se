@@ -26,7 +26,18 @@ select reda_dashboard_act(tests.id(700003),reda_dashboard_patient(tests.id(70000
 select tests.ok(reda_dashboard_patient(tests.id(700003))->'workflow'->>'phase'='scheduled','clinician schedules next step');
 select reda_dashboard_act(tests.id(700003),reda_dashboard_patient(tests.id(700003))->>'token',tests.id(798008),'complete_follow_up','Fiktiv kontakt genomförd men bedömningen återstår.');
 select tests.ok(reda_dashboard_patient(tests.id(700003))->'workflow'->>'phase'='needs_resolution','completed contact does not close unresolved help');
+-- The options fixture superseded the plan of the existing shadow frame. Restore it
+-- briefly in the isolated database so this check reaches the support gate itself.
+reset role;
+update reda_plans set status='superseded' where id=tests.id(796000);
+update reda_plans set status='active' where id=tests.id(710003);
+set role authenticated;select tests.login(1,'aal2',103);select tests.workspace('dashboard-test');
 select tests.ok(reda_evaluate_progression(tests.id(700003),tests.id(798009))->>'code'='pending_review','unfinished support still blocks progression');
+reset role;
+update reda_plans set status='superseded' where id=tests.id(710003);
+update reda_plans set status='active' where id=tests.id(796000);
+set role authenticated;select tests.login(1,'aal2',103);select tests.workspace('dashboard-test');
+
 select reda_dashboard_act(tests.id(700003),reda_dashboard_patient(tests.id(700003))->>'token',tests.id(798010),'resolve_cases','Fiktiv instruktion genomgången och hjälpbehovet hanterat.');
 select tests.login(9,'aal1',109);select tests.ok(reda_patient_support(tests.id(700003))->>'phase'='handled','explicit clinical resolution closes the support flow');
 select tests.login(2,'aal1',101);select tests.denied('select reda_patient_support(tests.id(700003))','42501','another patient cannot read status');

@@ -13,7 +13,7 @@ export function thumb(x){
 export function renderExerciseOverview(host,{exercises,progress=[],onPreview}){
  host.replaceChildren();
  exercises.forEach((x,i)=>{
-  const p=progress[i],status=p?.status==='completed'?'Klar':p?.status==='skipped'?'Överhoppad':p?.roundsDone?`${p.roundsDone} omgångar klara`:'';
+  const p=progress[i],status=p?.status==='completed'?'Klar':p?.status==='skipped'?'Överhoppad':p?.roundsDone?`${p.roundsDone} ${p.roundsDone===1?'omgång klar':'omgångar klara'}`:'';
   const row=document.createElement('li');
   row.innerHTML=`<button type="button" class="journey-exercise" data-preview-exercise="${esc(x.id)}" aria-label="Titta på ${esc(x.name)}"><span class="journey-thumb" aria-hidden="true">${thumb(x)}</span><span class="journey-exercise-copy"><b>${esc(x.name)}</b><small>${esc(doseText(x))}${x.side==='left'?' · vänster':x.side==='right'?' · höger':x.side==='both'?' · per sida':''}</small><span class="journey-row-status">${esc(status||'Visa övningen')}</span></span><span class="journey-row-arrow" aria-hidden="true">${status==='Klar'?'✓':'↗'}</span></button>`;
   row.querySelector('button').onclick=()=>onPreview(x,i);host.append(row);

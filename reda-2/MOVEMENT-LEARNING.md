@@ -9,7 +9,7 @@ The previous player combined a seven-second continuous loop with instructions. I
 - Pause/resume and speed changes retain the current point. Changing tab, closing the player, opening contextual help, saving a help response or hiding the page pauses playback. Reduced-motion mode offers stills and no playback.
 - Read-aloud is user initiated and only offered for a Swedish voice marked `localService: true` by the browser. No remote voice fallback; the saved text remains available if speech fails. Speech stops before movement, navigation and exercise changes.
 - Explicit “Jag är redo att träna” focuses existing prescribed rounds. Viewing, completing the visual guide and listening never mark a repetition, complete a clinical checklist, resolve a help case or change the plan.
-- Continuous clothing silhouettes, a more detailed human profile, fingers and palm, visible front armrest and corrected supported-chair elbow/release trajectory replace the previous segmented presentation. This remains a two-dimensional illustration.
+- Continuous clothing silhouettes, a more detailed human profile, fingers and palm, visible front armrest, longer arms in the chair-rise family and corrected supported-chair elbow/release trajectory replace the previous segmented presentation. This remains a two-dimensional illustration.
 
 ## Content and scaling
 

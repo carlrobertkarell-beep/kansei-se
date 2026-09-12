@@ -9,7 +9,12 @@ function joint(a,b,l1,l2,sign=-1){const d=dist(a,b);if(d>l1+l2+.001||d<Math.abs(
 function pose(key,t){key=aliases[key]||key;t=clamp(t);if(!keys.has(key))return null;
  if(!additional.includes(key)){
   const q=R.pose(key,t);
-  if(key==='sit-to-stand.support'){const release=clamp((t-.28)/.34),free=polar(q.shoulder,73,1.43);q.hand=at([247,270],free,release*release*(3-2*release));q.elbow=joint(q.shoulder,q.hand,38,38,1);q.armrest=true}
+  if(key.startsWith('sit-to-stand.')){
+   q.armLengths=[45,45];const release=clamp((t-.28)/.34),free=polar(q.shoulder,88,1.43);
+   if(key==='sit-to-stand.support'){q.hand=at([247,270],free,release*release*(3-2*release));q.armrest=true}
+   else{const rise=clamp((t-.23)/.77);q.hand=polar(q.shoulder,88,.55+.88*rise)}
+   q.elbow=joint(q.shoulder,q.hand,...q.armLengths,key==='sit-to-stand.support'?1:-1);
+  }
   return q;
  }
  let hip,shoulder,knee,ankle,heel,toe,hand,back;

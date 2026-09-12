@@ -52,7 +52,7 @@ export function mountDecisionDashboard(host,{api,onBusy,onOpen,onNew,onEdit,onWo
   if(!p.plan_id&&p.patient_status!=='archived'){q('.dash-proposal').innerHTML='<h4>Förbered patientens första plan</h4><p>'+esc(p.care_focus||'Välj behandlingsfokus')+' · '+esc(p.care_goal||'Välj patientens mål')+'</p><div class="dash-actions"><button class="btn primary" data-start-ei>Skapa med EI</button><button class="btn ghost" data-start-manual>Välj övningar själv</button></div>';q('[data-start-ei]').onclick=()=>onOpen?.({...p,authoring_mode:'suggest'});q('[data-start-manual]').onclick=()=>onOpen?.({...p,authoring_mode:'manual'})}
   q('[data-adjust-plan]')?.addEventListener('click',()=>onOpen?.({...p,authoring_mode:'manual',adaptation}));
   q('[data-edit-profile]').onclick=()=>onEdit?.(p);
-  q('[data-close]').onclick=()=>{const id=p.patient_id;closeDetail();host.querySelector(`[data-detail="${id}"]`)?.focus()};q('[data-full]').onclick=()=>onOpen?.(p);q('[data-activity]').onclick=()=>{activity?.destroy();activity=openActivityLog({api,patientId:p.patient_id,clinician:true})};
+  q('[data-close]').onclick=()=>{const id=p.patient_id;closeDetail();host.querySelector(`[data-detail="${id}"]`)?.focus()};q('[data-full]').onclick=()=>onOpen?.(p);q('[data-activity]').onclick=()=>{activity?.destroy();activity=openActivityLog({api,patientId:p.patient_id,patientName:p.display_name,clinician:true})};
   q('[data-skip]')?.addEventListener('click',()=>nextPatient(p.patient_id));
   q('[data-action]')?.addEventListener('change',()=>{updateAction();pending=null});
   q('[data-approve]')?.addEventListener('click',approve);

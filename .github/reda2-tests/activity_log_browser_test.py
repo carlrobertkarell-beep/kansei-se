@@ -22,4 +22,14 @@ class T(RecoveryTests):
 for name in dir(RecoveryTests):
  if name.startswith('test_') and name not in T.__dict__:setattr(T,name,None)
 del RecoveryTests
+from dashboard_browser_test import T as DashboardBase,MOCK as DASHMOCK
+class Clinic(DashboardBase):
+ def setUp(self):
+  super().setUp();self.c.route('**/secure-browser.mjs*',lambda r:r.fulfill(status=200,content_type='text/javascript',body=DASHMOCK+EXTRA));self.p.reload();self.p.locator('[data-detail="a-2"]').click();self.p.locator('[data-activity]').click()
+ def test_log_from_quick_overview_and_workspace_cleanup(self):
+  expect(self.p.locator('.activity-dialog')).to_contain_text('Fiktiv patient 0002');expect(self.p.locator('.activity-events')).to_contain_text('Pass genomfört');self.assertTrue(self.p.evaluate('logCalls.at(-1).clinician'));expect(self.p.locator('[name="category"] option[value="ei"]')).to_have_count(1)
+  self.p.locator('.activity-close').click();expect(self.p.locator('.activity-dialog')).to_have_count(0);self.p.locator('[data-activity]').click();self.p.evaluate("const s=document.querySelector('#workspaceSelect');s.value='b';s.dispatchEvent(new Event('change'))");expect(self.p.locator('[data-detail="b-2"]')).to_be_visible();expect(self.p.locator('.activity-dialog')).to_have_count(0)
+for name in dir(DashboardBase):
+ if name.startswith('test_') and name not in Clinic.__dict__:setattr(Clinic,name,None)
+del DashboardBase
 if __name__=='__main__':unittest.main()

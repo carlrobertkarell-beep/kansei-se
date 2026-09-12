@@ -1,8 +1,8 @@
 const labels={all:'Alla händelser',plans:'Planer',training:'Träning',feedback:'Återkoppling',contact:'Kontakt',finance:'Ekonomi',ei:'EI & beslut'};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-export function mountActivityLog(host,{api,patientId,clinician=false}){
+export function mountActivityLog(host,{api,patientId,clinician=false,patientName=""}){
  let alive=true,ticket=0,cursor=null,rows=[];
- host.innerHTML=`<section class="activity-log"><h2>Aktivitetslogg</h2><p>Registrerade händelser, nyast först. Datum och tid visas i svensk tid.</p><form class="activity-filters"><label>Visa<select name="category">${Object.entries(labels).filter(([k])=>clinician||k!=='ei').map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}</select></label><label>Från<input type="date" name="from"></label><label>Till<input type="date" name="to"></label><button class="btn ghost" type="submit">Visa / uppdatera</button></form><p class="activity-status" role="status"></p><ol class="activity-events"></ol><button class="btn ghost activity-more" hidden>Visa äldre</button></section>`;
+ host.innerHTML=`<section class="activity-log"><h2>Aktivitetslogg</h2>${patientName?`<p><strong>${esc(patientName)}</strong></p>`:""}<p>Registrerade händelser, nyast först. Datum och tid visas i svensk tid.</p><form class="activity-filters"><label>Visa<select name="category">${Object.entries(labels).filter(([k])=>clinician||k!=='ei').map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}</select></label><label>Från<input type="date" name="from"></label><label>Till<input type="date" name="to"></label><button class="btn ghost" type="submit">Visa / uppdatera</button></form><p class="activity-status" role="status"></p><ol class="activity-events"></ol><button class="btn ghost activity-more" hidden>Visa äldre</button></section>`;
  const q=s=>host.querySelector(s),form=q('form'),status=q('.activity-status'),list=q('ol'),more=q('.activity-more');
  let filter=null;
  async function fetchPage(append=false){

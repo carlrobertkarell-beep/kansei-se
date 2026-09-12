@@ -32,7 +32,10 @@ for fn in ['activate-plan','save-session','invite-patient','claim-clinician']:
     text=read(f'reda-2/supabase/functions/{fn}/index.ts')
     assert '@supabase/server@1.5.3' in text and 'corsHeaders' in text
 invite=read('reda-2/supabase/functions/invite-patient/index.ts')
-assert 'inviteUserByEmail' not in invite and '403' in invite
+assert 'reda_reserve_invitation' in invite and '403' in invite
+assert invite.index('if(error)return') < invite.index('inviteUserByEmail') and 'body.email' not in invite
+handover=read('reda-2/secure/clinical-handover.sql')
+assert 'patient_delivery_enabled boolean not null default false' in handover
 assert 'supabaseAdmin' not in read('reda-2/supabase/functions/claim-clinician/index.ts')
 assert 'reda_sync_session' in read('reda-2/supabase/functions/save-session/index.ts')
 print('PASS: secure live Reda client/auth/sync guardrails including passwordless patient access')

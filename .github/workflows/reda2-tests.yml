@@ -135,7 +135,9 @@ jobs:
           python3 -m pip install --disable-pip-version-check playwright==1.57.0
           python3 -m playwright install chromium
       - name: Phone player, instructions, help, rest and completion
-        run: python3 .github/reda2-tests/exercise_help_browser_test.py
+        run: |
+          python3 .github/reda2-tests/patient_account_browser_test.py
+          python3 .github/reda2-tests/exercise_help_browser_test.py
       - name: Retain phone screenshots
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

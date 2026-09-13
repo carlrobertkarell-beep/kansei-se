@@ -1,4 +1,4 @@
-import {createMovementLesson} from './movement-lesson.mjs?v=4';
+import {createMovementLesson} from './movement-lesson.mjs?v=5';
 import {focusCamera} from './movement-lesson-model.mjs?v=3';
 import {exerciseSide,sideLabels} from './exercise-help-model.mjs?v=20260912-coach1';
 

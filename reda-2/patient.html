@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/reda-2/runtime-ui.css?v=2">
 <link rel="stylesheet" href="/reda-2/clinic-messages.css?v=1">
 <link rel="stylesheet" href="/reda-2/patient-loop.css?v=3">
-<link rel="stylesheet" href="./activity-log.css?v=1">
+<link rel="stylesheet" href="./activity-log.css?v=2">
 <link rel="stylesheet" href="./support-workflow.css?v=1">
 <link rel="stylesheet" href="./patient-basis.css?v=1">
 <link rel="stylesheet" href="./plan-review.css?v=1">
@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="exercise-coach.css?v=20260912-coach1">
 <link rel="stylesheet" href="movement-lesson.css?v=4">
 <link rel="stylesheet" href="exercise-player.css?v=1">
-<link rel="stylesheet" href="patient-journey.css?v=1">
+<link rel="stylesheet" href="patient-journey.css?v=2">
 </head>
 <body class="reda-patient">
 <a class="patient-skip" href="#todayTitle">Till dagens nästa steg</a>
@@ -81,9 +81,9 @@
 </section>
 <nav class="nav" aria-label="Din rehabilitering">
 <button data-tab="today" class="active" aria-current="page" aria-controls="today"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 9-8 9 8v10h-6v-7H9v7H3Z"/></svg><span>Idag</span></button>
-<button data-tab="program" aria-controls="program"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg><span>Mitt program</span></button>
+<button data-tab="program" aria-controls="program"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg><span>Min plan</span></button>
 <button data-tab="follow" aria-controls="follow"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16M8 15l4-4 4 2 4-8"/></svg><span>Uppföljning</span></button>
-<button data-tab="activity" aria-controls="activity"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Händelser</span></button>
+<button data-tab="activity" aria-controls="activity"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Historik</span></button>
 </nav>
 <section id="today" class="tab stack">
 <button type="button" id="patientNext" class="patient-next" hidden><span><small>EI följer upp</small><b id="patientNextLabel"></b></span><span aria-hidden="true">→</span></button>
@@ -202,7 +202,7 @@
 </script>
 <script src="/reda-2/reference-motion.js?v=20260912-coach1">
 </script>
-<script src="/reda-2/motion-v4.js?v=20260912-lesson1">
+<script src="/reda-2/motion-v4.js?v=20260913-arms1">
 </script>
 <script src="/reda-2/session-state.js?v=20260910-recovery">
 </script>
@@ -216,7 +216,7 @@
 </script>
 <script src="/reda-2/response-form.js?v=1">
 </script>
-<script type="module" src="/reda-2/patient-live.mjs?v=20260913-journey1">
+<script type="module" src="/reda-2/patient-live.mjs?v=20260913-history1">
 </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-import {createExercisePreview,renderExerciseOverview,renderPreparation} from './patient-journey.mjs?v=1';
+import {createExercisePreview,renderExerciseOverview,renderPreparation} from './patient-journey.mjs?v=2';
 import {mountExercisePlayer} from './exercise-player.mjs?v=1';
 import {createMovementLesson} from './movement-lesson.mjs?v=4';
 import {createExerciseCoach} from './exercise-coach.mjs?v=20260912-coach1';
@@ -11,7 +11,7 @@ import {mountPatientCheckin} from './patient-basis.mjs?v=1'
 let checkin=null;
 import {mountPatientSupport} from './support-workflow.mjs?v=2'
 let support=null;
-import {mountActivityLog} from './activity-log.mjs?v=1'
+import {mountActivityLog} from './activity-log.mjs?v=2'
 let activity=null;
 import {approvedOptions,optionPlan} from './plan-options.mjs?v=1'
 window.RedaPlanOptions={optionPlan};
@@ -111,7 +111,7 @@ async function pause(){if(!session||session.completedAt||coach?.isBusy())return;
 $('magicLink').onclick=async()=>{try{const email=$('email').value.trim();if(!email)throw new Error('Ange din e-postadress');$('magicLink').disabled=true;$('authError').classList.add('hidden');await api.sendPatientMagicLink(email);$('authSuccess').textContent='Om adressen har ett Reda-konto får du ett mejl med en engångslänk. Öppna det senaste mejlet. Kontrollera även skräpposten.';$('authSuccess').classList.remove('hidden')}catch(e){error(e)}finally{$('magicLink').disabled=false}}
 $('logout').onclick=async()=>{if(responseForm.isBusy()||reflectionForm.isBusy()||messages?.isBusy()||checkin?.isBusy()||barriers?.isBusy()||coach?.isBusy()){$('sync').textContent='Vänta tills återkopplingen har sparats eller ett felmeddelande visas.';return}if(unsynced){$('sync').textContent='Synka passet innan du loggar ut.';return}R.clear(localStore(),state?.userId);await api.signOut();location.reload()};$('start').onclick=start;$('skip').onclick=skip;$('next').onclick=next;$('closePlayer').onclick=pause
 const tabScroll=new Map();let activeTab='today';
-document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{if(coach?.isBusy())return;const changed=activeTab!==b.dataset.tab;if(changed)tabScroll.set(activeTab,window.scrollY);if(b.dataset.tab!=='today')pauseMotion();if(b.dataset.tab==='activity'&&state){activity?.destroy();activity=mountActivityLog($('activityContent'),{api,patientId:state.patient.id})}document.querySelectorAll('[data-tab]').forEach(x=>{x.classList.toggle('active',x===b);if(x===b)x.setAttribute('aria-current','page');else x.removeAttribute('aria-current')});document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('hidden',x.id!==b.dataset.tab));activeTab=b.dataset.tab;if(changed)window.scrollTo({top:tabScroll.get(activeTab)||0,behavior:'instant'})})
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{if(coach?.isBusy())return;const changed=activeTab!==b.dataset.tab;if(changed)tabScroll.set(activeTab,window.scrollY);if(b.dataset.tab!=='today')pauseMotion();if(b.dataset.tab==='activity'&&state){activity?.destroy();activity=mountActivityLog($('activityContent'),{api,patientId:state.patient.id,historyContext:()=>({sessions:state.sessions,reflections:state.reflections,responses:state.responses})})}document.querySelectorAll('[data-tab]').forEach(x=>{x.classList.toggle('active',x===b);if(x===b)x.setAttribute('aria-current','page');else x.removeAttribute('aria-current')});document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('hidden',x.id!==b.dataset.tab));activeTab=b.dataset.tab;if(changed)window.scrollTo({top:tabScroll.get(activeTab)||0,behavior:'instant'})})
 setAuth(true);api.currentUser().catch(e=>{if(e?.name==='AuthSessionMissingError')return null;throw e}).then(async u=>{signedIn=!!u;if(u)await bootstrap()}).catch(error)
 $('retryAccess').onclick=async()=>{try{$('retryAccess').disabled=true;await bootstrap();$('retryAccess').classList.add('hidden')}catch(e){error(e)}finally{$('retryAccess').disabled=false}};
 const callbackError=new URLSearchParams(location.hash.slice(1)).get('error_code')||new URLSearchParams(location.search).get('error_code');if(callbackError){history.replaceState(null,'',location.pathname);error(new Error('Länken kunde inte användas. Ange din e-postadress för att få en ny länk och öppna det senaste mejlet.'))}

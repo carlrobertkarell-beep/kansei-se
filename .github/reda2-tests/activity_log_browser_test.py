@@ -14,9 +14,12 @@ class T(RecoveryTests):
   super().setUp();self.c.route('**/secure-browser.mjs*',lambda r:r.fulfill(status=200,content_type='text/javascript',body=MOCK+EXTRA));self.p.reload();self.p.locator('[data-tab="activity"]').click()
  def test_filter_dates_pagination_and_error(self):
   expect(self.p.locator('.activity-events')).to_contain_text('Kortare pass');self.p.locator('.activity-more').click();expect(self.p.locator('.activity-events li')).to_have_count(2)
-  self.p.locator('[name="category"]').select_option('finance');self.p.locator('.activity-filters button').click();expect(self.p.locator('.activity-status')).to_contain_text('inte anslutna');expect(self.p.locator('.activity-events li')).to_have_count(0)
+  self.p.locator('.history-filter-details summary').click();self.p.locator('[name="category"]').select_option('finance');self.p.locator('.activity-filters button').click();expect(self.p.locator('.activity-status')).to_contain_text('inte anslutna');expect(self.p.locator('.activity-events li')).to_have_count(0)
   self.p.locator('[name="category"]').select_option('training');self.p.locator('[name="from"]').fill('2026-06-01');self.p.locator('[name="to"]').fill('2026-06-02');self.p.locator('.activity-filters button').click();expect(self.p.locator('.activity-events')).to_contain_text('Pass genomfört');self.assertEqual(self.p.evaluate('logCalls.at(-1).from'),'2026-06-01');self.assertTrue(self.p.evaluate('document.documentElement.scrollWidth<=innerWidth+1'))
   self.p.evaluate('window.failLog=true');self.p.locator('.activity-filters button').click();expect(self.p.locator('.activity-status')).to_contain_text('kunde inte hämtas');expect(self.p.locator('.activity-more')).to_be_hidden()
+ def test_patient_groups_passes_but_keeps_distinct_sessions(self):
+  source="export async function activityLog(){return {events:['end:s','start:s','end:s2'].map(id=>({id,occurred_at:'2026-06-01T10:00:00Z',category:'training',title:id.startsWith('end:')?'Pass genomfört':'Pass påbörjat',detail:'Dagens pass',plan_id:'plan-1',plan_version:1})),next_cursor:null}}"
+  self.c.route('**/secure-browser.mjs*',lambda r:r.fulfill(status=200,content_type='text/javascript',body=MOCK+source));self.p.reload();self.p.locator('[data-tab="activity"]').click();expect(self.p.locator('.activity-events li')).to_have_count(2);expect(self.p.locator('.history-filter-details')).not_to_have_attribute('open','');expect(self.p.get_by_role('heading',name='Min historik')).to_be_visible()
  def test_patient_has_no_internal_filter(self):
   expect(self.p.locator('[name="category"] option[value="ei"]')).to_have_count(0)
 for name in dir(RecoveryTests):

@@ -29,3 +29,12 @@ body.reda-patient .exercise-player #effort{margin:0 0 4px;padding:0;border:0;dis
 @media(orientation:landscape) and (max-height:560px){body.reda-patient .exercise-player,body.reda-patient #player.exercise-player{height:100dvh;min-height:360px;grid-template-rows:auto minmax(0,1fr)}.exercise-player #movementLesson{height:calc(100dvh - 24px);min-height:330px}.exercise-player .motion-studio{min-height:220px}.exercise-player .player-dock{padding-bottom:0}}
 
 .player-topline .player-icon{display:grid;place-items:center;flex-shrink:0}.player-icon svg{width:22px;height:22px}
+
+/* Contextual corrections and session exit share the existing native sheet. */
+.exercise-player[data-has-rounds=false] #effort{display:none!important}
+.player-options-summary{margin:0 0 18px;color:var(--account-muted,#627462);line-height:1.5}
+.player-option-actions{display:grid;gap:8px}.player-option-actions button{font:inherit;min-height:52px;padding:14px 16px;text-align:left;border:1px solid var(--account-line,#d4dfd0);border-radius:14px;background:var(--account-surface,#fff);color:var(--account-ink,#203e35);cursor:pointer}
+.player-option-actions button[hidden]{display:none}.player-option-actions .player-finish-action{margin-top:12px;border-color:var(--account-line,#d4dfd0)}
+.player-finish-buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.player-finish-buttons .btn{flex:1;min-height:48px}
+#playerFinishSummary,#playerFinishNote{line-height:1.6}#playerFinishNote{color:var(--account-muted,#627462)}
+.exercise-player[aria-busy=true] button{cursor:wait}

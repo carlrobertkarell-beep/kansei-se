@@ -9,7 +9,7 @@ class Account(RecoveryTests):
   out=Path('reda2-test-results');out.mkdir(exist_ok=True);self.p.screenshot(path=str(out/name),animations='disabled')
  def settings(self):self.p.get_by_role('button',name='Inställningar',exact=True).click()
  def close_settings(self):self.p.get_by_role('button',name='Stäng inställningar',exact=True).click()
- def section(self,name):self.p.get_by_role('navigation',name='Inställningskategorier').get_by_role('button',name=name,exact=True).click()
+ def section(self,name):self.p.get_by_label('Inställningskategori',exact=True).select_option(label=name)
  def test_theme_defaults_dark_and_preferences_persist_without_touching_training(self):
   before=self.p.evaluate("localStorage.getItem('test-server')");expect(self.p.locator('html')).to_have_attribute('data-reda-theme','dark');self.shot('account-home-dark.png');self.settings();self.shot('account-settings-dark.png');self.p.get_by_role('button',name='Ljust',exact=True).click();expect(self.p.locator('html')).to_have_attribute('data-reda-theme','light');self.shot('account-settings-light.png');self.close_settings();self.shot('account-home-light.png');self.p.reload();expect(self.p.locator('html')).to_have_attribute('data-reda-theme','light');self.assertEqual(self.p.evaluate("localStorage.getItem('test-server')"),before)
  def test_system_theme_tracks_device_changes_and_explicit_choice_overrides(self):
@@ -26,6 +26,10 @@ class Account(RecoveryTests):
   self.p.evaluate("Storage.prototype.setItem=function(k,v){if(k==='reda-presentation-v1')throw Error('blocked')}");self.settings();self.p.get_by_role('button',name='Ljust',exact=True).click();expect(self.p.locator('html')).to_have_attribute('data-reda-theme','light');expect(self.p.locator('[data-preference-status]')).to_contain_text('kunde inte sparas');self.assertEqual(self.errors,[])
  def test_public_preview_and_dark_instruction_share_the_app_theme(self):
   self.p.goto(self.origin+'/reda-2/exercise-guide.html');self.p.get_by_role('button',name='Titta på Benspark från stol',exact=True).click();expect(self.p.locator('.journey-preview')).to_be_visible();self.shot('account-preview-dark.png');self.p.locator('#preview-lessonGuided').click();self.shot('account-instruction-dark.png');self.p.keyboard.press('Escape');self.p.locator('.journey-close').click();self.p.locator('[data-tab=activity]').click();self.shot('account-history-dark.png')
+ def test_open_settings_follow_preference_changes_from_another_tab(self):
+  self.settings();other=self.c.new_page();other.goto(self.origin+'/reda-2/exercise-guide.html');other.get_by_role('button',name='Inställningar',exact=True).click();other.get_by_role('button',name='Ljust',exact=True).click();expect(self.p.locator('html')).to_have_attribute('data-reda-theme','light');expect(self.p.get_by_role('button',name='Ljust',exact=True)).to_have_attribute('aria-pressed','true');other.close()
+ def test_desktop_settings_navigation_and_invalid_stored_preference(self):
+  self.p.evaluate("localStorage.setItem('reda-presentation-v1',JSON.stringify({theme:'invalid',text:'invalid',motion:'invalid'}))");self.p.reload();expect(self.p.locator('html')).to_have_attribute('data-reda-theme','dark');self.p.set_viewport_size({'width':1280,'height':900});self.settings();self.shot('account-settings-desktop.png');self.p.get_by_role('navigation',name='Inställningskategorier').get_by_role('button',name='Hjälp & kontakt',exact=True).click();expect(self.p.locator('#settingsPanel')).to_contain_text('Hjälp i ditt pass');expect(self.p.get_by_label('Inställningskategori',exact=True)).not_to_be_visible()
  def test_dark_text_and_primary_action_have_readable_contrast(self):
   values=self.p.evaluate("""()=>{const b=document.body,c=document.querySelector('#start');return [getComputedStyle(b).color,getComputedStyle(b).backgroundColor,getComputedStyle(c).color,getComputedStyle(c).backgroundColor]}""")
   import re

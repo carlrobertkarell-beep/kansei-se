@@ -44,7 +44,7 @@ html[data-reda-theme=dark] .reda-patient :where(.lesson-tabs button[aria-pressed
 html[data-reda-theme=dark] .reda-patient .lesson-instruction{color:#edf2ea!important}
 html[data-reda-theme=dark] body.reda-patient .exercise-player :where(#rounds .round,#next,#resumeExercise),html[data-reda-theme=dark] .reda-patient [id$=lessonNext]{background:#b6d997!important;color:#172315!important;border-color:#b6d997!important;box-shadow:none!important}
 html[data-reda-theme=dark] .reda-patient .player-rest{background:#1e2b20F5;color:#edf2ea}
-html[data-reda-theme=dark] .reda-patient :where(.player-progress progress,.player-progress progress::-webkit-progress-bar){background:#354330}
+html[data-reda-theme=dark] .reda-patient .player-progress progress,html[data-reda-theme=dark] .reda-patient .player-progress progress::-webkit-progress-bar{background:#354330}
 html[data-reda-theme=dark] .reda-patient .player-progress progress::-webkit-progress-value{background:#b6d997}
 html[data-reda-theme=dark] .reda-patient .player-progress progress::-moz-progress-bar{background:#b6d997}
 html[data-reda-theme=dark] .reda-patient :where(.coach-context,.coach-answer,.coach-contact,.coach-topic,.exercise-coach,.plan-guide,.care-timeline li,.reda-message,.reda-message-list,.reda-reply,.support-receipt,.patient-support,.patient-checkin,.checkin-options,.loop-reflection,.basis-checkin,.ei-plan-context,.ei-axes>div,.exercise-context,.prescription-grid>div,.measure-line,.care-num){background:#263127!important;color:#dbe7d3!important;border-color:#43513d!important}
@@ -70,3 +70,7 @@ html[data-reda-text=large] .reda-patient #movementLesson{min-height:380px}
 html[data-reda-text=large] .reda-patient .settings-nav button{font-size:14px!important}
 html[data-reda-motion=still] .reda-patient *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
 @media print{html[data-reda-theme] body.reda-patient{background:#fff!important;color:#000!important}.patient-top-actions,.account-menu,.patient-settings{display:none!important}}
+
+html[data-reda-theme=dark] body.reda-patient .reda-brand .brand-mark{background:transparent!important}
+html[data-reda-theme=dark] body.reda-patient .reda-brand .brand-mark:before,html[data-reda-theme=dark] body.reda-patient .reda-brand .brand-mark:after{background:#b6d997!important}
+html[data-reda-theme=dark] body.reda-patient .patient-brand .reda-brand .brand-mark i{background:#141816!important}

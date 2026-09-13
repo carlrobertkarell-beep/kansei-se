@@ -1,0 +1,76 @@
+/* Presentation tokens are shared by the account layer, plan and exercise flow. */
+:root{--account-ink:#203e35;--account-muted:#64766a;--account-surface:#fff;--account-subtle:#f8faf5;--account-soft:#eaf1e5;--account-line:#d9e3da;--account-accent:#416c50;--account-focus:#3d7bab}
+:root[data-reda-theme=dark]{--account-ink:#edf2ea;--account-muted:#a4b1a3;--account-surface:#1d231f;--account-subtle:#171d19;--account-soft:#2b362b;--account-line:#38433a;--account-accent:#b6d997;--account-focus:#c2e4a7}
+html[data-reda-theme=dark] body.reda-patient{--ink:#edf2ea;--ink2:#c4cec1;--muted:#a4b1a3;--line:#38433a;--bg:#141816;--card:#1d231f;--brand:#b6d997;--accent:#b6d997;--green:#b6d997;--soft:#253026;--soft2:#1a211b;background:#141816;color:#edf2ea}
+html[data-reda-theme=dark] .reda-patient :where(h1,h2,h3,h4,b,strong,legend){color:#edf2ea}
+html[data-reda-theme=dark] .reda-patient :where(p,small,time,dt,.sub,.muted,.eyebrow,.patient-dayline,.patient-version,.journey-row-status,.journey-overline,.journey-preview-head p,.journey-preview-why,.journey-preparation p span,.journey-prescription dt,.patient-tab-heading p,.activity-events small,.activity-events time,.settings-note){color:#a4b1a3!important}
+html[data-reda-theme=dark] .reda-patient :where(.card,.journey-demo-support,.program-exercise,.exercise,.patient-start,.care-overview,.loop-receipt,.loop-pending,.patient-history){background:#1d231f!important;border-color:#38433a!important;color:#edf2ea}
+html[data-reda-theme=dark] .reda-patient .hero.card{background:transparent!important;border:0!important}
+html[data-reda-theme=dark] .reda-patient :where(.notice,.status,.journey-preparation,.patient-next,.loop-contact,.care-preparation,.patient-start-steps,.settings-empty,.journey-demo-log .history-answer,.journey-feedback-status){background:#253026!important;border-color:#41513e!important;color:#d0dfc5!important}
+html[data-reda-theme=dark] .reda-patient :where(.patient-brand .brand-word,.brand-word){color:#d8e8c8!important}
+html[data-reda-theme=dark] .reda-patient .brand-mark{background:#b6d997!important;color:#141816}
+html[data-reda-theme=dark] .reda-patient :where(.brand-mark i,.brand-mark:before,.brand-mark:after){background:#b6d997!important}
+html[data-reda-theme=dark] .reda-patient :where(.patient-start summary,.patient-start summary span,.journey-list-heading>span,.patient-next b,.patient-next small,.patient-app .hero .notice summary){color:#c5d4bc!important}
+html[data-reda-theme=dark] .reda-patient :where(#todayCard,#todayDetail,#todayMeta,.loop-today .metric,.loop-today .metric span){color:#a4b1a3!important}
+html[data-reda-theme=dark] .reda-patient :where(button,input,select,textarea){color:#edf2ea;border-color:#414d42}
+html[data-reda-theme=dark] .reda-patient :where(input,select,textarea){background:#181f19!important}
+html[data-reda-theme=dark] .reda-patient :where(.btn.ghost,.btn.soft,.journey-return,.journey-close,.history-chips button,.loop-options button,.patient-checkin button,.reda-reply button,.response-form button,.patient-app #openPlanGuide){background:#29332a!important;border-color:#414d42!important;color:#edf2ea!important}
+html[data-reda-theme=dark] .reda-patient :where(.btn.primary,.patient-start-button){background:#b6d997!important;color:#172315!important;border-color:#b6d997!important;box-shadow:none!important}
+html[data-reda-theme=dark] .reda-patient :where(.btn.primary,.patient-start-button):hover{background:#c9e5b0!important}
+html[data-reda-theme=dark] .reda-patient :where(.btn.primary,.patient-start-button) :where(b,span){color:#172315!important}
+html[data-reda-theme=dark] .reda-patient :where(.journey-exercise){color:#edf2ea;border-color:#364235}
+html[data-reda-theme=dark] .reda-patient .journey-exercise:hover{background:#263127}
+html[data-reda-theme=dark] .reda-patient .journey-exercise-copy small{color:#a4b1a3!important}
+html[data-reda-theme=dark] .reda-patient .journey-row-arrow{color:#b6d997}
+html[data-reda-theme=dark] .reda-patient .journey-thumb{background:#b7c6ac}
+html[data-reda-theme=dark] .reda-patient .nav{background:#181f1aF5!important;border-color:#38433a!important;backdrop-filter:blur(14px)}
+html[data-reda-theme=dark] .reda-patient .nav button{color:#a4b1a3;background:transparent}
+html[data-reda-theme=dark] .reda-patient .nav button.active{background:#2e3e29!important;color:#c6e5ac!important}
+html[data-reda-theme=dark] .reda-patient :where(.journey-demo-label,.patient-version,.journey-finish>span,.activity-events small,.patient-status-dot){background:#29372a!important;color:#c6dcbc!important;border-color:#414d42!important;box-shadow:none!important}
+html[data-reda-theme=dark] .reda-patient :where(.activity-events li,.activity-filters,.journey-demo-log li,.history-filter-details,.journey-prescription,.journey-prescription dl>div,.journey-preview-head,.journey-preview>footer,.sheet-heading){border-color:#38433a!important}
+html[data-reda-theme=dark] .reda-patient :where(.history-chips button[aria-pressed=true],.loop-options button[aria-pressed=true],.journey-demo-support [aria-pressed=true]){background:#3b5030!important;color:#ebf5e4!important;border-color:#a8ce85!important}
+/* The demonstration stays naturally colored on a muted stage. Never invert the person. */
+html[data-reda-theme=dark] body.reda-patient #player.exercise-player,html[data-reda-theme=dark] .reda-patient :where(.journey-preview,.journey-preview>footer,.exercise-sheet,.sheet-heading,.lesson-focus){background:#181f1a!important;color:#edf2ea}
+html[data-reda-theme=dark] .reda-patient :where(.player-context,.player-context b,.player-context>span,.player-purpose,.player-purpose b,.dose){color:#c2d0ba!important}
+html[data-reda-theme=dark] .reda-patient :where(.player-purpose,.player-icon){background:#2a3629!important;color:#c2d0ba!important}
+html[data-reda-theme=dark] .reda-patient .movement-lesson .motion-studio{background:radial-gradient(ellipse at 50% 65%,#d0d9c8 0,#a9bba2 90%);border-color:#718c66}
+html[data-reda-theme=dark] .reda-patient .movement-lesson .motion-studio .motion{background:none!important}
+html[data-reda-theme=dark] .reda-patient :where(.motion-side,.motion-phase){color:#243c2c!important}
+html[data-reda-theme=dark] .reda-patient .motion-side{background:#e5ecdcE8;border-color:#a4b59a}
+html[data-reda-theme=dark] .reda-patient .motion-caption .lesson-icon{background:#e5ecdcE8;color:#243c2c;border-color:#a4b59a}
+html[data-reda-theme=dark] .reda-patient :where(.lesson-transport button,.exercise-sheet button,.lesson-focus button,.player-help,.exercise-player #effort button){background:#2b362b!important;color:#edf2ea!important;border-color:#485541!important}
+html[data-reda-theme=dark] .reda-patient :where(.lesson-tabs){background:#111a13}
+html[data-reda-theme=dark] .reda-patient :where(.lesson-tabs button[aria-pressed=true],.exercise-player #effort button[aria-pressed=true]){background:#3b5030!important;border-color:#a8ce85!important}
+html[data-reda-theme=dark] .reda-patient .lesson-instruction{color:#edf2ea!important}
+html[data-reda-theme=dark] body.reda-patient .exercise-player :where(#rounds .round,#next,#resumeExercise),html[data-reda-theme=dark] .reda-patient [id$=lessonNext]{background:#b6d997!important;color:#172315!important;border-color:#b6d997!important;box-shadow:none!important}
+html[data-reda-theme=dark] .reda-patient .player-rest{background:#1e2b20F5;color:#edf2ea}
+html[data-reda-theme=dark] .reda-patient .player-progress progress,html[data-reda-theme=dark] .reda-patient .player-progress progress::-webkit-progress-bar{background:#354330}
+html[data-reda-theme=dark] .reda-patient .player-progress progress::-webkit-progress-value{background:#b6d997}
+html[data-reda-theme=dark] .reda-patient .player-progress progress::-moz-progress-bar{background:#b6d997}
+html[data-reda-theme=dark] .reda-patient :where(.coach-context,.coach-answer,.coach-contact,.coach-topic,.exercise-coach,.plan-guide,.care-timeline li,.reda-message,.reda-message-list,.reda-reply,.support-receipt,.patient-support,.patient-checkin,.checkin-options,.loop-reflection,.basis-checkin,.ei-plan-context,.ei-axes>div,.exercise-context,.prescription-grid>div,.measure-line,.care-num){background:#263127!important;color:#dbe7d3!important;border-color:#43513d!important}
+html[data-reda-theme=dark] .reda-patient :where(.coach-answer h3,.coach-answer h4,.coach-answer b,.coach-contact legend,.coach-topic,.coach-topics button,.coach-actions button,.reda-message b,.care-timeline strong,.exercise-context b,.prescription-grid b){color:#edf2ea!important}
+html[data-reda-theme=dark] .reda-patient :where(.coach-topics button,.coach-actions button,.reda-message-actions button,.support-actions button){background:#303e2c!important;border-color:#516049!important;color:#edf2ea!important}
+html[data-reda-theme=dark] .reda-patient :where(.error,[role=alert]:not(:empty),.coach-alert,.loop-contact){background:#49352b!important;color:#f6d4ae!important;border-color:#876347!important}
+html[data-reda-theme=dark] .reda-patient a{color:#c4e8a8}
+html[data-reda-theme=dark] .reda-patient :focus-visible{outline-color:#c5e8a8!important}
+html[data-reda-theme=dark] .reda-patient .account-menu button{background:transparent;color:#edf2ea}
+html[data-reda-theme=dark] .reda-patient .account-menu button:hover{background:#2b362b}
+html[data-reda-theme=dark] .reda-patient .settings-content h3,html[data-reda-theme=dark] .reda-patient .settings-content h4{color:#edf2ea}
+/* A readable option that wraps rather than clipping important controls. */
+html[data-reda-text=large] .reda-patient :where(.patient-app p,.patient-app .sub,.patient-app label,.patient-app legend,.patient-app li,.journey-preview p,.settings-content p,.settings-content dd,.settings-content summary){font-size:18px!important;line-height:1.6!important}
+html[data-reda-text=large] .reda-patient :where(.patient-app button,.journey-preview button,.patient-settings button,.account-menu button){font-size:18px!important;line-height:1.4!important}
+html[data-reda-text=large] .reda-patient .journey-exercise-copy small{font-size:16px!important}
+html[data-reda-text=large] .reda-patient :where(.journey-exercise-copy b,.settings-content h4){font-size:20px!important}
+html[data-reda-text=large] .reda-patient .nav button{font-size:13px!important}
+html[data-reda-text=large] .reda-patient .theme-choices{grid-template-columns:1fr}.reda-patient .theme-choices button{overflow-wrap:anywhere}
+html[data-reda-text=large] .reda-patient .theme-choices button{display:flex;align-items:center;gap:15px}
+html[data-reda-text=large] .reda-patient .theme-swatch{width:80px;height:52px;flex:none}
+html[data-reda-text=large] body.reda-patient #player.exercise-player{height:auto;min-height:100dvh;max-height:none}
+html[data-reda-text=large] .reda-patient #movementLesson{min-height:380px}
+html[data-reda-text=large] .reda-patient .settings-nav button{font-size:14px!important}
+html[data-reda-motion=still] .reda-patient *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+@media print{html[data-reda-theme] body.reda-patient{background:#fff!important;color:#000!important}.patient-top-actions,.account-menu,.patient-settings{display:none!important}}
+
+html[data-reda-theme=dark] body.reda-patient .reda-brand .brand-mark{background:transparent!important}
+html[data-reda-theme=dark] body.reda-patient .reda-brand .brand-mark:before,html[data-reda-theme=dark] body.reda-patient .reda-brand .brand-mark:after{background:#b6d997!important}
+html[data-reda-theme=dark] body.reda-patient .patient-brand .reda-brand .brand-mark i{background:#141816!important}

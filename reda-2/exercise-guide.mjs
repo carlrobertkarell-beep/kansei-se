@@ -1,6 +1,7 @@
-import {createMovementLesson} from './movement-lesson.mjs?v=4';
+import {createPatientAccount} from './patient-account.mjs?v=1';
+import {createMovementLesson} from './movement-lesson.mjs?v=5';
 import {mountExercisePlayer} from './exercise-player.mjs?v=1';
-import {createExercisePreview,renderExerciseOverview,renderPreparation,doseText} from './patient-journey.mjs?v=2';
+import {createExercisePreview,renderExerciseOverview,renderPreparation,doseText} from './patient-journey.mjs?v=3';
 import {createExerciseCoach} from './exercise-coach.mjs?v=20260912-coach1';
 import {helpSummary} from './exercise-help-model.mjs?v=20260912-coach1';
 const $=id=>document.getElementById(id),S=window.RedaSession;
@@ -10,6 +11,7 @@ const exercises=[
  {id:'calf',name:'Tåhävning',motionKey:'calf-raise.bilateral',side:'simultaneous',support:'Stabilt handstöd',why:'För att träna vaderna i stående med ett stabilt stöd.',instructions:['Placera båda fötterna på golvet och ta stöd med händerna.','Lyft hälarna med framfoten kvar i golvet.','Sänk hälarna kontrollerat.']}
 ].map(x=>({...x,equipment:x.support,prescribedRange:'Följ det rörelseomfång du och behandlaren har gått igenom.',dose:{sets:2,reps:8,hold:0,rest:45,label:'2 omgångar · 8 repetitioner'}}));
 let session=null,index=0,finished=false,reflection=null;const history=new Map();let historyFilter='all';
+const accountUI=createPatientAccount({header:document.querySelector('.patient-app>.top'),preview:true,onPlan:()=>tab('program'),onHistory:()=>tab('activity')});
 const preview=createExercisePreview(),lesson=createMovementLesson($('movementLesson')),shell=mountExercisePlayer($('player'),{lesson});
 const current=()=>exercises[index];
 function updateHistory(){

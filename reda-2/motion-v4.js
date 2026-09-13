@@ -11,10 +11,12 @@ function pose(key,t){key=aliases[key]||key;t=clamp(t);if(!keys.has(key))return n
   const q=R.pose(key,t);
   if(key.startsWith('sit-to-stand.')){
    q.armLengths=[45,45];const release=clamp((t-.28)/.34),free=polar(q.shoulder,88,1.43);
-   if(key==='sit-to-stand.support'){q.hand=at([247,270],free,release*release*(3-2*release));q.armrest=true}
+   if(key==='sit-to-stand.support'){q.hand=at([247,270],free,release*release*(3-2*release));q.armrest=true;q.palmSupport=1-release*release*(3-2*release)}
    else{const rise=clamp((t-.23)/.77);q.hand=polar(q.shoulder,88,.55+.88*rise)}
    q.elbow=joint(q.shoulder,q.hand,...q.armLengths,key==='sit-to-stand.support'?1:-1);
   }
+  if(key.startsWith('knee-extension.')||key.startsWith('calf-raise.')){q.elbow=joint(q.shoulder,q.hand,38,38,1);q.palmSupport=1;}
+  if(key.startsWith('bridge.'))q.elbow=joint(q.shoulder,q.hand,38,38,1);
   return q;
  }
  let hip,shoulder,knee,ankle,heel,toe,hand,back;
@@ -39,24 +41,28 @@ function clothedChain(a,b,c,wa,wb,wc,color,stroke){
 function person(q,id){
  const near='#41675e',far='#526b61',pants='#344653',skin='#d9b399',outline='#526158',b=q.back;
  const neck=at(q.head,q.shoulder,.54);
- const hand=(e,h,isFar=false)=>{const angle=Math.atan2(h[1]-e[1],h[0]-e[0])*180/Math.PI-90;return `<g transform="translate(${h}) rotate(${angle})" fill="${isFar?'#c39e85':skin}" stroke="#aa8773" stroke-width=".55" stroke-linejoin="round"><path d="M-3.7,-6C-4.2,-3 -5,0 -4.7,3L-3.8,8.2Q-3,10 -1.8,8.8L-1.1,9.5Q.3,10 1,8.3Q2.6,9 3.2,6.6L4.3,1.7Q6.2,-.4 4.7,-2L2.8,-4.1L2.8,-6Z"/><path d="M-2.1,3.7L-1.8,8.5M.1,3.9L.5,8M2,2.8L2.8,6.3M3.2,-1.7Q1.7,.7 1.7,3" fill="none"/></g>`};
- const arm=(offset,isFar)=>{const s=add(q.shoulder,offset),e=add(q.elbow,offset),h=add(q.hand,offset),w=at(e,h,.83);return `<g class="${isFar?'motion-far-arm':'motion-near-arm'}">${clothedChain(s,e,w,9.5,6.7,4.1,isFar?far:near,outline)}${line(add(w,[-2,0]),add(w,[3,0]),1.2,'#8faaa0')}${hand(e,h,isFar)}</g>`};
- let s=arm([-12,-2],true);
+ const hand=(e,h,isFar=false)=>{const natural=Math.atan2(h[1]-e[1],h[0]-e[0])*180/Math.PI-90,angle=mix(natural,-90,q.palmSupport||0);return `<g transform="translate(${h}) rotate(${angle})" fill="${isFar?'#c39e85':skin}" stroke="#ae8972" stroke-width=".55" stroke-linejoin="round"><path d="M-3.1,-4Q-4.1,0 -3.7,3L-2.8,8Q-2.1,9.7 -1,8.4Q.2,10 1.3,8.1Q2.7,8.4 3.2,6.1L3.4,1.1Q5.8,-1 4,-2.3L2.7,-3.6Z"/><path d="M-1.6,4L-1,8M.4,4L1.2,7.8M3,-.8Q1.5,1 2,3" fill="none"/></g>`};
+ const arm=(offset,isFar)=>{
+  const s=add(q.shoulder,offset),e=add(q.elbow,offset),h=add(q.hand,offset),cuff=at(s,e,.49),tone=isFar?'#c39e85':skin;
+  const d=dist(s,e),n=[-(e[1]-s[1])/d,(e[0]-s[0])/d];
+  return `<g class="${isFar?'motion-far-arm':'motion-near-arm'}">${clothedChain(s,e,h,7.8,5.8,3.2,tone,'#b18d77')}${limb(s,cuff,10.2,8.5,isFar?far:near)}${line(add(cuff,[n[0]*7.8,n[1]*7.8]),add(cuff,[-n[0]*7.8,-n[1]*7.8]),.8,'#809b90')}${hand(e,h,isFar)}</g>`;
+ };
+ let s=arm([-8,0],true);
  s+=`<g class="motion-far-leg">${clothedChain(b.hip||q.hip,b.knee,b.ankle,15,10,6.5,'#637078','#536267')}${foot(b.heel,b.toe,'#6e766d',b.ankle)}</g>`;
  s+=`<g class="motion-active-leg">${clothedChain(q.hip,q.knee,q.ankle,18,11,7,pants,'#2c3a44')}${line(at(q.hip,q.knee,.32),at(q.hip,q.knee,.77),.65,'#788993')}${foot(q.heel,q.toe,'#424d49',q.ankle)}</g>`;
  s+=line(neck,add(q.shoulder,[0,5]),12,skin);
  const u=[(q.hip[0]-q.shoulder[0])/80,(q.hip[1]-q.shoulder[1])/80],v=[-u[1],u[0]],pt=(a,n)=>add(a,[v[0]*n,v[1]*n]);
  s+=`<path d="M${pt(q.shoulder,12)}C${pt(at(q.shoulder,q.hip,.1),23)} ${pt(at(q.shoulder,q.hip,.36),21)} ${pt(at(q.shoulder,q.hip,.6),19)}Q${pt(at(q.shoulder,q.hip,.85),21)} ${pt(q.hip,16)}Q${add(q.hip,[u[0]*8,u[1]*8])} ${pt(q.hip,-18)}C${pt(at(q.shoulder,q.hip,.83),-21)} ${pt(at(q.shoulder,q.hip,.48),-22)} ${pt(at(q.shoulder,q.hip,.3),-20)}Q${pt(q.shoulder,-21)} ${pt(q.shoulder,-10)}Q${add(q.shoulder,[u[0]*6,u[1]*6])} ${pt(q.shoulder,12)}Z" fill="${near}" stroke="${outline}" stroke-width=".7"/>`;
  s+=`<path d="M${pt(at(q.shoulder,q.hip,.98),15)}Q${add(q.hip,[u[0]*4,u[1]*4])} ${pt(at(q.shoulder,q.hip,.98),-17)}M${pt(at(q.shoulder,q.hip,.62),12)}q-3,12 1,17" stroke="#729387" stroke-width="1" fill="none"/>`;
- // A natural profile, silver hair and a visible neckline, without spherical shoulders.
+ // A calm adult profile. Age is not a proxy for the patient’s ability.
  s+=`<g class="motion-human-profile" transform="translate(${q.head}) rotate(${q.mat?-85:0})">
  <path d="M-9,9L-8,24Q-2,29 5,26L7,13Z" fill="${skin}" stroke="#b2917d" stroke-width=".5"/>
  <path d="M-12,-7C-12,-22 1,-25 10,-18Q16,-14 15,-7L14,-3Q14,0 18,3Q19,5 14.2,5.4L14,9Q15.5,11 13.2,12L12.2,17Q8,23 .5,21C-7,19 -11,12 -12,4Z" fill="${skin}" stroke="#ad8c77" stroke-width=".65"/>
- <path d="M-13,7C-18,1 -18,-13 -12,-21C-8,-29 4,-29 13,-24Q21,-20 17,-11Q13,-13 11,-18C8,-14 3,-17 -3,-11L-6,-1L-9,9Z" fill="#d5d6cf" stroke="#8e9893" stroke-width=".7"/>
- <path d="M-13,-14Q-6,-24 5,-23M-12,-6Q-8,-17 2,-19M-13,3Q-11,-5 -8,-9M5,-21Q10,-25 15,-18" fill="none" stroke="#a8b1aa" stroke-width=".8" stroke-linecap="round"/>
+ <path d="M-13,7C-18,1 -18,-13 -12,-21C-8,-29 4,-29 13,-24Q21,-20 17,-11Q13,-13 11,-18C8,-14 3,-17 -3,-11L-6,-1L-9,9Z" fill="#555c56" stroke="#46534c" stroke-width=".7"/>
+ <path d="M-13,-14Q-6,-24 5,-23M-12,-6Q-8,-17 2,-19M-13,3Q-11,-5 -8,-9M5,-21Q10,-25 15,-18" fill="none" stroke="#7e8780" stroke-width=".8" stroke-linecap="round"/>
  <path d="M-8,3C-10,-3 -3,-5 -2,1Q-1,7 -6,9Q-8,8 -8,3Z" fill="#d4aa90" stroke="#b28e78" stroke-width=".6"/><path d="M-5,0q3,-1 1,4" fill="none" stroke="#b18a73" stroke-width=".6"/>
- <path d="M8,-3Q11,-4.5 13,-2.5M8,-7Q11,-8 13,-6.5M9,13Q11,12 13,12M6,18Q8,19 10,18M8,3l2,.5" stroke="#806d60" stroke-width=".7" fill="none" stroke-linecap="round"/><circle cx="11.5" cy="-2.6" r=".85" fill="#424b44"/>
- <path d="M8,-10l4,-.3M2,9q1,3 4,4" stroke="#bc947d" stroke-width=".55" fill="none"/></g>`;
+ <path d="M8,-3Q11,-4.5 13,-2.5M8,-7Q11,-8 13,-6.5M9,13Q11,12 13,12" stroke="#806d60" stroke-width=".7" fill="none" stroke-linecap="round"/><circle cx="11.5" cy="-2.6" r=".85" fill="#424b44"/>
+</g>`;
  if(q.armrest)s+='<path d="M208,270H253M246,270V298" stroke="#a7ada1" stroke-width="4.5" stroke-linecap="round" fill="none"/>';
  s+=arm([0,0],false);
  if(q.weighted)s+=`<g transform="translate(${q.hand[0]},${q.hand[1]+7})"><path d="M-15,0H15" stroke="#82949a" stroke-width="4"/><rect x="-20" y="-9" width="8" height="18" rx="2" fill="#263d50"/><rect x="12" y="-9" width="8" height="18" rx="2" fill="#263d50"/></g>`;

@@ -48,3 +48,10 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   if (el) { var intro = head.querySelector('.intro'); (intro || h1).insertAdjacentElement('afterend', el); }
 });
+
+// Kansei UX 2.0. Modulärt lager för startsidans nya patientresa.
+document.addEventListener('DOMContentLoaded', function(){
+  if (location.pathname !== '/' && location.pathname !== '/index.html') return;
+  var css = document.createElement('link'); css.rel='stylesheet'; css.href='/ux2.css'; document.head.appendChild(css);
+  var js = document.createElement('script'); js.src='/ux2.js'; js.defer=true; document.body.appendChild(js);
+});

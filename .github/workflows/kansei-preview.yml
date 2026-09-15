@@ -7,7 +7,7 @@ permissions:
   pull-requests: read
 concurrency:
   group: kansei-isolated-preview-55
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   preview:
     if: github.repository == 'carlrobertkarell-beep/kansei-se' && github.event.pull_request.number == 55 && github.event.pull_request.head.ref == 'kansei/site-test-2026-09-15' && github.event.pull_request.head.repo.full_name == github.repository

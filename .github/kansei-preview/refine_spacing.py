@@ -12,7 +12,6 @@ combined=base.read_text()+'\n'+css
 new_css='/assets/clinic.'+hashlib.sha256(combined.encode()).hexdigest()[:12]+'.css'
 (root/new_css.lstrip('/')).write_text(combined)
 # A successful HTTP response does not prove that image bytes can be decoded.
-# Decode every exported raster asset before allowing the preview to deploy.
 image_audit=[]
 for image_path in sorted(root.rglob('*')):
  if image_path.suffix.lower() not in {'.png','.jpg','.jpeg','.webp','.gif','.ico'}:continue
@@ -26,7 +25,6 @@ changed=[]
 for row in manifest['pages']:
  path=root/row['file'];s=BS(path.read_text(),'html.parser')
  before_head=str(s.head);before_h=[h.get_text(' ',strip=True) for h in s.select('main h1,main h2,main h3')]
- # Restrict transformations to the known preview template. Do not process app/product pages.
  assert len(s.select('.site-header'))==1,row['path']
  for group in s.select('main div'):
   actions=group.find_all(['a','button'],recursive=False)
@@ -64,7 +62,6 @@ for row in manifest['pages']:
   actions=note.find_next_sibling('div');actions['class']=list(dict.fromkeys(actions.get('class',[])+['contact-actions','action-group']))
   first=actions.select_one('a');arrow=first.select_one('svg');arrow=arrow.extract() if arrow else None;first.clear();first.append('Boka besök ')
   if arrow:first.append(arrow)
-  # Put practical actions before the explanatory contact policy.
   note.insert_before(actions.extract())
   layout=s.select_one('.contact-page .services-layout');layout.parent['class']=layout.parent.get('class',[])+['contact-info']
   address=layout.find('div',recursive=False);address['class']=address.get('class',[])+['contact-address']
@@ -73,7 +70,6 @@ for row in manifest['pages']:
    t['class']=['contact-task']
    child=t.find('div',recursive=False)
    if child:child.unwrap()
- # Identical SEO head apart from the new single cache-busted CSS file.
  for link in s.select('link[rel=stylesheet]'):
   if link.get('href')==manifest['css']:link['href']=new_css
  assert before_h==[h.get_text(' ',strip=True) for h in s.select('main h1,main h2,main h3')],(row['path'],'heading drift')
@@ -83,3 +79,9 @@ manifest['css']=new_css;manifest['version']='coherent-clinic-preview-v3-spacing'
 manifest['image_audit']={'result':'PASS','decoded_images':len(image_audit),'files':image_audit}
 (root/'__clinic-build.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
 print(json.dumps({'spacing_refined':len(changed),'css':new_css,'headings_and_metadata':'preserved','decoded_images':len(image_audit)}))
+# Explicitly separate task intent and verify the two previously edge-to-edge hubs.
+# All generated-output suites below now test this exact candidate, before upload.
+from refine_intent import refine
+import subprocess
+refine(root)
+subprocess.run([sys.executable,str(folder/'intent_check.py'),str(root),str(root.parent.parent/'preview-results'/'intent')],check=True)

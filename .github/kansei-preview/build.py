@@ -160,7 +160,7 @@ for f in sorted(OUT.rglob('*.html')):
   if path.startswith('/blogg/'):
    cat=next((a[3] for a in articles if a[0]==path),'Artiklar');ey=top.select_one('.eyebrow')
    if ey:ey.string='Kunskapsbanken · '+cat
-  for unneeded in top.select('.vagvisare,.trustline'):unneeded.decompose()
+  for unneeded in top.select('.vagvisare,.trustline,#planKort'):unneeded.decompose()
   for old_toc in content.select('.toc'):old_toc.decompose()
   if path in INJECTIONS:
    price=top.select_one('.tf-pris')
@@ -197,7 +197,7 @@ for f in sorted(OUT.rglob('*.html')):
    if panel:panel['role']='tabpanel';panel['aria-labelledby']='method-tab-1'
    # The clinic section should show a place, not repeat a treatment photograph.
    ci=m.select_one('.clinic-image img')
-   if ci:ci['src']='/bilder/k0d80f0e3b7.webp';ci['alt']='Klinikmiljön på Kansei Rehabcenter'
+   if ci:ci['src']='/bilder/kf975fe878d.jpg';ci['alt']='Väntrummet på Kansei Rehabcenter, Upplandsgatan 26'
   body=str(m);head=metadata(s,path)
  top,bottom=shell(path,book)
  doc='<!doctype html><html lang="sv">'+head+'<body>'+top+body+bottom+f'<script src="{JS}" data-area-src="{AREAS}" data-guide-src="{GUIDE}" defer></script></body></html>'
@@ -211,6 +211,7 @@ for f in sorted(OUT.rglob('*.html')):
   if original_canonical:assert final.select_one('link[rel=canonical]')['href']==original_canonical,(path,'canonical drift')
   if original_h1:assert final.h1.get_text(' ',strip=True)==original_h1,(path,'H1 drift')
  assert len(final.select('.site-header'))==1 and len(final.select('#site-menu'))==1,path
+ assert len(final.select('#planKort'))<=1,(path,'duplicate Reda integration card')
  assert not final.select('link[href*="fonts.googleapis.com"]'),path
  assert not final.select('a[href^="tel:+46733988588"]'),path
  f.write_text(str(final))

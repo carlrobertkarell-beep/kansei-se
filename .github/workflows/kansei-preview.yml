@@ -1,0 +1,138 @@
+name: Kansei isolated Netlify preview
+on:
+  pull_request:
+    paths: ['.github/workflows/kansei-preview.yml']
+permissions:
+  contents: read
+  pull-requests: read
+concurrency:
+  group: kansei-isolated-preview-55
+  cancel-in-progress: false
+jobs:
+  preview:
+    if: github.repository == 'carlrobertkarell-beep/kansei-se' && github.event.pull_request.number == 55 && github.event.pull_request.head.ref == 'kansei/site-test-2026-09-15' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      SOURCE_SHA: 39852e1e4a0b6228686073b61d36e3c5dc717c6f
+      PREVIEW_SITE_ID: 69bd6717-58cb-4707-8438-a05492ae1fd2
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: 39852e1e4a0b6228686073b61d36e3c5dc717c6f
+          persist-credentials: false
+          path: source
+      - name: Export public clinic files without touching main or Reda
+        run: |
+          test "$(git -C source rev-parse HEAD)" = "$SOURCE_SHA"
+          python3 - <<'PY'
+          import os, pathlib, shutil, subprocess, json
+          source = pathlib.Path('source')
+          dest = pathlib.Path('preview/public')
+          dest.mkdir(parents=True, exist_ok=True)
+          allowed = {'.html','.css','.js','.mjs','.json','.svg','.png','.jpg','.jpeg','.webp','.gif','.ico','.woff','.woff2','.ttf','.otf','.webmanifest','.xml','.txt','.mp4','.webm','.pdf'}
+          excluded = {'.github','.git','supabase','node_modules','docs','reda','reda-2','reda2','reda-test-results','reda2-test-results','kansei-test-results'}
+          paths = subprocess.check_output(['git','-C',str(source),'ls-files','-z']).decode().split('\0')
+          count = 0
+          for name in filter(None, paths):
+              rel = pathlib.PurePosixPath(name)
+              f = source/name
+              if rel.parts[0] in excluded or any(p.startswith('.') for p in rel.parts) or f.is_symlink(): continue
+              if f.suffix.lower() not in allowed: continue
+              if name in {'package.json','package-lock.json','BingSiteAuth.xml','robots.txt','sitemap.xml'}: continue
+              target = dest/name
+              target.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copyfile(f, target)
+              count += 1
+          assert (dest/'index.html').is_file()
+          assert 'planKort' in (dest/'index.html').read_text()
+          (dest/'_headers').write_text("/*\n  X-Robots-Tag: noindex, nofollow, noarchive\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Content-Security-Policy: connect-src 'self'; form-action 'none'; frame-src 'none'\n")
+          (dest/'robots.txt').write_text('User-agent: *\nDisallow: /\n')
+          (dest/'_redirects').write_text('/reda /reda/ 302\n/reda/ https://www.kansei.se/reda/ 302!\n/reda/* https://www.kansei.se/reda/:splat 302!\n/reda-2 /reda-2/ 302\n/reda-2/ https://www.kansei.se/reda-2/ 302!\n/reda-2/* https://www.kansei.se/reda-2/:splat 302!\n')
+          (dest/'__kansei-preview.json').write_text(json.dumps({'source_sha':os.environ['SOURCE_SHA'],'site_id':os.environ['PREVIEW_SITE_ID'],'environment':'isolated-preview','production_unchanged':True}))
+          pathlib.Path('preview/netlify.toml').write_text('[build]\n  publish = "public"\n  command = "echo Static-Kansei-preview"\n')
+          print(f'Exported {count} public files from {os.environ["SOURCE_SHA"]}. No Reda app or database code exported.')
+          PY
+      - name: Create ephemeral deployment handshake
+        run: |
+          node --input-type=module <<'JS'
+          import {generateKeyPairSync,createHash} from 'node:crypto';
+          import {writeFileSync} from 'node:fs';
+          const {privateKey,publicKey}=generateKeyPairSync('rsa',{modulusLength:3072,publicKeyEncoding:{type:'spki',format:'pem'},privateKeyEncoding:{type:'pkcs8',format:'pem'}});
+          writeFileSync(process.env.RUNNER_TEMP+'/kansei-preview-key.pem',privateKey,{mode:0o600});
+          const data={run_id:process.env.GITHUB_RUN_ID,attempt:process.env.GITHUB_RUN_ATTEMPT,repo:process.env.GITHUB_REPOSITORY,source_sha:process.env.SOURCE_SHA,site_id:process.env.PREVIEW_SITE_ID,public_key:publicKey,fingerprint:createHash('sha256').update(publicKey).digest('hex')};
+          writeFileSync(process.env.RUNNER_TEMP+'/kansei-preview-handshake.json',JSON.stringify(data,null,2));
+          console.log('Ephemeral public key prepared. Private key stays on this runner and is never uploaded.');
+          JS
+      - name: Publish public handshake only
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: kansei-preview-handshake-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/kansei-preview-handshake.json
+          retention-days: 1
+      - name: Deploy only to the existing isolated Netlify site
+        env:
+          GH_READ_TOKEN: ${{ github.token }}
+        run: |
+          node --input-type=module <<'JS'
+          import {readFileSync,writeFileSync,rmSync} from 'node:fs';
+          import {privateDecrypt,createDecipheriv,constants} from 'node:crypto';
+          import {spawn} from 'node:child_process';
+          import {setTimeout as delay} from 'node:timers/promises';
+          const e=process.env;
+          const hand=JSON.parse(readFileSync(e.RUNNER_TEMP+'/kansei-preview-handshake.json','utf8'));
+          const marker=`<!-- kansei-preview-envelope:${hand.run_id}:${hand.attempt} -->`;
+          const aad=[hand.repo,hand.run_id,hand.attempt,hand.source_sha,hand.site_id].join('|');
+          let payload;
+          const until=Date.now()+12*60*1000;
+          console.log('Waiting for a run-bound, encrypted Netlify authorization from the repository owner.');
+          while(Date.now()<until&&!payload){
+            const response=await fetch(`https://api.github.com/repos/${hand.repo}/issues/55/comments?per_page=100`,{headers:{Authorization:`Bearer ${e.GH_READ_TOKEN}`,Accept:'application/vnd.github+json'},signal:AbortSignal.timeout(15000)});
+            if(!response.ok)throw new Error(`Comment lookup failed: ${response.status}`);
+            for(const c of await response.json()){
+              if(c.user?.id!==265996986||!c.body.startsWith(marker))continue;
+              try{
+                const envelope=JSON.parse(Buffer.from(c.body.slice(marker.length).trim(),'base64').toString('utf8'));
+                const key=privateDecrypt({key:readFileSync(e.RUNNER_TEMP+'/kansei-preview-key.pem'),padding:constants.RSA_PKCS1_OAEP_PADDING,oaepHash:'sha256'},Buffer.from(envelope.key,'base64'));
+                const decipher=createDecipheriv('aes-256-gcm',key,Buffer.from(envelope.iv,'base64'));
+                decipher.setAAD(Buffer.from(aad));decipher.setAuthTag(Buffer.from(envelope.tag,'base64'));
+                const value=JSON.parse(Buffer.concat([decipher.update(Buffer.from(envelope.ciphertext,'base64')),decipher.final()]).toString('utf8'));
+                key.fill(0);
+                if(value.source_sha!==hand.source_sha||value.site_id!==hand.site_id||value.run_id!==hand.run_id||value.expires_at<Date.now())throw new Error('Invalid binding');
+                if(!/^https:\/\/netlify-mcp\.netlify\.app\/proxy\/[A-Za-z0-9._-]+$/.test(value.proxy))throw new Error('Invalid proxy destination');
+                payload=value;break;
+              }catch{console.log('Ignored invalid or expired envelope.');}
+            }
+            if(!payload)await delay(7000);
+          }
+          rmSync(e.RUNNER_TEMP+'/kansei-preview-key.pem',{force:true});
+          if(!payload)throw new Error('No authorized encrypted deployment envelope received before timeout. Nothing deployed.');
+          const proxy=payload.proxy;
+          console.log('::add-mask::'+proxy);
+          console.log('::add-mask::'+proxy.split('/proxy/')[1]);
+          const childEnv=Object.fromEntries(['PATH','HOME','TMPDIR','RUNNER_TEMP','CI'].filter(k=>e[k]).map(k=>[k,e[k]]));
+          childEnv.NETLIFY_TELEMETRY_DISABLED='1';
+          let output='';
+          const code=await new Promise((resolve,reject)=>{
+            const child=spawn('npx',['-y','@netlify/mcp@latest','--site-id',hand.site_id,'--proxy-path',proxy],{cwd:'preview',env:childEnv,stdio:['ignore','pipe','pipe']});
+            const timer=setTimeout(()=>{child.kill('SIGTERM');reject(new Error('Deploy timed out after 10 minutes'));},10*60*1000);
+            const log=b=>{const safe=String(b).split(proxy).join('[MASKED]').split(proxy.split('/proxy/')[1]).join('[MASKED]');output+=safe;process.stdout.write(safe);};
+            child.stdout.on('data',log);child.stderr.on('data',log);
+            child.on('error',err=>{clearTimeout(timer);reject(err);});child.on('exit',n=>{clearTimeout(timer);resolve(n);});
+          });
+          writeFileSync(e.RUNNER_TEMP+'/kansei-preview-deploy.txt',`Source: ${hand.source_sha}\nSite: ${hand.site_id}\nExit: ${code}\n`+output);
+          if(code!==0)throw new Error(`Netlify deployment failed with exit ${code}`);
+          console.log('Netlify deployment command completed successfully.');
+          JS
+      - name: Retain deployment result and exact public package
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: kansei-preview-result-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/kansei-preview-deploy.txt
+            preview/
+          retention-days: 3
+      - name: Remove runner-only private key
+        if: always()
+        run: rm -f "$RUNNER_TEMP/kansei-preview-key.pem"

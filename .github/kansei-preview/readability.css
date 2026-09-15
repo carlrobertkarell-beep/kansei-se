@@ -147,3 +147,15 @@ main .service-list>.service>div>.text-link{margin-block-start:1.125rem}
  .site-header .header-inner{gap:8px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+/* Match the inherited ID specificity, without !important or extra inline styles. */
+.editorial-body #boka-cta.booking-panel{padding:clamp(1.5rem,4vw,2.75rem)}
+.editorial-body #boka-cta.booking-panel .action-group>.btn{margin:0;background:#fff;color:var(--dark)}
+.editorial-body #boka-cta.booking-panel .action-group>.btn-ghost{background:transparent;color:#fff;border:1px solid #8ca4b6}
+@media(max-width:700px){.editorial-body #boka-cta.booking-panel{padding:1.5rem}}
+@media(max-width:360px){.editorial-body #boka-cta.booking-panel{padding:1.25rem}}
+/* Long medical terms still reflow when users increase text spacing. */
+.knowledge-result,.knowledge-feature{min-width:0}
+.knowledge-result :where(h2,p),.knowledge-feature :where(h2,p){min-width:0;max-width:100%;overflow-wrap:anywhere}
+.contact-page .page-lead+.contact-actions{margin-block-start:1.5rem}
+.button-ghost:hover,.btn-ghost:hover,.btn-line:hover{background:#e6edf0;color:var(--dark)}
+.editorial-body .booking-panel .action-group>.btn-ghost:hover,.editorial-body #boka-cta.booking-panel .action-group>.btn-ghost:hover{background:#244151;color:#fff}

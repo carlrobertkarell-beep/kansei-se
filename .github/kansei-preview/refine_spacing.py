@@ -20,6 +20,8 @@ for row in manifest['pages']:
   actions=group.find_all(['a','button'],recursive=False)
   if len([a for a in actions if {'button','btn'} & set(a.get('class',[]))])>=2:
    group['class']=list(dict.fromkeys(group.get('class',[])+['action-group']))
+ for a in s.select('main a[href="/#guide"]'):
+  a['href']='/hjalp-mig-boka/'
  for panel in s.select('main #boka-cta, main .art-cta'):
   panel['class']=list(dict.fromkeys(panel.get('class',[])+['booking-panel']))
  for trust in s.select('main .cta-trust'):
@@ -50,6 +52,8 @@ for row in manifest['pages']:
   actions=note.find_next_sibling('div');actions['class']=list(dict.fromkeys(actions.get('class',[])+['contact-actions','action-group']))
   first=actions.select_one('a');arrow=first.select_one('svg');arrow=arrow.extract() if arrow else None;first.clear();first.append('Boka besök ')
   if arrow:first.append(arrow)
+  # Put practical actions before the explanatory contact policy.
+  note.insert_before(actions.extract())
   layout=s.select_one('.contact-page .services-layout');layout.parent['class']=layout.parent.get('class',[])+['contact-info']
   address=layout.find('div',recursive=False);address['class']=address.get('class',[])+['contact-address']
   tasks=layout.select_one('.service-list');tasks['class']=['contact-tasks']
@@ -63,6 +67,6 @@ for row in manifest['pages']:
  assert before_h==[h.get_text(' ',strip=True) for h in s.select('main h1,main h2,main h3')],(row['path'],'heading drift')
  after_head=str(s.head).replace(new_css,manifest['css']);assert before_head==after_head,(row['path'],'SEO head drift')
  path.write_text(str(s));row['bytes']=path.stat().st_size;changed.append(row['path'])
-manifest['css']=new_css;manifest['version']='coherent-clinic-preview-v3-spacing';manifest['spacing_pass']={'pages':len(changed),'headings_preserved':True,'metadata_preserved':True,'changes':'Named action groups; semantic booking help/review blocks; reading rhythm. Contact operating copy clarified and extra-hours promise removed from CTA help, not medical content.'}
+manifest['css']=new_css;manifest['version']='coherent-clinic-preview-v3-spacing';manifest['spacing_pass']={'pages':len(changed),'headings_preserved':True,'metadata_preserved':True,'changes':'Named action groups; semantic booking help/review blocks; reading rhythm. Contact operating copy clarified and extra-hours promise removed from CTA help, not medical content. Stale /#guide links now target booking-help page.'}
 (root/'__clinic-build.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
 print(json.dumps({'spacing_refined':len(changed),'css':new_css,'headings_and_metadata':'preserved'}))

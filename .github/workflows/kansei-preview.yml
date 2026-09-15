@@ -1,7 +1,7 @@
 name: Kansei isolated Netlify preview
 on:
   pull_request:
-    paths: ['.github/workflows/kansei-preview.yml']
+    paths: ['.github/workflows/kansei-preview.yml', '.github/kansei-preview/**']
 permissions:
   contents: read
   pull-requests: read
@@ -14,45 +14,39 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     env:
-      SOURCE_SHA: 39852e1e4a0b6228686073b61d36e3c5dc717c6f
+      SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
       PREVIEW_SITE_ID: 69bd6717-58cb-4707-8438-a05492ae1fd2
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          ref: 39852e1e4a0b6228686073b61d36e3c5dc717c6f
+          ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
           path: source
-      - name: Export public clinic files without touching main or Reda
+      - name: Build the complete clinic preview without changing original sources
         run: |
           test "$(git -C source rev-parse HEAD)" = "$SOURCE_SHA"
+          python3 -m pip install --disable-pip-version-check beautifulsoup4==4.13.4 pillow==11.3.0 playwright==1.57.0
+          python3 -m playwright install chromium
+          python3 source/.github/kansei-preview/build.py source preview/public
           python3 - <<'PY'
-          import os, pathlib, shutil, subprocess, json
-          source = pathlib.Path('source')
+          import os, pathlib, json
           dest = pathlib.Path('preview/public')
-          dest.mkdir(parents=True, exist_ok=True)
-          allowed = {'.html','.css','.js','.mjs','.json','.svg','.png','.jpg','.jpeg','.webp','.gif','.ico','.woff','.woff2','.ttf','.otf','.webmanifest','.xml','.txt','.mp4','.webm','.pdf'}
-          excluded = {'.github','.git','supabase','node_modules','docs','reda','reda-2','reda2','reda-test-results','reda2-test-results','kansei-test-results'}
-          paths = subprocess.check_output(['git','-C',str(source),'ls-files','-z']).decode().split('\0')
-          count = 0
-          for name in filter(None, paths):
-              rel = pathlib.PurePosixPath(name)
-              f = source/name
-              if rel.parts[0] in excluded or any(p.startswith('.') for p in rel.parts) or f.is_symlink(): continue
-              if f.suffix.lower() not in allowed: continue
-              if name in {'package.json','package-lock.json','BingSiteAuth.xml','robots.txt','sitemap.xml'}: continue
-              target = dest/name
-              target.parent.mkdir(parents=True, exist_ok=True)
-              shutil.copyfile(f, target)
-              count += 1
-          assert (dest/'index.html').is_file()
-          assert 'planKort' in (dest/'index.html').read_text()
-          (dest/'_headers').write_text("/*\n  X-Robots-Tag: noindex, nofollow, noarchive\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Content-Security-Policy: connect-src 'self'; form-action 'none'; frame-src 'none'\n")
-          (dest/'robots.txt').write_text('User-agent: *\nDisallow: /\n')
-          (dest/'_redirects').write_text('/reda /reda/ 302\n/reda/ https://www.kansei.se/reda/ 302!\n/reda/* https://www.kansei.se/reda/:splat 302!\n/reda-2 /reda-2/ 302\n/reda-2/ https://www.kansei.se/reda-2/ 302!\n/reda-2/* https://www.kansei.se/reda-2/:splat 302!\n')
-          (dest/'__kansei-preview.json').write_text(json.dumps({'source_sha':os.environ['SOURCE_SHA'],'site_id':os.environ['PREVIEW_SITE_ID'],'environment':'isolated-preview','production_unchanged':True}))
+          assert (dest/'__clinic-build.json').is_file()
+          assert not (dest/'reda').exists() and not (dest/'reda-2').exists() and not (dest/'supabase').exists()
+          (dest/'__kansei-preview.json').write_text(json.dumps({'source_sha':os.environ['SOURCE_SHA'],'site_id':os.environ['PREVIEW_SITE_ID'],'environment':'isolated-preview','build_version':'coherent-clinic-preview-v2'}))
           pathlib.Path('preview/netlify.toml').write_text('[build]\n  publish = "public"\n  command = "echo Static-Kansei-preview"\n')
-          print(f'Exported {count} public files from {os.environ["SOURCE_SHA"]}. No Reda app or database code exported.')
           PY
+      - name: Test the generated pages and navigation over HTTP before deployment
+        run: python3 source/.github/kansei-preview/browser_check.py preview/public preview-results
+      - name: Retain real browser review evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: kansei-preview-browser-${{ github.run_id }}
+          path: |
+            preview-results/
+            preview/public/__clinic-build.json
+          retention-days: 3
       - name: Create ephemeral deployment handshake
         run: |
           node --input-type=module <<'JS'

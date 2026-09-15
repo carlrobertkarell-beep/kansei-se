@@ -79,9 +79,11 @@ manifest['css']=new_css;manifest['version']='coherent-clinic-preview-v3-spacing'
 manifest['image_audit']={'result':'PASS','decoded_images':len(image_audit),'files':image_audit}
 (root/'__clinic-build.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
 print(json.dumps({'spacing_refined':len(changed),'css':new_css,'headings_and_metadata':'preserved','decoded_images':len(image_audit)}))
-# Explicitly separate task intent and verify the two previously edge-to-edge hubs.
-# All generated-output suites below now test this exact candidate, before upload.
+# All generated-output suites test the exact candidate before upload.
 from refine_intent import refine
+from refine_guide import refine as refine_guide
 import subprocess
 refine(root)
+refine_guide(root)
 subprocess.run([sys.executable,str(folder/'intent_check.py'),str(root),str(root.parent.parent/'preview-results'/'intent')],check=True)
+subprocess.run([sys.executable,str(folder/'guide_check.py'),str(root),str(root.parent.parent/'preview-results'/'guide')],check=True)

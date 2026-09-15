@@ -1,0 +1,77 @@
+/* The guide is outside <main>. Own its spacing, fonts and dialog geometry. */
+#guide-dialog{position:fixed;inset:0 0 0 auto;margin:0;width:min(100%,640px);max-width:100%;height:100vh;height:100dvh;max-height:100dvh;border:0;border-radius:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--sans);overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scroll-behavior:auto;scroll-padding-top:92px;}
+#guide-dialog[open]{animation:guide-enter .22s ease-out both}
+#guide-dialog::backdrop{background:rgba(16,35,48,.42);animation:veil-enter .2s ease-out both}
+#guide-dialog .guide-header{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:68px;padding:12px 28px;background:var(--paper);border-bottom:1px solid var(--line);}
+#guide-dialog .guide-header .eyebrow{margin:0;font:600 11px/1.5 var(--sans);letter-spacing:.09em;}
+#guide-dialog .guide-header [data-close]{display:grid;place-items:center;flex:0 0 44px;width:44px;height:44px;min-height:44px;padding:0;border-radius:50%;border:1px solid var(--line);background:transparent;}
+#guide-dialog .guide-header [data-close]:hover{background:var(--mist)}
+#guide-content{padding:16px 28px 24px;min-width:0;}
+#guide-dialog h2,#guide-dialog h3{font-family:var(--sans);font-weight:500;color:var(--ink);letter-spacing:-.025em;hyphens:manual;-webkit-hyphens:manual;word-break:normal;overflow-wrap:break-word;text-wrap:pretty;}
+#guide-dialog #guide-title{font-size:32px;line-height:1.2;margin:20px 0 20px;}
+#guide-title:focus{outline:none}
+#guide-dialog h3{font-size:24px;line-height:1.3;margin:0 0 16px;}
+#guide-dialog p{font:400 1rem/1.7 var(--sans);letter-spacing:0;color:var(--muted);margin:0;max-width:62ch;overflow-wrap:break-word;}
+#guide-dialog p+p{margin-top:16px}
+#guide-dialog #guide-title+p{margin-bottom:24px}
+#guide-dialog .guide-progress{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;margin:0;padding:0;color:var(--muted);font-family:var(--sans);}
+#guide-dialog .guide-step{font:500 13px/1.5 var(--sans);white-space:nowrap;letter-spacing:0;}
+#guide-dialog .guide-task-label{font-size:14px;line-height:1.5;letter-spacing:0}
+#guide-dialog .guide-back{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:10px 0;background:transparent;font:500 14px/1.6 var(--sans);letter-spacing:0;color:var(--ink);text-align:left;}
+#guide-dialog .guide-back:hover{text-decoration:underline;text-underline-offset:4px;}
+#guide-dialog .guide-choices{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin:24px 0 0;}
+#guide-dialog .guide-choice{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;margin:0;padding:18px;min-height:60px;text-align:left;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);}
+#guide-dialog .guide-choice>span{display:block;min-width:0;}
+#guide-dialog .guide-choice b{display:block;font:500 1rem/1.5 var(--sans);letter-spacing:0;overflow-wrap:break-word;}
+#guide-dialog .guide-choice small{display:block;margin:6px 0 0;font:400 .875rem/1.65 var(--sans);letter-spacing:0;color:var(--muted);}
+#guide-dialog .guide-choice .icon{width:20px;height:20px;flex:0 0 20px;}
+#guide-dialog .guide-choice:hover{border-color:var(--teal);background:#f0f5f5;}
+#guide-dialog .guide-actions{display:flex;justify-content:flex-start;align-items:center;flex-wrap:wrap;gap:12px 24px;margin:24px 0 0;border-top:1px solid var(--line);padding-top:12px;}
+#guide-dialog .guide-selection{margin:0 0 24px;padding-left:14px;border-left:2px solid #a5bac2;}
+#guide-dialog .result-tag{display:block;font:600 .875rem/1.6 var(--sans);letter-spacing:0;color:var(--ink);}
+#guide-dialog .result-summary{font-size:.9375rem;line-height:1.6;margin:4px 0 0;}
+#guide-dialog .result-main{background:#eaf0f3;padding:24px;border:1px solid #d8e2e8;border-radius:10px;margin:0;}
+#guide-dialog .result-main>.eyebrow{font:600 11px/1.5 var(--sans);letter-spacing:.08em;color:var(--muted);margin:0 0 12px;}
+#guide-dialog .result-main h3{font-size:24px;line-height:1.3;letter-spacing:-.02em;margin:0 0 16px;}
+#guide-dialog .result-main .guide-visit-copy{font-size:1rem;line-height:1.7;color:#314b5a;margin:0;}
+#guide-dialog .guide-booking{margin-top:24px;padding-top:20px;border-top:1px solid #ccdbe3;display:grid;gap:16px;}
+#guide-dialog .guide-price{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;margin:0;font-size:.875rem;line-height:1.6;color:#465c6b;}
+#guide-dialog .guide-price strong{font:600 1.375rem/1.4 var(--sans);letter-spacing:-.02em;color:var(--ink);white-space:nowrap;}
+#guide-dialog .button{width:100%;min-height:52px;justify-content:space-between;gap:16px;padding:15px 20px;margin:0;font:600 1rem/1.4 var(--sans);letter-spacing:0;white-space:normal;border-radius:999px;}
+#guide-dialog .button .icon{flex:0 0 20px;}
+#guide-dialog .guide-booking-note{display:block;margin:0;font:400 .8125rem/1.65 var(--sans);letter-spacing:0;color:#465c6b;}
+#guide-dialog .result-details{margin:28px 0 0;border-bottom:1px solid var(--line);}
+#guide-dialog .result-details details{border-top:1px solid var(--line);}
+#guide-dialog .result-details summary{display:flex;align-items:center;justify-content:space-between;gap:20px;list-style:none;cursor:pointer;min-height:60px;padding:18px 0;margin:0;font:500 1rem/1.5 var(--sans);letter-spacing:0;color:var(--ink);}
+#guide-dialog summary::-webkit-details-marker{display:none}
+#guide-dialog .result-details summary::after{content:'+';flex:0 0 20px;text-align:center;font:400 24px/1 var(--sans);}
+#guide-dialog .result-details details[open]>summary::after{content:'−'}
+#guide-dialog .result-details details>p{margin:0;padding:0 8px 22px 0;font-size:.9375rem;line-height:1.75;}
+#guide-dialog .result-links{display:flex;flex-direction:column;align-items:stretch;gap:12px;margin:24px 0 0;}
+#guide-dialog .result-links>.text-link{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:48px;padding:12px 0;font:500 .9375rem/1.6 var(--sans);letter-spacing:0;border-bottom:1px solid var(--line);}
+#guide-dialog .guide-small,#guide-dialog .guide-source{font-size:.8125rem;line-height:1.75;color:var(--muted);margin:24px 0 0;}
+#guide-dialog .safety-box,#guide-dialog .warning-box{padding:22px;margin:24px 0;background:#edf2f5;border-radius:8px;color:var(--ink);font-size:1rem;line-height:1.75;}
+#guide-dialog .safety-box>strong,#guide-dialog .warning-box>strong{display:block;line-height:1.6;margin-bottom:16px;}
+#guide-dialog .warning-box>br{display:none}
+#guide-dialog .safety-box ul{margin:16px 0 0;padding-left:20px;line-height:1.75;}
+#guide-dialog .safety-box li+li{margin-top:16px}
+#guide-dialog .guide-privacy{display:flex;align-items:flex-start;gap:10px;margin:0 28px;padding:20px 0 max(28px,env(safe-area-inset-bottom));border-top:1px solid var(--line);color:var(--muted);}
+#guide-dialog .guide-privacy small{font:400 .75rem/1.7 var(--sans)}
+#guide-dialog .guide-privacy .icon{flex:0 0 16px;width:16px;height:16px;margin-top:3px}
+#guide-dialog .guide-error-links{display:grid;gap:16px;margin:24px 0;}
+@keyframes guide-enter{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+@media(max-width:700px){
+ #guide-dialog{inset:0;margin:0;width:100vw;max-width:100vw;height:100vh;height:100dvh;max-height:100dvh;box-shadow:none;}
+ #guide-dialog .guide-header{padding:12px max(20px,env(safe-area-inset-right)) 12px max(20px,env(safe-area-inset-left));}
+ #guide-content{padding:12px max(20px,env(safe-area-inset-right)) 24px max(20px,env(safe-area-inset-left));}
+ #guide-dialog #guide-title{font-size:30px;line-height:1.2;margin:16px 0 20px;}
+ #guide-dialog .result-main{padding:20px;}
+ #guide-dialog .guide-privacy{margin-inline:20px;}
+}
+@media(max-width:360px){
+ #guide-dialog .result-main{padding:18px;}
+ #guide-dialog .result-main h3{font-size:22px;}
+ #guide-dialog .button{font-size:.9375rem;padding:14px 18px;}
+ #guide-dialog .guide-header .eyebrow{font-size:10px;}
+}
+@media(prefers-reduced-motion:reduce){#guide-dialog[open],#guide-dialog::backdrop{animation:none!important;transition:none!important;}}

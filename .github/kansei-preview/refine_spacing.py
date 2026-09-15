@@ -1,6 +1,7 @@
 """Correct generated preview semantics/spacing; leave original sources untouched."""
 from pathlib import Path
 from bs4 import BeautifulSoup as BS
+from PIL import Image
 import hashlib,json,sys
 root=Path(sys.argv[1]).resolve()
 manifest=json.loads((root/'__clinic-build.json').read_text())
@@ -10,6 +11,17 @@ base=root/manifest['css'].lstrip('/')
 combined=base.read_text()+'\n'+css
 new_css='/assets/clinic.'+hashlib.sha256(combined.encode()).hexdigest()[:12]+'.css'
 (root/new_css.lstrip('/')).write_text(combined)
+# A successful HTTP response does not prove that image bytes can be decoded.
+# Decode every exported raster asset before allowing the preview to deploy.
+image_audit=[]
+for image_path in sorted(root.rglob('*')):
+ if image_path.suffix.lower() not in {'.png','.jpg','.jpeg','.webp','.gif','.ico'}:continue
+ try:
+  with Image.open(image_path) as image:
+   image.load()
+   image_audit.append({'path':str(image_path.relative_to(root)),'width':image.width,'height':image.height})
+ except Exception as error:
+  raise RuntimeError('Undecodable preview image: '+str(image_path.relative_to(root))) from error
 changed=[]
 for row in manifest['pages']:
  path=root/row['file'];s=BS(path.read_text(),'html.parser')
@@ -68,5 +80,6 @@ for row in manifest['pages']:
  after_head=str(s.head).replace(new_css,manifest['css']);assert before_head==after_head,(row['path'],'SEO head drift')
  path.write_text(str(s));row['bytes']=path.stat().st_size;changed.append(row['path'])
 manifest['css']=new_css;manifest['version']='coherent-clinic-preview-v3-spacing';manifest['spacing_pass']={'pages':len(changed),'headings_preserved':True,'metadata_preserved':True,'changes':'Named action groups; semantic booking help/review blocks; reading rhythm. Contact operating copy clarified and extra-hours promise removed from CTA help, not medical content. Stale /#guide links now target booking-help page.'}
+manifest['image_audit']={'result':'PASS','decoded_images':len(image_audit),'files':image_audit}
 (root/'__clinic-build.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
-print(json.dumps({'spacing_refined':len(changed),'css':new_css,'headings_and_metadata':'preserved'}))
+print(json.dumps({'spacing_refined':len(changed),'css':new_css,'headings_and_metadata':'preserved','decoded_images':len(image_audit)}))

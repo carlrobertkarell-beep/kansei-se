@@ -12,7 +12,7 @@ jobs:
   preview:
     if: github.repository == 'carlrobertkarell-beep/kansei-se' && github.event.pull_request.number == 55 && github.event.pull_request.head.ref == 'kansei/site-test-2026-09-15' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 30
     env:
       SOURCE_SHA: ${{ github.event.pull_request.head.sha }}
       PREVIEW_SITE_ID: 69bd6717-58cb-4707-8438-a05492ae1fd2
@@ -26,18 +26,21 @@ jobs:
         run: |
           test "$(git -C source rev-parse HEAD)" = "$SOURCE_SHA"
           python3 -m pip install --disable-pip-version-check beautifulsoup4==4.13.4 pillow==11.3.0 playwright==1.57.0
-          python3 -m playwright install chromium
+          python3 -m playwright install --with-deps chromium webkit
           python3 source/.github/kansei-preview/build.py source preview/public
+          python3 source/.github/kansei-preview/refine_spacing.py preview/public
           python3 - <<'PY'
           import os, pathlib, json
           dest = pathlib.Path('preview/public')
           assert (dest/'__clinic-build.json').is_file()
           assert not (dest/'reda').exists() and not (dest/'reda-2').exists() and not (dest/'supabase').exists()
-          (dest/'__kansei-preview.json').write_text(json.dumps({'source_sha':os.environ['SOURCE_SHA'],'site_id':os.environ['PREVIEW_SITE_ID'],'environment':'isolated-preview','build_version':'coherent-clinic-preview-v2'}))
+          (dest/'__kansei-preview.json').write_text(json.dumps({'source_sha':os.environ['SOURCE_SHA'],'site_id':os.environ['PREVIEW_SITE_ID'],'environment':'isolated-preview','build_version':'coherent-clinic-preview-v3-spacing'}))
           pathlib.Path('preview/netlify.toml').write_text('[build]\n  publish = "public"\n  command = "echo Static-Kansei-preview"\n')
           PY
       - name: Test the generated pages and navigation over HTTP before deployment
         run: python3 source/.github/kansei-preview/browser_check.py preview/public preview-results
+      - name: Verify text spacing, button separation and reading flow in Chromium and WebKit
+        run: python3 source/.github/kansei-preview/ux_check.py preview/public preview-results/readability
       - name: Retain real browser review evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

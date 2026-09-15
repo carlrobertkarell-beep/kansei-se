@@ -1,0 +1,149 @@
+/* Reading rhythm. Applies only to generated Kansei preview pages, never Reda. */
+:root{--space-paragraph:1.25rem;--space-copy:1rem;--space-block:2rem;--space-section:clamp(3.5rem,6vw,5.5rem)}
+/* Let the document reflow rather than hiding layout errors. */
+body{overflow-x:visible}
+main :where(p,li){line-height:1.8}
+main :where(h2,h3){letter-spacing:-.025em;line-height:1.2;-webkit-hyphens:manual;hyphens:manual;word-break:normal;overflow-wrap:break-word;text-wrap:pretty}
+main :where(h3){letter-spacing:-.015em;line-height:1.3}
+main :where(h1,h2,h3)+p{margin-block-start:var(--space-copy)}
+main p+p{margin-block-start:var(--space-paragraph)}
+main :where(p,ul,ol)+:where(h2,h3){margin-block-start:var(--space-block)}
+main .eyebrow+:where(h1,h2,h3){margin-block-start:1.125rem}
+main p:empty{display:none}
+main :where(.page-lead,.intro,.cluster-lead){max-width:65ch}
+.editorial-top h1,.article-main h1{letter-spacing:-.04em;line-height:1.12;-webkit-hyphens:manual;hyphens:manual;overflow-wrap:break-word}
+.editorial-body h2,.article-main h2{line-height:1.22;letter-spacing:-.025em;-webkit-hyphens:manual;hyphens:manual;overflow-wrap:break-word}
+.editorial-body h3,.article-main h3{line-height:1.3;letter-spacing:-.015em;-webkit-hyphens:manual;hyphens:manual;overflow-wrap:break-word}
+.editorial-body p{margin-block:0 1.25rem;line-height:1.8}
+.editorial-body p+p{margin-block-start:0}
+.editorial-body h2+p,.editorial-body h3+p{margin-block-start:0}
+.editorial-body h2{margin-block-end:1.25rem}
+.editorial-body h3{margin-block:2rem 1rem}
+.editorial-body :where(ul,ol){margin-block:1.25rem 1.75rem}
+.editorial-body li+li{margin-block-start:.625rem}
+.editorial-body .original-main>section{padding-block:2.75rem}
+.editorial-body .card{padding:1.5rem}
+.editorial-body .card .tag{margin-block-end:.875rem}
+.editorial-body .card p{line-height:1.75}
+.editorial-body .rel-row{padding-block:1.375rem;row-gap:.75rem}
+.editorial-aside nav>a{font-size:.875rem;line-height:1.65;padding-block:.875rem}
+.contents-mobile nav a{display:flex;align-items:baseline;gap:.75rem;line-height:1.6}
+.contents-mobile nav a>span{flex:0 0 1.5rem;color:var(--muted);font:11px/1.6 var(--mono)}
+/* Explicit action groups replace inline styling lost in the old preview build. */
+main .action-group{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem;margin-block-start:1.5rem}
+main .action-group>.btn,main .action-group>.button{margin:0;max-width:100%;min-height:3rem;white-space:normal;text-align:center}
+main .action-group+*{margin-block-start:1.75rem}
+/* One compact booking decision, then help, then separate social proof. */
+.editorial-body .booking-panel{padding:clamp(1.5rem,4vw,2.75rem);margin-block:2.5rem;border-radius:.5rem;background:var(--dark);color:#fff}
+.editorial-body .booking-panel h2,.editorial-body .booking-panel h3{font-size:clamp(1.75rem,3vw,2.375rem);line-height:1.22;letter-spacing:-.025em;-webkit-hyphens:manual;hyphens:manual;overflow-wrap:normal;max-width:30ch;margin:0 0 1.25rem;color:#fff}
+.editorial-body .booking-panel>p{max-width:62ch;line-height:1.8;color:#d6e2e9;margin:0 0 1.5rem}
+.editorial-body .booking-panel .action-group{margin-block:1.75rem 0;gap:.75rem}
+.editorial-body .booking-panel .action-group>.btn{margin:0;background:#fff;color:var(--dark);min-height:3.125rem}
+.editorial-body .booking-panel .action-group>.btn-ghost{background:transparent;color:#fff;border:1px solid #8ca4b6}
+.editorial-body .booking-panel .cta-trust{display:flex;flex-direction:column;gap:1.5rem;margin-block-start:1.75rem}
+.cta-trust{display:flex;flex-direction:column;gap:1.5rem;margin-block-start:1.75rem}
+.cta-help{display:grid;gap:1rem;max-width:62ch}
+.editorial-body .cta-help>p,.cta-help>p{font-size:.875rem;line-height:1.8;letter-spacing:0;margin:0}
+.cta-help a{text-decoration:underline;text-underline-offset:.2em}
+.cta-proof{display:flex;flex-direction:column;align-items:flex-start;gap:.625rem;padding-block-start:1.25rem;border-top:1px solid var(--line);max-width:62ch}
+.cta-proof .ct-s{font-size:.875rem;line-height:1.4;letter-spacing:.12em;white-space:nowrap}
+.editorial-body .cta-proof .ct-q,.cta-proof .ct-q{display:block;font:400 .875rem/1.75 var(--sans);letter-spacing:0;margin:0;color:var(--muted)}
+.editorial-body .booking-panel .cta-help>p,.editorial-body .booking-panel .cta-proof .ct-q{color:#d6e2e9}
+.editorial-body .booking-panel .cta-proof{border-color:#4d6576}
+.editorial-body .booking-panel .cta-help a{color:#fff}
+/* Contact: headings, descriptions, and links belong to distinct rows. */
+.contact-page .page-top{padding-block:clamp(2rem,4vw,3rem) 3rem}
+.contact-page .page-top h1{line-height:1.1;letter-spacing:-.04em;text-wrap:balance}
+.contact-page .page-lead{margin-block-start:1.5rem;max-width:64ch}
+.contact-page .contact-no-call{padding:1.5rem;margin-block:2rem;font-size:.9375rem;line-height:1.8}
+.contact-page .contact-no-call strong{display:block;line-height:1.5;margin-block-end:.875rem}
+.contact-page .contact-no-call p{font-size:.9375rem;margin:0}
+.contact-page .contact-no-call p+p{margin-block-start:1rem}
+.contact-page .contact-actions{gap:.75rem;max-width:55rem;margin-block:0 2rem}
+.contact-page .contact-actions .button{min-height:3.125rem;white-space:normal;font-size:.875rem}
+.contact-page .facade-photo{margin-block-start:2rem}
+.contact-page .facade-photo figcaption{font:400 .75rem/1.7 var(--sans);padding-block-start:.875rem}
+.contact-page .contact-info{padding-block:2.5rem var(--space-section)}
+.contact-page .contact-address{max-width:36rem}
+.contact-page .contact-address h2{font-size:clamp(2rem,4.2vw,3.75rem);line-height:1.15;letter-spacing:-.035em;margin:1rem 0 1.25rem;max-width:16ch}
+.contact-page .contact-address p{margin:0;line-height:1.8}
+.contact-page .contact-address .text-link{margin-block-start:1.25rem}
+.contact-page .contact-tasks{border-top:1px solid var(--line);margin:0}
+.contact-page .contact-task{padding-block:1.75rem;border-bottom:1px solid var(--line)}
+.contact-page .contact-task .mono{display:block;line-height:1.6;color:var(--muted);margin-block-end:.875rem}
+.contact-page .contact-task h3{font-size:clamp(1.375rem,2.2vw,1.75rem);font-weight:500;line-height:1.3;letter-spacing:-.015em;margin:0 0 1rem}
+.contact-page .contact-task p{font-size:1rem;line-height:1.8;margin:0}
+.contact-page .contact-task .text-link{margin-block-start:1.125rem;font-size:.9375rem}
+.contact-page .faq{padding-block:0 var(--space-section)}
+.contact-page .faq h2{font-size:clamp(2rem,4vw,3.5rem);margin-block-start:1.125rem;line-height:1.2}
+.faq-list details summary,.editorial-body details summary{line-height:1.6;letter-spacing:0;min-height:4rem;padding-block:1.25rem}
+.faq-list details>p{padding-block:0 1.25rem;line-height:1.8}
+.faq-list details>p+p{margin-block-start:0}
+/* The general contact cards do not lose spacing when inline styles are removed. */
+main .service-list>.service>div{padding-block:1.75rem}
+main .service-list>.service>div>.mono{display:block;margin-block-end:.875rem}
+main .service-list>.service>div>h3{margin-block:0 1rem}
+main .service-list>.service>div>p{margin:0}
+main .service-list>.service>div>.text-link{margin-block-start:1.125rem}
+.finder-intro,.method-title-row,.services-layout,.continuity,.faq,.clinic-main{min-width:0}
+.services-heading h2,.continuity h2{line-height:1.14}
+.services-heading>p,.continuity>div>p{margin-block-start:1.5rem}
+.continuity>div>.text-link{margin-block-start:1.25rem}
+.clinic-title>p{margin-block-start:1.5rem}
+.clinic-title>.text-link{margin-block-start:1.125rem}
+.cluster-card h2{line-height:1.23;letter-spacing:-.025em}
+.cluster-card p,.article-main p{line-height:1.8}
+.article-main p+p{margin-block-start:1.25rem}
+.article-main h2{margin-block-end:1.25rem}
+.article-main h3{margin-block:2rem 1rem}
+.article-main section{padding-block-start:2.5rem;margin-block-start:2.5rem}
+.knowledge-result h2{line-height:1.25;letter-spacing:-.025em}
+.knowledge-result p{line-height:1.8}
+.menu-primary>a{letter-spacing:-.025em;line-height:1.35}
+.site-menu-body{padding-bottom:max(2.5rem,env(safe-area-inset-bottom))}
+/* Short, reversible drawer motion; honor the system motion preference. */
+#guide-dialog[open]{animation:menu-enter 240ms var(--motion) both}
+#guide-dialog::backdrop{animation:veil-enter 200ms ease both}
+.guide-choice{padding:1rem;gap:1rem;margin-block-start:.75rem;min-height:3.5rem}
+.guide-choice b{font-size:1rem;line-height:1.5}
+.guide-choice small{line-height:1.7;margin-block-start:.375rem}
+.drawer-content h2{line-height:1.15;letter-spacing:-.03em;margin:1.25rem 0}
+.drawer-content>p{line-height:1.8;margin-block-end:1.5rem}
+@media(max-width:960px){
+ .contact-page .services-layout{display:block}
+ .contact-page .contact-tasks{margin-block-start:2.5rem}
+}
+@media(max-width:700px){
+ main .action-group{gap:.75rem}
+ .editorial-body .booking-panel{padding:1.5rem;margin-block:2rem}
+ .editorial-body .booking-panel h2,.editorial-body .booking-panel h3{font-size:1.875rem;line-height:1.25;letter-spacing:-.02em}
+ .editorial-body .booking-panel .action-group{display:grid;grid-template-columns:minmax(0,1fr);gap:.75rem}
+ .editorial-body .booking-panel .action-group>.btn{width:100%;padding:.875rem 1rem;justify-content:center;line-height:1.5}
+ .contact-page .contact-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+ .contact-page .contact-actions>a:nth-child(-n+2){grid-column:1/-1}
+ .contact-page .contact-actions .button{width:100%;justify-content:center;gap:.75rem;padding:.875rem .75rem}
+ .contact-page .contact-actions .button-dark{justify-content:space-between;padding-inline:1.25rem}
+ .contact-page .page-top{padding-bottom:2rem}
+ .contact-page .contact-no-call{padding:1.25rem;margin-block:1.75rem}
+ .contact-page .contact-info{padding-block:1.5rem 3.5rem}
+ .contact-page .contact-address h2{font-size:2.125rem}
+ .contact-page .contact-task h3{font-size:1.5rem}
+ .contact-page .contact-task{padding-block:1.75rem}
+ .contact-page .faq-list{margin-block-start:1.75rem}
+ .editorial-body h2,.article-main h2{font-size:1.75rem;line-height:1.25}
+ .editorial-body h3,.article-main h3{font-size:1.375rem;line-height:1.35}
+ .editorial-body .original-main>section{padding-block:2.25rem}
+ .editorial-body .original-main>section:first-child{padding-block-start:0}
+ .editorial-aside nav>a{line-height:1.65}
+ .section-space{padding-block:3.5rem}
+ .faq-list summary::after{flex-shrink:0}
+ .menu-primary>a{font-size:1.75rem;padding-block:1rem}
+}
+@media(max-width:360px){
+ .contact-page .contact-actions{grid-template-columns:minmax(0,1fr)}
+ .contact-page .contact-actions>a{grid-column:1!important}
+ .editorial-body .booking-panel{padding:1.25rem}
+ .editorial-body .booking-panel h2{font-size:1.6875rem}
+ .site-header .header-inner{gap:8px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}

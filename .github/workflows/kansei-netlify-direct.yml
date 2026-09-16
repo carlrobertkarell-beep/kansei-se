@@ -1,0 +1,48 @@
+name: Kansei direct Netlify staging deploy
+on:
+  push:
+    branches:
+      - kansei/site-test-2026-09-15
+    paths:
+      - '.github/kansei-preview/**'
+      - '.github/workflows/kansei-netlify-direct.yml'
+permissions:
+  contents: read
+concurrency:
+  group: kansei-netlify-direct-staging
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      NETLIFY_SITE_ID: 69bd6717-58cb-4707-8438-a05492ae1fd2
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Require existing Netlify deploy credential
+        shell: bash
+        run: |
+          if [ -z "$NETLIFY_AUTH_TOKEN" ]; then
+            echo 'NETLIFY_AUTH_TOKEN is not configured in this repository; no deployment was attempted.'
+            exit 42
+          fi
+      - name: Build the exact protected preview
+        run: |
+          python3 -m pip install --disable-pip-version-check beautifulsoup4==4.13.4 pillow==11.3.0 playwright==1.57.0
+          python3 -m playwright install --with-deps chromium webkit
+          python3 .github/kansei-preview/build.py . preview/public
+          python3 .github/kansei-preview/refine_spacing.py preview/public
+          test -f preview/public/__clinic-build.json
+          test ! -d preview/public/reda
+          test ! -d preview/public/reda-2
+          test ! -d preview/public/supabase
+      - name: Verify generated output before upload
+        run: |
+          python3 .github/kansei-preview/browser_check.py preview/public preview-results
+          python3 .github/kansei-preview/ux_check.py preview/public preview-results/readability
+      - name: Deploy to the existing protected test project
+        run: |
+          npx -y netlify-cli@23.11.0 deploy --dir=preview/public --prod --no-build --site="$NETLIFY_SITE_ID" --auth="$NETLIFY_AUTH_TOKEN" --message="Kansei protected staging ${GITHUB_SHA}"

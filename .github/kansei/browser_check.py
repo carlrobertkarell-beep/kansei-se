@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 
-PATHS = ("/", "/naprapati/", "/ultraljud/", "/kontakt/", "/priser/", "/om-oss/")
+PATHS = ("/", "/naprapati/", "/ultraljud/", "/kontakt/", "/priser/", "/om-oss/", "/reda/")
 SIZES = (("mobile", 390, 844), ("desktop", 1440, 1000))
 
 
@@ -50,7 +50,7 @@ def check(base, output):
                         row["errors"].append("Horizontal overflow")
                     bookings = page.locator('a[href*="bokadirekt.se/"]')
                     row["booking_links"] = bookings.count()
-                    if not bookings.count():
+                    if path != "/reda/" and not bookings.count():
                         row["errors"].append("No booking link found")
                     for link in bookings.all():
                         target = urlsplit(link.get_attribute("href") or "")
@@ -59,15 +59,34 @@ def check(base, output):
                     row["broken_visible_images"] = page.locator("img").evaluate_all("els=>els.filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0&&r.top<innerHeight&&r.bottom>0&&e.complete&&e.naturalWidth===0}).map(e=>new URL(e.src).pathname)")
                     if row["broken_visible_images"]:
                         row["errors"].append("Broken visible image")
+
+                    if path == "/reda/":
+                        if not page.locator(".reda-portal-top").is_visible():
+                            row["errors"].append("Reda portal shell missing")
+                        if page.locator('body > nav[aria-label="Huvudmeny"]').is_visible():
+                            row["errors"].append("Legacy Kansei navigation still visible")
+                        if not page.locator("#kodform").is_visible():
+                            row["errors"].append("Reda code form missing")
+                        if not page.locator('a[href="/reda-rehab/"]').count():
+                            row["errors"].append("Reda product link missing")
+                        if not page.locator('.reda-portal-links a[href="/"]').count():
+                            row["errors"].append("Return-to-Kansei link missing")
+                    else:
+                        # Public clinic pages must not point to an obsolete absolute Kansei origin.
+                        bad_internal = page.locator('a[href^="https://www.kansei.se/"],a[href^="https://kansei.se/"]').count()
+                        if bad_internal:
+                            row["errors"].append("Absolute internal Kansei link found")
+
                     slug = path.strip("/").replace("/", "-") or "home"
                     page.screenshot(path=str(output / f"{slug}-{label}.png"), full_page=False, animations="disabled")
-                    if label == "mobile" and page.locator("button.burger").count() == 1:
+                    if label == "mobile" and path != "/reda/" and page.locator("button.burger").count() == 1:
                         menu = page.locator("button.burger")
-                        menu.click(timeout=5000)
-                        page.wait_for_timeout(100)
-                        if menu.get_attribute("aria-expanded") != "true":
-                            row["errors"].append("Mobile menu does not expose expanded state")
-                        page.screenshot(path=str(output / f"{slug}-mobile-menu.png"), animations="disabled")
+                        if menu.is_visible():
+                            menu.click(timeout=5000)
+                            page.wait_for_timeout(100)
+                            if menu.get_attribute("aria-expanded") != "true":
+                                row["errors"].append("Mobile menu does not expose expanded state")
+                            page.screenshot(path=str(output / f"{slug}-mobile-menu.png"), animations="disabled")
                     if js_errors:
                         row["errors"].append("JavaScript runtime error")
                         row["js_errors"] = js_errors[:5]

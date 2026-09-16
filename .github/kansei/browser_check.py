@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 
-PATHS = ("/", "/naprapati/", "/ultraljud/", "/kontakt/", "/priser/", "/om-oss/", "/reda/")
+PATHS = ("/", "/naprapati/", "/ultraljud/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 SIZES = (("mobile", 390, 844), ("desktop", 1440, 1000))
 
 
@@ -22,7 +22,6 @@ def check(base, output):
         browser = pw.chromium.launch()
         for label, width, height in SIZES:
             context = browser.new_context(viewport={"width": width, "height": height}, reduced_motion="reduce", locale="sv-SE")
-            # Third-party analytics and booking sites must receive no test traffic.
             def route(req):
                 host = urlsplit(req.request.url).hostname or ""
                 if host == parsed.hostname or host in ("fonts.googleapis.com", "fonts.gstatic.com"):
@@ -51,7 +50,7 @@ def check(base, output):
                         row["errors"].append("Horizontal overflow")
                     bookings = page.locator('a[href*="bokadirekt.se/"]')
                     row["booking_links"] = bookings.count()
-                    if path != "/reda/" and not bookings.count():
+                    if path not in ("/reda/", "/reda-rehab/") and not bookings.count():
                         row["errors"].append("No booking link found")
                     for link in bookings.all():
                         target = urlsplit(link.get_attribute("href") or "")
@@ -63,24 +62,41 @@ def check(base, output):
 
                     if not baseline_only and path == "/reda/":
                         if not page.locator(".reda-portal-top").is_visible():
-                            row["errors"].append("Reda portal shell missing")
+                            row["errors"].append("Reda portal header missing")
                         if page.locator('body > nav[aria-label="Huvudmeny"]').is_visible():
                             row["errors"].append("Legacy Kansei navigation still visible")
                         if not page.locator("#kodform").is_visible():
                             row["errors"].append("Reda code form missing")
+                        if not page.locator(".reda-portal-title").is_visible():
+                            row["errors"].append("Current Reda portal title missing")
+                        if page.locator(".reda-lockup").count():
+                            row["errors"].append("Legacy mixed Reda hero branding still present")
                         if not page.locator('a[href="/reda-rehab/"]').count():
                             row["errors"].append("Reda product link missing")
                         if not page.locator('.reda-portal-links a[href="/"]').count():
                             row["errors"].append("Return-to-Kansei link missing")
-                    elif not baseline_only and path != "/reda/":
-                        # Public clinic pages must not point to an obsolete absolute Kansei origin.
+                    elif not baseline_only and path == "/reda-rehab/":
+                        if not page.locator('header .identity img[src*="/bilder/reda/nav.svg"]').is_visible():
+                            row["errors"].append("Current Reda product brand missing")
+                        for portal in page.locator('a[href="/reda/"]').all():
+                            if portal.get_attribute("target") == "_blank":
+                                row["errors"].append("Reda product page opens patient portal in a new tab")
+                    elif not baseline_only:
                         bad_internal = page.locator('a[href^="https://www.kansei.se/"],a[href^="https://kansei.se/"]').count()
                         if bad_internal:
                             row["errors"].append("Absolute internal Kansei link found")
+                        rehab = page.get_by_role("link", name="Min rehabplan", exact=True)
+                        if rehab.count():
+                            if rehab.first.get_attribute("href") != "/reda/":
+                                row["errors"].append("Min rehabplan has wrong destination")
+                            if rehab.first.get_attribute("target") == "_blank":
+                                row["errors"].append("Min rehabplan opens a new tab")
+                        if page.locator('a.menu-reda[href="/reda-rehab/"]').count() == 0:
+                            row["errors"].append("Reda product logo has wrong destination")
 
                     slug = path.strip("/").replace("/", "-") or "home"
                     page.screenshot(path=str(output / f"{slug}-{label}.png"), full_page=False, animations="disabled")
-                    if label == "mobile" and path != "/reda/" and page.locator("button.burger").count() == 1:
+                    if label == "mobile" and path not in ("/reda/", "/reda-rehab/") and page.locator("button.burger").count() == 1:
                         menu = page.locator("button.burger")
                         if menu.is_visible():
                             menu.click(timeout=5000)

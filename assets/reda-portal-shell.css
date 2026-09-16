@@ -1,0 +1,35 @@
+/* Reda patient portal shell. Visual only: does not change portal state, codes, plans or data flows. */
+body.reda-portal-shell{padding-top:76px;background:#f7f9fa}
+body.reda-portal-shell>nav[aria-label="Huvudmeny"],body.reda-portal-shell>footer{display:none!important}
+.reda-portal-top{position:fixed;inset:0 0 auto;z-index:120;background:rgba(247,249,250,.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(16,24,32,.13)}
+.reda-portal-top-inner{max-width:1280px;height:76px;margin:auto;padding:0 clamp(20px,4vw,48px);display:flex;align-items:center;gap:18px}
+.reda-portal-brand{display:flex;align-items:center;gap:12px;min-width:0;text-decoration:none}
+.reda-portal-brand img{width:112px;height:auto;display:block}
+.reda-portal-badge{font:600 11px/1.2 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#5e6b73;border-left:1px solid rgba(16,24,32,.18);padding-left:12px;white-space:nowrap}
+.reda-portal-links{margin-left:auto;display:flex;align-items:center;gap:8px}
+.reda-portal-links a{min-height:44px;display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;text-decoration:none;font:500 13px/1.3 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#101820}
+.reda-portal-links a:hover{background:#edf2f4;color:#0d7b6f}
+.reda-portal-links .back-kansei{background:#132738;color:#fff;padding-inline:18px}
+.reda-portal-links .back-kansei:hover{background:#0d7b6f;color:#fff}
+body.reda-portal-shell .crumb{padding-top:36px}
+body.reda-portal-shell header.page{padding-top:0}
+body.reda-portal-shell .wrap{max-width:880px}
+.reda-portal-footer{margin-top:54px;border-top:1px solid rgba(16,24,32,.13);background:#132738;color:#dce6eb}
+.reda-portal-footer-inner{max-width:880px;margin:auto;padding:32px 24px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start}
+.reda-portal-footer p{margin:0;font:400 13px/1.7 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#dce6eb}
+.reda-portal-footer a{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.reda-portal-footer-links{display:flex;gap:18px;flex-wrap:wrap;justify-content:flex-end}
+@media(max-width:700px){
+ body.reda-portal-shell{padding-top:70px}
+ .reda-portal-top-inner{height:70px;padding-inline:18px;gap:12px}
+ .reda-portal-brand img{width:94px}
+ .reda-portal-badge{display:none}
+ .reda-portal-links{gap:4px}
+ .reda-portal-links a{padding:9px 10px;font-size:12px}
+ .reda-portal-links .back-kansei{padding-inline:12px}
+ body.reda-portal-shell .crumb{padding-top:26px}
+ .reda-portal-footer-inner{grid-template-columns:1fr;gap:16px;padding-inline:20px}
+ .reda-portal-footer-links{justify-content:flex-start}
+}
+@media(max-width:390px){.reda-portal-links a:first-child{display:none}.reda-portal-top-inner{padding-inline:14px}.reda-portal-brand img{width:88px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}

@@ -24,6 +24,46 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('a.nav-reda').forEach(function(a){ a.href='/reda-rehab/'; a.setAttribute('title','Reda · rehab och träning. Kommer snart.'); });
 });
 
+// Redas patientportal har egen funktionalitet och dataflöden. Här byter vi ENDAST det gamla Kansei-skalet
+// mot dagens Reda/Kansei-navigation så portalen inte känns som en återgång till den gamla webbplatsen.
+document.addEventListener('DOMContentLoaded', function(){
+  var p = location.pathname.replace(/index\.html$/, '');
+  if (p !== '/reda/' && p !== '/reda') return;
+  if (document.body.classList.contains('reda-portal-shell')) return;
+
+  document.body.classList.add('reda-portal-shell');
+  var css = document.createElement('link');
+  css.rel = 'stylesheet'; css.href = '/assets/reda-portal-shell.css';
+  document.head.appendChild(css);
+
+  var oldNav = document.querySelector('body > nav[aria-label="Huvudmeny"]');
+  if (oldNav) oldNav.hidden = true;
+
+  var top = document.createElement('header');
+  top.className = 'reda-portal-top';
+  top.innerHTML = '<div class="reda-portal-top-inner">' +
+    '<a class="reda-portal-brand" href="/reda-rehab/" aria-label="Reda, produktsida">' +
+      '<img src="/bilder/reda/nav.svg?v=2" width="142" height="54" alt="Reda">' +
+      '<span class="reda-portal-badge">Patientportal</span>' +
+    '</a>' +
+    '<div class="reda-portal-links" role="navigation" aria-label="Patientportalens länkar">' +
+      '<a href="/reda-rehab/support/">Hjälp & support</a>' +
+      '<a class="back-kansei" href="/">Till Kansei</a>' +
+    '</div>' +
+  '</div>';
+  document.body.insertBefore(top, document.body.firstChild);
+
+  var oldFooter = document.querySelector('body > footer');
+  if (oldFooter) oldFooter.hidden = true;
+  var foot = document.createElement('footer');
+  foot.className = 'reda-portal-footer';
+  foot.innerHTML = '<div class="reda-portal-footer-inner">' +
+    '<p><strong>Reda patientportal</strong><br>Kansei Rehabcenter · Upplandsgatan 26 · Odenplan</p>' +
+    '<div class="reda-portal-footer-links"><a href="/reda-rehab/">Om Reda</a><a href="/reda-rehab/support/">Support</a><a href="mailto:info@kansei.se">info@kansei.se</a></div>' +
+  '</div>';
+  document.body.appendChild(foot);
+});
+
 // Redas publika kort ligger i sidornas HTML så samma innehåll visas utan JavaScript.
 
 // Snabb väg till bokning högst upp på mobil: pris och tjänstens egen bokningsknapp direkt under rubriken.

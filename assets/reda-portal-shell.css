@@ -62,7 +62,9 @@ body.reda-portal-shell #mpIkon{border-radius:0;background:#faf9f4;box-shadow:non
 body.reda-portal-shell #mpNamn{font-family:'Fraunces',Georgia,serif;font-style:normal;color:var(--ink);font-size:29px;letter-spacing:-.025em}
 body.reda-portal-shell .mp-chip{border-radius:0;background:#faf9f4;border-color:var(--line-2);font-family:'IBM Plex Mono',monospace}
 body.reda-portal-shell .mp-chip.niv{background:var(--teal);border-color:var(--teal);color:#fff}
-body.reda-portal-shell body.kodad .aktiv details,body.reda-portal-shell #pfaqsektion details{border-radius:0;background:#faf9f4}
+body.reda-portal-shell.kodad .aktiv details,body.reda-portal-shell #pfaqsektion details{border-radius:0;background:#faf9f4}
+body.reda-portal-shell.kodad .aktiv details[open]{border-color:var(--teal)}
+body.reda-portal-shell.kodad .progfaq{border-radius:0;background:var(--mist)}
 body.reda-portal-shell .reda-portal-footer{margin-top:72px;border-top:1px solid var(--line);background:var(--ink);color:#e8eeee}
 .reda-portal-footer-inner{width:min(1120px,calc(100% - 96px));margin:auto;padding:34px 0;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:start}
 .reda-portal-footer p{margin:0;font:400 13px/1.75 'DM Sans',system-ui,sans-serif;color:#d7e0e1}

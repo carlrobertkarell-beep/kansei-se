@@ -1,6 +1,6 @@
 /* Reda patient portal shell. Visual only: does not change portal state, codes, plans or data flows. */
 body.reda-portal-shell{padding-top:76px;background:#f7f9fa}
-body.reda-portal-shell>nav[aria-label="Huvudmeny"],body.reda-portal-shell>footer{display:none!important}
+body.reda-portal-shell>nav[aria-label="Huvudmeny"],body.reda-portal-shell>footer:not(.reda-portal-footer){display:none!important}
 .reda-portal-top{position:fixed;inset:0 0 auto;z-index:120;background:rgba(247,249,250,.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(16,24,32,.13)}
 .reda-portal-top-inner{max-width:1280px;height:76px;margin:auto;padding:0 clamp(20px,4vw,48px);display:flex;align-items:center;gap:18px}
 .reda-portal-brand{display:flex;align-items:center;gap:12px;min-width:0;text-decoration:none}

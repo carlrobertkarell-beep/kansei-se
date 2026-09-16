@@ -1,0 +1,127 @@
+name: Prepare Kansei production candidate
+on:
+  push:
+    branches: [kansei/site-test-2026-09-15]
+    paths: ['.github/workflows/prepare-kansei-production.yml']
+permissions:
+  contents: write
+jobs:
+  build-production-candidate:
+    if: github.repository == 'carlrobertkarell-beep/kansei-se'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout staging source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: kansei/site-test-2026-09-15
+          path: source
+          persist-credentials: false
+      - name: Install build dependencies
+        run: python3 -m pip install --disable-pip-version-check beautifulsoup4==4.13.4 pillow==11.3.0 playwright==1.57.0
+      - name: Build the exact tested clinic candidate
+        run: |
+          python3 source/.github/kansei-preview/build.py source generated
+          python3 source/.github/kansei-preview/refine_spacing.py generated
+          test -f generated/__clinic-build.json
+      - name: Checkout current main as production base
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+          path: production
+          persist-credentials: true
+          fetch-depth: 0
+      - name: Overlay only production clinic files and restore indexing
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from bs4 import BeautifulSoup as BS
+          from urllib.parse import urlparse
+          import json,re,shutil,xml.etree.ElementTree as ET
+          generated=Path('generated'); prod=Path('production')
+          manifest=json.loads((generated/'__clinic-build.json').read_text())
+          changed=[]
+          for row in manifest['pages']:
+              src=generated/row['file']; dst=prod/row['file']; dst.parent.mkdir(parents=True,exist_ok=True)
+              s=BS(src.read_text(),'html.parser')
+              robots=s.select_one('meta[name="robots"]')
+              if robots: robots['content']='noindex,follow' if row['path']=='/404.html' else 'index,follow'
+              dst.write_text(str(s)); changed.append(row['file'])
+          # Copy only shared assets actually referenced by generated HTML.
+          refs=set()
+          for rel in changed:
+              text=(prod/rel).read_text()
+              refs.update(re.findall(r'["\'](/assets/[A-Za-z0-9._-]+\.(?:css|js|webp|png))["\']',text))
+          for ref in sorted(refs):
+              src=generated/ref.lstrip('/'); dst=prod/ref.lstrip('/'); dst.parent.mkdir(parents=True,exist_ok=True)
+              if not src.is_file(): raise SystemExit(f'Missing generated asset: {ref}')
+              shutil.copyfile(src,dst)
+          # All image references used by clinic pages must already exist in main or the shared assets above.
+          for rel in changed:
+              s=BS((prod/rel).read_text(),'html.parser')
+              for img in s.select('img[src]'):
+                  u=urlparse(img['src'])
+                  if u.scheme or u.netloc: continue
+                  p=prod/u.path.lstrip('/')
+                  if not p.exists(): raise SystemExit(f'Missing production image {u.path} referenced by {rel}')
+          # Keep current production sitemap and add canonical routes introduced by the new site.
+          ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
+          ET.register_namespace('',ns['s'])
+          sitemap=prod/'sitemap.xml'; tree=ET.parse(sitemap); root=tree.getroot()
+          existing={n.find('s:loc',ns).text:n for n in root.findall('s:url',ns)}
+          for row in manifest['pages']:
+              if row['path']=='/404.html': continue
+              s=BS((prod/row['file']).read_text(),'html.parser'); c=s.select_one('link[rel="canonical"]')
+              if not c or not c.get('href','').startswith('https://www.kansei.se/'): continue
+              url=c['href']
+              node=existing.get(url)
+              if node is None:
+                  node=ET.SubElement(root,'{'+ns['s']+'}url'); ET.SubElement(node,'{'+ns['s']+'}loc').text=url; existing[url]=node
+              lm=node.find('s:lastmod',ns)
+              if lm is None: lm=ET.SubElement(node,'{'+ns['s']+'}lastmod')
+              lm.text='2026-09-16'
+          tree.write(sitemap,encoding='UTF-8',xml_declaration=True)
+          (prod/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://www.kansei.se/sitemap.xml\n# AI-crawlers välkomna. Faktablad: https://www.kansei.se/llms.txt\n')
+          # Production invariants.
+          for row in manifest['pages']:
+              s=BS((prod/row['file']).read_text(),'html.parser')
+              rob=s.select_one('meta[name="robots"]')
+              expected='noindex,follow' if row['path']=='/404.html' else 'index,follow'
+              if not rob or rob.get('content')!=expected: raise SystemExit(f'Robots mismatch {row["path"]}')
+              if row['path']!='/404.html' and not s.select_one('link[rel="canonical"]'): raise SystemExit(f'Missing canonical {row["path"]}')
+          for forbidden in ['reda','reda-2','reda2','supabase']:
+              # These are inherited from main and never overlaid by this build.
+              if any(Path(x).parts[0]==forbidden for x in changed): raise SystemExit(f'Forbidden production overlay: {forbidden}')
+          (prod/'PRODUCTION-CANDIDATE.md').write_text('Kansei production candidate generated from tested staging UI on 2026-09-16. Reda/Supabase inherited unchanged from main. Remove this note after production verification if desired.\n')
+          print(json.dumps({'pages':len(changed),'assets':len(refs),'sitemap_urls':len(existing)},ensure_ascii=False))
+          PY
+      - name: Static production sanity checks
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from bs4 import BeautifulSoup as BS
+          import re
+          root=Path('production')
+          checks=['index.html','naprapati/index.html','ultraljud/index.html','kontakt/index.html','kunskapsbank/index.html','kunskapsbank/axel/index.html','hjalp-mig-boka/index.html']
+          for rel in checks:
+              s=BS((root/rel).read_text(),'html.parser')
+              assert s.select_one('meta[name="robots"]')['content']=='index,follow',rel
+              assert s.select_one('link[rel="canonical"]'),rel
+              assert len(s.select('h1'))==1,rel
+              assert s.select_one('.site-header'),rel
+              assert s.select_one('.header-book'),rel
+          assert 'Disallow: /' not in (root/'robots.txt').read_text()
+          assert '<loc>https://www.kansei.se/kunskapsbank/axel/</loc>' in (root/'sitemap.xml').read_text()
+          assert '<loc>https://www.kansei.se/hjalp-mig-boka/</loc>' in (root/'sitemap.xml').read_text()
+          print('Production static checks PASS')
+          PY
+      - name: Commit candidate branch rooted in main
+        working-directory: production
+        run: |
+          git config user.name 'Kansei production builder'
+          git config user.email 'actions@users.noreply.github.com'
+          git checkout -B kansei/production-candidate-2026-09-16
+          git add index.html 404.html akupunktur blogg fragor-och-svar hjalp-mig-boka hyaluronsyra injektioner kontakt kortison kunskapsbank naprapati om-oss patientinformation priser prp rehabilitering team tjanster ultraljud assets robots.txt sitemap.xml PRODUCTION-CANDIDATE.md
+          if git diff --cached --quiet; then echo 'No production changes'; exit 0; fi
+          git commit -m 'Prepare Kansei production site from reviewed clinic redesign'
+          git push origin HEAD:kansei/production-candidate-2026-09-16

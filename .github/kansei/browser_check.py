@@ -94,6 +94,59 @@ def check(base, output):
                         if page.locator('a.menu-reda[href="/reda-rehab/"]').count() == 0:
                             row["errors"].append("Reda product logo has wrong destination")
 
+                    if not baseline_only and path == "/" and label == "desktop":
+                        # Shoulder routing is temporary while the dedicated shoulder clinician is unavailable.
+                        opener = page.locator('a[data-area="shoulder"]').first
+                        opener.click()
+                        page.locator('#guide-dialog[open]').wait_for(timeout=5000)
+                        guide = page.locator('#guide-dialog')
+
+                        def shoulder_route(pattern, expected_title, href_fragment):
+                            if guide.locator('[data-guide-screen="areas"]').count():
+                                pass
+                            if guide.locator('button[data-guide-area="shoulder"]').count():
+                                guide.locator('button[data-guide-area="shoulder"]').click()
+                            guide.locator(f'button[data-pattern="{pattern}"]').click()
+                            guide.locator('button[data-safety="continue"]').click()
+                            if guide.locator('.result-main h3').inner_text().strip() != expected_title:
+                                row["errors"].append(f"Shoulder {pattern} has wrong recommended visit")
+                            href = guide.locator('.guide-booking a[href*="bokadirekt.se/"]').get_attribute("href") or ""
+                            if href_fragment not in href:
+                                row["errors"].append(f"Shoulder {pattern} has wrong booking link")
+                            if "axelbedomning" in href.lower() or "magnus-wennerlund" in href.lower():
+                                row["errors"].append(f"Shoulder {pattern} still routes to shoulder assessment")
+                            guide.locator('button[data-reset]').click()
+
+                        shoulder_route("lifting", "Muskuloskeletalt ultraljud", "ultraljud-rorelseapparaten")
+                        shoulder_route("night", "Muskuloskeletalt ultraljud", "ultraljud-rorelseapparaten")
+                        shoulder_route("stiff", "Naprapatisk bedömning", "naprapati-ny-resp-aterbesok")
+                        shoulder_route("rehab", "Muskuloskeletalt ultraljud", "ultraljud-rorelseapparaten")
+
+                        guide.locator('button[data-guide-area="shoulder"]').click()
+                        guide.locator('button[data-pattern="unclear"]').click()
+                        guide.locator('button[data-safety="continue"]').click()
+                        if guide.locator('.result-main h3').inner_text().strip() != "Naprapatisk bedömning":
+                            row["errors"].append("Unclear shoulder symptoms do not route to naprapathy")
+                        unclear_href = guide.locator('.guide-booking a[href*="bokadirekt.se/"]').get_attribute("href") or ""
+                        if "naprapati-ny-resp-aterbesok" not in unclear_href:
+                            row["errors"].append("Unclear shoulder symptoms have wrong booking link")
+                        guide.locator('button[data-reset]').click()
+
+                        guide.locator('button[data-guide-area="shoulder"]').click()
+                        guide.locator('button[data-pattern="injury"]').click()
+                        if guide.get_by_role("heading", name="Börja inte med en vanlig bokning.").count() != 1:
+                            row["errors"].append("Shoulder injury no longer routes to care guidance")
+                        if guide.locator('.guide-booking a[href*="bokadirekt.se/"]').count():
+                            row["errors"].append("Shoulder injury exposes a commercial booking CTA")
+                        guide.locator('button[data-reset]').click()
+
+                        guide.locator('button[data-guide-services]').click()
+                        if guide.get_by_text("Axelbedömning", exact=True).count():
+                            row["errors"].append("Shoulder assessment still appears in direct service picker")
+                        if guide.locator('a[href="/skuldra/"]').count():
+                            row["errors"].append("Direct service picker still links to shoulder assessment")
+                        page.keyboard.press("Escape")
+
                     slug = path.strip("/").replace("/", "-") or "home"
                     page.screenshot(path=str(output / f"{slug}-{label}.png"), full_page=False, animations="disabled")
                     if label == "mobile" and path not in ("/reda/", "/reda-rehab/") and page.locator("button.burger").count() == 1:
@@ -108,7 +161,7 @@ def check(base, output):
                         row["errors"].append("JavaScript runtime error")
                         row["js_errors"] = js_errors[:5]
                 except Exception as exc:
-                    row["errors"].append(type(exc).__name__)
+                    row["errors"].append(type(exc).__name__ + ": " + str(exc)[:140])
                 finally:
                     page.close()
                 records.append(row)

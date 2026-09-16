@@ -15,6 +15,7 @@ def check(base, output):
     parsed = urlsplit(base)
     if base not in ("https://www.kansei.se", "http://127.0.0.1:4173", "http://127.0.0.1:4174"):
         raise ValueError("Unapproved test origin")
+    baseline_only = base == "http://127.0.0.1:4174"
     output.mkdir(parents=True, exist_ok=True)
     records, errors = [], []
     with sync_playwright() as pw:
@@ -60,7 +61,7 @@ def check(base, output):
                     if row["broken_visible_images"]:
                         row["errors"].append("Broken visible image")
 
-                    if path == "/reda/":
+                    if not baseline_only and path == "/reda/":
                         if not page.locator(".reda-portal-top").is_visible():
                             row["errors"].append("Reda portal shell missing")
                         if page.locator('body > nav[aria-label="Huvudmeny"]').is_visible():
@@ -71,7 +72,7 @@ def check(base, output):
                             row["errors"].append("Reda product link missing")
                         if not page.locator('.reda-portal-links a[href="/"]').count():
                             row["errors"].append("Return-to-Kansei link missing")
-                    else:
+                    elif not baseline_only and path != "/reda/":
                         # Public clinic pages must not point to an obsolete absolute Kansei origin.
                         bad_internal = page.locator('a[href^="https://www.kansei.se/"],a[href^="https://kansei.se/"]').count()
                         if bad_internal:

@@ -1,0 +1,1 @@
+Reda patient portal shell is rendered directly in reda/index.html so previously cached config.js cannot restore the legacy Kansei navigation. This temporary note is removed before merge.

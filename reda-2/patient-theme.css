@@ -58,9 +58,9 @@ html[data-reda-theme=dark] .reda-patient .account-menu button:hover{background:#
 html[data-reda-theme=dark] .reda-patient .settings-content h3,html[data-reda-theme=dark] .reda-patient .settings-content h4{color:#edf2ea}
 /* A readable option that wraps rather than clipping important controls. */
 html[data-reda-text=large] .reda-patient :where(.patient-app p,.patient-app .sub,.patient-app label,.patient-app legend,.patient-app li,.journey-preview p,.settings-content p,.settings-content dd,.settings-content summary){font-size:18px!important;line-height:1.6!important}
-html[data-reda-text=large] .reda-patient :where(.patient-app button,.journey-preview button,.patient-settings button,.account-menu button){font-size:18px!important;line-height:1.4!important}
+html[data-reda-text=large] .reda-patient :where(.patient-app button,.journey-preview button,.patient-settings button,.patient-settings .settings-action,.account-menu button){font-size:18px!important;line-height:1.4!important}
 html[data-reda-text=large] .reda-patient .journey-exercise-copy small{font-size:16px!important}
-html[data-reda-text=large] .reda-patient :where(.journey-exercise-copy b,.settings-content h4){font-size:20px!important}
+html[data-reda-text=large] .reda-patient :where(.journey-exercise-copy b,.settings-content h3,.settings-content h4){font-size:20px!important}
 html[data-reda-text=large] .reda-patient .nav button{font-size:13px!important}
 html[data-reda-text=large] .reda-patient .theme-choices{grid-template-columns:1fr}.reda-patient .theme-choices button{overflow-wrap:anywhere}
 html[data-reda-text=large] .reda-patient .theme-choices button{display:flex;align-items:center;gap:15px}

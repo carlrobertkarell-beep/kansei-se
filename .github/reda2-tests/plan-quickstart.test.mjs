@@ -1,0 +1,7 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {quickStartRecommendation,quickStartSummary} from '../../reda-2/plan-quickstart-model.mjs';
+const profiles={home:{values:{stage:'build',capacity:'standard',equipment:'home',floorOK:true,band:false,guidance:'guided'}}};const blueprints=[{id:'knee-load',name:'Knä · belastning'},{id:'shoulder',name:'Axel'}];
+test('unique focus prepares a direction without creating a plan',()=>{const r=quickStartRecommendation({focus:'Knä',goal:'Gå i trappor'},blueprints,profiles);assert.equal(r.context.blueprintId,'knee-load');assert.equal(r.context.stage,'build');assert.match(r.detail,/Gå i trappor/);assert.equal('exercises' in r,false)});
+test('saved clinician context overrides generic defaults',()=>{const r=quickStartRecommendation({focus:'Axel',clinical_context:{stage:'protected',capacity:'supported',equipment:'home'}},blueprints,profiles);assert.equal(r.context.stage,'protected');assert.equal(r.context.capacity,'supported');assert.equal(r.context.blueprintId,'shoulder')});
+test('ambiguous or unknown focus does not guess a clinical direction',()=>{const r=quickStartRecommendation({focus:'Smärta',goal:'Vardag'},blueprints,profiles);assert.equal(r.context.blueprintId,'')});
+test('no patient basis produces no shortcut',()=>assert.equal(quickStartRecommendation({},blueprints,profiles),null));
+test('summary contains only known descriptive context',()=>assert.deepEqual(quickStartSummary(quickStartRecommendation({focus:'Axel'},blueprints,profiles)),['Axel','Uppbyggnad','Grundutförande','Hemma']));

@@ -1,4 +1,4 @@
-import {patientHistory} from './patient-history.mjs?v=1';
+import {patientHistory} from './patient-history.mjs?v=20260918-1';
 const labels={all:'Alla händelser',plans:'Planer',training:'Träning',feedback:'Återkoppling',contact:'Kontakt',finance:'Ekonomi',ei:'EI & beslut'};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function mountActivityLog(host,{api,patientId,clinician=false,patientName="",historyContext={}}){

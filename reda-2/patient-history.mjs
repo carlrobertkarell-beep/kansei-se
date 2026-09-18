@@ -1,3 +1,4 @@
+import {hasNoRecordedRounds} from './session-overview-model.mjs?v=20260918-1';
 // Read-only patient presentation. Never merge by date or guess which pass a reply belongs to.
 import {barriers} from './patient-loop.mjs?v=2';
 export function patientHistory(events,{sessions=[],reflections=[],responses=[]}={}){
@@ -24,7 +25,7 @@ export function patientHistory(events,{sessions=[],reflections=[],responses=[]}=
   if(answers){if(barriers[answers.barrier])parts.push(answers.barrier==='none'?'Inget särskilt gjorde passet svårt':barriers[answers.barrier]);if(answers.support==='yes')parts.push('Du har bett om hjälp')}
   const later=exact&&responses.some(r=>r.session_id===sid&&links.has('response:'+r.id));
   if(later)parts.push('Uppföljning efter passet besvarad');
-  result.push({...base,id:'session:'+sid,category:'training',title:completed?(end?.title||(exact?.status==='completed'?'Pass genomfört':'Pass delvis genomfört')):'Påbörjat pass',detail:parts.join(' · '),occurred_at:end?.occurred_at||exact?.completed_at||start?.occurred_at||base.occurred_at});
+  result.push({...base,id:'session:'+sid,category:'training',title:completed&&hasNoRecordedRounds(progress)?'Avslutat utan registrerade omgångar':completed?(end?.title||(exact?.status==='completed'?'Pass genomfört':'Pass delvis genomfört')):'Påbörjat pass',detail:parts.join(' · '),occurred_at:end?.occurred_at||exact?.completed_at||start?.occurred_at||base.occurred_at});
  }
  return result.sort((a,b)=>Date.parse(b.occurred_at)-Date.parse(a.occurred_at)||String(b.id).localeCompare(String(a.id)));
 }

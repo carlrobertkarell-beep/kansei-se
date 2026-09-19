@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {regressionDecision,regressionTarget} from '../../reda-2/regression-engine.mjs';
+const policy={regressionWindow:2,regressionSignals:2};
+test('two bounded load signals can regress one approved step',()=>{const d=regressionDecision({currentStep:2,policy,recent:[{nextDay:'worse'},{effort:'heavy'}]});assert.equal(d.action,'regress');assert.equal(d.toStep,1)});
+test('new symptoms or explicit help escalate instead of automatic regression',()=>{assert.equal(regressionDecision({currentStep:2,policy,recent:[{changedSymptoms:true},{effort:'heavy'}]}).action,'escalate');assert.equal(regressionDecision({currentStep:2,policy,recent:[{requestedHelp:true},{effort:'heavy'}]}).action,'escalate')});
+test('first approved step cannot regress outside corridor',()=>assert.equal(regressionDecision({currentStep:0,policy,recent:[{},{}]}).code,'regression_floor'));
+test('target must be an existing approved prescription',()=>{const f={steps:[{prescription:[{id:'a'}]},{prescription:[{id:'b'}]}]};assert.equal(regressionTarget(f,{action:'regress',toStep:0}).prescription[0].id,'a');assert.equal(regressionTarget(f,{action:'regress',toStep:4}),null)});

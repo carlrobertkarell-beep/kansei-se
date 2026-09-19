@@ -89,17 +89,20 @@ declare actor uuid:=private.reda_live_actor();org uuid:=private.reda_request_org
  if not private.reda_is_clinician_aal2() then raise exception using errcode='42501',message='Behandlarinloggning med MFA krävs.';end if;
  if p_search is null or length(p_search)>100 or p_filter is null or p_filter not in ('priority','waiting','active','all','archived','no_plan','ei','autonomous','evidence','held','shadow') or p_offset is null or p_offset<0 or p_offset>100000 then raise exception using errcode='22023',message='Kontrollera sökning och filter.';end if;
  with raw as materialized(select r.*,pf.status frame_status,pf.execution frame_execution from private.reda_dashboard_rows(actor,org)r left join lateral(select f.status,f.execution from public.reda_progression_frames f where f.patient_id=r.patient_id and f.status='approved' limit 1)pf on true),
- base as materialized(select r.*,
+ assessed as materialized(select r.*,
   (open_count>0 or new_reply or (followup_status='waiting' and followup_date<=today) or
-   (coalesce(followup_status,'')<>'waiting' and (pending_count>0 or pending_messages>0 or (patient_status='active' and (review_date<=today or missing_response or quiet or (decision_action in ('advance','complete','review') and not decision_applied and not decision_reviewed)))))) is true needs_review,
+   (coalesce(followup_status,'')<>'waiting' and (pending_count>0 or pending_messages>0 or (patient_status='active' and (review_date<=today or missing_response or quiet or (decision_action in ('advance','complete','review') and not decision_applied and not decision_reviewed)))))) is true needs_review
+  from raw r
+ ),
+ base as materialized(select r.*,
   case
-   when (open_count>0 or new_reply or (followup_status='waiting' and followup_date<=today) or (coalesce(followup_status,'')<>'waiting' and (pending_count>0 or pending_messages>0 or (patient_status='active' and (review_date<=today or missing_response or quiet or (decision_action in ('advance','complete','review') and not decision_applied and not decision_reviewed))))) then 'review'
+   when needs_review then 'review'
    when frame_status='approved' and frame_execution='automatic' and (decision_action='hold' or decision_code in ('load','recovery','partial','effort','difficult')) then 'held'
    when frame_status='approved' and frame_execution='automatic' then 'autonomous'
    when frame_status='approved' then 'shadow'
    when patient_status='active' and plan_id is not null then 'evidence'
    else 'unmanaged' end fleet_state
-  from raw r
+  from assessed r
  ),
  filtered as materialized(select * from base where strpos(lower(display_name),lower(trim(p_search)))>0 and case p_filter
   when 'priority' then needs_review when 'waiting' then followup_status='waiting' and not needs_review

@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {exceptionSummary,exceptionReason} from '../../reda-2/exception-first-model.mjs';
+test('exceptions group into operational reasons',()=>{const s=exceptionSummary([{codes:['changed_symptoms']},{new_reply:true},{decision_code:'regression_floor'}]);assert.deepEqual([s.symptoms,s.help,s.corridor],[1,1,1])});
+test('reason is concise and factual',()=>{assert.equal(exceptionReason({codes:['changed_symptoms']}),'Förändrade besvär');assert.equal(exceptionReason({decision_code:'regression_floor'}),'EI har nått ramens nedre gräns')});

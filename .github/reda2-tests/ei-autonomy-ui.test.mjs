@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+test('browser API exposes explicit execution mode and defaults safely to shadow',()=>{const s=fs.readFileSync(new URL('../../reda-2/secure-browser.mjs',import.meta.url),'utf8');assert.match(s,/approveFrame=\(planId,policy,execution='shadow'\)/);assert.match(s,/p_execution:execution/)});
+test('clinician UI requires the same explicit confirmation before autonomous approval',()=>{const s=fs.readFileSync(new URL('../../reda-2/runtime-ui.mjs',import.meta.url),'utf8');assert.match(s,/data-approve-auto disabled/);assert.match(s,/approveFrame\(active\.id,policy,'automatic'\)/);assert.match(s,/stoppar vid avvikelser/)});

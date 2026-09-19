@@ -124,3 +124,7 @@ select tests.ok((select count(*)=0 from reda_engine_decisions),'other patient ca
 select tests.login(2,'aal1',999);
 select tests.denied('select reda_evaluate_progression(tests.id(11),tests.id(995))','42501','revoked login cannot run engine');
 reset role;
+
+select tests.ok(to_regclass('public.reda_engine_queue') is not null,'durable engine queue exists');
+select tests.ok((select count(*)>=1 from reda_engine_queue where reason='response_saved'),'saved response enqueues EI evaluation work');
+set role authenticated;select tests.login(2);select tests.denied('select * from reda_engine_queue','42501','patient cannot read engine queue');reset role;

@@ -1,0 +1,2 @@
+export function mandateSummary(m){return {progression:!!m?.automatic_progression,regression:!!m?.automatic_regression,maxSteps:Number(m?.max_autonomous_steps||3),mode:m?.automatic_progression?(m?.automatic_regression?'Progression + regression':'Endast progression'):'Granskningsläge'}}
+export function mandateRiskText(m){const x=mandateSummary(m);return x.progression?'EI får arbeta autonomt inom behandlarens godkända ram, högst '+x.maxSteps+' steg innan ny klinisk kontroll.':'EI analyserar men ändrar inte patientens plan automatiskt.'}

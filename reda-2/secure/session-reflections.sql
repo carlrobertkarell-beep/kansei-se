@@ -65,6 +65,7 @@ begin
  values(p_request_id,s.id,s.patient_id,s.plan_id,s.plan_version,actor,p_answers,exercise_label) returning * into saved;
  reason=case p_answers->>'barrier' when 'symptoms' then 'changed_symptoms' when 'equipment' then 'changed_environment' when 'execution' then 'execution_help' when 'time' then 'training_barrier' when 'energy' then 'training_barrier' when 'other' then 'training_barrier' else case when p_answers->>'support'='yes' then 'requested_contact' end end;
  if reason is not null then insert into public.reda_review_cases(patient_id,plan_id,reflection_id,code) values(s.patient_id,s.plan_id,saved.id,reason);end if;
+ perform private.reda_enqueue_engine(s.patient_id,'reflection_saved',saved.id);
  insert into public.reda_audit_events(actor_id,patient_id,action,metadata) values(actor,s.patient_id,'session_reflection_submitted',jsonb_build_object('reflection_id',saved.id,'session_id',s.id,'plan_id',s.plan_id,'plan_version',s.plan_version));
  return to_jsonb(saved);
 end$$;

@@ -47,5 +47,51 @@ C.blueprints.hip_gtps.slots=['bridge','clam','abduction','side_step','chair'];
 C.blueprints.achilles.slots=['calf','soleus','heel_raise_ecc','balance'];
 C.blueprints.neck.slots=['neck_rotation','chin_nod','row'];
 C.blueprints.lumbar.slots=['lumbar_extension','bridge','bird_dog','dead_bug'];
-root.RedaClinicalLibrary={version:'2.5.0',progression:'clinician_only'};
+
+/* Curated progression graphs. These encode rehab roles and allowed transitions; they are not diagnoses. */
+function graph(start,nodes,edges){return {start,nodes,edges}}
+C.blueprints.knee_oa.progressionGraph=graph('volume',[
+ {id:'volume',label:'Bygg tolererad volym',role:'knee_capacity',exercises:{chair:{dose:{reps:10}},extension:{dose:{reps:10}}}},
+ {id:'stairs',label:'Mer funktionell knäbelastning',role:'stairs_capacity',exercises:{step_up:{variantId:'low'}}},
+ {id:'control',label:'Ökad kontroll i vardagsfunktion',role:'single_leg_control',exercises:{step_up:{dose:{sets:3,reps:10}},balance:{dose:{sets:3}}}}
+],[{from:'volume',to:'stairs',kind:'advance'},{from:'stairs',to:'control',kind:'advance'},{from:'stairs',to:'volume',kind:'regress'},{from:'control',to:'stairs',kind:'regress'}]);
+C.blueprints.knee_tendon.progressionGraph=graph('iso',[
+ {id:'iso',label:'Isometrisk belastning',role:'tendon_tolerance',exercises:{quad_iso:{dose:{sets:4,hold:30}}}},
+ {id:'strength',label:'Kontrollerad styrkebelastning',role:'knee_strength',exercises:{wall_sit:{dose:{sets:4,hold:40}},split_squat:{dose:{sets:3,reps:8}}}},
+ {id:'function',label:'Funktionell belastning',role:'deceleration_control',exercises:{step_down:{dose:{sets:3,reps:8}}}}
+],[{from:'iso',to:'strength',kind:'advance'},{from:'strength',to:'function',kind:'advance'},{from:'strength',to:'iso',kind:'regress'},{from:'function',to:'strength',kind:'regress'}]);
+C.blueprints.shoulder_load.progressionGraph=graph('control',[
+ {id:'control',label:'Cuffkontroll',role:'cuff_control',exercises:{isometric_er:{dose:{sets:4,hold:20}},rotation:{dose:{sets:3,reps:10}}}},
+ {id:'load',label:'Ökad cuff- och skulderbelastning',role:'shoulder_capacity',exercises:{rotation:{dose:{sets:3,reps:12}},row:{dose:{sets:3,reps:12}}}},
+ {id:'elevation',label:'Kontrollerad elevation',role:'elevation_capacity',exercises:{scaption:{dose:{sets:3,reps:10}}}}
+],[{from:'control',to:'load',kind:'advance'},{from:'load',to:'elevation',kind:'advance'},{from:'load',to:'control',kind:'regress'},{from:'elevation',to:'load',kind:'regress'}]);
+C.blueprints.achilles.progressionGraph=graph('bilateral',[
+ {id:'bilateral',label:'Bilateral vadkapacitet',role:'calf_capacity',exercises:{calf:{dose:{sets:3,reps:12}},soleus:{dose:{sets:3,reps:12}}}},
+ {id:'eccentric',label:'Långsam unilateral belastning',role:'achilles_load',exercises:{heel_raise_ecc:{variantId:'single',dose:{sets:4,reps:8}}}},
+ {id:'capacity',label:'Högre vadkapacitet',role:'single_leg_capacity',exercises:{heel_raise_ecc:{dose:{sets:4,reps:10}},balance:{dose:{sets:3}}}}
+],[{from:'bilateral',to:'eccentric',kind:'advance'},{from:'eccentric',to:'capacity',kind:'advance'},{from:'eccentric',to:'bilateral',kind:'regress'},{from:'capacity',to:'eccentric',kind:'regress'}]);
+
+
+C.blueprints.knee_pf.progressionGraph=graph('control',[
+ {id:'control',label:'Kontrollerad knäbelastning',role:'knee_control',exercises:{extension:{dose:{sets:3,reps:10}},chair:{dose:{sets:3,reps:8}}}},
+ {id:'step',label:'Trapp- och stegkapacitet',role:'stairs_capacity',exercises:{step_up:{dose:{sets:3,reps:8}},step_down:{dose:{sets:2,reps:8}}}},
+ {id:'capacity',label:'Högre funktionell kapacitet',role:'knee_capacity',exercises:{step_up:{dose:{sets:3,reps:10}},step_down:{dose:{sets:3,reps:10}},calf:{dose:{sets:3,reps:12}}}}
+],[{from:'control',to:'step',kind:'advance'},{from:'step',to:'capacity',kind:'advance'},{from:'step',to:'control',kind:'regress'},{from:'capacity',to:'step',kind:'regress'}]);
+C.blueprints.hip_gtps.progressionGraph=graph('local',[
+ {id:'local',label:'Lokal höftkapacitet',role:'hip_abduction_capacity',exercises:{clam:{dose:{sets:3,reps:10}},abduction:{dose:{sets:3,reps:10}}}},
+ {id:'standing',label:'Stående höftkontroll',role:'standing_hip_control',exercises:{side_step:{dose:{sets:3,reps:10}},chair:{dose:{sets:3,reps:8}}}},
+ {id:'capacity',label:'Högre funktionell höftkapacitet',role:'hip_function',exercises:{side_step:{dose:{sets:3,reps:12}},chair:{dose:{sets:3,reps:10}}}}
+],[{from:'local',to:'standing',kind:'advance'},{from:'standing',to:'capacity',kind:'advance'},{from:'standing',to:'local',kind:'regress'},{from:'capacity',to:'standing',kind:'regress'}]);
+C.blueprints.neck.progressionGraph=graph('control',[
+ {id:'control',label:'Nackkontroll',role:'neck_control',exercises:{neck_rotation:{dose:{sets:2,reps:8}},chin_nod:{dose:{sets:2,reps:6}}}},
+ {id:'endurance',label:'Kontroll och uthållighet',role:'neck_endurance',exercises:{neck_rotation:{dose:{sets:3,reps:8}},chin_nod:{dose:{sets:3,reps:8}},row:{dose:{sets:3,reps:10}}}},
+ {id:'capacity',label:'Högre skulder- och nackkapacitet',role:'neck_shoulder_capacity',exercises:{row:{dose:{sets:3,reps:12}}}}
+],[{from:'control',to:'endurance',kind:'advance'},{from:'endurance',to:'capacity',kind:'advance'},{from:'endurance',to:'control',kind:'regress'},{from:'capacity',to:'endurance',kind:'regress'}]);
+C.blueprints.lumbar.progressionGraph=graph('control',[
+ {id:'control',label:'Bål- och rörelsekontroll',role:'trunk_control',exercises:{bridge:{dose:{sets:2,reps:8}},dead_bug:{dose:{sets:2,reps:8}}}},
+ {id:'endurance',label:'Ökad båluthållighet',role:'trunk_endurance',exercises:{bridge:{dose:{sets:3,reps:10}},bird_dog:{dose:{sets:3,reps:8}},dead_bug:{dose:{sets:3,reps:8}}}},
+ {id:'capacity',label:'Högre vardagskapacitet',role:'trunk_capacity',exercises:{bird_dog:{dose:{sets:3,reps:10}},dead_bug:{dose:{sets:3,reps:10}}}}
+],[{from:'control',to:'endurance',kind:'advance'},{from:'endurance',to:'capacity',kind:'advance'},{from:'endurance',to:'control',kind:'regress'},{from:'capacity',to:'endurance',kind:'regress'}]);
+
+root.RedaClinicalLibrary={version:'2.7.0',progression:'curated_graphs'};
 })(typeof window!=='undefined'?window:globalThis);

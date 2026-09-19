@@ -1,0 +1,2 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {renderEIQuality} from '../../reda-2/ei-quality-view.mjs';
+test('quality view exposes action mix and rates without a score',()=>{const h=renderEIQuality({days:30,totals:{total:10,advance:4,hold:3,regress:1,escalate:2,applied:5},reviewed:2,overridden:1,post_change_cases:1,by_blueprint:[]});assert.match(h,/50 %/);assert.match(h,/20 %/);assert.doesNotMatch(h,/score|bäst|sämst/i)});

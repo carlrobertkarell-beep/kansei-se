@@ -1,0 +1,2 @@
+export function onboardingSteps({unit,members=[],mandate}={}){return [{id:'unit',label:'Klinikenhet',done:!!unit?.id},{id:'team',label:'Team',done:members.some(x=>x.status==='active'&&['unit_admin','clinician'].includes(x.role))},{id:'ei',label:'EI-läge',done:!!mandate},{id:'patients',label:'Patienter',done:false}]}
+export function shadowRecommendation(m){if(!m)return {mode:'shadow',label:'Börja i granskningsläge'};return m.automatic_progression?{mode:'automatic',label:'Autonomi är aktiverad'}:{mode:'shadow',label:'Granskningsläge'};}

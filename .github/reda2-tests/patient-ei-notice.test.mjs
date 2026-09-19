@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {planChangeNotice} from '../../reda-2/patient-ei-notice.mjs';
+test('notice describes exact prescription differences',()=>{const previous={id:'a',payload:{exercises:[{id:'e',name:'Benspark',variantId:'a',side:'left',dose:{sets:2,reps:8}}]}},current={id:'b',payload:{exercises:[{id:'e',name:'Benspark',variantId:'a',side:'left',dose:{sets:2,reps:10}}]}};const n=planChangeNotice({current,previous,decision:{code:'advance'}});assert.equal(n.changes[0].detail,'dos ändrad');assert.match(n.reason,/villkoren/)});
+test('same plan produces no change notice',()=>assert.equal(planChangeNotice({current:{id:'a'},previous:{id:'a'}}),null));

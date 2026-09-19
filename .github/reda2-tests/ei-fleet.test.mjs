@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {fleetState,fleetCounts} from '../../reda-2/ei-fleet-model.mjs';
+test('open clinical signal always routes to clinician',()=>assert.equal(fleetState({needs_review:true,frame_status:'approved',frame_execution:'automatic'}),'review'));
+test('automatic frame separates running from held',()=>{assert.equal(fleetState({plan_id:'p',frame_status:'approved',frame_execution:'automatic'}),'autonomous');assert.equal(fleetState({plan_id:'p',frame_status:'approved',frame_execution:'automatic',decision_action:'hold',decision_code:'effort'}),'held')});
+test('shadow and no-frame active plans remain distinct',()=>{assert.equal(fleetState({plan_id:'p',frame_status:'approved',frame_execution:'shadow'}),'shadow');assert.equal(fleetState({plan_id:'p'}),'evidence')});
+test('fleet counts all rows once',()=>{const c=fleetCounts([{needs_review:true},{plan_id:'p',frame_status:'approved',frame_execution:'automatic'},{plan_id:'p'}]);assert.deepEqual([c.review,c.autonomous,c.evidence,c.total],[1,1,1,3])});

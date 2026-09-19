@@ -80,3 +80,6 @@ export async function sendInvitation(handoverId){const c=clinicalClient(),org=wo
 export const openPatientPlan=planId=>rpc('reda_open_patient_plan',{p_plan_id:planId},db);
 
 export const submitExerciseHelp=(sessionId,exerciseId,requestId,answers)=>rpc('reda_submit_exercise_help',{p_client_session_id:sessionId,p_exercise_id:exerciseId,p_request_id:requestId,p_answers:answers},db);
+
+export const clinicalEISettings=()=>rpc('reda_clinical_ei_settings',{},clinicalClient());
+export const saveClinicalEIMandate=(id,revision,enabled,maxSteps)=>rpc('reda_save_clinical_ei_mandate',{p_request_id:id,p_revision:revision,p_enabled:enabled,p_max_steps:maxSteps},clinicalClient());

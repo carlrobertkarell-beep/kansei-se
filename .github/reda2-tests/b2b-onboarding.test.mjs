@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {onboardingSteps,shadowRecommendation} from '../../reda-2/b2b-onboarding.mjs';
+test('new clinic onboarding makes shadow a visible deliberate stage',()=>{const x=onboardingSteps({unit:{id:'u'},members:[{status:'active',role:'clinician'}],mandate:{automatic_progression:false}});assert.deepEqual(x.slice(0,3).map(v=>v.done),[true,true,true]);assert.equal(shadowRecommendation(null).mode,'shadow')});
+test('automatic mode is only represented when explicitly enabled',()=>assert.equal(shadowRecommendation({automatic_progression:true}).mode,'automatic'));

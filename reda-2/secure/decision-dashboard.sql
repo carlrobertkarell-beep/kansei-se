@@ -99,7 +99,8 @@ declare actor uuid:=private.reda_live_actor();org uuid:=private.reda_request_org
    when frame_status='approved' then 'shadow'
    when patient_status='active' and plan_id is not null then 'evidence'
    else 'unmanaged' end fleet_state
-  from private.reda_dashboard_rows(actor,org)r),
+  from private.reda_dashboard_rows(actor,org)r
+ ),
  filtered as materialized(select * from base where strpos(lower(display_name),lower(trim(p_search)))>0 and case p_filter
   when 'priority' then needs_review when 'waiting' then followup_status='waiting' and not needs_review
   when 'active' then patient_status='active' and plan_id is not null when 'archived' then patient_status='archived'

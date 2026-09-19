@@ -1,0 +1,36 @@
+/* Main clinic services: shared booking choices and naprapati presentation. */
+.clinic-refined .button-outline{background:transparent;color:var(--dark);border:1px solid #708684}
+.clinic-refined .button-outline:hover{background:#e3efeb;border-color:var(--teal);color:var(--teal)}
+.home-care-hero h1{max-width:15ch;font-size:clamp(42px,4.7vw,64px)}
+.home-care-hero .us-actions{gap:12px}
+.home-care-hero .us-actions .button{padding-inline:20px;gap:12px}
+.home-care-hero .us-hero-photo>img,.np-hero .us-hero-photo>img{object-position:48% 45%}
+.care-hero-help{font-size:14px;color:var(--muted);margin-top:18px;max-width:43ch}
+.care-hero-help a,.us-booking-note a{text-decoration:underline;text-underline-offset:3px}
+.care-service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+.care-service-card{display:flex;flex-direction:column;align-items:start;background:#fff;border:1px solid var(--line);border-radius:8px;padding:36px}
+.care-service-card .eyebrow{font-size:11px}
+.care-service-card h3{font-size:36px;line-height:1.2;margin-bottom:18px}
+.care-service-card h3 a:hover{color:var(--teal)}
+.care-service-card>p{font-size:16px;color:var(--muted)}
+.care-service-card .care-service-price{width:100%;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;border-top:1px solid var(--line);margin:26px 0 20px;padding-top:22px}
+.care-service-price strong{font-size:28px;font-weight:500;letter-spacing:-.03em;color:var(--ink)}
+.care-service-price span{font-size:14px}
+.care-service-card .text-link{margin-top:auto}
+.np-hero{padding-top:28px}
+.np-hero h1{font-size:clamp(42px,4.6vw,62px);max-width:15ch}
+.np-visit{padding-bottom:60px}
+.np-visit .us-booking>div>p{margin-bottom:20px}
+.np-content{border-top:1px solid var(--line)}
+.naprapati-page .np-content h2{font-size:clamp(28px,3vw,38px);line-height:1.2}
+.naprapati-page .footer-cta h2{font-size:clamp(40px,5vw,64px)}
+@media(max-width:800px){.care-service-card{padding:26px}.care-service-price{flex-direction:column}.np-hero h1{font-size:42px}}
+@media(max-width:650px){
+ .home-care-hero h1,.np-hero h1{font-size:clamp(37px,10.3vw,50px)}
+ .home-care-hero .us-actions .button{justify-content:space-between}
+ .care-hero-help{font-size:14px;margin-top:16px}.care-service-grid{grid-template-columns:1fr;gap:20px}
+ .care-service-card{padding:25px}.care-service-card h3{font-size:32px}.care-service-card .eyebrow{font-size:10px}
+ .care-service-card .care-service-price{flex-direction:row;margin-top:22px}.care-service-price strong{font-size:27px}
+ .np-hero{padding-top:24px}.np-hero .us-crumbs{margin-bottom:24px}.np-visit{padding-bottom:40px}
+ .naprapati-page .np-content h2{font-size:29px}
+}

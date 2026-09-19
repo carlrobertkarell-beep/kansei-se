@@ -11,6 +11,7 @@ import {nextStep,functionLabel,stageLabels} from './patient-glance.mjs?v=1'
 import {propose,rowReason,caseLabels,actionLabels,receiptText} from './engine/clinic-proposals.mjs?v=5'
 import {decisionText} from './runtime-ui.mjs?v=20260912-coach1'
 import {fleetState,fleetLabels} from './ei-fleet-model.mjs?v=20260919-1'
+import {exceptionSummary,exceptionReason} from './exception-first-model.mjs?v=20260919-1'
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const date=s=>s?new Date(s).toLocaleDateString('sv-SE',{timeZone:'Europe/Stockholm'}):'Inget registrerat';
 const filters={priority:'Behöver dig',waiting:'Planerad uppföljning',active:'Aktiv plan',all:'Alla patienter',autonomous:'EI autonomt',evidence:'Samlar evidens',held:'EI avvaktar',shadow:'Granskningsläge',upcoming:'Kommande kontakter',no_plan:'Planer att förbereda',ei:'EI-flottan',symptoms:'Ändrade besvär',replies:'Nya patientsvar',reviews:'Uppföljning idag',archived:'Arkiverade'};

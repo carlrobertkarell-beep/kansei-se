@@ -61,11 +61,11 @@ create policy "rpc only" on private.reda_clinic_messages for all to authenticate
 create function private.reda_dashboard_rows(p_actor uuid,p_org uuid,p_patient uuid default null)
 returns table(patient_id uuid,display_name text,patient_status text,connected boolean,plan_id uuid,plan_version integer,
  last_session timestamptz,last_response timestamptz,open_count bigint,pending_count bigint,codes text[],first_case timestamptz,
- decision_id uuid,decision_code text,decision_action text,decision_applied boolean,decision_reviewed boolean,frame_status text,frame_execution text,
+ decision_id uuid,decision_code text,decision_action text,decision_applied boolean,decision_reviewed boolean,
  followup_date date,followup_status text,followup_note text,review_date date,missing_response boolean,quiet boolean,pending_messages bigint,new_reply boolean)
 language sql stable security invoker set search_path='' as $$
  select p.id,p.display_name,p.status,p.auth_user_id is not null,pl.id,pl.version,s.started_at,r.created_at,
- c.open_count,c.pending_count,c.codes,c.first_case,d.id,d.code,d.action,d.applied,dr.id is not null,pf.status,pf.execution,
+ c.open_count,c.pending_count,c.codes,c.first_case,d.id,d.code,d.action,d.applied,dr.id is not null,
  f.due_date,f.status,f.note,
  (select min(private.reda_safe_date(cp->>'date')) from jsonb_array_elements(case when jsonb_typeof(pl.payload->'careJourney'->'checkpoints')='array' then pl.payload->'careJourney'->'checkpoints' else jsonb_build_array(jsonb_build_object('date',pl.payload->>'reviewDate')) end)cp where private.reda_safe_date(cp->>'date')>coalesce((f.completed_at at time zone 'Europe/Stockholm')::date,'1900-01-01'::date)),
  coalesce(s.status in ('completed','partial') and s.plan_id=pl.id and s.completed_at<(date_trunc('day',now() at time zone 'Europe/Stockholm') at time zone 'Europe/Stockholm') and s.completed_at>now()-interval '14 days' and s.completed_at>coalesce(f.completed_at,'1900-01-01'::timestamptz) and not exists(select 1 from public.reda_training_responses tr where tr.session_id=s.id),false),
@@ -79,7 +79,6 @@ language sql stable security invoker set search_path='' as $$
  left join lateral(select count(*) filter(where rc.status='open') open_count,count(*) pending_count,array_agg(distinct rc.code) codes,min(rc.created_at) first_case from public.reda_review_cases rc where rc.patient_id=p.id and rc.status<>'resolved')c on true
  left join lateral(select ed.* from public.reda_engine_decisions ed where ed.patient_id=p.id order by ed.created_at desc,ed.id desc limit 1)d on true
  left join public.reda_decision_reviews dr on dr.decision_id=d.id
- left join public.reda_progression_frames pf on pf.patient_id=p.id and pf.status='approved'
  left join private.reda_followups f on f.patient_id=p.id
  where p.organization_id=p_org and p.clinician_id=p_actor and (p_patient is null or p.id=p_patient)
 $$;
@@ -89,7 +88,8 @@ language plpgsql stable security definer set search_path='' as $$
 declare actor uuid:=private.reda_live_actor();org uuid:=private.reda_request_organization();result jsonb;today date:=(now() at time zone 'Europe/Stockholm')::date;begin
  if not private.reda_is_clinician_aal2() then raise exception using errcode='42501',message='Behandlarinloggning med MFA krävs.';end if;
  if p_search is null or length(p_search)>100 or p_filter is null or p_filter not in ('priority','waiting','active','all','archived','no_plan','ei','autonomous','evidence','held','shadow') or p_offset is null or p_offset<0 or p_offset>100000 then raise exception using errcode='22023',message='Kontrollera sökning och filter.';end if;
- with base as materialized(select r.*,
+ with raw as materialized(select r.*,pf.status frame_status,pf.execution frame_execution from private.reda_dashboard_rows(actor,org)r left join public.reda_progression_frames pf on pf.patient_id=r.patient_id and pf.status='approved'),
+ base as materialized(select r.*,
   (open_count>0 or new_reply or (followup_status='waiting' and followup_date<=today) or
    (coalesce(followup_status,'')<>'waiting' and (pending_count>0 or pending_messages>0 or (patient_status='active' and (review_date<=today or missing_response or quiet or (decision_action in ('advance','complete','review') and not decision_applied and not decision_reviewed)))))) is true needs_review,
   case
@@ -99,7 +99,7 @@ declare actor uuid:=private.reda_live_actor();org uuid:=private.reda_request_org
    when frame_status='approved' then 'shadow'
    when patient_status='active' and plan_id is not null then 'evidence'
    else 'unmanaged' end fleet_state
-  from private.reda_dashboard_rows(actor,org)r
+  from raw r
  ),
  filtered as materialized(select * from base where strpos(lower(display_name),lower(trim(p_search)))>0 and case p_filter
   when 'priority' then needs_review when 'waiting' then followup_status='waiting' and not needs_review

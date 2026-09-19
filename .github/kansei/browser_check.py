@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 
-PATHS = ("/", "/naprapati/", "/ultraljud/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
+PATHS = ("/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 SIZES = (("mobile", 390, 844), ("desktop", 1440, 1000))
 
 
@@ -94,9 +94,10 @@ def check(base, output):
                         if page.locator('a.menu-reda[href="/reda-rehab/"]').count() == 0:
                             row["errors"].append("Reda product logo has wrong destination")
 
-                    if not baseline_only and path == "/" and label == "desktop":
+                    if not baseline_only and path == "/hjalp-mig-boka/" and label == "desktop":
+                        # The homepage now links to the dedicated booking helper. Keep all shoulder-routing checks there.
                         # Shoulder routing is temporary while the dedicated shoulder clinician is unavailable.
-                        opener = page.locator('a[data-area="shoulder"]').first
+                        opener = page.locator('button[data-area="shoulder"]').first
                         opener.click()
                         page.locator('#guide-dialog[open]').wait_for(timeout=5000)
                         guide = page.locator('#guide-dialog')

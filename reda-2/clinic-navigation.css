@@ -17,6 +17,9 @@
 .clinic-nav-panel nav button:disabled{opacity:.55;cursor:wait}
 .clinic-menu{display:none}
 .clinic-content{min-width:0}
+#app.with-navigation:not(.patient-mode) .workspace{grid-template-columns:200px minmax(0,1fr)}
+#app.with-navigation:not(.patient-mode) .workspace>.plan-panel{grid-column:2;position:static;max-height:none}
+.with-navigation .workspace>.work-main{min-width:0}
 .clinic-page{min-width:0;outline:none;scroll-margin-top:16px}
 .clinic-page>h2{font-size:27px;letter-spacing:-.02em;margin:10px 0 8px;color:#182f4c}
 .clinic-page-intro{margin:0 0 24px;color:#5c7089;font-size:15px}
@@ -75,6 +78,8 @@
 @media(max-width:760px){
  .clinic-shell:has(.with-navigation:not(.hidden)){padding:14px 16px}
  #app.with-navigation{display:block}
+ #app.with-navigation:not(.patient-mode) .workspace{grid-template-columns:minmax(0,1fr)}
+ #app.with-navigation:not(.patient-mode) .workspace>.plan-panel{grid-column:auto}
  .clinic-navigation{position:relative;top:auto;margin:0 0 20px}
  .clinic-menu{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:44px;padding:10px 12px;background:#fff;border:1px solid #cbd8e8;border-radius:8px;color:#24476f;font:inherit}
  .clinic-nav-panel{display:none;border:1px solid #d5dfeb;border-radius:10px;padding:16px;margin-top:8px;background:#f8fafd}

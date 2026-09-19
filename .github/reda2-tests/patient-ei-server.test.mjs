@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+test('patient bootstrap binds EI notice evidence to the active result plan',()=>{const s=fs.readFileSync(new URL('../../reda-2/secure-browser.mjs',import.meta.url),'utf8');assert.match(s,/\.eq\('result_plan_id',plan\.id\)/);assert.match(s,/planHistory:history\|\|\[\],latestDecision:decisions\?\.\[0\]\|\|null/)});
+test('patient bootstrap reads only one previous plan for change explanation',()=>{const s=fs.readFileSync(new URL('../../reda-2/secure-browser.mjs',import.meta.url),'utf8');assert.match(s,/\.lt\('version',plan\.version\)\.order\('version',\{ascending:false\}\)\.limit\(1\)/)});

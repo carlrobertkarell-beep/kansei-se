@@ -294,3 +294,18 @@ end $$;
 grant usage on schema private to service_role;
 grant select,update on public.reda_progression_frames to service_role;
 grant execute on function private.reda_validate_frame(jsonb) to service_role;
+
+-- Durable EI evaluation queue. Patient writes enqueue work; a trusted worker claims it.
+create table public.reda_engine_queue(
+ id bigserial primary key,patient_id uuid not null references public.reda_patients(id),reason text not null check(reason in ('session_closed','response_saved','reflection_saved','manual')),
+ source_id uuid,available_at timestamptz not null default now(),status text not null default 'pending' check(status in ('pending','processing','done','failed')),attempts integer not null default 0,last_error text not null default '',created_at timestamptz not null default now(),updated_at timestamptz not null default now()
+);
+create unique index reda_engine_queue_source on public.reda_engine_queue(patient_id,reason,source_id) where source_id is not null;
+create index reda_engine_queue_pending on public.reda_engine_queue(available_at,id) where status='pending';
+alter table public.reda_engine_queue enable row level security;revoke all on public.reda_engine_queue from public,anon,authenticated;
+create function private.reda_enqueue_engine(p_patient uuid,p_reason text,p_source uuid default null) returns void language plpgsql security definer set search_path='' as $$begin
+ if p_reason not in ('session_closed','response_saved','reflection_saved','manual') then raise exception 'Invalid engine queue reason';end if;
+ insert into public.reda_engine_queue(patient_id,reason,source_id) values(p_patient,p_reason,p_source) on conflict do nothing;
+end$$;revoke all on function private.reda_enqueue_engine(uuid,text,uuid) from public,anon,authenticated;
+create function private.reda_queue_response() returns trigger language plpgsql security definer set search_path='' as $$begin perform private.reda_enqueue_engine(new.patient_id,'response_saved',new.id);return new;end$$;
+create trigger reda_response_engine_queue after insert on public.reda_training_responses for each row execute function private.reda_queue_response();

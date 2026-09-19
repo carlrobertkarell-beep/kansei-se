@@ -1,5 +1,5 @@
 /* Shared presentation for Kansei's ultrasound journey. */
-.clinic-refined{--teal:#08796e;--dark:#142e37;--ink:#173137;--muted:#53666b;--paper:#f8faf9;background:var(--paper)}
+.clinic-refined{--teal:#086b62;--dark:#142e37;--ink:#173137;--muted:#53666b;--paper:#f8faf9;background:var(--paper)}
 .clinic-refined .wrap{width:100%;max-width:1360px;margin-inline:auto;padding-inline:clamp(22px,4.5vw,68px)}
 .clinic-refined h1,.clinic-refined h2,.clinic-refined h3{letter-spacing:-.04em;text-wrap:balance}
 .clinic-refined h2{font-size:clamp(32px,3.5vw,48px);line-height:1.14}

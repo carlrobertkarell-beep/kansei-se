@@ -1,0 +1,11 @@
+/* Readable article accents and sources, scoped to the knowledge library. */
+.knowledge-article,.knowledge-directory{--teal:#086b62}
+.knowledge-article .editorial-top h1{max-width:22ch}
+.knowledge-article .editorial-top .intro{max-width:65ch}
+.knowledge-article .editorial-body .source-note{font-size:13px;line-height:1.75;color:#52616b;margin-top:1.25rem}
+.knowledge-article .source-note a,.knowledge-article .article-sources a,.knowledge-article .article-related a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.knowledge-article .article-sources a{overflow-wrap:anywhere}
+.knowledge-article .article-sources,.knowledge-article .article-related{padding-left:1.25rem}
+.knowledge-article .article-sources li{font-size:14px;line-height:1.8}
+.knowledge-article .editorial-top .crumbs a:hover{text-decoration:underline}
+.knowledge-directory .knowledge-filter button{min-height:44px}

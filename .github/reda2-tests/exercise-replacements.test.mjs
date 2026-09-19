@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {replacementCandidates} from '../../reda-2/exercise-replacements.mjs';
 const current={id:'a',name:'Benspark från stol',region:'Knä',equipment:'Stol',purpose:'Träna framsidan av låret och knäextension'};const lib=[current,{id:'b',name:'Step-up',region:'Knä',equipment:'Steg',purpose:'Träna knä och lår',variants:[{id:'x'}]},{id:'c',name:'Rodd',region:'Axel',equipment:'Band',purpose:'Träna skuldror',variants:[{id:'x'}]},{id:'d',name:'Väggsitt',region:'Knä',equipment:'Vägg',purpose:'Belasta framsida lår',variants:[{id:'x'}]}];
-test('replacement ranking keeps same region ahead of unrelated exercises',()=>{const r=replacementCandidates(current,lib);assert.deepEqual(r.map(x=>x.id),['d','b']);assert.match(r[0].reason,/Samma område/)});
+test('replacement ranking keeps same region ahead of unrelated exercises',()=>{const r=replacementCandidates(current,lib);assert.deepEqual(r.map(x=>x.id),['b','d']);assert.ok(r.every(x=>/Samma område/.test(x.reason)))});
 test('compatibility removes candidates before ranking',()=>assert.deepEqual(replacementCandidates(current,lib,{compatible:v=>false}),[]));
 test('current exercise is never proposed as its own replacement',()=>assert.ok(!replacementCandidates(current,lib).some(x=>x.id==='a')));

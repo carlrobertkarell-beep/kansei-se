@@ -88,7 +88,7 @@ language plpgsql stable security definer set search_path='' as $$
 declare actor uuid:=private.reda_live_actor();org uuid:=private.reda_request_organization();result jsonb;today date:=(now() at time zone 'Europe/Stockholm')::date;begin
  if not private.reda_is_clinician_aal2() then raise exception using errcode='42501',message='Behandlarinloggning med MFA krävs.';end if;
  if p_search is null or length(p_search)>100 or p_filter is null or p_filter not in ('priority','waiting','active','all','archived','no_plan','ei','autonomous','evidence','held','shadow') or p_offset is null or p_offset<0 or p_offset>100000 then raise exception using errcode='22023',message='Kontrollera sökning och filter.';end if;
- with raw as materialized(select r.*,pf.status frame_status,pf.execution frame_execution from private.reda_dashboard_rows(actor,org)r left join public.reda_progression_frames pf on pf.patient_id=r.patient_id and pf.status='approved'),
+ with raw as materialized(select r.*,pf.status frame_status,pf.execution frame_execution from private.reda_dashboard_rows(actor,org)r left join lateral(select f.status,f.execution from public.reda_progression_frames f where f.patient_id=r.patient_id and f.status='approved' limit 1)pf on true),
  base as materialized(select r.*,
   (open_count>0 or new_reply or (followup_status='waiting' and followup_date<=today) or
    (coalesce(followup_status,'')<>'waiting' and (pending_count>0 or pending_messages>0 or (patient_status='active' and (review_date<=today or missing_response or quiet or (decision_action in ('advance','complete','review') and not decision_applied and not decision_reviewed)))))) is true needs_review,

@@ -9,7 +9,7 @@ export function mountWorkspaceTeam(host,{api,workspace,onChanged,onBusy}){
   host.innerHTML='<p role="status">Hämtar teamet…</p>';
   try{
    const data=await api.workspaceTeam();if(!valid(n))return;
-   host.innerHTML='<details class="team-panel"><summary><span>Team och behörigheter</span><small>'+data.members.filter(m=>m.status==='active').length+' aktiva medlemmar</small></summary><p>En organisationsroll ger tillgång till verksamheten. Patientuppgifter kräver dessutom behandlarbehörighet och en egen patienttilldelning.</p><p class="workspace-message" role="status">'+esc(message)+'</p><div class="team-members"></div><p class="micro">Nya konton och anslutning av fler kliniker förbereds separat. Ingen inbjudan skickas från den här vyn.</p></details>';
+   host.innerHTML='<details class="team-panel" open><summary><span>Team och behörigheter</span><small>'+data.members.filter(m=>m.status==='active').length+' aktiva medlemmar</small></summary><p>En organisationsroll ger tillgång till verksamheten. Patientuppgifter kräver dessutom behandlarbehörighet och en egen patienttilldelning.</p><p class="workspace-message" role="status">'+esc(message)+'</p><div class="team-members"></div><p class="micro">Nya konton och anslutning av fler kliniker förbereds separat. Ingen inbjudan skickas från den här vyn.</p></details>';
    const list=host.querySelector('.team-members');
    for(const member of data.members){
     const row=document.createElement('div');row.className='team-member';

@@ -1,5 +1,6 @@
+import {mountClinicNavigation} from './clinic-navigation.mjs?v=20260919-nav1'
 import {openPlanReview} from './plan-review.mjs?v=2'
-import {mountEISettings} from './ei-settings.mjs?v=1'
+import {mountEISettings} from './ei-settings.mjs?v=20260919-nav1'
 let eiSettings=null;
 import {approvedOptions} from './plan-options.mjs?v=1'
 import {verifyAdaptation} from './everyday-support.mjs?v=1'
@@ -8,9 +9,9 @@ import {renderProcess} from './process-indicator.mjs?v=1'
 import {openSelfPlanPreview} from './self-plan-preview.mjs?v=3'
 import {mountPlanAuthoring} from './plan-authoring.mjs?v=6'
 import {emptyPlan,cleanProgression} from './plan-authoring-model.mjs?v=2'
-import {mountDecisionDashboard} from './decision-dashboard.mjs?v=20260912-coach1'
+import {mountDecisionDashboard} from './decision-dashboard.mjs?v=20260919-nav1'
 import {openPatientIntake} from './patient-intake.mjs?v=2'
-import {mountWorkspaceTeam,roleLabels} from './workspace-team.mjs?v=1'
+import {mountWorkspaceTeam,roleLabels} from './workspace-team.mjs?v=20260919-nav1'
 import * as api from './secure-browser.mjs?v=20260919-shadow1'
 import {mountClinicEngine} from './runtime-ui.mjs?v=20260919-shadow1'
 import {mountClinicInbox} from './clinic-inbox.mjs?v=20260912-coach1'
@@ -25,7 +26,11 @@ let selected=null,patients=[],plan=null,draft=null,mfaFactor=null
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
 const Care=window.RedaCare;
 let selectionRequest=0,loadingPatient=false,working=false;
-function setWorking(value){working=value;$('workspaceSelect').disabled=value||workspaceBusy;$('refreshWorkspaces').disabled=value||workspaceBusy;$('newPatient').disabled=value;$('logout').disabled=value;$('editor').querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=value);document.querySelectorAll('[data-edit],[data-patient],[data-authoring-row] button').forEach(el=>el.disabled=value);$('saveDraft').disabled=value||!plan?.exercises.length||!!plan?.warnings?.length;$('activate').disabled=value||!plan?.exercises.length||!!plan?.warnings?.length||careProblems().length>0||!activeWorkspace?.activation_enabled||!!window.RedaIntelligence.checks(plan||{}).length;renderPatientProcess()}
+const navigation=mountClinicNavigation($('app'),{canNavigate:()=>!working&&!workspaceBusy,onNavigate:view=>{
+ if(view==='patients'||view==='attention')dashboard?.setSection(view);
+}});
+function navigationBusy(){navigation.setBusy(working||workspaceBusy)}
+function setWorking(value){working=value;navigationBusy();$('workspaceSelect').disabled=value||workspaceBusy;$('refreshWorkspaces').disabled=value||workspaceBusy;$('newPatient').disabled=value;$('logout').disabled=value;$('editor').querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=value);document.querySelectorAll('[data-edit],[data-patient],[data-authoring-row] button').forEach(el=>el.disabled=value);$('saveDraft').disabled=value||!plan?.exercises.length||!!plan?.warnings?.length;$('activate').disabled=value||!plan?.exercises.length||!!plan?.warnings?.length||careProblems().length>0||!activeWorkspace?.activation_enabled||!!window.RedaIntelligence.checks(plan||{}).length;renderPatientProcess()}
 function authoringContext(){return {blueprintId:$('blueprint').value,stage:$('stage').value,capacity:$('capacity').value,trainingHistory:$('trainingHistory')?.value||'',goalProfile:$('goalProfile')?.value||'',equipment:$('equipment').value,floorOK:$('floorOK').checked,band:$('band').checked,guidance:$('guidance').value,goal:$('goal').value.trim(),clinicianNote:$('note').value.trim(),reviewDate:$('reviewDate').value,patientName:selected?.display_name||''}}
 function setAuthoringContext(c){for(const key of ['blueprintId','stage','capacity','trainingHistory','goalProfile','equipment','guidance']){const el=$(key==='blueprintId'?'blueprint':key);if(el&&c[key]!==undefined){if(c[key]===''&&!el.querySelector('option[value=""]'))el.prepend(new Option('Välj efter bedömningen',''));el.value=c[key]}}for(const key of ['floorOK','band'])if(c[key]!==undefined)$(key).checked=c[key];}
 function startComposer(profile,data,initialMode='manual'){
@@ -50,17 +55,17 @@ function applyAdvice(rebuild=false){if($('advicePreset').value!=='custom'){$('no
 function invalidate(){draft=null;clearDelivery();setStatus('Ändringar ej aktiverade')}
 function editPatient(patientId=null){
  const epoch=workspaceEpoch;
- openPatientIntake({api,patientId,onWorksheet:openWorksheet,onBusy:value=>{workspaceBusy=value;$('workspaceSelect').disabled=value||working;$('refreshWorkspaces').disabled=value||working;$('logout').disabled=value},
+ openPatientIntake({api,patientId,onWorksheet:openWorksheet,onBusy:value=>{workspaceBusy=value;navigationBusy();$('workspaceSelect').disabled=value||working;$('refreshWorkspaces').disabled=value||working;$('logout').disabled=value},
  onOpen:async row=>{if(epoch!==workspaceEpoch)return;patients=[{id:row.patient_id,display_name:row.display_name,status:row.patient_status,auth_user_id:row.connected?'connected':null}];await selectPatient(row.patient_id);if(epoch===workspaceEpoch&&row.patient_status==='archived'){$('editor').classList.add('hidden');switchWorkTab('followup')}},
  onSaved:async result=>{if(epoch!==workspaceEpoch)return;try{if(patientId&&selected?.id===patientId&&$('app').classList.contains('patient-mode')){clinicalProfile=result.profile;selected.display_name=result.patient.display_name;$('patientTitle').textContent=selected.display_name;renderPatientProcess()}else if(patientId&&dashboard){dashboard.resetDetail();await dashboard.refresh('Patientuppgifterna är sparade.');if(epoch===workspaceEpoch)await dashboard.open(patientId)}else if(api.savePatientStart&&dashboard){showDashboard();await dashboard.reveal(result.patient.id)}else{patients=[result.patient];if(dashboard)await dashboard.refresh();if(epoch===workspaceEpoch)await selectPatient(result.patient.id)}}catch(e){if(epoch===workspaceEpoch)delivery('<b>Patienten är sparad.</b><span>Öppna patienten igen. '+esc(e.message)+'</span>','neutral')}}});
 }
-function showDashboard(){if(working||workspaceBusy)return;++selectionRequest;++followupRequest;loadingPatient=false;$('app').classList.add('dashboard-mode');$('app').classList.remove('patient-mode');$('backToDashboard').classList.add('hidden');dashboard?.resetDetail();dashboard?.refresh()}
+function showDashboard(){if(working||workspaceBusy)return;$('app').classList.add('dashboard-mode');$('app').classList.remove('patient-mode');$('backToDashboard').classList.add('hidden');navigation.returnToList();dashboard?.resetDetail();dashboard?.refresh()}
 $('backToDashboard').onclick=showDashboard;
 function renderPatients(){$('patientCount').textContent=`${patients.length} aktiva`;$('patients').innerHTML=patients.length?patients.map(p=>`<button class="patient ${selected?.id===p.id?'active':''}" data-patient="${p.id}"><span class="patient-avatar">${esc((p.display_name||'?').trim().charAt(0).toUpperCase())}</span><span class="patient-copy"><b>${esc(p.display_name)}</b><small>${p.auth_user_id?'Ansluten':'Ny · ej ansluten'}</small></span></button>`).join(''):'<div class="muted">Inga patienter ännu.</div>';document.querySelectorAll('[data-patient]').forEach(b=>b.onclick=()=>selectPatient(b.dataset.patient))}
 async function loadPatients(){const epoch=workspaceEpoch;const data=await api.listPatients();if(epoch!==workspaceEpoch)return;patients=data;renderPatients()}
 function openWorksheet(){if(working||workspaceBusy||!activeWorkspace?.clinical_access)return;patients=[{id:'worksheet',display_name:'Övningsblad',status:'active',worksheet:true}];selectPatient('worksheet')}
 async function selectPatient(id,initialMode='manual',adaptation=null){
- if(working)return;composer?.destroy();composer=null;$('clinicalWorkspace').classList.remove('authoring-workspace');const ticket=++selectionRequest;selected=patients.find(p=>p.id===id);if(!selected)return;if(dashboard){$('app').classList.remove('dashboard-mode');$('app').classList.add('patient-mode');$('backToDashboard').classList.remove('hidden')}loadingPatient=true;plan=null;draft=null;clinicalProfile={};processData={plans:[],sessions:[],responses:[]};savedRecord=null;reviewedPlan="";if($("patientProcess"))$("patientProcess").hidden=true;clearDelivery();$('carePlanPreview').textContent='';$('progressionEditor').replaceChildren();$('intelligencePanel').replaceChildren();$('careIssues').textContent='';$('planExercises').textContent='';$('planMeta').textContent='–';$('saveDraft').disabled=true;$('activate').disabled=true;
+ if(working)return;composer?.destroy();composer=null;$('clinicalWorkspace').classList.remove('authoring-workspace');const ticket=++selectionRequest;selected=patients.find(p=>p.id===id);if(!selected)return;navigation.setPatient(true);navigation.show('patient');if(dashboard){$('app').classList.remove('dashboard-mode');$('app').classList.add('patient-mode');$('backToDashboard').classList.remove('hidden')}loadingPatient=true;plan=null;draft=null;clinicalProfile={};processData={plans:[],sessions:[],responses:[]};savedRecord=null;reviewedPlan="";if($("patientProcess"))$("patientProcess").hidden=true;clearDelivery();$('carePlanPreview').textContent='';$('progressionEditor').replaceChildren();$('intelligencePanel').replaceChildren();$('careIssues').textContent='';$('planExercises').textContent='';$('planMeta').textContent='–';$('saveDraft').disabled=true;$('activate').disabled=true;
  $('patientTitle').textContent=selected.display_name;$('noPatient').classList.add('hidden');$('editor').classList.remove('hidden');$('patientEmail').value='';$('goal').value='';$('note').value='';$('advicePreset').value='auto';fillCare();
  for(const [field,value] of Object.entries({stage:'build',capacity:'standard',trainingHistory:'regular',goalProfile:'daily',guidance:'guided',equipment:'both'}))if($(field))$(field).value=value;
  $('floorOK').checked=true;$('band').checked=true;$('blueprint').selectedIndex=0;
@@ -128,7 +133,7 @@ function switchWorkTab(name){document.querySelectorAll('[data-worktab]').forEach
 async function finishClinicianAuth(){clearErr();const a=await api.aal();if(a.currentLevel!=='aal2'){const f=await api.factors(),verified=f?.totp?.find(x=>x.status==='verified');if(verified){mfaFactor=verified.id;$('mfa').classList.remove('hidden');$('qr').classList.add('hidden');$('secret').textContent='Ange koden från din autentiseringsapp.';return}const enrolled=await api.enrollTotp();mfaFactor=enrolled.id;$('qr').src=enrolled.totp.qr_code;$('qr').classList.remove('hidden');$('secret').textContent='Skanna QR-koden och ange sedan koden.';$('mfa').classList.remove('hidden');return}await api.claimClinician();setAuth(false);await refreshWorkspaces()}
 function clearWorkspace(){
  composer?.destroy();composer=null;$('clinicalWorkspace').classList.remove('authoring-workspace');
- ++workspaceEpoch;++selectionRequest;++followupRequest;dashboard?.destroy();dashboard=null;$('app').classList.remove('dashboard-mode','patient-mode');$('decisionDashboard').replaceChildren();$('backToDashboard').classList.add('hidden');inbox?.destroy();inbox=null;team?.destroy();team=null;eiSettings?.destroy();eiSettings=null;
+ ++workspaceEpoch;++selectionRequest;++followupRequest;navigation.configure(null);dashboard?.destroy();dashboard=null;$('app').classList.remove('dashboard-mode','patient-mode');$('decisionDashboard').replaceChildren();$('backToDashboard').classList.add('hidden');inbox?.destroy();inbox=null;team?.destroy();team=null;eiSettings?.destroy();eiSettings=null;
  selected=null;patients=[];plan=null;draft=null;clinicalProfile={};savedRecord=null;reviewedPlan='';processData={plans:[],sessions:[],responses:[]};if($('patientProcess')){$('patientProcess').replaceChildren();$('patientProcess').hidden=true}loadingPatient=false;api.setWorkspace(null);
  $('patients').replaceChildren();$('patientCount').textContent='0 aktiva';$('patientTitle').textContent='Välj patient';
  $('editor').classList.add('hidden');$('noPatient').classList.remove('hidden');
@@ -142,23 +147,23 @@ async function openWorkspace(id,message=''){
  if(working||workspaceBusy)return;const next=workspaces.find(w=>w.id===id);clearWorkspace();activeWorkspace=next||null;
  $('workspaceMessage').textContent=message;
  if(!next){$('workspaceTitle').textContent='Ingen aktiv arbetsyta';$('workspaceDescription').textContent='Kontot har ingen arbetsyta tillgänglig. Kontakta Redas support om du behöver hjälp.';$('organizationName').textContent='';return}
- api.setWorkspace(next);const epoch=workspaceEpoch;
+ api.setWorkspace(next);const epoch=workspaceEpoch;navigation.configure(next,{dashboard:typeof api.dashboard==='function',ei:typeof api.eiSettings==='function'});
  $('workspaceSelect').value=next.id;$('workspaceTitle').textContent=next.name;$('organizationName').textContent=next.name;
  $('workspaceDescription').textContent=roleLabels[next.role]+(next.clinical_access?' · Behandlare för dina tilldelade patienter':' · Organisationsåtkomst');
- team=mountWorkspaceTeam($('workspaceTeam'),{api,workspace:next,onBusy:value=>{workspaceBusy=value;$('workspaceSelect').disabled=value||working;$('refreshWorkspaces').disabled=value||working},onChanged:async text=>{workspaceBusy=false;await refreshWorkspaces(text)}});
+ team=mountWorkspaceTeam($('workspaceTeam'),{api,workspace:next,onBusy:value=>{workspaceBusy=value;navigationBusy();$('workspaceSelect').disabled=value||working;$('refreshWorkspaces').disabled=value||working},onChanged:async text=>{workspaceBusy=false;await refreshWorkspaces(text)}});
  if(!next.clinical_access){
   $('workspaceEmpty').classList.remove('workspace-hidden');$('workspaceEmpty').innerHTML=next.kind==='direct'?'<p class="eyebrow">Redas egen verksamhet</p><h2>En egen plats för direktkunder</h2><p>Här samlas Redas framtida försäljning direkt till privatpersoner. Arbetsytan är skapad. Onboarding, köp och träningsupplägg öppnas i senare steg.</p>':'<p class="eyebrow">Din organisationsroll</p><h2>Välkommen till teamet</h2><p>Här ser du teamets roller och behörigheter. Patientuppgifter är tillgängliga för en behörig behandlare med egen patienttilldelning.</p>';
   return;
  }
- eiSettings=mountEISettings($('eiSettings'),{api,onBusy:value=>{workspaceBusy=value;$('workspaceSelect').disabled=value||working;$('refreshWorkspaces').disabled=value||working;$('logout').disabled=value},onImport:()=>{$('newPatient').click();document.querySelector('.patient-intake [data-mode="file"]')?.click()}});
+ eiSettings=mountEISettings($('eiSettings'),{api,onBusy:value=>{workspaceBusy=value;navigationBusy();$('workspaceSelect').disabled=value||working;$('refreshWorkspaces').disabled=value||working;$('logout').disabled=value},onImport:()=>{$('newPatient').click();document.querySelector('.patient-intake [data-mode="file"]')?.click()}});
  $('clinicalWorkspace').classList.remove('workspace-hidden');
  if(typeof api.dashboard==='function'){
   $('app').classList.add('dashboard-mode');
-  dashboard=mountDecisionDashboard($('decisionDashboard'),{api,onBusy:value=>{workspaceBusy=value;$('workspaceSelect').disabled=value||working;$('refreshWorkspaces').disabled=value||working;$('logout').disabled=value},onNew:()=>$('newPatient').click(),onWorksheet:openWorksheet,onEdit:row=>editPatient(row.patient_id),onOpen:async row=>{if(epoch!==workspaceEpoch||working||workspaceBusy)return;patients=[{id:row.patient_id,display_name:row.display_name,status:row.patient_status,auth_user_id:row.connected?'connected':null}];await selectPatient(row.patient_id,row.authoring_mode||'manual',row.adaptation);if(row.patient_status==='archived'){$('editor').classList.add('hidden');switchWorkTab('followup')}}});
+  dashboard=mountDecisionDashboard($('decisionDashboard'),{api,onFilterChange:view=>navigation.show(view),onBusy:value=>{workspaceBusy=value;navigationBusy();$('workspaceSelect').disabled=value||working;$('refreshWorkspaces').disabled=value||working;$('logout').disabled=value},onNew:()=>$('newPatient').click(),onWorksheet:openWorksheet,onEdit:row=>editPatient(row.patient_id),onOpen:async row=>{if(epoch!==workspaceEpoch||working||workspaceBusy)return;patients=[{id:row.patient_id,display_name:row.display_name,status:row.patient_status,auth_user_id:row.connected?'connected':null}];await selectPatient(row.patient_id,row.authoring_mode||'manual',row.adaptation);if(row.patient_status==='archived'){$('editor').classList.add('hidden');switchWorkTab('followup')}}});
   return;
  }
  try{await loadPatients();if(epoch!==workspaceEpoch)return;
-  inbox=mountClinicInbox($('clinicInbox'),{api,onBusy:value=>{workspaceBusy=value;$('workspaceSelect').disabled=value||working;$('refreshWorkspaces').disabled=value||working},onOpen:async id=>{if(working||loadingPatient)throw Error('Vänta tills den pågående åtgärden är klar.');if(!patients.some(p=>p.id===id))await loadPatients();if(epoch!==workspaceEpoch)return;if(!patients.some(p=>p.id===id))throw Error('Patienten är inte tillgänglig. Uppdatera översikten.');await selectPatient(id);if(epoch!==workspaceEpoch)return;switchWorkTab('followup');$('followupView').scrollIntoView({block:'start'})},onHandled:()=>epoch===workspaceEpoch&&selected&&renderFollowup()});
+  inbox=mountClinicInbox($('clinicInbox'),{api,onBusy:value=>{workspaceBusy=value;navigationBusy();$('workspaceSelect').disabled=value||working;$('refreshWorkspaces').disabled=value||working},onOpen:async id=>{if(working||loadingPatient)throw Error('Vänta tills den pågående åtgärden är klar.');if(!patients.some(p=>p.id===id))await loadPatients();if(epoch!==workspaceEpoch)return;if(!patients.some(p=>p.id===id))throw Error('Patienten är inte tillgänglig. Uppdatera översikten.');await selectPatient(id);if(epoch!==workspaceEpoch)return;switchWorkTab('followup');$('followupView').scrollIntoView({block:'start'})},onHandled:()=>epoch===workspaceEpoch&&selected&&renderFollowup()});
  }catch(e){if(epoch===workspaceEpoch){clearWorkspace();$('workspaceMessage').textContent='Arbetsytan kunde inte hämtas. '+e.message}}
 }
 async function refreshWorkspaces(message=''){

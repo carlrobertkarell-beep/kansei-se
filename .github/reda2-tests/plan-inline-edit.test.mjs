@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {quickDoseChange,quickSideChoices,quickVariantChoices} from '../../reda-2/plan-inline-edit-model.mjs';
+test('sets adjust one step and stay in prescription bounds',()=>{assert.deepEqual(quickDoseChange({dose:{sets:3}},'sets-down'),{sets:2});assert.deepEqual(quickDoseChange({dose:{sets:3}},'sets-up'),{sets:4});assert.equal(quickDoseChange({dose:{sets:1}},'sets-down'),null);assert.equal(quickDoseChange({dose:{sets:8}},'sets-up'),null)});
+test('reps use small predictable increments',()=>{assert.deepEqual(quickDoseChange({dose:{reps:8}},'reps-up'),{reps:9});assert.deepEqual(quickDoseChange({dose:{reps:10}},'reps-up'),{reps:12});assert.deepEqual(quickDoseChange({dose:{reps:12}},'reps-down'),{reps:10})});
+test('quick choices never repeat current side or variant',()=>{assert.deepEqual(quickSideChoices(['left','right','both'],'left'),['right','both']);assert.deepEqual(quickVariantChoices([{id:'a',name:'A'},{id:'b',name:'B'}],'a'),[{id:'b',name:'B'}])});
+test('unknown quick action makes no change',()=>assert.equal(quickDoseChange({dose:{sets:3}},'load-up'),null));

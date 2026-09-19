@@ -47,5 +47,29 @@ C.blueprints.hip_gtps.slots=['bridge','clam','abduction','side_step','chair'];
 C.blueprints.achilles.slots=['calf','soleus','heel_raise_ecc','balance'];
 C.blueprints.neck.slots=['neck_rotation','chin_nod','row'];
 C.blueprints.lumbar.slots=['lumbar_extension','bridge','bird_dog','dead_bug'];
-root.RedaClinicalLibrary={version:'2.5.0',progression:'clinician_only'};
+
+/* Curated progression graphs. These encode rehab roles and allowed transitions; they are not diagnoses. */
+function graph(start,nodes,edges){return {start,nodes,edges}}
+C.blueprints.knee_oa.progressionGraph=graph('volume',[
+ {id:'volume',label:'Bygg tolererad volym',role:'knee_capacity',exercises:{chair:{dose:{reps:10}},extension:{dose:{reps:10}}}},
+ {id:'stairs',label:'Mer funktionell knäbelastning',role:'stairs_capacity',exercises:{step_up:{variantId:'low'}}},
+ {id:'control',label:'Ökad kontroll i vardagsfunktion',role:'single_leg_control',exercises:{step_up:{dose:{sets:3,reps:10}},balance:{dose:{sets:3}}}}
+],[{from:'volume',to:'stairs',kind:'advance'},{from:'stairs',to:'control',kind:'advance'},{from:'stairs',to:'volume',kind:'regress'},{from:'control',to:'stairs',kind:'regress'}]);
+C.blueprints.knee_tendon.progressionGraph=graph('iso',[
+ {id:'iso',label:'Isometrisk belastning',role:'tendon_tolerance',exercises:{quad_iso:{dose:{sets:4,hold:30}}}},
+ {id:'strength',label:'Kontrollerad styrkebelastning',role:'knee_strength',exercises:{wall_sit:{dose:{sets:4,hold:40}},split_squat:{dose:{sets:3,reps:8}}}},
+ {id:'function',label:'Funktionell belastning',role:'deceleration_control',exercises:{step_down:{dose:{sets:3,reps:8}}}}
+],[{from:'iso',to:'strength',kind:'advance'},{from:'strength',to:'function',kind:'advance'},{from:'strength',to:'iso',kind:'regress'},{from:'function',to:'strength',kind:'regress'}]);
+C.blueprints.shoulder_load.progressionGraph=graph('control',[
+ {id:'control',label:'Cuffkontroll',role:'cuff_control',exercises:{isometric_er:{dose:{sets:4,hold:20}},rotation:{dose:{sets:3,reps:10}}}},
+ {id:'load',label:'Ökad cuff- och skulderbelastning',role:'shoulder_capacity',exercises:{rotation:{dose:{sets:3,reps:12}},row:{dose:{sets:3,reps:12}}}},
+ {id:'elevation',label:'Kontrollerad elevation',role:'elevation_capacity',exercises:{scaption:{dose:{sets:3,reps:10}}}}
+],[{from:'control',to:'load',kind:'advance'},{from:'load',to:'elevation',kind:'advance'},{from:'load',to:'control',kind:'regress'},{from:'elevation',to:'load',kind:'regress'}]);
+C.blueprints.achilles.progressionGraph=graph('bilateral',[
+ {id:'bilateral',label:'Bilateral vadkapacitet',role:'calf_capacity',exercises:{calf:{dose:{sets:3,reps:12}},soleus:{dose:{sets:3,reps:12}}}},
+ {id:'eccentric',label:'Långsam unilateral belastning',role:'achilles_load',exercises:{heel_raise_ecc:{variantId:'single',dose:{sets:4,reps:8}}}},
+ {id:'capacity',label:'Högre vadkapacitet',role:'single_leg_capacity',exercises:{heel_raise_ecc:{dose:{sets:4,reps:10}},balance:{dose:{sets:3}}}}
+],[{from:'bilateral',to:'eccentric',kind:'advance'},{from:'eccentric',to:'capacity',kind:'advance'},{from:'eccentric',to:'bilateral',kind:'regress'},{from:'capacity',to:'eccentric',kind:'regress'}]);
+
+root.RedaClinicalLibrary={version:'2.6.0',progression:'curated_graphs'};
 })(typeof window!=='undefined'?window:globalThis);

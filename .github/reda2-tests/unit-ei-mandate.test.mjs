@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {mandateSummary,mandateRiskText} from '../../reda-2/unit-ei-mandate.mjs';
+test('unit mandate clearly separates shadow and autonomous operation',()=>{assert.equal(mandateSummary({automatic_progression:false}).mode,'Granskningsläge');assert.equal(mandateSummary({automatic_progression:true,automatic_regression:true,max_autonomous_steps:5}).mode,'Progression + regression')});
+test('autonomy copy exposes bounded step limit',()=>assert.match(mandateRiskText({automatic_progression:true,max_autonomous_steps:4}),/högst 4 steg/));

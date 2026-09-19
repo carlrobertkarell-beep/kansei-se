@@ -81,3 +81,10 @@ select tests.ok((select count(*)=1 from reda_audit_events where action='clinic_a
 set role authenticated;select tests.login(1,'aal2',103);select tests.workspace('dashboard-test');
 explain(analyze,buffers)select reda_dashboard('','all',975);
 reset role;
+
+-- EI fleet totals must describe the whole clinician population, not the current 25-row page.
+select tests.ok((reda_dashboard('', 'all', 0)->'fleet') ?& array['total','autonomous','evidence','held','review','shadow','unmanaged'],'dashboard exposes server fleet aggregate');
+select tests.ok((reda_dashboard('', 'all', 0)->'fleet'->>'total')::int=(reda_dashboard('', 'all', 0)->'counts'->>'active')::int,'fleet total matches all active plans');
+select tests.ok(jsonb_typeof(reda_dashboard('', 'autonomous', 0)->'patients')='array','autonomous fleet filter is server-backed');
+select tests.ok(jsonb_typeof(reda_dashboard('', 'held', 0)->'patients')='array','held fleet filter is server-backed');
+select tests.ok(jsonb_typeof(reda_dashboard('', 'shadow', 0)->'patients')='array','shadow fleet filter is server-backed');

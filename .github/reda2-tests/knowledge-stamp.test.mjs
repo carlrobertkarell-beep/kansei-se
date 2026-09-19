@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+test('planner stamps clinical knowledge version into generated prescriptions',()=>{const s=fs.readFileSync(new URL('../../reda-2/planner.js',import.meta.url),'utf8');assert.match(s,/clinicalKnowledgeVersion:root\.RedaClinicalKnowledgeVersion\|\|'unknown'/)});
+test('clinical knowledge module exposes version to legacy planner runtime',()=>{const s=fs.readFileSync(new URL('../../reda-2/clinical-knowledge.mjs',import.meta.url),'utf8');assert.match(s,/globalThis\.RedaClinicalKnowledgeVersion=REDA_CLINICAL_KNOWLEDGE_VERSION/)});

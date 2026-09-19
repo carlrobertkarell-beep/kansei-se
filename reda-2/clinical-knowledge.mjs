@@ -10,3 +10,5 @@ export const blueprintMeta={
  lumbar:{domain:'lumbar',label:'Ländrygg',review:'clinical'}
 };
 export function knowledgeManifest(blueprints){return Object.entries(blueprints||{}).map(([id,b])=>({id,version:REDA_CLINICAL_KNOWLEDGE_VERSION,domain:blueprintMeta[id]?.domain||'other',nodes:b.progressionGraph?.nodes?.length||0,edges:b.progressionGraph?.edges?.length||0,hasRegression:!!b.progressionGraph?.edges?.some(e=>e.kind==='regress')}))}
+
+if(typeof globalThis!=='undefined')globalThis.RedaClinicalKnowledgeVersion=REDA_CLINICAL_KNOWLEDGE_VERSION;

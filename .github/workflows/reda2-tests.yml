@@ -104,6 +104,7 @@ jobs:
           python3 .github/reda2-tests/patient_intake_browser_test.py
           python3 .github/reda2-tests/plan_authoring_browser_test.py
           python3 .github/reda2-tests/fast_workflows_browser_test.py
+          python3 .github/reda2-tests/clinic_navigation_browser_test.py
           python3 .github/reda2-tests/process_browser_test.py
           python3 .github/reda2-tests/patient_loop_browser_test.py
           python3 .github/reda2-tests/barrier_adaptation_browser_test.py

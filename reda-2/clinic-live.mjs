@@ -14,6 +14,7 @@ import {mountWorkspaceTeam,roleLabels} from './workspace-team.mjs?v=1'
 import * as api from './secure-browser.mjs?v=20260912-coach1'
 import {mountClinicEngine} from './runtime-ui.mjs?v=20260912-coach1'
 import {mountClinicInbox} from './clinic-inbox.mjs?v=20260912-coach1'
+import {followupDigest} from './followup-digest.mjs?v=20260919-1'
 let composer=null,clinicalProfile={},processData={plans:[],sessions:[],responses:[]},savedRecord=null,reviewedPlan="";
 let dashboard=null,inbox=null,team=null,activeWorkspace=null,workspaces=[],workspaceEpoch=0,workspaceBusy=false;
 const $=id=>document.getElementById(id), C=window.RedaClinical, P=window.RedaPlanner
@@ -98,7 +99,7 @@ async function renderFollowup(provided){
   if(!published.length){$('followup').textContent='Ingen aktiverad plan att följa upp ännu.';return}
   const initial=published.find(p=>p.status==='active')||published[0];
   $('followup').innerHTML='<div class="follow-version"><label for="reviewVersion">Programversion</label><select id="reviewVersion">'+published.map(p=>`<option value="${esc(p.id)}" ${p.id===initial.id?'selected':''}>Version ${p.version}${p.status==='active'?' · aktuell':' · tidigare'}</option>`).join('')+'</select></div><div id="enginePanel"></div><div id="reviewSummary"></div>';
-  const date=d=>d?d.slice(8,10)+'/'+d.slice(5,7)+' '+d.slice(0,4):'Ej bestämt';
+  const date=d=>d?d.slice(8,10)+'/'+d.slice(5,7)+' '+d.slice(0,4):'Ej bestämt';const digest=followupDigest({plan:{...initial,payload:initial.payload},sessions:data.sessions||[],responses:data.responses||[],reflections:data.reflections||[]});if(digest.valid){$('followup').insertAdjacentHTML('afterbegin','<section class="followup-digest"><div><p class="eyebrow">EI · sammanfattat underlag</p><h3>'+esc(digest.headline)+'</h3><p>'+esc(digest.action)+'</p></div><div class="digest-flags">'+(digest.flags.length?digest.flags.map(f=>'<span data-kind="'+esc(f.kind)+'"><b>'+esc(f.label)+'</b>'+(f.detail?'<small>'+esc(f.detail)+'</small>':f.count?'<small>'+f.count+' registrering'+(f.count===1?'':'ar')+'</small>':'')+'</span>').join(''):'<span><b>Inget särskilt att lyfta</b><small>Utifrån registrerat underlag i perioden.</small></span>')+'</div><p class="digest-note">Sammanfattning av registrerad träning och patientsvar. Den bedömer inte återhämtning och ändrar inte ordinationen.</p></section>')}
   function draw(){
    const f=window.RedaFollowup.build({...data,planId:$('reviewVersion').value}),p=f.plan.payload,issues=f.exercises.filter(x=>x.heavy||x.skipped).sort((a,b)=>(b.heavy+b.skipped)-(a.heavy+a.skipped));
    let html=`<div class="review-context"><p class="eyebrow">Patientens mål · version ${f.plan.version}</p><h3>${esc(p.goal||'Inget mål angivet i planen.')}</h3><p>Planerad uppföljning: ${esc(date(p.reviewDate))}</p></div>`;

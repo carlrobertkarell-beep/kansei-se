@@ -71,5 +71,27 @@ C.blueprints.achilles.progressionGraph=graph('bilateral',[
  {id:'capacity',label:'Högre vadkapacitet',role:'single_leg_capacity',exercises:{heel_raise_ecc:{dose:{sets:4,reps:10}},balance:{dose:{sets:3}}}}
 ],[{from:'bilateral',to:'eccentric',kind:'advance'},{from:'eccentric',to:'capacity',kind:'advance'},{from:'eccentric',to:'bilateral',kind:'regress'},{from:'capacity',to:'eccentric',kind:'regress'}]);
 
-root.RedaClinicalLibrary={version:'2.6.0',progression:'curated_graphs'};
+
+C.blueprints.knee_pf.progressionGraph=graph('control',[
+ {id:'control',label:'Kontrollerad knäbelastning',role:'knee_control',exercises:{extension:{dose:{sets:3,reps:10}},chair:{dose:{sets:3,reps:8}}}},
+ {id:'step',label:'Trapp- och stegkapacitet',role:'stairs_capacity',exercises:{step_up:{dose:{sets:3,reps:8}},step_down:{dose:{sets:2,reps:8}}}},
+ {id:'capacity',label:'Högre funktionell kapacitet',role:'knee_capacity',exercises:{step_up:{dose:{sets:3,reps:10}},step_down:{dose:{sets:3,reps:10}},calf:{dose:{sets:3,reps:12}}}}
+],[{from:'control',to:'step',kind:'advance'},{from:'step',to:'capacity',kind:'advance'},{from:'step',to:'control',kind:'regress'},{from:'capacity',to:'step',kind:'regress'}]);
+C.blueprints.hip_gtps.progressionGraph=graph('local',[
+ {id:'local',label:'Lokal höftkapacitet',role:'hip_abduction_capacity',exercises:{clam:{dose:{sets:3,reps:10}},abduction:{dose:{sets:3,reps:10}}}},
+ {id:'standing',label:'Stående höftkontroll',role:'standing_hip_control',exercises:{side_step:{dose:{sets:3,reps:10}},chair:{dose:{sets:3,reps:8}}}},
+ {id:'capacity',label:'Högre funktionell höftkapacitet',role:'hip_function',exercises:{side_step:{dose:{sets:3,reps:12}},chair:{dose:{sets:3,reps:10}}}}
+],[{from:'local',to:'standing',kind:'advance'},{from:'standing',to:'capacity',kind:'advance'},{from:'standing',to:'local',kind:'regress'},{from:'capacity',to:'standing',kind:'regress'}]);
+C.blueprints.neck.progressionGraph=graph('control',[
+ {id:'control',label:'Nackkontroll',role:'neck_control',exercises:{neck_rotation:{dose:{sets:2,reps:8}},chin_nod:{dose:{sets:2,reps:6}}}},
+ {id:'endurance',label:'Kontroll och uthållighet',role:'neck_endurance',exercises:{neck_rotation:{dose:{sets:3,reps:8}},chin_nod:{dose:{sets:3,reps:8}},row:{dose:{sets:3,reps:10}}}},
+ {id:'capacity',label:'Högre skulder- och nackkapacitet',role:'neck_shoulder_capacity',exercises:{row:{dose:{sets:3,reps:12}}}}
+],[{from:'control',to:'endurance',kind:'advance'},{from:'endurance',to:'capacity',kind:'advance'},{from:'endurance',to:'control',kind:'regress'},{from:'capacity',to:'endurance',kind:'regress'}]);
+C.blueprints.lumbar.progressionGraph=graph('control',[
+ {id:'control',label:'Bål- och rörelsekontroll',role:'trunk_control',exercises:{bridge:{dose:{sets:2,reps:8}},dead_bug:{dose:{sets:2,reps:8}}}},
+ {id:'endurance',label:'Ökad båluthållighet',role:'trunk_endurance',exercises:{bridge:{dose:{sets:3,reps:10}},bird_dog:{dose:{sets:3,reps:8}},dead_bug:{dose:{sets:3,reps:8}}}},
+ {id:'capacity',label:'Högre vardagskapacitet',role:'trunk_capacity',exercises:{bird_dog:{dose:{sets:3,reps:10}},dead_bug:{dose:{sets:3,reps:10}}}}
+],[{from:'control',to:'endurance',kind:'advance'},{from:'endurance',to:'capacity',kind:'advance'},{from:'endurance',to:'control',kind:'regress'},{from:'capacity',to:'endurance',kind:'regress'}]);
+
+root.RedaClinicalLibrary={version:'2.7.0',progression:'curated_graphs'};
 })(typeof window!=='undefined'?window:globalThis);

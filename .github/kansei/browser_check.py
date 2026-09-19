@@ -8,6 +8,7 @@ from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 
 PATHS = ("/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
+KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/")
 SIZES = (("mobile", 390, 844), ("desktop", 1440, 1000))
 
 
@@ -29,7 +30,7 @@ def check(base, output):
                 else:
                     req.abort()
             context.route("**/*", route)
-            for path in PATHS:
+            for path in PATHS + (() if baseline_only else KNOWLEDGE_PATHS):
                 page = context.new_page()
                 js_errors = []
                 page.on("pageerror", lambda err: js_errors.append(str(err)[:180]))
@@ -147,6 +148,36 @@ def check(base, output):
                         if guide.locator('a[href="/skuldra/"]').count():
                             row["errors"].append("Direct service picker still links to shoulder assessment")
                         page.keyboard.press("Escape")
+
+                    if not baseline_only and path == "/kunskapsbank/":
+                        cards = page.locator("[data-library-card]")
+                        total = cards.count()
+                        if total < 64:
+                            row["errors"].append("Expanded knowledge library is incomplete")
+                        visible = page.locator("[data-library-card]:not([hidden])")
+                        search = page.locator("[data-library-search]")
+                        page.get_by_role("button", name="Ultraljud", exact=True).click()
+                        if visible.count() < 6 or page.locator('[data-library-card]:not([hidden]):not([data-category="Ultraljud"])').count():
+                            row["errors"].append("Ultrasound category filter failed")
+                        search.fill("zzzz-inte-ett-amne")
+                        if visible.count() != 0 or not page.locator("[data-library-empty]").is_visible():
+                            row["errors"].append("Knowledge empty state failed")
+                        page.locator("[data-library-reset]").click()
+                        if visible.count() != total or search.input_value():
+                            row["errors"].append("Knowledge search reset failed")
+                        search.fill("halseneruptur")
+                        if visible.count() != 1 or "Misstänkt hälseneruptur" not in visible.inner_text():
+                            row["errors"].append("Accent-insensitive article search failed")
+                        search.fill("")
+                        if page.locator("[data-library-count]").inner_text() != f"{total} artiklar":
+                            row["errors"].append("Knowledge result count failed")
+                    if not baseline_only and path in KNOWLEDGE_PATHS[1:]:
+                        if not page.locator(".article-sources a").count():
+                            row["errors"].append("Article sources missing")
+                        if "Medicinskt granskad" in page.locator("main").inner_text():
+                            row["errors"].append("Unsupported medical review attribution")
+                        if path == "/blogg/misstankt-halseneruptur/" and page.locator('main a[href*="bokadirekt.se"]').count():
+                            row["errors"].append("Urgent injury article exposes a commercial booking CTA")
 
                     slug = path.strip("/").replace("/", "-") or "home"
                     page.screenshot(path=str(output / f"{slug}-{label}.png"), full_page=False, animations="disabled")

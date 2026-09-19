@@ -25,7 +25,7 @@ import {todayState,pendingReflections} from './patient-loop.mjs?v=2'
 import {mountSessionReflection} from './session-reflection.mjs?v=4'
 import {mountPatientMessages} from './patient-messages.mjs?v=2'
 let messages=null;
-import {mountPlanHelp,decisionText} from './runtime-ui.mjs?v=20260912-coach1'
+import {mountPlanHelp,decisionText} from './runtime-ui.mjs?v=20260919-mandate1'
 const $=id=>document.getElementById(id), F=window.RedaFigures, S=window.RedaSession, R=window.RedaRecovery
 const accountUI=createPatientAccount({header:document.querySelector('.patient-app>.top'),logout:$('logout'),onPlan:()=>document.querySelector('[data-tab=program]').click(),onHistory:()=>document.querySelector('[data-tab=activity]').click()});
 let helpExpanded=true,coach=null,marking=false,finishing=false;

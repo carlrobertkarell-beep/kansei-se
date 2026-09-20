@@ -10,7 +10,7 @@ export function mountClinicNavigation(app,{canNavigate=()=>true,onNavigate=()=>{
  const pages={patients:page('registryPage'),patient:page('patientPage'),ei:page('eiPage','EI och mandat','Se vad EI får göra i den här arbetsytan.'),team:page('teamPage','Team och åtkomst','Hantera arbetsytans medlemmar och behörigheter.')};
  pages.patients.append(byId('decisionDashboard'),byId('clinicInbox'));
  pages.patient.append(byId('backToDashboard'),byId('clinicalWorkspace'));
- pages.ei.append(byId('eiSettings'));
+ const preview=document.createElement('div');preview.id='eiPreview';pages.ei.append(preview,byId('eiSettings'));
  pages.team.append(byId('workspaceEmpty'),byId('workspaceTeam'));
  const bar=app.querySelector('.workspace-bar'),message=byId('workspaceMessage');
  content.prepend(message);sidebar.querySelector('.clinic-nav-panel').append(bar);

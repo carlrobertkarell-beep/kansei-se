@@ -83,3 +83,5 @@ export const submitExerciseHelp=(sessionId,exerciseId,requestId,answers)=>rpc('r
 
 export const clinicalEISettings=()=>rpc('reda_clinical_ei_settings',{},clinicalClient());
 export const saveClinicalEIMandate=(id,revision,enabled,maxSteps)=>rpc('reda_save_clinical_ei_mandate',{p_request_id:id,p_revision:revision,p_enabled:enabled,p_max_steps:maxSteps},clinicalClient());
+
+export const previewProgressionBatch=(after=null)=>rpc('reda_preview_progression_batch',{p_after:after},clinicalClient());

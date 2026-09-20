@@ -1,5 +1,5 @@
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-export function mountPatientMessages(host,{api,onSent}){
+export function mountPatientMessages(host,{api,onSent,onState}){
  if(!host||!api.patientMessages)return null;
  let alive=true,busy=false,ticket=0,data=null,pending=null;
  const valid=()=>alive&&host.isConnected,q=s=>host.querySelector(s);
@@ -10,8 +10,8 @@ export function mountPatientMessages(host,{api,onSent}){
   if(busy)return;const request=++ticket;status('Hämtar meddelanden…');
   try{const result=await api.patientMessages();if(!valid()||request!==ticket)return;data=result;q('[data-message-count]').textContent=data.messages.length?'('+data.messages.length+')':'';q('details').open=!!data.reply_to||!!message;
    q('.reda-message-list').innerHTML=data.messages.length?data.messages.map(m=>'<div class="dash-bubble '+(m.kind==='patient'?'from-patient':'')+'"><b>'+esc(m.kind==='patient'?'Ditt svar':'Din behandlare')+'</b><p>'+esc(m.body)+'</p><small>'+esc(new Date(m.created_at).toLocaleString('sv-SE'))+'</small></div>').join(''):'<p>Du har inga meddelanden ännu.</p>';
-   q('.reda-reply').hidden=!data.reply_to;status(message||(data.reply_to?'Du kan svara på behandlarens senaste meddelande.':data.messages.length?'Senaste 20 meddelandena visas.':''));
-  }catch(e){if(valid()&&request===ticket){data=null;q('details').open=true;q('.reda-message-list').replaceChildren();q('.reda-reply').hidden=true;status(message?message+' Uppdatera för att läsa dialogen.':'Meddelandena kunde inte hämtas. Försök med Uppdatera.')}}
+   onState?.({status:'ready',data});q('.reda-reply').hidden=!data.reply_to;status(message||(data.reply_to?'Du kan svara på behandlarens senaste meddelande.':data.messages.length?'Senaste 20 meddelandena visas.':''));
+  }catch(e){if(valid()&&request===ticket){data=null;onState?.({status:'error'});q('details').open=true;q('.reda-message-list').replaceChildren();q('.reda-reply').hidden=true;status(message?message+' Uppdatera för att läsa dialogen.':'Meddelandena kunde inte hämtas. Försök med Uppdatera.')}}
  }
  q('[data-refresh-messages]').onclick=()=>refresh();
  q('form').onsubmit=async e=>{

@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="patient-account.css?v=1">
 <link rel="stylesheet" href="patient-theme.css?v=1">
 <link rel="stylesheet" href="session-overview.css?v=20260918-1">
-</head>
+<link rel="stylesheet" href="/reda-2/patient-focus.css?v=20260920-1"></head>
 <body class="reda-patient">
 <a class="patient-skip" href="#todayTitle">Till dagens nästa steg</a>
 <main class="shell patient-app">
@@ -77,10 +77,9 @@
 <h1>Hej <span id="patientName">
 </span>
 </h1>
-<p id="intro" class="muted">
-</p>
+
 <details class="notice">
-<summary>Nästa uppföljning</summary>
+<summary>Mål och uppföljning</summary><p id="intro" class="muted"></p>
 <span id="reviewText">Följ den här planen fram till uppföljningen. Din behandlare bedömer nästa steg, på kliniken eller vid en avstämning på distans.</span>
 </details>
 </section>
@@ -94,7 +93,7 @@
 <button type="button" id="patientNext" class="patient-next" hidden><span><small>EI följer upp</small><b id="patientNextLabel"></b></span><span aria-hidden="true">→</span></button>
 <div class="card loop-today" id="todayCard">
 <div class="patient-today-label">
-<span class="eyebrow">Ditt nästa steg</span>
+<span class="eyebrow">Ditt nästa pass</span>
 <span class="patient-status-dot" aria-hidden="true">
 </span>
 </div>
@@ -105,10 +104,10 @@
 <span id="exerciseCount">0</span> övningar</div>
 <p id="todayMeta" class="muted">
 </p>
-<div id="planOptionChoice" hidden>
+<p id="patientDuration" class="patient-duration"></p><div id="patientPlanChanges"></div><p id="planReceiptStatus" role="status" hidden></p><div id="planOptionChoice" hidden>
 </div>
 <button id="start" class="btn primary patient-start-button">Starta passet</button>
-<div class="journey-list-heading"><h3>I ditt pass</h3><span>Tryck för att titta</span></div>
+<div id="patientActionArea" class="patient-action-area"><button id="patientContactShortcut" type="button" class="patient-contact-shortcut" hidden><strong></strong><span></span></button></div><div class="journey-list-heading"><h3>I ditt pass</h3><span>Tryck för att titta</span></div>
 <ul id="todayExercises" class="loop-preview">
 </ul>
 <div id="todayPreparation" class="journey-preparation" hidden></div>
@@ -136,7 +135,7 @@
 <div id="responsePrompt" class="ei-response-prompt hidden">
 </div>
 <div id="player" class="exercise-player card hidden" data-complete="false" data-resting="false">
-<header class="player-head"><div class="player-topline"><button id="closePlayer" class="player-icon" aria-label="Pausa passet och gå tillbaka"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></svg></button><span class="player-context"><b>Ditt träningspass</b><span>Övning <span id="pos"></span></span></span><button id="openPlayerOptions" class="player-icon" aria-label="Fler val för övningen" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button></div><div class="player-titleline"><h2 id="exName" tabindex="-1"></h2></div><div class="dose" id="dose"></div><div class="player-purpose"><b>Träna i din takt</b><span id="playerCurrentRound"></span></div><div class="player-progress"><span id="sessionProgressText"></span><progress id="sessionProgress" max="1" value="0" aria-label="Genomförda omgångar"></progress></div></header>
+<header class="player-head"><div class="player-topline"><button id="closePlayer" class="player-icon" aria-label="Pausa passet och gå tillbaka"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></svg></button><span class="player-context"><b>Ditt träningspass</b><span>Övning <span id="pos"></span></span></span><button id="openPlayerOptions" class="player-icon" aria-label="Fler val för övningen" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button></div><div class="player-titleline"><h2 id="exName" tabindex="-1"></h2></div><div class="dose" id="dose"></div><div id="patientExerciseCues" class="patient-exercise-cues" aria-live="polite"></div><div class="player-purpose"><b>Träna i din takt</b><span id="playerCurrentRound"></span></div><div class="player-progress"><span id="sessionProgressText"></span><progress id="sessionProgress" max="1" value="0" aria-label="Genomförda omgångar"></progress></div></header>
 <div id="movementLesson"></div>
 <footer class="player-dock"><fieldset id="effort" class="effort"><legend>Hur kändes övningen?</legend><button type="button" data-effort="light">Lätt</button><button type="button" data-effort="okay">Lagom</button><button type="button" data-effort="heavy">För tungt</button></fieldset><div class="player-action-row"><button type="button" id="openExerciseHelp" class="player-help" aria-haspopup="dialog"><span aria-hidden="true">?</span>Hjälp</button><div id="rounds" class="rounds"></div><button id="resumeExercise" type="button">Fortsätt träna</button><button id="next" class="btn primary" disabled>Nästa övning</button></div><p id="playerSaveStatus" role="status"></p></footer>
 <dialog id="playerHelp" class="exercise-sheet" aria-labelledby="playerHelpTitle"><div class="sheet-heading"><h2 id="playerHelpTitle">Vad behöver du hjälp med?</h2><button class="lesson-icon" type="button" data-close-sheet="playerHelp" aria-label="Stäng hjälpen">✕</button></div><div class="sheet-content"><div id="exerciseCoach"></div></div></dialog>
@@ -221,7 +220,7 @@
 </script>
 <script src="/reda-2/response-form.js?v=1">
 </script>
-<script type="module" src="/reda-2/patient-live.mjs?v=20260919-mandate1">
+<script type="module" src="/reda-2/patient-live.mjs?v=20260920-focus1">
 </script>
 </body>
 </html>

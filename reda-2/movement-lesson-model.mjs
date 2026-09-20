@@ -17,14 +17,16 @@ export function lessonSegments(key){
 export function localSwedishVoice(voices=[]){return voices.find(v=>v.localService===true&&/^sv(?:[-_]|$)/i.test(v.lang))||null}
 export function wholeLessonSequence(key){
  const parts=lessonSegments(key),total=parts.reduce((n,s)=>n+s.seconds,0);
- const sequence=[{from:0,to:0,seconds:1}];
- parts.forEach((s,i)=>{sequence.push({...s,seconds:s.seconds/total*12});if(i===parts.length-2)sequence.push({from:s.to,to:s.to,seconds:1})});
- return {sequence,seconds:14};
+ // A full demonstration has one continuous outward phase. Individual parts remain
+ // available for teaching, but the body must not stop at the end of the lean.
+ const outward=parts.slice(0,-1).reduce((n,s)=>n+s.seconds,0)/total*7;
+ const sequence=[{from:0,to:0,seconds:.5},{from:0,to:1,seconds:outward},{from:1,to:1,seconds:.5},{from:1,to:0,seconds:7-outward}];
+ return {sequence,seconds:8};
 }
 function positionAt(segment,progress){
  let selected=segment,t=progress;
  if(segment.sequence){let elapsed=progress*segment.seconds;selected=segment.sequence.at(-1);t=1;for(const part of segment.sequence){if(elapsed<part.seconds){selected=part;t=elapsed/part.seconds;break}elapsed-=part.seconds}}
- return selected.from+(selected.to-selected.from)*(t*t*(3-2*t));
+ return selected.from+(selected.to-selected.from)*(t*t*t*(t*(t*6-15)+10));
 }
 export function createLessonPlayback({draw,change=()=>{},clock=()=>performance.now(),request=cb=>requestAnimationFrame(cb),cancel=id=>cancelAnimationFrame(id)}){
  let segment={from:0,to:1,seconds:10},progress=0,playing=false,slow=false,raf=null,last=0;

@@ -5,7 +5,7 @@ import {sessionOverview,hasNoRecordedRounds} from './session-overview-model.mjs?
 import {createPatientAccount} from './patient-account.mjs?v=1';
 import {createExercisePreview,renderExerciseOverview,renderPreparation} from './patient-journey.mjs?v=3';
 import {mountExercisePlayer} from './exercise-player.mjs?v=20260920-2';
-import {createMovementLesson} from './movement-lesson.mjs?v=5';
+import {createMovementLesson} from './movement-lesson.mjs?v=20260920-human1';
 import {createExerciseCoach} from './exercise-coach.mjs?v=20260912-coach1';
 import {exerciseSide,sideLabels} from './exercise-help-model.mjs?v=20260912-coach1';
 import {mountPatientBarriers} from './barrier-loop.mjs?v=1'
@@ -32,7 +32,7 @@ const $=id=>document.getElementById(id), F=window.RedaFigures, S=window.RedaSess
 const accountUI=createPatientAccount({header:document.querySelector('.patient-app>.top'),logout:$('logout'),onPlan:()=>document.querySelector('[data-tab=program]').click(),onHistory:()=>document.querySelector('[data-tab=activity]').click()});
 let helpExpanded=true,coach=null,marking=false,finishing=false;
 const preview=createExercisePreview();
-const lesson=createMovementLesson($('movementLesson'));const playerShell=mountExercisePlayer($('player'),{lesson});
+const lesson=createMovementLesson($('movementLesson'),{playLabel:'Spela rörelsen'});const playerShell=mountExercisePlayer($('player'),{lesson});
 let state=null,plan=null,session=null,sessionSourcePlanId=null,index=0, syncQueue=Promise.resolve(), unsynced=false, syncVersion=0, lastSynced=0, starting=false, recoveryBlocked=false, durable=false, previousSession=null
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
 function setAuth(show){$('auth').classList.toggle('hidden',!show);$('app').classList.toggle('hidden',show);$('logout').classList.toggle('hidden',show)}

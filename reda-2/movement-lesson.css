@@ -40,3 +40,7 @@
 
 /* The old placeholder used 56px emoji text; never let that size drive SVG padding. */
 .movement-lesson .motion-studio,.movement-lesson .motion-studio .motion{font-size:16px}
+
+/* Long playback labels must wrap at enlarged text sizes, not widen the phone. */
+.lesson-transport button{min-width:0;max-width:100%}
+.lesson-transport button span{min-width:0;overflow-wrap:anywhere}

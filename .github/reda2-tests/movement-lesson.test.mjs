@@ -10,19 +10,21 @@ test('learning uses the saved instruction verbatim, deduplicates it and does not
 test('patient instructions can only be read with an explicitly local Swedish voice',()=>{const remote={lang:'sv-SE',localService:false},unknown={lang:'sv-SE'},local={lang:'sv-SE',localService:true};assert.equal(localSwedishVoice([remote,unknown]),null);assert.equal(localSwedishVoice([{lang:'en-US',localService:true},remote,local]),local)});
 
 test('a whole demonstration crosses each part, returns to start and stops after one cycle',()=>{
- for(const [key,peak] of [['sit-to-stand.support',8300],['knee-extension.seated',7000]]){
-  const h=harness(),s=wholeLessonSequence(key);h.player.select(s);h.player.play();h.advance(500);assert.equal(h.player.state().position,0);
-  h.advance(4000);assert.ok(h.player.state().position>0&&h.player.state().position<1);
-  h.advance(peak-4500);assert.equal(h.player.state().position,1);
-  h.advance(11000-peak);assert.ok(h.player.state().position>0&&h.player.state().position<1);
-  h.advance(3001);assert.equal(h.player.state().position,0);assert.equal(h.player.state().complete,true);assert.equal(h.scheduled(),false);
+ for(const [key,peak] of [['sit-to-stand.support',4750],['knee-extension.seated',3900]]){
+  const h=harness(),s=wholeLessonSequence(key);h.player.select(s);h.player.play();h.advance(250);assert.equal(h.player.state().position,0);
+  h.advance(2000);assert.ok(h.player.state().position>0&&h.player.state().position<1);
+  h.advance(peak-2250);assert.equal(h.player.state().position,1);
+  h.advance(6000-peak);assert.ok(h.player.state().position>0&&h.player.state().position<1);
+  h.advance(2001);assert.equal(h.player.state().position,0);assert.equal(h.player.state().complete,true);assert.equal(h.scheduled(),false);
   h.advance(100000);assert.equal(h.player.state().position,0);
  }
 });
 test('whole demonstration pause and slow speed preserve progress through the return',()=>{
- const h=harness();h.player.select(wholeLessonSequence('sit-to-stand.support'));h.player.play();h.advance(10000);h.player.pause();const at=h.player.state().position;h.advance(60000);h.player.speed(true);assert.equal(h.player.state().position,at);h.player.play();h.advance(1500);assert.ok(h.player.state().position<at);h.advance(4500);assert.equal(h.player.state().complete,true);assert.equal(h.player.state().playing,false)
+ const h=harness();h.player.select(wholeLessonSequence('sit-to-stand.support'));h.player.play();h.advance(6000);h.player.pause();const at=h.player.state().position;h.advance(60000);h.player.speed(true);assert.equal(h.player.state().position,at);h.player.play();h.advance(1500);assert.ok(h.player.state().position<at);h.advance(4500);assert.equal(h.player.state().complete,true);assert.equal(h.player.state().playing,false)
 });
 
 test('paused close view includes the far side and all body landmarks without mutating the pose',()=>{
  const pose={head:[240,110],shoulder:[240,150],hip:[220,230],knee:[290,245],ankle:[300,330],toe:[325,350],back:{heel:[185,360]}};const before=structuredClone(pose),[x,y,w,h]=focusCamera(pose);assert.ok(x<185&&x+w>325&&y<110&&y+h>360);assert.deepEqual(pose,before);assert.equal(focusCamera({head:[NaN,2]}),null)
 });
+
+test('whole chair demonstration does not insert a separate stop after leaning',()=>{const s=wholeLessonSequence('sit-to-stand.support');assert.equal(s.sequence.filter(p=>p.from!==p.to).length,2);assert.equal(s.sequence.reduce((n,p)=>n+p.seconds,0),s.seconds);const h=harness();h.player.select({from:0,to:1,seconds:10});h.player.play();h.advance(10);assert.ok(h.player.state().position<.00000002,'smooth acceleration from rest')});

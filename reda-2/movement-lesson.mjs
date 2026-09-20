@@ -1,8 +1,8 @@
-import {lessonInstructions,lessonSegments,wholeLessonSequence,focusCamera,createLessonPlayback,localSwedishVoice} from './movement-lesson-model.mjs?v=3';
+import {lessonInstructions,lessonSegments,wholeLessonSequence,focusCamera,createLessonPlayback,localSwedishVoice} from './movement-lesson-model.mjs?v=20260920-human1';
 import {sideLabels} from './exercise-help-model.mjs?v=20260912-coach1';
 const icon=(name)=>({play:'<path d="m9 5 11 7-11 7Z"/>',pause:'<path d="M8 5v14M16 5v14"/>',expand:'<path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/>',close:'<path d="m6 6 12 12M18 6 6 18"/>',sound:'<path d="m11 4-6 5H2v6h3l6 5ZM16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/>'}[name]||'');
 const glyph=name=>`<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${icon(name)}</svg>`;
-export function createMovementLesson(host,{idPrefix=''}={}){
+export function createMovementLesson(host,{idPrefix='',playLabel='Visa'}={}){
  const F=window.RedaFigures,media=matchMedia('(prefers-reduced-motion: reduce)'),speech=window.speechSynthesis;
  const reduced=()=>window.RedaPreferences?.reducedMotion()??media.matches;
  let exercise=null,key='',side='',identity='',instructions=[],segments=[],readIndex=0,part=0,view='whole',focus=null,voice=null,utterance=null,customStill=false;
@@ -22,7 +22,7 @@ export function createMovementLesson(host,{idPrefix=''}={}){
  function renderPlayback(s){
   host.dataset.playing=String(s.playing);host.dataset.view=view;
   play.disabled=reduced();
-  const label=reduced()?'Stillbild':s.playing?'Pausa':s.complete?'Visa igen':s.progress>0?'Fortsätt':view==='whole'?'Visa':'Visa delen';
+  const label=reduced()?'Stillbild':s.playing?'Pausa':s.complete?'Visa igen':s.progress>0?'Fortsätt':view==='whole'?playLabel:'Visa delen';
   play.innerHTML=glyph(s.playing?'pause':'play')+`<span>${label}</span>`;
   play.setAttribute('aria-label',s.playing?'Pausa rörelsen':label==='Visa'?'Visa hela rörelsen':label);
   status.textContent=reduced()?'Välj en stillbild under Instruktion.':s.playing?'En visning. Sedan stannar rörelsen.':s.complete?'Visningen är klar. Träna i din takt.':s.progress>0?'Pausad. Fortsätt när du vill.':'Tryck på play om du vill se rörelsen.';
@@ -44,7 +44,7 @@ export function createMovementLesson(host,{idPrefix=''}={}){
  host.querySelectorAll('[data-lesson-mode]').forEach(b=>b.onclick=()=>{silence();const read=b.dataset.lessonMode==='read';$('.lesson-reading').hidden=!read;$('.lesson-parts').hidden=read;host.querySelectorAll('[data-lesson-mode]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)))});
  $('#lessonPrevious').onclick=()=>{silence();readIndex=Math.max(0,readIndex-1);renderRead();remember();$('#lessonInstruction').focus()};
  $('#lessonNext').onclick=()=>{silence();if(readIndex<instructions.length-1){readIndex++;renderRead();remember();$('#lessonInstruction').focus()}else details.close()};
- play.onclick=()=>{silence();if(reduced())return;if(playback.state().playing)playback.pause();else{resetCamera();if(customStill){view='whole';customStill=false;playback.select(wholeLessonSequence(key));$('#motionPhase').textContent='Hela rörelsen'}playback.play()}};
+ play.onclick=()=>{silence();if(reduced())return;if(playback.state().playing)playback.pause();else{resetCamera();if(customStill){view='whole';customStill=false;playback.select(wholeLessonSequence(key));$('#motionPhase').textContent='Hela rörelsen'}if(view==='whole')$('#motionPhase').textContent='Rörelsedemonstration';playback.play()}};
  $('#motionSlow').onclick=()=>{const slow=!playback.state().slow;playback.speed(slow);$('#motionSlow').setAttribute('aria-pressed',String(slow));remember()};
  host.querySelectorAll('[data-motion-frame]').forEach(b=>b.onclick=()=>{showFrame(Number(b.dataset.motionFrame));details.close();play.focus({preventScroll:true})});
  $('#lessonListen').onclick=()=>{if(utterance){silence();return}voices();if(!voice||!instructions[readIndex])return;playback.pause();const u=new SpeechSynthesisUtterance(instructions[readIndex]);u.voice=voice;u.lang=voice.lang;u.rate=.9;utterance=u;$('#lessonListen').textContent='Stoppa uppläsning';u.onend=()=>{if(utterance===u)silence()};u.onerror=()=>{if(utterance===u){silence();$('#lessonCounter').textContent='Uppläsningen kunde inte starta. Texten finns kvar.'}};speech.speak(u)};

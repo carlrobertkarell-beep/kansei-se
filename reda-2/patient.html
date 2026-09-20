@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="./patient-experience.css?v=1">
 <link rel="stylesheet" href="exercise-coach.css?v=20260912-coach1">
 <link rel="stylesheet" href="movement-lesson.css?v=4">
-<link rel="stylesheet" href="exercise-player.css?v=1">
+<link rel="stylesheet" href="exercise-player.css?v=20260920-2">
 <link rel="stylesheet" href="patient-journey.css?v=2">
 <link rel="stylesheet" href="patient-account.css?v=1">
 <link rel="stylesheet" href="patient-theme.css?v=1">
@@ -135,10 +135,10 @@
 <div id="responsePrompt" class="ei-response-prompt hidden">
 </div>
 <div id="player" class="exercise-player card hidden" data-complete="false" data-resting="false">
-<header class="player-head"><div class="player-topline"><button id="closePlayer" class="player-icon" aria-label="Pausa passet och gå tillbaka"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></svg></button><span class="player-context"><b>Ditt träningspass</b><span>Övning <span id="pos"></span></span></span><button id="openPlayerOptions" class="player-icon" aria-label="Fler val för övningen" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button></div><div class="player-titleline"><h2 id="exName" tabindex="-1"></h2></div><div class="dose" id="dose"></div><div id="patientExerciseCues" class="patient-exercise-cues" aria-live="polite"></div><div class="player-purpose"><b>Träna i din takt</b><span id="playerCurrentRound"></span></div><div class="player-progress"><span id="sessionProgressText"></span><progress id="sessionProgress" max="1" value="0" aria-label="Genomförda omgångar"></progress></div></header>
+<header class="player-head"><div class="player-topline"><button id="closePlayer" class="player-icon" aria-label="Pausa passet och gå tillbaka"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></svg></button><span class="player-context"><b>Ditt träningspass</b><span>Övning <span id="pos"></span></span></span><button id="openPlayerOptions" class="player-icon" aria-label="Fler val för övningen" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button></div><div class="player-titleline"><h2 id="exName" tabindex="-1"></h2></div><div class="dose" id="dose"></div><div id="patientExerciseCues" class="patient-exercise-cues" aria-live="polite"></div><div class="player-purpose"><b id="playerStep" role="status">Träna i din takt</b><span id="playerCurrentRound"></span></div><div class="player-progress"><span id="sessionProgressText"></span><progress id="sessionProgress" max="1" value="0" aria-label="Genomförda omgångar"></progress></div></header>
 <div id="movementLesson"></div>
 <footer class="player-dock"><fieldset id="effort" class="effort"><legend>Hur kändes övningen?</legend><button type="button" data-effort="light">Lätt</button><button type="button" data-effort="okay">Lagom</button><button type="button" data-effort="heavy">För tungt</button></fieldset><div class="player-action-row"><button type="button" id="openExerciseHelp" class="player-help" aria-haspopup="dialog"><span aria-hidden="true">?</span>Hjälp</button><div id="rounds" class="rounds"></div><button id="resumeExercise" type="button">Fortsätt träna</button><button id="next" class="btn primary" disabled>Nästa övning</button></div><p id="playerSaveStatus" role="status"></p></footer>
-<dialog id="playerHelp" class="exercise-sheet" aria-labelledby="playerHelpTitle"><div class="sheet-heading"><h2 id="playerHelpTitle">Vad behöver du hjälp med?</h2><button class="lesson-icon" type="button" data-close-sheet="playerHelp" aria-label="Stäng hjälpen">✕</button></div><div class="sheet-content"><div id="exerciseCoach"></div></div></dialog>
+<dialog id="playerHelp" class="exercise-sheet" aria-labelledby="playerHelpTitle"><div class="sheet-heading"><h2 id="playerHelpTitle">Vad behöver du hjälp med?</h2><button class="lesson-icon" type="button" data-close-sheet="playerHelp" aria-label="Stäng hjälpen">✕</button></div><div class="sheet-content"><div class="player-help-shortcuts" role="group" aria-label="Snabb hjälp"><button type="button" id="playerShowClearly">Visa tydligare</button><button type="button" data-player-concern="difficult">Det känns för svårt</button><button type="button" data-player-concern="pain">Det gör ont</button></div><section id="playerConcern" class="player-concern" hidden aria-labelledby="playerConcernTitle"><h3 id="playerConcernTitle" tabindex="-1"></h3><p>Du kan pausa passet här. Dina registrerade omgångar finns kvar. Kontakta din behandlare om du behöver hjälp med hur du ska fortsätta.</p><button type="button" id="playerPauseForHelp">Pausa passet</button><a href="/kontakt/">Kontakta kliniken</a><p class="sub">Inget meddelande skickas när du öppnar detta val.</p></section><div id="exerciseCoach"></div></div></dialog>
 <dialog id="playerOptions" class="exercise-sheet" aria-labelledby="playerOptionsTitle"><div class="sheet-heading"><h2 id="playerOptionsTitle">Din övning</h2><button type="button" class="lesson-icon" data-close-sheet="playerOptions" aria-label="Stäng fler val">✕</button></div><div class="sheet-content"><button id="skip" class="btn ghost">Hoppa över övningen</button><details class="lesson-prescription"><summary>Hela instruktionen och din ordination</summary><div id="exerciseHelp" class="ei-help"></div><div id="exerciseWhy" class="exercise-why"></div></details></div></dialog><p id="instruction"></p>
 </div>
 </section>
@@ -220,7 +220,7 @@
 </script>
 <script src="/reda-2/response-form.js?v=1">
 </script>
-<script type="module" src="/reda-2/patient-live.mjs?v=20260920-focus1">
+<script type="module" src="/reda-2/patient-live.mjs?v=20260920-exercise2">
 </script>
 </body>
 </html>

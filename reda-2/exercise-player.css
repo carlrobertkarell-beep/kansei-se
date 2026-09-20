@@ -29,3 +29,20 @@ body.reda-patient .exercise-player #effort{margin:0 0 4px;padding:0;border:0;dis
 @media(orientation:landscape) and (max-height:560px){body.reda-patient .exercise-player,body.reda-patient #player.exercise-player{height:100dvh;min-height:360px;grid-template-rows:auto minmax(0,1fr)}.exercise-player #movementLesson{height:calc(100dvh - 24px);min-height:330px}.exercise-player .motion-studio{min-height:220px}.exercise-player .player-dock{padding-bottom:0}}
 
 .player-topline .player-icon{display:grid;place-items:center;flex-shrink:0}.player-icon svg{width:22px;height:22px}
+
+/* Keep the patient's current action beside a larger, uncluttered demonstration. */
+.exercise-player .player-purpose:has(#playerStep){display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;font-size:14px;line-height:1.4;margin-top:8px}
+.exercise-player .player-purpose:has(#playerStep) b{font-weight:650}
+.exercise-player .patient-exercise-cues{margin:8px 0;gap:8px}
+.exercise-player .patient-exercise-cues>span{padding:6px 10px;gap:2px}
+.exercise-player .patient-exercise-cues small{font-size:12px}
+.exercise-player .patient-exercise-cues strong{font-size:14px;line-height:1.35}
+.player-help-shortcuts{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:22px}
+.player-help-shortcuts button{text-align:left}
+.player-concern{padding:16px;border:1px solid currentColor;border-radius:14px;margin-bottom:20px}
+.player-concern h3{margin-top:0;font-size:20px}
+.player-concern a{display:block;margin-top:16px;color:inherit;text-decoration:underline}
+@media(max-height:700px){.exercise-player .patient-exercise-cues{margin:5px 0}.exercise-player .player-purpose:has(#playerStep){margin-top:4px}.exercise-player .player-progress{margin-top:4px}}
+
+.player-demo-note{font-size:12px!important;line-height:1.4!important;margin:0!important;text-align:center;color:var(--account-muted,#52695f)}
+.exercise-player:has(#playerStep) .motion-studio{min-height:220px}

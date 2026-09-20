@@ -145,6 +145,7 @@ jobs:
         run: |
           python3 .github/reda2-tests/patient_account_browser_test.py
           python3 .github/reda2-tests/patient_focus_browser_test.py
+          python3 .github/reda2-tests/exercise_flow_browser_test.py
           python3 .github/reda2-tests/exercise_help_browser_test.py
       - name: Retain phone screenshots
         if: always()

@@ -1,0 +1,13 @@
+# Clinic preview
+
+The **EI och mandat** page can preview the assigned clinician's active patient plans. The user explicitly starts a run. Requests process at most 25 patients, with a UUID cursor; the browser continues until no cursor remains. There is no 500/1000-patient ceiling. Search and display pagination operate on the returned results, showing at most 25 rows at a time.
+
+Each batch revalidates the live session, MFA, organization and clinical membership. Other clinicians' patients, archived patients and patients without an active plan are excluded. Missing approved frames are shown as uncovered, separately from readiness and review groups. Results are held only in page memory and discarded on workspace change, logout or a denied request.
+
+The existing engine function now delegates to one private implementation, `reda_progression_decision`. Normal evaluation calls it with `p_preview=false`, preserving saved decisions, idempotence, global execution and mandate gates. The new clinician-only batch RPC calls it with `p_preview=true`; it returns **before every plan, frame, decision or audit write**. Direct access to the shared function is revoked, including for authenticated users.
+
+Preview evaluates clinical readiness even when global execution is closed, reporting that gate separately. Automatic frames still require current mandate authority and obey its limit. Shadow frames are clinical simulations, never permission to execute. Results do not authorize any action and cannot be used to publish a plan. Opening a patient loads current dashboard evidence.
+
+There is no atomic snapshot of an entire clinic across multiple requests. Each patient result has a timestamp; new sessions, answers, assignments or plans can change the result. Cancelled or failed runs are visibly incomplete. Cancellation ignores the in-flight response and prevents further batches; it does not cancel a transaction already running on the server. The bounded transactions use the engine's existing organization/patient locks to avoid evaluating a torn plan/frame state.
+
+Migration `supabase/migrations/20260920042105_shadow_fleet_preview.sql` guards the reviewed engine hash. It creates no data tables, changes no patient rows and opens no rollout flags. Its shared implementation follows `secure/shadow-fleet.sql`. Tests cover zero writes even for eligible automatic frames with execution enabled, parity with real evaluation, preserved retry/gate behavior, complete coverage of 1,005 active plans, scope and revocation, and browser failure/cancellation/workspace handling. Existing mandate concurrency tests run against the refactored engine in CI.

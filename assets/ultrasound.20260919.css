@@ -172,3 +172,12 @@
  .clinic-refined .section-space{padding-block:48px}.clinic-refined .services-layout,.clinic-refined .continuity{display:block}.clinic-refined .service summary{gap:12px}.clinic-refined .service h3{font-size:22px}.clinic-refined .service-content{padding-left:28px}.clinic-refined .reda-canvas{min-height:310px;padding:30px}.clinic-refined .clinic-image{height:300px}.clinic-refined .clinic-title{padding:28px 10px}.clinic-refined .clinic-title h2{font-size:34px}.clinic-refined .clinic-footer{padding-block:12px 30px}.clinic-refined .reading-intro h2{font-size:34px}.clinic-refined .faq{padding-top:48px;padding-bottom:48px}.clinic-refined .footer-cta h2{font-size:44px}.clinic-refined .footer-book{width:100%;min-height:125px}.clinic-refined .footer-bottom{grid-template-columns:1fr;gap:25px}.clinic-refined .footer{padding-bottom:36px}.clinic-refined .footer-links{display:flex;flex-wrap:wrap;gap:10px 20px}
 }
 @media(prefers-reduced-motion:reduce){.us-region,.us-region .icon{transition:none}}
+
+/* Assurance row: fixed tracks remove visual baseline drift */
+.us-assurances{align-items:stretch}
+.us-assurances p{margin:0;min-height:28px;display:grid;grid-template-columns:18px minmax(0,1fr);align-items:center;align-content:center;column-gap:10px;line-height:18px}
+.us-assurances p .icon{display:block;align-self:center}
+@media(max-width:650px){
+ .us-assurances{align-items:stretch}
+ .us-assurances p{min-height:44px;grid-template-columns:16px minmax(0,1fr);column-gap:8px;line-height:18px}
+}

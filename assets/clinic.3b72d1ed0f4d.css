@@ -375,3 +375,6 @@ main .service-list>.service>div>.text-link{margin-block-start:1.125rem}
   .hero-foot{gap:0;column-gap:18px;padding:0;border-top:1px solid var(--line)}
   .hero-foot p{min-height:58px;padding:12px 0;border-bottom:1px solid var(--line);font-size:11px}
 }
+
+/* Reda is under development and should not be visible on the public clinic site yet. */
+a[href="/reda/"],a[href="/reda-rehab/"],.menu-reda,.reda-portal-link,#planKort{display:none!important}

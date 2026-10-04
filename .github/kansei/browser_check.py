@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 
-PATHS = ("/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
+PATHS = ("/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/kna/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/")
 SIZES = (("mobile", 390, 844), ("desktop", 1440, 1000))
 
@@ -92,8 +92,10 @@ def check(base, output):
                                 row["errors"].append("Min rehabplan has wrong destination")
                             if rehab.first.get_attribute("target") == "_blank":
                                 row["errors"].append("Min rehabplan opens a new tab")
-                        if page.locator('a.menu-reda[href="/reda-rehab/"]').count() == 0:
-                            row["errors"].append("Reda product logo has wrong destination")
+                        # Reda was deliberately removed from the public clinic navigation.
+                        reda_links = page.locator('a[href="/reda/"], a[href="/reda-rehab/"]')
+                        if any(link.is_visible() for link in reda_links.all()):
+                            row["errors"].append("Unreleased Reda link is visible on clinic page")
 
                     if not baseline_only and path == "/hjalp-mig-boka/" and label == "desktop":
                         # The homepage now links to the dedicated booking helper. Keep all shoulder-routing checks there.

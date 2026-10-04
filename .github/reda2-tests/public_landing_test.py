@@ -22,8 +22,10 @@ class T(unittest.TestCase):
  def test_responsive_preview_and_motion_controls(self):
   self.p.emulate_media(reduced_motion='reduce');self.p.goto(self.o+'/reda-rehab/forhandsvisning.html');self.p.locator('[data-view="exercise"]').click();self.assertEqual(self.p.locator('#play-motion').inner_text(),'Visa rörelsen');self.p.locator('[data-frame="1"]').click();self.assertEqual(self.p.locator('[data-frame="1"]').get_attribute('aria-pressed'),'true');self.assertLessEqual(self.p.evaluate('document.documentElement.scrollWidth'),390)
   out=ROOT/'reda2-test-results';out.mkdir(exist_ok=True);self.p.locator('[data-view="plan"]').click();self.p.screenshot(path=str(out/'reda-landing-mobile.png'),full_page=True);self.p.set_viewport_size({'width':1440,'height':1000});self.assertLessEqual(self.p.evaluate('document.documentElement.scrollWidth'),1440);self.p.screenshot(path=str(out/'reda-landing-desktop.png'),full_page=True)
- def test_homepage_explains_reda_and_preserves_old_portal(self):
-  self.p.goto(self.o+'/');card=self.p.locator('#planKort');card.scroll_into_view_if_needed();self.assertIn('Kommer snart',card.text_content());self.assertEqual(card.get_by_role('link',name='Upptäck Reda →').get_attribute('href'),'/reda-rehab/');self.assertEqual(card.get_by_role('link',name='Har du redan ett Reda-program? Öppna patientportalen →').get_attribute('href'),'/reda/')
+ def assert_reda_hidden(self):
+  self.assertEqual(self.p.locator('#planKort:visible, a[href="/reda/"]:visible, a[href="/reda-rehab/"]:visible').count(),0)
+ def test_homepage_keeps_unreleased_reda_hidden(self):
+  self.p.goto(self.o+'/');self.assert_reda_hidden()
  def test_coming_soon_and_support_without_javascript(self):
   self.c.close();self.c=self.b.new_context(viewport={'width':390,'height':844},java_script_enabled=False);self.p=self.c.new_page()
   self.p.goto(self.o+'/reda-rehab/');self.assertIn('Mer rörelse.',self.p.locator('h1').inner_text());self.assertIn('kommer snart',self.p.locator('.status').inner_text().lower());self.assertEqual(self.p.locator('script').count(),0);self.assertEqual(self.p.locator('form').count(),0);self.assertNotIn('Hyrox',self.p.locator('main').inner_text());self.assertEqual(self.p.locator('link[rel=canonical]').get_attribute('href'),'https://www.kansei.se/reda-rehab/')
@@ -32,7 +34,7 @@ class T(unittest.TestCase):
    self.p.set_viewport_size({'width':width,'height':1000});self.assertLessEqual(self.p.evaluate('document.documentElement.scrollWidth'),width);self.p.screenshot(path=str(out/f'reda-coming-soon-{width}.png'),full_page=True)
   self.p.set_viewport_size({'width':390,'height':844});self.p.locator('header').get_by_role('link',name='Hjälp & support').click();self.assertIn('/support/',self.p.url);self.p.get_by_text('Min programkod fungerar inte. Vad gör jag?',exact=True).click();self.assertIn('extra mellanslag',self.p.locator('details[open]').inner_text());self.p.get_by_text('Finns det en AI-chatt för support?',exact=True).click();self.assertIn('Ingen supportchatt är öppen ännu',self.p.locator('#lansering').inner_text());self.assertEqual(self.p.locator('form,script').count(),0);self.assertTrue(self.p.locator('#kontakt a.portal').get_attribute('href').startswith('mailto:info@kansei.se?subject='));self.assertLessEqual(self.p.evaluate('document.documentElement.scrollWidth'),390);self.p.screenshot(path=str(out/'reda-support-mobile.png'),full_page=True)
   for route in ['/','/rehabilitering/']:
-   self.p.goto(self.o+route);self.p.locator('#planKort').scroll_into_view_if_needed();self.assertIn('kommer snart',self.p.locator('#planKort').inner_text().lower(),route);self.assertEqual(self.p.locator('#planKort .reda-portal-link').get_attribute('href'),'/reda/')
- def test_rehab_card_stays_consistent_with_javascript(self):
-  self.p.goto(self.o+'/rehabilitering/');self.assertIn('kommer snart',self.p.locator('#planKort').inner_text().lower());self.assertIn('Mer rörelse.',self.p.locator('#planKort h3').inner_text());self.assertEqual(self.p.locator('#planKort .plan-lockup').get_attribute('src'),'/bilder/reda/nav.svg?v=2')
+   self.p.goto(self.o+route);self.assert_reda_hidden()
+ def test_rehab_keeps_unreleased_reda_hidden_with_javascript(self):
+  self.p.goto(self.o+'/rehabilitering/');self.assert_reda_hidden()
 if __name__=='__main__':unittest.main(verbosity=2)

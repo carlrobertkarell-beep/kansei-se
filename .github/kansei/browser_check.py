@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 
-PATHS = ("/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/kna/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
+PATHS = ("/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/")
 SIZES = (("mobile", 390, 844), ("desktop", 1440, 1000))
 

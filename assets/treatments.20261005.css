@@ -1,0 +1,47 @@
+/* Treatment overview: use the same clinic shell and scale as Naprapati. */
+.treatments-page .editorial-top{padding-block:28px 48px}
+.treatments-page .editorial-top .crumbs{font:400 14px/1.75 var(--sans);letter-spacing:0;margin:0 0 30px;color:var(--muted)}
+.treatments-page .editorial-top .crumbs a{text-decoration:underline;text-underline-offset:4px}
+.treatments-page .editorial-top .eyebrow{text-transform:uppercase;margin-bottom:16px}
+.treatments-page .editorial-top h1{font-size:clamp(42px,4.6vw,62px);line-height:1.06;max-width:22ch;margin:0 0 26px}
+.treatments-page .editorial-top .intro{font-size:18px;line-height:1.75;max-width:62ch;margin-top:0}
+.treatments-page .editorial-top .pris-not{max-width:70ch;margin-top:20px}
+.treatments-page .editorial-top .cta-row{gap:12px 24px;margin-top:28px}
+.treatments-page .editorial-layout{padding-block:48px 64px}
+.treatments-page .tjk-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px;border:0;background:transparent;margin:32px 0 0}
+.treatments-page .tjk{padding:32px;min-height:300px;border:1px solid var(--line);border-radius:8px}
+.treatments-page .tjk-nr{font:600 11px/1.6 var(--sans);letter-spacing:.09em}
+.treatments-page .tjk-badge{top:28px;right:28px;background:#edf3f1;color:var(--muted)}
+.treatments-page .tjk h3{font-size:32px;line-height:1.2;margin:22px 0 18px}
+.treatments-page .tjk h3 a:hover{color:var(--teal)}
+.treatments-page .tjk p{font-size:16px;line-height:1.75;margin:0 0 24px;color:var(--muted)}
+.treatments-page .tjk-fot{flex-wrap:wrap;gap:10px 20px;padding-top:22px}
+.treatments-page .tjk-pris{font-size:28px;line-height:1.3;color:var(--ink)}
+.treatments-page .tjk-boka{font-size:15px;line-height:1.5}
+.treatments-page .tjk-kampanj{padding:32px;border-radius:8px;background:#edf3f1}
+.treatments-page .tk-tag{font:600 11px/1.6 var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.treatments-page .tjk-kampanj h2{font-size:32px;line-height:1.2;margin:12px 0 18px}
+.treatments-page .tjk-kampanj p{font-size:16px;line-height:1.75;margin:0;color:var(--muted)}
+.treatments-page .tjk-kampanj .button{white-space:nowrap}
+@media(max-width:800px){
+ .treatments-page .tjk{padding:26px}
+ .treatments-page .tjk h3{font-size:28px}
+ .treatments-page .tjk-badge{top:22px;right:22px}
+ .treatments-page .tjk-kampanj{padding:26px}
+}
+@media(max-width:650px){
+ .treatments-page .editorial-top{padding-block:24px 36px}
+ .treatments-page .editorial-top .crumbs{font-size:13px;margin-bottom:24px}
+ .treatments-page .editorial-top h1{font-size:clamp(37px,10.3vw,50px);margin-bottom:20px}
+ .treatments-page .editorial-top .intro{font-size:17px}
+ .treatments-page .editorial-top .cta-row{gap:14px;margin-top:22px}
+ .treatments-page .editorial-top .button{width:100%;justify-content:space-between}
+ .treatments-page .editorial-layout{padding-block:30px 48px}
+ .treatments-page .tjk-grid{grid-template-columns:minmax(0,1fr);gap:20px;margin-top:24px}
+ .treatments-page .tjk{padding:25px;min-height:0}
+ .treatments-page .tjk h3{font-size:29px}
+ .treatments-page .tjk-pris{font-size:27px}
+ .treatments-page .tjk-kampanj{padding:24px}
+ .treatments-page .tjk-kampanj h2{font-size:29px}
+ .treatments-page .tjk-kampanj .button{width:100%;white-space:normal}
+}

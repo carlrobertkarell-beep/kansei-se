@@ -12,7 +12,7 @@
 .clinic-refined .brand{flex-shrink:0}
 .clinic-refined .brand img{width:166px}
 .clinic-refined .desktop-nav{gap:22px;font-size:14px}
-.clinic-refined .desktop-nav a[aria-current=page]{color:var(--teal);text-decoration:underline;text-underline-offset:7px}
+.clinic-refined .desktop-nav a[aria-current=page]{color:var(--teal);text-decoration:none}
 .clinic-refined .header-book{font-size:14px;min-height:46px;padding:11px 19px;white-space:nowrap}
 .clinic-refined .menu-reda img{width:66px}
 .clinic-refined .site-menu-toggle{min-height:46px}

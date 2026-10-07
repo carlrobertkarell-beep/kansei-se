@@ -10,8 +10,8 @@
 .hyaluron-page .ha-hero h1{max-width:17ch;margin-bottom:24px}
 .hyaluron-page .ha-hero .intro{max-width:59ch;font-size:19px}
 .hyaluron-page .ha-hero-detail{font-size:16px;max-width:66ch}
-.hyaluron-page .ha-hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:18px 28px;margin-top:26px}
-.hyaluron-page .ha-price-note{font-size:14px;line-height:1.7;margin-top:18px;max-width:58ch}
+.hyaluron-page .ha-hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:22px 36px;margin-top:32px}
+.hyaluron-page .ha-main .ha-price-note{font-size:14px;line-height:1.8;margin:28px 0 0;max-width:58ch}
 .hyaluron-page .ha-price-note strong{color:var(--ink)}
 .hyaluron-page .ha-portrait{margin:0}
 .hyaluron-page .ha-portrait img{display:block;width:100%;height:clamp(390px,37vw,490px);object-fit:cover;object-position:50% 30%;border-radius:6px}
@@ -60,7 +60,7 @@
  .hyaluron-page .ha-portrait{display:none}
  .hyaluron-page .ha-hero h1{max-width:18ch}
  .hyaluron-page .ha-hero .intro{font-size:18px}
- .hyaluron-page .ha-hero-actions{align-items:flex-start;flex-direction:column;gap:16px}
+ .hyaluron-page .ha-hero-actions{align-items:flex-start;flex-direction:column;gap:22px}
  .hyaluron-page .ha-main .button{font-size:14px;max-width:100%;white-space:normal;text-align:center;min-width:0}
  .hyaluron-page .ha-page-nav{gap:4px 20px;padding-block:14px;margin-top:24px;font-size:14px}
  .hyaluron-page .ha-section{padding-block:38px}

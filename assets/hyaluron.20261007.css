@@ -1,0 +1,78 @@
+/* Treatment-specific layout using the shared clinic shell and design tokens. */
+.hyaluron-page .ha-main{font-size:17px;line-height:1.75}
+.hyaluron-page .ha-main p{color:var(--muted);margin:0 0 18px}
+.hyaluron-page .ha-main h2{font-size:clamp(30px,3vw,43px);margin:0 0 22px}
+.hyaluron-page .ha-main h3{font-size:22px;line-height:1.3;margin:0 0 12px;letter-spacing:-.02em}
+.hyaluron-page .ha-main a:not(.button){text-decoration:underline;text-underline-offset:4px}
+.hyaluron-page .ha-main .eyebrow{color:var(--teal);font-size:12px;line-height:1.6}
+.hyaluron-page .ha-hero{padding-block:28px 0}
+.hyaluron-page .ha-hero-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:start}
+.hyaluron-page .ha-hero h1{max-width:17ch;margin-bottom:24px}
+.hyaluron-page .ha-hero .intro{max-width:59ch;font-size:19px}
+.hyaluron-page .ha-hero-detail{font-size:16px;max-width:66ch}
+.hyaluron-page .ha-hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:18px 28px;margin-top:26px}
+.hyaluron-page .ha-price-note{font-size:14px;line-height:1.7;margin-top:18px;max-width:58ch}
+.hyaluron-page .ha-price-note strong{color:var(--ink)}
+.hyaluron-page .ha-portrait{margin:0}
+.hyaluron-page .ha-portrait img{display:block;width:100%;height:clamp(390px,37vw,490px);object-fit:cover;object-position:50% 30%;border-radius:6px}
+.hyaluron-page .ha-portrait figcaption{font-size:13px;line-height:1.5;margin-top:12px;color:var(--muted)}
+.hyaluron-page .ha-page-nav{display:flex;flex-wrap:wrap;gap:8px 28px;padding-block:26px;margin-top:32px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:15px}
+.hyaluron-page .ha-page-nav a{min-height:44px;display:flex;align-items:center}
+.hyaluron-page .ha-section{padding-block:56px;scroll-margin-top:100px}
+.hyaluron-page .ha-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(28px,6vw,88px);align-items:start}
+.hyaluron-page .ha-list{padding-left:22px;margin:22px 0}
+.hyaluron-page .ha-list li{margin-bottom:9px}
+.hyaluron-page .ha-note{margin-top:28px;padding:24px 30px;background:#edf3f1;border-radius:6px;font-size:16px}
+.hyaluron-page .ha-note p{margin:8px 0 0}
+.hyaluron-page .ha-tint{background:#edf3f1}
+.hyaluron-page .ha-benefits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:38px;margin-block:34px 24px}
+.hyaluron-page .ha-benefits article{padding-top:20px;border-top:1px solid #bbcfc8}
+.hyaluron-page .ha-benefits p{font-size:16px}
+.hyaluron-page .ha-number{display:block;font-size:13px;font-weight:600;color:var(--teal);margin-bottom:16px}
+.hyaluron-page .ha-text-link{font-size:15px;font-weight:500;display:inline-block}
+.hyaluron-page .ha-steps{margin:0;padding-left:28px}
+.hyaluron-page .ha-steps li{padding-left:12px;margin:0 0 24px}
+.hyaluron-page .ha-steps li::marker{color:var(--teal);font-weight:600}
+.hyaluron-page .ha-steps p{font-size:16px}
+.hyaluron-page .ha-price-table{background:var(--paper);border-radius:6px;padding:22px 28px}
+.hyaluron-page .ha-price-table table{border-collapse:collapse;width:100%;font-size:16px;background:transparent}
+.hyaluron-page .ha-price-table caption{text-align:left;font-size:14px;color:var(--muted);padding-bottom:18px}
+.hyaluron-page .ha-price-table th,.hyaluron-page .ha-price-table td{text-align:left;padding:17px 0;border-bottom:1px solid var(--line);vertical-align:top;background:transparent}
+.hyaluron-page .ha-price-table th{font-weight:500}
+.hyaluron-page .ha-price-table td,.hyaluron-page .ha-price-table thead th:last-child{text-align:right;white-space:nowrap;padding-left:14px}
+.hyaluron-page .ha-price-table small{display:block;font-size:13px;line-height:1.6;color:var(--muted);margin-top:5px}
+.hyaluron-page .ha-main .ha-small{font-size:14px;line-height:1.7;margin-top:20px}
+.hyaluron-page .ha-faq{max-width:920px}
+.hyaluron-page .ha-faq details,.hyaluron-page .ha-disclosure{border-top:1px solid var(--line);margin:0;border-radius:0;background:transparent;padding:0;scroll-margin-top:100px}
+.hyaluron-page .ha-faq summary,.hyaluron-page .ha-disclosure summary{font-size:18px;line-height:1.5;padding:22px 40px 22px 0;cursor:pointer;font-weight:500}
+.hyaluron-page .ha-faq details p,.hyaluron-page .ha-disclosure>div{font-size:16px;max-width:80ch;padding-bottom:14px}
+.hyaluron-page .ha-disclosure>div p{margin-bottom:16px}
+.hyaluron-page #fordjupning{padding-top:0}
+.hyaluron-page .ha-reading{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px;margin-top:30px}
+.hyaluron-page .ha-reading a{display:block;padding:22px;border:1px solid var(--line);border-radius:6px}
+.hyaluron-page .ha-reading span{display:block;font-size:14px;color:var(--muted);margin-top:9px}
+.hyaluron-page .ha-updated{border-top:1px solid var(--line);padding-top:20px}
+.hyaluron-page .ha-booking{padding-block:48px;background:#dcebe5;scroll-margin-top:100px}
+.hyaluron-page .ha-bottom-actions{display:flex;flex-direction:column;align-items:flex-start;gap:20px;padding-top:24px}
+@media(max-width:860px){
+ .hyaluron-page .ha-hero-grid,.hyaluron-page .ha-split{grid-template-columns:1fr;gap:24px}
+ .hyaluron-page .ha-hero-grid{gap:28px}
+ .hyaluron-page .ha-portrait{display:none}
+ .hyaluron-page .ha-hero h1{max-width:18ch}
+ .hyaluron-page .ha-hero .intro{font-size:18px}
+ .hyaluron-page .ha-hero-actions{align-items:flex-start;flex-direction:column;gap:16px}
+ .hyaluron-page .ha-main .button{font-size:14px;max-width:100%;white-space:normal;text-align:center;min-width:0}
+ .hyaluron-page .ha-page-nav{gap:4px 20px;padding-block:14px;margin-top:24px;font-size:14px}
+ .hyaluron-page .ha-section{padding-block:38px}
+ .hyaluron-page .ha-benefits{grid-template-columns:1fr;gap:14px;margin-block:24px 14px}
+ .hyaluron-page .ha-benefits article{padding-top:18px}
+ .hyaluron-page .ha-benefits h3{font-size:21px}
+ .hyaluron-page .ha-number{margin-bottom:8px}
+ .hyaluron-page .ha-note{padding:22px}
+ .hyaluron-page .ha-price-table{padding:18px}
+ .hyaluron-page .ha-price-table table{font-size:14px}
+ .hyaluron-page .ha-price-table small{font-size:12px}
+ .hyaluron-page .ha-faq summary,.hyaluron-page .ha-disclosure summary{font-size:17px;padding-block:20px}
+ .hyaluron-page .ha-reading{grid-template-columns:1fr;gap:16px}
+ .hyaluron-page .ha-bottom-actions{padding-top:0}
+}

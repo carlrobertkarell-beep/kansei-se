@@ -76,3 +76,26 @@
  .hyaluron-page .ha-reading{grid-template-columns:1fr;gap:16px}
  .hyaluron-page .ha-bottom-actions{padding-top:0}
 }
+
+/* Treatment hub and substantive pages for each joint. */
+.hyaluron-page .ha-main .crumbs{font-size:14px;margin-bottom:26px}
+.hyaluron-page .ha-joint-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:28px}
+.hyaluron-page .ha-main .ha-joint-card{display:flex;flex-direction:column;align-items:flex-start;padding:28px;border:1px solid var(--line);border-radius:8px;background:#fff;text-decoration:none;color:var(--ink)}
+.hyaluron-page .ha-main a.ha-joint-card:not(.button){text-decoration:none}
+.hyaluron-page .ha-joint-card h3{font-size:32px}
+.hyaluron-page .ha-main .ha-joint-card p{font-size:16px;margin-bottom:24px}
+.hyaluron-page .ha-card-link{margin-top:auto;text-decoration:underline;text-underline-offset:4px;font-size:15px;font-weight:500}
+.hyaluron-page .ha-joint-card:hover{border-color:var(--teal);background:#edf3f1}
+.hyaluron-page .ha-joint-card:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+.hyaluron-page #leder{padding-bottom:0}
+.hyaluron-page .ha-visit-summary{padding:28px 32px;background:#edf3f1;border-radius:8px;margin-top:8px}
+.hyaluron-page .ha-visit-summary h2{font-size:28px;margin-bottom:18px}
+.hyaluron-page .ha-visit-summary ul{padding-left:20px;margin:22px 0}
+.hyaluron-page .ha-visit-summary li{margin-bottom:10px;font-size:16px}
+.hyaluron-page .ha-joint-page .ha-hero h1{max-width:20ch}
+.hyaluron-page .ha-joint-sources{padding-top:0}
+@media(max-width:860px){
+ .hyaluron-page .ha-joint-cards{grid-template-columns:1fr;gap:18px}
+ .hyaluron-page .ha-visit-summary{padding:24px;margin-top:0}
+ .hyaluron-page .ha-main .ha-joint-card{padding:24px}
+}

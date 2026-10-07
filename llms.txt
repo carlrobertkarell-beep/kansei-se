@@ -2,7 +2,7 @@
 
 > Klinik vid Odenplan i Stockholm med naprapati och muskuloskeletalt ultraljud. Undersökning av rörelseapparaten omfattar muskler, senor, leder och ytliga nerver utifrån en klinisk frågeställning.
 
-Faktauppgifterna i denna fil kontrollerades den 6 oktober 2026. Aktuella tjänstevillkor och priser finns på de länkade sidorna.
+Faktauppgifterna i denna fil kontrollerades den 7 oktober 2026. Aktuella tjänstevillkor och priser finns på de länkade sidorna.
 
 ## Klinik och undersökning
 
@@ -20,6 +20,20 @@ Faktauppgifterna i denna fil kontrollerades den 6 oktober 2026. Aktuella tjänst
 - [Carl-Robert Kårell](https://www.kansei.se/team/carl-robert-karell/): legitimation, bakgrund och utbildning.
 - [Kontakt](https://www.kansei.se/kontakt/): adress, kontaktvägar och vägbeskrivning.
 - [Inför besöket](https://www.kansei.se/patientinformation/): praktisk patientinformation.
+
+## Hyaluronsyrainjektioner
+
+- [Hyaluroninjektion hos Kansei](https://www.kansei.se/hyaluronsyra/): ultraljudsvägledd behandling, främst vid knäartros, efter individuell bedömning hos Carl-Robert Kårell, legitimerad naprapat.
+- Sinovial HL 64: 2 590 kr. Sinogel: 2 990 kr. Konsultation: 890 kr; diagnostiskt ultraljud vid konsultationen +400 kr. Behandling debiteras separat.
+- Ingen remiss krävs. Första besöket bokas som konsultation inför injektionsbehandling via Bokadirekt.
+- Effekten är osäker och varierar. Hyaluronsyra återbildar inte brosk och ersätter inte rehabilitering. Svenska riktlinjer avråder vid knä- och höftartros; vissa europeiska expertgrupper förespråkar användning hos utvalda patienter.
+
+## Hyaluronsyrainjektioner
+
+- [Hyaluroninjektion hos Kansei](https://www.kansei.se/hyaluronsyra/): ultraljudsvägledd behandling, främst vid knäartros, efter individuell bedömning hos Carl-Robert Kårell, legitimerad naprapat.
+- Sinovial HL 64: 2 590 kr. Sinogel: 2 990 kr. Konsultation: 890 kr; diagnostiskt ultraljud vid konsultationen +400 kr. Behandling debiteras separat.
+- Ingen remiss krävs. Första besöket bokas som konsultation inför injektionsbehandling via Bokadirekt.
+- Effekten är osäker och varierar. Hyaluronsyra återbildar inte brosk och ersätter inte rehabilitering. Svenska riktlinjer avråder vid knä- och höftartros; vissa europeiska expertgrupper förespråkar användning hos utvalda patienter.
 
 ## Ultraljudsområden
 

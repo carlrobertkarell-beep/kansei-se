@@ -50,3 +50,7 @@ Faktauppgifterna i denna fil kontrollerades den 7 oktober 2026. Aktuella tjänst
 - [Kunskapsbanken](https://www.kansei.se/kunskapsbank/): information om besvär och undersökningar med medicinska källor på respektive sida.
 
 Medicinsk information på webbplatsen är generell och ersätter inte en individuell undersökning. Kliniken lämnar inga garantier om diagnos, behandlingseffekt eller återhämtningstid.
+
+## Patientinformation om hyaluron
+- Inför och efter hyaluroninjektion: https://www.kansei.se/hyaluronsyra/infor-och-efter/
+- Behandlarens utbildning inom injektionsteknik: https://www.kansei.se/team/carl-robert-karell/#injektionsutbildning

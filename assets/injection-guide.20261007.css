@@ -1,0 +1,7 @@
+/* Scoped refinements for the injection overview. */
+.clinic-site .in-optional{font-size:14px;line-height:1.7;margin:24px 0 0;padding-top:20px;border-top:1px solid var(--line)}
+.clinic-site .in-optional a{text-decoration:underline;text-underline-offset:3px}
+.clinic-site .cmp caption{text-align:left;color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:18px}
+.clinic-site .cmp th[scope="row"]{font-weight:600;text-align:left;white-space:normal;min-width:128px}
+.clinic-site .cmp td{min-width:210px;vertical-align:top}
+.clinic-site .cmp-wrap{max-width:100%;overflow-x:auto}

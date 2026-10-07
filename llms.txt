@@ -1,6 +1,6 @@
 # Kansei Naprapati & Rehabcenter
 
-> Klinik vid Odenplan i Stockholm med naprapati och muskuloskeletalt ultraljud. Undersökning av rörelseapparaten omfattar muskler, senor, leder och ytliga nerver utifrån en klinisk frågeställning.
+> Personlig klinik för muskler och leder vid Odenplan i Stockholm med naprapati, muskuloskeletalt ultraljud och ultraljudsvägledda injektioner. Undersökning av rörelseapparaten omfattar muskler, senor, leder och ytliga nerver utifrån en klinisk frågeställning.
 
 Faktauppgifterna i denna fil kontrollerades den 7 oktober 2026. Aktuella tjänstevillkor och priser finns på de länkade sidorna.
 
@@ -14,6 +14,10 @@ Faktauppgifterna i denna fil kontrollerades den 7 oktober 2026. Aktuella tjänst
 - Undersökningen är muskuloskeletal, inte graviditetsultraljud eller en allmän undersökning av bukens organ. Ultraljud kan inte besvara alla diagnostiska frågor; annan medicinsk bedömning eller bilddiagnostik kan behövas.
 
 ## Primära klinikkällor
+
+- [Kliniken vid Odenplan](https://www.kansei.se/om-oss/): verksamhet, behandlare och arbetssätt.
+- [Naprapati](https://www.kansei.se/naprapati/): undersökning, behandling och rehabilitering.
+- [Injektioner](https://www.kansei.se/injektioner/): hyaluron, PRP och kortison, bokningsvägar och valfri separat konsultation.
 
 - [Ultraljud hos Kansei](https://www.kansei.se/ultraljud/): undersökningens omfattning, upplägg och bokning.
 - [Aktuella priser](https://www.kansei.se/priser/): prisuppgifter och villkor.

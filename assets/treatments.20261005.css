@@ -45,3 +45,11 @@
  .treatments-page .tjk-kampanj h2{font-size:29px}
  .treatments-page .tjk-kampanj .button{width:100%;white-space:normal}
 }
+
+/* Make the information path explicit beside the existing booking path. */
+.treatments-page .tjk-fot{flex-direction:column;align-items:stretch;gap:18px}
+.treatments-page .tjk-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px}
+.treatments-page .tjk-read{display:inline-flex;align-items:center;min-height:44px;padding:11px 17px;background:var(--ink);color:var(--paper);border-radius:999px;font-size:14px;line-height:1.5;text-decoration:none;max-width:100%}
+.treatments-page .tjk-read:hover{background:var(--teal);color:var(--paper)}
+.treatments-page .tjk-read:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+.treatments-page .tjk-actions .tjk-boka{font-size:14px}

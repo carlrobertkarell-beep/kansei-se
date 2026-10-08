@@ -1,0 +1,29 @@
+.biceps-anatomy-case main .biceps-pair-labels{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#102b30;color:#fff;font:500 15px/1.4 var(--sans);text-align:center;padding:12px 8px}
+.biceps-anatomy-case main .patient-picture{border-radius:0}
+.biceps-anatomy-case main .patient-finding svg text{font:500 28px Arial,sans-serif;paint-order:stroke;stroke:#102b30;stroke-width:7px;stroke-linejoin:round}
+.biceps-anatomy-case main .patient-picture .patient-overlay svg{background:#111}
+@media(max-width:760px){.biceps-anatomy-case main .biceps-pair-labels{font-size:13px;padding:10px 6px}}
+
+/* Visible image choices keep every view discoverable. */
+.biceps-anatomy-case main .patient-media-head{margin-bottom:14px}
+.biceps-anatomy-case main .patient-view-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:24px}
+.biceps-anatomy-case main .patient-view-tab{display:flex;align-items:center;gap:15px;min-width:0;text-align:left;border:1px solid #cedbd7;border-radius:10px;padding:10px;background:#fff;color:var(--ink);cursor:pointer;transition:border-color .18s ease,background .18s ease,box-shadow .18s ease}
+.biceps-anatomy-case main .patient-view-tab img{display:block;width:88px;height:64px;flex:0 0 88px;object-fit:cover;border-radius:5px;background:#102b30}
+.biceps-anatomy-case main .patient-view-tab span{display:block;min-width:0}
+.biceps-anatomy-case main .patient-view-tab strong{display:block;font:500 16px/1.35 var(--sans)}
+.biceps-anatomy-case main .patient-view-tab small{display:block;margin-top:4px;font:400 13px/1.4 var(--sans);color:var(--muted)}
+.biceps-anatomy-case main .patient-view-tab[aria-selected=true]{border-color:var(--teal);background:#e9f2ee;box-shadow:inset 0 0 0 1px var(--teal)}
+.biceps-anatomy-case main .patient-view-tab[aria-selected=true] strong{color:#00685f}
+.biceps-anatomy-case main .patient-view-tab:hover{border-color:var(--teal)}
+.biceps-anatomy-case main .patient-view-tab:focus-visible{outline:3px solid #bc8c42;outline-offset:3px}
+.biceps-anatomy-case main .reader-panel:focus-visible{outline:2px solid var(--teal);outline-offset:6px}
+@media(max-width:760px){
+.biceps-anatomy-case main .patient-view-tabs{gap:8px;margin-bottom:18px}
+.biceps-anatomy-case main .patient-view-tab{display:block;text-align:center;padding:6px 6px 10px;border-radius:8px}
+.biceps-anatomy-case main .patient-view-tab img{width:100%;height:62px;margin-bottom:10px;object-fit:cover}
+.biceps-anatomy-case main .patient-view-tab strong{font-size:13px;line-height:1.3}
+.biceps-anatomy-case main .patient-view-tab small{display:none}
+}
+@media(prefers-reduced-motion:reduce){.biceps-anatomy-case main .patient-view-tab{transition:none}}
+
+.biceps-anatomy-case main .patient-view-navigation{max-width:860px;margin-inline:auto}

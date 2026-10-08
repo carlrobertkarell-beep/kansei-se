@@ -2,7 +2,7 @@
 
 > Personlig klinik för muskler och leder vid Odenplan i Stockholm med naprapati, muskuloskeletalt ultraljud och ultraljudsvägledda injektioner. Undersökning av rörelseapparaten omfattar muskler, senor, leder och ytliga nerver utifrån en klinisk frågeställning.
 
-Faktauppgifterna i denna fil kontrollerades den 7 oktober 2026. Aktuella tjänstevillkor och priser finns på de länkade sidorna.
+Faktauppgifterna i denna fil kontrollerades den 8 oktober 2026. Aktuella tjänstevillkor och priser finns på de länkade sidorna.
 
 ## Klinik och undersökning
 
@@ -12,6 +12,11 @@ Faktauppgifterna i denna fil kontrollerades den 7 oktober 2026. Aktuella tjänst
 - Ultraljud av rörelseapparaten: 45 minuter, 1 290 kr, bokning utan remiss. Klinisk undersökning, riktat ultraljud, genomgång av fynden och rekommendationer om nästa steg ingår.
 - Undersökare: Carl-Robert Kårell, legitimerad naprapat. Utbildningsuppgifter finns på personens profilsida.
 - Undersökningen är muskuloskeletal, inte graviditetsultraljud eller en allmän undersökning av bukens organ. Ultraljud kan inte besvara alla diagnostiska frågor; annan medicinsk bedömning eller bilddiagnostik kan behövas.
+
+## För hänvisande vårdgivare
+
+- [För vårdgivare](https://www.kansei.se/for-vardgivare/): hänvisning till muskuloskeletalt ultraljud och injektionsbedömning, bokning utan remiss, valfri separat konsultation och säker hantering av underlag.
+- Separat kliniskt utlåtande från ett besök: 590 kr utöver besöket. Omfattande underlag enligt offert; omfattning, pris och leveranstid bekräftas före arbetet.
 
 ## Primära klinikkällor
 

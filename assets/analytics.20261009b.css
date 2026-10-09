@@ -1,0 +1,38 @@
+/* Optional statistics: compact clinic card, equal choices, no modal backdrop. */
+.kansei-statistics[hidden]{display:none}
+.kansei-statistics{
+ position:fixed;inset:auto 24px 24px auto;z-index:1100;
+ width:min(780px,calc(100% - 48px));max-height:calc(100dvh - 48px);
+ overflow:auto;overscroll-behavior:contain;
+ color:#18343c;background:#fff;border:1px solid #d5e0e3;border-radius:20px;
+ box-shadow:0 12px 44px #102e3b1c,0 2px 8px #102e3b0a;
+}
+.kansei-statistics-inner{display:grid;grid-template-columns:minmax(0,1fr) 250px;align-items:center;gap:28px;padding:26px 28px}
+.kansei-statistics h2{font:inherit;font-size:22px;font-weight:600;line-height:1.25;letter-spacing:-.025em;margin:0 0 10px}
+.kansei-statistics p{font:inherit;font-size:16px;font-weight:400;line-height:1.55;color:#52676e;margin:0;max-width:460px}
+.kansei-statistics-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.kansei-statistics-actions button{
+ appearance:none;font:inherit;font-size:16px;font-weight:600;line-height:1.25;
+ min-width:0;min-height:48px;padding:12px 14px;white-space:nowrap;
+ color:#18343c;background:#f7fafb;border:1px solid #b7cbd0;border-radius:12px;
+ cursor:pointer;transition:background .15s,border-color .15s;
+}
+.kansei-statistics-actions button:hover{background:#e9f1f2;border-color:#557d88}
+.kansei-statistics-info{
+ display:flex;justify-content:center;align-items:center;gap:8px;min-height:44px;
+ margin-top:4px;color:#52676e;font:inherit;font-size:14px;font-weight:400;
+ line-height:1.4;text-decoration:underline;text-underline-offset:4px;
+}
+.kansei-statistics-info span{font-size:17px;text-decoration:none}
+.kansei-statistics-settings{font:inherit;font-size:16px;color:inherit;border:0;background:transparent;text-decoration:underline;text-underline-offset:4px;min-height:44px;padding:12px;cursor:pointer}
+.kansei-statistics button:focus-visible,.kansei-statistics a:focus-visible,.kansei-statistics-settings:focus-visible{outline:3px solid #246778;outline-offset:3px}
+@media(max-width:700px){
+ .kansei-statistics{inset:auto 12px max(12px,env(safe-area-inset-bottom)) 12px;width:auto;max-height:calc(100dvh - 24px);border-radius:18px}
+ .kansei-statistics-inner{grid-template-columns:1fr;gap:18px;padding:22px 22px 12px}
+ .kansei-statistics h2{font-size:21px;margin-bottom:9px}
+ .kansei-statistics p{font-size:16px;line-height:1.5}
+ .kansei-statistics-actions{gap:10px}
+ .kansei-statistics-actions button{min-height:48px}
+ .kansei-statistics-info{font-size:15px;margin-top:3px}
+}
+@media(prefers-reduced-motion:reduce){.kansei-statistics-actions button{transition:none}}

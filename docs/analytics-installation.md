@@ -1,13 +1,13 @@
-# GA4 installation awaiting stream setting
+# GA4 installation
 
 Prepared for verified Kansei GA4 property 417935074.
-Owner-supplied screenshot identifies web stream 6422923083 and measurement ID G-F1EVW66L9S. The screenshot shows Enhanced Measurement enabled.
+Owner-supplied screenshot identifies web stream 6422923083 and measurement ID G-F1EVW66L9S. The screenshot initially showed Enhanced Measurement enabled. The owner confirmed it switched OFF on 9 October 2026.
 
-The draft includes the verified tag ID and consent bridge on 131 public clinic pages, plus a new /cookie/ information page. It has NOT been published. Do not merge while Enhanced Measurement remains enabled.
+The installation includes the verified tag ID and consent bridge on 131 public clinic pages, plus a /cookie/ information page. Publication and actual collection are verified separately from local prototype checks.
 
-Before installation:
+Configuration and verification:
 1. Owner has supplied the stream measurement ID. Confirm the stream belongs to the intended Kansei web property.
-2. Disable Enhanced Measurement for this stream. Automatic site-search, form
+2. Keep Enhanced Measurement disabled for this stream. Automatic site-search, form
    and link events must not send user-entered health information or raw URLs.
 3. Cookie information and an accessible accept/reject banner are prepared.
 4. ID and assets are included only on indexable public clinic-site pages. Reda, patient apps, noindex previews and the 404 page are excluded.

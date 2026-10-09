@@ -4,7 +4,7 @@ const fs=require('fs'),path=require('path'),assert=require('node:assert/strict')
 const root=path.resolve(__dirname,'..');
 (async()=>{
  const browser=await chromium.launch({executablePath:process.env.KANSEI_CHROMIUM||'/workspace/scratch/d152b02a2d39/medianus-review/browser/chromium',headless:true,args:['--no-sandbox']});
- const fixture=id=>'<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="kansei-ga4" content="'+id+'"><link rel="canonical" href="https://www.kansei.se/for-vardgivare/?secret=removed#private"><link rel="stylesheet" href="/assets/analytics.20261009.css"><title>För vårdgivare | Kansei</title><script defer src="/assets/analytics.20261009.js"></script></head><body class="clinic-site"><main><h1>För vårdgivare</h1><a href="https://www.bokadirekt.se/places/clinic">Boka</a></main><footer class="footer"></footer></body></html>';
+ const fixture=id=>'<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="kansei-ga4" content="'+id+'"><link rel="canonical" href="https://www.kansei.se/for-vardgivare/?secret=removed#private"><link rel="stylesheet" href="/assets/analytics.20261009b.css"><title>För vårdgivare | Kansei</title><script defer src="/assets/analytics.20261009b.js"></script></head><body class="clinic-site"><main><h1>För vårdgivare</h1><a href="https://www.bokadirekt.se/places/clinic">Boka</a></main><footer class="footer"></footer></body></html>';
  async function setup(id='G-TEST123456',host='www.kansei.se'){
   const context=await browser.newContext({viewport:{width:320,height:850}});
   const google=[];

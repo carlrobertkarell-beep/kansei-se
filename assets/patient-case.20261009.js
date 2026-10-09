@@ -34,7 +34,7 @@ document.querySelectorAll('[data-patient-viewer]').forEach((root,viewerIndex)=>{
   if(area&&panels.length)area.hidden=paired?!active?.querySelector('.patient-overlay'):!active?.querySelector('.scan-annotation');
   dismiss();discover();
  }
- toggle?.addEventListener('click',()=>{interacted=true;dismiss();enabled=!enabled;mode()});
+ toggle?.addEventListener('click',()=>{interacted=true;offered=true;try{sessionStorage.setItem(storageKey,'1')}catch{}dismiss();enabled=!enabled;mode()});
  tabs.forEach((b,index)=>{
   b.addEventListener('click',()=>show(b.dataset.patientPanel));
   b.addEventListener('keydown',event=>{

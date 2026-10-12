@@ -1,0 +1,155 @@
+/* Ultrasound uses the clinic design tokens; case artwork remains registered to its capture. */
+.clinic-site.ultrasound-case main{--ink:inherit;--muted:inherit;--paper:inherit;--line:inherit;--teal:inherit;font:400 18px/1.75 var(--sans);color:var(--ink);background:var(--paper)}
+.clinic-site.ultrasound-case main .wrap{width:100%;max-width:var(--grid);margin-inline:auto;padding-inline:var(--gutter)}
+.clinic-site.ultrasound-case main h1{font:500 var(--page-heading)/1.1 var(--sans);letter-spacing:-.04em;max-width:22ch;margin:0 0 24px}
+.clinic-site.ultrasound-case main h2{font:500 clamp(29px,3vw,40px)/1.2 var(--sans);letter-spacing:-.035em;margin:0 0 20px}
+.clinic-site.ultrasound-case main h3{font:500 23px/1.35 var(--sans);letter-spacing:-.025em;margin:0 0 12px}
+.clinic-site.ultrasound-case main p{font-size:18px;line-height:1.75;max-width:70ch}
+.clinic-site.ultrasound-case main p+p{margin-top:16px}
+.clinic-site.ultrasound-case main .eyebrow{font:600 12px/1.6 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--teal);margin:0 0 16px}
+.clinic-site.ultrasound-case main .condition-hero{display:block;padding-block:28px 36px!important}
+.clinic-site.ultrasound-case main .condition-hero .lead{font-size:18px;line-height:1.75;max-width:65ch;margin-bottom:18px;color:var(--muted)}
+.clinic-site.ultrasound-case main .crumbs{font:400 14px/1.75 var(--sans);margin:0 0 30px;color:var(--muted)}
+.clinic-site.ultrasound-case main .case-context{font:400 14px/1.65 var(--sans);color:var(--muted);margin:18px 0 24px;max-width:75ch}
+.clinic-site.ultrasound-case main .case-context a{color:inherit}
+.clinic-site.ultrasound-case main .case-page-nav{display:flex;flex-wrap:wrap;gap:4px 28px;border-top:1px solid var(--line);padding-top:14px;margin-top:24px;max-width:960px}
+.clinic-site.ultrasound-case main .case-page-nav a{display:inline-flex;align-items:center;min-height:44px;font:500 16px/1.5 var(--sans);color:var(--teal);text-decoration:underline;text-underline-offset:5px}
+.clinic-site.ultrasound-case main .section{padding-block:48px;border-top:1px solid var(--line)}
+.clinic-site.ultrasound-case main #bilder{padding-top:48px}
+.clinic-site.ultrasound-case main .patient-grid{grid-template-columns:minmax(0,1.35fr) minmax(250px,1fr);gap:48px}
+.clinic-site.ultrasound-case main .orientation{display:block;padding:26px;background:var(--mist);border:0;border-radius:8px}
+.clinic-site.ultrasound-case main .orientation p{font-size:16px;line-height:1.7}
+.clinic-site.ultrasound-case main .patient-note,.clinic-site.ultrasound-case main .small,.clinic-site.ultrasound-case main .case-image-note,.clinic-site.ultrasound-case main .anatomy-map-note{font-size:14px!important;line-height:1.65;color:var(--muted)}
+.clinic-site.ultrasound-case main .viewer-head{display:block;max-width:960px;margin:0 auto 26px}
+.clinic-site.ultrasound-case main .viewer-head h2{margin-bottom:14px}
+.clinic-site.ultrasound-case main .viewer-head>p,.clinic-site.ultrasound-case main .viewer-head>div>p{color:var(--muted)}
+.clinic-site.ultrasound-case main .case-image-note{margin-top:14px}
+.clinic-site.ultrasound-case main .patient-viewer{max-width:960px;margin:0 auto}
+.clinic-site.ultrasound-case main .patient-view-navigation,.clinic-site.ultrasound-case main .patient-media-head,.clinic-site.ultrasound-case main .patient-view-tabs,.clinic-site.ultrasound-case main .patient-toggle-area,.clinic-site.ultrasound-case main .modebar{max-width:none;margin-inline:0}
+.clinic-site.ultrasound-case main .patient-location{font:400 14px/1.65 var(--sans);color:var(--muted);margin:0 0 12px}
+.clinic-site.ultrasound-case main .patient-view-tabs{display:grid;grid-template-columns:repeat(var(--case-views,3),minmax(0,1fr));gap:12px;margin-bottom:20px}
+.clinic-site.ultrasound-case main .patient-view-tabs[data-view-count="2"]{--case-views:2}
+.clinic-site.ultrasound-case main .patient-view-tabs[data-view-count="4"]{--case-views:4}
+.clinic-site.ultrasound-case main .patient-view-tab{display:flex;align-items:center;gap:12px;min-width:0;min-height:86px;padding:12px;text-align:left;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);box-shadow:none}
+.clinic-site.ultrasound-case main .patient-view-tab img{display:block;width:64px;height:48px;flex:0 0 64px;object-fit:contain;background:#101820;border-radius:4px;margin:0}
+.clinic-site.ultrasound-case main .patient-view-tab span{display:block;min-width:0}
+.clinic-site.ultrasound-case main .patient-view-tab strong{font:500 16px/1.35 var(--sans);color:inherit}
+.clinic-site.ultrasound-case main .patient-view-tab small{font:400 13px/1.5 var(--sans);color:var(--muted);display:block;margin-top:4px}
+.clinic-site.ultrasound-case main .patient-view-tab[aria-selected=true]{background:var(--mist);border-color:var(--teal);box-shadow:inset 0 0 0 1px var(--teal);color:var(--teal)}
+.clinic-site.ultrasound-case main .patient-view-tab:hover{border-color:var(--teal)}
+.clinic-site.ultrasound-case main .patient-toggle-area,.clinic-site.ultrasound-case main .modebar{margin-bottom:18px}
+.clinic-site.ultrasound-case main .patient-toggle-row,.clinic-site.ultrasound-case main .modebar{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.clinic-site.ultrasound-case main .patient-toggle,.clinic-site.ultrasound-case main .anatomy-toggle{min-height:48px;font:500 16px/1.4 var(--sans)}
+.clinic-site.ultrasound-case main .patient-image-state,.clinic-site.ultrasound-case main .mode-status{font:400 14px/1.5 var(--sans);color:var(--muted);margin-left:auto}
+.clinic-site.ultrasound-case main .viewer-guidance{font:400 14px/1.6 var(--sans);margin:8px 0 0;color:var(--muted)}
+.clinic-site.ultrasound-case main .panel-layout{display:block}
+.clinic-site.ultrasound-case main .panel-media,.clinic-site.ultrasound-case main .panel-copy,.clinic-site.ultrasound-case main .patient-caption{max-width:960px;margin-inline:auto}
+.clinic-site.ultrasound-case main .scan-card{background:transparent;border:0;border-radius:8px;margin:0;overflow:hidden}
+.clinic-site.ultrasound-case main .scan-surround{padding:0;border:0;border-radius:8px;background:#101820}
+.clinic-site.ultrasound-case main .patient-picture{border-radius:0}
+.clinic-site.ultrasound-case main .scan-card figcaption{background:var(--paper);color:var(--muted);padding:16px 0;font:400 15px/1.65 var(--sans)}
+.clinic-site.ultrasound-case main .panel-copy,.clinic-site.ultrasound-case main .patient-caption{margin-top:24px;padding:0}
+.clinic-site.ultrasound-case main .panel-copy h3,.clinic-site.ultrasound-case main .patient-caption h3{font-size:24px;max-width:40ch;margin-bottom:12px}
+.clinic-site.ultrasound-case main .panel-copy p,.clinic-site.ultrasound-case main .patient-caption p{font-size:18px;line-height:1.75;max-width:70ch}
+.clinic-site.ultrasound-case main .panel-copy details{max-width:78ch;margin-top:16px}
+.clinic-site.ultrasound-case main .panel-copy summary{font:500 16px/1.5 var(--sans);min-height:48px;padding:14px 0}
+.clinic-site.ultrasound-case main .film-media{padding:0;background:transparent}
+.clinic-site.ultrasound-case main .film-media .movie-box{max-width:960px!important}
+.clinic-site.ultrasound-case main .reader-conclusion{max-width:960px;margin:32px auto 0;padding:26px;background:var(--mist);border:0;border-radius:8px;gap:24px;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr)}
+.clinic-site.ultrasound-case main .reader-conclusion strong{font:500 23px/1.35 var(--sans)}
+.clinic-site.ultrasound-case main .reader-conclusion p{font-size:17px;line-height:1.75;margin:0}
+.clinic-site.ultrasound-case main .reader-deep{max-width:960px;margin:24px auto 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.clinic-site.ultrasound-case main details>summary{min-height:48px;font:500 17px/1.5 var(--sans);padding:18px 0;color:var(--ink)}
+.clinic-site.ultrasound-case main .deep-content{padding:8px 0 24px;max-width:78ch}
+.clinic-site.ultrasound-case main .deep-content h3{font-size:21px;margin-top:24px}
+.clinic-site.ultrasound-case main .deep-content p{font-size:17px;line-height:1.75}
+.clinic-site.ultrasound-case main .cta{display:block;padding:32px;background:var(--mist);border:1px solid var(--line);border-radius:8px;margin-top:32px}
+.clinic-site.ultrasound-case main .cta h2{font-size:32px;color:var(--ink);margin-bottom:16px}
+.clinic-site.ultrasound-case main .cta p{color:var(--muted);max-width:70ch}
+.clinic-site.ultrasound-case main .cta .button{display:inline-flex;align-items:center;min-height:52px;padding:14px 24px;font:600 15px/1.35 var(--sans);border:0;border-radius:999px;background:var(--dark);color:#fff;margin:24px 20px 0 0;transform:none}
+.clinic-site.ultrasound-case main .cta .text-link{display:inline-flex;align-items:center;min-height:44px;margin:18px 0 0;color:var(--teal);font:500 16px/1.5 var(--sans)}
+.clinic-site.ultrasound-case main .case-related h2{font-size:29px}
+.clinic-site.ultrasound-case main .case-related p{margin:12px 0}
+.clinic-site.ultrasound-case main .case-related a{font-size:17px}
+.clinic-site.ultrasound-case main .sources{padding-bottom:0}
+.clinic-site.ultrasound-case main .sources p,.clinic-site.ultrasound-case main .sources li{font-size:14px;line-height:1.65}
+.clinic-site.ultrasound-case main .detail-comparison{margin-top:26px;padding-top:22px;border-color:var(--line)}
+.clinic-site.ultrasound-case main .detail-example strong{font:500 19px/1.35 var(--sans);color:var(--ink)}
+.clinic-site.ultrasound-case main .detail-example p{font:400 15px/1.65 var(--sans)!important;color:var(--muted)}
+.clinic-site.ultrasound-case main .detail-note{font:400 14px/1.65 var(--sans)!important}
+.clinic-site.ultrasound-case main :is(a,button,summary):focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+.clinic-site.ultrasound-case main [id]{scroll-margin-top:112px}
+
+/* Same surfaces and spacing as the public treatment pages. */
+.clinic-site.ultrasound-hub .us-hero{padding-block:28px 0}
+.clinic-site.ultrasound-hub .us-hero-photo{border-radius:8px;overflow:hidden}
+.clinic-site.ultrasound-hub .us-hero-photo>img{height:390px}
+.clinic-site.ultrasound-hub .us-page-nav{gap:4px 28px;padding-block:18px;margin-top:28px}
+.clinic-site.ultrasound-hub .us-page-nav a{font-size:16px;min-height:44px;color:var(--teal)}
+.clinic-site.ultrasound-hub .us-section{padding-block:48px}
+.clinic-site.ultrasound-hub .hub-section-head{max-width:780px;margin-bottom:28px}
+.clinic-site.ultrasound-hub .hub-section-head p{font-size:18px;line-height:1.75}
+.clinic-site.ultrasound-hub .hub-region-grid{gap:12px;margin-bottom:28px}
+.clinic-site.ultrasound-hub .hub-region{border-radius:8px;padding:20px 16px;min-height:112px}
+.clinic-site.ultrasound-hub .hub-region strong{font-size:20px}
+.clinic-site.ultrasound-hub .hub-region small{font-size:14px;line-height:1.6}
+.clinic-site.ultrasound-hub .hub-search{margin-bottom:24px}
+.clinic-site.ultrasound-hub .hub-search label{font-size:16px;font-weight:500}
+.clinic-site.ultrasound-hub .hub-search input{border-color:var(--line);border-radius:8px;min-height:48px;padding:12px 16px}
+.clinic-site.ultrasound-hub .hub-search button{border-color:var(--line);border-radius:8px;min-height:48px}
+.clinic-site.ultrasound-hub .hub-search-status:empty{display:none}
+.clinic-site.ultrasound-hub .hub-tint{background:var(--mist)}
+.clinic-site.ultrasound-hub .hub-cases{gap:24px;align-items:stretch}
+.clinic-site.ultrasound-hub .hub-case{display:flex;flex-direction:column;border-radius:8px;transition:border-color .18s}
+.clinic-site.ultrasound-hub .hub-case>img{width:100%;height:auto;aspect-ratio:16/10;object-fit:contain;background:#101820}
+.clinic-site.ultrasound-hub .hub-case>div{display:flex;flex-direction:column;flex:1;padding:24px}
+.clinic-site.ultrasound-hub .hub-case h3{font:500 24px/1.3 var(--sans);letter-spacing:-.025em}
+.clinic-site.ultrasound-hub .hub-case p{font:400 16px/1.7 var(--sans);margin-bottom:20px}
+.clinic-site.ultrasound-hub .hub-case span{font:500 16px/1.5 var(--sans);margin-top:auto;color:var(--teal)}
+.clinic-site.ultrasound-hub .hub-case:hover{border-color:var(--teal)}
+.clinic-site.ultrasound-hub .hub-faq-section{margin-top:26px;padding-top:24px;border-top:1px solid var(--line)}
+.clinic-site.ultrasound-hub .hub-faq-section h3{font:500 26px/1.3 var(--sans);letter-spacing:-.025em;margin-bottom:20px}
+.clinic-site.ultrasound-hub .hub-faq-list{padding-left:0;max-width:900px}
+.clinic-site.ultrasound-hub .hub-faq-list summary{font-size:17px;min-height:48px}
+.clinic-site.ultrasound-hub .hub-faq-list p{font-size:17px;line-height:1.75}
+.clinic-site.ultrasound-hub main :is(a,button,input,summary):focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+@media(max-width:1100px){.clinic-site.ultrasound-case main .patient-view-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.clinic-site.ultrasound-hub .hub-region-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){
+ .clinic-site.ultrasound-case main{font-size:16px}
+ .clinic-site.ultrasound-case main p,.clinic-site.ultrasound-case main .panel-copy p,.clinic-site.ultrasound-case main .patient-caption p{font-size:16px;line-height:1.75}
+ .clinic-site.ultrasound-case main .condition-hero{padding-block:24px 28px!important}
+ .clinic-site.ultrasound-case main .condition-hero .lead{font-size:17px;line-height:1.75}
+ .clinic-site.ultrasound-case main .crumbs{font-size:13px;margin-bottom:24px}
+ .clinic-site.ultrasound-case main .section,.clinic-site.ultrasound-case main #bilder{padding-block:36px}
+ .clinic-site.ultrasound-case main .case-page-nav{gap:0 20px}
+ .clinic-site.ultrasound-case main .case-page-nav a{font-size:15px}
+ .clinic-site.ultrasound-case main .patient-grid,.clinic-site.ultrasound-case main .reader-conclusion{grid-template-columns:1fr;gap:24px}
+ .clinic-site.ultrasound-case main .orientation{padding:22px}
+ .clinic-site.ultrasound-case main .patient-view-tabs{gap:8px}
+ .clinic-site.ultrasound-case main .patient-view-tab{display:block;padding:10px;min-height:0;text-align:left}
+ .clinic-site.ultrasound-case main .patient-view-tab img{width:100%;height:58px;margin-bottom:10px}
+ .clinic-site.ultrasound-case main .patient-view-tab strong{font-size:14px;line-height:1.4}
+ .clinic-site.ultrasound-case main .patient-view-tab small{display:none}
+ .clinic-site.ultrasound-case main .patient-image-state,.clinic-site.ultrasound-case main .mode-status{font-size:13px;margin-left:0}
+ .clinic-site.ultrasound-case main .mode-status{width:auto}
+ .clinic-site.ultrasound-case main .scan-card figcaption{font-size:14px;padding:14px 0}
+ .clinic-site.ultrasound-case main .reader-conclusion{padding:22px}
+ .clinic-site.ultrasound-case main .cta{padding:24px}
+ .clinic-site.ultrasound-case main .cta h2{font-size:29px}
+ .clinic-site.ultrasound-case main .cta .button{margin-right:0;max-width:100%;white-space:normal}
+ .clinic-site.ultrasound-hub .us-section{padding-block:36px}
+ .clinic-site.ultrasound-hub .hub-section-head p{font-size:17px}
+ .clinic-site.ultrasound-hub .hub-region-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .clinic-site.ultrasound-hub .hub-region{min-height:100px;padding:14px 12px}
+ .clinic-site.ultrasound-hub .hub-region strong{font-size:17px}
+ .clinic-site.ultrasound-hub .hub-region small{font-size:13px}
+ .clinic-site.ultrasound-hub .hub-cases{grid-template-columns:1fr;gap:16px}
+ .clinic-site.ultrasound-hub .hub-case{display:grid;grid-template-columns:112px minmax(0,1fr)}
+ .clinic-site.ultrasound-hub .hub-case>img{height:100%;aspect-ratio:auto;min-height:148px}
+ .clinic-site.ultrasound-hub .hub-case>div{padding:18px}
+ .clinic-site.ultrasound-hub .hub-case h3{font-size:21px}
+ .clinic-site.ultrasound-hub .hub-case p{font-size:15px;margin-bottom:14px}
+ .clinic-site.ultrasound-hub .us-page-nav{gap:0 20px}
+}
+@media(max-width:360px){.clinic-site.ultrasound-hub .hub-case{grid-template-columns:88px minmax(0,1fr)}.clinic-site.ultrasound-hub .hub-case>div{padding:16px}}
+@media(prefers-reduced-motion:reduce){.clinic-site.ultrasound-hub .hub-case{transition:none}}

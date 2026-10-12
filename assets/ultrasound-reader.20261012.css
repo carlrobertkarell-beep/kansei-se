@@ -1,0 +1,18 @@
+/* One shared interaction and quiet captions across all ultrasound examples. */
+.simple-case main .patient-finding,
+.simple-case main .scan-annotation,
+.simple-case main .annot-controls,
+.simple-case main .patient-toggle-hint{display:none!important}
+.simple-case main .patient-toggle-area{margin-bottom:18px}
+.simple-case main .patient-toggle-row{gap:16px;align-items:center}
+.simple-case main .patient-toggle{min-height:48px}
+.simple-case main .patient-image-state{font:400 14px/1.5 var(--sans);color:var(--muted)}
+.simple-case main .viewer-guidance{font:400 14px/1.6 var(--sans);color:var(--muted);margin:8px 0 0;max-width:65ch}
+.simple-case main .patient-caption,
+.simple-case main .patient-viewer .panel-copy{max-width:960px;margin-inline:auto}
+.simple-case main .patient-viewer .scan-card figcaption{background:var(--paper);color:var(--muted);padding:16px 0;font:400 15px/1.65 var(--sans)}
+.simple-case main .patient-caption h3{font-size:24px;margin:0 0 10px}
+.simple-case main .patient-caption p{max-width:70ch}
+.simple-case main .patient-viewer .patient-native-scan{object-fit:contain}
+@media(max-width:760px){.simple-case main .patient-toggle-row{gap:12px}.simple-case main .patient-image-state{font-size:13px}.simple-case main .patient-viewer .scan-card figcaption{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.simple-case main .patient-overlay,.simple-case main .patient-overlay-content,.simple-case main .patient-switch-track,.simple-case main .patient-switch-thumb{transition:none!important}}

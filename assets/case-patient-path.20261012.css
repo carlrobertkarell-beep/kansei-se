@@ -1,0 +1,13 @@
+.simple-case .case-context{font-size:14px;line-height:1.65;color:var(--muted);max-width:78ch;margin:16px 0 22px}
+.simple-case .case-context a{color:var(--teal);text-decoration:underline;text-underline-offset:3px}
+.simple-case .case-visit{max-width:900px;padding:20px 24px;background:var(--mist);border:1px solid var(--line);border-radius:8px;margin-top:24px}
+.simple-case .case-visit p{font-size:16px;line-height:1.7;max-width:78ch;margin:0 0 16px}
+.simple-case .case-visit .button{display:inline-flex;min-height:48px;align-items:center;padding:13px 22px;border-radius:999px;background:var(--dark);color:#fff;font:600 15px/1.4 var(--sans)}
+.simple-case .case-service-link{display:inline-flex;align-items:center;min-height:44px;margin-left:20px;font:500 15px/1.5 var(--sans);text-decoration:underline;text-underline-offset:4px}
+.simple-case .case-image-note{font-size:14px!important;line-height:1.65;color:var(--muted);max-width:75ch;margin-top:14px}
+.simple-case .case-related h2{font-size:27px;margin-bottom:18px}
+.simple-case .case-related p{margin:12px 0;line-height:1.6}
+.simple-case .case-related a{color:var(--teal);text-decoration:underline;text-underline-offset:4px}
+.simple-case main .comparison-pair .scan-heading{display:block;background:#fff;color:var(--ink);padding:12px 16px}
+.simple-case main .comparison-pair .scan-heading h3{font:600 16px/1.4 var(--sans);margin:0}
+@media(max-width:760px){.simple-case .case-visit{padding:18px}.simple-case .case-service-link{display:flex;margin:12px 0 0}.simple-case .case-related h2{font-size:24px}.simple-case .case-context{font-size:13px}}

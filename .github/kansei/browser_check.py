@@ -6,10 +6,11 @@ import json
 from pathlib import Path
 from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
+from ultrasound_design_check import CASE_PATHS, clinic_model, check_case, check_hub
 
 PATHS = ("/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/")
-SIZES = (("mobile", 390, 844), ("desktop", 1440, 1000))
+SIZES = (("mobile", 390, 844), ("desktop", 1440, 1000), ("compact", 320, 780))
 
 
 def check(base, output):
@@ -30,7 +31,11 @@ def check(base, output):
                 else:
                     req.abort()
             context.route("**/*", route)
-            for path in PATHS + (() if baseline_only else KNOWLEDGE_PATHS):
+            paths = tuple(dict.fromkeys(PATHS + CASE_PATHS + (() if baseline_only else KNOWLEDGE_PATHS)))
+            if label == 'compact':
+                paths = ('/', '/ultraljud/') + CASE_PATHS
+            model = None
+            for path in paths:
                 page = context.new_page()
                 js_errors = []
                 page.on("pageerror", lambda err: js_errors.append(str(err)[:180]))
@@ -60,6 +65,14 @@ def check(base, output):
                     row["broken_visible_images"] = page.locator("img").evaluate_all("els=>els.filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0&&r.top<innerHeight&&r.bottom>0&&e.complete&&e.naturalWidth===0}).map(e=>new URL(e.src).pathname)")
                     if row["broken_visible_images"]:
                         row["errors"].append("Broken visible image")
+
+                    if not baseline_only:
+                        if path == '/':
+                            model = clinic_model(page)
+                        elif path in CASE_PATHS:
+                            row['ultrasound_design'] = check_case(page, model)
+                        elif path == '/ultraljud/':
+                            row['ultrasound_design'] = check_hub(page, model)
 
                     if not baseline_only and path == "/ultraljud/kalkaxel/":
                         viewer = page.locator('.patient-viewer')

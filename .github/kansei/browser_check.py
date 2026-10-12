@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 
-PATHS = ("/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
+PATHS = ("/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/")
 SIZES = (("mobile", 390, 844), ("desktop", 1440, 1000))
 
@@ -60,6 +60,39 @@ def check(base, output):
                     row["broken_visible_images"] = page.locator("img").evaluate_all("els=>els.filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0&&r.top<innerHeight&&r.bottom>0&&e.complete&&e.naturalWidth===0}).map(e=>new URL(e.src).pathname)")
                     if row["broken_visible_images"]:
                         row["errors"].append("Broken visible image")
+
+                    if not baseline_only and path == "/ultraljud/kalkaxel/":
+                        viewer = page.locator('.patient-viewer')
+                        switch = viewer.get_by_role('switch', name='Anatomi', exact=True)
+                        if switch.count() != 1:
+                            raise AssertionError('Expected one anatomy switch')
+                        page.wait_for_function("[...document.querySelectorAll('.patient-viewer img[src]')].every(i=>i.complete&&i.naturalWidth>0)")
+                        if switch.get_attribute('aria-checked') != 'false':
+                            raise AssertionError('Ultrasound must be the initial view')
+                        page.locator('#view-kalk .patient-picture').scroll_into_view_if_needed()
+                        page.screenshot(path=str(output / f'kalkaxel-{label}-ultrasound.png'))
+                        switch.click()
+                        page.wait_for_function("document.querySelector('#view-kalk .patient-picture').dataset.mode==='anatomy' && getComputedStyle(document.querySelector('#view-kalk .anatomy-layer')).opacity==='1'")
+                        page.wait_for_function("[...document.querySelectorAll('.detail-window img')].every(i=>i.complete&&i.naturalWidth>0&&i.src.endsWith('-anatomi.png'))")
+                        page.locator('#view-kalk .patient-picture').scroll_into_view_if_needed()
+                        page.screenshot(path=str(output / f'kalkaxel-{label}-anatomy.png'))
+                        page.locator('#tab-frisk').click()
+                        if switch.get_attribute('aria-checked') != 'true' or not page.locator('#view-frisk .detail-comparison').is_visible():
+                            raise AssertionError('Anatomy and comparison must follow the selected side')
+                        switch.click()
+                        page.wait_for_function("[...document.querySelectorAll('.detail-window img')].every(i=>i.complete&&i.naturalWidth>0&&i.src.endsWith('-ultraljud.jpg'))")
+                        for video_tab in ('film', 'dynamisk'):
+                            page.locator('#tab-' + video_tab).click()
+                            if switch.is_visible() or page.locator('.detail-comparison').is_visible():
+                                raise AssertionError('Film view must hide anatomy switch and comparisons')
+                            video = page.locator('#view-' + video_tab + ' video')
+                            video.evaluate('(v)=>v.load()')
+                            page.wait_for_function("id=>{const v=document.querySelector('#view-'+id+' video');return v.readyState>=1 && v.videoWidth===1280 && v.videoHeight===960}",arg=video_tab,timeout=15000)
+                            video.evaluate('(v)=>v.play()')
+                            page.wait_for_function("id=>document.querySelector('#view-'+id+' video').currentTime>0",arg=video_tab,timeout=15000)
+                            video.evaluate('(v)=>v.pause()')
+                        page.locator('#tab-kalk').click()
+                        row['kalkaxel_reader'] = 'Originals, anatomy, three details, side selection and both films passed'
 
                     if not baseline_only and path == "/reda/":
                         if not page.locator(".reda-portal-top").is_visible():

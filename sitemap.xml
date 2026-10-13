@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url><loc>https://www.kansei.se/</loc><lastmod>2026-10-07</lastmod></url>
   <url><loc>https://www.kansei.se/akupunktur/</loc><lastmod>2026-09-16</lastmod></url>
   <url><loc>https://www.kansei.se/blogg/</loc><lastmod>2026-09-19</lastmod></url>
@@ -19,7 +19,7 @@
   <url><loc>https://www.kansei.se/blogg/naprapat-fysioterapeut-kiropraktor-eller-ortoped/</loc><lastmod>2026-09-16</lastmod></url>
   <url><loc>https://www.kansei.se/blogg/ont-i-axeln-impingement-eller-nagot-annat/</loc><lastmod>2026-10-04</lastmod></url>
   <url><loc>https://www.kansei.se/blogg/ont-i-hoften-artros-trokanterit-eller-rygg/</loc><lastmod>2026-10-10</lastmod></url>
-  <url><loc>https://www.kansei.se/blogg/prp-eller-hyaluronsyra-vid-knaartros/</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://www.kansei.se/blogg/prp-eller-hyaluronsyra-vid-knaartros/</loc><lastmod>2026-10-13</lastmod></url>
   <url><loc>https://www.kansei.se/blogg/prp-eller-kortison/</loc><lastmod>2026-09-16</lastmod></url>
   <url><loc>https://www.kansei.se/blogg/prp-i-axeln-nar-ar-det-aktuellt/</loc><lastmod>2026-10-04</lastmod></url>
   <url><loc>https://www.kansei.se/blogg/ryggskott-forsta-48-timmarna/</loc><lastmod>2026-09-16</lastmod></url>
@@ -57,7 +57,7 @@
   <url><loc>https://www.kansei.se/ultraljud/hand-handled/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://www.kansei.se/ultraljud/hoft-ljumske/</loc><lastmod>2026-10-08</lastmod></url>
   <url><loc>https://www.kansei.se/ultraljud/lar-muskulatur/</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://www.kansei.se/ultraljud/kna/</loc><lastmod>2026-10-13</lastmod></url>
+  <url><loc>https://www.kansei.se/ultraljud/kna/</loc><lastmod>2026-10-13</lastmod><image:image><image:loc>https://www.kansei.se/bilder/ultraljud/kna/ledvatska-ultraljud.webp</image:loc></image:image><image:image><image:loc>https://www.kansei.se/bilder/ultraljud/kna/bakercysta-ultraljud.webp</image:loc></image:image><image:image><image:loc>https://www.kansei.se/bilder/ultraljud/kna/menisk-ultraljud.webp</image:loc></image:image><image:image><image:loc>https://www.kansei.se/bilder/ultraljud/kna/brosk-jamforelse-ultraljud.webp</image:loc></image:image><image:image><image:loc>https://www.kansei.se/bilder/ultraljud/kna/osteofyter-ultraljud.webp</image:loc></image:image><image:image><image:loc>https://www.kansei.se/bilder/ultraljud/kna/brosk-ultraljud.webp</image:loc></image:image></url>
   <url><loc>https://www.kansei.se/ultraljud/underben/</loc><lastmod>2026-10-06</lastmod></url>
   <url><loc>https://www.kansei.se/ultraljud/fot-fotled/</loc><lastmod>2026-10-05</lastmod></url>
   <url><loc>https://www.kansei.se/blogg/langvarig-landryggssmarta/</loc><lastmod>2026-09-19</lastmod></url>
@@ -67,9 +67,9 @@
   <url><loc>https://www.kansei.se/blogg/bicepssenan-smarta-framtill-i-axeln/</loc><lastmod>2026-10-07</lastmod></url>
   <url><loc>https://www.kansei.se/blogg/ac-leden-ont-ovanpa-axeln/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://www.kansei.se/blogg/axelsmarta-efter-fall/</loc><lastmod>2026-09-19</lastmod></url>
-  <url><loc>https://www.kansei.se/blogg/meniskbesvar-undersokning-och-rehab/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://www.kansei.se/blogg/meniskbesvar-undersokning-och-rehab/</loc><lastmod>2026-10-13</lastmod></url>
   <url><loc>https://www.kansei.se/blogg/bakercysta-svullnad-i-knavecket/</loc><lastmod>2026-09-19</lastmod></url>
-  <url><loc>https://www.kansei.se/blogg/patellofemoral-smarta-runt-knaskalen/</loc><lastmod>2026-09-19</lastmod></url>
+  <url><loc>https://www.kansei.se/blogg/patellofemoral-smarta-runt-knaskalen/</loc><lastmod>2026-10-13</lastmod></url>
   <url><loc>https://www.kansei.se/blogg/ont-pa-utsidan-av-hoften/</loc><lastmod>2026-10-08</lastmod></url>
   <url><loc>https://www.kansei.se/blogg/hoftartros-stelhet-och-gang/</loc><lastmod>2026-10-10</lastmod></url>
   <url><loc>https://www.kansei.se/blogg/ljumsksmarta-adduktorer-och-hoft/</loc><lastmod>2026-09-19</lastmod></url>

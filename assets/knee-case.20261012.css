@@ -27,7 +27,7 @@
 .knee-state{margin-left:auto;font:400 13px/1.5 var(--sans);color:var(--muted)}
 .knee-panel[hidden]{display:none}.knee-panel figure{margin:0}.knee-picture{position:relative;overflow:hidden;isolation:isolate;border-radius:8px;background:#080d10}
 .knee-picture>.knee-original,.knee-anatomy,.knee-anatomy>img,.knee-labels,.knee-findings{position:absolute;inset:0;width:100%;height:100%;margin:0;max-width:none;object-fit:fill}
-.knee-anatomy{opacity:0;transition:opacity .35s ease;pointer-events:none}
+.knee-anatomy{opacity:0;transition:opacity .35s ease;pointer-events:none;background:#000}
 .knee-picture[data-anatomy=true] .knee-anatomy{opacity:1}
 .knee-findings{opacity:0;pointer-events:none;transition:opacity .2s;z-index:3}
 .knee-picture[data-findings=true] .knee-findings{opacity:1}
@@ -51,3 +51,10 @@
 @media(max-width:1000px){.knee-hero-grid,.knee-split{gap:32px}.knee-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.knee-symptoms{grid-template-columns:repeat(2,minmax(0,1fr))}.knee-tab img{width:60px;flex-basis:60px}.knee-treatment{gap:28px;padding:24px}}
 @media(max-width:760px){.knee-hero-grid,.knee-split,.knee-treatment,.knee-methods{grid-template-columns:1fr;gap:26px}.knee-case main .knee-intro{font-size:18px}.knee-booking{padding:24px}.knee-symptoms{gap:8px}.knee-symptoms a{padding:16px}.knee-symptoms strong{font-size:16px}.knee-symptoms span{font-size:14px}.knee-tab{padding:10px;gap:8px}.knee-tab img{width:44px;height:38px;flex-basis:44px}.knee-tab strong{font-size:14px}.knee-tab small{display:none}.knee-state{width:100%;margin-left:0}.knee-controls{gap:8px}.knee-toggle{padding:8px 10px}.knee-treatment aside{padding-left:0;border-left:0;border-top:1px solid var(--line);padding-top:24px}.knee-panel figcaption{font-size:14px}.knee-case main .knee-treatment aside p,.knee-case main .knee-methods p{font-size:16px}.knee-labels text{font-size:26px}.knee-findings text{font-size:28px}}
 @media(prefers-reduced-motion:reduce){.knee-anatomy,.knee-findings,.knee-switch,.knee-switch:after{transition:none}}
+
+.knee-findings .cleft{fill:none;stroke:#ffdf94;stroke-width:2.5;stroke-opacity:.85}
+.knee-findings .cleft-glow{fill:none;stroke:#ffd18a;stroke-width:9;stroke-opacity:.38}
+.knee-panel[data-key=ledvatska] .knee-anatomy>img,.knee-panel[data-key=bakercysta] .knee-anatomy>img{clip-path:inset(6.93% 13.28% 0 13.20%)}
+.knee-panel[data-key=menisk] .knee-anatomy>img{clip-path:inset(7.04% 7.18% 0 7.11%)}
+.knee-panel[data-key=brosk] .knee-anatomy>img,.knee-panel[data-key=osteofyter] .knee-anatomy>img{clip-path:inset(3.52% 8.52% 0 8.44%)}
+.knee-panel[data-key=brosk-jamforelse] .knee-anatomy>img{clip-path:inset(6.93% 0 0)}

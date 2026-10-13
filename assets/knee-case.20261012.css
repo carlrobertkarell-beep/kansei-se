@@ -64,3 +64,14 @@
 .knee-findings .fluid-boundary{fill:rgba(255,212,89,.08);stroke-width:2.5}
 .knee-findings .fluid-neck{fill:none;stroke-width:2;stroke-opacity:.65;stroke-dasharray:6 7}
 .knee-labels circle{fill:#fff;stroke:none}
+
+/* v4 osteophyte emphasis */
+.knee-findings .osteophyte-zone{fill:rgba(255,191,89,.13);stroke:#ffca6c;stroke-width:2.7}
+.knee-findings .osteophyte-surface{fill:none;stroke:#ffd99a;stroke-width:4;stroke-opacity:.95}
+
+/* view-specific finding registration */
+.knee-finding-ultrasound{opacity:1;transition:opacity .35s ease}
+.knee-finding-anatomy{opacity:0;transition:opacity .35s ease}
+.knee-picture[data-anatomy=true] .knee-finding-ultrasound{opacity:0}
+.knee-picture[data-anatomy=true] .knee-finding-anatomy{opacity:1}
+@media(prefers-reduced-motion:reduce){.knee-finding-ultrasound,.knee-finding-anatomy{transition:none}}

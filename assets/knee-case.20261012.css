@@ -58,3 +58,9 @@
 .knee-panel[data-key=menisk] .knee-anatomy>img{clip-path:inset(7.04% 7.18% 0 7.11%)}
 .knee-panel[data-key=brosk] .knee-anatomy>img,.knee-panel[data-key=osteofyter] .knee-anatomy>img{clip-path:inset(3.52% 8.52% 0 8.44%)}
 .knee-panel[data-key=brosk-jamforelse] .knee-anatomy>img{clip-path:inset(6.93% 0 0)}
+
+/* v3 finding refinements */
+.knee-findings .cartilage-band{fill:rgba(255,212,89,.07);stroke:#ffd459;stroke-width:2.4;stroke-linejoin:round}
+.knee-findings .fluid-boundary{fill:rgba(255,212,89,.08);stroke-width:2.5}
+.knee-findings .fluid-neck{fill:none;stroke-width:2;stroke-opacity:.65;stroke-dasharray:6 7}
+.knee-labels circle{fill:#fff;stroke:none}

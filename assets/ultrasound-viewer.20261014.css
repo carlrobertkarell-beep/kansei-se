@@ -31,3 +31,7 @@
 .simple-case main [role=switch]:disabled{cursor:wait;opacity:.6}
 @media(max-width:760px){.simple-case main .patient-toggle-row,.simple-case main .modebar,.knee-controls{gap:8px}.simple-case main .patient-image-state,.simple-case main .modebar .mode-status,.knee-state{width:100%;margin-left:0}.simple-case main .patient-toggle,.simple-case main .modebar .anatomy-toggle,.simple-case main .patient-findings-toggle,.knee-toggle{font-size:14px;padding:8px 10px}}
 @media(prefers-reduced-motion:reduce){.simple-case main .patient-picture .anatomy-layer,.simple-case main .anatomy-layer-content,.knee-picture .knee-anatomy,.knee-anatomy-content,.simple-case main .patient-picture .patient-finding{transition:none}}
+/* Calcific-shoulder controls inherit the same switch dimensions as every reader. */
+.simple-case main .modebar .anatomy-toggle .switch-track{width:44px;height:26px}
+.simple-case main .modebar .anatomy-toggle .switch-thumb{left:3px;top:3px;width:20px;height:20px}
+.simple-case main .modebar .anatomy-toggle[aria-checked=true] .switch-thumb{transform:translateX(18px)}

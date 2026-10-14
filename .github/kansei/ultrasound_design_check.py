@@ -88,5 +88,7 @@ def check_hub(page, model):
     if search.input_value() or clear.is_visible():raise AssertionError('Search reset failed')
     if page.locator('.hub-faq-section > h3').count()!=1 or page.locator('.hub-faq-list').locator('xpath=ancestor::details').count():
         raise AssertionError('FAQ requires an extra opening step')
-    if page.locator('.hub-case').count()!=5:raise AssertionError('A published case is missing')
+    required_cases={'/ultraljud/kalkaxel/#bilder','/ultraljud/axel/bicepstendinopati/','/ultraljud/axel/pectoralisruptur/','/ultraljud/axel/ac-ledsskada/','/ultraljud/hand-handled/karpaltunnelsyndrom/','/ultraljud/loparkna/'}
+    case_links=set(page.locator('.hub-case').evaluate_all('(links)=>links.map(a=>a.getAttribute("href"))'))
+    if case_links!=required_cases:raise AssertionError('A published case is missing or duplicated')
     return {'model':model,'search_and_faq':'Passed'}

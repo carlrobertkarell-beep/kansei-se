@@ -1,0 +1,8 @@
+.ha-product-table{overflow-x:auto;margin:28px 0;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+.ha-product-table table{width:100%;min-width:590px;border-collapse:collapse;font-size:16px;line-height:1.65}
+.ha-product-table caption{text-align:left;padding:20px 24px;color:var(--muted);font-size:14px}
+.ha-product-table th,.ha-product-table td{padding:18px 24px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);width:33.33%}
+.ha-product-table thead th{background:#e3ece7;font-weight:600}.ha-product-table tbody th{font-weight:500}
+.ha-product-table tr:last-child>*{border-bottom:0}.ha-product-table a{overflow-wrap:anywhere}
+.ha-product-table:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+@media(max-width:700px){.ha-product-table th,.ha-product-table td{padding:14px 18px}}

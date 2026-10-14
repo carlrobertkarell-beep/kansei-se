@@ -9,7 +9,7 @@
   const area=root.querySelector('.patient-toggle-area');
   const state=root.querySelector('[data-patient-state]');
   const comparison=root.querySelector('.detail-comparison');
-  const decoded=new WeakMap();
+  const decoded=new WeakMap(),loaded=new WeakSet();
   const pictures=[...root.querySelectorAll('.patient-picture')];
   pictures.forEach((picture,index)=>{if(!picture.id)picture.id='patient-picture-'+viewerIndex+'-'+index});
   let activeId=select?.value||tabs[0]?.dataset.patientPanel||tabs[0]?.getAttribute('aria-controls')||panels[0]?.id;
@@ -18,7 +18,7 @@
    if(!decoded.has(image))decoded.set(image,image.decode?image.decode():new Promise((resolve,reject)=>{
     if(image.complete&&image.naturalWidth)resolve();
     else{image.addEventListener('load',resolve,{once:true});image.addEventListener('error',reject,{once:true})}
-   }));return decoded.get(image);
+   }).then(()=>{loaded.add(image)}));return decoded.get(image);
   }
   function updateComparison(shown){
    if(!comparison)return;
@@ -52,7 +52,7 @@
   }
   function prepare(){
    const current=++token,images=[...active.querySelectorAll('.patient-overlay img,.anatomy-layer img')];
-   ready=false;failed=false;mode();if(!images.length)return;
+   ready=images.length>0&&images.every(image=>loaded.has(image));failed=false;mode();if(!images.length||ready)return;
    Promise.all(images.map(decode)).then(()=>{
     if(current!==token)return;
     requestAnimationFrame(()=>requestAnimationFrame(()=>{if(current!==token)return;ready=true;mode()}));
@@ -77,6 +77,7 @@
     else if(event.key==='Home')next=0;else if(event.key==='End')next=tabs.length-1;else return;
     event.preventDefault();show(tabs[next].dataset.patientPanel||tabs[next].getAttribute('aria-controls'));tabs[next].focus({preventScroll:true});
    });
-  });select?.addEventListener('change',()=>show(select.value));show();
+  });select?.addEventListener('change',()=>show(select.value));
+  pictures.forEach(picture=>picture.querySelectorAll('.patient-overlay img,.anatomy-layer img').forEach(image=>decode(image).catch(()=>{})));show();
  });
 })();

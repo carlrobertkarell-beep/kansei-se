@@ -1,0 +1,33 @@
+/* One calm reader model for original, anatomy and findings. */
+.simple-case main .patient-toggle-area,.simple-case main .modebar,.knee-controls{display:flex;gap:14px;align-items:center;flex-wrap:wrap;max-width:960px;margin:0 auto 18px}
+.simple-case main .patient-toggle-area[hidden],.simple-case main .modebar[hidden],.patient-findings-toggle[hidden]{display:none!important}
+.simple-case main .patient-toggle-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;width:100%}
+.simple-case main .patient-toggle,.simple-case main .modebar .anatomy-toggle,.simple-case main .patient-findings-toggle,.knee-toggle{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:8px 12px;margin:0;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font:500 15px/1.4 var(--sans);cursor:pointer}
+.simple-case main .patient-switch-track,.simple-case main .switch-track,.knee-switch{position:relative;display:block;width:44px;height:26px;border-radius:20px;background:#737e79;flex:none;transition:background .2s}
+.simple-case main .patient-switch-thumb,.simple-case main .switch-thumb,.knee-switch:after{content:'';position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:none;transition:transform .2s}
+.simple-case main [role=switch][aria-checked=true] .patient-switch-track,.simple-case main [role=switch][aria-checked=true] .switch-track,.knee-toggle[aria-checked=true] .knee-switch{background:var(--teal)}
+.simple-case main [role=switch][aria-checked=true] .patient-switch-thumb,.simple-case main [role=switch][aria-checked=true] .switch-thumb,.knee-toggle[aria-checked=true] .knee-switch:after{transform:translateX(18px)}
+.simple-case main .patient-image-state,.simple-case main .modebar .mode-status,.knee-state{font:400 13px/1.5 var(--sans);color:var(--muted);margin-left:auto}
+.simple-case main .viewer-guidance{width:100%;margin:0;font:400 14px/1.6 var(--sans);color:var(--muted)}
+.simple-case main .patient-picture .patient-finding{display:block!important;position:absolute;inset:0;opacity:0;pointer-events:none;z-index:4;transition:opacity .2s}
+.simple-case main .patient-picture .patient-finding svg,.simple-case main .patient-picture .patient-finding img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;display:block!important}
+.simple-case main .patient-picture[data-findings=true][data-mode=ultrasound] .patient-finding[data-finding-mode=ultrasound],.simple-case main .patient-picture[data-findings=true][data-mode=anatomy] .patient-finding[data-finding-mode=anatomy]{opacity:1}
+.simple-case main .patient-picture .patient-finding .scan-annotation{display:block!important;opacity:1}
+.patient-finding text{font:600 25px Arial,sans-serif;paint-order:stroke;stroke:#10272d;stroke-width:6;stroke-linejoin:round}
+.patient-finding .finding-pointer-shadow{fill:none;stroke:#10272d;stroke-width:9;stroke-linecap:round}
+.patient-finding .finding-pointer{fill:none;stroke-width:3.5;stroke-linecap:round}
+.simple-case main .patient-picture .anatomy-layer{opacity:1;clip-path:none;overflow:hidden;transform:translate3d(-100%,0,0);transition:transform .48s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.simple-case main .anatomy-layer-content,.knee-anatomy-content{position:relative;width:100%;height:100%;transform:translate3d(100%,0,0);transition:transform .48s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.simple-case main .patient-picture[data-mode=anatomy] .anatomy-layer,.simple-case main .patient-picture[data-mode=anatomy] .anatomy-layer-content{transform:translate3d(0,0,0)}
+.knee-picture .knee-anatomy{opacity:1;overflow:hidden;transform:translate3d(-100%,0,0);transition:transform .48s cubic-bezier(.22,.61,.36,1)}
+.knee-picture[data-anatomy=true] .knee-anatomy,.knee-picture[data-anatomy=true] .knee-anatomy-content{transform:translate3d(0,0,0)}
+.knee-anatomy-content>img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:fill}
+.knee-panel[data-key=ledvatska] .knee-anatomy-content>img{clip-path:inset(6.93% 13.28% 0 13.20%)}
+.knee-panel[data-key=bakercysta] .knee-anatomy-content>img{clip-path:inset(6.93% 13.28% 14.55% 13.20%)}
+.knee-panel[data-key=menisk] .knee-anatomy-content>img{clip-path:inset(7.04% 7.18% 0 7.11%)}
+.knee-panel[data-key=brosk] .knee-anatomy-content>img,.knee-panel[data-key=osteofyter] .knee-anatomy-content>img{clip-path:inset(3.52% 8.52% 0 8.44%)}
+.knee-panel[data-key=brosk-jamforelse] .knee-anatomy-content>img{clip-path:inset(6.93% 0 0)}
+.simple-case main .patient-viewer button:focus-visible,.knee-controls button:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.simple-case main [role=switch]:disabled{cursor:wait;opacity:.6}
+@media(max-width:760px){.simple-case main .patient-toggle-row,.simple-case main .modebar,.knee-controls{gap:8px}.simple-case main .patient-image-state,.simple-case main .modebar .mode-status,.knee-state{width:100%;margin-left:0}.simple-case main .patient-toggle,.simple-case main .modebar .anatomy-toggle,.simple-case main .patient-findings-toggle,.knee-toggle{font-size:14px;padding:8px 10px}}
+@media(prefers-reduced-motion:reduce){.simple-case main .patient-picture .anatomy-layer,.simple-case main .anatomy-layer-content,.knee-picture .knee-anatomy,.knee-anatomy-content,.simple-case main .patient-picture .patient-finding{transition:none}}

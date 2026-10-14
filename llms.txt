@@ -63,3 +63,5 @@ Medicinsk information på webbplatsen är generell och ersätter inte en individ
 ## Patientinformation om hyaluron
 - Inför och efter hyaluroninjektion: https://www.kansei.se/hyaluronsyra/infor-och-efter/
 - Behandlarens utbildning inom injektionsteknik: https://www.kansei.se/team/carl-robert-karell/#injektionsutbildning
+
+- [Löparknä på ultraljud](https://www.kansei.se/ultraljud/loparkna/): IT-band, slemsäck och kompletterande knäfynd med originalbild, anatomi och markeringar.

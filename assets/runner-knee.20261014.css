@@ -1,0 +1,8 @@
+/* Preserve source pixels; crop the visible viewport with CSS, not the ultrasound file. */
+.knee-panel[data-key=lateral-fluid] .knee-original,.knee-panel[data-key=itb-bursa] .knee-original,.knee-panel[data-key=posterior-meniscus] .knee-original,
+.knee-panel[data-key=lateral-fluid] .knee-anatomy-content>img,.knee-panel[data-key=itb-bursa] .knee-anatomy-content>img,.knee-panel[data-key=posterior-meniscus] .knee-anatomy-content>img{top:-11.764706%;bottom:auto;height:141.176471%;width:100%;object-fit:fill}
+.knee-panel[data-key=lateral-fluid] .knee-anatomy,.knee-panel[data-key=itb-bursa] .knee-anatomy,.knee-panel[data-key=posterior-meniscus] .knee-anatomy{background:transparent}
+.knee-panel[data-key=lateral-fluid] .knee-anatomy-content>img,.knee-panel[data-key=itb-bursa] .knee-anatomy-content>img{clip-path:inset(11.67% 8.52% 0 8.44%)}
+.knee-panel[data-key=posterior-meniscus] .knee-anatomy-content>img{clip-path:inset(11.67% 13.67% 0 13.59%)}
+.runner-knee-case .knee-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:760px){.runner-knee-case .knee-tabs{grid-template-columns:1fr}.runner-knee-case .knee-tab img{width:64px;height:42px;flex-basis:64px}.runner-knee-case .knee-tab small{display:block}.runner-knee-case .knee-tab strong{font-size:16px}}

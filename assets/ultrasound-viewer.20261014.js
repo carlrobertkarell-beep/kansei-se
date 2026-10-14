@@ -15,10 +15,10 @@
   let activeId=select?.value||tabs[0]?.dataset.patientPanel||tabs[0]?.getAttribute('aria-controls')||panels[0]?.id;
   let enabled=false,findings=false,ready=false,failed=false,token=0,active=root;
   function decode(image){
-   if(!decoded.has(image))decoded.set(image,image.decode?image.decode():new Promise((resolve,reject)=>{
+   if(!decoded.has(image))decoded.set(image,(image.decode?image.decode():new Promise((resolve,reject)=>{
     if(image.complete&&image.naturalWidth)resolve();
     else{image.addEventListener('load',resolve,{once:true});image.addEventListener('error',reject,{once:true})}
-   }).then(()=>{loaded.add(image)}));return decoded.get(image);
+   })).then(()=>{loaded.add(image)}));return decoded.get(image);
   }
   function updateComparison(shown){
    if(!comparison)return;

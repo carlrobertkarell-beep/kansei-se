@@ -10,7 +10,7 @@ def check_achilles(page, output, label):
     if anatomy.get_attribute('aria-checked')!='false':raise AssertionError('Achilles must open with original ultrasound')
     revised=viewer.locator('#view-longitudinal .knee-findings').evaluate("""svg=>{
         const tendon=svg.querySelector('.tendon-outline'),v=svg.querySelector('.vascular-path'),c=svg.querySelector('.calcium-outline');
-        return tendon.isPointInFill(new DOMPoint(1040,220)) && svg.querySelectorAll('.vascular-path').length>=35 && getComputedStyle(v).stroke!==getComputedStyle(c).stroke && getComputedStyle(v).fill==='none';
+        return [[1040,220],[900,250],[915,325]].every(([x,y])=>tendon.isPointInFill(new DOMPoint(x,y))) && svg.querySelectorAll('.vascular-path').length>=35 && getComputedStyle(v).stroke!==getComputedStyle(c).stroke && getComputedStyle(v).fill==='none';
     }""")
     if not revised:raise AssertionError('Updated Achilles boundary or distinct vascular/calcium markers missing')
     findings.click();anatomy.click()

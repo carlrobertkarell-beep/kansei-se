@@ -71,3 +71,11 @@ Den nya hyaluronfilmen produceras av kliniken och ingår inte i denna publicerin
 - Knäavsnittet ligger på den befintliga kanoniska sidan. Ingen konkurrerande landningssida skapas. Bildinnehållet och länkarna finns direkt i HTML.
 
 Kliniska källor: ESSR:s tekniska knäguide, 1177 för vårdpersonal: knäledsartros (godkänd 2026-01-15), Socialstyrelsens icke-göra-rekommendationer. Klinikens originalfynd följer Carl-Roberts tidigare bildbeskrivningar.
+
+## Patientnytta i hyalurontexterna, 15 oktober 2026
+
+På Carl-Roberts instruktion omarbetas de berörda ingångarna på hela webbplatsen. Möjlig smärtlindring och förbättrad vardagsfunktion vid knäartros framgår före bedömning och praktisk information. Upprepade formuleringar om vad behandlingen inte kan lova ersätts med en tydlig, samlad beskrivning av förväntningar.
+
+Forskningsartiklar och ledvisa forskningsavsnitt behåller riktlinjer och viktiga begränsningar. EUROVISCO beskrivs som expertkonsensus, och stor metaanalys som jämförelse med placebo. För höft och glenohumeral artros bevaras uppgiften att bättre effekt respektive nytta inte har visats; mål med behandling skiljs från visad effekt. Inga knäresultat överförs till andra leder. Inga nya effektstorlekar, responderandelar, varaktigheter eller klinikresultat konstrueras.
+
+Omfattning: hyaluronöversikt, knä/höft/axel, produktguide, injektioner, relevanta artros- och jämförelseartiklar, ultraljud knä och höft, startsida, tjänsteöversikt, behandlarpresentation och vårdgivarinformation. Bokning, priser, konsultationsvillkor, eftervård, riskinformation, bilder och sidlayout behålls. Det separata utkastet om axelns slemsäck ligger kvar på sin egen gren i väntan på bilder.

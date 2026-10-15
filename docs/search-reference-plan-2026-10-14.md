@@ -89,3 +89,15 @@ Bilderna kopplas till fallresonemanget och öppnar rätt befintliga originalbild
 Hyaluronsidan för knä, knäartrosartikeln och båda sidorna om svullet knä får tydliga ingångar till patientfallet. WebPageElement-data följer den synliga fallbeskrivningen och refererar till de befintliga bildobjekten. Befintlig kanonisk URL, bildlager, bokningstjänster, priser och medicinska fördjupningar behålls.
 
 I publiceringstexten anges ingen höger-/vänstersida för patienten; de befintliga undersökningsbildernas egna sidmarkeringar bevaras.
+
+## Övriga publicerade bildfall, 15 oktober 2026
+
+Åtta befintliga bildsidor får avsnittet `#patientfall`: bicepssenan, pectoralisruptur, AC-ledsskada, karpaltunnelsyndrom, kalkaxel, tennisarmbåge, hälsena och löparknä. Alla har ett enhetligt upplägg med besvär/funktion, bildfynd/bedömning, fortsatt plan och vad som följs upp. Originalbild, anatomilager, fyndmarkeringar och filmer behålls. Falltextens länkar öppnar rätt befintliga bildvy och, för fyndvyer, aktiverar utpekningen.
+
+Den redan publicerade skadehistoriken för pectoralis och AC-leden används som grund. Övriga sex beskrivningar märks uttryckligen som illustrativa patientexempel med verkliga undersökningsbilder; en konstruerad anamnes eller plan framställs inte som dokumenterade patientuppgifter. Inga behandlingsresultat eller senare återbesök läggs till. För kalkaxel anges ingen rupturgrad som saknas i underlaget. Hälsenans rupturområden vägs in före val av träningsbelastning. Löparknäfallet hålls isär från sidans andra menisk- och ledvätskeexempel.
+
+Tio befintliga områdes- och undersökningssidor får ingångar till relevanta fall. Nya beskrivningar och WebPageElement-data följer det synliga innehållet och markerar även när patientexemplet är illustrativt. Kanoniska adresser, priser och befintliga bokningslänkar behålls. Ingen hyaluronindikation eller injektionseffekt läggs till för dessa sen-, nerv- eller traumafall.
+
+Kliniskt stöd: AAOS om bicepssenan, pectoralisskada, AC-ledsskada och kalkaxel; 1177 om karpaltunnelsyndrom, tennisarmbåge och löparknä; den nederländska multidisciplinära riktlinjen om hälsenetendinopati. Befintliga tekniska källor och fyndbeskrivningar finns kvar på respektive sida. Den separata slemsäckssidan för axeln förblir ett förberett utkast i väntan på bildmaterial.
+
+Webbläsarkontrollen utökas för det nya användarflödet: falltextens bildlänkar ska fungera med tangentbord och mus, öppna rätt bildpanel och visa fyndmarkeringarna. Mobil- och datorbilder sparas för granskning av de åtta fallavsnitten.

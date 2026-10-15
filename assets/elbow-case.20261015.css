@@ -1,0 +1,14 @@
+/* Use the existing clinic reader, with the same source coordinates in every layer. */
+.elbow-case .knee-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+.elbow-case .knee-picture>.knee-original,.elbow-case .knee-anatomy-content>img{top:-13.333333%;bottom:auto;height:160%;width:100%;object-fit:fill}
+.elbow-case .knee-picture[data-findings=true] .knee-labels{opacity:0}
+.elbow-case .knee-findings .elbow-tendinosis{fill:rgba(255,212,89,.035);stroke:#ffdb79;stroke-width:2;stroke-dasharray:8 6}
+.elbow-case .knee-findings .elbow-tear{fill:rgba(255,212,89,.025);stroke:#ffdc65;stroke-width:2.8}
+.elbow-case .knee-controls [hidden],.elbow-case .knee-zoom-controls [hidden],.elbow-case .elbow-legend[hidden]{display:none!important}
+.elbow-legend{display:flex;gap:24px;flex-wrap:wrap;margin:16px 0 0;font:400 14px/1.5 var(--sans);color:var(--muted)}
+.elbow-legend span{display:flex;align-items:center;gap:8px}
+.elbow-legend i{display:inline-block;width:30px;height:13px;border:2px solid #ba912e;border-radius:4px}
+.elbow-legend .legend-tendinosis{border-style:dashed}
+.elbow-case .knee-zoom-body .knee-picture{aspect-ratio:1280/600}
+.elbow-case main .knee-intro{max-width:70ch}
+@media(max-width:760px){.elbow-case .knee-tab small{display:block;font-size:12px}.elbow-case .knee-tab{align-items:flex-start}.elbow-case .knee-tab img{display:none}.elbow-case .knee-tab strong{font-size:15px}.elbow-case .knee-zoom-controls{gap:8px}}

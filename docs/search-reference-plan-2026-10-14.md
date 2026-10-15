@@ -49,3 +49,14 @@ Dokumentera manuella AI-kontroller med datum, exakt fråga, språk/plats och vil
 - EUROVISCO: https://pubmed.ncbi.nlm.nih.gov/39564753/
 
 Googles vägledning ger stöd för användbart originalinnehåll och tekniskt tillgängliga sidor. Den garanterar inte att de ovanstående förändringarna ger högre ranking. Google anger uttryckligen att llms.txt och särskild AI-markup inte förbättrar synligheten i Google Search.
+
+## Genomförande 15 oktober 2026
+
+- Ledvisa hyaluronsidor och eftervården använder de befintliga, preparatspecifika bokningslänkarna för Sinovial HL 64 och Sinogel. Separat konsultation är fortsatt valfri. Priser och medicinska riktlinjer behålls.
+- Knäsidan om hyaluron visar ett redan publicerat originalfynd och länkar direkt till samma fynd i ultraljudsvisaren. Det görs ingen koppling mellan bildens utseende och en utlovad injektionseffekt.
+- Sidorna om quadricepssenan och axelns slemsäck har tydligare symtomfrågor, metodgränser, befintliga bildexempel, källor och fortsatt väg till undersökning. Bilden av ledvätska på quadricepssidan presenteras inte som en senskada. Axelfilmen presenteras inte som ett dokumenterat bursitfall.
+- De befintliga ultraljudsfilmerna har VideoObject-data med fil, förhandsbild, uppmätt längd och datum från videofilens första tillägg i källkodshistoriken. Knä, kalkaxel, biceps och AC-led kompletterar hälsenans befintliga metadata.
+- `sitemap.xml` innehåller nu bild- och videoposter som hämtas från faktiskt publicerad HTML och VideoObject-data. Efter nya bildfall körs `python .github/scripts/update-media-sitemap.py`. Kontroll utan skrivning: `python .github/scripts/update-media-sitemap.py --check`.
+- Webbplatsens befintliga automatiska webbläsarkontroll omfattar även de sex uppdaterade undersöknings- och hyaluronsidorna.
+
+Den nya hyaluronfilmen produceras av kliniken och ingår inte i denna publicering. Ingen ny mätning av Googleplaceringar eller AI-citeringar görs med dessa källkodsändringar; uppföljningen ovan kräver aktuella kontodata.

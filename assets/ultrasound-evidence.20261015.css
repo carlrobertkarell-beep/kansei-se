@@ -1,0 +1,7 @@
+/* Evidence previews use the clinic's existing grid, type and colour tokens. */
+.clinic-site .evidence-figure{margin:0;min-width:0;align-self:start}
+.clinic-site .evidence-figure>a{display:block;border-radius:8px;overflow:hidden;background:var(--ink)}
+.clinic-site .evidence-figure img{display:block;width:100%;height:auto}
+.clinic-site .evidence-figure figcaption{margin-top:16px;color:var(--muted);font-size:14px;line-height:1.7}
+.clinic-site .evidence-figure figcaption a{text-decoration:underline;text-underline-offset:4px}
+.clinic-site .evidence-figure a:focus-visible{outline:3px solid var(--ink);outline-offset:5px}

@@ -9,7 +9,7 @@ from playwright.sync_api import sync_playwright
 from achilles_design_check import check_achilles
 from ultrasound_design_check import CASE_PATHS, clinic_model, check_case, check_hub, check_explore
 
-PATHS = ("/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
+PATHS = ("/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/")
 RUNNER_PATH = "/ultraljud/loparkna/"
 ACHILLES_PATH = "/ultraljud/halsena/bilder/"

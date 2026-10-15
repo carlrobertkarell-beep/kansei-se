@@ -1,0 +1,23 @@
+/* Knee evidence uses the existing clinic palette, grid and image reader. */
+.clinic-site .knee-guide-intro{max-width:78ch}
+.clinic-site .knee-guide-step{margin-top:40px}
+.clinic-site .knee-guide-step .orientation ul{padding-left:20px;line-height:1.75}
+.clinic-site .knee-guide-step .orientation li+li{margin-top:10px}
+.clinic-site .knee-evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:26px}
+.clinic-site .knee-evidence-item{min-width:0}
+.clinic-site .knee-evidence-image{display:block;overflow:hidden;border-radius:8px;background:var(--ink)}
+.clinic-site .knee-evidence-image img{display:block;width:100%;height:auto;margin:0}
+.clinic-site .knee-evidence-item h4{font:500 21px/1.35 var(--sans);letter-spacing:-.015em;margin:20px 0 12px;color:var(--ink)}
+.clinic-site .knee-evidence-item p{font-size:16px;line-height:1.75;margin-bottom:16px}
+.clinic-site .knee-evidence-item .text-link{font-size:15px}
+.clinic-site .knee-guide-actions{display:flex;align-items:center;flex-wrap:wrap;gap:20px 28px;margin-top:32px}
+.clinic-site .knee-guide-source{margin:24px 0 0}
+.clinic-site .knee-evidence-preview{display:grid;grid-template-columns:minmax(140px,.8fr) minmax(0,1.5fr);gap:26px;align-items:start;padding:26px;border:1px solid var(--line);border-radius:8px;background:var(--mist);margin:28px 0}
+.clinic-site .knee-evidence-preview>div{min-width:0}
+.clinic-site .knee-evidence-preview .eyebrow{margin:0 0 12px;font-size:11px;line-height:1.6}
+.clinic-site .knee-evidence-preview h3{font:500 24px/1.3 var(--sans);letter-spacing:-.02em;margin:0 0 14px;color:var(--ink)}
+.clinic-site .knee-evidence-preview p{font-size:16px;line-height:1.75;margin:0 0 16px}
+.clinic-site .knee-evidence-preview .text-link{font-size:15px}
+.clinic-site .knee-evidence-image:focus-visible{outline:3px solid var(--teal);outline-offset:5px}
+@media(max-width:900px){.clinic-site .knee-evidence-grid{gap:20px}.clinic-site .knee-evidence-item h4{font-size:19px}}
+@media(max-width:760px){.clinic-site .knee-evidence-grid{grid-template-columns:1fr;gap:32px}.clinic-site .knee-guide-step{margin-top:30px}.clinic-site .knee-evidence-preview{grid-template-columns:1fr;padding:20px;gap:20px}.clinic-site .knee-evidence-preview h3{font-size:22px}}

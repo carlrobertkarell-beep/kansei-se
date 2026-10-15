@@ -1,0 +1,29 @@
+.achilles-case .knee-controls[hidden],.achilles-case .achilles-legend[hidden]{display:none!important}
+.achilles-case .knee-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+.achilles-case .knee-picture,.achilles-case .knee-zoom-body .knee-picture{aspect-ratio:4/3}
+.achilles-case .knee-picture>.knee-original,.achilles-case .knee-anatomy-content>img{inset:0;width:100%;height:100%;object-fit:fill}
+.achilles-case .knee-picture[data-findings=true] .knee-labels{opacity:0}
+/* Findings explain the painted pathology; no copied vessel-guide strokes. */
+.achilles-case .knee-findings .tendon-outline{fill:none;stroke:#96dfec;stroke-width:2.1;stroke-dasharray:10 7}
+.achilles-case #view-longitudinal .tendon-outline{stroke-opacity:.5;stroke-width:1.8}
+.achilles-case .knee-findings .calcium-outline{fill:none;stroke:#9be4aa;stroke-width:2.6}
+.achilles-case .knee-findings .advanced-tendinosis{fill:none;stroke:#f3b08f;stroke-width:2.4;stroke-dasharray:9 6}
+.achilles-case .knee-findings .rupture-outline{fill:none;stroke:#d7b2ed;stroke-width:2.3}
+.achilles-case .knee-picture[data-anatomy=true] .source-markers,.achilles-case .knee-picture[data-anatomy=true] .calcium-outline{display:none}
+.achilles-case .knee-findings .pointer{fill:none;stroke-width:2.8}
+.achilles-case .knee-findings .vascular-pointer{stroke:#e5a09a}
+.achilles-case .knee-findings .rupture-pointer{stroke:#d7b2ed}
+.achilles-case .knee-findings .advanced-pointer{stroke:#f3b08f}
+.achilles-case .knee-findings .calcium-pointer{stroke:#9be4aa}
+.achilles-legend{display:flex;gap:10px 22px;flex-wrap:wrap;margin:16px 0 0;font:400 14px/1.6 var(--sans);color:var(--muted)}
+.achilles-legend span{display:inline-flex;gap:8px;align-items:center}
+.achilles-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;background:#9be4aa;border:1px solid #52835b}
+.achilles-legend i.tendon{background:#96dfec;border-color:#397d89}
+.achilles-legend i.vascular{background:#bd6259;border-color:#8f443f}
+.achilles-legend i.advanced{background:#f3b08f;border-color:#a67459}
+.achilles-legend i.rupture{background:#d7b2ed;border-color:#896ca0}
+.achilles-case .achilles-film{background:#080d10;border-radius:8px;overflow:hidden}
+.achilles-case .achilles-film video{display:block;width:100%;height:auto;aspect-ratio:4/3}
+.achilles-case .knee-viewer figcaption{margin-top:14px}
+.achilles-case .case-context{font-size:14px;color:var(--muted)}
+.achilles-case main .knee-hero>p{max-width:70ch}

@@ -227,6 +227,13 @@
 /* Native dialog with a short, cancellable transition; no layout jump or library. */
 (()=>{'use strict';
  const dialog=document.querySelector('#site-menu'),buttons=[...document.querySelectorAll('[data-site-menu]')];
+ // Keep the image overview discoverable from every public clinic menu.
+ const imageMenu=dialog?.querySelector('.menu-secondary');
+ if(imageMenu&&!imageMenu.querySelector('a[href="/ultraljud/bilder/"]')){
+  const link=document.createElement('a');link.href='/ultraljud/bilder/';link.textContent='Ultraljud i bild';
+  if(location.pathname==='/ultraljud/bilder/')link.setAttribute('aria-current','page');
+  imageMenu.append(link);
+ }
  const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
  let opener=null,closing=false,timer=null;
  function close(){if(!dialog?.open||closing)return;closing=true;dialog.classList.add('is-leaving');

@@ -88,7 +88,50 @@ def check_hub(page, model):
     if search.input_value() or clear.is_visible():raise AssertionError('Search reset failed')
     if page.locator('.hub-faq-section > h3').count()!=1 or page.locator('.hub-faq-list').locator('xpath=ancestor::details').count():
         raise AssertionError('FAQ requires an extra opening step')
-    required_cases={'/ultraljud/kalkaxel/#bilder','/ultraljud/axel/bicepstendinopati/','/ultraljud/axel/pectoralisruptur/','/ultraljud/axel/ac-ledsskada/','/ultraljud/hand-handled/karpaltunnelsyndrom/','/ultraljud/loparkna/','/ultraljud/tennisarmbage/bilder/'}
-    case_links=set(page.locator('.hub-case').evaluate_all('(links)=>links.map(a=>a.getAttribute("href"))'))
-    if case_links!=required_cases:raise AssertionError('A published case is missing or duplicated')
+    gateway=page.locator('#undersokningsfall')
+    if gateway.locator('.hub-case').count():raise AssertionError('Service page repeats the full image catalogue')
+    if gateway.locator('a[href="/ultraljud/bilder/"]').count()!=1:raise AssertionError('Image overview entrance missing')
+    if gateway.locator('.atlas-area-links a').count()!=4:raise AssertionError('Body-region shortcuts missing')
+    check_sample(page)
     return {'model':model,'search_and_faq':'Passed'}
+
+def check_sample(page):
+    sample=page.locator('[data-atlas-demo]')
+    sample.scroll_into_view_if_needed()
+    anatomy=sample.get_by_role('switch',name='Anatomi',exact=True)
+    findings=sample.get_by_role('switch',name='Visa fynden',exact=True)
+    page.wait_for_function("!document.querySelector('[data-atlas-anatomy]').disabled")
+    if anatomy.get_attribute('aria-checked')!='true':raise AssertionError('Anatomy preview is not discoverable')
+    anatomy.click();findings.click()
+    if sample.get_attribute('data-anatomy')!='false' or sample.get_attribute('data-findings')!='true':
+        raise AssertionError('Preview findings cannot be shown on the original')
+    anatomy.click()
+    if sample.get_attribute('data-findings')!='true':raise AssertionError('Preview loses independent finding selection')
+    findings.click()
+
+def check_explore(page):
+    check_sample(page)
+    entries=page.locator('[data-atlas-entry]')
+    expected={'/ultraljud/kalkaxel/#bilder','/ultraljud/axel/bicepstendinopati/#bilder','/ultraljud/axel/pectoralisruptur/#bilder','/ultraljud/axel/ac-ledsskada/#bilder','/ultraljud/hand-handled/karpaltunnelsyndrom/#bilder','/ultraljud/loparkna/#bilder','/ultraljud/tennisarmbage/bilder/#bilder','/ultraljud/kna/#bilder'}
+    if set(entries.evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))'))!=expected:
+        raise AssertionError('A published image reader is missing or duplicated')
+    search=page.locator('[data-atlas-search]')
+    page.locator('[data-atlas-region=kna]').click()
+    if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=2:
+        raise AssertionError('Knee region does not isolate its examples')
+    if 'omrade=kna' not in page.url:raise AssertionError('Region choice has no shareable URL')
+    search.fill('domningar')
+    if not page.locator('[data-atlas-empty]').is_visible():raise AssertionError('Empty region search has no recovery')
+    page.locator('[data-atlas-reset]').click()
+    if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=8 or search.input_value():
+        raise AssertionError('Reset does not restore every example')
+    search.fill('loparkna')
+    if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=1:
+        raise AssertionError('Swedish search without diacritics failed')
+    search.fill('')
+    page.locator('[data-atlas-region=hand]').click()
+    page.reload(wait_until='domcontentloaded')
+    if page.locator('[data-atlas-entry]:not([hidden])').count()!=1:
+        raise AssertionError('Direct region URL does not survive reload')
+    page.locator('[data-atlas-region=alla]').click()
+    return 'Area filters, direct URLs, Swedish search, empty-state recovery and independent preview layers passed'

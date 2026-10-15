@@ -8,6 +8,7 @@ from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 from achilles_design_check import check_achilles
 from ultrasound_design_check import CASE_PATHS, clinic_model, check_case, check_hub, check_explore
+from case_story_check import STORY_PATHS, check_story
 
 PATHS = ("/", "/kunskapsbank/kna/svullet-kna/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/knaartros-vad-du-kan-gora/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/")
@@ -328,6 +329,9 @@ def check(base, output):
                             row["errors"].append("Unsupported medical review attribution")
                         if path == "/blogg/misstankt-halseneruptur/" and page.locator('main a[href*="bokadirekt.se"]').count():
                             row["errors"].append("Urgent injury article exposes a commercial booking CTA")
+
+                    if not baseline_only and path in STORY_PATHS:
+                        row['case_story'] = check_story(page, path, output, label)
 
                     slug = path.strip("/").replace("/", "-") or "home"
                     page.screenshot(path=str(output / f"{slug}-{label}.png"), full_page=False, animations="disabled")

@@ -1,0 +1,21 @@
+/* Clinical narratives share Kansei's existing typography, colours and readers. */
+.clinic-site .us-case-path{background:var(--mist,#edf3f5);border-block:1px solid var(--line);scroll-margin-top:110px}
+.clinic-site .us-case-intro{max-width:78ch;margin-bottom:34px}
+.clinic-site .us-case-path .us-case-note{font-size:15px;line-height:1.7;color:var(--muted,#596b70)}
+.clinic-site .us-case-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"story findings" "plan findings";grid-template-rows:min-content 1fr;gap:28px 56px;align-items:start}
+.clinic-site .us-case-story{grid-area:story}.clinic-site .us-case-findings{grid-area:findings}.clinic-site .us-case-plan{grid-area:plan}
+.clinic-site .us-case-grid>article{min-width:0}
+.clinic-site .us-case-grid h3{font:500 24px/1.35 var(--sans);letter-spacing:-.02em;margin:0 0 16px;color:var(--ink)}
+.clinic-site .us-case-grid p{font-size:17px;line-height:1.8;margin:0 0 20px}
+.clinic-site .us-case-figure{margin:20px 0 12px}
+.clinic-site .us-case-image-link{display:block;overflow:hidden;border-radius:8px;background:var(--ink)}
+.clinic-site .us-case-image-link img{display:block;width:100%;height:auto;margin:0}
+.clinic-site .us-case-figure figcaption{font-size:14px;line-height:1.7;margin-top:10px}
+.clinic-site .us-case-view-links,.clinic-site .us-case-actions{display:flex;flex-wrap:wrap;gap:10px 24px}
+.clinic-site .us-case-view-links .text-link,.clinic-site .us-case-actions .text-link{display:inline-flex;align-items:center;min-height:44px;font-size:15px;line-height:1.6}
+.clinic-site .us-case-follow{margin:30px 0 16px;padding-top:24px;border-top:1px solid var(--line);font-size:17px;line-height:1.8;max-width:90ch}
+.clinic-site .us-case-source{margin-top:24px}
+.clinic-site .us-case-image-link:focus-visible{outline:3px solid var(--teal);outline-offset:5px}
+.clinic-site .us-case-entry-list{list-style:none;padding:0;margin:20px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 32px}
+.clinic-site .us-case-entry-list li{min-width:0}.clinic-site .us-case-entry-list a{display:inline-block;min-height:44px;padding:8px 0;line-height:1.6}
+@media(max-width:760px){.clinic-site .us-case-path{scroll-margin-top:90px}.clinic-site .us-case-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"story" "findings" "plan";grid-template-rows:auto;gap:28px}.clinic-site .us-case-grid h3{font-size:22px}.clinic-site .us-case-grid p,.clinic-site .us-case-follow{font-size:16px}.clinic-site .us-case-entry-list{grid-template-columns:minmax(0,1fr)}}

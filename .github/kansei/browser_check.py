@@ -6,11 +6,13 @@ import json
 from pathlib import Path
 from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
+from achilles_design_check import check_achilles
 from ultrasound_design_check import CASE_PATHS, clinic_model, check_case, check_hub, check_explore
 
 PATHS = ("/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/")
 RUNNER_PATH = "/ultraljud/loparkna/"
+ACHILLES_PATH = "/ultraljud/halsena/bilder/"
 ELBOW_PATH = "/ultraljud/tennisarmbage/bilder/"
 EXPLORE_PATH = "/ultraljud/bilder/"
 SIZES = (("mobile", 390, 844), ("desktop", 1440, 1000), ("compact", 320, 780))
@@ -34,9 +36,9 @@ def check(base, output):
                 else:
                     req.abort()
             context.route("**/*", route)
-            paths = tuple(dict.fromkeys(PATHS + CASE_PATHS + (() if baseline_only else KNOWLEDGE_PATHS + (RUNNER_PATH, ELBOW_PATH, EXPLORE_PATH))))
+            paths = tuple(dict.fromkeys(PATHS + CASE_PATHS + (() if baseline_only else KNOWLEDGE_PATHS + (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))))
             if label == 'compact':
-                paths = ('/', '/ultraljud/') + CASE_PATHS + (() if baseline_only else (RUNNER_PATH, ELBOW_PATH, EXPLORE_PATH))
+                paths = ('/', '/ultraljud/') + CASE_PATHS + (() if baseline_only else (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))
             model = None
             for path in paths:
                 page = context.new_page()
@@ -164,6 +166,9 @@ def check(base, output):
                         for control in viewer.locator('button').all():
                             if control.is_visible() and control.bounding_box()['height']<44:raise AssertionError('Elbow control is too small for touch')
                         row['elbow_reader']='Two originals, registered anatomy, independent findings, healthy view, synchronized enlargement and keyboard navigation passed'
+
+                    if not baseline_only and path == ACHILLES_PATH:
+                        row['achilles_reader'] = check_achilles(page, output, label)
 
                     if not baseline_only and path == "/ultraljud/kalkaxel/":
                         viewer = page.locator('.patient-viewer')

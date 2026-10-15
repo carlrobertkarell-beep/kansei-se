@@ -91,7 +91,7 @@ def check_hub(page, model):
     gateway=page.locator('#undersokningsfall')
     if gateway.locator('.hub-case').count():raise AssertionError('Service page repeats the full image catalogue')
     if gateway.locator('a[href="/ultraljud/bilder/"]').count()!=1:raise AssertionError('Image overview entrance missing')
-    if gateway.locator('.atlas-area-links a').count()!=4:raise AssertionError('Body-region shortcuts missing')
+    if gateway.locator('.atlas-area-links a').count()!=5:raise AssertionError('Body-region shortcuts missing')
     check_sample(page)
     return {'model':model,'search_and_faq':'Passed'}
 
@@ -112,7 +112,7 @@ def check_sample(page):
 def check_explore(page):
     check_sample(page)
     entries=page.locator('[data-atlas-entry]')
-    expected={'/ultraljud/kalkaxel/#bilder','/ultraljud/axel/bicepstendinopati/#bilder','/ultraljud/axel/pectoralisruptur/#bilder','/ultraljud/axel/ac-ledsskada/#bilder','/ultraljud/hand-handled/karpaltunnelsyndrom/#bilder','/ultraljud/loparkna/#bilder','/ultraljud/tennisarmbage/bilder/#bilder','/ultraljud/kna/#bilder'}
+    expected={'/ultraljud/kalkaxel/#bilder','/ultraljud/axel/bicepstendinopati/#bilder','/ultraljud/axel/pectoralisruptur/#bilder','/ultraljud/axel/ac-ledsskada/#bilder','/ultraljud/hand-handled/karpaltunnelsyndrom/#bilder','/ultraljud/loparkna/#bilder','/ultraljud/tennisarmbage/bilder/#bilder','/ultraljud/kna/#bilder','/ultraljud/halsena/bilder/#bilder'}
     if set(entries.evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))'))!=expected:
         raise AssertionError('A published image reader is missing or duplicated')
     search=page.locator('[data-atlas-search]')
@@ -123,7 +123,7 @@ def check_explore(page):
     search.fill('domningar')
     if not page.locator('[data-atlas-empty]').is_visible():raise AssertionError('Empty region search has no recovery')
     page.locator('[data-atlas-reset]').click()
-    if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=8 or search.input_value():
+    if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=9 or search.input_value():
         raise AssertionError('Reset does not restore every example')
     search.fill('loparkna')
     if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=1:
@@ -133,5 +133,7 @@ def check_explore(page):
     page.reload(wait_until='domcontentloaded')
     if page.locator('[data-atlas-entry]:not([hidden])').count()!=1:
         raise AssertionError('Direct region URL does not survive reload')
+    page.locator('[data-atlas-region=fot]').click()
+    if page.locator('[data-atlas-entry]:not([hidden])').count()!=1:raise AssertionError('Foot region missing')
     page.locator('[data-atlas-region=alla]').click()
     return 'Area filters, direct URLs, Swedish search, empty-state recovery and independent preview layers passed'

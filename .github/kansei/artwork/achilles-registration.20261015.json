@@ -1,0 +1,20 @@
+[
+  {
+    "view": "longitudinal",
+    "landmarks": 36,
+    "maximum_landmark_error_px": 0.8050415037193943,
+    "minimum_jacobian": 0.4813263610562688
+  },
+  {
+    "view": "healthy",
+    "landmarks": 28,
+    "maximum_landmark_error_px": 2.0180684306227477,
+    "minimum_jacobian": 0.37562166266002245
+  },
+  {
+    "view": "transverse",
+    "landmarks": 29,
+    "maximum_landmark_error_px": 0.8797050712406644,
+    "minimum_jacobian": 0.4729501716754335
+  }
+]

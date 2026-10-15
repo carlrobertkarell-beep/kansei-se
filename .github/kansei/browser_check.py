@@ -11,6 +11,7 @@ from ultrasound_design_check import CASE_PATHS, clinic_model, check_case, check_
 PATHS = ("/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/")
 RUNNER_PATH = "/ultraljud/loparkna/"
+ELBOW_PATH = "/ultraljud/tennisarmbage/bilder/"
 SIZES = (("mobile", 390, 844), ("desktop", 1440, 1000), ("compact", 320, 780))
 
 
@@ -32,9 +33,9 @@ def check(base, output):
                 else:
                     req.abort()
             context.route("**/*", route)
-            paths = tuple(dict.fromkeys(PATHS + CASE_PATHS + (() if baseline_only else KNOWLEDGE_PATHS + (RUNNER_PATH,))))
+            paths = tuple(dict.fromkeys(PATHS + CASE_PATHS + (() if baseline_only else KNOWLEDGE_PATHS + (RUNNER_PATH, ELBOW_PATH))))
             if label == 'compact':
-                paths = ('/', '/ultraljud/') + CASE_PATHS + (() if baseline_only else (RUNNER_PATH,))
+                paths = ('/', '/ultraljud/') + CASE_PATHS + (() if baseline_only else (RUNNER_PATH, ELBOW_PATH))
             model = None
             for path in paths:
                 page = context.new_page()
@@ -112,6 +113,54 @@ def check(base, output):
                         if viewer.get_by_role('tab').last.get_attribute('aria-selected')!='true':
                             raise AssertionError('Knee keyboard navigation did not wrap')
                         row['runner_reader']='Three originals, anatomy sweep, independent findings, enlarged view and keyboard navigation passed'
+
+                    if not baseline_only and path == ELBOW_PATH:
+                        if clinic_model(page) != model:
+                            raise AssertionError('Elbow page differs from the clinic design')
+                        for link in page.locator('.case-page-nav a').all():
+                            if not page.locator(link.get_attribute('href')).count():
+                                raise AssertionError('Elbow page navigation target missing')
+                        viewer=page.locator('[data-elbow-viewer]')
+                        anatomy=viewer.locator('[data-knee-anatomy]')
+                        findings=viewer.locator('[data-knee-findings]')
+                        if viewer.get_by_role('tab').count()!=2:
+                            raise AssertionError('Expected healthy and injured elbow tabs')
+                        page.wait_for_function("[...document.querySelectorAll('[data-elbow-viewer] .knee-anatomy img')].every(i=>i.complete&&i.naturalWidth===1280&&i.naturalHeight===960)")
+                        if anatomy.get_attribute('aria-checked')!='false' or findings.get_attribute('aria-checked')!='false':
+                            raise AssertionError('Elbow reader must start with the original ultrasound')
+                        picture=viewer.locator('#view-skadad .knee-picture')
+                        picture.scroll_into_view_if_needed()
+                        page.screenshot(path=str(output/f'elbow-{label}-original.png'))
+                        findings.click()
+                        if picture.get_attribute('data-findings')!='true' or picture.get_attribute('data-anatomy')!='false':
+                            raise AssertionError('Elbow findings cannot be shown on original')
+                        page.screenshot(path=str(output/f'elbow-{label}-findings.png'))
+                        anatomy.click()
+                        page.wait_for_function("new DOMMatrix(getComputedStyle(document.querySelector('#view-skadad .knee-anatomy')).transform).isIdentity")
+                        registered=picture.evaluate("""p=>{
+                          const b=p.getBoundingClientRect(),i=p.querySelector('.knee-original').getBoundingClientRect(),s=p.querySelector('.knee-findings').getBoundingClientRect();
+                          return Math.abs(i.width-b.width)<.1&&Math.abs(i.top+80*i.height/960-b.top)<.1&&Math.abs(i.height*600/960-b.height)<.1&&Math.abs(s.top-b.top)<.1&&Math.abs(s.height-b.height)<.1;
+                        }""")
+                        if not registered:raise AssertionError('Elbow source and finding coordinate frames differ')
+                        page.screenshot(path=str(output/f'elbow-{label}-anatomy-findings.png'))
+                        viewer.locator('[data-knee-enlarge]').click()
+                        if not page.locator('#knee-zoom').is_visible():raise AssertionError('Elbow enlarged view failed')
+                        page.locator('[data-knee-zoom-findings]').click()
+                        if picture.get_attribute('data-findings')!='false':raise AssertionError('Elbow enlarged controls are not synchronized')
+                        page.locator('[data-knee-zoom-close]').click()
+                        viewer.locator('#tab-frisk').click()
+                        if findings.is_visible() or anatomy.get_attribute('aria-checked')!='true':
+                            raise AssertionError('Healthy elbow must retain anatomy and hide pathology control')
+                        viewer.locator('#view-frisk .knee-picture').scroll_into_view_if_needed()
+                        page.screenshot(path=str(output/f'elbow-{label}-healthy-anatomy.png'))
+                        viewer.locator('[data-knee-enlarge]').click()
+                        if page.locator('[data-knee-zoom-findings]').is_visible():raise AssertionError('Healthy enlarged view exposes pathology control')
+                        page.keyboard.press('Escape')
+                        viewer.get_by_role('tab').first.focus();page.keyboard.press('ArrowLeft')
+                        if viewer.get_by_role('tab').last.get_attribute('aria-selected')!='true':raise AssertionError('Elbow keyboard navigation failed')
+                        for control in viewer.locator('button').all():
+                            if control.is_visible() and control.bounding_box()['height']<44:raise AssertionError('Elbow control is too small for touch')
+                        row['elbow_reader']='Two originals, registered anatomy, independent findings, healthy view, synchronized enlargement and keyboard navigation passed'
 
                     if not baseline_only and path == "/ultraljud/kalkaxel/":
                         viewer = page.locator('.patient-viewer')

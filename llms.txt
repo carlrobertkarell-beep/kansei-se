@@ -65,3 +65,5 @@ Medicinsk information på webbplatsen är generell och ersätter inte en individ
 - Behandlarens utbildning inom injektionsteknik: https://www.kansei.se/team/carl-robert-karell/#injektionsutbildning
 
 - [Löparknä på ultraljud](https://www.kansei.se/ultraljud/loparkna/): IT-band, slemsäck och kompletterande knäfynd med originalbild, anatomi och markeringar.
+
+- [Tennisarmbåge på ultraljud – frisk och skadad sena](https://www.kansei.se/ultraljud/tennisarmbage/bilder/): Kanseis egna bildexempel med ultraljud, anatomilager och fynd vid tendinos och rupturområden.

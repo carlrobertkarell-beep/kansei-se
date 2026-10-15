@@ -1,0 +1,37 @@
+<!-- Source template only. Fill media slots and case fields from the supplied examination.
+     Do not publish this template as a patient case or invent its missing content.
+     Reuse the existing ultrasound-viewer.20261014.js, patient-case styling and
+     ultrasound-design.20261012.css when activating the completed case.
+     Select an appropriate existing viewer preset after actual image dimensions
+     and anatomical registration are known. All frame dimensions must come from
+     the supplied originals. -->
+<template id="bursa-case-template">
+<section class="section" id="bilder" aria-labelledby="bursa-case-title"><div class="wrap">
+<div class="viewer-head"><div><span class="eyebrow">Från våra undersökningar</span>
+<h2 id="bursa-case-title">Slemsäcken i axeln – ultraljud och anatomi</h2>
+<p data-case-field="clinical-question"></p>
+</div></div>
+<div class="atlas-reading-guide" aria-label="Så utforskar du bilden"><span><b>1</b> Se originalbilden</span><span><b>2</b> Slå på <strong>Anatomi</strong></span><span><b>3</b> Välj <strong>Visa fynden</strong></span></div>
+<div class="patient-viewer" data-anatomy="false" data-patient-viewer="">
+<div class="patient-view-navigation">
+<div class="patient-media-head"><p class="patient-location" data-case-field="side-and-location"></p></div>
+<div class="patient-view-tabs" role="tablist" aria-label="Välj undersökningsvy" data-view-count="2">
+<button class="patient-view-tab" type="button" role="tab" id="tab-bursa-longitudinal" aria-controls="view-bursa-longitudinal" aria-selected="true" tabindex="0" data-patient-panel="view-bursa-longitudinal"><span><strong>Längdsnitt</strong><small>Längs området</small></span></button>
+<button class="patient-view-tab" type="button" role="tab" id="tab-bursa-transverse" aria-controls="view-bursa-transverse" aria-selected="false" tabindex="-1" data-patient-panel="view-bursa-transverse"><span><strong>Tvärsnitt</strong><small>Samma fynd från ett annat håll</small></span></button>
+</div>
+<div class="patient-toggle-area"><div class="patient-toggle-row">
+<button class="patient-toggle" type="button" role="switch" aria-label="Anatomi" aria-checked="false" data-patient-toggle="" disabled><span class="patient-switch-track" aria-hidden="true"><span class="patient-switch-thumb"></span></span><span data-toggle-label="">Anatomi</span></button>
+<button class="patient-findings-toggle" type="button" role="switch" aria-label="Visa fynden" aria-checked="false" data-patient-findings="" disabled><span class="patient-switch-track" aria-hidden="true"><span class="patient-switch-thumb"></span></span><span>Visa fynden</span></button>
+<span class="patient-image-state" data-patient-state="" aria-live="polite">Ultraljud</span>
+</div><p class="viewer-guidance">Välj Anatomi för att känna igen vävnaderna. Slå på Visa fynden för att se det beskrivna området.</p></div>
+</div>
+<article class="reader-panel" id="view-bursa-longitudinal" role="tabpanel" aria-labelledby="tab-bursa-longitudinal" tabindex="0">
+<div class="panel-layout"><div class="panel-media" data-media-slot="longitudinal.registered-image-stack"></div><div class="panel-copy"><h3>Längdsnitt av slemsäcken</h3><p class="knee-cue"><strong>Titta efter: </strong><span data-case-field="longitudinal.look-here"></span></p><p data-case-field="longitudinal.finding"></p><details><summary>Mer om fyndet och undersökningen</summary><p data-case-field="longitudinal.technical-description"></p></details></div></div>
+</article>
+<article class="reader-panel" id="view-bursa-transverse" role="tabpanel" aria-labelledby="tab-bursa-transverse" tabindex="0" hidden>
+<div class="panel-layout"><div class="panel-media" data-media-slot="transverse.registered-image-stack"></div><div class="panel-copy"><h3>Tvärsnitt av samma område</h3><p class="knee-cue"><strong>Titta efter: </strong><span data-case-field="transverse.look-here"></span></p><p data-case-field="transverse.finding"></p><details><summary>Mer om fyndet och undersökningen</summary><p data-case-field="transverse.technical-description"></p></details></div></div>
+</article>
+</div>
+<div class="reader-conclusion"><div><h3>Vad betydde fyndet i den här undersökningen?</h3><p data-case-field="clinical-interpretation"></p></div><div><h3>Nästa steg</h3><p data-case-field="actual-plan"></p></div></div>
+</div></section>
+</template>

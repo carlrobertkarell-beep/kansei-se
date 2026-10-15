@@ -40,7 +40,7 @@ def check_story(page, path, output, label):
             if not page.locator('#' + tab.get_attribute('aria-controls')).is_visible():
                 raise AssertionError('Narrative image panel is not visible')
         if findings:
-            viewer = page.locator('[data-patient-viewer],[data-knee-viewer],[data-elbow-viewer]')
+            viewer = page.locator('[data-patient-viewer],[data-knee-viewer],[data-elbow-viewer],[data-achilles-viewer]')
             toggle = viewer.locator('[data-patient-findings],[data-knee-findings]')
             if not toggle.is_visible() or toggle.get_attribute('aria-checked') != 'true':
                 raise AssertionError('Narrative does not reveal the requested findings')

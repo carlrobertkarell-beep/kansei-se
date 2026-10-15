@@ -54,4 +54,34 @@ def check_achilles(page, output, label):
     if tabs.last.get_attribute('aria-selected')!='true':raise AssertionError('Achilles keyboard tabs fail to wrap')
     for button in viewer.locator('button').all():
         if button.is_visible() and button.bounding_box()['height']<44:raise AssertionError('Achilles touch control is too small')
-    return 'Three registered stills, independent overlays, healthy labels, enlargement, native film playback/pause and keyboard navigation passed'
+    # Inspect the reading and booking sections as well as the image viewer.
+    # Missing shared case styles previously left these sections touching.
+    layout=page.evaluate("""()=>{
+        const sections=[...document.querySelectorAll('main>section.section')];
+        const sized=sections.every(el=>{const s=getComputedStyle(el);return parseFloat(s.paddingTop)>=32&&parseFloat(s.paddingBottom)>=32});
+        const headings=sections.flatMap(el=>[...el.querySelectorAll('h2')]);
+        const type=headings.every(el=>parseFloat(getComputedStyle(el).fontSize)<=40);
+        const links=[...document.querySelectorAll('.achilles-actions>a')].map(el=>el.getBoundingClientRect());
+        const [a,b]=links;
+        const separated=links.length===2&&(b.left-a.right>=8||b.top-a.bottom>=8);
+        const faq=[...document.querySelectorAll('.knee-faq summary')].every(el=>el.getBoundingClientRect().height>=56);
+        return {sized,type,separated,faq};
+    }""")
+    if not all(layout.values()):raise AssertionError('Achilles reading layout is cramped: '+str(layout))
+    for link in page.locator('.case-page-nav a').all():
+        if not page.locator(link.get_attribute('href')).count() or link.bounding_box()['height']<44:
+            raise AssertionError('Achilles page navigation is missing or too small')
+    page.locator('#besok').evaluate('el=>el.scrollIntoView()')
+    page.screenshot(path=str(output/f'achilles-{label}-visit.png'))
+    page.locator('#besok .cta').screenshot(path=str(output/f'achilles-{label}-booking.png'))
+    first=page.locator('.knee-faq details').first
+    first.locator('summary').focus();page.keyboard.press('Enter')
+    if first.get_attribute('open') is None or not first.locator('p').is_visible():
+        raise AssertionError('Achilles FAQ cannot be opened with the keyboard')
+    page.locator('#faq').evaluate('el=>el.scrollIntoView()')
+    page.screenshot(path=str(output/f'achilles-{label}-faq.png'))
+    first.locator('summary').focus();page.keyboard.press('Enter')
+    if first.get_attribute('open') is not None:raise AssertionError('Achilles FAQ cannot be closed')
+    page.locator('#kallor').evaluate('el=>el.scrollIntoView()')
+    page.screenshot(path=str(output/f'achilles-{label}-sources.png'))
+    return 'Three registered stills, independent overlays, enlargement, native film, keyboard navigation, section spacing, booking actions and accessible FAQ passed'

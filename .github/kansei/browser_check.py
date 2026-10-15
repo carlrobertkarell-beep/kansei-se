@@ -168,6 +168,8 @@ def check(base, output):
                         row['elbow_reader']='Two originals, registered anatomy, independent findings, healthy view, synchronized enlargement and keyboard navigation passed'
 
                     if not baseline_only and path == ACHILLES_PATH:
+                        if clinic_model(page) != model:
+                            raise AssertionError('Achilles page differs from the clinic design')
                         row['achilles_reader'] = check_achilles(page, output, label)
 
                     if not baseline_only and path == "/ultraljud/kalkaxel/":

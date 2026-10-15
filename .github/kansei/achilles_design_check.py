@@ -9,11 +9,23 @@ def check_achilles(page, output, label):
     page.wait_for_function("!document.querySelector('[data-achilles-viewer] [data-knee-anatomy]').disabled")
     if anatomy.get_attribute('aria-checked')!='false':raise AssertionError('Achilles must open with original ultrasound')
     revised=viewer.locator('#view-longitudinal .knee-findings').evaluate("""svg=>{
-        const tendon=svg.querySelector('.tendon-outline'),v=svg.querySelector('.vascular-path'),c=svg.querySelector('.calcium-outline');
-        return [[1040,220],[900,250],[915,325]].every(([x,y])=>tendon.isPointInFill(new DOMPoint(x,y))) && svg.querySelectorAll('.vascular-path').length>=35 && getComputedStyle(v).stroke!==getComputedStyle(c).stroke && getComputedStyle(v).fill==='none';
+        const tendon=svg.querySelector('.tendon-outline');
+        return [[1040,220],[900,250],[915,325]].every(([x,y])=>tendon.isPointInFill(new DOMPoint(x,y))) && !svg.querySelector('.vascular-path,.vascular-shadow') && svg.querySelectorAll('.rupture-outline').length>=6 && !!svg.querySelector('.advanced-tendinosis');
     }""")
-    if not revised:raise AssertionError('Updated Achilles boundary or distinct vascular/calcium markers missing')
-    findings.click();anatomy.click()
+    if not revised:raise AssertionError('Revised tissue pathology or guidance missing; copied vessel-guide strokes must be absent')
+    anatomy.click()
+    picture=viewer.locator('#view-longitudinal .knee-picture')
+    picture.scroll_into_view_if_needed()
+    page.wait_for_function("new DOMMatrix(getComputedStyle(document.querySelector('#view-longitudinal .knee-anatomy')).transform).isIdentity")
+    if picture.get_attribute('data-findings')!='false':raise AssertionError('Anatomy-only inspection unexpectedly shows finding graphics')
+    red_pixels=picture.locator('.knee-anatomy img').evaluate("""img=>{
+        const c=document.createElement('canvas');c.width=1280;c.height=960;const ctx=c.getContext('2d');ctx.drawImage(img,0,0);
+        const a=ctx.getImageData(160,220,670,120).data;let count=0;
+        for(let i=0;i<a.length;i+=4){const r=a[i],g=a[i+1],b=a[i+2];if(r>g*1.75&&b>g*.82&&r-g>60&&r-b>20)count++}return count;
+    }""")
+    if red_pixels<500:raise AssertionError('Vessels are missing from the anatomy bitmap when finding graphics are off')
+    page.screenshot(path=str(output/f'achilles-{label}-anatomy-only.png'))
+    findings.click()
     for key in ('longitudinal','healthy','transverse'):
         viewer.locator('#tab-'+key).click()
         picture=viewer.locator('#view-'+key+' .knee-picture')

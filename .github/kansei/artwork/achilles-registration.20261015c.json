@@ -1,0 +1,8 @@
+[
+  {
+    "view": "longitudinal",
+    "landmarks": 39,
+    "maximum_landmark_error_px": 0.4620156980220145,
+    "minimum_jacobian": 0.5730241228136668
+  }
+]

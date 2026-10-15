@@ -30,7 +30,7 @@ def render(key,data,out):
     dxdy,dxdx=np.gradient(displacement[:,:,0]);dydy,dydx=np.gradient(displacement[:,:,1]);jac=(1+dxdx)*(1+dydy)-dxdy*dydx
     minimum=float(jac[112:889,108:1172].min())
     if minimum<=0:raise ValueError(f'{key}: displacement field folds: {minimum}')
-    material=f'<image id="material" href="{uri(MATERIALS/(key+"-material.20261015.webp"))}" width="1280" height="960"/>'
+    material=f'<image id="material" href="{uri(MATERIALS/data.get("material",key+"-material.20261015.webp"))}" width="1280" height="960"/>'
     cleanup=''
     defs=[f'<image id="original" href="{uri(ASSETS/(key+"-ultraljud.jpg"))}" width="1280" height="960"/>',material,'<g id="paint"><use href="#material"/></g>','<clipPath id="scan"><rect x="108" y="112" width="1064" height="777"/></clipPath>']
     # Keep the machine's original labels and readouts outside the illustration.
@@ -55,9 +55,9 @@ def render(key,data,out):
     doc=doc.replace(' href=',' xlink:href=')
     svg=out/(key+'-registered.svg');svg.write_text(doc);png=out/(key+'-registered.png')
     subprocess.run(['inkscape','--batch-process',str(svg),'--export-overwrite','--export-width=1280','--export-type=png','--export-filename='+str(png)],check=True,capture_output=True)
-    image=Image.open(png).convert('RGB');image.save(ASSETS/(key+'-anatomi.20261015.webp'),'WEBP',quality=93,method=6);image.save(out/(key+'-registered.jpg'),quality=93)
+    image=Image.open(png).convert('RGB');image.save(ASSETS/data.get('asset',key+'-anatomi.20261015.webp'),'WEBP',quality=93,method=6);image.save(out/(key+'-registered.jpg'),quality=93)
     return {'view':key,'landmarks':len(pairs),'maximum_landmark_error_px':residual,'minimum_jacobian':minimum}
 if __name__=='__main__':
-    parser=argparse.ArgumentParser();parser.add_argument('--output',required=True);args=parser.parse_args();out=Path(args.output);out.mkdir(parents=True,exist_ok=True)
-    data=json.loads(GEOMETRY.read_text());results=[render(key,view,out) for key,view in data['views'].items()]
+    parser=argparse.ArgumentParser();parser.add_argument('--output',required=True);parser.add_argument('--geometry',type=Path,default=GEOMETRY);parser.add_argument('--view',choices=['longitudinal','healthy','transverse']);args=parser.parse_args();out=Path(args.output);out.mkdir(parents=True,exist_ok=True)
+    data=json.loads(args.geometry.read_text());results=[render(key,view,out) for key,view in data['views'].items() if not args.view or key==args.view]
     (out/'registration-report.json').write_text(json.dumps(results,ensure_ascii=False,indent=2));print(json.dumps(results))

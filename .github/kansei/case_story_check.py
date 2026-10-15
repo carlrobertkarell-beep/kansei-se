@@ -53,6 +53,6 @@ def check_story(page, path, output, label):
     story.screenshot(
         path=str(output / f'patient-case-{slug}-{label}.png'),
         animations='disabled',
-        style='.header,.skip-link{visibility:hidden!important}',
+        style='body>header,body>a[href="#main"]{visibility:hidden!important}',
     )
     return {'image_routes': len(checked), 'keyboard': 'Passed', 'narrative_and_image': 'Passed'}

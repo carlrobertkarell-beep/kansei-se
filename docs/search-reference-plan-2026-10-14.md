@@ -79,3 +79,11 @@ På Carl-Roberts instruktion omarbetas de berörda ingångarna på hela webbplat
 Forskningsartiklar och ledvisa forskningsavsnitt behåller riktlinjer och viktiga begränsningar. EUROVISCO beskrivs som expertkonsensus, och stor metaanalys som jämförelse med placebo. För höft och glenohumeral artros bevaras uppgiften att bättre effekt respektive nytta inte har visats; mål med behandling skiljs från visad effekt. Inga knäresultat överförs till andra leder. Inga nya effektstorlekar, responderandelar, varaktigheter eller klinikresultat konstrueras.
 
 Omfattning: hyaluronöversikt, knä/höft/axel, produktguide, injektioner, relevanta artros- och jämförelseartiklar, ultraljud knä och höft, startsida, tjänsteöversikt, behandlarpresentation och vårdgivarinformation. Bokning, priser, konsultationsvillkor, eftervård, riskinformation, bilder och sidlayout behålls. Det separata utkastet om axelns slemsäck ligger kvar på sin egen gren i väntan på bilder.
+
+## Patientfall om knäartros, 15 oktober 2026
+
+Efter granskning av ett konkret utkast gav Carl-Robert instruktionen att gå vidare och koppla ihop de relevanta bilderna med falltexten. Det tidigare avsnittet om knäfynd på `/ultraljud/kna/#artros` ersätts därför av det godkända, anonymiserade patientfallet: belastningsrelaterade högerknäbesvär och svullnad, måttlig artros på tidigare röntgen, tidigare fysioterapi/egenvård, ledvätska, osteofyter, lokal broskpåverkan samt bedömning och rehabiliteringsplan. Knäsidans övriga bildbibliotek omfattar fortfarande flera undersökningar.
+
+Bilderna kopplas till fallresonemanget och öppnar rätt befintliga originalbild, anatomi och fynd i läsaren. Hyaluron beskrivs som ett möjligt komplement vid kvarstående artrosrelaterad smärta. Texten uppger inte att injektionen har genomförts eller att patienten fått ett visst behandlingsresultat. Uppföljning beskrivs som del av planen.
+
+Hyaluronsidan för knä, knäartrosartikeln och båda sidorna om svullet knä får tydliga ingångar till patientfallet. WebPageElement-data följer den synliga fallbeskrivningen och refererar till de befintliga bildobjekten. Befintlig kanonisk URL, bildlager, bokningstjänster, priser och medicinska fördjupningar behålls.

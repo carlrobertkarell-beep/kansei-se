@@ -47,6 +47,9 @@
   <url>
     <loc>https://www.kansei.se/blogg/knaartros-vad-du-kan-gora/</loc>
     <lastmod>2026-10-14</lastmod>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/kna/osteofyter-ultraljud.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/loparkna-eller-hopparkna/</loc>
@@ -233,6 +236,9 @@
   <url>
     <loc>https://www.kansei.se/kunskapsbank/kna/svullet-kna/</loc>
     <lastmod>2026-10-05</lastmod>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/kna/ledvatska-ultraljud.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/axel/</loc>
@@ -465,6 +471,9 @@
   <url>
     <loc>https://www.kansei.se/ultraljud/svullet-kna/</loc>
     <lastmod>2026-10-05</lastmod>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/kna/ledvatska-ultraljud.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/rotatorkuff/</loc>

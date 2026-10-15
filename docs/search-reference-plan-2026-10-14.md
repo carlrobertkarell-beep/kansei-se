@@ -60,3 +60,14 @@ Googles vägledning ger stöd för användbart originalinnehåll och tekniskt ti
 - Webbplatsens befintliga automatiska webbläsarkontroll omfattar även de sex uppdaterade undersöknings- och hyaluronsidorna.
 
 Den nya hyaluronfilmen produceras av kliniken och ingår inte i denna publicering. Ingen ny mätning av Googleplaceringar eller AI-citeringar görs med dessa källkodsändringar; uppföljningen ovan kräver aktuella kontodata.
+
+## Knäartros: från bild till plan, 15 oktober 2026
+
+- Den befintliga knäsidans avsnitt `/ultraljud/kna/#artros` har en sammanhängande bildgenomgång med klinisk frågeställning, tre originalfynd och deras betydelse för fortsatt bedömning. Alla bilder och anatomilager är tidigare godkända och publicerade.
+- Bildmaterialet kommer från olika personer. Därför presenteras det som separata undersökningsexempel. Ingen patientanamnes, behandling eller uppföljning har konstruerats; en eventuell framtida patientberättelse kräver bakgrund som hör till just den undersökningen.
+- Befintliga bildkontroller används för att öppna rätt fynd med original, anatomi och markeringar. Inget nytt bildgränssnitt eller ny anatomisk illustration införs.
+- Bildförhandsvisningar ger relevanta ingångar från knäartrosartikeln, kunskapsbankens svullnadssida och undersökningssidan om svullet knä. Hyaluronsidan länkar tillbaka till hela resonemanget och behåller sin direktlänk till originalfyndet.
+- Kopplingen till hyaluron förklarar bedömning och ultraljudsvägledning. Bilderna används inte för att förutsäga effekt eller som ensam behandlingsindikation. Grundbehandling, valfri separat konsultation och informationen om Socialstyrelsens avrådan behålls.
+- Knäavsnittet ligger på den befintliga kanoniska sidan. Ingen konkurrerande landningssida skapas. Bildinnehållet och länkarna finns direkt i HTML.
+
+Kliniska källor: ESSR:s tekniska knäguide, 1177 för vårdpersonal: knäledsartros (godkänd 2026-01-15), Socialstyrelsens icke-göra-rekommendationer. Klinikens originalfynd följer Carl-Roberts tidigare bildbeskrivningar.

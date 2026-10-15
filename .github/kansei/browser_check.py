@@ -10,7 +10,7 @@ from achilles_design_check import check_achilles
 from ultrasound_design_check import CASE_PATHS, clinic_model, check_case, check_hub, check_explore
 
 PATHS = ("/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
-KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/")
+KNOWLEDGE_PATHS = ("/blogg/knaartros-vad-du-kan-gora/", "/kunskapsbank/kna/svullet-kna/", "/ultraljud/svullet-kna/", "/kunskapsbank/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/")
 RUNNER_PATH = "/ultraljud/loparkna/"
 ACHILLES_PATH = "/ultraljud/halsena/bilder/"
 ELBOW_PATH = "/ultraljud/tennisarmbage/bilder/"
@@ -80,6 +80,10 @@ def check(base, output):
                             row['ultrasound_design'] = check_hub(page, model)
                         elif path == EXPLORE_PATH:
                             row['image_explorer'] = check_explore(page)
+
+                    if not baseline_only and path == "/ultraljud/kna/":
+                        page.locator('#artros').scroll_into_view_if_needed()
+                        page.locator('#artros').screenshot(path=str(output/f'knee-guide-{label}.png'))
 
                     if not baseline_only and path in ("/ultraljud/kna/", RUNNER_PATH):
                         viewer=page.locator('[data-knee-viewer]')

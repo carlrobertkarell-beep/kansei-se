@@ -27,3 +27,8 @@ traffic or present a local DOM event as a recorded conversion.
 The clinician page copy action copies clinic facts only. It never asks for patient
 inputs or transmits a referral. Contact and secure transfer of patient documents
 must be agreed with the clinic separately.
+
+
+## Visibility measurement update — 16 October 2026
+
+See `visibility-measurement-2026-10-16.md` for the newer bridge, version 20261016, strict referral groups and explicit exclusion of review/profile links from booking_click. The same GA4 property and consent choice are reused; do not add another tag. Browser tests use stubbed third parties and do not by themselves verify actual GA4 collection.

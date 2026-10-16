@@ -108,7 +108,7 @@ for p,rel,original in files:
     if rel=='blogg/naprapat-fysioterapeut-kiropraktor-eller-ortoped/index.html':
         description='Naprapat, fysioterapeut, kiropraktor eller ortoped? Läs om yrkena, hur du väljer mottagning och hur undersökning och vidare hänvisning fungerar hos Kansei.'
         text=text.replace('Naprapat, fysioterapeut, kiropraktor eller ortoped? Så skiljer sig yrkena, så väljer du rätt för ditt besvär, och därför behöver du inte välja rätt dörr hos oss.',description)
-        text=replace_match(text,'p','vår egen','<p>Fysioterapeuter arbetar med funktion, träning och rehabilitering och kan ha olika specialistinriktningar. Kiropraktorer arbetar bland annat med manuell behandling av leder och muskler. Vilken kompetens som passar beror på besvären och behandlarens utbildning och erfarenhet. Hos Kansei sker eventuell specialistmedverkan <a href="/om-oss/">efter förfrågan</a>.</p>')
+        text=replace_match(text,'p','Fysioterapeutens kärna','<p>Fysioterapeuter arbetar med funktion, träning och rehabilitering och kan ha olika specialistinriktningar. Kiropraktorer arbetar bland annat med manuell behandling av leder och muskler. Vilken kompetens som passar beror på besvären och behandlarens utbildning och erfarenhet. Hos Kansei sker eventuell specialistmedverkan <a href="/om-oss/">efter förfrågan</a>.</p>')
         text=replace_match(text,'p','under samma tak','<p>Den löpande verksamheten på Kansei drivs av <a href="/team/carl-robert-karell/">Carl-Robert Kårell, legitimerad naprapat</a>. Du kan boka undersökning, behandling och <a href="/ultraljud/">muskuloskeletalt ultraljud</a> utan remiss. Utifrån bedömningen planerar vi nästa steg eller rekommenderar vidare vård. Specialistmedverkan kan undersökas efter förfrågan; kliniken har inte en fast bemannad fysioterapeut- eller ortopedmottagning.</p>')
         text=text.replace('Därför behöver du inte välja rätt dörr hos oss','Så hjälper vi dig att välja nästa steg')
         text=text.replace('Hos oss bokar du alla besökstyper utan remiss.','Hos Kansei kan du boka naprapati och ultraljud utan remiss. Specialistmedverkan sker efter förfrågan.')
@@ -176,7 +176,7 @@ for p,rel,original in files:
             text=text.replace('</head>','<script type="application/ld+json">'+json.dumps(graph,ensure_ascii=False,separators=(',',':'))+'</script></head>',1)
     if rel in case_hashes:
         m=soup(text).find('main');a,b=span(text,m)
-        assert hashlib.sha256(text[a:b].encode()).hexdigest()==case_hashes[rel], 'Case content changed: '+rel
+        assert hashlib.sha256(re.sub(r' data-measure="[^"]*"', '', text[a:b]).encode()).hexdigest()==case_hashes[rel], 'Case content changed: '+rel
     if text!=original:p.write_text(text);changed.append(rel)
 
 js_path=ROOT/'assets/clinic.20261008.js'

@@ -8,7 +8,7 @@
   const key = 'kansei-statistics-v1', maxAge = 180 * 86400000;
   const sourceKey = 'kansei-referral-v1', sourceMaxAge = 30 * 60000;
   const groups = ['chatgpt','perplexity','copilot','gemini','google','bing','other','unknown'];
-  let granted = false, configured = false, panel, opener, source = 'unknown';
+  let granted = false, configured = false, panel, opener, source = 'unknown', sourceAt = 0;
   window.KanseiMeasure = false;
   window['ga-disable-' + id] = true;
   const read = () => {
@@ -48,6 +48,8 @@
   };
   const rememberSource = () => {
     if (!granted) return;
+    if (sourceAt && Date.now() - sourceAt >= sourceMaxAge) source = 'unknown';
+    sourceAt = Date.now();
     try { sessionStorage.setItem(sourceKey, JSON.stringify({group:source, at:Date.now()})); } catch {}
   };
   const resolveSource = () => {
@@ -61,6 +63,7 @@
         if (v && groups.includes(v.group) && Number.isFinite(v.at) && Date.now() >= v.at && Date.now() - v.at < sourceMaxAge) source = v.group;
       } catch {}
     }
+    sourceAt = Date.now();
     rememberSource();
   };
   const payload = () => ({
@@ -130,7 +133,7 @@
     panel.setAttribute('aria-labelledby','kansei-statistics-heading');
     panel.setAttribute('aria-describedby','kansei-statistics-description');
     panel.hidden = true;
-    panel.innerHTML = '<div class="kansei-statistics-inner"><div class="kansei-statistics-copy"><h2 id="kansei-statistics-heading">Valfri statistik</h2><p id="kansei-statistics-description">Google Analytics hjälper oss att förbättra hemsidan. Du kan ändra ditt val.</p></div><div class="kansei-statistics-controls"><div class="kansei-statistics-actions"><button type="button" data-statistics="no">Avstå</button><button type="button" data-statistics="yes">Godkänn</button></div><a class="kansei-statistics-info" href="/cookie/">Om cookies och ditt val <span aria-hidden="true">↗</span></a></div>';
+    panel.innerHTML = '<div class="kansei-statistics-inner"><div class="kansei-statistics-copy"><h2 id="kansei-statistics-heading">Valfri statistik</h2><p id="kansei-statistics-description">Google Analytics hjälper oss att förbättra hemsidan. Du kan ändra ditt val.</p></div><div class="kansei-statistics-controls"><div class="kansei-statistics-actions"><button type="button" data-statistics="no">Avstå</button><button type="button" data-statistics="yes">Godkänn</button></div><a class="kansei-statistics-info" href="/cookie/">Om cookies och ditt val <span aria-hidden="true">↗</span></a></div></div>';
     document.body.append(panel);
     panel.addEventListener('click', e => {
       const button = e.target.closest('[data-statistics]');

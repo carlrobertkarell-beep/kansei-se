@@ -52,7 +52,7 @@ def update_catalogue():
 def service_section(title, introduction, cases, links, section_id='fall-fran-kansei'):
     cards=''.join(f'<article>{linked(BY_KEY[key]["headline"],BY_KEY[key]["path"])}<p>{esc(description)}</p></article>' for key,description in cases)
     actions=''.join(linked(label,url) for label,url in links)
-    return f'''<section class="case-context case-context-service" id="{section_id}" aria-labelledby="{section_id}-title" data-case-service><div class="wrap"><span class="eyebrow">Från våra undersökningar vid Odenplan</span><h2 id="{section_id}-title">{esc(title)}</h2><p>{esc(introduction)}</p><div class="case-context-related" data-related-count="{len(cases)}">{cards}</div><div class="case-context-links">{actions}</div></div></section>'''
+    return f'''<section class="us-case-guide case-context-service" id="{section_id}" aria-labelledby="{section_id}-title" data-case-service><div class="wrap"><span class="eyebrow">Från våra undersökningar vid Odenplan</span><h2 id="{section_id}-title">{esc(title)}</h2><p>{esc(introduction)}</p><div class="case-context-related" data-related-count="{len(cases)}">{cards}</div><div class="case-context-links">{actions}</div></div></section>'''
 
 
 def update_services():

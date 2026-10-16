@@ -12,7 +12,7 @@ from case_story_check import STORY_PATHS, check_story
 from bursa_design_check import check_bursa
 from case_context_check import CONTEXT_PATHS, check_context
 
-PATHS = ("/", "/kunskapsbank/kna/svullet-kna/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
+PATHS = ("/", "/kunskapsbank/kna/svullet-kna/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/knaartros-vad-du-kan-gora/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/")
 RUNNER_PATH = "/ultraljud/loparkna/"
 ACHILLES_PATH = "/ultraljud/halsena/bilder/"

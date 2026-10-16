@@ -1,16 +1,16 @@
 /* Patient entrances and clinical context use the existing Kansei design tokens. */
-.case-context{font-family:var(--sans,Arial,Helvetica,sans-serif);color:var(--ink,#173137);scroll-margin-top:110px}
-.case-context .wrap{min-width:0}
-.case-context h2{font:500 clamp(28px,3.2vw,40px)/1.2 var(--sans);letter-spacing:-.03em;max-width:28ch;margin:0 0 18px}
-.case-context h3{font:500 22px/1.35 var(--sans);letter-spacing:-.02em;margin:0 0 14px}
-.case-context p{font:400 17px/1.75 var(--sans);margin:0 0 18px;max-width:76ch}
-.case-context a{color:var(--teal,#166c66);text-underline-offset:4px}
-.case-context .eyebrow{display:block;font:500 12px/1.5 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin:0 0 12px}
+.us-case-guide{font-family:var(--sans,Arial,Helvetica,sans-serif);color:var(--ink,#173137);scroll-margin-top:110px}
+.us-case-guide .wrap{min-width:0}
+.us-case-guide h2{font:500 clamp(28px,3.2vw,40px)/1.2 var(--sans);letter-spacing:-.03em;max-width:28ch;margin:0 0 18px}
+.us-case-guide h3{font:500 22px/1.35 var(--sans);letter-spacing:-.02em;margin:0 0 14px}
+.us-case-guide p{font:400 17px/1.75 var(--sans);margin:0 0 18px;max-width:76ch}
+.us-case-guide a{color:var(--teal,#166c66);text-underline-offset:4px}
+.us-case-guide .eyebrow{display:block;font:500 12px/1.5 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin:0 0 12px}
 .case-context-summary{padding-block:32px 36px;border-bottom:1px solid var(--line)}
 .case-context-columns{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px 52px;align-items:start}
 .case-context-question{padding:24px;background:var(--mist,#edf3f5);border-left:3px solid var(--teal);border-radius:0 7px 7px 0}
 .case-context-question p{font-size:16px;margin-bottom:12px}
-.case-context .case-context-kind{font-size:13px;color:var(--muted,#596b70);margin-bottom:10px}
+.us-case-guide .case-context-kind{font-size:13px;color:var(--muted,#596b70);margin-bottom:10px}
 .case-context-goals{display:flex;flex-wrap:wrap;gap:8px 18px;list-style:none;margin:18px 0 0;padding:0}
 .case-context-goals li{font:400 14px/1.6 var(--sans);padding-left:15px;position:relative}
 .case-context-goals li:before{content:'';position:absolute;left:0;top:.6em;width:5px;height:5px;border-radius:50%;background:var(--teal)}
@@ -39,5 +39,5 @@
 .case-context-service .case-context-related{grid-template-columns:repeat(3,minmax(0,1fr))}
 .case-context-service .case-context-related[data-related-count="1"]{grid-template-columns:minmax(0,1fr)}
 .case-context-service .case-context-related p{font-size:15px}
-.case-context :is(a,summary):focus-visible{outline:3px solid var(--teal);outline-offset:4px}
-@media(max-width:760px){.case-context{scroll-margin-top:90px}.case-context-columns,.case-context-care,.case-context-care[data-care-count="3"],.case-context-related,.case-context-service .case-context-related{grid-template-columns:minmax(0,1fr);gap:22px}.case-context-summary{padding-block:26px}.case-context-question{padding:19px}.case-context p{font-size:16px}.case-context-decision{padding-block:32px}.case-context h3{font-size:21px}.case-context-goals{display:grid;gap:7px}.case-context-care p,.case-context-related p{font-size:15px}.case-context-service{padding-block:28px}}
+.us-case-guide :is(a,summary):focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+@media(max-width:760px){.us-case-guide{scroll-margin-top:90px}.case-context-columns,.case-context-care,.case-context-care[data-care-count="3"],.case-context-related,.case-context-service .case-context-related{grid-template-columns:minmax(0,1fr);gap:22px}.case-context-summary{padding-block:26px}.case-context-question{padding:19px}.us-case-guide p{font-size:16px}.case-context-decision{padding-block:32px}.us-case-guide h3{font-size:21px}.case-context-goals{display:grid;gap:7px}.case-context-care p,.case-context-related p{font-size:15px}.case-context-service{padding-block:28px}}

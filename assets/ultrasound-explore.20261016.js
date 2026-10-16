@@ -40,7 +40,9 @@
   ['sinovial','synovial'],['bar','bara'],['utsida','utsidan'],['insida','insidan'],['ta','tar']
  ].forEach(list=>list.forEach(word=>aliases[word]=list[0]));
  const tokens=s=>normalize(s).split(/\s+/).filter(w=>w&&!stop.has(w)).map(w=>aliases[w]||w);
- const entryWords=new Map(entries.map(entry=>[entry,tokens(entry.dataset.search+' '+entry.textContent)]));
+ // HTML textContent joins adjacent elements without spaces on minified pages.
+ // Read the visible editorial blocks separately so "senor"+"Ont" stays two words.
+ const entryWords=new Map(entries.map(entry=>[entry,tokens(entry.dataset.search+' '+[...entry.querySelectorAll('small,h4,p')].map(el=>el.textContent).join(' '))]));
  const valid=new Set(links.map(a=>a.dataset.atlasRegion)),validSymptoms=new Set(symptoms.map(a=>a.dataset.atlasSymptom));
  let region='alla',symptom='alla';
  function render(){

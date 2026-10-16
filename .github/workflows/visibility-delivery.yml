@@ -1,0 +1,39 @@
+name: Visibility delivery validation
+on:
+  push:
+    branches: ['seo/visibility-20261016']
+permissions:
+  contents: write
+concurrency:
+  group: visibility-delivery
+  cancel-in-progress: false
+jobs:
+  prepare:
+    if: github.repository == 'carlrobertkarell-beep/kansei-se' && github.ref == 'refs/heads/seo/visibility-20261016'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: seo/visibility-20261016
+      - name: Install HTML parser
+        run: python3 -m pip install --disable-pip-version-check beautifulsoup4==4.14.3
+      - name: Inventory and baseline
+        run: python3 .github/kansei/visibility-audit.py
+      - name: Apply reviewed delivery when present
+        run: |
+          if [ -f .github/kansei/visibility-update.py ]; then
+            python3 .github/kansei/visibility-update.py
+            python3 .github/scripts/check-seo.py
+            python3 .github/kansei/visibility-check.py
+            node --check assets/analytics.20261009b.js
+            git diff --stat
+            git diff --numstat
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add --all
+            if ! git diff --cached --quiet; then
+              git commit -m 'Apply validated visibility improvements (owner approved)'
+              git push origin HEAD:seo/visibility-20261016
+            fi
+          fi

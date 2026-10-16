@@ -24,11 +24,35 @@
   ],
   "film": "Web encoding of the supplied 94-frame, 3.1333-second 1280x960 film; no temporal edits. Capture dates in supplied stills and film differ; no before/after or single-session claim.",
   "patient": "No remembered trauma supplied by clinician. Other symptoms and proposed plan are visibly illustrative. No actual outcome, injection, age, side, tear size, grading or chronicity invented.",
-  "anatomy": "Final published assets: three built-in imagegen anatomical interpretations (bursa views 1–2 and supraspinatus), format-compressed to WebP. Subscapularis uses the clinician-supplied anatomical annotation of the original JPEG, preserving exact geometry and heterogeneous residual fibers. Both attempted painted subscapularis variants were discarded after visual review because the defect/bone boundary did not follow the clinician guide faithfully; neither is published.",
-  "prompts": [
-    "Keep full scan frame and geometry. Detailed red striated deltoid, golden fat, ivory fibrous supraspinatus, tan humerus, dark teal fluid in clinician-marked distally extending bursa. No labels.",
-    "Same tissue style and full scan geometry. Preserve larger curved fluid-filled bursa under deltoid and around supraspinatus/humerus in view 2; no new tears.",
-    "Preserve acromion/humerus, deltoid and supraspinatus contours. Thin non-distended bursa in selected slice. Two clinician-marked focal ruptures with disrupted fibers; do not depict full tendon detachment."
+  "anatomy": "Four anatomical illustrations are rendered from native SVG geometry with imagegen material textures. WebP is the delivery format; source geometry and the texture atlas are retained for reproducibility. Tissue geometry is traced from the clinician guides supplied 16 October 2026. Deltoid follows both borders in views 1–3, including its left distal continuation in view 2. Humerus in view 3 follows the uneven cortical contour; no additional tissue is drawn for that irregularity. View 4 has a painted stump and heterogeneous residual fibers confined to the clinician-marked defect, with bone outside it and a separate fluid pocket.",
+  "subscapularis_anatomy_asset": "/bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016c.webp",
+  "anatomy_assets": [
+    "/bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.20261016c.webp",
+    "/bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.20261016c.webp",
+    "/bilder/ultraljud/bursit-axel/supraspinatus.anatomi.20261016c.webp",
+    "/bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016c.webp"
   ],
-  "subscapularis_anatomy_asset": "/bilder/ultraljud/bursit-axel/subscapularis.annoterad.jpg"
+  "correction_guides": [
+    {
+      "view": "bursit-vy-1",
+      "uploaded_name": "Bild 1 annoteirngar(2).jpg",
+      "sha256": "d881acb3fd6aae5c75397b6ebc29b4a83a40a5d68a325fa3ad7dc6e80d3a69f8"
+    },
+    {
+      "view": "bursit-vy-2",
+      "uploaded_name": "Bild 2 annoteringar(2).jpg",
+      "sha256": "ec9d8a43bd2a75c1653f14e5ea463f531691335bd14baf96c7bca98a9f3e57bb"
+    },
+    {
+      "view": "supraspinatus",
+      "uploaded_name": "Bild 3 annoteringar(2).jpg",
+      "sha256": "f3cb773ecf631817eafe754cd5e166364c5eebe5eb580965e000c0eab54d5649"
+    },
+    {
+      "view": "subscapularis",
+      "uploaded_name": "Bild 4 annoteringar(1).jpg",
+      "sha256": "d0f66e2b6c87c6fc3bbf7c2667bc69ea6cf330f4b483ab2dec95eb9852f556ea"
+    }
+  ],
+  "material_prompt_record": ".github/kansei/artwork/bursa/material-prompt.20261016c.json"
 }

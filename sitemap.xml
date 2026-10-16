@@ -242,7 +242,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/axel/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/overarm/</loc>
@@ -477,7 +477,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/rotatorkuff/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-16</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/halsena/</loc>
@@ -553,10 +553,41 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/bursit-axel/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <image:image>
-      <image:loc>https://www.kansei.se/bilder/ultraljud/kalkaxel/dynamisk-film-poster.jpg</image:loc>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.20261016.webp</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-1.original.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.20261016.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-2.original.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/subscapularis-film-poster.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/subscapularis.original.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/supraspinatus.anatomi.20261016.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/supraspinatus.original.jpg</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/subscapularis-film-poster.jpg</video:thumbnail_loc>
+      <video:title>Subscapularis – ultraljudsfilm från Kansei</video:title>
+      <video:description>Ett kort ultraljudssvep av subscapularis. I slutet syns senan inte i det område till höger som undersökaren beskriver. Filmen kompletterar stillbilderna och bedöms tillsammans med övriga vyer.</video:description>
+      <video:content_loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/subscapularis-film.20261016.mp4</video:content_loc>
+      <video:publication_date>2026-10-16T00:00:00+02:00</video:publication_date>
+    </video:video>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/bakercysta/</loc>
@@ -779,7 +810,10 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/bilder/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-2.original.jpg</image:loc>
+    </image:image>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/kalkaxel/kalk-ultraljud.jpg</image:loc>
     </image:image>

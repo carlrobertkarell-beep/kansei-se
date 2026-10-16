@@ -9,6 +9,7 @@ from playwright.sync_api import sync_playwright
 from achilles_design_check import check_achilles
 from ultrasound_design_check import CASE_PATHS, clinic_model, check_case, check_hub, check_explore
 from case_story_check import STORY_PATHS, check_story
+from bursa_design_check import check_bursa
 
 PATHS = ("/", "/kunskapsbank/kna/svullet-kna/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/knaartros-vad-du-kan-gora/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/")
@@ -176,6 +177,9 @@ def check(base, output):
                         if clinic_model(page) != model:
                             raise AssertionError('Achilles page differs from the clinic design')
                         row['achilles_reader'] = check_achilles(page, output, label)
+
+                    if not baseline_only and path == '/ultraljud/bursit-axel/':
+                        row['bursa_reader'] = check_bursa(page, output, label)
 
                     if not baseline_only and path == "/ultraljud/kalkaxel/":
                         viewer = page.locator('.patient-viewer')

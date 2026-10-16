@@ -1,0 +1,9 @@
+/* The bursa case uses the shared clinic reader and the source scan canvas. */
+.clinic-site.bursa-case main .patient-view-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bursa-case .patient-picture .anatomy-layer{position:absolute;inset:0;pointer-events:none}
+.bursa-case .anatomy-layer-content>img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:fill}
+.bursa-case .panel-media video{display:block;width:100%;height:auto;background:#000;border-radius:8px}
+.bursa-case .bursa-legend{display:flex;flex-wrap:wrap;gap:8px 22px;padding:0;margin:0;list-style:none;font:400 14px/1.6 var(--sans);color:var(--muted)}
+.bursa-case .bursa-legend li{display:flex;align-items:center;gap:8px}
+.bursa-case .bursa-legend span{display:inline-block;width:22px;height:4px;background:var(--marker);box-shadow:0 0 0 1px #183b3c33;border-radius:2px}
+@media(max-width:760px){.clinic-site.bursa-case main .patient-view-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.clinic-site.bursa-case main .patient-view-tab{display:block;min-height:100px;padding:10px}.clinic-site.bursa-case main .patient-view-tab img{width:100%;height:60px;margin-bottom:8px}.bursa-case .bursa-legend{gap:6px 16px}}

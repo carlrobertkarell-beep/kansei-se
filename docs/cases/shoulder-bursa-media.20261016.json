@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-16",
+  "originals": [
+    {
+      "image": 1,
+      "asset": "bilder/ultraljud/bursit-axel/bursit-vy-1.original.jpg",
+      "original_sha256": "9f278fdadc46796a4e0a05ad526f027ad7423f6db12e49588d3cf08c8c378767"
+    },
+    {
+      "image": 2,
+      "asset": "bilder/ultraljud/bursit-axel/bursit-vy-2.original.jpg",
+      "original_sha256": "5f4cfc20ca41788f0c6bab93a857d60c01756fb8987fb87155bb65202f182998"
+    },
+    {
+      "image": 3,
+      "asset": "bilder/ultraljud/bursit-axel/supraspinatus.original.jpg",
+      "original_sha256": "248c61e58a2bddb086c4d0b5c8808b8a00e43b42e2baaf07a256bb63baf454e1"
+    },
+    {
+      "image": 4,
+      "asset": "bilder/ultraljud/bursit-axel/subscapularis.original.jpg",
+      "original_sha256": "5b8204a8a1395b52164376dd133e29b4d39b123cd5b04f62142900249bd896d6"
+    }
+  ],
+  "film": "Web encoding of the supplied 94-frame, 3.1333-second 1280x960 film; no temporal edits. Capture dates in supplied stills and film differ; no before/after or single-session claim.",
+  "patient": "No remembered trauma supplied by clinician. Other symptoms and proposed plan are visibly illustrative. No actual outcome, injection, age, side, tear size, grading or chronicity invented.",
+  "anatomy": "Final published assets: three built-in imagegen anatomical interpretations (bursa views 1–2 and supraspinatus), format-compressed to WebP. Subscapularis uses the clinician-supplied anatomical annotation of the original JPEG, preserving exact geometry and heterogeneous residual fibers. Both attempted painted subscapularis variants were discarded after visual review because the defect/bone boundary did not follow the clinician guide faithfully; neither is published.",
+  "prompts": [
+    "Keep full scan frame and geometry. Detailed red striated deltoid, golden fat, ivory fibrous supraspinatus, tan humerus, dark teal fluid in clinician-marked distally extending bursa. No labels.",
+    "Same tissue style and full scan geometry. Preserve larger curved fluid-filled bursa under deltoid and around supraspinatus/humerus in view 2; no new tears.",
+    "Preserve acromion/humerus, deltoid and supraspinatus contours. Thin non-distended bursa in selected slice. Two clinician-marked focal ruptures with disrupted fibers; do not depict full tendon detachment."
+  ],
+  "subscapularis_anatomy_asset": "/bilder/ultraljud/bursit-axel/subscapularis.annoterad.jpg"
+}

@@ -9,6 +9,7 @@ STORY_PATHS = (
     '/ultraljud/tennisarmbage/bilder/',
     '/ultraljud/halsena/bilder/',
     '/ultraljud/loparkna/',
+    '/ultraljud/bursit-axel/',
 )
 
 

@@ -1,5 +1,5 @@
 """Verify the public clinic model and every ultrasound reader without contacting booking services."""
-CASE_PATHS = ('/ultraljud/axel/bicepstendinopati/', '/ultraljud/axel/pectoralisruptur/', '/ultraljud/hand-handled/karpaltunnelsyndrom/', '/ultraljud/axel/ac-ledsskada/', '/ultraljud/kalkaxel/')
+CASE_PATHS = ('/ultraljud/axel/bicepstendinopati/', '/ultraljud/axel/pectoralisruptur/', '/ultraljud/hand-handled/karpaltunnelsyndrom/', '/ultraljud/axel/ac-ledsskada/', '/ultraljud/kalkaxel/', '/ultraljud/bursit-axel/')
 
 def clinic_model(page):
     return page.evaluate("""()=>({
@@ -112,7 +112,7 @@ def check_sample(page):
 def check_explore(page):
     check_sample(page)
     entries=page.locator('[data-atlas-entry]')
-    expected={'/ultraljud/kalkaxel/#bilder','/ultraljud/axel/bicepstendinopati/#bilder','/ultraljud/axel/pectoralisruptur/#bilder','/ultraljud/axel/ac-ledsskada/#bilder','/ultraljud/hand-handled/karpaltunnelsyndrom/#bilder','/ultraljud/loparkna/#bilder','/ultraljud/tennisarmbage/bilder/#bilder','/ultraljud/kna/#bilder','/ultraljud/halsena/bilder/#bilder'}
+    expected={'/ultraljud/kalkaxel/#bilder','/ultraljud/axel/bicepstendinopati/#bilder','/ultraljud/axel/pectoralisruptur/#bilder','/ultraljud/axel/ac-ledsskada/#bilder','/ultraljud/hand-handled/karpaltunnelsyndrom/#bilder','/ultraljud/loparkna/#bilder','/ultraljud/tennisarmbage/bilder/#bilder','/ultraljud/kna/#bilder','/ultraljud/halsena/bilder/#bilder','/ultraljud/bursit-axel/#bilder'}
     if set(entries.evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))'))!=expected:
         raise AssertionError('A published image reader is missing or duplicated')
     search=page.locator('[data-atlas-search]')
@@ -123,7 +123,7 @@ def check_explore(page):
     search.fill('domningar')
     if not page.locator('[data-atlas-empty]').is_visible():raise AssertionError('Empty region search has no recovery')
     page.locator('[data-atlas-reset]').click()
-    if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=9 or search.input_value():
+    if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=10 or search.input_value():
         raise AssertionError('Reset does not restore every example')
     search.fill('loparkna')
     if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=1:

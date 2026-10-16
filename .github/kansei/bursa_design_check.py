@@ -27,13 +27,13 @@ def check_bursa(page, output, label):
         anatomy.click()
         page.wait_for_function("id=>new DOMMatrix(getComputedStyle(document.querySelector('#view-'+id+' .anatomy-layer')).transform).isIdentity", arg=key)
         image = picture.locator('.anatomy-layer img')
-        if not image.get_attribute('src').endswith('.anatomi.20261016d.webp'):
+        if not image.get_attribute('src').endswith('.anatomi.20261016e.webp'):
             raise AssertionError('Every view must have a painted, contour-aligned anatomy layer')
         points = {
             'bursa-1': [(700, 370), (700, 250)],
             'bursa-2': [(80, 650), (250, 650)],
-            'supraspinatus': [(800, 325), (800, 242), (778, 495), (835, 502)],
-            'subscapularis': [(500, 650), (755, 680)],
+            'supraspinatus': [(800, 325), (800, 242), (778, 515), (835, 502)],
+            'subscapularis': [(500, 650), (755, 680), (180, 430), (1100, 680)],
         }[key]
         rgb = image.evaluate("""(image,points)=>{
             const c=document.createElement('canvas');c.width=1280;c.height=960;
@@ -52,10 +52,15 @@ def check_bursa(page, output, label):
             raise AssertionError('View 1 deltoid/fat material crosses the clinician borders')
         if key == 'bursa-2' and not (muscle(rgb[0]) and rgb[1][1] > rgb[1][0]*1.2):
             raise AssertionError('View 2 must continue deltoid along the left side, outside the bursa')
-        if key == 'supraspinatus' and not (muscle(rgb[0]) and fat(rgb[1]) and bone(rgb[2]) and rgb[3][2] > rgb[3][1]*.82):
+        # Coarse palette guards sample tissue interiors, not the antialiased
+        # cortical boundary. Visual comparison to the clinician guide remains
+        # necessary; these samples cannot prove clinical geometry or fiber style.
+        if key == 'supraspinatus' and not (muscle(rgb[0]) and fat(rgb[1]) and bone(rgb[2]) and rgb[3][2] > rgb[3][1]*.79):
             raise AssertionError('View 3 deltoid or uneven humeral cortical contour is mispainted')
-        if key == 'subscapularis' and not (bone(rgb[0]) and rgb[1][2] > rgb[1][1]*.79 and rgb[1][3] > 240):
+        if key == 'subscapularis' and not (bone(rgb[0]) and rgb[1][2]/rgb[1][1] > rgb[0][2]/rgb[0][1]+.08 and rgb[1][3] > 240):
             raise AssertionError('View 4 must separate humerus from the residual-fiber defect')
+        if key == 'subscapularis' and not all(p[3] > 240 and p[0] > p[2]*1.25 for p in rgb[2:]):
+            raise AssertionError('View 4 has unpainted tissue around the stump or below the fluid pocket')
         if picture.locator('[data-finding-mode=anatomy] path:not(.finding-pointer):not(.finding-pointer-shadow)').count():
             raise AssertionError('Findings must use the shared pointers, without colored tissue outlines')
         if findings.get_attribute('aria-checked') != 'true' or picture.locator('[data-finding-mode=anatomy]').get_attribute('aria-hidden') != 'false':

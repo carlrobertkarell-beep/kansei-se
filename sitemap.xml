@@ -540,14 +540,14 @@
       <video:thumbnail_loc>https://www.kansei.se/bilder/ultraljud/kalkaxel/kalk-film-poster.jpg</video:thumbnail_loc>
       <video:title>Kalk i supraspinatussenan – ultraljudsfilm</video:title>
       <video:description>Originalfilm från Kansei som visar kalkinlagringarna i den påverkade supraspinatussenan i närliggande snitt. Fallet omfattar också en samtidig senskada.</video:description>
-      <video:content_loc>https://www.kansei.se/bilder/ultraljud/kalkaxel/kalk-supraspinatus.mp4</video:content_loc>
+      <video:content_loc>https://www.kansei.se/bilder/ultraljud/kalkaxel/kalk-supraspinatus.20261016.mp4</video:content_loc>
       <video:publication_date>2026-10-12T14:20:50+02:00</video:publication_date>
     </video:video>
     <video:video>
       <video:thumbnail_loc>https://www.kansei.se/bilder/ultraljud/kalkaxel/dynamisk-film-poster.jpg</video:thumbnail_loc>
       <video:title>Supraspinatus under axeltaket – dynamiskt ultraljud</video:title>
       <video:description>Dynamiskt ultraljud från Kansei av vävnaderna under akromion, skuldertaket. Sekvensen visar området medan armen rör sig.</video:description>
-      <video:content_loc>https://www.kansei.se/bilder/ultraljud/kalkaxel/supraspinatus-under-akromion.mp4</video:content_loc>
+      <video:content_loc>https://www.kansei.se/bilder/ultraljud/kalkaxel/supraspinatus-under-akromion.20261016.mp4</video:content_loc>
       <video:publication_date>2026-10-12T14:20:50+02:00</video:publication_date>
     </video:video>
   </url>
@@ -555,13 +555,13 @@
     <loc>https://www.kansei.se/ultraljud/bursit-axel/</loc>
     <lastmod>2026-10-16</lastmod>
     <image:image>
-      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.20261016c.webp</image:loc>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.20261016d.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-1.original.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.20261016c.webp</image:loc>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.20261016d.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-2.original.jpg</image:loc>
@@ -570,13 +570,13 @@
       <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/subscapularis-film-poster.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016c.webp</image:loc>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016d.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/subscapularis.original.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/supraspinatus.anatomi.20261016c.webp</image:loc>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/supraspinatus.anatomi.20261016d.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/supraspinatus.original.jpg</image:loc>
@@ -585,7 +585,7 @@
       <video:thumbnail_loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/subscapularis-film-poster.jpg</video:thumbnail_loc>
       <video:title>Subscapularis – ultraljudsfilm från Kansei</video:title>
       <video:description>Ett kort ultraljudssvep av subscapularis. I slutet syns senan inte i det område till höger som undersökaren beskriver. Filmen kompletterar stillbilderna och bedöms tillsammans med övriga vyer.</video:description>
-      <video:content_loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/subscapularis-film.20261016.mp4</video:content_loc>
+      <video:content_loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/subscapularis-film.20261016d.mp4</video:content_loc>
       <video:publication_date>2026-10-16T00:00:00+02:00</video:publication_date>
     </video:video>
   </url>
@@ -880,7 +880,7 @@
       <video:thumbnail_loc>https://www.kansei.se/bilder/ultraljud/halsena/doppler-poster.jpg</video:thumbnail_loc>
       <video:title>SMI-film av hälsena med tendinos</video:title>
       <video:description>SMI-film i tvärsnitt med blodflödessignaler i och kring senområdet, bedömda som neovaskularisering av undersökaren. Filmen och längdsnittet visar olika snitt. Anatomilagrets små röda kärlförgreningar är en pedagogisk illustration av kärlfyndet.</video:description>
-      <video:content_loc>https://www.kansei.se/bilder/ultraljud/halsena/doppler-smi.mp4</video:content_loc>
+      <video:content_loc>https://www.kansei.se/bilder/ultraljud/halsena/doppler-smi.20261016.mp4</video:content_loc>
       <video:publication_date>2026-10-15T12:00:00+02:00</video:publication_date>
     </video:video>
   </url>

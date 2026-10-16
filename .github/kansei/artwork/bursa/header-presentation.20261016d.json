@@ -1,0 +1,205 @@
+{
+  "policy": "Acquisition headers are clipped in all visible dated scan assets and thumbnails without moving clinical pixels. Film publication copies have a solid black header for fullscreen viewing. Original source files remain unchanged.",
+  "headers": {
+    "/bilder/ultraljud/kalkaxel/kalk-ultraljud.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/oversikt/kalkaxel-demo-anatomi.webp": {
+      "height": 720,
+      "mask": 51
+    },
+    "/bilder/ultraljud/kna/loparkna/itb-bursa-ultraljud.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/kna/loparkna/lateral-fluid-ultraljud.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/kna/loparkna/posterior-meniscus-ultraljud.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/bursit-axel/bursit-vy-2.original.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/kalkaxel/frisk-ultraljud.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/kalkaxel/kalk-film-poster.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/kalkaxel/dynamisk-film-poster.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/kalkaxel/kalk-anatomi.png": {
+      "height": 1086,
+      "mask": 77
+    },
+    "/bilder/ultraljud/kalkaxel/frisk-anatomi.png": {
+      "height": 1086,
+      "mask": 77
+    },
+    "/bilder/ultraljud/bursit-axel/bursit-vy-1.original.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/bursit-axel/supraspinatus.original.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/bursit-axel/subscapularis.original.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/bursit-axel/subscapularis-film-poster.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/armbage/tennisarmbage/skadad-ultraljud.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/armbage/tennisarmbage/frisk-ultraljud.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/armbage/tennisarmbage/skadad-anatomi.20261015.webp": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/armbage/tennisarmbage/frisk-anatomi.20261015.webp": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/halsena/longitudinal-ultraljud.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/halsena/healthy-ultraljud.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/halsena/transverse-ultraljud.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/halsena/doppler-poster.jpg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/halsena/longitudinal-anatomi.20261015c.webp": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/halsena/healthy-anatomi.20261015.webp": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/halsena/transverse-anatomi.20261015.webp": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/kna/loparkna/itb-bursa-anatomi-20261014-contours.svg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/kna/loparkna/lateral-fluid-anatomi-20261014-contours.svg": {
+      "height": 960,
+      "mask": 68
+    },
+    "/bilder/ultraljud/kna/loparkna/posterior-meniscus-anatomi-20261014-contours.svg": {
+      "height": 960,
+      "mask": 68
+    }
+  },
+  "pages": [
+    {
+      "page": "ultraljud/index.html",
+      "media_elements": 2
+    },
+    {
+      "page": "ultraljud/loparkna/index.html",
+      "media_elements": 10
+    },
+    {
+      "page": "ultraljud/bilder/index.html",
+      "media_elements": 3
+    },
+    {
+      "page": "ultraljud/kalkaxel/index.html",
+      "media_elements": 11
+    },
+    {
+      "page": "ultraljud/kna/index.html",
+      "media_elements": 9
+    },
+    {
+      "page": "ultraljud/bursit-axel/index.html",
+      "media_elements": 11
+    },
+    {
+      "page": "ultraljud/tennisarmbage/bilder/index.html",
+      "media_elements": 7
+    },
+    {
+      "page": "ultraljud/halsena/bilder/index.html",
+      "media_elements": 12
+    }
+  ],
+  "videos": [
+    {
+      "old": "bilder/ultraljud/kalkaxel/kalk-supraspinatus.mp4",
+      "new": "bilder/ultraljud/kalkaxel/kalk-supraspinatus.20261016.mp4",
+      "bytes": 3900134,
+      "video": {
+        "width": 1280,
+        "height": 960,
+        "r_frame_rate": "30/1",
+        "duration": "10.033333",
+        "nb_frames": "301"
+      }
+    },
+    {
+      "old": "bilder/ultraljud/kalkaxel/supraspinatus-under-akromion.mp4",
+      "new": "bilder/ultraljud/kalkaxel/supraspinatus-under-akromion.20261016.mp4",
+      "bytes": 2680054,
+      "video": {
+        "width": 1280,
+        "height": 960,
+        "r_frame_rate": "30/1",
+        "duration": "7.833333",
+        "nb_frames": "235"
+      }
+    },
+    {
+      "old": "bilder/ultraljud/bursit-axel/subscapularis-film.20261016.mp4",
+      "new": "bilder/ultraljud/bursit-axel/subscapularis-film.20261016d.mp4",
+      "bytes": 2892046,
+      "video": {
+        "width": 1280,
+        "height": 960,
+        "r_frame_rate": "30/1",
+        "duration": "3.133333",
+        "nb_frames": "94"
+      }
+    },
+    {
+      "old": "bilder/ultraljud/halsena/doppler-smi.mp4",
+      "new": "bilder/ultraljud/halsena/doppler-smi.20261016.mp4",
+      "bytes": 994066,
+      "video": {
+        "width": 1280,
+        "height": 960,
+        "r_frame_rate": "30/1",
+        "duration": "4.166667",
+        "nb_frames": "125"
+      }
+    }
+  ]
+}

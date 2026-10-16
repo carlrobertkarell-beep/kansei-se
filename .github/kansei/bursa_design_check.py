@@ -27,7 +27,7 @@ def check_bursa(page, output, label):
         anatomy.click()
         page.wait_for_function("id=>new DOMMatrix(getComputedStyle(document.querySelector('#view-'+id+' .anatomy-layer')).transform).isIdentity", arg=key)
         image = picture.locator('.anatomy-layer img')
-        if not image.get_attribute('src').endswith('.anatomi.20261016c.webp'):
+        if not image.get_attribute('src').endswith('.anatomi.20261016d.webp'):
             raise AssertionError('Every view must have a painted, contour-aligned anatomy layer')
         points = {
             'bursa-1': [(700, 370), (700, 250)],
@@ -54,8 +54,10 @@ def check_bursa(page, output, label):
             raise AssertionError('View 2 must continue deltoid along the left side, outside the bursa')
         if key == 'supraspinatus' and not (muscle(rgb[0]) and fat(rgb[1]) and bone(rgb[2]) and rgb[3][2] > rgb[3][1]*.82):
             raise AssertionError('View 3 deltoid or uneven humeral cortical contour is mispainted')
-        if key == 'subscapularis' and not (bone(rgb[0]) and rgb[1][0] < rgb[1][1]*1.2 and rgb[1][3] > 240):
+        if key == 'subscapularis' and not (bone(rgb[0]) and rgb[1][2] > rgb[1][1]*.79 and rgb[1][3] > 240):
             raise AssertionError('View 4 must separate humerus from the residual-fiber defect')
+        if picture.locator('[data-finding-mode=anatomy] path:not(.finding-pointer):not(.finding-pointer-shadow)').count():
+            raise AssertionError('Findings must use the shared pointers, without colored tissue outlines')
         if findings.get_attribute('aria-checked') != 'true' or picture.locator('[data-finding-mode=anatomy]').get_attribute('aria-hidden') != 'false':
             raise AssertionError('Anatomy switch lost independent findings')
         if not picture.evaluate("""p=>{
@@ -68,6 +70,8 @@ def check_bursa(page, output, label):
         findings.click()
         if anatomy.get_attribute('aria-checked') != 'true' or picture.locator('[data-finding-mode=anatomy]').get_attribute('aria-hidden') != 'true':
             raise AssertionError('Findings cannot be hidden without hiding anatomy')
+    if viewer.locator('.bursa-legend').count():
+        raise AssertionError('The shared reader has no separate tissue color legend')
     viewer.locator('#tab-film').click()
     if anatomy.is_visible() or findings.is_visible():
         raise AssertionError('Film exposes unusable image controls')

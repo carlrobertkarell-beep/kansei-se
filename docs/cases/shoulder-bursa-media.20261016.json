@@ -24,13 +24,13 @@
   ],
   "film": "Web encoding of the supplied 94-frame, 3.1333-second 1280x960 film; no temporal edits. Capture dates in supplied stills and film differ; no before/after or single-session claim.",
   "patient": "No remembered trauma supplied by clinician. Other symptoms and proposed plan are visibly illustrative. No actual outcome, injection, age, side, tear size, grading or chronicity invented.",
-  "anatomy": "Four anatomical illustrations are rendered from native SVG geometry with imagegen material textures. WebP is the delivery format; source geometry and the texture atlas are retained for reproducibility. Tissue geometry is traced from the clinician guides supplied 16 October 2026. Deltoid follows both borders in views 1–3, including its left distal continuation in view 2. Humerus in view 3 follows the uneven cortical contour; no additional tissue is drawn for that irregularity. View 4 has a painted stump and heterogeneous residual fibers confined to the clinician-marked defect, with bone outside it and a separate fluid pocket.",
-  "subscapularis_anatomy_asset": "/bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016c.webp",
+  "anatomy": "Native SVG tissue boundaries remain those traced from the clinician guides. Materials follow the already approved Kansei knee, pectoralis and biceps illustrations through a direct-reference imagegen style transfer, recorded in approved-materials.20261016d.json. Fixed clinician tissue contours remain unchanged. Independent findings use the shared clinic pointer style and short labels, without a multicolor tissue outline or legend.",
+  "subscapularis_anatomy_asset": "/bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016d.webp",
   "anatomy_assets": [
-    "/bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.20261016c.webp",
-    "/bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.20261016c.webp",
-    "/bilder/ultraljud/bursit-axel/supraspinatus.anatomi.20261016c.webp",
-    "/bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016c.webp"
+    "/bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.20261016d.webp",
+    "/bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.20261016d.webp",
+    "/bilder/ultraljud/bursit-axel/supraspinatus.anatomi.20261016d.webp",
+    "/bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016d.webp"
   ],
   "correction_guides": [
     {
@@ -54,5 +54,9 @@
       "sha256": "d0f66e2b6c87c6fc3bbf7c2667bc69ea6cf330f4b483ab2dec95eb9852f556ea"
     }
   ],
-  "material_prompt_record": ".github/kansei/artwork/bursa/material-prompt.20261016c.json"
+  "material_prompt_record": ".github/kansei/artwork/bursa/material-prompt.20261016d.json",
+  "approved_materials": ".github/kansei/artwork/bursa/approved-materials.20261016d.json",
+  "material_prompt": ".github/kansei/artwork/bursa/material-prompt.20261016d.json",
+  "publication_film": "/bilder/ultraljud/bursit-axel/subscapularis-film.20261016d.mp4",
+  "publication_header_policy": "Acquisition headers are clipped in all visible dated scan assets and thumbnails without moving clinical pixels. Film publication copies have a solid black header for fullscreen viewing. Original source files remain unchanged."
 }

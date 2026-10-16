@@ -1,0 +1,46 @@
+{
+  "source": "Built-in imagegen style transfer using the three approved, published Kansei pectoralis, biceps and knee illustrations as direct references. Tissue contours remain separate, fixed clinician geometry. Six material swatches in two columns and three rows, no tissue geometry generated.",
+  "materials": {
+    "fat": {
+      "cell": [
+        0,
+        0
+      ]
+    },
+    "muscle": {
+      "cell": [
+        1,
+        0
+      ]
+    },
+    "tendon": {
+      "cell": [
+        0,
+        1
+      ]
+    },
+    "bone": {
+      "cell": [
+        1,
+        1
+      ]
+    },
+    "residual": {
+      "cell": [
+        0,
+        2
+      ]
+    },
+    "fluid": {
+      "cell": [
+        1,
+        2
+      ]
+    }
+  },
+  "reference_images": [
+    "bilder/ultraljud/pectoralis/langdsnitt-anatomi.20261009.webp",
+    "bilder/ultraljud/bicepssena/tvarsnitt-anatomi.webp",
+    "bilder/ultraljud/kna/ledvatska-anatomi.webp"
+  ]
+}

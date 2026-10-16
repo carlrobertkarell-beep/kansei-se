@@ -1,0 +1,103 @@
+{
+  "version": "20261016e",
+  "canvas": [
+    1280,
+    960
+  ],
+  "method": "continuous whole painting; single global placement; no tissue mesh, tiling or grayscale gaps",
+  "style_references": [
+    "bilder/ultraljud/pectoralis/langdsnitt-anatomi.20261009.webp",
+    "bilder/ultraljud/bicepssena/tvarsnitt-anatomi.webp",
+    "bilder/ultraljud/kna/ledvatska-anatomi.webp"
+  ],
+  "views": {
+    "bursit-vy-1": {
+      "painting": "bursit-vy-1.painting.20261016e.webp",
+      "painting_sha256": "e6251c0d3fce1fc47920cdbeb62a601bdb9356055cb87c4fbcabc2674923175f",
+      "source_size": [
+        1448,
+        1086
+      ],
+      "source_scan_bounds": [
+        93,
+        79,
+        1354,
+        982
+      ],
+      "target_scan_bounds": [
+        91,
+        142,
+        1190,
+        835
+      ],
+      "scan": "M86 141 L1195 141 L1280 560 L1280 835 L0 835 L0 540 Z",
+      "clinician_guide": "Bild 1 annoteirngar(2).jpg"
+    },
+    "bursit-vy-2": {
+      "painting": "bursit-vy-2.painting.20261016e.webp",
+      "painting_sha256": "b26d06cfad7914b44ac0a0503a891a3a6293f710dfffa20bd17677f23bee0783",
+      "source_size": [
+        1448,
+        1086
+      ],
+      "source_scan_bounds": [
+        93,
+        131,
+        1357,
+        923
+      ],
+      "target_scan_bounds": [
+        91,
+        142,
+        1190,
+        835
+      ],
+      "scan": "M86 141 L1195 141 L1280 540 L1280 835 L0 835 L0 520 Z",
+      "clinician_guide": "Bild 2 annoteringar(2).jpg"
+    },
+    "supraspinatus": {
+      "painting": "supraspinatus.painting.20261016e.webp",
+      "painting_sha256": "ff662c1b7f94cff503d44a4c96adc34b98844ddb85b056e66f2599a161ba2536",
+      "source_size": [
+        1448,
+        1086
+      ],
+      "source_scan_bounds": [
+        177,
+        112,
+        1285,
+        982
+      ],
+      "target_scan_bounds": [
+        169,
+        142,
+        1110,
+        835
+      ],
+      "scan": "M164 141 L1115 141 L1280 835 L0 835 Z",
+      "clinician_guide": "Bild 3 annoteringar(2).jpg"
+    },
+    "subscapularis": {
+      "painting": "subscapularis.painting.20261016e.webp",
+      "painting_sha256": "382ef9a7f41209f93268ef7e7d0cd3139bb4f74e6fc605cc6543313f75dd7d26",
+      "source_size": [
+        1448,
+        1086
+      ],
+      "source_scan_bounds": [
+        183,
+        119,
+        1264,
+        922
+      ],
+      "target_scan_bounds": [
+        169,
+        142,
+        1110,
+        835
+      ],
+      "scan": "M164 141 L1115 141 L1280 835 L0 835 Z",
+      "clinician_guide": "Bild 4 annoteringar(1).jpg"
+    }
+  }
+}

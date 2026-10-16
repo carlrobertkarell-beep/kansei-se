@@ -1,0 +1,58 @@
+[
+  {
+    "view": "bursit-vy-1",
+    "asset": "bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.20261016e.webp",
+    "painting_sha256": "e6251c0d3fce1fc47920cdbeb62a601bdb9356055cb87c4fbcabc2674923175f",
+    "global_placement": [
+      0.8715305313243458,
+      0,
+      0,
+      0.7674418604651163,
+      9.947660586835838,
+      81.37209302325581
+    ],
+    "output_sha256": "cd04a06d15e54c4e559922ae6b530a15695aac208b72f5e0ea8deecbbe0d7528"
+  },
+  {
+    "view": "bursit-vy-2",
+    "asset": "bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.20261016e.webp",
+    "painting_sha256": "b26d06cfad7914b44ac0a0503a891a3a6293f710dfffa20bd17677f23bee0783",
+    "global_placement": [
+      0.8694620253164557,
+      0,
+      0,
+      0.875,
+      10.140031645569621,
+      27.375
+    ],
+    "output_sha256": "b7cb19b5e2a45d23c50fc371febd664a66f5673c220dc4d67cd2182a92873aed"
+  },
+  {
+    "view": "supraspinatus",
+    "asset": "bilder/ultraljud/bursit-axel/supraspinatus.anatomi.20261016e.webp",
+    "painting_sha256": "ff662c1b7f94cff503d44a4c96adc34b98844ddb85b056e66f2599a161ba2536",
+    "global_placement": [
+      0.8492779783393501,
+      0,
+      0,
+      0.7965517241379311,
+      18.677797833935017,
+      52.78620689655172
+    ],
+    "output_sha256": "0b298b418eaeec4161de7133cd4fcf05b5e7a6696a6039ca318aa90a371f3a05"
+  },
+  {
+    "view": "subscapularis",
+    "asset": "bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016e.webp",
+    "painting_sha256": "382ef9a7f41209f93268ef7e7d0cd3139bb4f74e6fc605cc6543313f75dd7d26",
+    "global_placement": [
+      0.8704902867715079,
+      0,
+      0,
+      0.863013698630137,
+      9.700277520814069,
+      39.301369863013704
+    ],
+    "output_sha256": "734e5919abf2c859b55f51232869dfdeb628632bed3acce2f4b73e4662164041"
+  }
+]

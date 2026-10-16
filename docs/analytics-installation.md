@@ -29,3 +29,8 @@ Sources:
 
 Prototype assertions do not prove third-party collection. Actual Google stream
 settings and requests must be verified with the correct ID before activation.
+
+
+## Visibility measurement update — 16 October 2026
+
+See `visibility-measurement-2026-10-16.md` for the newer bridge, version 20261016, strict referral groups and explicit exclusion of review/profile links from booking_click. The same GA4 property and consent choice are reused; do not add another tag. Browser tests use stubbed third parties and do not by themselves verify actual GA4 collection.

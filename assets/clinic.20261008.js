@@ -144,7 +144,7 @@
       const a=event.target.closest('a');if(!a)return;
       if(window.KanseiMeasure===true){
         let destination=null;try{destination=new URL(a.href,location.href);}catch{}
-        if(destination?.hostname==='www.bokadirekt.se' && /48847/.test(destination.pathname)){
+        if(destination?.hostname==='www.bokadirekt.se' && /48847/.test(destination.pathname) && a.dataset.measure!=='ignore' && (a.dataset.measure==='booking_click' || destination.pathname.startsWith('/boka-tjanst/') || /\bboka\b|lediga tider|välj tid|öppna bokadirekt/i.test(a.getAttribute('aria-label') || a.textContent || '')) && !/omdöme|recension|betyg|reviews|ratings/i.test(a.getAttribute('aria-label') || a.textContent || '')){
           const route=location.pathname;
           const service=a.dataset.service || (route.startsWith('/hyaluronsyra/')?'hyaluron':route.startsWith('/ultraljud/')?'ultrasound':route.startsWith('/prp/')?'prp':'general');
           const placement=a.dataset.placement || (a.closest('.site-header')?'header':a.closest('.footer')?'footer':a.closest('#guide-dialog')?'guide':a.closest('#site-menu')?'menu':'content');

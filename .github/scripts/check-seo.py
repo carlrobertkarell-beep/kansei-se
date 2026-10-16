@@ -172,5 +172,7 @@ if __name__ == "__main__":
     parser.add_argument("--live", action="store_true", help="Check public HTTP responses after deployment")
     args = parser.parse_args()
     check_static()
+    import runpy
+    runpy.run_path(str(ROOT / '.github/scripts/check-visibility.py'), run_name='__main__')
     if args.live:
         check_live()

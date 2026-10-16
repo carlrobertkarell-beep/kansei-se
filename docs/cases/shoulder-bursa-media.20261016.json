@@ -24,12 +24,11 @@
   ],
   "film": "Web encoding of the supplied 94-frame, 3.1333-second 1280x960 film; no temporal edits. Capture dates in supplied stills and film differ; no before/after or single-session claim.",
   "patient": "No remembered trauma supplied by clinician. Other symptoms and proposed plan are visibly illustrative. No actual outcome, injection, age, side, tear size, grading or chronicity invented.",
-  "anatomy": "Built-in imagegen, four separate edits using the original, clinician annotation and accepted biceps tissue-style reference. Educational interpretations. Format-only WebP compression. Original annotations linked for clinical review. Final subscapularis layer is version 20261016b, correcting bone inside the deep clinician-marked defect to heterogeneous residual fibers. Discarded first painting is not published.",
+  "anatomy": "Final published assets: three built-in imagegen anatomical interpretations (bursa views 1–2 and supraspinatus), format-compressed to WebP. Subscapularis uses the clinician-supplied anatomical annotation of the original JPEG, preserving exact geometry and heterogeneous residual fibers. Both attempted painted subscapularis variants were discarded after visual review because the defect/bone boundary did not follow the clinician guide faithfully; neither is published.",
   "prompts": [
     "Keep full scan frame and geometry. Detailed red striated deltoid, golden fat, ivory fibrous supraspinatus, tan humerus, dark teal fluid in clinician-marked distally extending bursa. No labels.",
     "Same tissue style and full scan geometry. Preserve larger curved fluid-filled bursa under deltoid and around supraspinatus/humerus in view 2; no new tears.",
-    "Preserve acromion/humerus, deltoid and supraspinatus contours. Thin non-distended bursa in selected slice. Two clinician-marked focal ruptures with disrupted fibers; do not depict full tendon detachment.",
-    "Preserve small left subscapularis stump, heterogeneous residual fibers throughout blue injury region and a separate right fluid pocket. Never depict the entire injury region as an empty hole or a healthy tendon.",
-    "Targeted correction of subscapularis painting: keep full scan, all superficial tissues, stump and separate fluid pocket. Replace porous bone inside the entire clinician-blue outlined defect, including the deep taper, with irregular residual collagen bundles and heterogeneous defect space. Keep humerus on the left/deep side of the defect border. No labels."
-  ]
+    "Preserve acromion/humerus, deltoid and supraspinatus contours. Thin non-distended bursa in selected slice. Two clinician-marked focal ruptures with disrupted fibers; do not depict full tendon detachment."
+  ],
+  "subscapularis_anatomy_asset": "/bilder/ultraljud/bursit-axel/subscapularis.annoterad.jpg"
 }

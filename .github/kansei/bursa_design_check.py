@@ -25,6 +25,8 @@ def check_bursa(page, output, label):
             raise AssertionError('Original findings are not independently visible')
         anatomy.click()
         page.wait_for_function("id=>new DOMMatrix(getComputedStyle(document.querySelector('#view-'+id+' .anatomy-layer')).transform).isIdentity", arg=key)
+        if key == 'subscapularis' and not picture.locator('.anatomy-layer img').get_attribute('src').endswith('subscapularis.annoterad.jpg'):
+            raise AssertionError('Subscapularis must use the clinician annotation')
         if findings.get_attribute('aria-checked') != 'true' or picture.locator('[data-finding-mode=anatomy]').get_attribute('aria-hidden') != 'false':
             raise AssertionError('Anatomy switch lost independent findings')
         if not picture.evaluate("""p=>{

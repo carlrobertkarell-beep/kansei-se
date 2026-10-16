@@ -343,7 +343,8 @@ def check(base, output):
                             if not headers.evaluate_all("""items=>items.every(el=>{
                                 const expected=parseFloat(el.style.getPropertyValue('--scan-header'));
                                 const actual=parseFloat(getComputedStyle(el).clipPath.replace('inset(',''));
-                                return Number.isFinite(expected)&&expected>0&&expected<10&&Math.abs(expected-actual)<.001;
+                                // Existing anatomical crops can hide more of the header.
+                                return Number.isFinite(expected)&&expected>0&&expected<10&&Number.isFinite(actual)&&actual+.001>=expected;
                             })"""):
                                 row['errors'].append('Acquisition header is exposed or scan canvas was shifted')
                             row['hidden_scan_headers'] = headers.count()

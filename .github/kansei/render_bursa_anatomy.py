@@ -162,6 +162,14 @@ def build(key, view, preview):
     defs.append(f'<g id="bone-tile" clip-path="url(#bone-tile-window)"><use xlink:href="#material" transform="matrix({bx} 0 0 {by} {-crop[0]*bx} {-crop[1]*by})"/></g>')
     tile='<use xlink:href="#bone-tile"/>'
     defs.append(f'<pattern id="bone-material" patternUnits="userSpaceOnUse" width="{tw*2}" height="{th*2}">{tile}<g transform="translate({tw*2} 0) scale(-1 1)">{tile}</g><g transform="translate(0 {th*2}) scale(1 -1)">{tile}</g><g transform="translate({tw*2} {th*2}) scale(-1 -1)">{tile}</g></pattern>')
+    # Adipose lobules keep the reference proportions instead of being stretched
+    # to the long, thin scan region. Only their tissue boundary follows the guide.
+    fx,fy,fw,fh=5,5,630,416
+    fs=.6;ftw,fth=fw*fs,fh*fs
+    defs.append(f'<clipPath id="fat-tile-window"><rect width="{ftw}" height="{fth}"/></clipPath>')
+    defs.append(f'<g id="fat-tile" clip-path="url(#fat-tile-window)"><use xlink:href="#material" transform="matrix({fs} 0 0 {fs} {-fx*fs} {-fy*fs})"/></g>')
+    tile='<use xlink:href="#fat-tile"/>'
+    defs.append(f'<pattern id="fat-material" patternUnits="userSpaceOnUse" width="{ftw*2}" height="{fth*2}">{tile}<g transform="translate({ftw*2} 0) scale(-1 1)">{tile}</g><g transform="translate(0 {fth*2}) scale(1 -1)">{tile}</g><g transform="translate({ftw*2} {fth*2}) scale(-1 -1)">{tile}</g></pattern>')
     shapes=[];checks=[]
     for item in view['regions']:
         ident='region-'+item['name']
@@ -171,7 +179,9 @@ def build(key, view, preview):
         paint=f'<svg overflow="hidden" x="{x}" y="{y}" width="{w}" height="{h}" viewBox="{" ".join(map(str,crop))}" preserveAspectRatio="none"><use xlink:href="#material"/></svg>'
         if item['material']=='bone':
             paint=f'<path d="{item["path"]}" fill="url(#bone-material)"/>'
-        if item['top']:
+        if item['material']=='fat':
+            paint=f'<path d="{item["path"]}" fill="url(#fat-material)"/>'
+        if item['top'] and item['material']!='fat':
             mesh,minimum=mesh_region(item,defs)
             paint+=mesh
             checks.append({'region':item['name'],'minimum_material_jacobian':minimum})

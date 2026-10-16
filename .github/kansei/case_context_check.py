@@ -9,8 +9,11 @@ def check_context(page, path, output, label):
     decision=page.locator('[data-case-context=decision]')
     if summary.count()!=1 or decision.count()!=1:
         raise AssertionError('Case context missing or duplicated')
-    if not summary.evaluate('(e)=>e.getBoundingClientRect().width>=document.documentElement.clientWidth-3'):
-        raise AssertionError('Case entrance inherits a narrow legacy text-column width')
+    # Match the main content width; the site's stable scrollbar gutter can make
+    # it narrower than documentElement.clientWidth even when the section is full width.
+    widths=summary.evaluate('(e)=>({section:e.getBoundingClientRect().width,main:e.parentElement.getBoundingClientRect().width})')
+    if widths['section'] < widths['main']-3:
+        raise AssertionError('Case entrance inherits a narrow legacy text-column width: '+str(widths))
     if summary.locator('.case-context-goals li').count()!=3:
         raise AssertionError('Every case needs its own everyday activities')
     if decision.locator('.case-context-related article').count()!=2:

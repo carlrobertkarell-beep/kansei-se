@@ -28,6 +28,8 @@ def attach_css(source):
 
 
 def linked(text, url, extra=''):
+    if url == US_BOOK:
+        extra += ' data-measure="booking_click"'
     return f'<a href="{esc(url)}"{extra}>{esc(text)} →</a>'
 
 

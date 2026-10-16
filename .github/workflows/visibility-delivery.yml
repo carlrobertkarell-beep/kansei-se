@@ -22,17 +22,7 @@ jobs:
           python3 -m playwright install --with-deps chromium >/tmp/playwright-install.log 2>&1
       - name: Apply and validate source-preserving update
         run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('.github/kansei/visibility-update.py')
-          t=p.read_text()
-          # Only the new data-measure attributes may differ inside existing case main content.
-          t=t.replace("hashlib.sha256(text[a:b].encode()).hexdigest()==case_hashes[rel]", "hashlib.sha256(re.sub(r' data-measure=\"[^\"]*\"', '', text[a:b]).encode()).hexdigest()==case_hashes[rel]")
-          p.write_text(t)
-          p=Path('assets/analytics.20261016.js')
-          t=p.read_text().replace("</span></a></div>';", "</span></a></div></div>';")
-          p.write_text(t)
-          PY
+          python3 .github/kansei/visibility-preflight.py
           python3 .github/kansei/visibility-update.py
           node --check assets/analytics.20261016.js
           node --check assets/clinic.20261008.js
@@ -41,7 +31,7 @@ jobs:
           python3 .github/kansei/visibility-browser-test.py
       - name: Save visual checks
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: visibility-validation
           path: /tmp/kansei-visibility-artifacts/

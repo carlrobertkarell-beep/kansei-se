@@ -3,47 +3,33 @@ on:
   push:
     branches: ['seo/visibility-20261016']
 permissions:
-  contents: write
+  contents: read
 concurrency:
-  group: visibility-delivery
+  group: visibility-release-verification
   cancel-in-progress: false
 jobs:
-  prepare:
+  verify:
     if: github.repository == 'carlrobertkarell-beep/kansei-se' && github.ref == 'refs/heads/seo/visibility-20261016'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          ref: seo/visibility-20261016
-      - name: Install validation dependencies
+          ref: 09e5e34b15a44a36229a975228f0c471729ad79c
+          persist-credentials: false
+      - name: Recheck released source
         run: |
-          python3 -m pip install --disable-pip-version-check beautifulsoup4==4.14.3 playwright==1.56.0
-          python3 -m playwright install --with-deps chromium >/tmp/playwright-install.log 2>&1
-          git fetch --depth=1 origin main
-      - name: Final layout and copy validation
-        run: |
-          python3 .github/kansei/visibility-polish.py
-          node --check assets/analytics.20261016.js
-          node --check assets/clinic.20261008.js
           python3 .github/scripts/check-seo.py
           python3 .github/kansei/visibility.py --self-test
-          python3 .github/kansei/visibility-browser-test.py
-      - name: Save visual and measurement checks
+          node --check assets/analytics.20261016.js
+          node --check assets/clinic.20261008.js
+      - name: Verify public deployment and notify IndexNow
+        run: python3 .github/kansei/verify-visibility-release.py --notify-indexnow --output /tmp/kansei-release/release-verification.json
+      - name: Save release verification
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: visibility-validation-final
-          path: /tmp/kansei-visibility-artifacts/
+          name: visibility-release-verification
+          path: /tmp/kansei-release/
           if-no-files-found: ignore
           retention-days: 7
-      - name: Commit validated polish to review branch
-        run: |
-          git diff --stat
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add --all
-          if ! git diff --cached --quiet; then
-            git commit -m 'Finalize checked visibility delivery and consistent content layout'
-            git push origin HEAD:seo/visibility-20261016
-          fi

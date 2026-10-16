@@ -11,29 +11,49 @@ jobs:
   prepare:
     if: github.repository == 'carlrobertkarell-beep/kansei-se' && github.ref == 'refs/heads/seo/visibility-20261016'
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           ref: seo/visibility-20261016
-      - name: Install HTML parser
-        run: python3 -m pip install --disable-pip-version-check beautifulsoup4==4.14.3
-      - name: Inventory and baseline
-        run: python3 .github/kansei/visibility-audit.py
-      - name: Apply reviewed delivery when present
+      - name: Install validation dependencies
         run: |
-          if [ -f .github/kansei/visibility-update.py ]; then
-            python3 .github/kansei/visibility-update.py
-            python3 .github/scripts/check-seo.py
-            python3 .github/kansei/visibility-check.py
-            node --check assets/analytics.20261009b.js
-            git diff --stat
-            git diff --numstat
-            git config user.name 'github-actions[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add --all
-            if ! git diff --cached --quiet; then
-              git commit -m 'Apply validated visibility improvements (owner approved)'
-              git push origin HEAD:seo/visibility-20261016
-            fi
+          python3 -m pip install --disable-pip-version-check beautifulsoup4==4.14.3 playwright==1.56.0
+          python3 -m playwright install --with-deps chromium >/tmp/playwright-install.log 2>&1
+      - name: Apply and validate source-preserving update
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('.github/kansei/visibility-update.py')
+          t=p.read_text()
+          # Only the new data-measure attributes may differ inside existing case main content.
+          t=t.replace("hashlib.sha256(text[a:b].encode()).hexdigest()==case_hashes[rel]", "hashlib.sha256(re.sub(r' data-measure=\"[^\"]*\"', '', text[a:b]).encode()).hexdigest()==case_hashes[rel]")
+          p.write_text(t)
+          p=Path('assets/analytics.20261016.js')
+          t=p.read_text().replace("</span></a></div>';", "</span></a></div></div>';")
+          p.write_text(t)
+          PY
+          python3 .github/kansei/visibility-update.py
+          node --check assets/analytics.20261016.js
+          node --check assets/clinic.20261008.js
+          python3 .github/scripts/check-seo.py
+          python3 .github/kansei/visibility.py --self-test
+          python3 .github/kansei/visibility-browser-test.py
+      - name: Save visual checks
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visibility-validation
+          path: /tmp/kansei-visibility-artifacts/
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Commit validated site changes to the isolated review branch
+        run: |
+          git diff --stat
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --all
+          if ! git diff --cached --quiet; then
+            git commit -m 'Apply validated visibility improvements (owner approved)'
+            git push origin HEAD:seo/visibility-20261016
           fi

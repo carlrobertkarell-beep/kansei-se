@@ -112,9 +112,11 @@ def check_sample(page):
 def check_explore(page):
     check_sample(page)
     entries=page.locator('[data-atlas-entry]')
-    expected={'/ultraljud/kalkaxel/#bilder','/ultraljud/axel/bicepstendinopati/#bilder','/ultraljud/axel/pectoralisruptur/#bilder','/ultraljud/axel/ac-ledsskada/#bilder','/ultraljud/hand-handled/karpaltunnelsyndrom/#bilder','/ultraljud/loparkna/#bilder','/ultraljud/tennisarmbage/bilder/#bilder','/ultraljud/kna/#bilder','/ultraljud/halsena/bilder/#bilder','/ultraljud/bursit-axel/#bilder'}
-    if set(entries.evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))'))!=expected:
+    expected={'/ultraljud/kalkaxel/','/ultraljud/axel/bicepstendinopati/','/ultraljud/axel/pectoralisruptur/','/ultraljud/axel/ac-ledsskada/','/ultraljud/hand-handled/karpaltunnelsyndrom/','/ultraljud/loparkna/','/ultraljud/tennisarmbage/bilder/','/ultraljud/kna/','/ultraljud/halsena/bilder/','/ultraljud/bursit-axel/'}
+    if set(entries.locator('[data-atlas-case]').evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))'))!=expected:
         raise AssertionError('A published image reader is missing or duplicated')
+    if set(entries.locator('.atlas-image-shortcut').evaluate_all('(els)=>els.map(e=>e.getAttribute("href").replace(/#bilder$/,""))'))!=expected:
+        raise AssertionError('Whole-case links must retain separate image shortcuts')
     search=page.locator('[data-atlas-search]')
     page.locator('[data-atlas-region=kna]').click()
     if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=2:
@@ -136,4 +138,23 @@ def check_explore(page):
     page.locator('[data-atlas-region=fot]').click()
     if page.locator('[data-atlas-entry]:not([hidden])').count()!=1:raise AssertionError('Foot region missing')
     page.locator('[data-atlas-region=alla]').click()
-    return 'Area filters, direct URLs, Swedish search, empty-state recovery and independent preview layers passed'
+    for phrase, expected_path in (
+        ('min hand somnar på natten','/ultraljud/hand-handled/karpaltunnelsyndrom/'),
+        ('ont när jag springer på utsidan av knät','/ultraljud/loparkna/'),
+        ('knät svullnar efter promenader','/ultraljud/kna/'),
+        ('hyaluronsyra','/ultraljud/kna/'),
+    ):
+        search.fill(phrase)
+        visible=entries.locator('[data-atlas-case]').evaluate_all('(els)=>els.filter(e=>!e.closest("[data-atlas-entry]").hidden).map(e=>e.getAttribute("href"))')
+        if visible!=[expected_path]:raise AssertionError('Natural-language case search failed: '+phrase+' '+str(visible))
+    search.fill('ont när jag lyfter armen')
+    if not page.locator('[data-atlas-entry]:not([hidden]) a[href="/ultraljud/bursit-axel/"]').count():
+        raise AssertionError('Lifting complaint does not find the shoulder bursa case')
+    search.fill('')
+    page.locator('[data-atlas-symptom=natt]').click()
+    if 'besvar=natt' not in page.url:raise AssertionError('Symptom filter has no shareable URL')
+    page.reload(wait_until='domcontentloaded')
+    if page.locator('[data-atlas-symptom=natt]').get_attribute('aria-current')!='true':raise AssertionError('Direct symptom URL does not survive reload')
+    if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=3:raise AssertionError('Sleep filter must include shoulder and hand examples')
+    page.locator('[data-atlas-symptom=alla]').click()
+    return 'Whole cases, image shortcuts, area/symptom URLs, natural-language search, empty-state recovery and independent preview layers passed'

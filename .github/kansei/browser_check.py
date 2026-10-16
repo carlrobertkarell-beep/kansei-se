@@ -10,6 +10,7 @@ from achilles_design_check import check_achilles
 from ultrasound_design_check import CASE_PATHS, clinic_model, check_case, check_hub, check_explore
 from case_story_check import STORY_PATHS, check_story
 from bursa_design_check import check_bursa
+from case_context_check import CONTEXT_PATHS, check_context
 
 PATHS = ("/", "/kunskapsbank/kna/svullet-kna/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/knaartros-vad-du-kan-gora/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/")
@@ -336,6 +337,16 @@ def check(base, output):
 
                     if not baseline_only and path in STORY_PATHS:
                         row['case_story'] = check_story(page, path, output, label)
+
+                    if not baseline_only and path in CONTEXT_PATHS:
+                        row['case_context'] = check_context(page, path, output, label)
+
+                    if not baseline_only and path in ('/naprapati/', '/hyaluronsyra/', '/hyaluronsyra/kna/'):
+                        bridge=page.locator('[data-case-service]')
+                        if bridge.count()!=1:raise AssertionError('Service-to-case entrance missing or duplicated')
+                        if label!='compact':
+                            bridge.scroll_into_view_if_needed()
+                            bridge.screenshot(path=str(output/f'service-cases-{path.strip("/").replace("/","-")}-{label}.png'),animations='disabled',style='body>header,body>a[href="#main"]{visibility:hidden!important}')
 
                     if not baseline_only:
                         headers = page.locator('[data-scan-header]')

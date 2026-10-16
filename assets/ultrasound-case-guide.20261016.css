@@ -1,0 +1,43 @@
+/* Patient entrances and clinical context use the existing Kansei design tokens. */
+.case-context{font-family:var(--sans,Arial,Helvetica,sans-serif);color:var(--ink,#173137);scroll-margin-top:110px}
+.case-context .wrap{min-width:0}
+.case-context h2{font:500 clamp(28px,3.2vw,40px)/1.2 var(--sans);letter-spacing:-.03em;max-width:28ch;margin:0 0 18px}
+.case-context h3{font:500 22px/1.35 var(--sans);letter-spacing:-.02em;margin:0 0 14px}
+.case-context p{font:400 17px/1.75 var(--sans);margin:0 0 18px;max-width:76ch}
+.case-context a{color:var(--teal,#166c66);text-underline-offset:4px}
+.case-context .eyebrow{display:block;font:500 12px/1.5 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin:0 0 12px}
+.case-context-summary{padding-block:32px 36px;border-bottom:1px solid var(--line)}
+.case-context-columns{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px 52px;align-items:start}
+.case-context-question{padding:24px;background:var(--mist,#edf3f5);border-left:3px solid var(--teal);border-radius:0 7px 7px 0}
+.case-context-question p{font-size:16px;margin-bottom:12px}
+.case-context .case-context-kind{font-size:13px;color:var(--muted,#596b70);margin-bottom:10px}
+.case-context-goals{display:flex;flex-wrap:wrap;gap:8px 18px;list-style:none;margin:18px 0 0;padding:0}
+.case-context-goals li{font:400 14px/1.6 var(--sans);padding-left:15px;position:relative}
+.case-context-goals li:before{content:'';position:absolute;left:0;top:.6em;width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.case-context-links{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center}
+.case-context-links a{display:inline-flex;align-items:center;min-height:44px;font:500 15px/1.55 var(--sans)}
+.case-context-decision{padding-block:42px 48px;background:var(--mist,#edf3f5);border-block:1px solid var(--line)}
+.case-context-key{max-width:92ch;margin-bottom:30px}
+.case-context-follow{padding-top:16px;border-top:1px solid var(--line);font-size:15px!important;color:var(--muted)}
+.case-context-care{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 36px;margin:24px 0 30px}
+.case-context-care[data-care-count="3"]{grid-template-columns:repeat(3,minmax(0,1fr))}
+.case-context-care>article{min-width:0;padding-top:18px;border-top:1px solid var(--line)}
+.case-context-care h3{font-size:20px}
+.case-context-care p{font-size:15px}
+.case-context-care a{display:inline-flex;align-items:center;min-height:44px;font:500 15px/1.55 var(--sans)}
+.case-context-faq{max-width:88ch;margin-block:30px}
+.case-context-faq details{border-block-start:1px solid var(--line);padding:0}
+.case-context-faq details:last-child{border-bottom:1px solid var(--line)}
+.case-context-faq summary{padding:17px 28px 17px 0;font:500 17px/1.55 var(--sans);cursor:pointer}
+.case-context-faq details p{font-size:16px;padding-bottom:14px;margin:0}
+.case-context-related{display:grid;grid-template-columns:1fr 1fr;gap:20px 36px;margin:20px 0 26px}
+.case-context-related a{display:block;min-height:44px;font:500 17px/1.5 var(--sans)}
+.case-context-related p{font-size:15px;color:var(--muted);margin-top:8px}
+.case-context-source{font-size:13px!important;color:var(--muted);margin-bottom:0!important}
+.case-context-source a{display:inline-block;padding-block:6px}
+.case-context-service{padding-block:38px;border-block:1px solid var(--line);margin-block:30px}
+.case-context-service .case-context-related{grid-template-columns:repeat(3,minmax(0,1fr))}
+.case-context-service .case-context-related[data-related-count="1"]{grid-template-columns:minmax(0,1fr)}
+.case-context-service .case-context-related p{font-size:15px}
+.case-context :is(a,summary):focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+@media(max-width:760px){.case-context{scroll-margin-top:90px}.case-context-columns,.case-context-care,.case-context-care[data-care-count="3"],.case-context-related,.case-context-service .case-context-related{grid-template-columns:minmax(0,1fr);gap:22px}.case-context-summary{padding-block:26px}.case-context-question{padding:19px}.case-context p{font-size:16px}.case-context-decision{padding-block:32px}.case-context h3{font-size:21px}.case-context-goals{display:grid;gap:7px}.case-context-care p,.case-context-related p{font-size:15px}.case-context-service{padding-block:28px}}

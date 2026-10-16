@@ -66,7 +66,8 @@ def check():
     assert '590' in (ROOT/'priser/index.html').read_text(), 'Written report price missing'
     article=(ROOT/'blogg/naprapat-fysioterapeut-kiropraktor-eller-ortoped/index.html').read_text()
     assert 'alla leder till samma bedömning' not in article
-    assert 'fast bemannad fysioterapeut- eller ortopedmottagning' in article
+    assert 'Specialistmedverkan planeras separat efter förfrågan' in article
+    assert 'under samma tak' not in article
     cookie=(ROOT/'cookie/index.html').read_text()
     assert 'statistik-kallgrupp' in cookie and 'sessionStorage' in cookie
     assert ignored>0 and bookings>0

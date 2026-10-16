@@ -1,0 +1,2 @@
+/* Hide acquisition headers without moving the shared scan/anatomy canvas. */
+img[data-scan-header],video[data-scan-header]{clip-path:inset(var(--scan-header) 0 0 0)}

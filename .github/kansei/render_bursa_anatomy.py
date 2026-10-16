@@ -1,4 +1,4 @@
-"""Author native SVG anatomy from clinician contours and an imagegen material atlas.
+"""Author native SVG anatomy from clinician contours and approved clinic materials.
 
 Raster inputs are embedded unchanged. All region boundaries, clipping, and
 affine mesh geometry remain editable SVG; no patient pixels are retouched.
@@ -13,14 +13,14 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'bilder/ultraljud/bursit-axel'
 ART = ROOT / '.github/kansei/artwork/bursa'
-VERSION = '20261016c'
+VERSION = '20261016d'
 CROPS = {
-    'fat': [24, 12, 1232, 184],
-    'muscle': [24, 226, 1232, 178],
-    'tendon': [24, 440, 1232, 180],
-    'bone': [24, 653, 1232, 180],
-    'residual': [24, 864, 1232, 181],
-    'fluid': [24, 1075, 1232, 184],
+    'fat': [0, 0, 640, 1280/3],
+    'muscle': [640, 0, 640, 1280/3],
+    'tendon': [0, 1280/3, 640, 1280/3],
+    'bone': [646, 432, 628, 414],
+    'residual': [0, 950, 640, 300],
+    'fluid': [640, 2560/3, 640, 1280/3],
 }
 
 def region(name, material, path, box, top=None, bottom=None, opacity=1):
@@ -149,16 +149,17 @@ def mesh_region(item, defs):
     return ''.join(triangles),min_det
 
 def build(key, view, preview):
-    defs=[f'<image id="material" xlink:href="{data_uri(ART/"tissue-material.20261016c.jpg")}" width="1280" height="1280" preserveAspectRatio="none"/>',
+    defs=[f'<image id="material" xlink:href="{data_uri(ART/"tissue-material.20261016d.jpg")}" width="1280" height="1280" preserveAspectRatio="none"/>',
           f'<clipPath id="scan"><path d="{view["scan"]}"/></clipPath>',
           '<linearGradient id="edge-fade" x1="0" y1="0" x2="0" y2="960" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="white"/><stop offset=".79" stop-color="white"/><stop offset=".89" stop-color="black"/><stop offset="1" stop-color="black"/></linearGradient>',
           '<mask id="scan-window" maskUnits="userSpaceOnUse" x="0" y="0" width="1280" height="960"><rect width="1280" height="960" fill="url(#edge-fade)"/><rect x="1136" y="165" width="77" height="245" fill="black"/></mask>',
           '<linearGradient id="bone-depth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#24160b" stop-opacity="0"/><stop offset=".5" stop-color="#24160b" stop-opacity=".12"/><stop offset="1" stop-color="#0d0906" stop-opacity=".83"/></linearGradient>']
     # Small trabecular texture is mirrored at tile edges rather than stretched
     # with the depth of the bone region. Bone shape still belongs to its clip.
-    crop=CROPS['bone'];tw,th=crop[2]*.45,crop[3]*.45
+    crop=CROPS['bone'];tw,th=crop[2]*.7,crop[3]*.7
+    bx,by=tw/crop[2],th/crop[3]
     defs.append(f'<clipPath id="bone-tile-window"><rect width="{tw}" height="{th}"/></clipPath>')
-    defs.append(f'<g id="bone-tile" clip-path="url(#bone-tile-window)"><use xlink:href="#material" transform="matrix(.45 0 0 .45 {-crop[0]*.45} {-crop[1]*.45})"/></g>')
+    defs.append(f'<g id="bone-tile" clip-path="url(#bone-tile-window)"><use xlink:href="#material" transform="matrix({bx} 0 0 {by} {-crop[0]*bx} {-crop[1]*by})"/></g>')
     tile='<use xlink:href="#bone-tile"/>'
     defs.append(f'<pattern id="bone-material" patternUnits="userSpaceOnUse" width="{tw*2}" height="{th*2}">{tile}<g transform="translate({tw*2} 0) scale(-1 1)">{tile}</g><g transform="translate(0 {th*2}) scale(1 -1)">{tile}</g><g transform="translate({tw*2} {th*2}) scale(-1 -1)">{tile}</g></pattern>')
     shapes=[];checks=[]
@@ -180,15 +181,15 @@ def build(key, view, preview):
         shape+='</g>'
         shapes.append(shape)
         if item['name']=='deltoid':
-            shapes.append(f'<path d="{item["path"]}" fill="none" stroke="#d7c5b4" stroke-width="2.4" opacity=".85"/>')
+            shapes.append(f'<path d="{item["path"]}" fill="none" stroke="#d7c5b4" stroke-width="2.4" opacity=".45"/>')
         if item['material']=='fluid':
-            shapes.append(f'<path d="{item["path"]}" fill="none" stroke="#c8c7b3" stroke-width="2.5" opacity=".65"/>')
+            shapes.append(f'<path d="{item["path"]}" fill="none" stroke="#c8c7b3" stroke-width="1.8" opacity=".35"/>')
     # Cortical shape follows the clinician's line; it is never filled as another tissue.
-    cortex=f'<path data-cortex="humerus" d="{view["cortex"]}" fill="none" stroke="#f1dfc1" stroke-width="5.3" stroke-linejoin="round" stroke-linecap="round"/>'
+    cortex=f'<path data-cortex="humerus" d="{view["cortex"]}" fill="none" stroke="#f1dfc1" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>'
     # Keep the cortex behind subscapularis fibers at their shared interface.
     shapes.append(cortex)
     if view.get('acromion_cortex'):
-        shapes.append(f'<path d="{view["acromion_cortex"]}" fill="none" stroke="#f1dfc1" stroke-width="5.3" stroke-linejoin="round"/>')
+        shapes.append(f'<path d="{view["acromion_cortex"]}" fill="none" stroke="#f1dfc1" stroke-width="3.2" stroke-linejoin="round"/>')
     doc='<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="960" viewBox="0 0 1280 960"><title>Axel – konturpassat anatomilager</title><desc>Pedagogisk illustration med vävnadsgränser från undersökarens annoteringar. Bildfynden bedöms i originalultraljudet.</desc><defs>'+''.join(defs)+'</defs><g clip-path="url(#scan)" mask="url(#scan-window)">'+''.join(shapes)+'</g></svg>'
     vector=preview/(key+'-anatomy-source.svg')
     vector.write_text(doc)
@@ -208,6 +209,6 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--preview',type=Path,required=True);args=parser.parse_args()
     if args.preview:args.preview.mkdir(parents=True,exist_ok=True)
     results=[build(k,v,args.preview) for k,v in VIEWS.items()]
-    (ART/'contours.20261016c.json').write_text(json.dumps({'coordinate_system':[1280,960],'views':VIEWS},ensure_ascii=False,indent=2)+'\n')
-    (ART/'registration-report.20261016c.json').write_text(json.dumps(results,ensure_ascii=False,indent=2)+'\n')
+    (ART/('contours.'+VERSION+'.json')).write_text(json.dumps({'coordinate_system':[1280,960],'views':VIEWS},ensure_ascii=False,indent=2)+'\n')
+    (ART/('registration-report.'+VERSION+'.json')).write_text(json.dumps(results,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(results,ensure_ascii=False))

@@ -337,6 +337,17 @@ def check(base, output):
                     if not baseline_only and path in STORY_PATHS:
                         row['case_story'] = check_story(page, path, output, label)
 
+                    if not baseline_only:
+                        headers = page.locator('[data-scan-header]')
+                        if headers.count():
+                            if not headers.evaluate_all("""items=>items.every(el=>{
+                                const expected=parseFloat(el.style.getPropertyValue('--scan-header'));
+                                const actual=parseFloat(getComputedStyle(el).clipPath.replace('inset(',''));
+                                return Number.isFinite(expected)&&expected>0&&expected<10&&Math.abs(expected-actual)<.001;
+                            })"""):
+                                row['errors'].append('Acquisition header is exposed or scan canvas was shifted')
+                            row['hidden_scan_headers'] = headers.count()
+
                     slug = path.strip("/").replace("/", "-") or "home"
                     page.screenshot(path=str(output / f"{slug}-{label}.png"), full_page=False, animations="disabled")
                     if label == "mobile" and path not in ("/reda/", "/reda-rehab/") and page.locator("button.burger").count() == 1:

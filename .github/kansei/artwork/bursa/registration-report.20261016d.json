@@ -1,0 +1,66 @@
+[
+  {
+    "view": "bursit-vy-1",
+    "asset": "bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.20261016d.webp",
+    "region_count": 5,
+    "mesh_checks": [
+      {
+        "region": "superficial-fat",
+        "minimum_material_jacobian": 0.7846874999999994
+      },
+      {
+        "region": "deltoid",
+        "minimum_material_jacobian": 0.2580477539062503
+      }
+    ]
+  },
+  {
+    "view": "bursit-vy-2",
+    "asset": "bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.20261016d.webp",
+    "region_count": 5,
+    "mesh_checks": [
+      {
+        "region": "superficial-fat",
+        "minimum_material_jacobian": 0.5231249999999995
+      },
+      {
+        "region": "deltoid",
+        "minimum_material_jacobian": 0.4996751953124995
+      },
+      {
+        "region": "supraspinatus",
+        "minimum_material_jacobian": 0.048752343749999566
+      }
+    ]
+  },
+  {
+    "view": "supraspinatus",
+    "asset": "bilder/ultraljud/bursit-axel/supraspinatus.anatomi.20261016d.webp",
+    "region_count": 8,
+    "mesh_checks": [
+      {
+        "region": "superficial-fat",
+        "minimum_material_jacobian": 0.4688144531249997
+      }
+    ]
+  },
+  {
+    "view": "subscapularis",
+    "asset": "bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016d.webp",
+    "region_count": 6,
+    "mesh_checks": [
+      {
+        "region": "superficial-fat",
+        "minimum_material_jacobian": 0.38762109374999987
+      },
+      {
+        "region": "deltoid",
+        "minimum_material_jacobian": 0.3678622265624998
+      },
+      {
+        "region": "subscapularis-defect",
+        "minimum_material_jacobian": 0.17378600000000022
+      }
+    ]
+  }
+]

@@ -363,12 +363,13 @@ def check(base, output):
                     if not baseline_only and path in ('/blogg/domningar-i-handen-pa-natten/', '/kunskapsbank/axel/ont-i-axeln-pa-natten/'):
                         preview = page.locator('.clinical-evidence-preview')
                         preview.scroll_into_view_if_needed()
-                        preview.locator('img').evaluate("img => img.decode()")
+                        preview.locator('img').scroll_into_view_if_needed()
+                        page.wait_for_function("() => { const img = document.querySelector('.clinical-evidence-preview img'); return img.complete && img.naturalWidth > 0; }", timeout=15000)
                         preview.screenshot(path=str(output / f'clinical-example-{path.strip("/").replace("/", "-")}-{label}.png'), animations='disabled')
                     if not baseline_only and path == '/hyaluronsyra/kna/':
                         prices = page.locator('#pris')
                         prices.scroll_into_view_if_needed()
-                        prices.screenshot(path=str(output / f'knee-prices-{label}.png'), animations='disabled')
+                        prices.screenshot(path=str(output / f'knee-prices-{label}.png'), animations='disabled', style='body>header,body>a[href="#main"]{visibility:hidden!important}')
 
                     slug = path.strip("/").replace("/", "-") or "home"
                     page.screenshot(path=str(output / f"{slug}-{label}.png"), full_page=False, animations="disabled")

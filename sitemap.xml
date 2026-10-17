@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://www.kansei.se/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/akupunktur/</loc>
@@ -46,7 +46,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/knaartros-vad-du-kan-gora/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/kna/osteofyter-ultraljud.webp</image:loc>
     </image:image>
@@ -117,7 +117,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/hyaluronsyra/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/injektioner/</loc>
@@ -169,7 +169,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/kalkaxel/kalk-ultraljud.jpg</image:loc>
     </image:image>
@@ -242,7 +242,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/axel/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/overarm/</loc>
@@ -270,7 +270,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/kna/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/kna/bakercysta-anatomi.20261014-v6.webp</image:loc>
     </image:image>
@@ -555,13 +555,13 @@
     <loc>https://www.kansei.se/ultraljud/bursit-axel/</loc>
     <lastmod>2026-10-16</lastmod>
     <image:image>
-      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.20261016d.webp</image:loc>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.20261016e.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-1.original.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.20261016d.webp</image:loc>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.20261016e.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-2.original.jpg</image:loc>
@@ -570,13 +570,13 @@
       <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/subscapularis-film-poster.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016d.webp</image:loc>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016e.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/subscapularis.original.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/supraspinatus.anatomi.20261016d.webp</image:loc>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/supraspinatus.anatomi.20261016e.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/supraspinatus.original.jpg</image:loc>
@@ -684,18 +684,18 @@
   </url>
   <url>
     <loc>https://www.kansei.se/hyaluronsyra/kna/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/kna/osteofyter-ultraljud.webp</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://www.kansei.se/hyaluronsyra/hoft/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/hyaluronsyra/axel/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/hyaluronsyra/infor-och-efter/</loc>
@@ -768,7 +768,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/hyaluronsyra/sinovial-sinogel/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/loparkna/</loc>

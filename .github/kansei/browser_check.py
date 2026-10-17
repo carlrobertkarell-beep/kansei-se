@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 from achilles_design_check import check_achilles
-from ultrasound_design_check import CASE_PATHS, clinic_model, check_case, check_hub, check_explore
+from ultrasound_design_check import CASE_PATHS, clinic_model, check_case, check_hub, check_explore, check_sample
 from case_story_check import STORY_PATHS, check_story
 from bursa_design_check import check_bursa
 from case_context_check import CONTEXT_PATHS, check_context
@@ -41,7 +41,7 @@ def check(base, output):
             context.route("**/*", route)
             paths = tuple(dict.fromkeys(PATHS + CASE_PATHS + (() if baseline_only else KNOWLEDGE_PATHS + (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))))
             if label == 'compact':
-                paths = ('/', '/ultraljud/', '/hyaluronsyra/', '/injektioner/', '/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/blogg/prp-eller-hyaluronsyra-vid-knaartros/', '/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/') + CASE_PATHS + (() if baseline_only else (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))
+                paths = ('/', '/ultraljud/', '/ultraljud/axel/', '/hyaluronsyra/', '/injektioner/', '/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/blogg/prp-eller-hyaluronsyra-vid-knaartros/', '/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/') + CASE_PATHS + (() if baseline_only else (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))
             model = None
             for path in paths:
                 page = context.new_page()
@@ -73,6 +73,15 @@ def check(base, output):
                     row["broken_visible_images"] = page.locator("img").evaluate_all("els=>els.filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0&&r.top<innerHeight&&r.bottom>0&&e.complete&&e.naturalWidth===0}).map(e=>new URL(e.src).pathname)")
                     if row["broken_visible_images"]:
                         row["errors"].append("Broken visible image")
+
+                    if not baseline_only and path in ('/ultraljud/', '/ultraljud/axel/', '/hyaluronsyra/'):
+                        page.locator('.site-header').screenshot(path=str(output/f'context-header-{path.strip("/").replace("/","-")}-{label}.png'), animations='disabled')
+                    if not baseline_only and path=='/ultraljud/axel/':
+                        check_sample(page)
+                        preview=page.locator('[data-atlas-demo]')
+                        preview.screenshot(path=str(output/f'shoulder-preview-anatomy-{label}.png'), animations='disabled')
+                        preview.get_by_role('switch',name='Visa fynden',exact=True).click()
+                        page.locator('#bildexempel').screenshot(path=str(output/f'shoulder-preview-findings-{label}.png'), animations='disabled', style='body>header,body>a[href="#main"]{visibility:hidden!important}')
 
                     if not baseline_only:
                         if path == '/':

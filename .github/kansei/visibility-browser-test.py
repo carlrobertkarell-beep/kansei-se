@@ -85,6 +85,23 @@ with sync_playwright() as pw:
     p.wait_for_function("(window.dataLayer||[]).some(x=>x[0]==='event')")
     assert events(p,'page_view')[0][2]['referral_group']=='unknown'
     c.close();record('Expired source group is not reused')
+    c,p,_=setup(browser,seed=seed)
+    p.goto(ORIGIN+'/hyaluronsyra/')
+    p.wait_for_function("(window.dataLayer||[]).some(x=>x[0]==='event')")
+    p.locator('.header-book').click()
+    assert p.url==ORIGIN+'/hyaluronsyra/#in-7'
+    assert events(p,'booking_click')==[]
+    p.goto(ORIGIN+'/hyaluronsyra/kna/')
+    p.locator('.header-book').click()
+    p.wait_for_url(ORIGIN+'/hyaluronsyra/#in-7')
+    assert events(p,'booking_click')==[]
+    p.goto(ORIGIN+'/ultraljud/axel/')
+    p.wait_for_function("(window.dataLayer||[]).some(x=>x[0]==='event')")
+    assert p.locator('.header-book').get_attribute('href').endswith('/ultraljud-rorelseapparaten-1946824')
+    p.locator('.header-book').click()
+    assert len(events(p,'booking_click'))==1
+    assert events(p,'booking_click')[0][2]['placement']=='header'
+    c.close();record('Hyaluron price navigation is not a booking event; ultrasound header counts one outbound booking intent')
     for width,label in [(320,'compact'),(390,'mobile'),(1280,'desktop')]:
         c,p,_=setup(browser,{'width':width,'height':900})
         for path,name in [('/','home'),('/naprapati/','naprapati'),('/ultraljud/','ultraljud'),('/cookie/','cookie')]:

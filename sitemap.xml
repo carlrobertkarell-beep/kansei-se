@@ -267,6 +267,12 @@
   <url>
     <loc>https://www.kansei.se/ultraljud/axel/</loc>
     <lastmod>2026-10-17</lastmod>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/kalkaxel/kalk-ultraljud.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/oversikt/kalkaxel-demo-anatomi.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/overarm/</loc>

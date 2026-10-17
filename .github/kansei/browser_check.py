@@ -12,8 +12,8 @@ from case_story_check import STORY_PATHS, check_story
 from bursa_design_check import check_bursa
 from case_context_check import CONTEXT_PATHS, check_context
 
-PATHS = ("/", "/kunskapsbank/kna/svullet-kna/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
-KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/knaartros-vad-du-kan-gora/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/")
+PATHS = ("/", "/kunskapsbank/kna/svullet-kna/", "/kunskapsbank/axel/ont-i-axeln-pa-natten/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
+KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/knaartros-vad-du-kan-gora/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/", "/blogg/domningar-i-handen-pa-natten/")
 RUNNER_PATH = "/ultraljud/loparkna/"
 ACHILLES_PATH = "/ultraljud/halsena/bilder/"
 ELBOW_PATH = "/ultraljud/tennisarmbage/bilder/"
@@ -359,6 +359,16 @@ def check(base, output):
                             })"""):
                                 row['errors'].append('Acquisition header is exposed or scan canvas was shifted')
                             row['hidden_scan_headers'] = headers.count()
+
+                    if not baseline_only and path in ('/blogg/domningar-i-handen-pa-natten/', '/kunskapsbank/axel/ont-i-axeln-pa-natten/'):
+                        preview = page.locator('.clinical-evidence-preview')
+                        preview.scroll_into_view_if_needed()
+                        preview.locator('img').evaluate("img => img.decode()")
+                        preview.screenshot(path=str(output / f'clinical-example-{path.strip("/").replace("/", "-")}-{label}.png'), animations='disabled')
+                    if not baseline_only and path == '/hyaluronsyra/kna/':
+                        prices = page.locator('#pris')
+                        prices.scroll_into_view_if_needed()
+                        prices.screenshot(path=str(output / f'knee-prices-{label}.png'), animations='disabled')
 
                     slug = path.strip("/").replace("/", "-") or "home"
                     page.screenshot(path=str(output / f"{slug}-{label}.png"), full_page=False, animations="disabled")

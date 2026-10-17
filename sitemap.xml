@@ -187,7 +187,10 @@
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/domningar-i-handen-pa-natten/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-17</lastmod>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/karpaltunnel/medianus-helbild.20261009.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/nar-ska-du-soka-vard-for-smarta/</loc>
@@ -215,7 +218,10 @@
   </url>
   <url>
     <loc>https://www.kansei.se/kunskapsbank/axel/ont-i-axeln-pa-natten/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-17</lastmod>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/kalkaxel/kalk-ultraljud.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.kansei.se/kunskapsbank/axel/rotatorkuffbesvar/</loc>
@@ -235,7 +241,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/kunskapsbank/kna/svullet-kna/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/kna/ledvatska-ultraljud.webp</image:loc>
     </image:image>

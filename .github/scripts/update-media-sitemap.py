@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh the existing sitemap from published ultrasound images and video metadata.
+"""Refresh the existing sitemap from published clinical images and video metadata.
 
 Run after adding an ultrasound case or changing its assets. Only canonical URLs
 already present in sitemap.xml are inspected. No crawl, credentials or third-party
@@ -39,7 +39,7 @@ class Media(HTMLParser):
             self.main = True
         if self.main and tag == 'img':
             src = urljoin(ORIGIN, attrs.get('src', ''))
-            if urlsplit(src).path.startswith('/bilder/ultraljud/'):
+            if urlsplit(src).path.startswith(('/bilder/ultraljud/', '/bilder/produkter/')):
                 self.images.add(src)
         if self.main and tag in ('video', 'source') and attrs.get('src'):
             self.sources.add(urljoin(ORIGIN, attrs['src']))

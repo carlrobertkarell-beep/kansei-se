@@ -1,0 +1,71 @@
+{
+  "rights_basis": "Site owner explicitly stated permission to use manufacturer images on 2026-10-17. Public customer-license terms were not independently verified. No open license is claimed.",
+  "images": [
+    {
+      "path": "bilder/produkter/ibsa-sinovial-hl64.20261017.png",
+      "creator": "IBSA",
+      "source_page": "https://sinovial.com/products/",
+      "source_asset": "https://sinovial.com/wp-content/uploads/2024/10/Frame-29013-1.png",
+      "retrieved": "2026-10-17",
+      "width": 621,
+      "height": 404,
+      "sha256": "98ac17e41f42ef828c195bada7afccf358a8a76c1a4ded6d596b2424355be936",
+      "processing": "Original source file"
+    },
+    {
+      "path": "bilder/produkter/ibsa-sinogel.20261017.png",
+      "creator": "IBSA",
+      "source_page": "https://sinovial.com/products/",
+      "source_asset": "https://sinovial.com/wp-content/uploads/2025/03/Frame_29012.png",
+      "retrieved": "2026-10-17",
+      "width": 618,
+      "height": 401,
+      "sha256": "1cbb4a1bc803fd5fcc54d413e3ac15c0c1c5bc305697d409e5abfcd4de624bc8",
+      "processing": "Original source file"
+    },
+    {
+      "path": "bilder/produkter/arthrex-acp-system.20261017.png",
+      "creator": "Arthrex",
+      "source_page": "https://www.arthrex.com/orthobiologics/autologous-conditioned-plasma",
+      "source_asset": "https://cdn.arthrex.io/image/upload/c_pad,w_auto/f_auto/v1/Arthrex.com/Taxonomy%20Pages/Orthobiologics/Product/acp",
+      "retrieved": "2026-10-17",
+      "width": 800,
+      "height": 740,
+      "sha256": "72106ec56dba4d809afe00449d34372c8715622c3af4a2871561da39ffa9d5dd",
+      "processing": "Original source file"
+    },
+    {
+      "path": "bilder/produkter/arthrex-acp-blodprov.20261017.png",
+      "creator": "Arthrex",
+      "source_page": "https://www.arthrex.com/resources/pLB1-000501-en-US/a-patients-guide-to-platelet-rich-plasma-with-the-arthrex-acp-double-syringe-system",
+      "source_asset": "https://www.arthrex.com/resources/pLB1-000501-en-US/a-patients-guide-to-platelet-rich-plasma-with-the-arthrex-acp-double-syringe-system",
+      "retrieved": "2026-10-17",
+      "width": 127,
+      "height": 316,
+      "sha256": "c0368dbf9398b7b707159a8ae1bf761ae43befe8ec2f1006156ca0d3cdbf9066",
+      "processing": "Embedded brochure image extracted with its original alpha mask; no retouching or invented elements"
+    },
+    {
+      "path": "bilder/produkter/arthrex-acp-centrifugering.20261017.png",
+      "creator": "Arthrex",
+      "source_page": "https://www.arthrex.com/resources/pLB1-000501-en-US/a-patients-guide-to-platelet-rich-plasma-with-the-arthrex-acp-double-syringe-system",
+      "source_asset": "https://www.arthrex.com/resources/pLB1-000501-en-US/a-patients-guide-to-platelet-rich-plasma-with-the-arthrex-acp-double-syringe-system",
+      "retrieved": "2026-10-17",
+      "width": 426,
+      "height": 328,
+      "sha256": "581e0017e2015de33d54d4b69a1d87c2553144926af462199474c755b4f99cc5",
+      "processing": "Embedded brochure image extracted with its original alpha mask; no retouching or invented elements"
+    },
+    {
+      "path": "bilder/produkter/arthrex-acp-separation.20261017.png",
+      "creator": "Arthrex",
+      "source_page": "https://www.arthrex.com/resources/pLB1-000501-en-US/a-patients-guide-to-platelet-rich-plasma-with-the-arthrex-acp-double-syringe-system",
+      "source_asset": "https://www.arthrex.com/resources/pLB1-000501-en-US/a-patients-guide-to-platelet-rich-plasma-with-the-arthrex-acp-double-syringe-system",
+      "retrieved": "2026-10-17",
+      "width": 343,
+      "height": 328,
+      "sha256": "b8fca785b3b5491acae5404ebef34fddf08c038a86cb061df0000b54f4f15dfb",
+      "processing": "Embedded brochure image extracted with its original alpha mask; no retouching or invented elements"
+    }
+  ]
+}

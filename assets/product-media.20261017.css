@@ -1,7 +1,7 @@
 /* Manufacturer photos sit within the established clinic cards and palette. */
 .clinic-site .product-shot{margin:0 0 22px;min-width:0}
 .clinic-site .product-shot>img{display:block;width:100%;height:240px;object-fit:contain;margin:0;padding:8px;background:var(--white,#fff);border-radius:6px}
-.clinic-site .product-credit,.clinic-site .product-shot .product-credit{display:block;font-size:13px;line-height:1.65;color:var(--muted);margin:12px 0 0}
+.clinic-site .product-credit,.clinic-site .product-shot .product-credit{display:block;font-family:var(--sans);letter-spacing:normal;font-size:13px;line-height:1.65;color:var(--muted);margin:12px 0 0}
 .clinic-site .product-credit a{text-decoration:underline;text-underline-offset:3px}
 .clinic-site .product-system{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.2fr);gap:30px;align-items:start;margin:24px 0}
 .clinic-site .product-system .product-shot>img{height:300px}
@@ -9,6 +9,7 @@
 .clinic-site .product-process>figure{margin:0;min-width:0;padding:20px;border:1px solid var(--line);border-radius:6px;background:var(--white,#fff)}
 .clinic-site .product-process-image{height:190px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
 .clinic-site .product-process-image>img{display:block;width:100%;height:100%;object-fit:contain;margin:0}
+.clinic-site .product-process figcaption{font-family:var(--sans);letter-spacing:normal}
 .clinic-site .product-process figcaption strong{display:block;font-size:17px;line-height:1.4;font-weight:600;color:var(--ink);margin-bottom:12px}
 .clinic-site .product-process figcaption p{font-size:16px;line-height:1.75;margin:0}
 @media(max-width:760px){.clinic-site .product-shot>img{height:210px}.clinic-site .product-system{grid-template-columns:1fr;gap:10px}.clinic-site .product-system .product-shot>img{height:270px}.clinic-site .product-process{grid-template-columns:1fr;gap:20px}.clinic-site .product-process-image{height:200px}}

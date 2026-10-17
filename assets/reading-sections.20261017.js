@@ -24,7 +24,7 @@
   });
   return a;
  });
- bar.append(summary,nav);header.after(bar);document.body.classList.add('reading-ready');
+ bar.append(summary,nav);header.after(bar);document.body.classList.add('reading-ready');document.documentElement.classList.add('reading-document');
  const existing=[...main.querySelectorAll('.case-page-nav a[href^="#"],.ha-page-nav a[href^="#"],.us-page-nav a[href^="#"],.us-area-aside nav a[href^="#"]')];
  let headerHeight=88,scheduled=false,active=-1;
  function update(){

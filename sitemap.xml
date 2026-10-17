@@ -118,6 +118,12 @@
   <url>
     <loc>https://www.kansei.se/hyaluronsyra/</loc>
     <lastmod>2026-10-17</lastmod>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/produkter/ibsa-sinogel.20261017.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/produkter/ibsa-sinovial-hl64.20261017.png</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.kansei.se/injektioner/</loc>
@@ -149,7 +155,19 @@
   </url>
   <url>
     <loc>https://www.kansei.se/prp/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-17</lastmod>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/produkter/arthrex-acp-blodprov.20261017.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/produkter/arthrex-acp-centrifugering.20261017.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/produkter/arthrex-acp-separation.20261017.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/produkter/arthrex-acp-system.20261017.png</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.kansei.se/rehabilitering/</loc>
@@ -775,6 +793,12 @@
   <url>
     <loc>https://www.kansei.se/hyaluronsyra/sinovial-sinogel/</loc>
     <lastmod>2026-10-17</lastmod>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/produkter/ibsa-sinogel.20261017.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/produkter/ibsa-sinovial-hl64.20261017.png</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/loparkna/</loc>

@@ -12,7 +12,7 @@ from case_story_check import STORY_PATHS, check_story
 from bursa_design_check import check_bursa
 from case_context_check import CONTEXT_PATHS, check_context
 
-PATHS = ("/", "/kunskapsbank/kna/svullet-kna/", "/kunskapsbank/axel/ont-i-axeln-pa-natten/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
+PATHS = ("/", "/kunskapsbank/kna/svullet-kna/", "/kunskapsbank/axel/ont-i-axeln-pa-natten/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/", "/hyaluronsyra/sinovial-sinogel/", "/prp/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/knaartros-vad-du-kan-gora/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/", "/blogg/domningar-i-handen-pa-natten/")
 RUNNER_PATH = "/ultraljud/loparkna/"
 ACHILLES_PATH = "/ultraljud/halsena/bilder/"
@@ -370,6 +370,17 @@ def check(base, output):
                         prices = page.locator('#pris')
                         prices.scroll_into_view_if_needed()
                         prices.screenshot(path=str(output / f'knee-prices-{label}.png'), animations='disabled', style='body>header,body>a[href="#main"]{visibility:hidden!important}')
+
+                    if not baseline_only and path in ('/hyaluronsyra/', '/hyaluronsyra/sinovial-sinogel/', '/prp/'):
+                        galleries = page.locator('[data-product-gallery]')
+                        for i in range(galleries.count()):
+                            gallery = galleries.nth(i)
+                            pictures = gallery.locator('img')
+                            for j in range(pictures.count()):
+                                picture = pictures.nth(j)
+                                picture.scroll_into_view_if_needed()
+                                page.wait_for_function("img => img.complete && img.naturalWidth > 0", arg=picture.element_handle(), timeout=15000)
+                            gallery.screenshot(path=str(output / f'product-gallery-{path.strip("/").replace("/", "-")}-{i}-{label}.png'), animations='disabled', style='body>header,body>a[href="#main"]{visibility:hidden!important}')
 
                     slug = path.strip("/").replace("/", "-") or "home"
                     page.screenshot(path=str(output / f"{slug}-{label}.png"), full_page=False, animations="disabled")

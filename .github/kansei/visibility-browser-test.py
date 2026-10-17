@@ -85,7 +85,7 @@ with sync_playwright() as pw:
     p.wait_for_function("(window.dataLayer||[]).some(x=>x[0]==='event')")
     assert events(p,'page_view')[0][2]['referral_group']=='unknown'
     c.close();record('Expired source group is not reused')
-    for width,label in [(390,'mobile'),(1280,'desktop')]:
+    for width,label in [(320,'compact'),(390,'mobile'),(1280,'desktop')]:
         c,p,_=setup(browser,{'width':width,'height':900})
         for path,name in [('/','home'),('/naprapati/','naprapati'),('/ultraljud/','ultraljud'),('/cookie/','cookie')]:
             p.goto(ORIGIN+path)
@@ -96,6 +96,20 @@ with sync_playwright() as pw:
             width_now=p.evaluate('document.documentElement.scrollWidth')
             assert width_now<=width+2,(path,label,width_now,width)
             p.screenshot(path=str(OUT/f'{name}-{label}.png'))
+            footer=p.locator('.footer-utilities')
+            assert footer.locator('a[href="https://www.instagram.com/kansei.se/"]').count()==1
+            assert footer.locator('a[href="https://www.facebook.com/kanseirehabcenter/"]').count()==1
+            settings=footer.locator('.kansei-statistics-settings')
+            assert settings.count()==1
+            footer.scroll_into_view_if_needed()
+            footer.screenshot(path=str(OUT/f'footer-{name}-{label}.png'))
+            if name=='home':
+                settings.focus()
+                p.keyboard.press('Enter')
+                assert p.locator('.kansei-statistics').is_visible()
+                assert p.locator('[data-statistics="no"]').evaluate('el=>el===document.activeElement')
+                p.locator('[data-statistics="no"]').click()
+                assert settings.evaluate('el=>el===document.activeElement')
             if name=='cookie':
                 p.locator('#statistik-kallgrupp').screenshot(path=str(OUT/f'cookie-source-{label}.png'))
         p.goto(ORIGIN+'/naprapati/')

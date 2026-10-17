@@ -19,7 +19,7 @@ def get(path):
 
 def run(notify=False):
     verified=[]
-    for path in PATHS+['/assets/analytics.20261016.js']:
+    for path in PATHS+['/assets/analytics.20261017.js']:
         local=ROOT/path.lstrip('/')
         if path.endswith('/'):local=local/'index.html'
         expected=local.read_bytes()

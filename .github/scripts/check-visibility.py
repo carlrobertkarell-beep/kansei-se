@@ -39,7 +39,7 @@ def check():
         text=path.read_text();s=Scan(text)
         if 'kansei-ga4' not in s.metas:continue
         checked+=1
-        assert s.assets.count('/assets/analytics.20261016.js')==1, f'Incorrect analytics inclusion: {path}'
+        assert s.assets.count('/assets/analytics.20261017.js')==1, f'Incorrect analytics inclusion: {path}'
         assert not any('analytics.20261009' in a for a in s.assets), f'Old analytics active: {path}'
         assert s.metas['kansei-ga4']=='G-F1EVW66L9S'
         assert s.h1==1, f'Expected one H1: {path}'

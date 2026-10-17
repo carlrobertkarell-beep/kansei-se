@@ -60,6 +60,11 @@ jobs:
               python3 site/.github/scripts/check-seo.py --live
             fi
           fi
+      - name: Consent controls and footer layout
+        run: |
+          python3 site/.github/kansei/visibility-browser-test.py
+          mkdir -p reports/footer
+          cp /tmp/kansei-visibility-artifacts/*.png /tmp/kansei-visibility-artifacts/checks.json reports/footer/
       - name: Baseline screenshots for review
         if: github.event_name == 'pull_request'
         run: |

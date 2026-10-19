@@ -45,7 +45,7 @@
 
 /* Speech captions remain readable at the displayed player size. */
 .film-player::cue{color:#fff;background-color:rgba(7,22,31,.88);font-family:Roboto,Arial,sans-serif;font-size:clamp(18px,2.1vw,30px);font-weight:500;line-height:1.35;text-shadow:0 1px 2px #000}
-.film-live-captions{box-sizing:border-box;display:grid;place-items:center;min-height:calc(2.9em + 20px);margin:0;padding:10px 14px;background:#102636;color:#fff;border-radius:0 0 6px 6px;font-family:Roboto,Arial,sans-serif;font-size:clamp(17px,4.62vw,19px);font-weight:500;line-height:1.45;text-align:center;overflow-wrap:break-word}
+.film-live-captions{box-sizing:border-box;display:grid;place-items:center;min-height:calc(2.9em + 20px);margin:0;padding:10px 14px;background:#102636;color:#fff;border-radius:0 0 6px 6px;font-family:Roboto,Arial,sans-serif;font-size:clamp(17px,4.62vw,19px);font-weight:500;line-height:1.45;text-align:center;text-wrap:balance;overflow-wrap:break-word}
 .film-live-captions[hidden]{display:none!important}
 .film-player.film-captions-outside{border-bottom-left-radius:0;border-bottom-right-radius:0}
 .film-player.film-captions-outside::cue{color:transparent;background-color:transparent;text-shadow:none}

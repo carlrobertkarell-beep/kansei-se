@@ -16,7 +16,8 @@ from film_caption_check import FILM_PATHS, check_film_captions
 
 PATHS = ("/", "/injektioner/", "/blogg/prp-eller-hyaluronsyra-vid-knaartros/", "/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/", "/kunskapsbank/kna/svullet-kna/", "/kunskapsbank/axel/ont-i-axeln-pa-natten/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/", "/hyaluronsyra/sinovial-sinogel/", "/prp/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/knaartros-vad-du-kan-gora/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/", "/blogg/domningar-i-handen-pa-natten/")
-KNOWLEDGE_PATHS += ("/fragor-och-svar/", "/blogg/ont-i-axeln-nar-du-lyfter-armen/", "/ultraljud/underben/", "/ultraljud/hoft-ljumske/", "/ultraljud/hand-handled/", "/ultraljud/armbage/", "/ultraljud/halsena/", "/ultraljud/overarm/", "/ultraljud/underarm/", "/ultraljud/lar-muskulatur/")
+KNOWLEDGE_PATHS += ("/blogg/ont-i-axeln-nar-du-lyfter-armen/",)
+CONTENT_PATHS = ("/fragor-och-svar/", "/ultraljud/underben/", "/ultraljud/hoft-ljumske/", "/ultraljud/hand-handled/", "/ultraljud/armbage/", "/ultraljud/halsena/", "/ultraljud/overarm/", "/ultraljud/underarm/", "/ultraljud/lar-muskulatur/")
 RUNNER_PATH = "/ultraljud/loparkna/"
 ACHILLES_PATH = "/ultraljud/halsena/bilder/"
 ELBOW_PATH = "/ultraljud/tennisarmbage/bilder/"
@@ -42,7 +43,7 @@ def check(base, output):
                 else:
                     req.abort()
             context.route("**/*", route)
-            paths = tuple(dict.fromkeys(PATHS + FILM_PATHS + CASE_PATHS + (() if baseline_only else KNOWLEDGE_PATHS + (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))))
+            paths = tuple(dict.fromkeys(PATHS + FILM_PATHS + CASE_PATHS + (() if baseline_only else KNOWLEDGE_PATHS + CONTENT_PATHS + (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))))
             if label == 'compact':
                 paths = ('/', '/ultraljud/', '/ultraljud/axel/', '/hyaluronsyra/', '/injektioner/', '/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/blogg/prp-eller-hyaluronsyra-vid-knaartros/', '/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/') + FILM_PATHS[1:] + CASE_PATHS + (() if baseline_only else (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))
             model = None

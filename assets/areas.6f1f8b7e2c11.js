@@ -21,9 +21,9 @@ window.KanseiAreas = Object.freeze({
     imaging: 'Vid vissa axelbesvär är en riktad ultraljudsundersökning ett lämpligt första besök. Vid tydlig stelhet eller när besvären är svåra att beskriva börjar vi i stället med en klinisk naprapatisk bedömning.',
     patterns: [
       ['lifting', 'Ont när jag lyfter armen', 'Till exempel över axelhöjd.', '/blogg/ont-i-axeln-nar-du-lyfter-armen/'],
-      ['night', 'Värk på natten', 'Eller svårt att ligga på axeln.', '/blogg/ont-i-axeln-impingement-eller-nagot-annat/'],
+      ['night', 'Värk på natten', 'Eller svårt att ligga på axeln.', '/kunskapsbank/axel/ont-i-axeln-pa-natten/'],
       ['stiff', 'Axeln har blivit stel', 'Jag kommer inte lika långt i rörelsen.', '/blogg/frusen-skuldra-faser-och-behandling/'],
-      ['rehab', 'Besvär trots rehabilitering', 'Jag vill få en ny bedömning.', '/blogg/ont-i-axeln-impingement-eller-nagot-annat/'],
+      ['rehab', 'Besvär trots rehabilitering', 'Jag vill få en ny bedömning.', '/blogg/ont-i-axeln-nar-du-lyfter-armen/'],
       ['injury', 'Plötslig svaghet efter en skada', 'Till exempel svårt att lyfta armen efter ett fall.', null, true]
     ]
   },

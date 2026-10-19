@@ -8,17 +8,14 @@
     <loc>https://www.kansei.se/akupunktur/</loc>
     <lastmod>2026-09-16</lastmod>
   </url>
-  <url>
-    <loc>https://www.kansei.se/blogg/</loc>
-    <lastmod>2026-10-16</lastmod>
-  </url>
+
   <url>
     <loc>https://www.kansei.se/blogg/benhinneinflammation-loparens-vanligaste-stopp/</loc>
     <lastmod>2026-09-16</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/diskbrack-symtom-forlopp-behandling/</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/frusen-skuldra-faser-och-behandling/</loc>
@@ -34,7 +31,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/ischias-nar-ar-det-brattom/</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/kalkaxel-sa-behandlas-den/</loc>
@@ -65,16 +62,13 @@
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/nacksparr-vad-gor-jag-nu/</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/naprapat-fysioterapeut-kiropraktor-eller-ortoped/</loc>
     <lastmod>2026-10-19T18:49:23+02:00</lastmod>
   </url>
-  <url>
-    <loc>https://www.kansei.se/blogg/ont-i-axeln-impingement-eller-nagot-annat/</loc>
-    <lastmod>2026-10-04</lastmod>
-  </url>
+
   <url>
     <loc>https://www.kansei.se/blogg/ont-i-hoften-artros-trokanterit-eller-rygg/</loc>
     <lastmod>2026-10-10</lastmod>
@@ -93,7 +87,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/ryggskott-forsta-48-timmarna/</loc>
-    <lastmod>2026-10-19T18:49:23+02:00</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/sa-gar-en-prp-behandling-till/</loc>
@@ -113,11 +107,11 @@
   </url>
   <url>
     <loc>https://www.kansei.se/fragor-och-svar/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/hyaluronsyra/</loc>
-    <lastmod>2026-10-19T18:17:11+02:00</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/produkter/ibsa-sinogel.20261017.png</image:loc>
     </image:image>
@@ -134,7 +128,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/injektioner/</loc>
-    <lastmod>2026-10-19T18:49:23+02:00</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/kontakt/</loc>
@@ -146,7 +140,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/naprapati/</loc>
-    <lastmod>2026-10-19T18:49:23+02:00</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/om-oss/</loc>
@@ -162,7 +156,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/prp/</loc>
-    <lastmod>2026-10-19T18:49:23+02:00</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/produkter/arthrex-acp-blodprov.20261017.png</image:loc>
     </image:image>
@@ -204,11 +198,11 @@
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/hur-valjer-du-ratt-naprapat/</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/ont-i-axeln-nar-du-lyfter-armen/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/domningar-i-handen-pa-natten/</loc>
@@ -223,7 +217,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/vad-hander-vid-en-ultraljudsundersokning/</loc>
@@ -250,11 +244,11 @@
   </url>
   <url>
     <loc>https://www.kansei.se/kunskapsbank/axel/rotatorkuffbesvar/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/kunskapsbank/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/kunskapsbank/kna/</loc>
@@ -283,27 +277,27 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/overarm/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/armbage/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/underarm/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/hand-handled/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/hoft-ljumske/</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/lar-muskulatur/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/kna/</loc>
@@ -379,11 +373,11 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/underben/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/fot-fotled/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/langvarig-landryggssmarta/</loc>
@@ -507,7 +501,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/svullet-kna/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/kna/ledvatska-ultraljud.webp</image:loc>
     </image:image>
@@ -518,7 +512,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/halsena/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/tennisarmbage/</loc>
@@ -637,46 +631,25 @@
       <image:loc>https://www.kansei.se/bilder/ultraljud/kna/ledvatska-ultraljud.webp</image:loc>
     </image:image>
   </url>
-  <url>
-    <loc>https://www.kansei.se/ultraljud/achillesruptur/</loc>
-    <lastmod>2026-10-04</lastmod>
-  </url>
+
   <url>
     <loc>https://www.kansei.se/ultraljud/fotledsstukning/</loc>
     <lastmod>2026-10-05</lastmod>
   </url>
-  <url>
-    <loc>https://www.kansei.se/ultraljud/peroneussenor/</loc>
-    <lastmod>2026-10-04</lastmod>
-  </url>
+
   <url>
     <loc>https://www.kansei.se/ultraljud/ulnarisnerv/</loc>
     <lastmod>2026-10-05</lastmod>
   </url>
-  <url>
-    <loc>https://www.kansei.se/ultraljud/distal-biceps/</loc>
-    <lastmod>2026-10-04</lastmod>
-  </url>
+
   <url>
     <loc>https://www.kansei.se/ultraljud/ganglion-handled/</loc>
     <lastmod>2026-10-05</lastmod>
   </url>
-  <url>
-    <loc>https://www.kansei.se/ultraljud/senskideinflammation-handled/</loc>
-    <lastmod>2026-10-04</lastmod>
-  </url>
-  <url>
-    <loc>https://www.kansei.se/ultraljud/iliopsoas/</loc>
-    <lastmod>2026-10-04</lastmod>
-  </url>
-  <url>
-    <loc>https://www.kansei.se/ultraljud/hamstringsfaste/</loc>
-    <lastmod>2026-10-04</lastmod>
-  </url>
-  <url>
-    <loc>https://www.kansei.se/ultraljud/vadmuskel/</loc>
-    <lastmod>2026-10-04</lastmod>
-  </url>
+
+
+
+
   <url>
     <loc>https://www.kansei.se/ultraljud/axel/bicepstendinopati/</loc>
     <lastmod>2026-10-15</lastmod>
@@ -805,7 +778,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/hyaluronsyra/sinovial-sinogel/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/produkter/ibsa-sinogel.20261017.png</image:loc>
     </image:image>

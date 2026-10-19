@@ -117,13 +117,20 @@
   </url>
   <url>
     <loc>https://www.kansei.se/hyaluronsyra/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/produkter/ibsa-sinogel.20261017.png</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/produkter/ibsa-sinovial-hl64.20261017.png</image:loc>
     </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://www.kansei.se/bilder/filmer/hyaluroninjektion-stockholm.20261019.webp</video:thumbnail_loc>
+      <video:title>Hyaluroninjektion i Stockholm – så går det till</video:title>
+      <video:description>Carl-Robert Kårell på Kansei vid Odenplan förklarar hyaluroninjektion: preparaten, ledhålan på en knämodell, bedömning och ultraljudsvägledning. Se filmen med svenska undertexter och läs hela textversionen.</video:description>
+      <video:content_loc>https://www.kansei.se/assets/video/hyaluroninjektion-stockholm.20261019.mp4</video:content_loc>
+      <video:publication_date>2026-10-19T11:41:39+02:00</video:publication_date>
+    </video:video>
   </url>
   <url>
     <loc>https://www.kansei.se/injektioner/</loc>
@@ -918,6 +925,17 @@
       <video:description>SMI-film i tvärsnitt med blodflödessignaler i och kring senområdet, bedömda som neovaskularisering av undersökaren. Filmen och längdsnittet visar olika snitt. Anatomilagrets små röda kärlförgreningar är en pedagogisk illustration av kärlfyndet.</video:description>
       <video:content_loc>https://www.kansei.se/bilder/ultraljud/halsena/doppler-smi.20261016.mp4</video:content_loc>
       <video:publication_date>2026-10-15T12:00:00+02:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.kansei.se/hyaluronsyra/film/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <video:video>
+      <video:thumbnail_loc>https://www.kansei.se/bilder/filmer/hyaluroninjektion-stockholm.20261019.webp</video:thumbnail_loc>
+      <video:title>Hyaluroninjektion i Stockholm – så går det till</video:title>
+      <video:description>Carl-Robert Kårell på Kansei vid Odenplan förklarar hyaluroninjektion: preparaten, ledhålan på en knämodell, bedömning och ultraljudsvägledning. Se filmen med svenska undertexter och läs hela textversionen.</video:description>
+      <video:content_loc>https://www.kansei.se/assets/video/hyaluroninjektion-stockholm.20261019.mp4</video:content_loc>
+      <video:publication_date>2026-10-19T11:41:39+02:00</video:publication_date>
     </video:video>
   </url>
 </urlset>

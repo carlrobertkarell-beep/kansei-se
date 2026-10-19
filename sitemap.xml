@@ -938,4 +938,15 @@
       <video:publication_date>2026-10-19T11:41:39+02:00</video:publication_date>
     </video:video>
   </url>
+  <url>
+    <loc>https://www.kansei.se/hyaluronsyra/ultraljudsvagledd-injektion/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <video:video>
+      <video:thumbnail_loc>https://www.kansei.se/bilder/filmer/ultraljudsvagledd-hyaluroninjektion.20261019.webp</video:thumbnail_loc>
+      <video:title>Ultraljudsvägledd hyaluroninjektion i Stockholm</video:title>
+      <video:description>Se hur en ultraljudsvägledd hyaluroninjektion går till på Kansei vid Odenplan i Stockholm: bedömning, förberedelser, anatomi och uppföljning.</video:description>
+      <video:content_loc>https://www.kansei.se/assets/video/ultraljudsvagledd-hyaluroninjektion.20261019.mp4</video:content_loc>
+      <video:publication_date>2026-10-19T16:01:28+02:00</video:publication_date>
+    </video:video>
+  </url>
 </urlset>

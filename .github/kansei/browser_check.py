@@ -12,6 +12,7 @@ from case_story_check import STORY_PATHS, check_story
 from bursa_design_check import check_bursa
 from case_context_check import CONTEXT_PATHS, check_context
 from reading_check import TARGETS as READING_PATHS, check_reading
+from film_caption_check import FILM_PATHS, check_film_captions
 
 PATHS = ("/", "/injektioner/", "/blogg/prp-eller-hyaluronsyra-vid-knaartros/", "/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/", "/kunskapsbank/kna/svullet-kna/", "/kunskapsbank/axel/ont-i-axeln-pa-natten/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/", "/hyaluronsyra/sinovial-sinogel/", "/prp/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/knaartros-vad-du-kan-gora/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/", "/blogg/domningar-i-handen-pa-natten/")
@@ -40,9 +41,9 @@ def check(base, output):
                 else:
                     req.abort()
             context.route("**/*", route)
-            paths = tuple(dict.fromkeys(PATHS + CASE_PATHS + (() if baseline_only else KNOWLEDGE_PATHS + (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))))
+            paths = tuple(dict.fromkeys(PATHS + FILM_PATHS + CASE_PATHS + (() if baseline_only else KNOWLEDGE_PATHS + (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))))
             if label == 'compact':
-                paths = ('/', '/ultraljud/', '/ultraljud/axel/', '/hyaluronsyra/', '/injektioner/', '/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/blogg/prp-eller-hyaluronsyra-vid-knaartros/', '/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/') + CASE_PATHS + (() if baseline_only else (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))
+                paths = ('/', '/ultraljud/', '/ultraljud/axel/', '/hyaluronsyra/', '/injektioner/', '/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/blogg/prp-eller-hyaluronsyra-vid-knaartros/', '/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/') + FILM_PATHS[1:] + CASE_PATHS + (() if baseline_only else (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))
             model = None
             for path in paths:
                 page = context.new_page()
@@ -77,6 +78,9 @@ def check(base, output):
 
                     if not baseline_only and path in READING_PATHS:
                         row['reading_orientation']=check_reading(page,path,output,label)
+
+                    if not baseline_only and path in FILM_PATHS:
+                        row['film_captions']=check_film_captions(page,path,output,label)
 
                     if not baseline_only and path in ('/ultraljud/', '/ultraljud/axel/', '/hyaluronsyra/'):
                         page.locator('.site-header').screenshot(path=str(output/f'context-header-{path.strip("/").replace("/","-")}-{label}.png'), animations='disabled')

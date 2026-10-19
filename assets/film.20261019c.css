@@ -1,0 +1,54 @@
+/* Film player and text follow the clinic's existing colour and type tokens. */
+.film-figure{margin:0;min-width:0}
+.film-player{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#102636;border-radius:6px}
+.film-figure figcaption{font-size:13px;line-height:1.6;color:var(--muted);margin-top:12px}
+.film-feature-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(28px,4vw,56px);align-items:center}
+.hyaluron-page .film-feature{padding-bottom:0}
+.film-watch-top{padding-block:28px 0}
+.hyaluron-page .film-watch h1{font-size:clamp(34px,3.8vw,52px);max-width:26ch;margin-bottom:24px}
+.film-watch .film-watch-top>.eyebrow{margin-bottom:10px}
+.film-watch>.wrap{max-width:1120px}
+.hyaluron-page .film-watch .film-byline{font-size:14px;margin-top:24px;max-width:82ch}
+.film-watch-top>p:last-child{max-width:82ch}
+.film-chapters{padding-block:28px 38px}
+.hyaluron-page .film-chapters h2{font-size:24px;margin-bottom:18px}
+.film-chapters ol{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+.film-chapters li{border-top:1px solid var(--line);min-width:0}
+.hyaluron-page .ha-main .film-chapters a{display:flex;align-items:baseline;gap:16px;padding:14px 0;min-height:48px;text-decoration:none;font-size:15px}
+.film-chapters a span{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--teal);font-weight:500}
+.film-chapters a:hover{text-decoration:underline!important;text-underline-offset:4px}
+.film-chapters a:focus-visible,.film-player:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+.film-transcript{padding-block:38px 56px;border-top:1px solid var(--line)}
+.film-transcript>div{max-width:78ch}
+.hyaluron-page .film-transcript p{font-size:17px}
+.film-transcript .film-context{border-top:1px solid var(--line);padding-top:24px;margin-top:28px}
+.film-actions{display:flex;align-items:center;flex-wrap:wrap;gap:22px 32px}
+.film-next p{max-width:72ch}
+@media(max-width:860px){
+ .film-feature-grid{grid-template-columns:1fr;gap:20px}
+ .film-watch-top{padding-top:24px}
+ .hyaluron-page .film-watch h1{font-size:clamp(30px,7.8vw,42px);max-width:24ch}
+ .film-chapters ol{grid-template-columns:1fr}
+ .film-chapters{padding-block:24px 28px}
+ .film-transcript{padding-block:28px 38px}
+ .film-actions{align-items:flex-start;flex-direction:column;gap:20px}
+}
+
+.hyaluron-page .ha-main .film-related-link{display:grid;grid-template-columns:112px minmax(0,1fr);align-items:center;gap:16px;border-top:1px solid var(--line);padding-top:20px;margin-top:24px;text-decoration:none}
+.film-related-link img{display:block;width:112px;height:63px;object-fit:cover;border-radius:4px}
+.film-related-link strong,.film-related-link small{display:block}
+.film-related-link strong{font-size:15px;line-height:1.45;font-weight:500;color:var(--ink,#102636)}
+.film-related-link small{margin-top:5px;font-size:12px;line-height:1.45;color:var(--muted)}
+.film-related-link:hover strong{text-decoration:underline;text-underline-offset:4px}
+.film-related-link:focus-visible{outline:3px solid var(--teal);outline-offset:5px}
+@media(max-width:420px){.hyaluron-page .ha-main .film-related-link{grid-template-columns:88px minmax(0,1fr);gap:12px}.film-related-link img{width:88px;height:50px}}
+
+/* Speech captions remain readable at the displayed player size. */
+.film-player::cue{color:#fff;background-color:rgba(7,22,31,.88);font-family:Roboto,Arial,sans-serif;font-size:clamp(18px,2.1vw,30px);font-weight:500;line-height:1.35;text-shadow:0 1px 2px #000}
+.film-live-captions{box-sizing:border-box;display:grid;place-items:center;min-height:calc(2.9em + 20px);margin:0;padding:10px 14px;background:#102636;color:#fff;border-radius:0 0 6px 6px;font-family:Roboto,Arial,sans-serif;font-size:clamp(17px,4.62vw,19px);font-weight:500;line-height:1.45;text-align:center;text-wrap:balance;overflow-wrap:break-word}
+.film-live-captions[hidden]{display:none!important}
+.film-player.film-captions-outside{border-bottom-left-radius:0;border-bottom-right-radius:0}
+.film-player.film-captions-outside::cue{color:transparent;background-color:transparent;text-shadow:none}
+.film-player:fullscreen::cue{color:#fff;background-color:rgba(7,22,31,.88);font-size:clamp(22px,3vw,44px);text-shadow:0 1px 2px #000}
+.film-player:-webkit-full-screen::cue{color:#fff;background-color:rgba(7,22,31,.88);font-size:clamp(22px,3vw,44px);text-shadow:0 1px 2px #000}
+@media(max-width:359px){.film-live-captions{min-height:calc(4.35em + 20px)}}

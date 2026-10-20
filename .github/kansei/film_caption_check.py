@@ -1,11 +1,14 @@
 """Playback and readable-caption checks for the shared film player."""
 from __future__ import annotations
 
-FILM_PATHS = (
-    '/hyaluronsyra/',
-    '/hyaluronsyra/film/',
-    '/hyaluronsyra/ultraljudsvagledd-injektion/',
-)
+FILM_DURATIONS = {
+    '/hyaluronsyra/': 67.1,
+    '/hyaluronsyra/film/': 67.1,
+    '/hyaluronsyra/ultraljudsvagledd-injektion/': 70,
+    '/hyaluronsyra/sinovial-sinogel/': 79.166667,
+    '/hyaluronsyra/sinovial-sinogel/film/': 79.166667,
+}
+FILM_PATHS = tuple(FILM_DURATIONS)
 
 
 def check_film_captions(page, path, output, viewport):
@@ -19,7 +22,7 @@ def check_film_captions(page, path, output, viewport):
         return v.readyState >= 2 && t.readyState === 2 &&
             t.track.mode === 'showing' && t.track.cues.length > 0;
     }""", timeout=20000)
-    expected_duration = 70 if 'ultraljudsvagledd-injektion' in path else 67.1
+    expected_duration = FILM_DURATIONS[path]
     duration = video.evaluate('(v) => v.duration')
     if abs(duration - expected_duration) > .1:
         raise AssertionError('Unexpected film duration')

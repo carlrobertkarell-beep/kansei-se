@@ -21,3 +21,16 @@ Add each new film page to `FILM_PATHS` in
 `.github/kansei/film_caption_check.py` and its expected duration. Browser checks
 cover playback, synchronized captions, CC off/on, small-screen layout and
 fullscreen at 320, 390 and 1440 px widths.
+
+## Light and colour
+
+The October 20 web editions use a gentle lift in shadows and midtones, with black
+and white anchored. Match each insert to the talking sections rather than giving
+every camera source the same exposure change. Keep natural skin, white surfaces
+and navy clothing; avoid a yellow skin cast or a washed-out picture. Ultrasound
+detail and the approved anatomy artwork keep their existing contrast.
+
+`.github/scripts/grade-hyaluron-films.py` records the exact scene-specific curves
+for films 1 and 3. It starts from the clean October 19 web editions and copies
+the audio without re-encoding. New films should be matched to this visual tone
+before captions and export.

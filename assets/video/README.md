@@ -34,3 +34,12 @@ detail and the approved anatomy artwork keep their existing contrast.
 for films 1 and 3. It starts from the clean October 19 web editions and copies
 the audio without re-encoding. New films should be matched to this visual tone
 before captions and export.
+
+## Film 7: Sinovial and Sinogel
+
+The 79.166667-second October 20 web edition uses the approved film-7 cut,
+product inserts, price graphic and original recorded voice. Its delivery copy
+is encoded as H.264 with the audio copied unchanged. Swedish speech captions
+and chapter timings are separate VTT files; the standalone review copy has
+burned captions. The price graphic is dated October 20, 2026. Update that
+graphic and the matching caption/page metadata together when prices change.

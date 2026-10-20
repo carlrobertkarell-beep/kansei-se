@@ -30,6 +30,15 @@ def check(base, output):
     if base not in ("https://www.kansei.se", "http://127.0.0.1:4173", "http://127.0.0.1:4174"):
         raise ValueError("Unapproved test origin")
     baseline_only = base == "http://127.0.0.1:4174"
+    film_paths = FILM_PATHS
+    if baseline_only:
+        # A new watch page has no screenshot in the older, trusted checkout.
+        # Candidate and live checks still require every configured film page.
+        baseline_root = Path(__file__).resolve().parents[3] / 'baseline'
+        if not baseline_root.is_dir():
+            raise ValueError('Trusted baseline checkout is missing')
+        film_paths = tuple(path for path in FILM_PATHS
+                           if (baseline_root / path.strip('/') / 'index.html').is_file())
     output.mkdir(parents=True, exist_ok=True)
     records, errors = [], []
     with sync_playwright() as pw:
@@ -43,9 +52,9 @@ def check(base, output):
                 else:
                     req.abort()
             context.route("**/*", route)
-            paths = tuple(dict.fromkeys(PATHS + FILM_PATHS + CASE_PATHS + (() if baseline_only else KNOWLEDGE_PATHS + CONTENT_PATHS + (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))))
+            paths = tuple(dict.fromkeys(PATHS + film_paths + CASE_PATHS + (() if baseline_only else KNOWLEDGE_PATHS + CONTENT_PATHS + (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))))
             if label == 'compact':
-                paths = ('/', '/ultraljud/', '/ultraljud/axel/', '/hyaluronsyra/', '/injektioner/', '/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/blogg/prp-eller-hyaluronsyra-vid-knaartros/', '/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/') + FILM_PATHS[1:] + CASE_PATHS + (() if baseline_only else (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))
+                paths = ('/', '/ultraljud/', '/ultraljud/axel/', '/hyaluronsyra/', '/injektioner/', '/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/blogg/prp-eller-hyaluronsyra-vid-knaartros/', '/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/') + film_paths[1:] + CASE_PATHS + (() if baseline_only else (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))
             model = None
             for path in paths:
                 page = context.new_page()

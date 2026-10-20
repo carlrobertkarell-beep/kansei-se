@@ -14,7 +14,7 @@ window.KANSEI.inkorg = {
 };
 
 // Omdömen: ändra här när antalet växer, alla sidor uppdateras.
-window.KANSEI.omdomen = { antal: 301, betyg: "4,8" };
+window.KANSEI.omdomen = { antal: 321, betyg: "4,8" };
 document.addEventListener('DOMContentLoaded', function(){
   var o = window.KANSEI.omdomen || {};
   document.querySelectorAll('[data-omd-antal]').forEach(function(e){ e.textContent = o.antal; });

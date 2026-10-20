@@ -8,7 +8,6 @@
     <loc>https://www.kansei.se/akupunktur/</loc>
     <lastmod>2026-09-16</lastmod>
   </url>
-
   <url>
     <loc>https://www.kansei.se/blogg/benhinneinflammation-loparens-vanligaste-stopp/</loc>
     <lastmod>2026-09-16</lastmod>
@@ -68,7 +67,6 @@
     <loc>https://www.kansei.se/blogg/naprapat-fysioterapeut-kiropraktor-eller-ortoped/</loc>
     <lastmod>2026-10-19T18:49:23+02:00</lastmod>
   </url>
-
   <url>
     <loc>https://www.kansei.se/blogg/ont-i-hoften-artros-trokanterit-eller-rygg/</loc>
     <lastmod>2026-10-10</lastmod>
@@ -111,7 +109,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/hyaluronsyra/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20T07:56:19+02:00</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/produkter/ibsa-sinogel.20261017.png</image:loc>
     </image:image>
@@ -119,10 +117,10 @@
       <image:loc>https://www.kansei.se/bilder/produkter/ibsa-sinovial-hl64.20261017.png</image:loc>
     </image:image>
     <video:video>
-      <video:thumbnail_loc>https://www.kansei.se/bilder/filmer/hyaluroninjektion-stockholm.20261019c.webp</video:thumbnail_loc>
+      <video:thumbnail_loc>https://www.kansei.se/bilder/filmer/hyaluroninjektion-stockholm.20261020.webp</video:thumbnail_loc>
       <video:title>Hyaluroninjektion i Stockholm – så går det till</video:title>
       <video:description>Carl-Robert Kårell på Kansei vid Odenplan förklarar hyaluroninjektion: preparaten, ledhålan på en knämodell, bedömning och ultraljudsvägledning. Se filmen med svenska undertexter och läs hela textversionen.</video:description>
-      <video:content_loc>https://www.kansei.se/assets/video/hyaluroninjektion-stockholm.20261019c.mp4</video:content_loc>
+      <video:content_loc>https://www.kansei.se/assets/video/hyaluroninjektion-stockholm.20261020.mp4</video:content_loc>
       <video:publication_date>2026-10-19T11:41:39+02:00</video:publication_date>
     </video:video>
   </url>
@@ -631,25 +629,18 @@
       <image:loc>https://www.kansei.se/bilder/ultraljud/kna/ledvatska-ultraljud.webp</image:loc>
     </image:image>
   </url>
-
   <url>
     <loc>https://www.kansei.se/ultraljud/fotledsstukning/</loc>
     <lastmod>2026-10-05</lastmod>
   </url>
-
   <url>
     <loc>https://www.kansei.se/ultraljud/ulnarisnerv/</loc>
     <lastmod>2026-10-05</lastmod>
   </url>
-
   <url>
     <loc>https://www.kansei.se/ultraljud/ganglion-handled/</loc>
     <lastmod>2026-10-05</lastmod>
   </url>
-
-
-
-
   <url>
     <loc>https://www.kansei.se/ultraljud/axel/bicepstendinopati/</loc>
     <lastmod>2026-10-15</lastmod>
@@ -902,23 +893,23 @@
   </url>
   <url>
     <loc>https://www.kansei.se/hyaluronsyra/film/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20T07:56:19+02:00</lastmod>
     <video:video>
-      <video:thumbnail_loc>https://www.kansei.se/bilder/filmer/hyaluroninjektion-stockholm.20261019c.webp</video:thumbnail_loc>
+      <video:thumbnail_loc>https://www.kansei.se/bilder/filmer/hyaluroninjektion-stockholm.20261020.webp</video:thumbnail_loc>
       <video:title>Hyaluroninjektion i Stockholm – så går det till</video:title>
       <video:description>Carl-Robert Kårell på Kansei vid Odenplan förklarar hyaluroninjektion: preparaten, ledhålan på en knämodell, bedömning och ultraljudsvägledning. Se filmen med svenska undertexter och läs hela textversionen.</video:description>
-      <video:content_loc>https://www.kansei.se/assets/video/hyaluroninjektion-stockholm.20261019c.mp4</video:content_loc>
+      <video:content_loc>https://www.kansei.se/assets/video/hyaluroninjektion-stockholm.20261020.mp4</video:content_loc>
       <video:publication_date>2026-10-19T11:41:39+02:00</video:publication_date>
     </video:video>
   </url>
   <url>
     <loc>https://www.kansei.se/hyaluronsyra/ultraljudsvagledd-injektion/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20T07:56:19+02:00</lastmod>
     <video:video>
-      <video:thumbnail_loc>https://www.kansei.se/bilder/filmer/ultraljudsvagledd-hyaluroninjektion.20261019c.webp</video:thumbnail_loc>
+      <video:thumbnail_loc>https://www.kansei.se/bilder/filmer/ultraljudsvagledd-hyaluroninjektion.20261020.webp</video:thumbnail_loc>
       <video:title>Ultraljudsvägledd hyaluroninjektion i Stockholm</video:title>
       <video:description>Se hur en ultraljudsvägledd hyaluroninjektion går till på Kansei vid Odenplan i Stockholm: bedömning, förberedelser, anatomi och uppföljning.</video:description>
-      <video:content_loc>https://www.kansei.se/assets/video/ultraljudsvagledd-hyaluroninjektion.20261019c.mp4</video:content_loc>
+      <video:content_loc>https://www.kansei.se/assets/video/ultraljudsvagledd-hyaluroninjektion.20261020.mp4</video:content_loc>
       <video:publication_date>2026-10-19T16:01:28+02:00</video:publication_date>
     </video:video>
   </url>

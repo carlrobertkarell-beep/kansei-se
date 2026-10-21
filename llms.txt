@@ -72,3 +72,5 @@ Medicinsk information på webbplatsen är generell och ersätter inte en individ
 - [Se och förstå ultraljud](https://www.kansei.se/ultraljud/bilder/): Kanseis egna bildexempel, sorterade efter kroppsområde. Originalultraljud, pedagogiska anatomilager och separata fyndmarkeringar för axel, bröstmuskel, armbåge, hand och knä.
 
 - [Hälsena: tendinos, kärlnybildning och rupturer i ultraljudsbilder](https://www.kansei.se/ultraljud/halsena/bilder/): Tre bildvyer med anatomi, fyndmarkeringar och SMI-film.
+
+- [Patientfall: långvarig smärta på höftens utsida](https://www.kansei.se/ultraljud/glutealsenor/bilder/): gluteal tendinos, främre paralabral cysta och varför naprapatisk vård valdes först.

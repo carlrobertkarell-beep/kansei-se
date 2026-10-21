@@ -1,0 +1,24 @@
+/* The shared clinic reader, with the complete registered hip scan canvas. */
+.hip-case .knee-picture{aspect-ratio:1280/960;background:#000}
+.hip-case .knee-anatomy-content{position:absolute;inset:0;width:100%;height:100%}
+.hip-case .knee-anatomy-content>img{position:absolute;inset:0;width:100%;height:100%;margin:0;max-width:none}
+.hip-case .knee-labels{z-index:2;transition:opacity .2s}
+.hip-case .knee-labels text{font:600 34px Arial,sans-serif;fill:#fff;stroke:#13272d;stroke-width:6;paint-order:stroke;stroke-linejoin:round;text-anchor:middle}
+.hip-case .knee-labels .dark-label{fill:#15282b;stroke:#fff4dd;stroke-width:4}
+.hip-case .knee-picture[data-findings=true] .knee-labels{opacity:0}
+.hip-case .knee-findings .finding-region{fill:rgba(255,212,89,.025);stroke:#ffda88;stroke-width:2.6;stroke-dasharray:9 7}
+.hip-case .knee-findings .cyst-region{fill:rgba(255,212,89,.025);stroke:#ffda88;stroke-width:2.6}
+.hip-case .knee-findings .pointer-shadow{fill:none;stroke:#10272d;stroke-width:9}
+.hip-case .knee-findings .pointer{fill:none;stroke:#ffdf94;stroke-width:3.5}
+.hip-case .knee-findings circle{fill:#ffdf94;stroke:#10272d;stroke-width:2}
+.hip-case .knee-findings text{font-size:34px;stroke-width:7;text-anchor:middle}
+.hip-case .hip-case-story{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(230px,.85fr);gap:40px;align-items:start}
+.hip-case .hip-case-story figure{margin:0;background:#000;border-radius:8px;overflow:hidden}
+.hip-case .hip-case-story figure img{display:block;width:100%;height:auto;margin:0}
+.hip-case .hip-case-story figcaption{padding:16px;background:var(--mist);font-size:14px;line-height:1.65;color:var(--muted)}
+.hip-case .hip-case-note{padding:22px 24px;background:var(--mist);border-radius:8px;margin-top:24px}
+.hip-case .hip-case-note h3{font-size:23px;margin-bottom:12px}
+.hip-case .knee-zoom-body .knee-picture{width:1280px;aspect-ratio:1280/960}
+.hip-case .hip-next-links{display:flex;gap:16px 28px;flex-wrap:wrap;margin-top:20px}
+@media(max-width:760px){.hip-case .hip-case-story{grid-template-columns:1fr;gap:24px}.hip-case .knee-tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.hip-case .knee-tab{display:block;padding:10px 7px}.hip-case .knee-tab img{width:100%;height:50px;margin-bottom:8px}.hip-case .knee-tab strong{font-size:13px}.hip-case .hip-case-note{padding:20px}.hip-case .knee-controls{gap:8px}.hip-case .knee-enlarge{padding:10px;min-height:46px}.hip-case .knee-labels text{font-size:38px}.hip-case .knee-findings text{font-size:38px}}
+@media(prefers-reduced-motion:reduce){.hip-case .knee-labels{transition:none}}

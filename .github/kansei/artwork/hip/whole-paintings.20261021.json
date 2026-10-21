@@ -1,0 +1,90 @@
+{
+  "version": "20261021",
+  "canvas": [
+    1280,
+    960
+  ],
+  "method": "Continuous imagegen painting, one global placement, clinician-defined original coordinates. No local warp, mesh or repeated tiles. Originals retained byte-identically; acquisition headers hidden by shared presentation CSS.",
+  "style_references": [
+    "Anatomiskt materialatlas med sex vävnadsskikt.png",
+    "Sex målade vävnadstexturer i rutnät.png",
+    "bilder/ultraljud/bicepssena/langdsnitt-anatomi.webp"
+  ],
+  "views": [
+    {
+      "key": "gmed",
+      "original": "bilder/ultraljud/hoft/gmed.original.jpg",
+      "original_sha256": "bfb44c738e827b15c3920ca3960fc1dd2661a907d3cd0d97c217d748d4e45863",
+      "clinician_guide_uploaded_name": "Gmed anno.jpg",
+      "guide_sha256": "faba65eb9abded9447a45a567ad8a038256192c42d58a5652f18dfab4d6eac31",
+      "painting": ".github/kansei/artwork/hip/gmed.painting.20261021.webp",
+      "painting_sha256": "3916b4bc49023d5ef0698e490659ae9cd5b5901849c6accbff30213861a73d16",
+      "source_scan_bounds": [
+        174,
+        80,
+        1276,
+        1009
+      ],
+      "global_placement": [
+        0.8448275862068966,
+        0,
+        0,
+        0.8396124865446717,
+        27.0,
+        43.83100107642626
+      ],
+      "anatomy": "bilder/ultraljud/hoft/gmed.anatomi.20261021.webp",
+      "anatomy_sha256": "d258c77017c78398410c4ae350c9ed24e14c6ba7cddcf29b826f751781e4badc"
+    },
+    {
+      "key": "gmin",
+      "original": "bilder/ultraljud/hoft/gmin.original.jpg",
+      "original_sha256": "8acece8139a266f97b615dc5fb0d3da5b02a9871f49979bd320d503d12c17c43",
+      "clinician_guide_uploaded_name": "Gmin utan annoteringar.jpg",
+      "guide_sha256": "da0ca7eaa4b4407cf200ec73df88052e18587a0b2f0ebfc602d4122216d8b6bf",
+      "painting": ".github/kansei/artwork/hip/gmin.painting.20261021.webp",
+      "painting_sha256": "381814caddabd0642c08cd812c566d6d1b7603a55cc110ade40631ae686f03ce",
+      "source_scan_bounds": [
+        143,
+        91,
+        1305,
+        1019
+      ],
+      "global_placement": [
+        0.8012048192771084,
+        0,
+        0,
+        0.8405172413793104,
+        59.427710843373504,
+        34.51293103448276
+      ],
+      "anatomy": "bilder/ultraljud/hoft/gmin.anatomi.20261021.webp",
+      "anatomy_sha256": "3d4ff4f3d23fe1dbc92f5d4f191b6b12a4a7498688817121676953d0c03fbabf"
+    },
+    {
+      "key": "paralabral",
+      "original": "bilder/ultraljud/hoft/paralabral.original.jpg",
+      "original_sha256": "76778636563397b552e3eb644e60a1816f236a56ebb2c675cd05b9d455f46cab",
+      "clinician_guide_uploaded_name": "Labrumcysta anno.jpg",
+      "guide_sha256": "e466bc5b5af952cb7663c3981712f65b278aa88588f423af97b277cb9aeee285",
+      "painting": ".github/kansei/artwork/hip/paralabral.painting.20261021.webp",
+      "painting_sha256": "6f5e7a257e676b7c7de3b8785310d65a6c94d65a04e7c2a0d6259dbc2de9dec4",
+      "source_scan_bounds": [
+        157,
+        103,
+        1298,
+        1019
+      ],
+      "global_placement": [
+        0.8159509202453987,
+        0,
+        0,
+        0.851528384279476,
+        45.895705521472394,
+        23.292576419213972
+      ],
+      "anatomy": "bilder/ultraljud/hoft/paralabral.anatomi.20261021.webp",
+      "anatomy_sha256": "e7e95f08f4618abcb06f9cb46e76f40da9c7c094a07000e00127b83c261bd62e"
+    }
+  ]
+}

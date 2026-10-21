@@ -13,6 +13,7 @@ from bursa_design_check import check_bursa
 from case_context_check import CONTEXT_PATHS, check_context
 from reading_check import TARGETS as READING_PATHS, check_reading
 from film_caption_check import FILM_PATHS, check_film_captions
+from hip_design_check import HIP_PATH, check_hip
 
 PATHS = ("/", "/injektioner/", "/blogg/prp-eller-hyaluronsyra-vid-knaartros/", "/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/", "/kunskapsbank/kna/svullet-kna/", "/kunskapsbank/axel/ont-i-axeln-pa-natten/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/", "/hyaluronsyra/sinovial-sinogel/", "/prp/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/knaartros-vad-du-kan-gora/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/", "/blogg/domningar-i-handen-pa-natten/")
@@ -52,9 +53,9 @@ def check(base, output):
                 else:
                     req.abort()
             context.route("**/*", route)
-            paths = tuple(dict.fromkeys(PATHS + film_paths + CASE_PATHS + (() if baseline_only else KNOWLEDGE_PATHS + CONTENT_PATHS + (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))))
+            paths = tuple(dict.fromkeys(PATHS + film_paths + CASE_PATHS + (() if baseline_only else KNOWLEDGE_PATHS + CONTENT_PATHS + (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH, HIP_PATH))))
             if label == 'compact':
-                paths = ('/', '/ultraljud/', '/ultraljud/axel/', '/hyaluronsyra/', '/injektioner/', '/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/blogg/prp-eller-hyaluronsyra-vid-knaartros/', '/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/') + film_paths[1:] + CASE_PATHS + (() if baseline_only else (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH))
+                paths = ('/', '/ultraljud/', '/ultraljud/axel/', '/hyaluronsyra/', '/injektioner/', '/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/blogg/prp-eller-hyaluronsyra-vid-knaartros/', '/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/') + film_paths[1:] + CASE_PATHS + (() if baseline_only else (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH, HIP_PATH))
             model = None
             for path in paths:
                 page = context.new_page()
@@ -111,6 +112,8 @@ def check(base, output):
                             row['ultrasound_design'] = check_hub(page, model)
                         elif path == EXPLORE_PATH:
                             row['image_explorer'] = check_explore(page)
+                        elif path == HIP_PATH:
+                            row['hip_reader'] = check_hip(page, output, label)
 
                     if not baseline_only and path == "/ultraljud/kna/":
                         page.locator('#artros').scroll_into_view_if_needed()

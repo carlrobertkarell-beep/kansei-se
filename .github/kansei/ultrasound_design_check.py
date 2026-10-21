@@ -144,7 +144,8 @@ def check_explore(page):
         ('ont när jag springer på utsidan av knät','/ultraljud/loparkna/'),
         ('knät svullnar efter promenader','/ultraljud/kna/'),
         ('hyaluronsyra',('/ultraljud/hoftled/bilder/','/ultraljud/kna/')),
-        ('Sinogel','/ultraljud/hoftled/bilder/'),
+        ('Sinogel',('/ultraljud/hoftled/bilder/','/ultraljud/kna/')),
+        ('caput','/ultraljud/hoftled/bilder/'),
     ):
         search.fill(phrase)
         visible=entries.locator('[data-atlas-case]').evaluate_all('(els)=>els.filter(e=>!e.closest("[data-atlas-entry]").hidden).map(e=>e.getAttribute("href"))')

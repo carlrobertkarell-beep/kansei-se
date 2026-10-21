@@ -1,0 +1,45 @@
+{
+  "version": "20261021f",
+  "mode": "built-in imagegen",
+  "scope": "AC case 4 views; source-anchored full-frame clean paintings, no burned labels/calipers.",
+  "style_references": [
+    "bilder/ultraljud/ac-led/jamforelse-skadad-anatomi.20261012b.svg",
+    "bilder/ultraljud/ac-led/jamforelse-motsatt-anatomi.20261012b.svg",
+    "bilder/ultraljud/ac-led/ac-led-anatomi.20261012.svg",
+    "bilder/ultraljud/ac-led/mjukdelsplan-anatomi.20261012.svg"
+  ],
+  "views": [
+    {
+      "key": "jamforelse-skadad",
+      "canvas": [
+        1280,
+        830
+      ],
+      "prompt": "Use case: style-transfer. Image1 is the exact native ultrasound canvas1280x830 and controls ALL geometry. Image2 is the established Kansei material/style reference only; its coordinates and burned text are NOT authoritative. Make a clean painted anatomy layer registered to image1. Preserve its full-frame aspect ratio and black scan surround; active scan field x169..1110,y41..732 on1280x830. No cropping, magnifying, re-centering or generic composition. No text, anatomy labels, pointer lines, machine UI, cyan calipers, A markers, distances, numbers or logos anywhere in output. The black surround is plain black.\nLock the visible clavicle cortical curve on the LEFT exactly to source: starts approximately(169,145), turns through(220,154),(251,185),(278,252), reaches the original caliper's source endpoint at(295,354). Do not expand clavicle leftward or put a different curve at this endpoint. The right coracoid bony surface follows the bright source edge from(1110,365) through(1045,408),(1004,445) to the second source caliper endpoint(960,480). These endpoints are geometry anchors, NOT marks to draw. Keep them in those exact pixel locations. Maintain the large pectoralis muscle belly outline visible in source, from its upper-left arc around(425,179), upper margins through(510,121),(650,134),(795,165), to the right source edge; lower belly boundary follows(478,312),(605,382),(745,417),(907,407),(1042,365). The smaller subclavius remains a separate region between this and the clavicle. Preserve the deeper rib outline and source fascial layers; do not invent ligaments, cysts, lesions or enlarged bones.\nStyle/materials ONLY from image2: fine brick-red muscle fascicles with delicate organic ivory septa and intermuscular fascial laminae, golden lobular superficial fat, fine ivory collagen, ivory cortical rim and tiny irregular warm tan trabeculae with a soft deep fade to black. Fascia must remain between muscle bellies and within muscle, not be replaced with fat or extra tendon. Maintain all source contours. No grayscale ultrasound islands, text or annotations in the painted field. No tiled/collaged texture, no sudden geometric seams."
+    },
+    {
+      "key": "jamforelse-motsatt",
+      "canvas": [
+        1280,
+        830
+      ],
+      "prompt": "Use case: style-transfer. Image1 is the exact1280x830 original ultrasound canvas and controls geometry. Image2 supplies only the approved Kansei tissue materials, not its shifted anatomy or text. Produce a clean anatomy painting on the exact original native canvas, with plain black outside scan field x169..1110,y41..732. No crop, magnification, recentering or new composition. Remove all text, labels, arrow lines, A calipers, cyan markers, distances, machine UI or logos from final.\nPreserve the original clavicle's left dome and its right edge around the first source caliper endpoint(437,223). The left dome starts near(210,252), rises along(210,126),(279,101),(370,122), then bends down to(437,223). The coracoid's visible curved bright surface on right must follow the original line through approximately(1110,300),(1050,334),(1000,378),(946,423),(867,470),(768,524). The original caliper endpoint(946,423) is a structural anchor, not a mark to draw. Do not move it to(934,438) or enlarge the bone. Keep the smaller round subclavius region around(554,322) with its source outline and the larger pectoralis region above/right. Trace the source's fascial separations, belly edges and deep visible rib contour; preserve exact shape and relative depth. No added lesions, fluid, ligament tear or larger spaces.\nUse materials ONLY from image2: fine organic brick-red curved muscle fascicles, delicate ivory intramuscular septa and broad separating fascial laminae, golden lobular subcutaneous fat, tiny irregular tan bone trabeculae, a fine ivory cortical rim and deep fade to black. Complete the scan continuously without uncovered grayscale islands. No mirrored/tiled material, no corners/seams. This is source-anchored color/material illustration, not a change to the sonographic findings."
+    },
+    {
+      "key": "ac-led",
+      "canvas": [
+        942,
+        690
+      ],
+      "prompt": "Use case: style-transfer. Image1 is the edit target and the precise942x690 original scan geometry. Image2 supplies established Kansei tissue materials ONLY; its bone edge and labels are shifted and must not control geometry. Create one clean painted anatomy layer matching the entire image1 canvas, same full-frame proportions and deep black shadow. Do not crop, enlarge, move or smooth any source feature. No words, labels, arrows, dots, machine markings, numbers or overlays in the final.\nTrace the original bright LEFT clavicle roof accurately: source curve starts at about(217,193), rises through(276,176),(320,153),(354,147), then descends(404,167),(454,209),(495,247). Preserve the abrupt end and the dark joint cleft below/right. The RIGHT acromion's bright roof follows(610,289),(684,265),(750,238),(836,213),(942,185). Do not deepen these roof edges by35–55px as image2 did. Preserve the intervening complex capsule/fascial tissue above the joint cleft, and the exact source's shape, including its narrow dark spaces. The original highlighted capsule region around(735,250) must remain in the same location relative to the right bone surface. The joint black cleft and acoustic shadow extend below center, following the observed source outline rather than a generic symmetrical joint. Do not fill shadow with extra visible anatomy.\nMaterials ONLY from image2: fine ivory collagen/capsule fibers, golden lobular superficial fat, restrained brick-red muscle only where the source supports it, a fine ivory cortical line over irregular small tan trabeculae, soft deep fade to black. Preserve original unevenness and all fascia. Avoid enlarging the bones, inventing pathology, empty cysts or new lesions. No grayscale islands amid illustration, no patterned atlas tiles, no text retained from reference."
+    },
+    {
+      "key": "mjukdelsplan",
+      "canvas": [
+        942,
+        690
+      ],
+      "prompt": "Use case: style-transfer. Image1 is the942x690 original and MUST control every contour. Image2 is ONLY the established Kansei bone/fat/collagen appearance; its anatomy is about35px too low and must NOT be copied at those positions. Produce a clean full-frame anatomy painting registered exactly to image1, same canvas proportions. No labels, text, leader lines, machine UI, marks or numbers; plain black deep background, no crop/recenter/magnification.\nThe original long bright upper clavicle edge begins near(0,140), stays around(150,139),(310,131),(475,124),(610,116), rises to(750,105) and ends near(868,143). The lower bright clavicle contour follows(0,276),(150,287),(300,274),(450,267),(600,267),(700,242),(759,222),(805,233),(856,254). Keep these exact original curves, not the lower curves in image2. Maintain the narrow dark separation above the upper cortex, especially the narrow dark separation around(660,116) and the source's overlying fascial/soft tissue layering. Do not invent an extra lesion or thicken the gap. The source has continuous fine tissue lines above the bone and a dark deeper shadow below; retain that geometry.\nStyle from image2 only: golden lobular fat, fine organically curving ivory connective tissue, a fine ivory cortical rim with small irregular warm tan trabeculae, soft depth fade into black. Do not add an unsupported muscle compartment. Cover source tissue continuously without exposed grayscale islands. No square texture patches, mirrored/tiled texture, text or clinical annotations. Only convert the observed geometry to the established tissue appearance."
+    }
+  ]
+}

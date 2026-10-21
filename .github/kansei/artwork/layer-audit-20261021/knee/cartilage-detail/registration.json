@@ -1,0 +1,430 @@
+{
+  "version": "20261021f",
+  "mode": "built-in imagegen",
+  "source_image": "exec-811aceb1-3d5d-4bb4-9357-7cd3f0ceec14.png",
+  "source_size": [
+    1512,
+    1040
+  ],
+  "source_bounds": [
+    0,
+    0,
+    1513,
+    1040
+  ],
+  "target_bounds": [
+    0,
+    0,
+    1280,
+    880
+  ],
+  "canvas": [
+    1280,
+    880
+  ],
+  "archive": ".github/kansei/artwork/layer-audit-20261021/knee/cartilage-detail/material.painting.20261021f.webp",
+  "archive_sha256": "44dd041ea003140296bd6799d449919d33c673dfab50e12d65e0f6515f2942a6",
+  "asset": "bilder/ultraljud/kna/brosk-anatomi.20261021f.webp",
+  "asset_sha256": "234dc48461a55f8dbe2d798abee08d1abc25d595da9765d6aac15e8a430cfb9a",
+  "original": "bilder/ultraljud/kna/brosk-ultraljud.webp",
+  "original_sha256": "e823d5e6861f307a056c0f5ae465dc200c36cb13f93c8538b1f474c48acc91d3",
+  "original_unchanged_from_HEAD": true,
+  "method": "One full-canvas global registration only; no local warp, no findings relocation. Original black margins retained.",
+  "geometry_qa": [
+    {
+      "native_anchor": [
+        363,
+        455
+      ],
+      "nearest_cartilage_edge": [
+        366,
+        450
+      ],
+      "distance_px": 5.8
+    },
+    {
+      "native_anchor": [
+        431,
+        467
+      ],
+      "nearest_cartilage_edge": [
+        431,
+        462
+      ],
+      "distance_px": 5.0
+    },
+    {
+      "native_anchor": [
+        478,
+        489
+      ],
+      "nearest_cartilage_edge": [
+        477,
+        482
+      ],
+      "distance_px": 7.1
+    },
+    {
+      "native_anchor": [
+        505,
+        492
+      ],
+      "nearest_cartilage_edge": [
+        509,
+        488
+      ],
+      "distance_px": 5.7
+    },
+    {
+      "native_anchor": [
+        512,
+        501
+      ],
+      "nearest_cartilage_edge": [
+        515,
+        501
+      ],
+      "distance_px": 3.0
+    },
+    {
+      "native_anchor": [
+        507,
+        514
+      ],
+      "nearest_cartilage_edge": [
+        516,
+        506
+      ],
+      "distance_px": 12.0
+    },
+    {
+      "native_anchor": [
+        545,
+        532
+      ],
+      "nearest_cartilage_edge": [
+        545,
+        523
+      ],
+      "distance_px": 9.0
+    },
+    {
+      "native_anchor": [
+        578,
+        517
+      ],
+      "nearest_cartilage_edge": [
+        570,
+        511
+      ],
+      "distance_px": 10.0
+    },
+    {
+      "native_anchor": [
+        602,
+        512
+      ],
+      "nearest_cartilage_edge": [
+        597,
+        501
+      ],
+      "distance_px": 12.1
+    },
+    {
+      "native_anchor": [
+        620,
+        512
+      ],
+      "nearest_cartilage_edge": [
+        613,
+        500
+      ],
+      "distance_px": 13.9
+    },
+    {
+      "native_anchor": [
+        625,
+        503
+      ],
+      "nearest_cartilage_edge": [
+        619,
+        497
+      ],
+      "distance_px": 8.5
+    },
+    {
+      "native_anchor": [
+        608,
+        477
+      ],
+      "nearest_cartilage_edge": [
+        609,
+        476
+      ],
+      "distance_px": 1.4
+    },
+    {
+      "native_anchor": [
+        605,
+        465
+      ],
+      "nearest_cartilage_edge": [
+        608,
+        465
+      ],
+      "distance_px": 3.0
+    },
+    {
+      "native_anchor": [
+        610,
+        450
+      ],
+      "nearest_cartilage_edge": [
+        614,
+        451
+      ],
+      "distance_px": 4.1
+    },
+    {
+      "native_anchor": [
+        647,
+        437
+      ],
+      "nearest_cartilage_edge": [
+        647,
+        438
+      ],
+      "distance_px": 1.0
+    },
+    {
+      "native_anchor": [
+        678,
+        430
+      ],
+      "nearest_cartilage_edge": [
+        676,
+        430
+      ],
+      "distance_px": 2.0
+    },
+    {
+      "native_anchor": [
+        705,
+        415
+      ],
+      "nearest_cartilage_edge": [
+        705,
+        415
+      ],
+      "distance_px": 0.0
+    }
+  ],
+  "qa_method": "Visual original-contour overlay plus nearest slate-blue cartilage boundary distance. Reentrant contour has two branches around x610; max blue y alone would be misleading.",
+  "qa_overlay": "/workspace/scratch/30f45a18ccb3/audit-qa/knee/cartilage-detail/material/findings.png",
+  "status": "pass",
+  "rejected_candidate": {
+    "source_image": "exec-7aa826ab-03a6-494b-a9ae-0da582496aba.png",
+    "reason": "Removed black margins and enlarged notch; could not meet complete geometry with a single global full-field registration."
+  },
+  "clinical_policy": "No new diagnoses or measurements. Knee HTML unchanged by this task.",
+  "geometry_candidate_before_material": {
+    "source_image": "exec-7481255a-228a-4506-bd3b-97b15c784ee0.png",
+    "source_size": [
+      1513,
+      1040
+    ],
+    "archive": ".github/kansei/artwork/layer-audit-20261021/knee/cartilage-detail/painting.20261021f.webp",
+    "archive_sha256": "bb2846e621c1d3888cdfcb52a33e427cffec281b80d0a19773c7d20f475b4809",
+    "asset_sha256": "7c1a43d0e3c1568236ffa48d29de9b1435bc18a50b1f122c5db34b10c32edb61",
+    "geometry_qa": [
+      {
+        "native_anchor": [
+          363,
+          455
+        ],
+        "nearest_cartilage_edge": [
+          365,
+          450
+        ],
+        "distance_px": 5.4
+      },
+      {
+        "native_anchor": [
+          431,
+          467
+        ],
+        "nearest_cartilage_edge": [
+          431,
+          463
+        ],
+        "distance_px": 4.0
+      },
+      {
+        "native_anchor": [
+          478,
+          489
+        ],
+        "nearest_cartilage_edge": [
+          478,
+          483
+        ],
+        "distance_px": 6.0
+      },
+      {
+        "native_anchor": [
+          505,
+          492
+        ],
+        "nearest_cartilage_edge": [
+          508,
+          488
+        ],
+        "distance_px": 5.0
+      },
+      {
+        "native_anchor": [
+          512,
+          501
+        ],
+        "nearest_cartilage_edge": [
+          517,
+          501
+        ],
+        "distance_px": 5.0
+      },
+      {
+        "native_anchor": [
+          507,
+          514
+        ],
+        "nearest_cartilage_edge": [
+          517,
+          510
+        ],
+        "distance_px": 10.8
+      },
+      {
+        "native_anchor": [
+          545,
+          532
+        ],
+        "nearest_cartilage_edge": [
+          546,
+          523
+        ],
+        "distance_px": 9.1
+      },
+      {
+        "native_anchor": [
+          578,
+          517
+        ],
+        "nearest_cartilage_edge": [
+          574,
+          509
+        ],
+        "distance_px": 8.9
+      },
+      {
+        "native_anchor": [
+          602,
+          512
+        ],
+        "nearest_cartilage_edge": [
+          602,
+          502
+        ],
+        "distance_px": 10.0
+      },
+      {
+        "native_anchor": [
+          620,
+          512
+        ],
+        "nearest_cartilage_edge": [
+          617,
+          502
+        ],
+        "distance_px": 10.4
+      },
+      {
+        "native_anchor": [
+          625,
+          503
+        ],
+        "nearest_cartilage_edge": [
+          622,
+          497
+        ],
+        "distance_px": 6.7
+      },
+      {
+        "native_anchor": [
+          608,
+          477
+        ],
+        "nearest_cartilage_edge": [
+          608,
+          477
+        ],
+        "distance_px": 0.0
+      },
+      {
+        "native_anchor": [
+          605,
+          465
+        ],
+        "nearest_cartilage_edge": [
+          608,
+          465
+        ],
+        "distance_px": 3.0
+      },
+      {
+        "native_anchor": [
+          610,
+          450
+        ],
+        "nearest_cartilage_edge": [
+          612,
+          452
+        ],
+        "distance_px": 2.8
+      },
+      {
+        "native_anchor": [
+          647,
+          437
+        ],
+        "nearest_cartilage_edge": [
+          649,
+          438
+        ],
+        "distance_px": 2.2
+      },
+      {
+        "native_anchor": [
+          678,
+          430
+        ],
+        "nearest_cartilage_edge": [
+          678,
+          429
+        ],
+        "distance_px": 1.0
+      },
+      {
+        "native_anchor": [
+          705,
+          415
+        ],
+        "nearest_cartilage_edge": [
+          705,
+          415
+        ],
+        "distance_px": 0.0
+      }
+    ]
+  },
+  "material_correction": "Only central quadriceps tendon material changed from red to ivory collagen, guided by original scan and previous approved tendon identity. Vastus medialis remains red. Findings and label identities were not moved to disguise tissue material."
+}

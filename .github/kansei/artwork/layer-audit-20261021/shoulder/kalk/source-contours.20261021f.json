@@ -1,0 +1,41 @@
+{
+  "coordinate_system": [
+    1280,
+    960
+  ],
+  "role": "Approximate source-image tracing guide for generation; original image remains geometric authority; no diagnostic interpretation added.",
+  "views": {
+    "kalk": {
+      "cortex": "M430 610 C500 554 560 516 640 485 S753 456 800 448 C828 449 845 461 874 462 L933 459 C957 462 969 478 981 481 C1000 487 1019 444 1041 435 C1080 420 1129 428 1171 443",
+      "tendon_upper": "M300 390 C365 350 447 318 522 304 C620 280 716 279 807 291 C914 305 970 320 1022 347 C1090 377 1141 400 1171 426",
+      "finding_points": [
+        [
+          617,
+          366,
+          "calcification"
+        ],
+        [
+          916,
+          367,
+          "calcification"
+        ],
+        [
+          863,
+          407,
+          "existing tendon defect"
+        ]
+      ]
+    },
+    "frisk": {
+      "cortex": "M310 635 C390 590 480 550 550 529 C600 513 650 505 700 498 C750 492 800 475 835 451 C855 436 874 420 891 424 C938 430 983 465 1024 480",
+      "tendon_upper": "M300 373 C400 350 470 336 550 329 C650 318 750 335 850 358 C940 382 997 423 1040 460",
+      "finding_points": [
+        [
+          650,
+          405,
+          "continuous tendon"
+        ]
+      ]
+    }
+  }
+}

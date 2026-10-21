@@ -219,6 +219,17 @@ def check(base, output):
                     if not baseline_only and path == "/ultraljud/kalkaxel/":
                         viewer = page.locator('.patient-viewer')
                         switch = viewer.get_by_role('switch', name='Anatomi', exact=True)
+                        detail_sources_match = """mode => {
+                            const details = [...document.querySelectorAll('.detail-window')];
+                            return details.length === 3 && details.every(window => {
+                                const selector = mode === 'anatomy' ? '.anatomy-layer img' : '.original';
+                                const source = document.querySelector('#view-' + window.dataset.detailSide + ' ' + selector);
+                                const image = window.querySelector('img');
+                                return source && image && image.complete && image.naturalWidth > 0 &&
+                                    image.currentSrc === source.currentSrc &&
+                                    image.naturalWidth === source.naturalWidth && image.naturalHeight === source.naturalHeight;
+                            });
+                        }"""
                         if switch.count() != 1:
                             raise AssertionError('Expected one anatomy switch')
                         page.wait_for_function("[...document.querySelectorAll('.patient-viewer img[src]')].every(i=>i.complete&&i.naturalWidth>0)")
@@ -228,14 +239,14 @@ def check(base, output):
                         page.screenshot(path=str(output / f'kalkaxel-{label}-ultrasound.png'))
                         switch.click()
                         page.wait_for_function("document.querySelector('#view-kalk .patient-picture').dataset.mode==='anatomy' && getComputedStyle(document.querySelector('#view-kalk .anatomy-layer')).opacity==='1'")
-                        page.wait_for_function("[...document.querySelectorAll('.detail-window img')].every(i=>i.complete&&i.naturalWidth>0&&i.src.endsWith('-anatomi.png'))")
+                        page.wait_for_function(detail_sources_match, arg='anatomy')
                         page.locator('#view-kalk .patient-picture').scroll_into_view_if_needed()
                         page.screenshot(path=str(output / f'kalkaxel-{label}-anatomy.png'))
                         page.locator('#tab-frisk').click()
                         if switch.get_attribute('aria-checked') != 'true' or not page.locator('#view-frisk .detail-comparison').is_visible():
                             raise AssertionError('Anatomy and comparison must follow the selected side')
                         switch.click()
-                        page.wait_for_function("[...document.querySelectorAll('.detail-window img')].every(i=>i.complete&&i.naturalWidth>0&&i.src.endsWith('-ultraljud.jpg'))")
+                        page.wait_for_function(detail_sources_match, arg='ultrasound')
                         for video_tab in ('film', 'dynamisk'):
                             page.locator('#tab-' + video_tab).click()
                             if switch.is_visible() or page.locator('.detail-comparison').is_visible():

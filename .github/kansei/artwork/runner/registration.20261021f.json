@@ -1,0 +1,107 @@
+[
+  {
+    "source_image": "exec-b1b08643-ff14-4de8-85ad-cd6ca3b4149b.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      83,
+      92,
+      1365,
+      873.5
+    ],
+    "target_bounds": [
+      108,
+      112,
+      1171,
+      760
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/.github/kansei/artwork/runner/itb-bursa.painting.20261021f.webp",
+    "archive_sha256": "947f43989392c2e6f1919e17bf2117c379db1ad8ccfe8789a6af4dff588779a3",
+    "asset": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/bilder/ultraljud/kna/loparkna/itb-bursa-anatomi.20261021f.webp",
+    "asset_sha256": "d3afc748b244b4cf78583ae994e9db927916364daa368cfe41995c4c3bf85fe7",
+    "qa_png": "/workspace/scratch/30f45a18ccb3/audit-qa/runner-20261021f/itb-bursa-anatomi.20261021f.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "itb-bursa",
+    "original": "bilder/ultraljud/kna/loparkna/itb-bursa-ultraljud.jpg",
+    "original_sha256": "1bfa8eab7935799ed72abac82e3f4d834397b1f9012b94de78d7d78190ace9f0",
+    "clinical_findings": "Original source SVG coordinates retained without change in both ultrasound and anatomy modes.",
+    "qa": "Whole-image source registration checked with original contour overlaid; no meshes, local warps, or relocated findings.",
+    "limitations": "Illustrated tissue material is interpretive; registration is approximate, not a second diagnostic image."
+  },
+  {
+    "source_image": "exec-f74b7161-8e8a-416a-aa40-9ef02e08d8ef.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      94,
+      90,
+      1357,
+      860
+    ],
+    "target_bounds": [
+      108,
+      112,
+      1171,
+      760
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/.github/kansei/artwork/runner/lateral-fluid.painting.20261021f.webp",
+    "archive_sha256": "b46c8e659368dc036508b2361d895ac953bed9260649b864784baa3ab2d24c7c",
+    "asset": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/bilder/ultraljud/kna/loparkna/lateral-fluid-anatomi.20261021f.webp",
+    "asset_sha256": "046fecd0967295287b34717985f26d26df365c64339229e250618e3cbf7cb7b4",
+    "qa_png": "/workspace/scratch/30f45a18ccb3/audit-qa/runner-20261021f/lateral-fluid-anatomi.20261021f.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "lateral-fluid",
+    "original": "bilder/ultraljud/kna/loparkna/lateral-fluid-ultraljud.jpg",
+    "original_sha256": "aed774ee25baf7d822427726b38b52525e51539b772e5965aac503fe35fe9fcd",
+    "clinical_findings": "Original source SVG coordinates retained without change in both ultrasound and anatomy modes.",
+    "qa": "Whole-image source registration checked with original contour overlaid; no meshes, local warps, or relocated findings.",
+    "limitations": "Illustrated tissue material is interpretive; registration is approximate, not a second diagnostic image."
+  },
+  {
+    "source_image": "exec-d950abf0-05b2-494f-950e-bbf2a972a87c.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      208.3,
+      126,
+      1261.3,
+      859
+    ],
+    "target_bounds": [
+      174,
+      112,
+      1105,
+      760
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/.github/kansei/artwork/runner/posterior-meniscus.painting.20261021f.webp",
+    "archive_sha256": "899b729d88b44d127a5733f42ed0c803901aaa78f2f9de98395325f9360d8fc7",
+    "asset": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/bilder/ultraljud/kna/loparkna/posterior-meniscus-anatomi.20261021f.webp",
+    "asset_sha256": "2241fd5d6c7ff1891915ef4bad78f28bb476c9c1fd59d159757f8a8fd4491904",
+    "qa_png": "/workspace/scratch/30f45a18ccb3/audit-qa/runner-20261021f/posterior-meniscus-anatomi.20261021f.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "posterior-meniscus",
+    "original": "bilder/ultraljud/kna/loparkna/posterior-meniscus-ultraljud.jpg",
+    "original_sha256": "8e838680c80b06bb0acc68fee72580e5df7b38a41669c9ae06ced3be79ec615e",
+    "clinical_findings": "Original source SVG coordinates retained without change in both ultrasound and anatomy modes.",
+    "qa": "Whole-image source registration checked with original contour overlaid; no meshes, local warps, or relocated findings.",
+    "limitations": "Illustrated tissue material is interpretive; registration is approximate, not a second diagnostic image."
+  }
+]

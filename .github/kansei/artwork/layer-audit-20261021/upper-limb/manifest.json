@@ -1,0 +1,172 @@
+[
+  {
+    "source_image": ".github/kansei/artwork/layer-audit-20261021/upper-limb/biceps-transverse.source.webp",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      114,
+      110,
+      1334,
+      977
+    ],
+    "target_bounds": [
+      108,
+      110,
+      1172,
+      890
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/layer-audit-20261021/upper-limb/biceps-transverse.source.webp",
+    "archive_sha256": "d8a1f640c1a00ffd660d417668ffaa0408f62fa2af69ea351deff8e35824bd2a",
+    "asset": "bilder/ultraljud/bicepssena/tvarsnitt-anatomi.20261021f.webp",
+    "asset_sha256": "14346f8b9748117657f76da9daa452eac8ed91bb83f808c7135982871d3ec948",
+    "qa_png": "/tmp/kansei-upper-limb-final/biceps-transverse/tvarsnitt-anatomi.20261021f.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "name": "biceps-transverse",
+    "original": "bilder/ultraljud/bicepssena/tvarsnitt-helbild.20261009.jpg",
+    "original_sha256": "ca32616bfec0cb65e6f71822d2537289beae85414f32e0d5dffb0cfe56ca3352",
+    "reason": "Regenerated from original; small tendon and fascial branches retained.",
+    "findings": "Original scan coordinates retained in both modes."
+  },
+  {
+    "source_image": ".github/kansei/artwork/layer-audit-20261021/upper-limb/biceps-longitudinal.source.webp",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      84,
+      121,
+      1363,
+      1008
+    ],
+    "target_bounds": [
+      76,
+      110,
+      1204,
+      890
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/layer-audit-20261021/upper-limb/biceps-longitudinal.source.webp",
+    "archive_sha256": "2d2857cc19dfb57dea0187d4a61c7e13b0aaf6aa146c0b131f36e8761919948a",
+    "asset": "bilder/ultraljud/bicepssena/langdsnitt-anatomi.20261021f.webp",
+    "asset_sha256": "1016c5dd78e0eebdb673dba0c55b95bb5a30b84f6775b88d46d7c49e223c22d3",
+    "qa_png": "/tmp/kansei-upper-limb-final/biceps-longitudinal/langdsnitt-anatomi.20261021f.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "name": "biceps-longitudinal",
+    "original": "bilder/ultraljud/bicepssena/langdsnitt-helbild.20261009.jpg",
+    "original_sha256": "00f277b43a644f6ea62dcd4d8c039fb9ed428b24fa9a92682ad326a68c15c18d",
+    "reason": "Regenerated from original; genuine two-acquisition split retained without headings.",
+    "findings": "Original scan coordinates retained in both modes."
+  },
+  {
+    "source_image": ".github/kansei/artwork/layer-audit-20261021/upper-limb/pectoralis-longitudinal.source.webp",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      235,
+      144,
+      1212,
+      922
+    ],
+    "target_bounds": [
+      228,
+      142,
+      1050,
+      830
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/layer-audit-20261021/upper-limb/pectoralis-longitudinal.source.webp",
+    "archive_sha256": "45af5fa06d665c29c70ad3fc5bdaec0f299200ce88ed91463af7618a60bca742",
+    "asset": "bilder/ultraljud/pectoralis/langdsnitt-anatomi.20261021f.webp",
+    "asset_sha256": "d3420a10322b51d0fe3aa4dce9128be833f25d85ca1dbf14fd6c568693513287",
+    "qa_png": "/tmp/kansei-upper-limb-final/pectoralis-longitudinal/langdsnitt-anatomi.20261021f.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "name": "pectoralis-longitudinal",
+    "original": "bilder/ultraljud/pectoralis/langdsnitt-helbild.20261009.jpg",
+    "original_sha256": "12237e6db43839362547fe8f6d7d424f6d0960d0a3b6100f0cd41d2ad3af1751",
+    "reason": "Regenerated from original; local tear geometry replaces enlarged displaced painting.",
+    "findings": "Original scan coordinates retained in both modes."
+  },
+  {
+    "source_image": ".github/kansei/artwork/layer-audit-20261021/upper-limb/pectoralis-transverse.source.webp",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      231,
+      141,
+      1216,
+      946
+    ],
+    "target_bounds": [
+      228,
+      142,
+      1050,
+      830
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/layer-audit-20261021/upper-limb/pectoralis-transverse.source.webp",
+    "archive_sha256": "f7101aed8fe83fd6f74a366c08a4ec35b5f19058638584474d11c4ea3fd1966b",
+    "asset": "bilder/ultraljud/pectoralis/tvarsnitt-anatomi.20261021f.webp",
+    "asset_sha256": "35a25cbc8f96905a28dbe2c6d751d690a7dbb93110015170ee9231fea227e4bb",
+    "qa_png": "/tmp/kansei-upper-limb-final/pectoralis-transverse/tvarsnitt-anatomi.20261021f.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "name": "pectoralis-transverse",
+    "original": "bilder/ultraljud/pectoralis/tvarsnitt-helbild.20261009.jpg",
+    "original_sha256": "fe51564c0a81b00f1a42a0335a9b434621bae55be07ef95cd0444568c6c3bcd2",
+    "reason": "Regenerated from original; narrow tear branches and preserved central tissue retained.",
+    "findings": "Original scan coordinates retained in both modes."
+  },
+  {
+    "source_image": ".github/kansei/artwork/layer-audit-20261021/upper-limb/medianus.source.webp",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      103,
+      78,
+      1448,
+      1086
+    ],
+    "target_bounds": [
+      74,
+      112,
+      1206,
+      891
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/layer-audit-20261021/upper-limb/medianus.source.webp",
+    "archive_sha256": "c2e7c8d30bd4295758b142d7ad5f367f44b655cf5652fcb6a2356cc41afba3a3",
+    "asset": "bilder/ultraljud/karpaltunnel/medianus-anatomi.20261021f.webp",
+    "asset_sha256": "8fabb4847f15015d914eb1f63f5fa966c6fcbdbf441e5e88c47ee99441e2f01f",
+    "qa_png": "/tmp/kansei-upper-limb-final/medianus/medianus-anatomi.20261021f.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "name": "medianus",
+    "original": "bilder/ultraljud/karpaltunnel/medianus-helbild.20261009.jpg",
+    "original_sha256": "1e4610372f9435cb5c7de5ff7dbc977952cecb2005964f81731b59eccfd7aff3",
+    "reason": "Existing geometry retained with text-only cleanup; one global registration corrects scale/depth mismatch.",
+    "findings": "Original scan coordinates retained in both modes."
+  }
+]

@@ -15,7 +15,7 @@
 .simple-case main .patient-picture .original{width:100%;height:100%;object-fit:contain;position:absolute;inset:0}
 .simple-case main .patient-picture .anatomy-layer{position:absolute;inset:0;width:100%;height:100%;opacity:0;clip-path:inset(0 100% 0 0);transition:clip-path .48s cubic-bezier(.22,.61,.36,1),opacity .15s;pointer-events:none}
 .simple-case main .patient-picture .anatomy-layer img,.simple-case main .patient-picture .finding-layer img{width:100%;height:100%;object-fit:fill}
-.simple-case main .patient-picture .anatomy-layer img{clip-path:inset(11.5625% 8.4375% 26.9791667% 8.4375%)}
+.simple-case main .patient-picture .anatomy-layer img{clip-path:inset(11.5625% 8.4375% 7.1875% 8.4375%)}
 .simple-case main .patient-picture .finding-layer{position:absolute;inset:0;opacity:0;transition:opacity .2s;pointer-events:none}
 .simple-case main .patient-picture[data-mode=anatomy] .anatomy-layer{opacity:1;clip-path:inset(0)}
 .simple-case main .patient-picture[data-mode=findings] .finding-layer{opacity:1}

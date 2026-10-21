@@ -1,0 +1,35 @@
+{
+  "source_image": "exec-b59f1c50-982d-4ae6-85cc-a3e2abe38c59.png",
+  "source_size": [
+    1512,
+    1040
+  ],
+  "source_bounds": [
+    136,
+    77,
+    1381,
+    952
+  ],
+  "target_bounds": [
+    169,
+    61,
+    1110,
+    751
+  ],
+  "canvas": [
+    1280,
+    880
+  ],
+  "archive": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/.github/kansei/artwork/layer-audit-20261021/knee/ledvatska.painting.20261021f.webp",
+  "archive_sha256": "95e32e8f39e0c102782d2a25539601d7b8e57ca5e9a2fa0639e936a43909ea0c",
+  "asset": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/bilder/ultraljud/kna/ledvatska-anatomi.20261021f.webp",
+  "asset_sha256": "08e2f78c36530339ebe4036c3828806c6bd6ee3ea64f4027a174701ec786f3fb",
+  "qa_png": "/workspace/scratch/30f45a18ccb3/audit-qa/knee/ledvatska-anatomi.20261021f.png",
+  "method": "One global rectangular registration, clipped to original scan; no local warp.",
+  "original_canvas": [
+    1280,
+    880
+  ],
+  "material_correction": "Prefemoral fat pad below fluid corrected from invented red muscle to golden lobular fat with ivory septa. Fluid, projection, cortex and tendon geometry preserved.",
+  "qa": "Fixed original fluid boundary inspected over export; roof, left border and lower-right tip mostly within 5\u201312 px, local boundary deviations about 15 px. No finding coordinates altered."
+}

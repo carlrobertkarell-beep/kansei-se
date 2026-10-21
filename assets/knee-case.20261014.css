@@ -112,3 +112,5 @@
 .knee-findings .affected-cartilage{fill:rgba(255,212,89,.055);stroke:#ffd980;stroke-width:2.6}
 .knee-findings .affected-edge-shadow{fill:none;stroke:#0c1d23;stroke-width:7;stroke-opacity:.7}
 .knee-findings .affected-edge{fill:none;stroke:#ffe2a0;stroke-width:3.4}
+/* Findings are the focused reading layer; restore anatomy labels when switched off. */
+.knee-picture[data-findings=true] .knee-labels{opacity:0}

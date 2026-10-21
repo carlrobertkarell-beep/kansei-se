@@ -1,0 +1,129 @@
+{
+  "version": "20261021f",
+  "canvas": [
+    1280,
+    960
+  ],
+  "method": "Read-only side-by-side inspection of source ultrasound, painted anatomy, CSS coordinate frame and the unchanged finding overlays, rendered onto the same original canvas. Approximate landmark deviations are visual estimates, not measurements of anatomy.",
+  "source_bug": {
+    "view": "Achilles transverse",
+    "cause": "Two y-coordinates from the lower boundary were inserted in the upper boundary, causing a downward spike and artificial notch through the tendon.",
+    "before": "L502 180 L514 437 L526 433 L538 166",
+    "after": "L502 180 L514 175 L526 171 L538 166",
+    "basis": "The original and painted upper boundary between (502,180) and (538,166) is a continuous shallow slope; both replacement points lie on it. Clinical scan files and painted images are unchanged.",
+    "source_files_corrected": [
+      "ultraljud/halsena/bilder/index.html",
+      ".github/kansei/artwork/achilles-contours.20261015.json",
+      ".github/kansei/artwork/achilles-contours.20261015b.json",
+      ".github/kansei/artwork/achilles-contours.20261015c.json"
+    ]
+  },
+  "views": [
+    {
+      "case": "Achilles",
+      "view": "longitudinal",
+      "decision": "keep",
+      "landmarks": "Calcaneal cortex near (568,430), focal rupture near (445,445) and pointer targets correspond; approximate local differences 10–15px. Vascular pointer remains among painted vessels; calcium pointer remains in the small calcium cluster.",
+      "labels": "Findings mode hides anatomy labels; no material crowding."
+    },
+    {
+      "case": "Achilles",
+      "view": "healthy",
+      "decision": "keep",
+      "landmarks": "Tendon outline follows the thin tendon; central/right bone surface corresponds within about 10–15px. Local left bone insertion shape differs up to about20px but does not swap the tendon and bone regions.",
+      "labels": "Separate anatomy labels remain inside their intended painted regions."
+    },
+    {
+      "case": "Achilles",
+      "view": "transverse",
+      "decision": "fix finding-path data bug; keep painting",
+      "landmarks": "Outer oval and lower tendon edge correspond within roughly10–15px. The two erroneous upper-boundary points are corrected to remove the false deep notch.",
+      "labels": "No material crowding."
+    },
+    {
+      "case": "Achilles",
+      "view": "Doppler film",
+      "decision": "keep",
+      "landmarks": "Native video, separate scan; no anatomy bitmap or static finding contour is presented for registration. Controls are hidden for video."
+    },
+    {
+      "case": "Gluteal",
+      "view": "gmed",
+      "decision": "keep",
+      "landmarks": "Main tendon marker target(754,697) is inside the same tendon in both modes. Upper tendon border mostly corresponds; local cortex/outline deviations vary roughly15–30px and cannot be improved by one global shift without degrading the opposite edge. No main-region swap.",
+      "labels": "Anatomy labels are hidden with findings active."
+    },
+    {
+      "case": "Gluteal",
+      "view": "gmin",
+      "decision": "keep",
+      "landmarks": "Tendon marker target(390,655) remains within the tendon. Upper contour mostly corresponds; lower contour/cortex has local15–30px approximation. A common shift would degrade the already matched upper/right edge.",
+      "labels": "Anatomy labels are hidden with findings active."
+    },
+    {
+      "case": "Gluteal",
+      "view": "paralabral",
+      "decision": "keep",
+      "landmarks": "Cyst outline and painted dark cavity correspond to roughly5–12px; pointer(1007,668) is in the same cystic region. No tissue-region crossing.",
+      "labels": "Findings mode suppresses anatomy labels, leaving a single cyst label."
+    }
+  ],
+  "assets_preserved_byte_identical": [
+    {
+      "path": "bilder/ultraljud/halsena/transverse-ultraljud.jpg",
+      "sha256": "d22ca0aae7d81ce2a6934fd7648e1e898afbc872504a1604bfe087776f128008"
+    },
+    {
+      "path": "bilder/ultraljud/halsena/longitudinal-ultraljud.jpg",
+      "sha256": "699f886574dff49d9f92ab1a62ac3cf5b50524a59ffc73e85d41cc66c508788e"
+    },
+    {
+      "path": "bilder/ultraljud/halsena/healthy-ultraljud.jpg",
+      "sha256": "b1e761de1be96c92788c4294efa2f92aa1e2baa4c2a1b9a144c5075d1d910aa5"
+    },
+    {
+      "path": "bilder/ultraljud/halsena/longitudinal-anatomi.20261015c.webp",
+      "sha256": "cba2daf231e73382d56f836cd32680996c527d033869c482cbea50ae7e6055eb"
+    },
+    {
+      "path": "bilder/ultraljud/halsena/longitudinal-anatomi.20261015b.webp",
+      "sha256": "178ba0857df554cab94eac73174e291782fb5802148d694f85cddd6c3164a5ef"
+    },
+    {
+      "path": "bilder/ultraljud/halsena/transverse-anatomi.20261015.webp",
+      "sha256": "41becdc1e778b7433b7be245785151f1a653b8da30381477596e00ac6343d117"
+    },
+    {
+      "path": "bilder/ultraljud/halsena/healthy-anatomi.20261015.webp",
+      "sha256": "93222f87fb83fe0903be86bd4bf85c6cbb8818428e843e704ee55268fefd21e3"
+    },
+    {
+      "path": "bilder/ultraljud/halsena/longitudinal-anatomi.20261015.webp",
+      "sha256": "d7469ff4b716a15411606d091b80558d936de45fc815d44e127cee7981fd6797"
+    },
+    {
+      "path": "bilder/ultraljud/hoft/gmed.original.jpg",
+      "sha256": "bfb44c738e827b15c3920ca3960fc1dd2661a907d3cd0d97c217d748d4e45863"
+    },
+    {
+      "path": "bilder/ultraljud/hoft/paralabral.original.jpg",
+      "sha256": "76778636563397b552e3eb644e60a1816f236a56ebb2c675cd05b9d455f46cab"
+    },
+    {
+      "path": "bilder/ultraljud/hoft/gmin.original.jpg",
+      "sha256": "8acece8139a266f97b615dc5fb0d3da5b02a9871f49979bd320d503d12c17c43"
+    },
+    {
+      "path": "bilder/ultraljud/hoft/gmin.anatomi.20261021.webp",
+      "sha256": "3d4ff4f3d23fe1dbc92f5d4f191b6b12a4a7498688817121676953d0c03fbabf"
+    },
+    {
+      "path": "bilder/ultraljud/hoft/paralabral.anatomi.20261021.webp",
+      "sha256": "e7e95f08f4618abcb06f9cb46e76f40da9c7c094a07000e00127b83c261bd62e"
+    },
+    {
+      "path": "bilder/ultraljud/hoft/gmed.anatomi.20261021.webp",
+      "sha256": "d258c77017c78398410c4ae350c9ed24e14c6ba7cddcf29b826f751781e4badc"
+    }
+  ]
+}

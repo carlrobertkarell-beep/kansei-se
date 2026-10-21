@@ -2,6 +2,21 @@
 HIP_PATH = '/ultraljud/glutealsenor/bilder/'
 
 def check_hip(page, output, label):
+    navigation = page.locator('.case-page-nav')
+    bounds = navigation.evaluate('''nav => {
+        const box = nav.getBoundingClientRect();
+        const heading = document.querySelector('h1').getBoundingClientRect();
+        return {left: box.left, headingLeft: heading.left,
+                links: [...nav.querySelectorAll('a')].map(a => {
+                    const r = a.getBoundingClientRect();
+                    return {left:r.left, right:r.right, top:r.top, height:r.height};
+                })};
+    }''')
+    assert abs(bounds['left'] - bounds['headingLeft']) < 2, 'Section navigation must align with the introduction'
+    assert len(bounds['links']) == 4 and all(r['height'] >= 43 for r in bounds['links']), 'Section links need separate touch targets'
+    for previous, current in zip(bounds['links'], bounds['links'][1:]):
+        if abs(previous['top'] - current['top']) < 2:
+            assert current['left'] - previous['right'] >= 16, 'Section links must not run together'
     viewer=page.locator('[data-knee-viewer]')
     tabs=viewer.get_by_role('tab')
     assert tabs.count()==3, 'Three supplied long-axis views must be available'

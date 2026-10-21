@@ -7,6 +7,13 @@ ivory collagen, small irregular tan trabeculae with a soft depth fade, and smoot
 dark navy fluid. Do not substitute a new texture style. Record the exact style
 references whenever producing new material.
 
+Owner clarification, 21 October 2026: fascia is part of the muscle anatomy.
+Follow visible intramuscular connective-tissue strands and the larger fascial
+planes that separate muscle bellies. Paint them as fine, organically branching
+ivory laminae within and between the red fascicles. Preserve the clinician's
+boundaries and fiber directions; do not flatten several bellies into one red
+slab, replace fascial planes with fat, or turn each white strand into a tendon.
+
 Paint each view continuously. Do not bend material-atlas crops through triangle
 meshes, mirror or repeat tiles, or draw ruler-straight fiber bundles. The owner
 rejected that method because it introduces rigid corners, seams and unnatural

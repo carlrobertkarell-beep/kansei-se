@@ -40,6 +40,12 @@ material appearance must not move deltoid boundaries, replace the uneven humeral
 cortex with soft tissue, or fill a tendon defect with bone. The subscapularis
 example includes a distinct stump and heterogeneous remaining fibers.
 
+Alignment correction, 21 October 2026: do not move a finding marker to compensate
+for drift in a painting. Rebuild the painting from the original scan and clinician
+contours, then record its single global registration. Check the capsule surface,
+cortex and focal notches against the same finding coordinates in original and
+anatomy modes, including the enlarged view and both halves of comparison scans.
+
 The painted layer is an explanatory illustration, not a replacement diagnostic
 image. Compare each painting against the clinician guide and original before
 publication; color samples alone cannot establish anatomical correctness.

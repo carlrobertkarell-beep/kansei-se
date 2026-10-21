@@ -7,6 +7,12 @@ def check_bursa(page, output, label):
     findings = viewer.locator('[data-patient-findings]')
     if viewer.get_by_role('tab').count() != 5:
         raise AssertionError('Expected four still views and one film')
+    expected_anatomy = {
+        'bursa-1': '/bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.20261021f.webp',
+        'bursa-2': '/bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.20261021f.webp',
+        'supraspinatus': '/bilder/ultraljud/bursit-axel/supraspinatus.anatomi.20261021f.webp',
+        'subscapularis': '/bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016e.webp',
+    }
     samples = {}
     for key in ('bursa-1', 'bursa-2', 'supraspinatus', 'subscapularis'):
         viewer.locator('#tab-' + key).click()
@@ -27,12 +33,18 @@ def check_bursa(page, output, label):
         anatomy.click()
         page.wait_for_function("id=>new DOMMatrix(getComputedStyle(document.querySelector('#view-'+id+' .anatomy-layer')).transform).isIdentity", arg=key)
         image = picture.locator('.anatomy-layer img')
-        if not image.get_attribute('src').endswith('.anatomi.20261016e.webp'):
+        if image.get_attribute('src') != expected_anatomy[key]:
             raise AssertionError('Every view must have a painted, contour-aligned anatomy layer')
+        page.wait_for_function("id=>{const i=document.querySelector('#view-'+id+' .anatomy-layer img');return i.complete&&i.naturalWidth===1280&&i.naturalHeight===960}", arg=key)
+        anatomy_marks = picture.locator('[data-finding-mode=anatomy]')
+        if anatomy_marks.locator('svg').inner_html() != original_marks.locator('svg').inner_html():
+            raise AssertionError('Anatomy findings must retain the original scan coordinates')
         points = {
             'bursa-1': [(700, 370), (700, 250)],
             'bursa-2': [(80, 650), (250, 650)],
-            'supraspinatus': [(800, 325), (800, 242), (778, 515), (835, 502)],
+            # Keep the fibrous-tissue sample inside the tendon, away from
+            # the antialiased irregular cortical edge near (835, 502).
+            'supraspinatus': [(800, 325), (800, 242), (778, 515), (850, 500)],
             'subscapularis': [(500, 650), (755, 680), (180, 430), (1100, 680)],
         }[key]
         rgb = image.evaluate("""(image,points)=>{

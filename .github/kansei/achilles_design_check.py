@@ -15,10 +15,15 @@ def check_achilles(page, output, label):
     if not revised:raise AssertionError('Revised tissue pathology or guidance missing; copied vessel-guide strokes must be absent')
     # The transverse boundary must enclose the central tendon continuously.
     # Two mistaken y-values once cut a deep notch through this intact region.
+    # Native SVG hit testing needs a rendered panel; hidden paths have no fill.
+    viewer.locator('#tab-transverse').click()
+    if not viewer.locator('#view-transverse').is_visible():raise AssertionError('Transverse Achilles panel did not open for contour inspection')
     transverse_continuous=viewer.locator('#view-transverse .tendon-outline').evaluate("""path=>{
         return [[520,200],[520,300],[520,420],[700,250]].every(([x,y])=>path.isPointInFill(new DOMPoint(x,y))) && !path.isPointInFill(new DOMPoint(520,130));
     }""")
     if not transverse_continuous:raise AssertionError('Transverse Achilles contour cuts through the tendon interior')
+    viewer.locator('#tab-longitudinal').click()
+    if anatomy.get_attribute('aria-checked')!='false' or findings.get_attribute('aria-checked')!='false':raise AssertionError('Contour inspection changed the initial overlay selections')
 
     anatomy.click()
     picture=viewer.locator('#view-longitudinal .knee-picture')

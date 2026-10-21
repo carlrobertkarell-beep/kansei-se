@@ -8,12 +8,12 @@ import hashlib
 import html
 import json
 import re
+from case_layout import CSS, polish_decision
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = json.loads((ROOT/'.github/kansei/content/ultrasound-cases.20261016.json').read_text())
 CASES = DATA['cases']
 BY_KEY = {c['key']: c for c in CASES}
-CSS = '/assets/ultrasound-case-guide.20261016.css'
 US_BOOK = 'https://www.bokadirekt.se/boka-tjanst/kansei-rehabcenter-48847/ultraljud-rorelseapparaten-1946824'
 
 
@@ -54,7 +54,7 @@ def decision(c):
         care += f'''<article><h3>Hyaluron vid knäartros</h3><p>Vid kvarstående artrosrelaterad smärta kan hyaluron vara ett komplement. Läs om möjlig symtomlindring, forskningsläget, behandlingen och priser. Du kan boka injektion direkt eller välja konsultation om du är osäker.</p>{linked('Hyaluron i knä – behandling och bokning', '/hyaluronsyra/kna/')}</article>'''
     # The label describes planned evaluation, never an invented treatment result.
     follow = c['follow'].split('. ')[0].rstrip('.')+'.'
-    return f'''<section class="us-case-guide case-context-decision" id="nasta-steg" aria-labelledby="case-key-title" data-case-context="decision"><div class="wrap"><div class="case-context-key" id="klinisk-nyckel"><span class="eyebrow">Det viktiga i just det här fallet</span><h2 id="case-key-title">{esc(c['key_title'])}</h2><p>{esc(c['key_text'])}</p><p>{esc(c['implication'])}</p><div class="case-context-links">{media_link(c)}</div><p class="case-context-follow"><strong>Uppföljningens fokus:</strong> {esc(follow)}</p></div><h3>Vilket nästa steg passar ditt besvär?</h3><div class="case-context-care" data-care-count="{3 if c['key']=='kna' else 2}">{care}</div><div class="case-context-faq"><h3>Frågor om bildfallet</h3>{faq}</div><h3>Jämför med andra undersökningsfall</h3><div class="case-context-related">{related}</div><div class="case-context-links">{linked('Alla fall – sök efter ditt besvär', '/ultraljud/bilder/')}{linked('Vad ingår i ett ultraljudsbesök?', '/ultraljud/')}</div><p class="case-context-source">Undersökningsbilder: {linked('Carl-Robert Kårell, legitimerad naprapat', '/team/carl-robert-karell/')} · Kansei, Upplandsgatan 26 i Stockholm. {esc(c['kind'])}. Bildgenomgång och förklaringar uppdaterade 16 oktober 2026.</p></div></section>'''
+    return polish_decision(f'''<section class="us-case-guide case-context-decision" id="nasta-steg" aria-labelledby="case-key-title" data-case-context="decision"><div class="wrap"><div class="case-context-key" id="klinisk-nyckel"><span class="eyebrow">Det viktiga i just det här fallet</span><h2 id="case-key-title">{esc(c['key_title'])}</h2><p>{esc(c['key_text'])}</p><p>{esc(c['implication'])}</p><div class="case-context-links">{media_link(c)}</div><p class="case-context-follow"><strong>Uppföljningens fokus:</strong> {esc(follow)}</p></div><h3>Vilket nästa steg passar ditt besvär?</h3><div class="case-context-care" data-care-count="{3 if c['key']=='kna' else 2}">{care}</div><div class="case-context-faq"><h3>Frågor om bildfallet</h3>{faq}</div><h3>Jämför med andra undersökningsfall</h3><div class="case-context-related">{related}</div><div class="case-context-links">{linked('Alla fall – sök efter ditt besvär', '/ultraljud/bilder/')}{linked('Vad ingår i ett ultraljudsbesök?', '/ultraljud/')}</div><p class="case-context-source">Undersökningsbilder: {linked('Carl-Robert Kårell, legitimerad naprapat', '/team/carl-robert-karell/')} · Kansei, Upplandsgatan 26 i Stockholm. {esc(c['kind'])}. Bildgenomgång och förklaringar uppdaterade 16 oktober 2026.</p></div></section>''')
 
 
 def replace_schema(source, c):

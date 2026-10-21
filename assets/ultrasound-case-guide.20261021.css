@@ -1,0 +1,81 @@
+/* Patient entrances and clinical context use the existing Kansei design tokens. */
+.us-case-guide{font-family:var(--sans,Arial,Helvetica,sans-serif);color:var(--ink,#173137);scroll-margin-top:110px}
+.us-case-guide .wrap{min-width:0}
+.us-case-guide h2{font:500 clamp(28px,3.2vw,40px)/1.2 var(--sans);letter-spacing:-.03em;max-width:28ch;margin:0 0 18px}
+.us-case-guide h3{font:500 22px/1.35 var(--sans);letter-spacing:-.02em;margin:0 0 14px}
+.us-case-guide p{font:400 17px/1.75 var(--sans);margin:0 0 18px;max-width:76ch}
+.us-case-guide a{color:var(--teal,#166c66);text-underline-offset:4px}
+.us-case-guide .eyebrow{display:block;font:500 12px/1.5 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin:0 0 12px}
+.case-context-summary{padding-block:32px 36px;border-bottom:1px solid var(--line)}
+.case-context-columns{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px 52px;align-items:start}
+.case-context-question{padding:24px;background:var(--mist,#edf3f5);border-left:3px solid var(--teal);border-radius:0 7px 7px 0}
+.case-context-question p{font-size:16px;margin-bottom:12px}
+.us-case-guide .case-context-kind{font-size:13px;color:var(--muted,#596b70);margin-bottom:10px}
+.case-context-goals{display:flex;flex-wrap:wrap;gap:8px 18px;list-style:none;margin:18px 0 0;padding:0}
+.case-context-goals li{font:400 14px/1.6 var(--sans);padding-left:15px;position:relative}
+.case-context-goals li:before{content:'';position:absolute;left:0;top:.6em;width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.case-context-links{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center}
+.case-context-links a{display:inline-flex;align-items:center;min-height:44px;font:500 15px/1.55 var(--sans)}
+.case-context-decision{padding-block:42px 48px;background:var(--mist,#edf3f5);border-block:1px solid var(--line)}
+.case-context-key{max-width:92ch;margin-bottom:30px}
+.case-context-follow{padding-top:16px;border-top:1px solid var(--line);font-size:15px!important;color:var(--muted)}
+.case-context-care{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 36px;margin:24px 0 30px}
+.case-context-care[data-care-count="3"]{grid-template-columns:repeat(3,minmax(0,1fr))}
+.case-context-care>article{min-width:0;padding-top:18px;border-top:1px solid var(--line)}
+.case-context-care h3{font-size:20px}
+.case-context-care p{font-size:15px}
+.case-context-care a{display:inline-flex;align-items:center;min-height:44px;font:500 15px/1.55 var(--sans)}
+.case-context-faq{max-width:88ch;margin-block:30px}
+.case-context-faq details{border-block-start:1px solid var(--line);padding:0}
+.case-context-faq details:last-child{border-bottom:1px solid var(--line)}
+.case-context-faq summary{padding:17px 28px 17px 0;font:500 17px/1.55 var(--sans);cursor:pointer}
+.case-context-faq details p{font-size:16px;padding-bottom:14px;margin:0}
+.case-context-related{display:grid;grid-template-columns:1fr 1fr;gap:20px 36px;margin:20px 0 26px}
+.case-context-related a{display:block;min-height:44px;font:500 17px/1.5 var(--sans)}
+.case-context-related p{font-size:15px;color:var(--muted);margin-top:8px}
+.case-context-source{font-size:13px!important;color:var(--muted);margin-bottom:0!important}
+.case-context-source a{display:inline-block;padding-block:6px}
+.case-context-service{padding-block:38px;border-block:1px solid var(--line);margin-block:30px}
+.case-context-service .case-context-related{grid-template-columns:repeat(3,minmax(0,1fr))}
+.case-context-service .case-context-related[data-related-count="1"]{grid-template-columns:minmax(0,1fr)}
+.case-context-service .case-context-related p{font-size:15px}
+.us-case-guide :is(a,summary):focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+@media(max-width:760px){.us-case-guide{scroll-margin-top:90px}.case-context-columns,.case-context-care,.case-context-care[data-care-count="3"],.case-context-related,.case-context-service .case-context-related{grid-template-columns:minmax(0,1fr);gap:22px}.case-context-summary{padding-block:26px}.case-context-question{padding:19px}.us-case-guide p{font-size:16px}.case-context-decision{padding-block:32px}.us-case-guide h3{font-size:21px}.case-context-goals{display:grid;gap:7px}.case-context-care p,.case-context-related p{font-size:15px}.case-context-service{padding-block:28px}}
+
+/* Clear separation between the clinical decision, care options and exploration. */
+.case-context-decision{padding-block:64px;background:var(--paper,#f8faf9);border-block:1px solid var(--line,#d7e2e5)}
+.case-context-decision .case-context-key{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.35fr);gap:40px;max-width:none;margin:0 0 48px;padding:32px 36px;background:var(--mist,#edf3f5);border-left:3px solid var(--teal,#166c66);border-radius:0 12px 12px 0}
+.case-context-key-heading,.case-context-key-content{min-width:0}
+.case-context-key-content>:last-child{margin-bottom:0}
+.case-context-decision .case-context-key h2{max-width:31ch}
+.case-context-decision .case-context-key>p{max-width:76ch}
+.case-context-decision .case-context-key>.case-context-links{margin-top:12px}
+.case-context-decision .case-context-follow{margin-top:24px;padding-top:20px;max-width:none}
+.case-context-block-heading{margin-bottom:22px}
+.case-context-block-heading .eyebrow{margin-bottom:8px}
+.case-context-decision .case-context-block-heading h3{font-size:clamp(25px,2.5vw,31px);line-height:1.25;margin:0;max-width:35ch}
+.case-context-decision .case-context-care{gap:20px;margin:0}
+.case-context-decision .case-context-care>article{display:flex;flex-direction:column;padding:26px 28px;background:#fff;border:1px solid var(--line,#d7e2e5);border-radius:12px;box-shadow:0 3px 14px #17313705}
+.case-context-decision .case-context-care .case-context-card-label{font-size:12px;line-height:1.5;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--teal,#166c66);margin:0 0 12px}
+.case-context-decision .case-context-care h3{font-size:22px;line-height:1.3;margin-bottom:14px}
+.case-context-decision .case-context-care p{font-size:16px;line-height:1.75;margin-bottom:24px}
+.case-context-decision .case-context-care a{align-self:flex-start;max-width:100%;margin-top:auto;padding:10px 16px;min-height:46px;border:1px solid var(--teal,#166c66);border-radius:6px;text-decoration:none;font-size:15px;line-height:1.5;transition:background .15s,color .15s}
+.case-context-decision .case-context-care a:hover{background:var(--teal,#166c66);color:#fff}
+.case-context-decision .case-context-faq{max-width:none;margin:44px 0 0;padding:28px 32px;background:#fff;border:1px solid var(--line,#d7e2e5);border-radius:12px}
+.case-context-decision .case-context-faq h3{margin-bottom:20px}
+.case-context-decision .case-context-faq details p{max-width:76ch}
+.case-context-treatment{margin-top:24px;border-top:1px solid var(--line,#d7e2e5)}
+.case-context-treatment summary{padding:20px 0 2px;font-weight:500;font-size:17px;cursor:pointer}
+.case-context-treatment[open] summary{padding-bottom:16px}
+.case-context-treatment p{font-size:16px;max-width:76ch}
+.case-context-treatment p:last-child{margin-bottom:0}
+.case-context-more{margin-top:48px;padding-top:36px;border-top:1px solid var(--line,#d7e2e5)}
+.case-context-decision .case-context-related{gap:20px;margin:0 0 20px}
+.case-context-decision .case-context-related>article{padding:22px 26px;background:#fff;border:1px solid var(--line,#d7e2e5);border-radius:10px;min-width:0}
+.case-context-decision .case-context-related a{min-height:0;font-size:18px;line-height:1.5;text-decoration:none}
+.case-context-decision .case-context-related a:hover{text-decoration:underline}
+.case-context-decision .case-context-related p{margin:10px 0 0;font-size:15px;line-height:1.7}
+.case-context-decision .case-context-source{max-width:none;margin-top:28px!important;padding-top:22px;border-top:1px solid var(--line,#d7e2e5)}
+@media(max-width:900px){.case-context-decision .case-context-key{grid-template-columns:minmax(0,1fr);gap:12px}}
+@media(max-width:760px){.case-context-decision{padding-block:40px}.case-context-decision .case-context-key{padding:24px 22px;margin-bottom:32px}.case-context-decision .case-context-care{gap:14px}.case-context-decision .case-context-care>article{padding:23px 22px}.case-context-decision .case-context-care h3{font-size:22px}.case-context-decision .case-context-faq{margin-top:30px;padding:24px 22px}.case-context-more{margin-top:32px;padding-top:28px}.case-context-decision .case-context-related{gap:14px}.case-context-decision .case-context-related>article{padding:20px 22px}.case-context-decision .case-context-block-heading h3{font-size:26px}}
+@media(prefers-reduced-motion:reduce){.case-context-decision .case-context-care a{transition:none}}

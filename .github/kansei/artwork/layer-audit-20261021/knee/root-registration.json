@@ -1,0 +1,138 @@
+[
+  {
+    "source_image": "exec-3ac870fd-4358-4f9b-bd85-dd236fdffbab.png",
+    "source_size": [
+      1512,
+      1040
+    ],
+    "source_bounds": [
+      213.80625,
+      63.81818181818182,
+      1325.3625000000002,
+      879.2727272727273
+    ],
+    "target_bounds": [
+      169,
+      61,
+      1110,
+      751
+    ],
+    "canvas": [
+      1280,
+      880
+    ],
+    "archive": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/.github/kansei/artwork/layer-audit-20261021/knee/bakercysta-painting.webp",
+    "archive_sha256": "56d8f1dbd489fcb71467c9b56789890abadc7acf1019d2a956a80a2721e44ad2",
+    "asset": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/bilder/ultraljud/kna/bakercysta-anatomi.20261021f.webp",
+    "asset_sha256": "9d0ef6776fd99fe70f2f838f568e93a04b4b911eda0e262291bcbcb5f7f93fc5",
+    "qa_png": "/workspace/scratch/30f45a18ccb3/audit-qa/knee/registered/bakercysta-anatomi.20261021f.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "bakercysta",
+    "selected_after_targeted_edit": true,
+    "initial_candidate_source_image": "exec-ed0e2575-7eb1-441e-9b14-a1b49b4d63ee.png",
+    "global_transform": [
+      0.8465608465608465,
+      0,
+      0,
+      0.8461538461538461,
+      -12,
+      7
+    ],
+    "qa_landmarks": {
+      "tip_original": [
+        603.6,
+        482.1
+      ],
+      "tip_painted_approx": [
+        614,
+        488
+      ],
+      "upper_body_residual_px_approx": [
+        5,
+        12
+      ],
+      "neck_residual_px_approx": [
+        10,
+        20
+      ],
+      "accepted": true
+    },
+    "original_sha256": "ec036da9b0cf0cc9fdfa3b9224415bdb0f4c053f9dd33dbab887a3327134c386",
+    "original_findings_reference": "source-anchors.json",
+    "finding_geometry_changed": false
+  },
+  {
+    "key": "brosk-jamforelse",
+    "source_image": "exec-a87b4f35-a8f8-4280-adff-ca8400863c80.png",
+    "source_size": [
+      1512,
+      1040
+    ],
+    "source_bounds": [
+      0,
+      80,
+      1512,
+      912
+    ],
+    "target_bounds": [
+      0,
+      61,
+      1280,
+      751
+    ],
+    "canvas": [
+      1280,
+      880
+    ],
+    "archive": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/.github/kansei/artwork/layer-audit-20261021/knee/brosk-jamforelse-painting.webp",
+    "archive_sha256": "76800cce23e250dbfa24638e99248bba8203b6305a8a4d39ceba93708d34a251",
+    "asset": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/bilder/ultraljud/kna/brosk-jamforelse-anatomi.20261021f.webp",
+    "asset_sha256": "b7347b33f46d48cb15d109ddb05c2922fe5536d9567e3e505db3150040a5bdce",
+    "qa_png": "/workspace/scratch/30f45a18ccb3/audit-qa/knee/registered/brosk-jamforelse-anatomi.20261021f.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "original_sha256": "9024fafba45fbcfe5a59f6e720fc1ab6e4d17d216a72c97bed079ad5c9fd63b7",
+    "original_findings_reference": "source-anchors.json",
+    "finding_geometry_changed": false,
+    "qa_landmarks": {
+      "left_focal_notch_original": [
+        332,
+        345
+      ],
+      "left_focal_notch_painted_approx": [
+        333,
+        347
+      ],
+      "reference_anchors_original": [
+        [
+          821,
+          331
+        ],
+        [
+          943,
+          303
+        ],
+        [
+          1006,
+          277
+        ]
+      ],
+      "reference_anchors_painted_approx": [
+        [
+          821,
+          335
+        ],
+        [
+          943,
+          307
+        ],
+        [
+          1006,
+          283
+        ]
+      ],
+      "max_surface_residual_px_approx": 8,
+      "comparison_divider_x": 640,
+      "accepted": true
+    }
+  }
+]

@@ -1,0 +1,238 @@
+{
+  "version": "20261021f",
+  "canvas": [
+    1280,
+    960
+  ],
+  "method": "Built-in imagegen regeneration from original clinical geometry and clinician source-coordinate contours, followed by one global rectangular registration per whole painting. No local warps; original findings not relocated.",
+  "style_references": [
+    "bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.20261016e.webp",
+    "bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.20261016e.webp",
+    "bilder/ultraljud/bursit-axel/supraspinatus.anatomi.20261016e.webp"
+  ],
+  "views": [
+    {
+      "source_image": "bursit-vy-1.painting.20261021f.png",
+      "source_size": [
+        1448,
+        1086
+      ],
+      "source_bounds": [
+        -29.940119760479043,
+        -11.3125,
+        1502.994011976048,
+        1074.6875
+      ],
+      "target_bounds": [
+        0,
+        0,
+        1280,
+        960
+      ],
+      "canvas": [
+        1280,
+        960
+      ],
+      "archive": ".github/kansei/artwork/layer-audit-20261021/shoulder/bursa/bursit-vy-1.painting.20261021f.webp",
+      "archive_sha256": "66abeb517eed71026193c62086aa258303efadc538e4d19c4a48ae491ce93f0e",
+      "asset": "bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.20261021f.webp",
+      "asset_sha256": "0bef72dc14be163709b05bb5d058f50eb188c12f8442a81877d06cb730baacba",
+      "qa_png": "/workspace/scratch/30f45a18ccb3/bursa-audit-qa/bursit-vy-1.anatomi.20261021f.png",
+      "method": "One global rectangular registration, clipped to original scan; no local warp.",
+      "key": "bursit-vy-1",
+      "global_transform": [
+        0.835,
+        0,
+        0,
+        0.8839779005524862,
+        25,
+        10
+      ],
+      "original_sha256": "9f278fdadc46796a4e0a05ad526f027ad7423f6db12e49588d3cf08c8c378767",
+      "source_contours": ".github/kansei/artwork/bursa/contours.20261016d.json",
+      "qa_note": "Fixed original finding points retained; source-coordinate cortex/tissue contour overlay reviewed on1280x960 canvas.",
+      "landmark_check": {
+        "cortex_apex_original": [
+          390,
+          385
+        ],
+        "cortex_apex_anatomy_approx": [
+          398,
+          393
+        ],
+        "fluid_tip_original": [
+          1117,
+          767
+        ],
+        "fluid_tip_anatomy_approx": [
+          1117,
+          765
+        ],
+        "finding_point_unchanged": [
+          960,
+          570
+        ],
+        "max_material_drift_px_approx": 30
+      },
+      "generated_source_filename": "exec-f5384e35-bfa7-4ea3-af94-53fe6b77de47.png",
+      "generated_source_png_sha256": "d3aa891392fdf0f900b5f2374d83545952eabbbcc2d4faa8665cae29135a7dbc",
+      "archived_source": ".github/kansei/artwork/layer-audit-20261021/shoulder/bursa/bursit-vy-1.painting.20261021f.webp",
+      "archived_source_encoding": "WebP quality96; original generated PNG filename/hash retained for provenance.",
+      "source_guide": ".github/kansei/artwork/layer-audit-20261021/shoulder/bursa/bursit-vy-1.source-guide.svg"
+    },
+    {
+      "source_image": "bursit-vy-2.painting.20261021f.png",
+      "source_size": [
+        1448,
+        1086
+      ],
+      "source_bounds": [
+        0.0,
+        8.648648648648647,
+        1448.0,
+        1046.4864864864865
+      ],
+      "target_bounds": [
+        0,
+        0,
+        1280,
+        960
+      ],
+      "canvas": [
+        1280,
+        960
+      ],
+      "archive": ".github/kansei/artwork/layer-audit-20261021/shoulder/bursa/bursit-vy-2.painting.20261021f.webp",
+      "archive_sha256": "7a4c244681fae047acc57323d6d1efa42181897e50c6b41cb2725739437f76c8",
+      "asset": "bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.20261021f.webp",
+      "asset_sha256": "784a9e9e74bfb52311b5ce65a5a68649fb92f4d996a3789bbadee8e85d9fc132",
+      "qa_png": "/workspace/scratch/30f45a18ccb3/bursa-audit-qa/bursit-vy-2.anatomi.20261021f.png",
+      "method": "One global rectangular registration, clipped to original scan; no local warp.",
+      "key": "bursit-vy-2",
+      "global_transform": [
+        0.8839779005524862,
+        0,
+        0,
+        0.925,
+        0,
+        -8
+      ],
+      "original_sha256": "5f4cfc20ca41788f0c6bab93a857d60c01756fb8987fb87155bb65202f182998",
+      "source_contours": ".github/kansei/artwork/bursa/contours.20261016d.json",
+      "qa_note": "Fixed original finding points retained; source-coordinate cortex/tissue contour overlay reviewed on1280x960 canvas.",
+      "landmark_check": {
+        "cortex_peak_original_approx": [
+          700,
+          525
+        ],
+        "cortex_peak_anatomy_approx": [
+          696,
+          523
+        ],
+        "fluid_lower_left_original_approx": [
+          250,
+          783
+        ],
+        "fluid_lower_left_anatomy_approx": [
+          252,
+          765
+        ],
+        "finding_point_unchanged": [
+          610,
+          415
+        ],
+        "max_material_drift_px_approx": 22
+      },
+      "generated_source_filename": "exec-ffb39879-ccb6-4efc-936a-92ea901d9d15.png",
+      "generated_source_png_sha256": "5e61c9dec3d3b864d820c2bd188fcf20a1095f191193b93e1e9cea26dc453a97",
+      "archived_source": ".github/kansei/artwork/layer-audit-20261021/shoulder/bursa/bursit-vy-2.painting.20261021f.webp",
+      "archived_source_encoding": "WebP quality96; original generated PNG filename/hash retained for provenance.",
+      "source_guide": ".github/kansei/artwork/layer-audit-20261021/shoulder/bursa/bursit-vy-2.source-guide.svg"
+    },
+    {
+      "source_image": "supraspinatus.painting.20261021f.png",
+      "source_size": [
+        1448,
+        1086
+      ],
+      "source_bounds": [
+        16.96875,
+        -5.65625,
+        1464.96875,
+        1080.34375
+      ],
+      "target_bounds": [
+        0,
+        0,
+        1280,
+        960
+      ],
+      "canvas": [
+        1280,
+        960
+      ],
+      "archive": ".github/kansei/artwork/layer-audit-20261021/shoulder/bursa/supraspinatus.painting.20261021f.webp",
+      "archive_sha256": "62a2990cf664506e9262a86342c47718d72f314327abc8de1149b9f0cc858e7f",
+      "asset": "bilder/ultraljud/bursit-axel/supraspinatus.anatomi.20261021f.webp",
+      "asset_sha256": "713d54ef7b19851093404e79d50384cd1b9914f58b1310d8f1043701950ba189",
+      "qa_png": "/workspace/scratch/30f45a18ccb3/bursa-audit-qa/supraspinatus.anatomi.20261021f.png",
+      "method": "One global rectangular registration, clipped to original scan; no local warp.",
+      "key": "supraspinatus",
+      "global_transform": [
+        0.8839779005524862,
+        0,
+        0,
+        0.8839779005524862,
+        -15,
+        5
+      ],
+      "original_sha256": "248c61e58a2bddb086c4d0b5c8808b8a00e43b42e2baaf07a256bb63baf454e1",
+      "source_contours": ".github/kansei/artwork/bursa/contours.20261016d.json",
+      "qa_note": "Fixed original finding points retained; source-coordinate cortex/tissue contour overlay reviewed on1280x960 canvas.",
+      "landmark_check": {
+        "central_cortex_projection_original_approx": [
+          782,
+          480
+        ],
+        "central_cortex_projection_anatomy_approx": [
+          786,
+          477
+        ],
+        "right_cortex_original": [
+          953,
+          488
+        ],
+        "right_cortex_anatomy_approx": [
+          967,
+          489
+        ],
+        "findings_unchanged": [
+          [
+            689,
+            502
+          ],
+          [
+            745,
+            463
+          ],
+          [
+            953,
+            488
+          ]
+        ],
+        "max_material_drift_px_approx": 20
+      },
+      "generated_source_filename": "exec-125f81e6-10d6-4c43-b2bb-7cbce3202196.png",
+      "generated_source_png_sha256": "17f844ac9ead96fde0fc9955ddcb5415fe332f5277982792660b636edf425588",
+      "archived_source": ".github/kansei/artwork/layer-audit-20261021/shoulder/bursa/supraspinatus.painting.20261021f.webp",
+      "archived_source_encoding": "WebP quality96; original generated PNG filename/hash retained for provenance.",
+      "source_guide": ".github/kansei/artwork/layer-audit-20261021/shoulder/bursa/supraspinatus.source-guide.svg"
+    }
+  ],
+  "retained_view": {
+    "key": "subscapularis",
+    "asset": "bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016e.webp",
+    "reason": "All3 fixed findings stay in intended stump/residual-fiber/fluid regions; fluid margin10–15px and cortexabout20px residual, no material tissue crossing."
+  },
+  "guide_rendering": "Source-guide SVGs reference the existing clinical JPEGs by repository-relative path. Render with Inkscape to obtain imagegen guide PNGs; derived PNG duplicates are not archived."
+}

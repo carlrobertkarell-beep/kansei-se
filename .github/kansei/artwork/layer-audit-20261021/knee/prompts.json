@@ -1,0 +1,66 @@
+{
+  "mode": "built-in imagegen",
+  "version": "20261021f",
+  "views": [
+    {
+      "key": "osteofyter",
+      "original": "osteofyter-ultraljud.webp",
+      "style": "osteofyter-anatomi.20261013-v5.webp",
+      "target": [
+        108,
+        31,
+        1170,
+        810
+      ],
+      "prompt": "Use case: style-transfer. This is a registration repair of an educational anatomy layer. Image1 ORIGINAL ULTRASOUND is the edit target and exact geometry authority on the 1280x880 canvas. Image2 is ONLY the existing approved Kansei tissue material/style reference; do NOT copy its displaced contours. Image3 is the ORIGINAL scan with clinically supplied finding outline: those positions must be preserved. Return ONE full-frame painting matching original composition and proportions, black outside the original scan. No crop/recenter, no new pathology, no magnification of the abnormality, no generic textbook substitution. Paint skin/fat/fascia/tendon/muscle/bone continuously inside the scan: delicate organic ivory collagen and intramuscular fascia, fine brick-red muscle fascicles, golden irregular fat lobules, thin ivory cortex, small irregular tan trabeculae fading to black below accessible cortex. Dark navy smooth fluid, gray-blue cartilage as appropriate. Preserve existing visible morphology without assigning diagnoses. No machine header, numbers, labels, arrows, measurement calipers, colored outlines or text in final; they are separate code layers. Deep tissue fades to black, not leftover grayscale islands. No triangle mesh, no tiled texture, no ruler-straight fibers. Whole painting only. Exact contour anchors below refer to ORIGINAL1280x880 and must not drift. Original scan rectangle x108..1170,y31..810. Most important: LEFT bony prominence roof follows (447,319)→(469,292)→(495,279)→(521,260)→(543,267)→(562,304). The left marked prominence occupies x449..576,y261..387. Its peak MUST stay at(520,262), not(550,250). RIGHT bony prominence roof follows(675,328)→(677,309)→(696,305)→(711,298)→(732,307)→(751,317)→(762,344), with region x683..763,y305..397. Do NOT shift it to x744..802 as image2 did. Central meniscal triangle lies between original bones with tip near(627,418). The broad MCL follows original arched bright band above meniscus and bone, not a newly taller arch. Preserve black fluid pockets lateral to those edges as in original. No oversized new osteophytes. Bone outer cortex and superficial interfaces must retain source positions; the clinically marked outlines in image3 should trace the NEW painting's contours exactly."
+    },
+    {
+      "key": "ledvatska",
+      "original": "ledvatska-ultraljud.webp",
+      "style": "ledvatska-anatomi.webp",
+      "target": [
+        169,
+        61,
+        1110,
+        751
+      ],
+      "prompt": "Use case: style-transfer. This is a registration repair of an educational anatomy layer. Image1 ORIGINAL ULTRASOUND is the edit target and exact geometry authority on the 1280x880 canvas. Image2 is ONLY the existing approved Kansei tissue material/style reference; do NOT copy its displaced contours. Image3 is the ORIGINAL scan with clinically supplied finding outline: those positions must be preserved. Return ONE full-frame painting matching original composition and proportions, black outside the original scan. No crop/recenter, no new pathology, no magnification of the abnormality, no generic textbook substitution. Paint skin/fat/fascia/tendon/muscle/bone continuously inside the scan: delicate organic ivory collagen and intramuscular fascia, fine brick-red muscle fascicles, golden irregular fat lobules, thin ivory cortex, small irregular tan trabeculae fading to black below accessible cortex. Dark navy smooth fluid, gray-blue cartilage as appropriate. Preserve existing visible morphology without assigning diagnoses. No machine header, numbers, labels, arrows, measurement calipers, colored outlines or text in final; they are separate code layers. Deep tissue fades to black, not leftover grayscale islands. No triangle mesh, no tiled texture, no ruler-straight fibers. Whole painting only. Exact contour anchors below refer to ORIGINAL1280x880 and must not drift. Original scan rectangle x169..1110,y61..751. Lock the continuous fluid pocket to the exact yellow boundary from image3. Main body begins(399,271), top(492,264),(611,270),(696,273),(784,284), then side(784,331),(864,396),(933,414),(1010,440),(1019,484); lower tip(973,574), then return via(929,532),(903,523),(815,477),(706,442),(640,395),(603,392),(572,385),(471,334),(399,298). Do NOT expand the pocket rightward to x1060 or downward to y604 as image2 did. Retain the original small gray projection hanging from upper pocket near(781,335) and observed internal echoes without inventing synovitis. Quadriceps tendon and surrounding fat/collagen must follow original borders; retain the source bone contour below and patellar edge at right. Repaint source geometry, not image2 anatomy."
+    },
+    {
+      "key": "bakercysta",
+      "original": "bakercysta-ultraljud.webp",
+      "style": "bakercysta-anatomi.20261014-v6.webp",
+      "target": [
+        169,
+        61,
+        1110,
+        751
+      ],
+      "prompt": "Use case: style-transfer. This is a registration repair of an educational anatomy layer. Image1 ORIGINAL ULTRASOUND is the edit target and exact geometry authority on the 1280x880 canvas. Image2 is ONLY the existing approved Kansei tissue material/style reference; do NOT copy its displaced contours. Image3 is the ORIGINAL scan with clinically supplied finding outline: those positions must be preserved. Return ONE full-frame painting matching original composition and proportions, black outside the original scan. No crop/recenter, no new pathology, no magnification of the abnormality, no generic textbook substitution. Paint skin/fat/fascia/tendon/muscle/bone continuously inside the scan: delicate organic ivory collagen and intramuscular fascia, fine brick-red muscle fascicles, golden irregular fat lobules, thin ivory cortex, small irregular tan trabeculae fading to black below accessible cortex. Dark navy smooth fluid, gray-blue cartilage as appropriate. Preserve existing visible morphology without assigning diagnoses. No machine header, numbers, labels, arrows, measurement calipers, colored outlines or text in final; they are separate code layers. Deep tissue fades to black, not leftover grayscale islands. No triangle mesh, no tiled texture, no ruler-straight fibers. Whole painting only. Exact contour anchors below refer to ORIGINAL1280x880 and must not drift. Original scan rectangle x169..1110,y61..751. Preserve the EXACT dark fluid shape shown by image3: broad upper body x348..756, roof y126..154, rounded left tip(348,179), lower left wall through(375,237),(429,255),(474,257),(557,245),(616,234). Preserve the tissue tongue projecting inward from right near(610,190) and its curved recess. The continuous narrowing neck descends on right via(750,232),(755,247),(776,265),(768,285),(761,304),(775,324),(752,340),(704,367),(657,418),(628,448),(632,465),(603,482),(587,474),(587,452), and returns via(623,401),(646,368),(628,355),(644,308),(657,260). The inferior fluid tip MUST end near(600,480), not y525; keep its source narrowing curve and its connection to upper body. Follow original adjacent muscle on left, oval tendon profiles on right, and curved femoral cortex/cartilage below. Do not turn neck into a different wide sinuous channel or expand gray tongue. Same materials as image2 but exact image1/3 shapes."
+    },
+    {
+      "key": "brosk-jamforelse",
+      "original": "brosk-jamforelse-ultraljud.webp",
+      "style": "brosk-jamforelse-anatomi.webp",
+      "target": [
+        0,
+        61,
+        1280,
+        751
+      ],
+      "prompt": "Use case: style-transfer. This is a registration repair of an educational anatomy layer. Image1 ORIGINAL ULTRASOUND is the edit target and exact geometry authority on the 1280x880 canvas. Image2 is ONLY the existing approved Kansei tissue material/style reference; do NOT copy its displaced contours. Image3 is the ORIGINAL scan with clinically supplied finding outline: those positions must be preserved. Return ONE full-frame painting matching original composition and proportions, black outside the original scan. No crop/recenter, no new pathology, no magnification of the abnormality, no generic textbook substitution. Paint skin/fat/fascia/tendon/muscle/bone continuously inside the scan: delicate organic ivory collagen and intramuscular fascia, fine brick-red muscle fascicles, golden irregular fat lobules, thin ivory cortex, small irregular tan trabeculae fading to black below accessible cortex. Dark navy smooth fluid, gray-blue cartilage as appropriate. Preserve existing visible morphology without assigning diagnoses. No machine header, numbers, labels, arrows, measurement calipers, colored outlines or text in final; they are separate code layers. Deep tissue fades to black, not leftover grayscale islands. No triangle mesh, no tiled texture, no ruler-straight fibers. Whole painting only. Exact contour anchors below refer to ORIGINAL1280x880 and must not drift. This ORIGINAL is a split comparison with seam at EXACT x640; preserve both sides separately, never merge into a continuous bone. Clinical scan begins y61 and fades to black at depth, fullwidth1280. LEFT focal LOWER cartilage/bone boundary must keep exact small notch in image3: (277,353),(300,349),(316,359),(329,358),(335,350),(331,342),(337,334),(355,340),(369,341). The irregular lower edge is at y334..359, NOT y355..379 from image2. The cartilage band around it is a thin slate-blue/gray layer between the original tendon and bright bone cortex. Match the source's full left bone contour sloping upward-right; do not create a broad concave bowl. RIGHT comparison LOWER cartilage border must pass(821,331),(864,326),(905,316),(943,303),(966,295),(988,285),(1006,277), and continue toward original peak near(1110,223). The band has source thickness and contour, NOT the displaced thicker band in image2. Preserve exact original tendon bulk and muscle/fat above, but use organic approved materials. No before/after or side headings, no labels/calipers in final."
+    },
+    {
+      "key": "brosk",
+      "original": "brosk-ultraljud.webp",
+      "style": "brosk-anatomi.20261014-v6.webp",
+      "target": [
+        108,
+        31,
+        1170,
+        810
+      ],
+      "prompt": "Use case: style-transfer. This is a registration repair of an educational anatomy layer. Image1 ORIGINAL ULTRASOUND is the edit target and exact geometry authority on the 1280x880 canvas. Image2 is ONLY the existing approved Kansei tissue material/style reference; do NOT copy its displaced contours. Image3 is the ORIGINAL scan with clinically supplied finding outline: those positions must be preserved. Return ONE full-frame painting matching original composition and proportions, black outside the original scan. No crop/recenter, no new pathology, no magnification of the abnormality, no generic textbook substitution. Paint skin/fat/fascia/tendon/muscle/bone continuously inside the scan: delicate organic ivory collagen and intramuscular fascia, fine brick-red muscle fascicles, golden irregular fat lobules, thin ivory cortex, small irregular tan trabeculae fading to black below accessible cortex. Dark navy smooth fluid, gray-blue cartilage as appropriate. Preserve existing visible morphology without assigning diagnoses. No machine header, numbers, labels, arrows, measurement calipers, colored outlines or text in final; they are separate code layers. Deep tissue fades to black, not leftover grayscale islands. No triangle mesh, no tiled texture, no ruler-straight fibers. Whole painting only. Exact contour anchors below refer to ORIGINAL1280x880 and must not drift. Original scan rectangle x108..1170,y31..810. View is transverse; large tendon above thin cartilage and V-shaped cortex below. Clinically highlighted cartilage region is x363..705: upper edge follows(363,358),(395,360),(432,366),(478,369),(518,369),(562,376),(600,382),(634,379),(672,373),(705,360). Lower cartilage/cortex boundary MUST follow the small source irregularities: (363,455),(383,468),(407,470),(431,467),(441,476),(462,490),(478,489),(505,492),(512,501),(507,514),(525,519),(545,532),(555,530),(578,517),(602,512),(620,512),(625,503),(624,493),(608,477),(605,465),(610,450),(647,437),(678,430),(705,415). Deepest small notch must be near(545,532), not y490 as image2 did. Overall source cortex V descends from left~(108,298) through the central notch and rises to right~(1120,308). Keep quadriceps tendon border/source thickness instead of filling all overlying muscle with tendon. Preserve original local unevenness only, without adding calcification or additional erosions."
+    }
+  ]
+}

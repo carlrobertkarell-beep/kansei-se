@@ -1,0 +1,71 @@
+{
+  "source_image": "exec-e90c0d69-7376-4d6e-be81-94ad77eeac94.png",
+  "source_size": [
+    1512,
+    1040
+  ],
+  "source_bounds": [
+    141,
+    32,
+    1386,
+    954
+  ],
+  "target_bounds": [
+    108,
+    31,
+    1170,
+    810
+  ],
+  "canvas": [
+    1280,
+    880
+  ],
+  "archive": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/.github/kansei/artwork/layer-audit-20261021/knee/osteofyter.painting.20261021f.webp",
+  "archive_sha256": "e0124c760628162a939180ca5dfb218b84cf72af7f760b0bdab98c5984369758",
+  "asset": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/bilder/ultraljud/kna/osteofyter-anatomi.20261021f.webp",
+  "asset_sha256": "63c0eb3a83bf5170de0274ec599182357ec3715d0ee207d7d6a1d31d74902227",
+  "qa_png": "/workspace/scratch/30f45a18ccb3/audit-qa/knee/osteofyter-anatomi.20261021f.png",
+  "method": "One global rectangular registration, clipped to original scan; no local warp.",
+  "original_canvas": [
+    1280,
+    880
+  ],
+  "material_correction": "Superficial compartment above MCL corrected from mixed invented red muscle to golden lobular fat with ivory septa.",
+  "geometry_correction": "Single imagegen edit extended continuous meniscal triangle from shallow tip near registered (639,360) toward source deep gap. Final registered tip approximately (640,402), source target approximately (627,418); residual about 21 px. Both bone peaks, MCL and navy wedges visually held.",
+  "qa": "Fixed original osteophyte contours inspected over export. Bony roofs mostly within 10\u201315 px, all finding zones remain on intended bone. No original finding coordinates altered; no new lesions.",
+  "approx_landmarks": [
+    {
+      "name": "left bone peak",
+      "painting_registered": [
+        528,
+        266
+      ],
+      "source_original": [
+        525,
+        264
+      ]
+    },
+    {
+      "name": "right bone peak",
+      "painting_registered": [
+        715,
+        298
+      ],
+      "source_original": [
+        710,
+        304
+      ]
+    },
+    {
+      "name": "meniscus deep tip",
+      "painting_registered": [
+        640,
+        402
+      ],
+      "source_original": [
+        627,
+        418
+      ]
+    }
+  ]
+}

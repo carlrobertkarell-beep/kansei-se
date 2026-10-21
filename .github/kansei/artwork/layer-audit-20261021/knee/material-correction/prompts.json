@@ -1,0 +1,16 @@
+[
+  {
+    "key": "osteofyter",
+    "tool": "built-in imagegen",
+    "edit_target": "/workspace/scratch/30f45a18ccb3/generated_images/exec-b20906ad-6094-4411-ae47-d03cf5d307e8.png",
+    "material_reference": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/bilder/ultraljud/kna/osteofyter-anatomi.20261013-v5.webp",
+    "prompt": "Use case: precise-object-edit. Asset: Kansei medical educational ultrasound anatomy painting. Input image 1 is the EDIT TARGET; image 2 is MATERIAL REFERENCE ONLY. Make one targeted tissue material correction to image 1. Keep image 1's entire full-frame layout, black borders, canvas ratio, tissue boundaries, MCL ligament arch, meniscus, two exact bony prominence shapes and positions, navy fluid wedges, cortex outlines, and depth fade UNCHANGED. The broad superficial compartment ABOVE the ivory MCL ligament is adipose tissue, NOT muscle. Replace all brick-red elongated muscle bundles inside that superficial compartment with golden-yellow irregular lobular adipose tissue separated by fine organic ivory septa, using image 2 for fat texture only. Match image 1's already golden fat so the corrected compartment reads continuously as fat, retaining the existing ivory connective septa and surface skin. Remove the red muscle appearance throughout this superficial compartment. Do not copy image 2's geometry or bony positions. Keep every lower structure and all existing lesion boundaries exactly as image 1. Do not alter the MCL itself, meniscus, navy wedges or bone. No labels, no text, no machine UI, no calipers, no new lesions. Return a single continuous painting matching image 1's original frame."
+  },
+  {
+    "key": "ledvatska",
+    "tool": "built-in imagegen",
+    "edit_target": "/workspace/scratch/30f45a18ccb3/generated_images/exec-8bce88db-74ab-4e89-aaea-92791ab2cb46.png",
+    "material_reference": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/bilder/ultraljud/kna/ledvatska-anatomi.webp",
+    "prompt": "Use case: precise-object-edit. Asset: Kansei medical educational ultrasound anatomy painting. Input image 1 is the EDIT TARGET; image 2 is MATERIAL REFERENCE ONLY. Make exactly one tissue material correction to image 1. The long diagonal soft-tissue band BELOW the navy joint-fluid pocket and ABOVE the bright femoral cortex is the PREFEMORAL FAT PAD, not muscle. Replace the red muscle-like fascicles in this diagonal band with golden-yellow irregular lobular fat and fine ivory connective septa. Preserve the band's exact outer boundaries and thickness; its lower edge remains the identical bright femoral cortex and its upper edge remains the identical fluid lower contour. Match image 2's fat material here only, without copying its displaced shapes. LOCK all image 1 geometry: full-frame black borders, aspect ratio, fluid boundary and pointed lower-right tip, small gray projection hanging from fluid roof, existing subtle internal echoes, quadriceps tendon above fluid, superficial fat, patella at right, cortex and bone trabeculae, depth fade. Keep every structure in exactly the same position and outline. Do not enlarge fluid or reposition the gray projection. Do not create additional muscle, lesions, labels, text, machine UI or calipers. Return a single continuous painting matching image 1's frame."
+  }
+]

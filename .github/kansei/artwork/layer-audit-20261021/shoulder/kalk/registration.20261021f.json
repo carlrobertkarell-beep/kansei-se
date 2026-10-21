@@ -1,0 +1,147 @@
+{
+  "version": "20261021f",
+  "scope": [
+    "ultraljud/kalkaxel/index.html",
+    "ultraljud/index.html",
+    "ultraljud/bilder/index.html",
+    "ultraljud/axel/index.html"
+  ],
+  "generation": "Built-in imagegen; original scan + old painting material style only + source-coordinate guide. Source-guide retry selected.",
+  "registration": "One global rectangle per whole painting; no local warps or diagnostic source modifications.",
+  "findings": "Unchanged original ultrasound SVG used identically in anatomy and original modes. Original detail crop rectangles used in both modes.",
+  "views": [
+    {
+      "source_image": "exec-a1f649bf-81b6-49ae-b188-d4971dc0ccd8.png",
+      "source_size": [
+        1448,
+        1086
+      ],
+      "source_bounds": [
+        108,
+        111,
+        1340,
+        965
+      ],
+      "target_bounds": [
+        108,
+        111,
+        1171,
+        891
+      ],
+      "canvas": [
+        1280,
+        960
+      ],
+      "archive": ".github/kansei/artwork/layer-audit-20261021/shoulder/kalk/kalk.painting.20261021f.webp",
+      "archive_sha256": "d20d9190e7561206c969344a2ca92752b11256d2484b4aadf1b5f3f9bc1bc450",
+      "asset": "bilder/ultraljud/kalkaxel/kalk.anatomi.20261021f.webp",
+      "asset_sha256": "25911669cb3b97b4fa637d0be5dc7373c0679988dc39dcf8dc036a7471971e9e",
+      "qa_png": "/workspace/scratch/30f45a18ccb3/kalk-audit-qa/kalk.anatomi.20261021f.png",
+      "method": "One global rectangular registration, clipped to original scan; no local warp.",
+      "key": "kalk",
+      "original": "bilder/ultraljud/kalkaxel/kalk-ultraljud.jpg",
+      "original_sha256": "97a0e8b642102eac1a40da062995027ab6d57a4f5225efd0da0dd245fcd53b32",
+      "original_byte_identical": true
+    },
+    {
+      "source_image": "exec-11e50418-7ca6-4e73-9de4-a338ed6f07bb.png",
+      "source_size": [
+        1448,
+        1086
+      ],
+      "source_bounds": [
+        105,
+        114,
+        1366,
+        959
+      ],
+      "target_bounds": [
+        108,
+        111,
+        1171,
+        891
+      ],
+      "canvas": [
+        1280,
+        960
+      ],
+      "archive": ".github/kansei/artwork/layer-audit-20261021/shoulder/kalk/frisk.painting.20261021f.webp",
+      "archive_sha256": "241decc17bdeb1f98fcac6a51dd5b545aebb0a15fe11af62834f9d382941cd09",
+      "asset": "bilder/ultraljud/kalkaxel/frisk.anatomi.20261021f.webp",
+      "asset_sha256": "ca5b7cc3ef1cb834bd81f0e75a156de99ba6e8e491b8b3d43195fc9db29ace68",
+      "qa_png": "/workspace/scratch/30f45a18ccb3/kalk-audit-qa/frisk.anatomi.20261021f.png",
+      "method": "One global rectangular registration, clipped to original scan; no local warp.",
+      "key": "frisk",
+      "original": "bilder/ultraljud/kalkaxel/frisk-ultraljud.jpg",
+      "original_sha256": "b57647f25495c6d23d815855ca8c08f47e39c8f3d335d8fea72727e001022e27",
+      "original_byte_identical": true
+    }
+  ],
+  "landmark_review": {
+    "kalk": {
+      "original_targets": [
+        [
+          617,
+          366
+        ],
+        [
+          916,
+          367
+        ],
+        [
+          863,
+          407
+        ]
+      ],
+      "review": "Both calcification targets lie inside their respective painted calcification areas; rupture target inside preserved dark tendon defect. Cortex mostly 5–12px from source tracing, irregular right notch ~10px; tendon upper interface midleft approximately15–25px below source tracing.",
+      "cortex_original_approx": [
+        [
+          800,
+          448
+        ],
+        [
+          981,
+          481
+        ],
+        [
+          1171,
+          443
+        ]
+      ],
+      "cortex_anatomy_approx": [
+        [
+          789,
+          443
+        ],
+        [
+          991,
+          489
+        ],
+        [
+          1171,
+          440
+        ]
+      ]
+    },
+    "frisk": {
+      "original_target": [
+        650,
+        405
+      ],
+      "review": "Target remains within continuous tendon; humeral cortex and upper tendon interface approximately5–15px from source tracing.",
+      "cortex_apex_original": [
+        884,
+        421
+      ],
+      "cortex_apex_anatomy_approx": [
+        886,
+        422
+      ]
+    }
+  },
+  "source_guides": [
+    ".github/kansei/artwork/layer-audit-20261021/shoulder/kalk/kalk.source-guide.svg",
+    ".github/kansei/artwork/layer-audit-20261021/shoulder/kalk/frisk.source-guide.svg"
+  ],
+  "guide_rendering": "Source-guide SVGs reference existing clinical JPEGs by repository-relative path. Render SVG with Inkscape for guide PNGs; derived PNG duplicates are not archived."
+}

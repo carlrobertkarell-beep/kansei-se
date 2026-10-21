@@ -13,6 +13,13 @@ def check_achilles(page, output, label):
         return [[1040,220],[900,250],[915,325]].every(([x,y])=>tendon.isPointInFill(new DOMPoint(x,y))) && !svg.querySelector('.vascular-path,.vascular-shadow') && svg.querySelectorAll('.rupture-outline').length>=6 && !!svg.querySelector('.advanced-tendinosis');
     }""")
     if not revised:raise AssertionError('Revised tissue pathology or guidance missing; copied vessel-guide strokes must be absent')
+    # The transverse boundary must enclose the central tendon continuously.
+    # Two mistaken y-values once cut a deep notch through this intact region.
+    transverse_continuous=viewer.locator('#view-transverse .tendon-outline').evaluate("""path=>{
+        return [[520,200],[520,300],[520,420],[700,250]].every(([x,y])=>path.isPointInFill(new DOMPoint(x,y))) && !path.isPointInFill(new DOMPoint(520,130));
+    }""")
+    if not transverse_continuous:raise AssertionError('Transverse Achilles contour cuts through the tendon interior')
+
     anatomy.click()
     picture=viewer.locator('#view-longitudinal .knee-picture')
     picture.scroll_into_view_if_needed()

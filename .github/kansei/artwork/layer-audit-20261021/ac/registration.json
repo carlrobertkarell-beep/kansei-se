@@ -1,0 +1,259 @@
+{
+  "version": "20261021f",
+  "views": [
+    {
+      "source_image": "exec-1d3e2779-76f0-47b0-a52e-ced33bdeeed1.png",
+      "source_size": [
+        1558,
+        1010
+      ],
+      "source_bounds": [
+        182,
+        56,
+        1376,
+        920
+      ],
+      "target_bounds": [
+        169,
+        41,
+        1110,
+        732
+      ],
+      "canvas": [
+        1280,
+        830
+      ],
+      "archive": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/.github/kansei/artwork/layer-audit-20261021/ac/jamforelse-skadad.painting.20261021f.webp",
+      "archive_sha256": "fc58bb2e0cc662aa3e3b7bd8ee4c4bcc46caf41c85f4345c8af3b501a07eded8",
+      "asset": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/bilder/ultraljud/ac-led/jamforelse-skadad-anatomi.20261021f.webp",
+      "asset_sha256": "caed1c4f37dd012766212c19e656a612e7aa3b210ba844f65d6efe23f91abf84",
+      "qa_png": "/workspace/scratch/30f45a18ccb3/audit-qa/ac-new/jamforelse-skadad-anatomi.20261021f.png",
+      "method": "One global rectangular registration, clipped to original scan; no local warp.",
+      "key": "jamforelse-skadad",
+      "original_sha256": "dfe7e676ea57aaffba8c0c3fd701c0e1941ebd6364ee6725f386dbc8dc153a23",
+      "labels": [
+        [
+          217,
+          250,
+          "Clavicula"
+        ],
+        [
+          354,
+          286,
+          "Subclavius"
+        ],
+        [
+          760,
+          270,
+          "Pectoralis major"
+        ],
+        [
+          850,
+          84,
+          "Subkutant fett"
+        ],
+        [
+          1030,
+          545,
+          "Korakoiden"
+        ],
+        [
+          440,
+          610,
+          "Revben"
+        ]
+      ],
+      "finding_geometry": "<path d=\"M295 354 L960 480\" class=\"ac-distance\"/><circle cx=\"295\" cy=\"354\" r=\"8\"/><circle cx=\"960\" cy=\"480\" r=\"8\"/><text x=\"665\" y=\"555\">Avstånd mellan benen</text>"
+    },
+    {
+      "source_image": "exec-dc7fbda5-8b30-4724-b34f-a6a945e282e2.png",
+      "source_size": [
+        1557,
+        1010
+      ],
+      "source_bounds": [
+        207,
+        53,
+        1350,
+        903
+      ],
+      "target_bounds": [
+        169,
+        41,
+        1110,
+        732
+      ],
+      "canvas": [
+        1280,
+        830
+      ],
+      "archive": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/.github/kansei/artwork/layer-audit-20261021/ac/jamforelse-motsatt.painting.20261021f.webp",
+      "archive_sha256": "2bfe5047881f5990f5a0e0671e85b8b65fa88285984fc09006fad526350af76d",
+      "asset": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/bilder/ultraljud/ac-led/jamforelse-motsatt-anatomi.20261021f.webp",
+      "asset_sha256": "67683e4e2f4f9395a6b33140e161c5a4ef8403f1b9264e2ba0bb1ae2bb3908df",
+      "qa_png": "/workspace/scratch/30f45a18ccb3/audit-qa/ac-new/jamforelse-motsatt-anatomi.20261021f.png",
+      "method": "One global rectangular registration, clipped to original scan; no local warp.",
+      "key": "jamforelse-motsatt",
+      "original_sha256": "bb387fb5673b38dfebf0444a8e6f3f86ee37908f4b417fa39caee6cb5d3fcb5a",
+      "labels": [
+        [
+          315,
+          170,
+          "Clavicula"
+        ],
+        [
+          565,
+          335,
+          "Subclavius"
+        ],
+        [
+          830,
+          200,
+          "Pectoralis major"
+        ],
+        [
+          900,
+          78,
+          "Subkutant fett"
+        ],
+        [
+          1020,
+          510,
+          "Korakoiden"
+        ]
+      ],
+      "finding_geometry": "<path d=\"M437 223 L946 423\" class=\"ac-distance\"/><circle cx=\"437\" cy=\"223\" r=\"8\"/><circle cx=\"946\" cy=\"423\" r=\"8\"/><text x=\"710\" y=\"515\">Avstånd mellan benen</text>"
+    },
+    {
+      "source_image": "exec-be168a14-7268-488f-8b5b-18d72186e9d1.png",
+      "source_size": [
+        1465,
+        1073
+      ],
+      "source_bounds": [
+        0,
+        0,
+        1465,
+        1073
+      ],
+      "target_bounds": [
+        0,
+        0,
+        942,
+        690
+      ],
+      "canvas": [
+        942,
+        690
+      ],
+      "archive": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/.github/kansei/artwork/layer-audit-20261021/ac/ac-led.painting.20261021f.webp",
+      "archive_sha256": "83ff2826e2b251ce7f053e1b0abc9473d81968cb657acc8c41df90bc17f4a406",
+      "asset": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/bilder/ultraljud/ac-led/ac-led-anatomi.20261021f.webp",
+      "asset_sha256": "def0d43b85d109b0b0828885231ae10f64e731c2a88e7a4a9c383add63620a9e",
+      "qa_png": "/workspace/scratch/30f45a18ccb3/audit-qa/ac-new/ac-led-anatomi.20261021f.png",
+      "method": "One global rectangular registration, clipped to original scan; no local warp.",
+      "key": "ac-led",
+      "original_sha256": "64ff66b1865115dab54b033e0ea989b3e661286d556e642fdcc65c1eacd21b0a",
+      "labels": [
+        [
+          330,
+          280,
+          "Clavicula"
+        ],
+        [
+          790,
+          375,
+          "Akromion"
+        ],
+        [
+          650,
+          170,
+          "AC-ledens kapsel"
+        ],
+        [
+          550,
+          390,
+          "AC-leden"
+        ]
+      ],
+      "finding_geometry": "<path class=\"finding-pointer-shadow\" d=\"M365 345 L735 250\"/><path class=\"finding-pointer\" d=\"M365 345 L735 250\"/><circle cx=\"735\" cy=\"250\" r=\"6\"/><text x=\"365\" y=\"325\">AC-ledens kapselområde</text>"
+    },
+    {
+      "source_image": "exec-c468604e-cf33-4cd0-a7ad-1cb23d34b251.png",
+      "source_size": [
+        1465,
+        1073
+      ],
+      "source_bounds": [
+        0,
+        0,
+        1465,
+        1073
+      ],
+      "target_bounds": [
+        0,
+        0,
+        942,
+        690
+      ],
+      "canvas": [
+        942,
+        690
+      ],
+      "archive": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/.github/kansei/artwork/layer-audit-20261021/ac/mjukdelsplan.painting.20261021f.webp",
+      "archive_sha256": "93bcd790a8905c048802bf4713be449f06ab799038ad1e6bc376a8ebee4eae38",
+      "asset": "/workspace/scratch/30f45a18ccb3/kansei-hip-alignment/bilder/ultraljud/ac-led/mjukdelsplan-anatomi.20261021f.webp",
+      "asset_sha256": "81d59de24aff3c64d53dc405dfcac8bfdeb33d03b96656846b20249f413e1b7a",
+      "qa_png": "/workspace/scratch/30f45a18ccb3/audit-qa/ac-new/mjukdelsplan-anatomi.20261021f.png",
+      "method": "One global rectangular registration, clipped to original scan; no local warp.",
+      "key": "mjukdelsplan",
+      "original_sha256": "b4e7107fd36ff8d9b8c7682944697e17e51d76e2b2d10010ea27550c605d9b02",
+      "labels": [
+        [
+          320,
+          60,
+          "Subkutant fett"
+        ],
+        [
+          450,
+          210,
+          "Clavicula"
+        ]
+      ],
+      "finding_geometry": "<path class=\"finding-pointer-shadow\" d=\"M405 370 L660 116\"/><path class=\"finding-pointer\" d=\"M405 370 L660 116\"/><circle cx=\"660\" cy=\"116\" r=\"6\"/><text x=\"365\" y=\"400\">Spalt vid benytan</text>"
+    }
+  ],
+  "findings_policy": "Identical finding geometry in original and anatomy modes. Caliper endpoints use native clinical scan positions; no new measurement. AC and soft-plane pointer, shadow and dot now agree. Soft-plane anchor follows the visible upper separation rather than the previous inconsistent lower-bone endpoint.",
+  "previous_authored_endpoints": {
+    "ac-led": {
+      "shadow_dot": [
+        735,
+        250
+      ],
+      "colored_pointer": [
+        750,
+        285
+      ]
+    },
+    "mjukdelsplan": {
+      "shadow_dot": [
+        760,
+        225
+      ],
+      "colored_pointer": [
+        770,
+        180
+      ]
+    },
+    "damaged_anatomy_distance": [
+      [
+        320,
+        414
+      ],
+      [
+        1070,
+        580
+      ]
+    ]
+  }
+}

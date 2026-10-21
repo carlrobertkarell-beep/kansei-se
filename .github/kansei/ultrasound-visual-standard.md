@@ -14,6 +14,14 @@ ivory laminae within and between the red fascicles. Preserve the clinician's
 boundaries and fiber directions; do not flatten several bellies into one red
 slab, replace fascial planes with fat, or turn each white strand into a tendon.
 
+Capsule clarification, 21 October 2026: in a longitudinal joint-recess view,
+distinguish the thin capsular boundary from the contents inside it. Do not paint
+the entire recess as solid fibrous capsule or a closed collagen cocoon. Preserve
+observed gray internal echoes as restrained heterogeneous contents, distinct
+from the fibrous wall, without automatically making the recess black fluid.
+Do not add a thick second capsule over the cortex or infer active inflammation,
+synovial hypertrophy or a particular fluid composition from gray tone alone.
+
 Paint each view continuously. Do not bend material-atlas crops through triangle
 meshes, mirror or repeat tiles, or draw ruler-straight fiber bundles. The owner
 rejected that method because it introduces rigid corners, seams and unnatural

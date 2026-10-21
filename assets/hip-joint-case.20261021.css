@@ -1,0 +1,13 @@
+/* The same registered reader and case story; fascia follows the supplied scan. */
+.hip-joint-case .knee-labels text{font-size:30px}
+.hip-joint-case .hip-joint-fascia-note{max-width:76ch;border-left:3px solid var(--teal,#166c66);padding:6px 0 6px 24px;margin-top:34px}
+.hip-joint-case .hip-joint-fascia-note h3{font-size:23px;margin:0 0 12px}
+.hip-joint-case .hip-joint-fascia-note p{font-size:16px;line-height:1.8;margin:0}
+.hip-joint-case .hip-joint-product{display:grid;grid-template-columns:140px minmax(0,1fr);align-items:center;gap:24px;border-top:1px solid var(--line,#d7e2e5);padding-top:22px;margin-top:24px}
+.hip-joint-case .hip-joint-product>img{display:block;width:140px;height:auto;margin:0}
+.hip-joint-case .hip-joint-product h3{font-size:23px;margin:4px 0 8px}
+.hip-joint-case .hip-joint-product p{margin-bottom:8px}
+.hip-joint-case .hip-joint-product small{color:var(--muted,#596b70);font-size:12px}
+.hip-joint-case .hip-joint-product .case-context-card-label{font-size:11px}
+.hip-joint-case .case-context-care article>p a{border:0;padding:0;background:transparent;display:inline;min-height:0;font-size:15px;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:760px){.hip-joint-case .knee-labels text{font-size:34px}.hip-joint-case .hip-joint-fascia-note{padding-left:18px}.hip-joint-case .hip-joint-product{grid-template-columns:100px minmax(0,1fr);gap:16px}.hip-joint-case .hip-joint-product>img{width:100px}}

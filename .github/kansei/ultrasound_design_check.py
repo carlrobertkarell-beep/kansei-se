@@ -91,7 +91,7 @@ def check_hub(page, model):
     gateway=page.locator('#undersokningsfall')
     if gateway.locator('.hub-case').count():raise AssertionError('Service page repeats the full image catalogue')
     if gateway.locator('a[href="/ultraljud/bilder/"]').count()!=1:raise AssertionError('Image overview entrance missing')
-    if gateway.locator('.atlas-area-links a').count()!=5:raise AssertionError('Body-region shortcuts missing')
+    if gateway.locator('.atlas-area-links a').count()!=6:raise AssertionError('Body-region shortcuts missing')
     check_sample(page)
     return {'model':model,'search_and_faq':'Passed'}
 
@@ -112,7 +112,7 @@ def check_sample(page):
 def check_explore(page):
     check_sample(page)
     entries=page.locator('[data-atlas-entry]')
-    expected={'/ultraljud/kalkaxel/','/ultraljud/axel/bicepstendinopati/','/ultraljud/axel/pectoralisruptur/','/ultraljud/axel/ac-ledsskada/','/ultraljud/hand-handled/karpaltunnelsyndrom/','/ultraljud/loparkna/','/ultraljud/tennisarmbage/bilder/','/ultraljud/kna/','/ultraljud/halsena/bilder/','/ultraljud/bursit-axel/'}
+    expected={'/ultraljud/kalkaxel/','/ultraljud/axel/bicepstendinopati/','/ultraljud/axel/pectoralisruptur/','/ultraljud/axel/ac-ledsskada/','/ultraljud/hand-handled/karpaltunnelsyndrom/','/ultraljud/loparkna/','/ultraljud/tennisarmbage/bilder/','/ultraljud/kna/','/ultraljud/halsena/bilder/','/ultraljud/bursit-axel/','/ultraljud/glutealsenor/bilder/'}
     if set(entries.locator('[data-atlas-case]').evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))'))!=expected:
         raise AssertionError('A published image reader is missing or duplicated')
     if set(entries.locator('.atlas-image-shortcut').evaluate_all('(els)=>els.map(e=>e.getAttribute("href").replace(/#bilder$/,""))'))!=expected:
@@ -125,7 +125,7 @@ def check_explore(page):
     search.fill('domningar')
     if not page.locator('[data-atlas-empty]').is_visible():raise AssertionError('Empty region search has no recovery')
     page.locator('[data-atlas-reset]').click()
-    if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=10 or search.input_value():
+    if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=11 or search.input_value():
         raise AssertionError('Reset does not restore every example')
     search.fill('loparkna')
     if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=1:

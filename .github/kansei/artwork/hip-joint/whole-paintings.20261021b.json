@@ -1,0 +1,65 @@
+{
+  "version": "20261021b",
+  "canvas": [
+    1280,
+    960
+  ],
+  "method": "Targeted imagegen revision of whole paintings: separate thin capsular surface from gray heterogeneous contents in longitudinal anterior recess. Surrounding anatomy retained. One global placement per view. No local warps or diagnostic enhancement; no tissue diagnosis inferred from gray tone. Original JPEGs byte-identical; acquisition header clipped by shared reader.",
+  "style_references": [
+    "bilder/ultraljud/bicepssena/langdsnitt-anatomi.webp"
+  ],
+  "clinical_scope": "Ultrasound followed by hip-joint Sinogel injection, supplied by clinician. No demographics, symptom duration, radiographic grade or treatment outcome supplied; none invented. Comparison is between sides, not before/after. Unclassified small round feature in capsule view is not assigned a diagnosis.",
+  "views": [
+    {
+      "key": "kapsel",
+      "original": "bilder/ultraljud/hoftled/kapsel.original.jpg",
+      "original_sha256": "8d95290320f607b6962441a4ab06f89f21ee321ffdc12401b1cd1cce55093c2b",
+      "clinician_guide_uploaded_name": "Höftled 2 bild1 .jpg",
+      "guide_sha256": "c515c7f0f2b39a7518629aa8fff151ed3ab482bb0dbc93d86cda12a8d19291bd",
+      "painting": ".github/kansei/artwork/hip-joint/kapsel.painting.20261021b.webp",
+      "painting_sha256": "76e0ae882c6defc256b6bab37936cfa492d9c533fd10ebeecd93dba18dd87239",
+      "target_scan_bounds": [
+        226,
+        111,
+        1053,
+        891
+      ],
+      "anatomy": "bilder/ultraljud/hoftled/kapsel.anatomi.20261021b.webp",
+      "anatomy_sha256": "d1a5dc45489dd023ae1fbb38df7d18717a2cda154ee7da393f851b9481a5fb62"
+    },
+    {
+      "key": "caput",
+      "original": "bilder/ultraljud/hoftled/caput.original.jpg",
+      "original_sha256": "23a898922544697ea9b8e1933734812d4a9f9e8c933f027e8d023bba34511ad4",
+      "clinician_guide_uploaded_name": "Höftled 2 anno bild 1.jpg",
+      "guide_sha256": "ab01053b7d3f94ea1ae81f2b12042e8e1c68fabdfec80cdb4c66de608013f74f",
+      "painting": ".github/kansei/artwork/hip-joint/caput.painting.20261021b.webp",
+      "painting_sha256": "29d49118428b65d1879355d5df39ef87c1d332852f5ae6238d9d2f59a0c146d8",
+      "target_scan_bounds": [
+        226,
+        111,
+        1053,
+        891
+      ],
+      "anatomy": "bilder/ultraljud/hoftled/caput.anatomi.20261021b.webp",
+      "anatomy_sha256": "719b04bd201fbea1e7e31cdd50c932eff2afe36c6b192edf29e065c761855acd"
+    },
+    {
+      "key": "jamforelse",
+      "original": "bilder/ultraljud/hoftled/jamforelse.original.jpg",
+      "original_sha256": "e702eebe74fbbad5f5bf4f1c848aaba39f0a9a16f1b4b7eaf880e2c66a490ce1",
+      "clinician_guide_uploaded_name": "Höftled 2 anno bild 3.jpg",
+      "guide_sha256": "492c89bdfdae99163fc4383e8a5c9230db27e85e0c5e1fe595118c1f38e48bd3",
+      "painting": ".github/kansei/artwork/hip-joint/jamforelse.painting.20261021b.webp",
+      "painting_sha256": "15cf65f961d7f06d24860ef7fb9ec313f05cdb87b3ea1fea300c636dbb9549a0",
+      "target_scan_bounds": [
+        75,
+        111,
+        1203,
+        891
+      ],
+      "anatomy": "bilder/ultraljud/hoftled/jamforelse.anatomi.20261021b.webp",
+      "anatomy_sha256": "1a6931abe3921ed72ff135ff2515390937977281fb347b9a9d9b37a5e2006419"
+    }
+  ]
+}

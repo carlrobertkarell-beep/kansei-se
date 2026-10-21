@@ -15,7 +15,7 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[2]
-VERSION = '20261021'
+VERSION = '20261021b'
 PATH = '/ultraljud/hoftled/bilder/'
 URL = 'https://www.kansei.se' + PATH
 ASSETS = '/bilder/ultraljud/hoftled/'
@@ -32,33 +32,33 @@ AAOS = 'https://www.aaos.org/aaos-home/newsroom/press-releases/aaos-updates-mana
 VIEWS = [
     dict(key='kapsel', name='Främre ledkapsel', sub='Muskler och fascia',
          original='1_202610211457092110001.jpg', guide='Höftled 2 bild1 .jpg',
-         painting='exec-79f5e119-d4cc-4440-b439-0c01c5fe4517.png', scan=[226,111,1053,891],
+         painting='exec-a979c627-72f4-4f08-b3b8-6532f3dbeb4b.png', scan=[226,111,1053,891],
          alt='Ultraljud framtill över höftleden med överliggande muskler, fascieplan och ett utpekat kapselområde.',
          caption='Främre höftleden i ett obliqt snitt. Sartorius, rectus femoris och iliopsoas ligger ytligare än kapselområdet och benytan.',
          heading='Följ vävnaderna från musklerna ned till leden.',
          cue='De ljusa stråken delar upp muskelbukarna. Följ sedan det djupare kapselområdet mot den ljusa benkonturen.',
-         text='Anatomilagret skiljer de röda muskelfibrerna från den ljusa fascian och bindväven. Det gråbeige området visar undersökarens utpekade kapsel- och recessområde; markeringen är inte en mätning av själva kapselväggens tjocklek.',
-         labels=[(825,187,'Sartorius',''),(748,243,'Rectus femoris',''),(620,370,'Iliopsoas',''),(404,339,'Fascia','dark-label'),(638,660,'Kapselområde','dark-label'),(586,857,'Lårben','')],
+         text='I längdsnittet skiljs den tunna kapselytan från innehållet i den främre ledrecessen. Innehållet återges grått och heterogent med interna ekon, som i originalet. I anatomilagret återges området därför inte som ett enda fibröst vävnadsblock. Hela utrymmets bredd ska inte tolkas som kapselväggens tjocklek.',
+         labels=[(825,187,'Sartorius',''),(748,243,'Rectus femoris',''),(620,370,'Iliopsoas',''),(404,339,'Fascia','dark-label'),(638,660,'Ledrecess',''),(586,857,'Lårben','')],
          finding='<path class="finding-region" d="M228 462 C348 474 435 485 513 517 S675 572 761 592 S911 679 925 738 L936 800"/><path class="pointer-shadow" d="M817 719 L735 652"/><path class="pointer" d="M817 719 L735 652"/><circle cx="735" cy="652" r="5"/><text x="802" y="758">Kapselområdet</text>'),
     dict(key='caput', name='Caput femoris', sub='Ojämn benkontur',
          original='17_202610201326063720003.jpg', guide='Höftled 2 anno bild 1.jpg',
-         painting='exec-02c881d3-4efe-4c55-837f-a32f2fecd59c.png', scan=[226,111,1053,891],
+         painting='exec-04628273-8349-4d05-b5b9-f203e0cc1244.png', scan=[226,111,1053,891],
          alt='Ultraljud i obliqt snitt över caput femoris med oregelbunden benkontur och överliggande kapselområde.',
          caption='Obliqt snitt över lårbenshuvudet, caput femoris. Undersökaren har pekat ut en oregelbunden benkontur under kapselområdet.',
          heading='Den ojämna benytan behöver läsas i sitt sammanhang.',
          cue='Följ den ljusa benlinjen och dess ojämnheter. Slå på anatomin för att skilja benkonturen från kapseln och musklerna ovanför.',
          text='Visa fynden pekar ut benkonturen som undersökaren bedömde som förändrad. En stillbild visar en begränsad del av leden och graderar inte ensam höftartros. Varken hela ledbrosket eller all ledens anatomi kan bedömas i detta snitt.',
-         labels=[(834,187,'Sartorius',''),(833,253,'Rectus femoris',''),(616,332,'Iliopsoas',''),(838,383,'Fascia','dark-label'),(772,487,'Ledkapsel','dark-label'),(472,701,'Caput femoris','')],
+         labels=[(834,187,'Sartorius',''),(833,253,'Rectus femoris',''),(616,332,'Iliopsoas',''),(838,383,'Fascia','dark-label'),(772,487,'Ledrecess',''),(472,701,'Caput femoris','')],
          finding='<path class="cyst-region" d="M231 539 C280 508 335 483 383 473 L440 461 C426 474 438 482 414 488 C377 492 376 500 420 505 L446 494 L462 476 L521 462 C560 459 592 461 611 473 C624 492 610 519 580 535 C554 547 558 555 587 558 L630 548 C686 527 737 550 790 581"/><path class="pointer-shadow" d="M801 438 L606 511"/><path class="pointer" d="M801 438 L606 511"/><circle cx="606" cy="511" r="5"/><text x="818" y="409">Ojämn benkontur</text>'),
     dict(key='jamforelse', name='Jämför sidorna', sub='Referens och påverkan',
          original='2_202610201338526910001 (kopia).jpg', guide='Höftled 2 anno bild 3.jpg',
-         painting='exec-2a006f6c-0edb-4f9b-b2d1-028796ea1601.png', scan=[75,111,1203,891],
+         painting='exec-079545e1-aedc-4902-818d-21c190438d63.png', scan=[75,111,1203,891],
          alt='Två ultraljudsvyer av höftens främre kapselområde, med referenssidan till vänster och den påverkade sidan till höger enligt undersökarens annotering.',
          caption='Referenssida till vänster och påverkad sida till höger, enligt undersökarens annotering. Bilderna visar olika sidor och snitt, inte före och efter injektionen.',
          heading='Jämförelsen hjälper ögat att hitta kapselområdet.',
          cue='Jämför området mellan iliopsoas och benkonturen. Se också hur fascian delar upp musklerna ovanför leden på båda sidor.',
          text='Kapselområdet framträder olika i de två vyerna. Probens vinkel och det valda snittet påverkar utseendet. Jämförelsen visar undersökarens orientering i vävnaderna och är inte en standardiserad mätning eller ett behandlingsresultat.',
-         labels=[(366,188,'Sartorius',''),(920,188,'Sartorius',''),(354,241,'Rectus femoris',''),(918,218,'Rectus femoris',''),(370,451,'Iliopsoas',''),(936,377,'Iliopsoas',''),(468,374,'Fascia','dark-label'),(354,649,'Kapselområde','dark-label'),(959,643,'Kapselområde','dark-label'),(353,842,'Referenssida',''),(937,842,'Påverkad sida','')],
+         labels=[(366,188,'Sartorius',''),(920,188,'Sartorius',''),(354,241,'Rectus femoris',''),(918,218,'Rectus femoris',''),(370,451,'Iliopsoas',''),(936,377,'Iliopsoas',''),(468,374,'Fascia','dark-label'),(354,649,'Ledrecess',''),(959,643,'Ledrecess',''),(353,842,'Referenssida',''),(937,842,'Påverkad sida','')],
          finding='<path class="finding-region" d="M648 449 C748 483 837 514 939 531 S1117 550 1201 571"/><path class="pointer-shadow" d="M1022 629 L955 578"/><path class="pointer" d="M1022 629 L955 578"/><circle cx="955" cy="578" r="5"/><text x="933" y="686">Utpekat kapselområde</text><text x="350" y="842">Referenssida</text><text x="935" y="842">Påverkad sida</text>'),
 ]
 
@@ -123,7 +123,7 @@ def package(workspace):
     out = ROOT/ASSETS.strip('/'); out.mkdir(parents=True,exist_ok=True)
     art = ROOT/'.github/kansei/artwork/hip-joint'; art.mkdir(parents=True,exist_ok=True)
     qa = workspace/'hip-joint-qa'; qa.mkdir(exist_ok=True)
-    manifest = {'version':VERSION,'canvas':[1280,960],'method':'Whole continuous imagegen paintings, one global placement per view. No local warps, material tiles or diagnostic edits. Original JPEGs byte-identical, acquisition header clipped by shared reader.','style_references':['bilder/ultraljud/bicepssena/langdsnitt-anatomi.webp'],'clinical_scope':'Ultrasound followed by hip-joint Sinogel injection, supplied by clinician. No demographics, symptom duration, radiographic grade or treatment outcome supplied; none invented. Comparison is between sides, not before/after. Unclassified small round feature in capsule view is not assigned a diagnosis.','views':[]}
+    manifest = {'version':VERSION,'canvas':[1280,960],'method':'Targeted imagegen revision of whole paintings: separate thin capsular surface from gray heterogeneous contents in longitudinal anterior recess. Surrounding anatomy retained. One global placement per view. No local warps or diagnostic enhancement; no tissue diagnosis inferred from gray tone. Original JPEGs byte-identical; acquisition header clipped by shared reader.','style_references':['bilder/ultraljud/bicepssena/langdsnitt-anatomi.webp'],'clinical_scope':'Ultrasound followed by hip-joint Sinogel injection, supplied by clinician. No demographics, symptom duration, radiographic grade or treatment outcome supplied; none invented. Comparison is between sides, not before/after. Unclassified small round feature in capsule view is not assigned a diagnosis.','views':[]}
     for v in VIEWS:
         original = workspace/'upload'/v['original']; guide = workspace/'upload'/v['guide']; painting = workspace/'generated_images'/v['painting']
         shutil.copy2(original,out/(v['key']+'.original.jpg'))

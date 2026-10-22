@@ -114,13 +114,14 @@ def check_explore(page):
     entries=page.locator('[data-atlas-entry]')
     expected={'/ultraljud/kalkaxel/','/ultraljud/axel/bicepstendinopati/','/ultraljud/axel/pectoralisruptur/','/ultraljud/axel/ac-ledsskada/','/ultraljud/hand-handled/karpaltunnelsyndrom/','/ultraljud/loparkna/','/ultraljud/tennisarmbage/bilder/','/ultraljud/kna/','/ultraljud/halsena/bilder/','/ultraljud/bursit-axel/','/ultraljud/glutealsenor/bilder/'}
     expected.add('/ultraljud/hoftled/bilder/')
+    expected.add('/ultraljud/kna/forkalkad-menisk/')
     if set(entries.locator('[data-atlas-case]').evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))'))!=expected:
         raise AssertionError('A published image reader is missing or duplicated')
     if set(entries.locator('.atlas-image-shortcut').evaluate_all('(els)=>els.map(e=>e.getAttribute("href").replace(/#bilder$/,""))'))!=expected:
         raise AssertionError('Whole-case links must retain separate image shortcuts')
     search=page.locator('[data-atlas-search]')
     page.locator('[data-atlas-region=kna]').click()
-    if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=2:
+    if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=3:
         raise AssertionError('Knee region does not isolate its examples')
     if 'omrade=kna' not in page.url:raise AssertionError('Region choice has no shareable URL')
     search.fill('domningar')
@@ -142,7 +143,9 @@ def check_explore(page):
     for phrase, expected_path in (
         ('min hand somnar på natten','/ultraljud/hand-handled/karpaltunnelsyndrom/'),
         ('ont när jag springer på utsidan av knät','/ultraljud/loparkna/'),
-        ('knät svullnar efter promenader','/ultraljud/kna/'),
+        ('knät svullnar efter promenader',('/ultraljud/kna/','/ultraljud/kna/forkalkad-menisk/')),
+        ('förkalkad menisk','/ultraljud/kna/forkalkad-menisk/'),
+        ('CPPD','/ultraljud/kna/forkalkad-menisk/'),
         ('hyaluronsyra',('/ultraljud/hoftled/bilder/','/ultraljud/kna/')),
         ('Sinogel',('/ultraljud/hoftled/bilder/','/ultraljud/kna/')),
         ('caput','/ultraljud/hoftled/bilder/'),

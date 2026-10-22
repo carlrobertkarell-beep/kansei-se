@@ -1,0 +1,109 @@
+{
+  "canvas": [
+    1280,
+    960
+  ],
+  "method": "One global painting placement; no local warp. Clinical originals byte-identical. Acquisition header clipped by shared reader.",
+  "clinical_scope": "Clinician supplied mineral deposition in meniscus and articular cartilage in one individual. No demographics, symptom history, confirmed crystal type, arthrosis grade, treatment or outcome supplied. Narrative explicitly illustrative.",
+  "views": [
+    {
+      "source_image": "exec-77fc9f7f-2cca-4023-881d-fcee39716d10.png",
+      "source_size": [
+        1448,
+        1086
+      ],
+      "source_bounds": [
+        0,
+        140,
+        1448,
+        838
+      ],
+      "target_bounds": [
+        0,
+        143,
+        1280,
+        760
+      ],
+      "canvas": [
+        1280,
+        960
+      ],
+      "archive": ".github/kansei/artwork/knee-calc-20261022/menisk-jamforelse.painting.webp",
+      "archive_sha256": "3a679a0b7928ff87844b16b9ba7e0ceff22bac543dabf754c639840888f3a7d4",
+      "asset": "bilder/ultraljud/kna/kalk/menisk-jamforelse.anatomi.20261022.webp",
+      "asset_sha256": "accfa211dfa5ffd8a8528fb2ead1bc85e1997d57b68a8853fac725f54b85aaac",
+      "qa_png": "/workspace/scratch/616070f3a6d4/knee-calc-qa/menisk-jamforelse.anatomi.20261022.png",
+      "method": "One global rectangular registration, clipped to original scan; no local warp.",
+      "key": "menisk-jamforelse",
+      "original_sha256": "154408b5adcf6627547d98f5be322dbed5e2ddf11172f15c4e118cd9cd1c3d0f",
+      "guide_sha256": "b10b34c978ccfb7aa5410ed755c93dee3b04b50250f563f9bf7f7624f630c196",
+      "clinician_guide": "2_202601211019285900002 (kopia).jpg"
+    },
+    {
+      "source_image": "exec-3daaf2f1-de1b-4b6e-a059-3f42499ae575.png",
+      "source_size": [
+        1448,
+        1086
+      ],
+      "source_bounds": [
+        180,
+        136,
+        1267,
+        848.7
+      ],
+      "target_bounds": [
+        169,
+        143,
+        1110,
+        760
+      ],
+      "canvas": [
+        1280,
+        960
+      ],
+      "archive": ".github/kansei/artwork/knee-calc-20261022/menisk-narbild.painting.webp",
+      "archive_sha256": "afc2f0a57c1d0ed083e79a110fce6eeea3ca57f9558504ae9923251ac6a6f2b6",
+      "asset": "bilder/ultraljud/kna/kalk/menisk-narbild.anatomi.20261022.webp",
+      "asset_sha256": "19a63cde7b44c34bf30c739ef126b3339f5ef249661ab595cc03679e64978bfe",
+      "qa_png": "/workspace/scratch/616070f3a6d4/knee-calc-qa/menisk-narbild.anatomi.20261022.png",
+      "method": "One global rectangular registration, clipped to original scan; no local warp.",
+      "key": "menisk-narbild",
+      "original_sha256": "a1dcfb5f4efdd56f8ccf5792def051bea52b8f676a9e7b277484af49952b0afc",
+      "guide_sha256": "76fc469acb4be5d3e17316ef20f5c4c7d63dd65cc371b11e8489844cd1a8c0e5",
+      "clinician_guide": "Bild 1(1).jpg"
+    },
+    {
+      "source_image": "exec-6cc3cdc2-d2b6-4533-8ed1-68cb310f0aa1.png",
+      "source_size": [
+        1448,
+        1086
+      ],
+      "source_bounds": [
+        140,
+        123,
+        1316,
+        872
+      ],
+      "target_bounds": [
+        169,
+        143,
+        1110,
+        700
+      ],
+      "canvas": [
+        1280,
+        960
+      ],
+      "archive": ".github/kansei/artwork/knee-calc-20261022/brosk-kalk.painting.webp",
+      "archive_sha256": "00aafa84bb67d5a2b73face7eb76c41f92a7a5d300c736e14f9ef2768dcbea8c",
+      "asset": "bilder/ultraljud/kna/kalk/brosk-kalk.anatomi.20261022.webp",
+      "asset_sha256": "ae43c847cfb52cb6bf327827d190a7c9813b54fb78b9a5f0e8fcc4491b4d1633",
+      "qa_png": "/workspace/scratch/616070f3a6d4/knee-calc-qa/brosk-kalk.anatomi.20261022.png",
+      "method": "One global rectangular registration, clipped to original scan; no local warp.",
+      "key": "brosk-kalk",
+      "original_sha256": "b54da56bad6741be384657eed64f824fabb322afd482c02149161202d1720742",
+      "guide_sha256": "06f8c2c6a55e1b52eec0440e0b0d880b327a1ea20536ecf94d4a7c76d463babb",
+      "clinician_guide": "6_202601211019285900006 (kopia).jpg"
+    }
+  ]
+}

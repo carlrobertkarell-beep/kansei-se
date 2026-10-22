@@ -549,7 +549,7 @@
       960
     ],
     "key": "31-halsena-longitudinal-anatomi",
-    "output": "bilder/ultraljud/halsena/longitudinal-anatomi.realistic.20261022.webp",
+    "output": "bilder/ultraljud/halsena/longitudinal-anatomi.aligned.20261022.webp",
     "notes": "Keep existing tendon degeneration, chalky foci and each rupture cleft; do not normalize diseased fibers. Longitudinal image includes already depicted fine branching neovessels INSIDE the tendon: preserve those small red vessel structures as actual tissue, without drawn guide strokes or extra vessels. Healthy view stays healthy.",
     "original_sha256": "699f886574dff49d9f92ab1a62ac3cf5b50524a59ffc73e85d41cc66c508788e",
     "previous_anatomy_sha256": "cba2daf231e73382d56f836cd32680996c527d033869c482cbea50ae7e6055eb",
@@ -567,7 +567,7 @@
       960
     ],
     "key": "32-halsena-healthy-anatomi",
-    "output": "bilder/ultraljud/halsena/healthy-anatomi.realistic.20261022.webp",
+    "output": "bilder/ultraljud/halsena/healthy-anatomi.aligned.20261022.webp",
     "notes": "Keep existing tendon degeneration, chalky foci and each rupture cleft; do not normalize diseased fibers. Longitudinal image includes already depicted fine branching neovessels INSIDE the tendon: preserve those small red vessel structures as actual tissue, without drawn guide strokes or extra vessels. Healthy view stays healthy.",
     "original_sha256": "b1e761de1be96c92788c4294efa2f92aa1e2baa4c2a1b9a144c5075d1d910aa5",
     "previous_anatomy_sha256": "93222f87fb83fe0903be86bd4bf85c6cbb8818428e843e704ee55268fefd21e3",
@@ -585,7 +585,7 @@
       960
     ],
     "key": "33-halsena-transverse-anatomi",
-    "output": "bilder/ultraljud/halsena/transverse-anatomi.realistic.20261022.webp",
+    "output": "bilder/ultraljud/halsena/transverse-anatomi.aligned.20261022.webp",
     "notes": "Keep existing tendon degeneration, chalky foci and each rupture cleft; do not normalize diseased fibers. Longitudinal image includes already depicted fine branching neovessels INSIDE the tendon: preserve those small red vessel structures as actual tissue, without drawn guide strokes or extra vessels. Healthy view stays healthy.",
     "original_sha256": "d22ca0aae7d81ce2a6934fd7648e1e898afbc872504a1604bfe087776f128008",
     "previous_anatomy_sha256": "41becdc1e778b7433b7be245785151f1a653b8da30381477596e00ac6343d117",
@@ -603,7 +603,7 @@
       960
     ],
     "key": "34-tennisarmbage-skadad-anatomi",
-    "output": "bilder/ultraljud/armbage/tennisarmbage/skadad-anatomi.realistic.20261022.webp",
+    "output": "bilder/ultraljud/armbage/tennisarmbage/skadad-anatomi.aligned.20261022.webp",
     "notes": "Preserve lateral elbow tendon attachment, cortical shapes and existing tendon/ligament defect in the affected view; keep normal reference side intact.",
     "original_sha256": "a6c68a06ca8918085f1e11a3f1bfbf66095ed81883bb6f14459f57520696008d",
     "previous_anatomy_sha256": "bce27c784a14b3fa9b4c2806cb8f8b3c99a118b7ae1c07340731e70f61f827f9",

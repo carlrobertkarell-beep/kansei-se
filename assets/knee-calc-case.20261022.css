@@ -1,0 +1,4 @@
+/* Same full-canvas reader and annotation scale as the approved joint case. */
+.knee-calc-case .knee-labels text{font-size:30px}
+.knee-calc-case .case-context-care article>p a{border:0;padding:0;background:transparent;display:inline;min-height:0;font-size:15px;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:760px){.knee-calc-case .knee-labels text{font-size:34px}}

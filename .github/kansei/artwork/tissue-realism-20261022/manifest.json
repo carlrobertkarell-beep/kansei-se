@@ -1110,20 +1110,20 @@
     "preserves_alpha": true
   },
   "31-halsena-longitudinal-anatomi": {
-    "source_image": "exec-b09d5870-cb8c-4857-a743-8f2bdbad6df6.png",
+    "source_image": "31-halsena-longitudinal-anatomi.source.webp",
     "source_size": [
       1448,
       1086
     ],
     "source_bounds": [
-      107,
-      91,
-      1342,
-      960.375
+      95.95298378188743,
+      105.26883793204365,
+      1372.317124533589,
+      1076.573964838525
     ],
     "target_bounds": [
       108,
-      141,
+      110,
       1172,
       890
     ],
@@ -1132,10 +1132,10 @@
       960
     ],
     "archive": ".github/kansei/artwork/tissue-realism-20261022/31-halsena-longitudinal-anatomi.painting.webp",
-    "archive_sha256": "5323ca2b62b3aa6397031839d010abdf3b6504e054051d5acb2d946f35b310e1",
-    "asset": "bilder/ultraljud/halsena/longitudinal-anatomi.realistic.20261022.webp",
-    "asset_sha256": "80c36398042d03a9eb2217b0296a217777b5d50f44d729b72c9e0a51c0b82f7f",
-    "qa_png": "realism-qa/longitudinal-anatomi.realistic.20261022.png",
+    "archive_sha256": "535f8d77cf3384c6e89b49ec5945cb02bb68574ebb593f0eb2d4b98b760cc573",
+    "asset": "bilder/ultraljud/halsena/longitudinal-anatomi.aligned.20261022.webp",
+    "asset_sha256": "4d157a28b3261c1dda76caf181dbda323373ed817f0361fac50de36ce9f3eb69",
+    "qa_png": "longitudinal-anatomi.aligned.20261022.png",
     "method": "One global rectangular registration, clipped to original scan; no local warp.",
     "key": "31-halsena-longitudinal-anatomi",
     "original": "bilder/ultraljud/halsena/longitudinal-ultraljud.jpg",
@@ -1143,24 +1143,24 @@
     "previous_anatomy": "bilder/ultraljud/halsena/longitudinal-anatomi.20261015c.webp",
     "previous_anatomy_sha256": "cba2daf231e73382d56f836cd32680996c527d033869c482cbea50ae7e6055eb",
     "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
-    "source_png_sha256": "9d41ae8e043e064deafc4c3dc0650d0c49e50113f06559eb21e2ef0f32ca4fcc",
-    "preserves_alpha": false
+    "preserves_alpha": false,
+    "source_png_sha256": "ca395dcda1700bb611cffbd6143a88b9d3be600cb91f2a5db72168285c316344"
   },
   "32-halsena-healthy-anatomi": {
-    "source_image": "exec-c4e57361-3fcc-4225-9740-884bf5489570.png",
+    "source_image": "32-halsena-healthy-anatomi.source.webp",
     "source_size": [
       1448,
       1086
     ],
     "source_bounds": [
-      72,
-      108,
-      1376,
-      1035.751879699248
+      122.17500000000001,
+      124.4375,
+      1325.825,
+      1006.8125
     ],
     "target_bounds": [
       108,
-      133,
+      110,
       1172,
       890
     ],
@@ -1169,10 +1169,10 @@
       960
     ],
     "archive": ".github/kansei/artwork/tissue-realism-20261022/32-halsena-healthy-anatomi.painting.webp",
-    "archive_sha256": "4abd5a6587b4bc618df69beeab3a7bd2ca52e616add7d033185f927b748590a1",
-    "asset": "bilder/ultraljud/halsena/healthy-anatomi.realistic.20261022.webp",
-    "asset_sha256": "bc1aafa0fd2eef62ba0b7cd4b8cc12dd93740d4552c509188123054444e72615",
-    "qa_png": "realism-qa/healthy-anatomi.realistic.20261022.png",
+    "archive_sha256": "9b8cbd82389dccf4b8a6f4b005f98307fb301ee435427bc28ba6c6cf38c756ae",
+    "asset": "bilder/ultraljud/halsena/healthy-anatomi.aligned.20261022.webp",
+    "asset_sha256": "1688ceaff9a59ae41e4a7a5b6cc20562548117721a77304ee7df265c92134e62",
+    "qa_png": "healthy-anatomi.aligned.20261022.png",
     "method": "One global rectangular registration, clipped to original scan; no local warp.",
     "key": "32-halsena-healthy-anatomi",
     "original": "bilder/ultraljud/halsena/healthy-ultraljud.jpg",
@@ -1180,24 +1180,24 @@
     "previous_anatomy": "bilder/ultraljud/halsena/healthy-anatomi.20261015.webp",
     "previous_anatomy_sha256": "93222f87fb83fe0903be86bd4bf85c6cbb8818428e843e704ee55268fefd21e3",
     "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
-    "source_png_sha256": "16e8b0dd744c22b50cff128459dfac9fd3dbb371c282ee8ea612d5d74e11b657",
-    "preserves_alpha": false
+    "preserves_alpha": false,
+    "source_png_sha256": "6923e1b2eaf61f29150c82f71771958d63222716d048364dd6e205b9578a86d0"
   },
   "33-halsena-transverse-anatomi": {
-    "source_image": "exec-2b0e6097-90a2-4066-8017-24c825fe0c16.png",
+    "source_image": "33-halsena-transverse-anatomi.source.webp",
     "source_size": [
       1448,
       1086
     ],
     "source_bounds": [
-      76,
-      93,
-      1354,
-      1001.0526315789473
+      102.05842391304347,
+      124.4375,
+      1410.3736413043478,
+      1006.8125
     ],
     "target_bounds": [
       108,
-      134,
+      110,
       1172,
       890
     ],
@@ -1206,10 +1206,10 @@
       960
     ],
     "archive": ".github/kansei/artwork/tissue-realism-20261022/33-halsena-transverse-anatomi.painting.webp",
-    "archive_sha256": "550b2e5c604654cde3f5f7dc96733c0b692f23c85bddda37b022b25ef25b8158",
-    "asset": "bilder/ultraljud/halsena/transverse-anatomi.realistic.20261022.webp",
-    "asset_sha256": "bce434476a1961b886503f33abaf9d5ed53902b6fbc3b5614dbc9b0d285769d9",
-    "qa_png": "realism-qa/transverse-anatomi.realistic.20261022.png",
+    "archive_sha256": "4dccdb737b47e77467d971a58c7d80ef09fc38d26c98b7058e972f0191f6181e",
+    "asset": "bilder/ultraljud/halsena/transverse-anatomi.aligned.20261022.webp",
+    "asset_sha256": "dcb177232bcce4e8c88be59e35a30e27ed38e4e3f144aa929e42499825d1035e",
+    "qa_png": "transverse-anatomi.aligned.20261022.png",
     "method": "One global rectangular registration, clipped to original scan; no local warp.",
     "key": "33-halsena-transverse-anatomi",
     "original": "bilder/ultraljud/halsena/transverse-ultraljud.jpg",
@@ -1217,24 +1217,24 @@
     "previous_anatomy": "bilder/ultraljud/halsena/transverse-anatomi.20261015.webp",
     "previous_anatomy_sha256": "41becdc1e778b7433b7be245785151f1a653b8da30381477596e00ac6343d117",
     "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
-    "source_png_sha256": "86dda6af4dc51e93ec8543087afd8968079a5723a2bda699f565066d79e4c879",
-    "preserves_alpha": false
+    "preserves_alpha": false,
+    "source_png_sha256": "0f4c780b3e58690b30f15b8a27d83999c64332770051c93aa8a17fadebfb0143"
   },
   "34-tennisarmbage-skadad-anatomi": {
-    "source_image": "exec-23b0775c-51fc-4bea-a9ec-e058a3feb046.png",
+    "source_image": "34-tennisarmbage-skadad-anatomi.source.webp",
     "source_size": [
       1448,
       1086
     ],
     "source_bounds": [
-      18,
-      110,
-      1431,
-      1072.7855251544572
+      46.06133048399907,
+      121.8822379976791,
+      1392.306642882408,
+      1082.598534275732
     ],
     "target_bounds": [
       74,
-      118,
+      110,
       1207,
       890
     ],
@@ -1243,10 +1243,10 @@
       960
     ],
     "archive": ".github/kansei/artwork/tissue-realism-20261022/34-tennisarmbage-skadad-anatomi.painting.webp",
-    "archive_sha256": "f66d5561c758a58e9ae1307d72dbcabac61bce18f89d5662c8356a57aba080ad",
-    "asset": "bilder/ultraljud/armbage/tennisarmbage/skadad-anatomi.realistic.20261022.webp",
-    "asset_sha256": "2bf367335bb20bd9e9e12881c0e0c43513633edff4c2f86fbf0e60ba6cf27cf0",
-    "qa_png": "realism-qa/skadad-anatomi.realistic.20261022.png",
+    "archive_sha256": "415beaa8457f60d8e5503bead9dc1784d18d191ed179c7f1bb7a96edae4a7994",
+    "asset": "bilder/ultraljud/armbage/tennisarmbage/skadad-anatomi.aligned.20261022.webp",
+    "asset_sha256": "891f074877e6815e282de150401db11b6f5d4c9b033362e98bf104e1cc815bc5",
+    "qa_png": "skadad-anatomi.aligned.20261022.png",
     "method": "One global rectangular registration, clipped to original scan; no local warp.",
     "key": "34-tennisarmbage-skadad-anatomi",
     "original": "bilder/ultraljud/armbage/tennisarmbage/skadad-ultraljud.jpg",
@@ -1254,8 +1254,8 @@
     "previous_anatomy": "bilder/ultraljud/armbage/tennisarmbage/skadad-anatomi.20261015.webp",
     "previous_anatomy_sha256": "bce27c784a14b3fa9b4c2806cb8f8b3c99a118b7ae1c07340731e70f61f827f9",
     "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
-    "source_png_sha256": "01619e7b4e73e271e52fb81904fd66f5fd255140daeda7e3f0c34750595a04d3",
-    "preserves_alpha": false
+    "preserves_alpha": false,
+    "source_png_sha256": "5142ed95dfcc7591b159996bbd1dc7b72e8149d204e875f4cda877867e2017c8"
   },
   "35-tennisarmbage-frisk-anatomi": {
     "source_image": "exec-c27787c6-1730-481d-8e85-6dfc9a54b2fb.png",

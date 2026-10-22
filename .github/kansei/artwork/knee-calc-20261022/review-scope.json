@@ -1,0 +1,10 @@
+{
+  "clinician_supplied": "Mineral deposition in meniscus and articular cartilage in one person; three original/annotated pairs.",
+  "not_supplied": ["age", "sex", "symptom duration", "actual symptoms", "side identifiers", "crystal analysis", "confirmed CPPD", "arthrosis grade", "treatment", "outcome"],
+  "narrative": "Explicitly illustrative; no fabricated history, treatment or effect is attributed to the actual image subject.",
+  "style_reference": ".github/kansei/artwork/tissue-realism-20261022/approved-reference.webp",
+  "generation": "Built-in imagegen; original scans are geometry masters, clinician annotations are boundary guides and approved biceps image supplies materials.",
+  "export": "One global rectangular registration for each complete painting. No local warp. Clinical original JPEG bytes retained. Shared reader clips acquisition headers, thumbnails and zooms.",
+  "finding_coordinates": "Derived from clinician guides before painting registration; not moved to compensate for drift.",
+  "sources": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC11103298/", "https://rheumatology.org/patients/calcium-pyrophosphate-deposition-cppd", "https://www.1177.se/sjukdomar--besvar/skelett-leder-och-muskler/leder/ledvark/"]
+}

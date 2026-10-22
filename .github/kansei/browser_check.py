@@ -16,6 +16,7 @@ from film_caption_check import FILM_PATHS, check_film_captions
 from hip_design_check import HIP_PATH, check_hip
 from hip_joint_design_check import HIP_JOINT_PATH, check_hip_joint
 from knee_calc_design_check import KNEE_CALC_PATH, check_knee_calc
+from ultrasound_search_check import GUIDE as SEARCH_GUIDE, SEARCH_PATHS, check_search_paths
 
 PATHS = ("/", "/injektioner/", "/blogg/prp-eller-hyaluronsyra-vid-knaartros/", "/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/", "/kunskapsbank/kna/svullet-kna/", "/kunskapsbank/axel/ont-i-axeln-pa-natten/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/", "/hyaluronsyra/sinovial-sinogel/", "/prp/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/knaartros-vad-du-kan-gora/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/", "/blogg/domningar-i-handen-pa-natten/")
@@ -58,6 +59,8 @@ def check(base, output):
             paths = tuple(dict.fromkeys(PATHS + film_paths + CASE_PATHS + (() if baseline_only else KNOWLEDGE_PATHS + CONTENT_PATHS + (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH, HIP_PATH, HIP_JOINT_PATH, KNEE_CALC_PATH))))
             if label == 'compact':
                 paths = ('/', '/ultraljud/', '/ultraljud/axel/', '/hyaluronsyra/', '/injektioner/', '/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/blogg/prp-eller-hyaluronsyra-vid-knaartros/', '/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/') + film_paths[1:] + CASE_PATHS + (() if baseline_only else (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH, HIP_PATH, HIP_JOINT_PATH, KNEE_CALC_PATH))
+            if not baseline_only:
+                paths = tuple(dict.fromkeys(paths + SEARCH_PATHS))
             model = None
             for path in paths:
                 page = context.new_page()
@@ -89,6 +92,9 @@ def check(base, output):
                     row["broken_visible_images"] = page.locator("img").evaluate_all("els=>els.filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0&&r.top<innerHeight&&r.bottom>0&&e.complete&&e.naturalWidth===0}).map(e=>new URL(e.src).pathname)")
                     if row["broken_visible_images"]:
                         row["errors"].append("Broken visible image")
+
+                    if not baseline_only and path in SEARCH_PATHS:
+                        row['symptom_discovery'] = check_search_paths(page, path, output, label)
 
                     if not baseline_only and path in READING_PATHS:
                         row['reading_orientation']=check_reading(page,path,output,label)

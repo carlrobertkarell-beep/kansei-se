@@ -13,7 +13,7 @@ from PIL import Image, ImageStat
 
 
 def register(painting_path, output_path, archive_path, canvas, source_bounds,
-             target_bounds, qa_dir):
+             target_bounds, qa_dir, transparent=False):
     painting = Path(painting_path).resolve()
     output = Path(output_path).resolve()
     archive = Path(archive_path).resolve()
@@ -31,7 +31,15 @@ def register(painting_path, output_path, archive_path, canvas, source_bounds,
     # PNG embedding is intentional: Inkscape cannot reliably decode WebP data URLs.
     embedded = qa / (output.stem + '.source.png')
     subprocess.run(['convert', str(painting), str(embedded)], check=True)
-    subprocess.run(['convert', str(painting), '-quality', '96', str(archive)], check=True)
+    # Validate the archive as well as the public export. Some ImageMagick
+    # encodes returned success with an empty WebP for these large paintings.
+    with Image.open(painting) as image:
+        image.load()
+        image.save(archive, format='WEBP', quality=96, method=6)
+    with Image.open(archive) as image:
+        image.load()
+        if image.size != (pw, ph):
+            raise ValueError('Wrong archived painting canvas')
     data = base64.b64encode(embedded.read_bytes()).decode()
     clip = (f'<defs><clipPath id="scan"><rect x="{left}" y="{top}" '
             f'width="{right-left}" height="{bottom-top}"/></clipPath></defs>')
@@ -39,10 +47,11 @@ def register(painting_path, output_path, archive_path, canvas, source_bounds,
               f'viewBox="{sl} {st} {sr-sl} {sb-st}" preserveAspectRatio="none">'
               f'<image xlink:href="data:image/png;base64,{data}" x="0" y="0" '
               f'width="{pw}" height="{ph}"/></svg>')
+    background = '' if transparent else f'<rect width="{width}" height="{height}" fill="black"/>'
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" '
            f'xmlns:xlink="http://www.w3.org/1999/xlink" width="{width}" '
            f'height="{height}" viewBox="0 0 {width} {height}">'
-           f'<rect width="{width}" height="{height}" fill="black"/>'
+           f'{background}'
            f'{clip}<g clip-path="url(#scan)">{placed}</g></svg>')
     svg_path = qa / (output.stem + '.svg')
     png_path = qa / (output.stem + '.png')

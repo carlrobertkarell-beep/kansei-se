@@ -1,0 +1,941 @@
+{
+  "base": "9efc33728042c0836c01ea416796faa140b3830a",
+  "cases": [
+    {
+      "page": "ultraljud/axel/bicepstendinopati/",
+      "views": [
+        {
+          "id": "view-1",
+          "original": "bilder/ultraljud/bicepssena/tvarsnitt-helbild.20261009.jpg",
+          "anatomy": "bilder/ultraljud/bicepssena/tvarsnitt-anatomi.realistic.20261022.webp",
+          "finding_layer": "paired-identical",
+          "stage_style": "aspect-ratio:4/3"
+        },
+        {
+          "id": "view-2",
+          "original": "bilder/ultraljud/bicepssena/langdsnitt-helbild.20261009.jpg",
+          "anatomy": "bilder/ultraljud/bicepssena/langdsnitt-anatomi.realistic.20261022.webp",
+          "finding_layer": "paired-identical",
+          "stage_style": "aspect-ratio:4/3"
+        }
+      ]
+    },
+    {
+      "page": "ultraljud/axel/pectoralisruptur/",
+      "views": [
+        {
+          "id": "view-1",
+          "original": "bilder/ultraljud/pectoralis/langdsnitt-helbild.20261009.jpg",
+          "anatomy": "bilder/ultraljud/pectoralis/langdsnitt-anatomi.realistic.20261022.webp",
+          "finding_layer": "paired-identical",
+          "stage_style": "aspect-ratio:4/3"
+        },
+        {
+          "id": "view-2",
+          "original": "bilder/ultraljud/pectoralis/tvarsnitt-helbild.20261009.jpg",
+          "anatomy": "bilder/ultraljud/pectoralis/tvarsnitt-anatomi.realistic.20261022.webp",
+          "finding_layer": "paired-identical",
+          "stage_style": "aspect-ratio:4/3"
+        }
+      ]
+    },
+    {
+      "page": "ultraljud/hand-handled/karpaltunnelsyndrom/",
+      "views": [
+        {
+          "id": null,
+          "original": "bilder/ultraljud/karpaltunnel/medianus-helbild.20261009.jpg",
+          "anatomy": "bilder/ultraljud/karpaltunnel/medianus-anatomi.realistic.20261022.webp",
+          "finding_layer": "paired-identical",
+          "stage_style": "aspect-ratio:4/3"
+        }
+      ]
+    },
+    {
+      "page": "ultraljud/axel/ac-ledsskada/",
+      "views": [
+        {
+          "id": "view-2",
+          "original": "bilder/ultraljud/ac-led/jamforelse-skadad.jpg",
+          "anatomy": "bilder/ultraljud/ac-led/jamforelse-skadad-anatomi.realistic.20261022.webp",
+          "finding_layer": "paired-identical",
+          "stage_style": "aspect-ratio:1280/830"
+        },
+        {
+          "id": "view-2",
+          "original": "bilder/ultraljud/ac-led/jamforelse-motsatt.jpg",
+          "anatomy": "bilder/ultraljud/ac-led/jamforelse-motsatt-anatomi.realistic.20261022.webp",
+          "finding_layer": "paired-identical",
+          "stage_style": "aspect-ratio:1280/830"
+        },
+        {
+          "id": "view-1",
+          "original": "bilder/ultraljud/ac-led/ac-led.jpg",
+          "anatomy": "bilder/ultraljud/ac-led/ac-led-anatomi.realistic.20261022.webp",
+          "finding_layer": "paired-identical",
+          "stage_style": "aspect-ratio:942/690"
+        },
+        {
+          "id": "view-3",
+          "original": "bilder/ultraljud/ac-led/mjukdelsplan.jpg",
+          "anatomy": "bilder/ultraljud/ac-led/mjukdelsplan-anatomi.realistic.20261022.webp",
+          "finding_layer": "paired-identical",
+          "stage_style": "aspect-ratio:942/690"
+        }
+      ]
+    },
+    {
+      "page": "ultraljud/kalkaxel/",
+      "views": [
+        {
+          "id": "view-kalk",
+          "original": "bilder/ultraljud/kalkaxel/kalk-ultraljud.jpg",
+          "anatomy": "bilder/ultraljud/kalkaxel/kalk.anatomi.realistic.20261022.webp",
+          "finding_layer": "paired-identical",
+          "stage_style": ""
+        },
+        {
+          "id": "view-frisk",
+          "original": "bilder/ultraljud/kalkaxel/frisk-ultraljud.jpg",
+          "anatomy": "bilder/ultraljud/kalkaxel/frisk.anatomi.realistic.20261022.webp",
+          "finding_layer": "paired-identical",
+          "stage_style": ""
+        }
+      ]
+    },
+    {
+      "page": "ultraljud/bursit-axel/",
+      "views": [
+        {
+          "id": "view-bursa-1",
+          "original": "bilder/ultraljud/bursit-axel/bursit-vy-1.original.jpg",
+          "anatomy": "bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.realistic.20261022.webp",
+          "finding_layer": "paired-identical",
+          "stage_style": "aspect-ratio:4/3"
+        },
+        {
+          "id": "view-bursa-2",
+          "original": "bilder/ultraljud/bursit-axel/bursit-vy-2.original.jpg",
+          "anatomy": "bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.realistic.20261022.webp",
+          "finding_layer": "paired-identical",
+          "stage_style": "aspect-ratio:4/3"
+        },
+        {
+          "id": "view-supraspinatus",
+          "original": "bilder/ultraljud/bursit-axel/supraspinatus.original.jpg",
+          "anatomy": "bilder/ultraljud/bursit-axel/supraspinatus.anatomi.realistic.20261022.webp",
+          "finding_layer": "paired-identical",
+          "stage_style": "aspect-ratio:4/3"
+        },
+        {
+          "id": "view-subscapularis",
+          "original": "bilder/ultraljud/bursit-axel/subscapularis.original.jpg",
+          "anatomy": "bilder/ultraljud/bursit-axel/subscapularis.anatomi.realistic.20261022.webp",
+          "finding_layer": "paired-identical",
+          "stage_style": "aspect-ratio:4/3"
+        }
+      ]
+    },
+    {
+      "page": "ultraljud/kna/",
+      "views": [
+        {
+          "id": "view-ledvatska",
+          "original": "bilder/ultraljud/kna/ledvatska-ultraljud.webp",
+          "anatomy": "bilder/ultraljud/kna/ledvatska-anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": "aspect-ratio:1280/880"
+        },
+        {
+          "id": "view-bakercysta",
+          "original": "bilder/ultraljud/kna/bakercysta-ultraljud.webp",
+          "anatomy": "bilder/ultraljud/kna/bakercysta-anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": "aspect-ratio:1280/880"
+        },
+        {
+          "id": "view-menisk",
+          "original": "bilder/ultraljud/kna/menisk-ultraljud.webp",
+          "anatomy": "bilder/ultraljud/kna/menisk-anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": "aspect-ratio:1280/880"
+        },
+        {
+          "id": "view-brosk-jamforelse",
+          "original": "bilder/ultraljud/kna/brosk-jamforelse-ultraljud.webp",
+          "anatomy": "bilder/ultraljud/kna/brosk-jamforelse-anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": "aspect-ratio:1280/880"
+        },
+        {
+          "id": "view-osteofyter",
+          "original": "bilder/ultraljud/kna/osteofyter-ultraljud.webp",
+          "anatomy": "bilder/ultraljud/kna/osteofyter-anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": "aspect-ratio:1280/880"
+        },
+        {
+          "id": "view-brosk",
+          "original": "bilder/ultraljud/kna/brosk-ultraljud.webp",
+          "anatomy": "bilder/ultraljud/kna/brosk-anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": "aspect-ratio:1280/880"
+        },
+        {
+          "id": "view-lateral-fluid",
+          "original": "bilder/ultraljud/kna/loparkna/lateral-fluid-ultraljud.jpg",
+          "anatomy": "bilder/ultraljud/kna/loparkna/lateral-fluid-anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": "aspect-ratio:1280/680"
+        },
+        {
+          "id": "view-itb-bursa",
+          "original": "bilder/ultraljud/kna/loparkna/itb-bursa-ultraljud.jpg",
+          "anatomy": "bilder/ultraljud/kna/loparkna/itb-bursa-anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": "aspect-ratio:1280/680"
+        },
+        {
+          "id": "view-posterior-meniscus",
+          "original": "bilder/ultraljud/kna/loparkna/posterior-meniscus-ultraljud.jpg",
+          "anatomy": "bilder/ultraljud/kna/loparkna/posterior-meniscus-anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": "aspect-ratio:1280/680"
+        }
+      ]
+    },
+    {
+      "page": "ultraljud/loparkna/",
+      "views": [
+        {
+          "id": "view-itb-bursa",
+          "original": "bilder/ultraljud/kna/loparkna/itb-bursa-ultraljud.jpg",
+          "anatomy": "bilder/ultraljud/kna/loparkna/itb-bursa-anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": "aspect-ratio:1280/680"
+        },
+        {
+          "id": "view-lateral-fluid",
+          "original": "bilder/ultraljud/kna/loparkna/lateral-fluid-ultraljud.jpg",
+          "anatomy": "bilder/ultraljud/kna/loparkna/lateral-fluid-anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": "aspect-ratio:1280/680"
+        },
+        {
+          "id": "view-posterior-meniscus",
+          "original": "bilder/ultraljud/kna/loparkna/posterior-meniscus-ultraljud.jpg",
+          "anatomy": "bilder/ultraljud/kna/loparkna/posterior-meniscus-anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": "aspect-ratio:1280/680"
+        }
+      ]
+    },
+    {
+      "page": "ultraljud/hoftled/bilder/",
+      "views": [
+        {
+          "id": "view-kapsel",
+          "original": "bilder/ultraljud/hoftled/kapsel.original.jpg",
+          "anatomy": "bilder/ultraljud/hoftled/kapsel.anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": ""
+        },
+        {
+          "id": "view-caput",
+          "original": "bilder/ultraljud/hoftled/caput.original.jpg",
+          "anatomy": "bilder/ultraljud/hoftled/caput.anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": ""
+        },
+        {
+          "id": "view-jamforelse",
+          "original": "bilder/ultraljud/hoftled/jamforelse.original.jpg",
+          "anatomy": "bilder/ultraljud/hoftled/jamforelse.anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": ""
+        }
+      ]
+    },
+    {
+      "page": "ultraljud/glutealsenor/bilder/",
+      "views": [
+        {
+          "id": "view-gmed",
+          "original": "bilder/ultraljud/hoft/gmed.original.jpg",
+          "anatomy": "bilder/ultraljud/hoft/gmed.anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": ""
+        },
+        {
+          "id": "view-gmin",
+          "original": "bilder/ultraljud/hoft/gmin.original.jpg",
+          "anatomy": "bilder/ultraljud/hoft/gmin.anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": ""
+        },
+        {
+          "id": "view-paralabral",
+          "original": "bilder/ultraljud/hoft/paralabral.original.jpg",
+          "anatomy": "bilder/ultraljud/hoft/paralabral.anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": ""
+        }
+      ]
+    },
+    {
+      "page": "ultraljud/halsena/bilder/",
+      "views": [
+        {
+          "id": "view-longitudinal",
+          "original": "bilder/ultraljud/halsena/longitudinal-ultraljud.jpg",
+          "anatomy": "bilder/ultraljud/halsena/longitudinal-anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": ""
+        },
+        {
+          "id": "view-healthy",
+          "original": "bilder/ultraljud/halsena/healthy-ultraljud.jpg",
+          "anatomy": "bilder/ultraljud/halsena/healthy-anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": ""
+        },
+        {
+          "id": "view-transverse",
+          "original": "bilder/ultraljud/halsena/transverse-ultraljud.jpg",
+          "anatomy": "bilder/ultraljud/halsena/transverse-anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": ""
+        }
+      ]
+    },
+    {
+      "page": "ultraljud/tennisarmbage/bilder/",
+      "views": [
+        {
+          "id": "view-skadad",
+          "original": "bilder/ultraljud/armbage/tennisarmbage/skadad-ultraljud.jpg",
+          "anatomy": "bilder/ultraljud/armbage/tennisarmbage/skadad-anatomi.realistic.20261022.webp",
+          "finding_layer": "shared",
+          "stage_style": "aspect-ratio:1280/600"
+        },
+        {
+          "id": "view-frisk",
+          "original": "bilder/ultraljud/armbage/tennisarmbage/frisk-ultraljud.jpg",
+          "anatomy": "bilder/ultraljud/armbage/tennisarmbage/frisk-anatomi.realistic.20261022.webp",
+          "finding_layer": "explicitly-unavailable",
+          "stage_style": "aspect-ratio:1280/600"
+        }
+      ]
+    }
+  ],
+  "originals": [
+    {
+      "path": "bilder/ultraljud/bicepssena/tvarsnitt-helbild.20261009.jpg",
+      "sha256": "ca32616bfec0cb65e6f71822d2537289beae85414f32e0d5dffb0cfe56ca3352",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/bicepssena/langdsnitt-helbild.20261009.jpg",
+      "sha256": "00f277b43a644f6ea62dcd4d8c039fb9ed428b24fa9a92682ad326a68c15c18d",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/pectoralis/langdsnitt-helbild.20261009.jpg",
+      "sha256": "12237e6db43839362547fe8f6d7d424f6d0960d0a3b6100f0cd41d2ad3af1751",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/pectoralis/tvarsnitt-helbild.20261009.jpg",
+      "sha256": "fe51564c0a81b00f1a42a0335a9b434621bae55be07ef95cd0444568c6c3bcd2",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/karpaltunnel/medianus-helbild.20261009.jpg",
+      "sha256": "1e4610372f9435cb5c7de5ff7dbc977952cecb2005964f81731b59eccfd7aff3",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/ac-led/jamforelse-skadad.jpg",
+      "sha256": "dfe7e676ea57aaffba8c0c3fd701c0e1941ebd6364ee6725f386dbc8dc153a23",
+      "size": [
+        1280,
+        830
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/ac-led/jamforelse-motsatt.jpg",
+      "sha256": "bb387fb5673b38dfebf0444a8e6f3f86ee37908f4b417fa39caee6cb5d3fcb5a",
+      "size": [
+        1280,
+        830
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/ac-led/ac-led.jpg",
+      "sha256": "64ff66b1865115dab54b033e0ea989b3e661286d556e642fdcc65c1eacd21b0a",
+      "size": [
+        942,
+        690
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/ac-led/mjukdelsplan.jpg",
+      "sha256": "b4e7107fd36ff8d9b8c7682944697e17e51d76e2b2d10010ea27550c605d9b02",
+      "size": [
+        942,
+        690
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/kalkaxel/kalk-ultraljud.jpg",
+      "sha256": "97a0e8b642102eac1a40da062995027ab6d57a4f5225efd0da0dd245fcd53b32",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/kalkaxel/frisk-ultraljud.jpg",
+      "sha256": "b57647f25495c6d23d815855ca8c08f47e39c8f3d335d8fea72727e001022e27",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/bursit-axel/bursit-vy-1.original.jpg",
+      "sha256": "9f278fdadc46796a4e0a05ad526f027ad7423f6db12e49588d3cf08c8c378767",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/bursit-axel/bursit-vy-2.original.jpg",
+      "sha256": "5f4cfc20ca41788f0c6bab93a857d60c01756fb8987fb87155bb65202f182998",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/bursit-axel/supraspinatus.original.jpg",
+      "sha256": "248c61e58a2bddb086c4d0b5c8808b8a00e43b42e2baaf07a256bb63baf454e1",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/bursit-axel/subscapularis.original.jpg",
+      "sha256": "5b8204a8a1395b52164376dd133e29b4d39b123cd5b04f62142900249bd896d6",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/kna/ledvatska-ultraljud.webp",
+      "sha256": "9240bfe34d284f90e190997d27d7518ae797ee0580e5678226b0b9df021aad87",
+      "size": [
+        1280,
+        880
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/kna/bakercysta-ultraljud.webp",
+      "sha256": "ec036da9b0cf0cc9fdfa3b9224415bdb0f4c053f9dd33dbab887a3327134c386",
+      "size": [
+        1280,
+        880
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/kna/menisk-ultraljud.webp",
+      "sha256": "762a618a489020081096389e5c945fc14187460f359370059b6722210b3279f8",
+      "size": [
+        1280,
+        880
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/kna/brosk-jamforelse-ultraljud.webp",
+      "sha256": "9024fafba45fbcfe5a59f6e720fc1ab6e4d17d216a72c97bed079ad5c9fd63b7",
+      "size": [
+        1280,
+        880
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/kna/osteofyter-ultraljud.webp",
+      "sha256": "5bd3ca2531783e651160abf4c60af60fe4ec6d0311c7ddf845eb6950c32182b0",
+      "size": [
+        1280,
+        880
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/kna/brosk-ultraljud.webp",
+      "sha256": "e823d5e6861f307a056c0f5ae465dc200c36cb13f93c8538b1f474c48acc91d3",
+      "size": [
+        1280,
+        880
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/kna/loparkna/lateral-fluid-ultraljud.jpg",
+      "sha256": "aed774ee25baf7d822427726b38b52525e51539b772e5965aac503fe35fe9fcd",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/kna/loparkna/itb-bursa-ultraljud.jpg",
+      "sha256": "1bfa8eab7935799ed72abac82e3f4d834397b1f9012b94de78d7d78190ace9f0",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/kna/loparkna/posterior-meniscus-ultraljud.jpg",
+      "sha256": "8e838680c80b06bb0acc68fee72580e5df7b38a41669c9ae06ced3be79ec615e",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/hoftled/kapsel.original.jpg",
+      "sha256": "8d95290320f607b6962441a4ab06f89f21ee321ffdc12401b1cd1cce55093c2b",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/hoftled/caput.original.jpg",
+      "sha256": "23a898922544697ea9b8e1933734812d4a9f9e8c933f027e8d023bba34511ad4",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/hoftled/jamforelse.original.jpg",
+      "sha256": "e702eebe74fbbad5f5bf4f1c848aaba39f0a9a16f1b4b7eaf880e2c66a490ce1",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/hoft/gmed.original.jpg",
+      "sha256": "bfb44c738e827b15c3920ca3960fc1dd2661a907d3cd0d97c217d748d4e45863",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/hoft/gmin.original.jpg",
+      "sha256": "8acece8139a266f97b615dc5fb0d3da5b02a9871f49979bd320d503d12c17c43",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/hoft/paralabral.original.jpg",
+      "sha256": "76778636563397b552e3eb644e60a1816f236a56ebb2c675cd05b9d455f46cab",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/halsena/longitudinal-ultraljud.jpg",
+      "sha256": "699f886574dff49d9f92ab1a62ac3cf5b50524a59ffc73e85d41cc66c508788e",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/halsena/healthy-ultraljud.jpg",
+      "sha256": "b1e761de1be96c92788c4294efa2f92aa1e2baa4c2a1b9a144c5075d1d910aa5",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/halsena/transverse-ultraljud.jpg",
+      "sha256": "d22ca0aae7d81ce2a6934fd7648e1e898afbc872504a1604bfe087776f128008",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/armbage/tennisarmbage/skadad-ultraljud.jpg",
+      "sha256": "a6c68a06ca8918085f1e11a3f1bfbf66095ed81883bb6f14459f57520696008d",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    },
+    {
+      "path": "bilder/ultraljud/armbage/tennisarmbage/frisk-ultraljud.jpg",
+      "sha256": "5d241069bececadb2d70d667b000424ba9911963d2624ae9ba6c30c487436795",
+      "size": [
+        1280,
+        960
+      ],
+      "matches_git_reference": true
+    }
+  ],
+  "anatomy": [
+    {
+      "path": "bilder/ultraljud/bicepssena/tvarsnitt-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "b6708205102d5310c86cdf4f3289d47e301c7bfd3f5ec5a32f7c0646a234bcda"
+    },
+    {
+      "path": "bilder/ultraljud/bicepssena/langdsnitt-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "dbe0594edb1d2e4ebab6dd9675d544dc5f5fcda06beedb67ba912da1cfe0bf19"
+    },
+    {
+      "path": "bilder/ultraljud/pectoralis/langdsnitt-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "95abc806008b959623ac0960d2242effaa2b0bc61a864b8e6a200e6585a6c1b6"
+    },
+    {
+      "path": "bilder/ultraljud/pectoralis/tvarsnitt-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "eb7a712d22bb56d38b43488103cb58e8b00d538ad80e493b5aac36f711a14087"
+    },
+    {
+      "path": "bilder/ultraljud/karpaltunnel/medianus-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "acadaefb2e6780a194354dfdce90710b86c9d253bc9833bbf4de68ab3ec90f2f"
+    },
+    {
+      "path": "bilder/ultraljud/ac-led/jamforelse-skadad-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        830
+      ],
+      "sha256": "ef60a3b9403879358ce32b8274ebeda8fdc37f3dbd389d11abbad12918744e88"
+    },
+    {
+      "path": "bilder/ultraljud/ac-led/jamforelse-motsatt-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        830
+      ],
+      "sha256": "4786c54b0ce4d080994cf018a9e8b17baec29bb28e57c1e99e4ec0f9f566f376"
+    },
+    {
+      "path": "bilder/ultraljud/ac-led/ac-led-anatomi.realistic.20261022.webp",
+      "size": [
+        942,
+        690
+      ],
+      "sha256": "072d8ecd704be461b6d5b6c191be3551084f3e27f158d8d9455163c022ba2694"
+    },
+    {
+      "path": "bilder/ultraljud/ac-led/mjukdelsplan-anatomi.realistic.20261022.webp",
+      "size": [
+        942,
+        690
+      ],
+      "sha256": "356a9805c657a477281191b78b2c975ddca52045bdd09676d144ecc0fe28c0c3"
+    },
+    {
+      "path": "bilder/ultraljud/kalkaxel/kalk.anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "9a8780462107620e20e1264ef792dbbb5e7539a0a4b6ce9689e868485258d948"
+    },
+    {
+      "path": "bilder/ultraljud/kalkaxel/frisk.anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "9e3ac0bb4b0ab2a86df9b2672e8d39fa819ec23b8842ab61554fa1d812cf2cd2"
+    },
+    {
+      "path": "bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "6d6d612415c1471259197affacbfee70486305917e63f1d0cec59d8ef709b8fb"
+    },
+    {
+      "path": "bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "3e2df21fb9a25f8e3d111cb94caf0a7363cea7d862a17c47e2ae56d7f09bd6ee"
+    },
+    {
+      "path": "bilder/ultraljud/bursit-axel/supraspinatus.anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "391fa02a4abfc35b5662885731da2857ac8a62a14252b1f6a814d27121a8cd5d"
+    },
+    {
+      "path": "bilder/ultraljud/bursit-axel/subscapularis.anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "36ce5ded1fad1be8ad68096d4a1eecc9030905495e37dc6c0812bc81ab10a42f"
+    },
+    {
+      "path": "bilder/ultraljud/kna/ledvatska-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        880
+      ],
+      "sha256": "5e5675a66d78c4625b080395a76c9d60f07ea14839797bf31593f00e63242ef5"
+    },
+    {
+      "path": "bilder/ultraljud/kna/bakercysta-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        880
+      ],
+      "sha256": "8effd892761b6d629fa1a7617a4af13c4319ed498003fe7b47576826bf89a0f1"
+    },
+    {
+      "path": "bilder/ultraljud/kna/menisk-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        880
+      ],
+      "sha256": "1d5ba07d52471f01656ec2b00a5fe5b8696472267e65c9c65808e848c4584c11"
+    },
+    {
+      "path": "bilder/ultraljud/kna/brosk-jamforelse-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        880
+      ],
+      "sha256": "a9b3542eaa5e675c8427f7277acf8ce467422ca3531be827d076e9cbce5319b3"
+    },
+    {
+      "path": "bilder/ultraljud/kna/osteofyter-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        880
+      ],
+      "sha256": "85bc3f8b02dab3365bb15ae9a2c9e06d3e1471eea07ded752a6b4721c5039828"
+    },
+    {
+      "path": "bilder/ultraljud/kna/brosk-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        880
+      ],
+      "sha256": "15e2e6f8bbff02be8890e4c5d49e640f0be17002571e2f978759bf14b13e7470"
+    },
+    {
+      "path": "bilder/ultraljud/kna/loparkna/lateral-fluid-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "3296c42b536ff91d9610a220a927aff7eafcb5dad7c7554b879f24ebe39b14d1"
+    },
+    {
+      "path": "bilder/ultraljud/kna/loparkna/itb-bursa-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "a26cae45fd0ee673e93756be5b0e61dcf34376c3d00c6303ece30785f11b7b0e"
+    },
+    {
+      "path": "bilder/ultraljud/kna/loparkna/posterior-meniscus-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "5840163890aa23233a6dcd1a0d009aa3e8990c97d9c5dfcbff9f86963ccde1f7"
+    },
+    {
+      "path": "bilder/ultraljud/hoftled/kapsel.anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "408ea27bc2fd9f1ae2e301a3e842816a82af9e73fa7f5f23474e192493c4d99c"
+    },
+    {
+      "path": "bilder/ultraljud/hoftled/caput.anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "1798fef5885e0dad2e995abc1c6627430c82ac9393e136defca9d64e572c6862"
+    },
+    {
+      "path": "bilder/ultraljud/hoftled/jamforelse.anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "f666038b62bb241e84987bd2f4980446a5596ea11c36bfd34e51b3ae50ee5ab3"
+    },
+    {
+      "path": "bilder/ultraljud/hoft/gmed.anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "9e3fabbd45669bc5fcd48077826f9f0b935fc32fc8f646a42d8b8b8a1a62968f"
+    },
+    {
+      "path": "bilder/ultraljud/hoft/gmin.anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "d5ddba509e694a3d8dbf86e4c3f4be88280b9061548cb8552fa65965bf261f91"
+    },
+    {
+      "path": "bilder/ultraljud/hoft/paralabral.anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "7cb3971938338fd33e2034401edfc3fa685e5f0702afa3445486594b11e9ffb6"
+    },
+    {
+      "path": "bilder/ultraljud/halsena/longitudinal-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "80c36398042d03a9eb2217b0296a217777b5d50f44d729b72c9e0a51c0b82f7f"
+    },
+    {
+      "path": "bilder/ultraljud/halsena/healthy-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "bc1aafa0fd2eef62ba0b7cd4b8cc12dd93740d4552c509188123054444e72615"
+    },
+    {
+      "path": "bilder/ultraljud/halsena/transverse-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "bce434476a1961b886503f33abaf9d5ed53902b6fbc3b5614dbc9b0d285769d9"
+    },
+    {
+      "path": "bilder/ultraljud/armbage/tennisarmbage/skadad-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "2bf367335bb20bd9e9e12881c0e0c43513633edff4c2f86fbf0e60ba6cf27cf0"
+    },
+    {
+      "path": "bilder/ultraljud/armbage/tennisarmbage/frisk-anatomi.realistic.20261022.webp",
+      "size": [
+        1280,
+        960
+      ],
+      "sha256": "cac19a94b28c7ef0441182721cd7828eb71f77690998b82348389297a3d83643"
+    }
+  ],
+  "summary": {
+    "case_pages": 12,
+    "static_view_occurrences": 38,
+    "unique_clinical_originals": 35,
+    "unique_anatomy_assets": 35,
+    "paired_identical_findings": 15,
+    "shared_finding_layers": 22,
+    "explicitly_unavailable_findings": 1,
+    "clinical_originals_match_git_reference": true,
+    "anatomy_decode_and_html_dimensions_match": true
+  }
+}

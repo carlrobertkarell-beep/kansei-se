@@ -8,10 +8,10 @@ def check_bursa(page, output, label):
     if viewer.get_by_role('tab').count() != 5:
         raise AssertionError('Expected four still views and one film')
     expected_anatomy = {
-        'bursa-1': '/bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.20261021f.webp',
-        'bursa-2': '/bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.20261021f.webp',
-        'supraspinatus': '/bilder/ultraljud/bursit-axel/supraspinatus.anatomi.20261021f.webp',
-        'subscapularis': '/bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016e.webp',
+        'bursa-1': '/bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.realistic.20261022.webp',
+        'bursa-2': '/bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.realistic.20261022.webp',
+        'supraspinatus': '/bilder/ultraljud/bursit-axel/supraspinatus.anatomi.realistic.20261022.webp',
+        'subscapularis': '/bilder/ultraljud/bursit-axel/subscapularis.anatomi.realistic.20261022.webp',
     }
     samples = {}
     for key in ('bursa-1', 'bursa-2', 'supraspinatus', 'subscapularis'):
@@ -58,11 +58,13 @@ def check_bursa(page, output, label):
         }""", points)
         samples[key] = rgb
         def muscle(p): return p[0] > p[1]*1.25 and p[1] < 160 and p[3] > 240
-        def fat(p): return p[1] > 95 and p[0] > p[1]*1.1 and p[1] > p[2]*1.12
+        # The owner-approved 22 October materials use pale cream fat and
+        # watery gray fluid rather than saturated amber and navy blue.
+        def fat(p): return p[1] > 95 and p[0] > p[1]*1.1 and p[1] > p[2]*1.035 and p[3] > 240
         def bone(p): return p[0] > p[1]*1.18 and p[2] < p[1]*.82
         if key == 'bursa-1' and not (muscle(rgb[0]) and fat(rgb[1])):
             raise AssertionError('View 1 deltoid/fat material crosses the clinician borders')
-        if key == 'bursa-2' and not (muscle(rgb[0]) and rgb[1][1] > rgb[1][0]*1.2):
+        if key == 'bursa-2' and not (muscle(rgb[0]) and rgb[1][2] > rgb[1][0]*1.2 and max(rgb[1][:3]) < 80 and rgb[1][3] > 240):
             raise AssertionError('View 2 must continue deltoid along the left side, outside the bursa')
         # Coarse palette guards sample tissue interiors, not the antialiased
         # cortical boundary. Visual comparison to the clinician guide remains
@@ -71,7 +73,7 @@ def check_bursa(page, output, label):
             raise AssertionError('View 3 deltoid or uneven humeral cortical contour is mispainted')
         if key == 'subscapularis' and not (bone(rgb[0]) and rgb[1][2]/rgb[1][1] > rgb[0][2]/rgb[0][1]+.08 and rgb[1][3] > 240):
             raise AssertionError('View 4 must separate humerus from the residual-fiber defect')
-        if key == 'subscapularis' and not all(p[3] > 240 and p[0] > p[2]*1.25 for p in rgb[2:]):
+        if key == 'subscapularis' and not all(p[3] > 240 and p[0] > p[2]*1.2 for p in rgb[2:]):
             raise AssertionError('View 4 has unpainted tissue around the stump or below the fluid pocket')
         if picture.locator('[data-finding-mode=anatomy] path:not(.finding-pointer):not(.finding-pointer-shadow)').count():
             raise AssertionError('Findings must use the shared pointers, without colored tissue outlines')

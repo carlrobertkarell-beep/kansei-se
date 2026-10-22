@@ -1,0 +1,25 @@
+{
+  "09-ac-led-mjukdelsplan-anatomi": {
+    "revision_prompt": "Edit IMAGE 1 only in the soft tissue BELOW the long horizontal bone. IMAGE 2 is the old published geometry and tissue-type reference. IMAGE 3 is the exact approved realistic material reference. The lower region is unspecified gray fibrous soft tissue in IMAGE 2; IMAGE 1 incorrectly converted it to red skeletal muscle. Replace that red sub-bone region with lifelike moist neutral charcoal-gray/ivory fibrous soft tissue of the same darkness and boundary as IMAGE 2. No red muscle there and no new muscle bellies. Retain the exact bone shape, overlying fat, dark cleft ABOVE the bone, position, crop, black margins, field size and all structures from IMAGE 1. Do not change any tissue outside this lower region. No labels, pointers, new pathology, text, extra vessels, organs, or added structures. This is a material correction only; do not rescale or recompose. Output the full same canvas, opaque black background.",
+    "initial_generated": "/workspace/scratch/30f45a18ccb3/generated_images/exec-b649616f-c056-4742-9e6b-d673312668bf.png"
+  },
+  "10-kalkaxel-kalk": {
+    "revision_prompt": "Make one tiny local correction in IMAGE 1. IMAGE 2 shows the published anatomy and the TWO real pre-existing calcification clusters. IMAGE 3 is the exact approved realistic material reference. In IMAGE 1 an unwanted EXTRA third small chalky fleck was added in the lower-left tendon around pixel (565,550) on the 1448x1086 canvas, under and to the left of the two main deposits. Remove ONLY that added small satellite fleck and replace it with continuous pearly tendon collagen matching its surrounding fiber direction. Preserve the TWO existing large calcification clusters visible in IMAGE 2 and their exact positions. Preserve the dark tendon defect, cortex, fat, muscle, all tissue boundaries, exact framing and black margins of IMAGE 1. No other changes, no new structures or pathology, no labels, text or pointers. Output the same full canvas, opaque black background.",
+    "initial_generated": "/workspace/scratch/30f45a18ccb3/generated_images/exec-836652c3-5912-465d-b3b2-1e259017d12c.png"
+  },
+  "31-halsena-longitudinal-anatomi": {
+    "additional_prompt": "\nThe geometry master includes a scanner's header, numeric depth scales, caliper captions, bottom toolbar and side metadata. Remove ONLY these lettering/interface areas to clean black, retaining the exact empty margin space they occupied. The colored anatomical tissue field must remain at its current location and size inside the full 1280x960 canvas; do not expand tissue into the cleared margins or header. Keep the existing gray edge fade as a dark tissue fade, not ultrasound UI."
+  },
+  "32-halsena-healthy-anatomi": {
+    "additional_prompt": "\nThe geometry master includes a scanner's header, numeric depth scales, caliper captions, bottom toolbar and side metadata. Remove ONLY these lettering/interface areas to clean black, retaining the exact empty margin space they occupied. The colored anatomical tissue field must remain at its current location and size inside the full 1280x960 canvas; do not expand tissue into the cleared margins or header. Keep the existing gray edge fade as a dark tissue fade, not ultrasound UI."
+  },
+  "33-halsena-transverse-anatomi": {
+    "additional_prompt": "\nThe geometry master includes a scanner's header, numeric depth scales, caliper captions, bottom toolbar and side metadata. Remove ONLY these lettering/interface areas to clean black, retaining the exact empty margin space they occupied. The colored anatomical tissue field must remain at its current location and size inside the full 1280x960 canvas; do not expand tissue into the cleared margins or header. Keep the existing gray edge fade as a dark tissue fade, not ultrasound UI."
+  },
+  "34-tennisarmbage-skadad-anatomi": {
+    "additional_prompt": "\nThe geometry master includes a scanner's header, numeric depth scales, caliper captions, bottom toolbar and side metadata. Remove ONLY these lettering/interface areas to clean black, retaining the exact empty margin space they occupied. The colored anatomical tissue field must remain at its current location and size inside the full 1280x960 canvas; do not expand tissue into the cleared margins or header. Keep the existing gray edge fade as a dark tissue fade, not ultrasound UI."
+  },
+  "35-tennisarmbage-frisk-anatomi": {
+    "additional_prompt": "\nThe geometry master includes a scanner's header, numeric depth scales, caliper captions, bottom toolbar and side metadata. Remove ONLY these lettering/interface areas to clean black, retaining the exact empty margin space they occupied. The colored anatomical tissue field must remain at its current location and size inside the full 1280x960 canvas; do not expand tissue into the cleared margins or header. Keep the existing gray edge fade as a dark tissue fade, not ultrasound UI."
+  }
+}

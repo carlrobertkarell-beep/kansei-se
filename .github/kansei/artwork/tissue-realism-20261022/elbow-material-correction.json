@@ -1,0 +1,6 @@
+{
+  "key": "34-tennisarmbage-skadad-anatomi",
+  "prompt": "Make a strictly local tissue-material correction to IMAGE 1. IMAGE 2 is the published elbow anatomy geometry master. IMAGE 3 is the exact owner-approved realistic tissue-material reference. In the LEFT part of IMAGE 1, directly BELOW the horizontal pale extensor tendon and to the LEFT of the pale bony cortex, an unestablished region has been made burgundy/red skeletal muscle. In IMAGE 2 this region was neutral gray soft tissue and dark depth fade, with no established muscle identity. Replace ONLY this small lower-left red wedge with restrained moist gray/ivory fibrous soft tissue fading softly to black at depth. Keep the same tissue boundary and dark margin. Do not invent a muscle belly. Preserve all pale tendon fibers, existing tendon clefts, the main bone's exact shape and cortical location, the right-sided tissue, fat, complete framing and black margins of IMAGE 1. Do not change any other region or recompose/resize. No text, labels, arrows, extra lesions or new structures. Same full image canvas and opaque black background.",
+  "initial_generated": "/workspace/scratch/30f45a18ccb3/generated_images/exec-e15193f6-5118-4665-ac48-be316a14d181.png",
+  "final_generated": "/workspace/scratch/30f45a18ccb3/generated_images/exec-23b0775c-51fc-4bea-a9ec-e058a3feb046.png"
+}

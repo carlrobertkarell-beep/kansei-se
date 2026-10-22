@@ -1,0 +1,562 @@
+[
+  {
+    "case": "ultraljud/axel/bicepstendinopati/",
+    "id": "view-1",
+    "original": "bilder/ultraljud/bicepssena/tvarsnitt-helbild.20261009.jpg",
+    "anatomy": "bilder/ultraljud/bicepssena/tvarsnitt-anatomi.20261021f.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "01-bicepssena-tvarsnitt-anatomi",
+    "output": "bilder/ultraljud/bicepssena/tvarsnitt-anatomi.realistic.20261022.webp",
+    "notes": "Biceps tendon and surrounding sheath-fluid contour must stay distinct from the anterior deltoid. Longitudinal image is a genuine left/right acquisition comparison: retain its central division and both different tendon shapes.",
+    "original_sha256": "ca32616bfec0cb65e6f71822d2537289beae85414f32e0d5dffb0cfe56ca3352",
+    "previous_anatomy_sha256": "14346f8b9748117657f76da9daa452eac8ed91bb83f808c7135982871d3ec948",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/axel/bicepstendinopati/",
+    "id": "view-2",
+    "original": "bilder/ultraljud/bicepssena/langdsnitt-helbild.20261009.jpg",
+    "anatomy": "bilder/ultraljud/bicepssena/langdsnitt-anatomi.20261021f.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "02-bicepssena-langdsnitt-anatomi",
+    "output": "bilder/ultraljud/bicepssena/langdsnitt-anatomi.realistic.20261022.webp",
+    "notes": "Biceps tendon and surrounding sheath-fluid contour must stay distinct from the anterior deltoid. Longitudinal image is a genuine left/right acquisition comparison: retain its central division and both different tendon shapes.",
+    "original_sha256": "00f277b43a644f6ea62dcd4d8c039fb9ed428b24fa9a92682ad326a68c15c18d",
+    "previous_anatomy_sha256": "1016c5dd78e0eebdb673dba0c55b95bb5a30b84f6775b88d46d7c49e223c22d3",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/axel/pectoralisruptur/",
+    "id": "view-1",
+    "original": "bilder/ultraljud/pectoralis/langdsnitt-helbild.20261009.jpg",
+    "anatomy": "bilder/ultraljud/pectoralis/langdsnitt-anatomi.20261021f.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "03-pectoralis-langdsnitt-anatomi",
+    "output": "bilder/ultraljud/pectoralis/langdsnitt-anatomi.realistic.20261022.webp",
+    "notes": "Keep the rupture cleft, torn fiber ends and heterogeneous area exactly as depicted. Do not repair torn fibers or invent a larger rupture.",
+    "original_sha256": "12237e6db43839362547fe8f6d7d424f6d0960d0a3b6100f0cd41d2ad3af1751",
+    "previous_anatomy_sha256": "d3420a10322b51d0fe3aa4dce9128be833f25d85ca1dbf14fd6c568693513287",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/axel/pectoralisruptur/",
+    "id": "view-2",
+    "original": "bilder/ultraljud/pectoralis/tvarsnitt-helbild.20261009.jpg",
+    "anatomy": "bilder/ultraljud/pectoralis/tvarsnitt-anatomi.20261021f.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "04-pectoralis-tvarsnitt-anatomi",
+    "output": "bilder/ultraljud/pectoralis/tvarsnitt-anatomi.realistic.20261022.webp",
+    "notes": "Keep the rupture cleft, torn fiber ends and heterogeneous area exactly as depicted. Do not repair torn fibers or invent a larger rupture.",
+    "original_sha256": "fe51564c0a81b00f1a42a0335a9b434621bae55be07ef95cd0444568c6c3bcd2",
+    "previous_anatomy_sha256": "35a25cbc8f96905a28dbe2c6d751d690a7dbb93110015170ee9231fea227e4bb",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/hand-handled/karpaltunnelsyndrom/",
+    "id": null,
+    "original": "bilder/ultraljud/karpaltunnel/medianus-helbild.20261009.jpg",
+    "anatomy": "bilder/ultraljud/karpaltunnel/medianus-anatomi.20261021f.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "05-karpaltunnel-medianus-anatomi",
+    "output": "bilder/ultraljud/karpaltunnel/medianus-anatomi.realistic.20261022.webp",
+    "notes": "The central median nerve has its established small fascicular pattern; do not turn the nerve into a tendon. Preserve flexor tendons, retinaculum and bone locations.",
+    "original_sha256": "1e4610372f9435cb5c7de5ff7dbc977952cecb2005964f81731b59eccfd7aff3",
+    "previous_anatomy_sha256": "8fabb4847f15015d914eb1f63f5fa966c6fcbdbf441e5e88c47ee99441e2f01f",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/axel/ac-ledsskada/",
+    "id": "view-2",
+    "original": "bilder/ultraljud/ac-led/jamforelse-skadad.jpg",
+    "anatomy": "bilder/ultraljud/ac-led/jamforelse-skadad-anatomi.20261021f.webp",
+    "size": [
+      1280,
+      830
+    ],
+    "key": "06-ac-led-jamforelse-skadad-anatomi",
+    "output": "bilder/ultraljud/ac-led/jamforelse-skadad-anatomi.realistic.20261022.webp",
+    "notes": "Preserve the supplied injured or reference-side joint spacing, displaced bone levels and soft-tissue discontinuity exactly. No measurements, calipers or new structures.",
+    "original_sha256": "dfe7e676ea57aaffba8c0c3fd701c0e1941ebd6364ee6725f386dbc8dc153a23",
+    "previous_anatomy_sha256": "caed1c4f37dd012766212c19e656a612e7aa3b210ba844f65d6efe23f91abf84",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/axel/ac-ledsskada/",
+    "id": "view-2",
+    "original": "bilder/ultraljud/ac-led/jamforelse-motsatt.jpg",
+    "anatomy": "bilder/ultraljud/ac-led/jamforelse-motsatt-anatomi.20261021f.webp",
+    "size": [
+      1280,
+      830
+    ],
+    "key": "07-ac-led-jamforelse-motsatt-anatomi",
+    "output": "bilder/ultraljud/ac-led/jamforelse-motsatt-anatomi.realistic.20261022.webp",
+    "notes": "Preserve the supplied injured or reference-side joint spacing, displaced bone levels and soft-tissue discontinuity exactly. No measurements, calipers or new structures.",
+    "original_sha256": "bb387fb5673b38dfebf0444a8e6f3f86ee37908f4b417fa39caee6cb5d3fcb5a",
+    "previous_anatomy_sha256": "67683e4e2f4f9395a6b33140e161c5a4ef8403f1b9264e2ba0bb1ae2bb3908df",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/axel/ac-ledsskada/",
+    "id": "view-1",
+    "original": "bilder/ultraljud/ac-led/ac-led.jpg",
+    "anatomy": "bilder/ultraljud/ac-led/ac-led-anatomi.20261021f.webp",
+    "size": [
+      942,
+      690
+    ],
+    "key": "08-ac-led-ac-led-anatomi",
+    "output": "bilder/ultraljud/ac-led/ac-led-anatomi.realistic.20261022.webp",
+    "notes": "Preserve the supplied injured or reference-side joint spacing, displaced bone levels and soft-tissue discontinuity exactly. No measurements, calipers or new structures.",
+    "original_sha256": "64ff66b1865115dab54b033e0ea989b3e661286d556e642fdcc65c1eacd21b0a",
+    "previous_anatomy_sha256": "def0d43b85d109b0b0828885231ae10f64e731c2a88e7a4a9c383add63620a9e",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/axel/ac-ledsskada/",
+    "id": "view-3",
+    "original": "bilder/ultraljud/ac-led/mjukdelsplan.jpg",
+    "anatomy": "bilder/ultraljud/ac-led/mjukdelsplan-anatomi.20261021f.webp",
+    "size": [
+      942,
+      690
+    ],
+    "key": "09-ac-led-mjukdelsplan-anatomi",
+    "output": "bilder/ultraljud/ac-led/mjukdelsplan-anatomi.realistic.20261022.webp",
+    "notes": "Preserve the supplied injured or reference-side joint spacing, displaced bone levels and soft-tissue discontinuity exactly. No measurements, calipers or new structures.",
+    "original_sha256": "b4e7107fd36ff8d9b8c7682944697e17e51d76e2b2d10010ea27550c605d9b02",
+    "previous_anatomy_sha256": "81d59de24aff3c64d53dc405dfcac8bfdeb33d03b96656846b20249f413e1b7a",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/kalkaxel/",
+    "id": "view-kalk",
+    "original": "bilder/ultraljud/kalkaxel/kalk-ultraljud.jpg",
+    "anatomy": "bilder/ultraljud/kalkaxel/kalk.anatomi.20261021f.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "10-kalkaxel-kalk",
+    "output": "bilder/ultraljud/kalkaxel/kalk.anatomi.realistic.20261022.webp",
+    "notes": "Keep chalky calcification in the examined view and its acoustic-depth fade, plus the partial tendon defect. The healthy side must remain without introduced disease. Do not borrow either side anatomy from the other.",
+    "original_sha256": "97a0e8b642102eac1a40da062995027ab6d57a4f5225efd0da0dd245fcd53b32",
+    "previous_anatomy_sha256": "25911669cb3b97b4fa637d0be5dc7373c0679988dc39dcf8dc036a7471971e9e",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/kalkaxel/",
+    "id": "view-frisk",
+    "original": "bilder/ultraljud/kalkaxel/frisk-ultraljud.jpg",
+    "anatomy": "bilder/ultraljud/kalkaxel/frisk.anatomi.20261021f.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "11-kalkaxel-frisk",
+    "output": "bilder/ultraljud/kalkaxel/frisk.anatomi.realistic.20261022.webp",
+    "notes": "Keep chalky calcification in the examined view and its acoustic-depth fade, plus the partial tendon defect. The healthy side must remain without introduced disease. Do not borrow either side anatomy from the other.",
+    "original_sha256": "b57647f25495c6d23d815855ca8c08f47e39c8f3d335d8fea72727e001022e27",
+    "previous_anatomy_sha256": "ca5b7cc3ef1cb834bd81f0e75a156de99ba6e8e491b8b3d43195fc9db29ace68",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/bursit-axel/",
+    "id": "view-bursa-1",
+    "original": "bilder/ultraljud/bursit-axel/bursit-vy-1.original.jpg",
+    "anatomy": "bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.20261021f.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "12-bursit-axel-bursit-vy-1",
+    "output": "bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.realistic.20261022.webp",
+    "notes": "Keep all bursal fluid edges, the irregular cortical outline, and tendon defects. In subscapularis retain the separate torn stump and heterogeneous remaining fibers; do not fill a defect with bone or make missing tendon intact.",
+    "original_sha256": "9f278fdadc46796a4e0a05ad526f027ad7423f6db12e49588d3cf08c8c378767",
+    "previous_anatomy_sha256": "0bef72dc14be163709b05bb5d058f50eb188c12f8442a81877d06cb730baacba",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/bursit-axel/",
+    "id": "view-bursa-2",
+    "original": "bilder/ultraljud/bursit-axel/bursit-vy-2.original.jpg",
+    "anatomy": "bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.20261021f.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "13-bursit-axel-bursit-vy-2",
+    "output": "bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.realistic.20261022.webp",
+    "notes": "Keep all bursal fluid edges, the irregular cortical outline, and tendon defects. In subscapularis retain the separate torn stump and heterogeneous remaining fibers; do not fill a defect with bone or make missing tendon intact.",
+    "original_sha256": "5f4cfc20ca41788f0c6bab93a857d60c01756fb8987fb87155bb65202f182998",
+    "previous_anatomy_sha256": "784a9e9e74bfb52311b5ce65a5a68649fb92f4d996a3789bbadee8e85d9fc132",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/bursit-axel/",
+    "id": "view-supraspinatus",
+    "original": "bilder/ultraljud/bursit-axel/supraspinatus.original.jpg",
+    "anatomy": "bilder/ultraljud/bursit-axel/supraspinatus.anatomi.20261021f.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "14-bursit-axel-supraspinatus",
+    "output": "bilder/ultraljud/bursit-axel/supraspinatus.anatomi.realistic.20261022.webp",
+    "notes": "Keep all bursal fluid edges, the irregular cortical outline, and tendon defects. In subscapularis retain the separate torn stump and heterogeneous remaining fibers; do not fill a defect with bone or make missing tendon intact.",
+    "original_sha256": "248c61e58a2bddb086c4d0b5c8808b8a00e43b42e2baaf07a256bb63baf454e1",
+    "previous_anatomy_sha256": "713d54ef7b19851093404e79d50384cd1b9914f58b1310d8f1043701950ba189",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/bursit-axel/",
+    "id": "view-subscapularis",
+    "original": "bilder/ultraljud/bursit-axel/subscapularis.original.jpg",
+    "anatomy": "bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016e.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "15-bursit-axel-subscapularis",
+    "output": "bilder/ultraljud/bursit-axel/subscapularis.anatomi.realistic.20261022.webp",
+    "notes": "Keep all bursal fluid edges, the irregular cortical outline, and tendon defects. In subscapularis retain the separate torn stump and heterogeneous remaining fibers; do not fill a defect with bone or make missing tendon intact.",
+    "original_sha256": "5b8204a8a1395b52164376dd133e29b4d39b123cd5b04f62142900249bd896d6",
+    "previous_anatomy_sha256": "734e5919abf2c859b55f51232869dfdeb628632bed3acce2f4b73e4662164041",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/kna/",
+    "id": "view-ledvatska",
+    "original": "bilder/ultraljud/kna/ledvatska-ultraljud.webp",
+    "anatomy": "bilder/ultraljud/kna/ledvatska-anatomi.20261021f.webp",
+    "size": [
+      1280,
+      880
+    ],
+    "key": "16-kna-ledvatska-anatomi",
+    "output": "bilder/ultraljud/kna/ledvatska-anatomi.realistic.20261022.webp",
+    "notes": "Keep exact supplied joint-fluid, cyst, meniscus, cartilage or osteophyte geometry. Distinguish ivory tendon/ligament from pale fat. Do not repaint fat as red muscle, move bone peaks, smooth a cartilage defect or widen a meniscal cleft.",
+    "original_sha256": "9240bfe34d284f90e190997d27d7518ae797ee0580e5678226b0b9df021aad87",
+    "previous_anatomy_sha256": "08e2f78c36530339ebe4036c3828806c6bd6ee3ea64f4027a174701ec786f3fb",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/kna/",
+    "id": "view-bakercysta",
+    "original": "bilder/ultraljud/kna/bakercysta-ultraljud.webp",
+    "anatomy": "bilder/ultraljud/kna/bakercysta-anatomi.20261021f.webp",
+    "size": [
+      1280,
+      880
+    ],
+    "key": "17-kna-bakercysta-anatomi",
+    "output": "bilder/ultraljud/kna/bakercysta-anatomi.realistic.20261022.webp",
+    "notes": "Keep exact supplied joint-fluid, cyst, meniscus, cartilage or osteophyte geometry. Distinguish ivory tendon/ligament from pale fat. Do not repaint fat as red muscle, move bone peaks, smooth a cartilage defect or widen a meniscal cleft.",
+    "original_sha256": "ec036da9b0cf0cc9fdfa3b9224415bdb0f4c053f9dd33dbab887a3327134c386",
+    "previous_anatomy_sha256": "9d0ef6776fd99fe70f2f838f568e93a04b4b911eda0e262291bcbcb5f7f93fc5",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/kna/",
+    "id": "view-menisk",
+    "original": "bilder/ultraljud/kna/menisk-ultraljud.webp",
+    "anatomy": "bilder/ultraljud/kna/menisk-anatomi.20261013-v5.webp",
+    "size": [
+      1280,
+      880
+    ],
+    "key": "18-kna-menisk-anatomi",
+    "output": "bilder/ultraljud/kna/menisk-anatomi.realistic.20261022.webp",
+    "notes": "Keep exact supplied joint-fluid, cyst, meniscus, cartilage or osteophyte geometry. Distinguish ivory tendon/ligament from pale fat. Do not repaint fat as red muscle, move bone peaks, smooth a cartilage defect or widen a meniscal cleft.",
+    "original_sha256": "762a618a489020081096389e5c945fc14187460f359370059b6722210b3279f8",
+    "previous_anatomy_sha256": "94bb5285a2c887cce1473c05aacab17de20151fcbcccd9dce2e8bc05cf5e5fac",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/kna/",
+    "id": "view-brosk-jamforelse",
+    "original": "bilder/ultraljud/kna/brosk-jamforelse-ultraljud.webp",
+    "anatomy": "bilder/ultraljud/kna/brosk-jamforelse-anatomi.20261021f.webp",
+    "size": [
+      1280,
+      880
+    ],
+    "key": "19-kna-brosk-jamforelse-anatomi",
+    "output": "bilder/ultraljud/kna/brosk-jamforelse-anatomi.realistic.20261022.webp",
+    "notes": "Keep exact supplied joint-fluid, cyst, meniscus, cartilage or osteophyte geometry. Distinguish ivory tendon/ligament from pale fat. Do not repaint fat as red muscle, move bone peaks, smooth a cartilage defect or widen a meniscal cleft.",
+    "original_sha256": "9024fafba45fbcfe5a59f6e720fc1ab6e4d17d216a72c97bed079ad5c9fd63b7",
+    "previous_anatomy_sha256": "b7347b33f46d48cb15d109ddb05c2922fe5536d9567e3e505db3150040a5bdce",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/kna/",
+    "id": "view-osteofyter",
+    "original": "bilder/ultraljud/kna/osteofyter-ultraljud.webp",
+    "anatomy": "bilder/ultraljud/kna/osteofyter-anatomi.20261021f.webp",
+    "size": [
+      1280,
+      880
+    ],
+    "key": "20-kna-osteofyter-anatomi",
+    "output": "bilder/ultraljud/kna/osteofyter-anatomi.realistic.20261022.webp",
+    "notes": "Keep exact supplied joint-fluid, cyst, meniscus, cartilage or osteophyte geometry. Distinguish ivory tendon/ligament from pale fat. Do not repaint fat as red muscle, move bone peaks, smooth a cartilage defect or widen a meniscal cleft.",
+    "original_sha256": "5bd3ca2531783e651160abf4c60af60fe4ec6d0311c7ddf845eb6950c32182b0",
+    "previous_anatomy_sha256": "63c0eb3a83bf5170de0274ec599182357ec3715d0ee207d7d6a1d31d74902227",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/kna/",
+    "id": "view-brosk",
+    "original": "bilder/ultraljud/kna/brosk-ultraljud.webp",
+    "anatomy": "bilder/ultraljud/kna/brosk-anatomi.20261021f.webp",
+    "size": [
+      1280,
+      880
+    ],
+    "key": "21-kna-brosk-anatomi",
+    "output": "bilder/ultraljud/kna/brosk-anatomi.realistic.20261022.webp",
+    "notes": "Keep exact supplied joint-fluid, cyst, meniscus, cartilage or osteophyte geometry. Distinguish ivory tendon/ligament from pale fat. Do not repaint fat as red muscle, move bone peaks, smooth a cartilage defect or widen a meniscal cleft.",
+    "original_sha256": "e823d5e6861f307a056c0f5ae465dc200c36cb13f93c8538b1f474c48acc91d3",
+    "previous_anatomy_sha256": "234dc48461a55f8dbe2d798abee08d1abc25d595da9765d6aac15e8a430cfb9a",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/kna/",
+    "id": "view-lateral-fluid",
+    "original": "bilder/ultraljud/kna/loparkna/lateral-fluid-ultraljud.jpg",
+    "anatomy": "bilder/ultraljud/kna/loparkna/lateral-fluid-anatomi.20261021f.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "22-loparkna-lateral-fluid-anatomi",
+    "output": "bilder/ultraljud/kna/loparkna/lateral-fluid-anatomi.realistic.20261022.webp",
+    "notes": "Keep exact supplied joint-fluid, cyst, meniscus, cartilage or osteophyte geometry. Distinguish ivory tendon/ligament from pale fat. Do not repaint fat as red muscle, move bone peaks, smooth a cartilage defect or widen a meniscal cleft.",
+    "original_sha256": "aed774ee25baf7d822427726b38b52525e51539b772e5965aac503fe35fe9fcd",
+    "previous_anatomy_sha256": "046fecd0967295287b34717985f26d26df365c64339229e250618e3cbf7cb7b4",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/kna/",
+    "id": "view-itb-bursa",
+    "original": "bilder/ultraljud/kna/loparkna/itb-bursa-ultraljud.jpg",
+    "anatomy": "bilder/ultraljud/kna/loparkna/itb-bursa-anatomi.20261021f.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "23-loparkna-itb-bursa-anatomi",
+    "output": "bilder/ultraljud/kna/loparkna/itb-bursa-anatomi.realistic.20261022.webp",
+    "notes": "Keep exact supplied joint-fluid, cyst, meniscus, cartilage or osteophyte geometry. Distinguish ivory tendon/ligament from pale fat. Do not repaint fat as red muscle, move bone peaks, smooth a cartilage defect or widen a meniscal cleft.",
+    "original_sha256": "1bfa8eab7935799ed72abac82e3f4d834397b1f9012b94de78d7d78190ace9f0",
+    "previous_anatomy_sha256": "d3afc748b244b4cf78583ae994e9db927916364daa368cfe41995c4c3bf85fe7",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/kna/",
+    "id": "view-posterior-meniscus",
+    "original": "bilder/ultraljud/kna/loparkna/posterior-meniscus-ultraljud.jpg",
+    "anatomy": "bilder/ultraljud/kna/loparkna/posterior-meniscus-anatomi.20261021f.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "24-loparkna-posterior-meniscus-anatomi",
+    "output": "bilder/ultraljud/kna/loparkna/posterior-meniscus-anatomi.realistic.20261022.webp",
+    "notes": "Keep exact supplied joint-fluid, cyst, meniscus, cartilage or osteophyte geometry. Distinguish ivory tendon/ligament from pale fat. Do not repaint fat as red muscle, move bone peaks, smooth a cartilage defect or widen a meniscal cleft.",
+    "original_sha256": "8e838680c80b06bb0acc68fee72580e5df7b38a41669c9ae06ced3be79ec615e",
+    "previous_anatomy_sha256": "2241fd5d6c7ff1891915ef4bad78f28bb476c9c1fd59d159757f8a8fd4491904",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/hoftled/bilder/",
+    "id": "view-kapsel",
+    "original": "bilder/ultraljud/hoftled/kapsel.original.jpg",
+    "anatomy": "bilder/ultraljud/hoftled/kapsel.anatomi.20261021c.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "25-hoftled-kapsel",
+    "output": "bilder/ultraljud/hoftled/kapsel.anatomi.realistic.20261022.webp",
+    "notes": "CRITICAL: joint capsule is a THIN wall around heterogeneous GRAY contents. Preserve the mottled internal gray tissue echoes in the recess; do NOT replace those contents with a black or empty watery capsule or a solid fibrous cocoon. Keep irregular femoral cortical contours and distinct intramuscular fascia. Side comparison retains central divider and both different shapes.",
+    "original_sha256": "8d95290320f607b6962441a4ab06f89f21ee321ffdc12401b1cd1cce55093c2b",
+    "previous_anatomy_sha256": "f22bfa589118814f22bbd6f982239c44cbbec2aa383f0bafc86666e161799028",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/hoftled/bilder/",
+    "id": "view-caput",
+    "original": "bilder/ultraljud/hoftled/caput.original.jpg",
+    "anatomy": "bilder/ultraljud/hoftled/caput.anatomi.20261021c.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "26-hoftled-caput",
+    "output": "bilder/ultraljud/hoftled/caput.anatomi.realistic.20261022.webp",
+    "notes": "CRITICAL: joint capsule is a THIN wall around heterogeneous GRAY contents. Preserve the mottled internal gray tissue echoes in the recess; do NOT replace those contents with a black or empty watery capsule or a solid fibrous cocoon. Keep irregular femoral cortical contours and distinct intramuscular fascia. Side comparison retains central divider and both different shapes.",
+    "original_sha256": "23a898922544697ea9b8e1933734812d4a9f9e8c933f027e8d023bba34511ad4",
+    "previous_anatomy_sha256": "c7495611669e70c3d50c1515dd89054ba3a81683e8c538138406bf40fda2d461",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/hoftled/bilder/",
+    "id": "view-jamforelse",
+    "original": "bilder/ultraljud/hoftled/jamforelse.original.jpg",
+    "anatomy": "bilder/ultraljud/hoftled/jamforelse.anatomi.20261021c.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "27-hoftled-jamforelse",
+    "output": "bilder/ultraljud/hoftled/jamforelse.anatomi.realistic.20261022.webp",
+    "notes": "CRITICAL: joint capsule is a THIN wall around heterogeneous GRAY contents. Preserve the mottled internal gray tissue echoes in the recess; do NOT replace those contents with a black or empty watery capsule or a solid fibrous cocoon. Keep irregular femoral cortical contours and distinct intramuscular fascia. Side comparison retains central divider and both different shapes.",
+    "original_sha256": "e702eebe74fbbad5f5bf4f1c848aaba39f0a9a16f1b4b7eaf880e2c66a490ce1",
+    "previous_anatomy_sha256": "8b53c3ad7d961fb3193a57a5d73c2c155f20fe0542f34763653ddd061e9f74ce",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/glutealsenor/bilder/",
+    "id": "view-gmed",
+    "original": "bilder/ultraljud/hoft/gmed.original.jpg",
+    "anatomy": "bilder/ultraljud/hoft/gmed.anatomi.20261021.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "28-hoft-gmed",
+    "output": "bilder/ultraljud/hoft/gmed.anatomi.realistic.20261022.webp",
+    "notes": "Keep the supplied gluteal tendon regions, fascia and cortical shapes. The anterior paralabral cyst retains its distinct fluid outline and labral position. Do not add tears or articular disease.",
+    "original_sha256": "bfb44c738e827b15c3920ca3960fc1dd2661a907d3cd0d97c217d748d4e45863",
+    "previous_anatomy_sha256": "d258c77017c78398410c4ae350c9ed24e14c6ba7cddcf29b826f751781e4badc",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/glutealsenor/bilder/",
+    "id": "view-gmin",
+    "original": "bilder/ultraljud/hoft/gmin.original.jpg",
+    "anatomy": "bilder/ultraljud/hoft/gmin.anatomi.20261021.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "29-hoft-gmin",
+    "output": "bilder/ultraljud/hoft/gmin.anatomi.realistic.20261022.webp",
+    "notes": "Keep the supplied gluteal tendon regions, fascia and cortical shapes. The anterior paralabral cyst retains its distinct fluid outline and labral position. Do not add tears or articular disease.",
+    "original_sha256": "8acece8139a266f97b615dc5fb0d3da5b02a9871f49979bd320d503d12c17c43",
+    "previous_anatomy_sha256": "3d4ff4f3d23fe1dbc92f5d4f191b6b12a4a7498688817121676953d0c03fbabf",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/glutealsenor/bilder/",
+    "id": "view-paralabral",
+    "original": "bilder/ultraljud/hoft/paralabral.original.jpg",
+    "anatomy": "bilder/ultraljud/hoft/paralabral.anatomi.20261021.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "30-hoft-paralabral",
+    "output": "bilder/ultraljud/hoft/paralabral.anatomi.realistic.20261022.webp",
+    "notes": "Keep the supplied gluteal tendon regions, fascia and cortical shapes. The anterior paralabral cyst retains its distinct fluid outline and labral position. Do not add tears or articular disease.",
+    "original_sha256": "76778636563397b552e3eb644e60a1816f236a56ebb2c675cd05b9d455f46cab",
+    "previous_anatomy_sha256": "e7e95f08f4618abcb06f9cb46e76f40da9c7c094a07000e00127b83c261bd62e",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/halsena/bilder/",
+    "id": "view-longitudinal",
+    "original": "bilder/ultraljud/halsena/longitudinal-ultraljud.jpg",
+    "anatomy": "bilder/ultraljud/halsena/longitudinal-anatomi.20261015c.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "31-halsena-longitudinal-anatomi",
+    "output": "bilder/ultraljud/halsena/longitudinal-anatomi.realistic.20261022.webp",
+    "notes": "Keep existing tendon degeneration, chalky foci and each rupture cleft; do not normalize diseased fibers. Longitudinal image includes already depicted fine branching neovessels INSIDE the tendon: preserve those small red vessel structures as actual tissue, without drawn guide strokes or extra vessels. Healthy view stays healthy.",
+    "original_sha256": "699f886574dff49d9f92ab1a62ac3cf5b50524a59ffc73e85d41cc66c508788e",
+    "previous_anatomy_sha256": "cba2daf231e73382d56f836cd32680996c527d033869c482cbea50ae7e6055eb",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/halsena/bilder/",
+    "id": "view-healthy",
+    "original": "bilder/ultraljud/halsena/healthy-ultraljud.jpg",
+    "anatomy": "bilder/ultraljud/halsena/healthy-anatomi.20261015.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "32-halsena-healthy-anatomi",
+    "output": "bilder/ultraljud/halsena/healthy-anatomi.realistic.20261022.webp",
+    "notes": "Keep existing tendon degeneration, chalky foci and each rupture cleft; do not normalize diseased fibers. Longitudinal image includes already depicted fine branching neovessels INSIDE the tendon: preserve those small red vessel structures as actual tissue, without drawn guide strokes or extra vessels. Healthy view stays healthy.",
+    "original_sha256": "b1e761de1be96c92788c4294efa2f92aa1e2baa4c2a1b9a144c5075d1d910aa5",
+    "previous_anatomy_sha256": "93222f87fb83fe0903be86bd4bf85c6cbb8818428e843e704ee55268fefd21e3",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/halsena/bilder/",
+    "id": "view-transverse",
+    "original": "bilder/ultraljud/halsena/transverse-ultraljud.jpg",
+    "anatomy": "bilder/ultraljud/halsena/transverse-anatomi.20261015.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "33-halsena-transverse-anatomi",
+    "output": "bilder/ultraljud/halsena/transverse-anatomi.realistic.20261022.webp",
+    "notes": "Keep existing tendon degeneration, chalky foci and each rupture cleft; do not normalize diseased fibers. Longitudinal image includes already depicted fine branching neovessels INSIDE the tendon: preserve those small red vessel structures as actual tissue, without drawn guide strokes or extra vessels. Healthy view stays healthy.",
+    "original_sha256": "d22ca0aae7d81ce2a6934fd7648e1e898afbc872504a1604bfe087776f128008",
+    "previous_anatomy_sha256": "41becdc1e778b7433b7be245785151f1a653b8da30381477596e00ac6343d117",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/tennisarmbage/bilder/",
+    "id": "view-skadad",
+    "original": "bilder/ultraljud/armbage/tennisarmbage/skadad-ultraljud.jpg",
+    "anatomy": "bilder/ultraljud/armbage/tennisarmbage/skadad-anatomi.20261015.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "34-tennisarmbage-skadad-anatomi",
+    "output": "bilder/ultraljud/armbage/tennisarmbage/skadad-anatomi.realistic.20261022.webp",
+    "notes": "Preserve lateral elbow tendon attachment, cortical shapes and existing tendon/ligament defect in the affected view; keep normal reference side intact.",
+    "original_sha256": "a6c68a06ca8918085f1e11a3f1bfbf66095ed81883bb6f14459f57520696008d",
+    "previous_anatomy_sha256": "bce27c784a14b3fa9b4c2806cb8f8b3c99a118b7ae1c07340731e70f61f827f9",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  },
+  {
+    "case": "ultraljud/tennisarmbage/bilder/",
+    "id": "view-frisk",
+    "original": "bilder/ultraljud/armbage/tennisarmbage/frisk-ultraljud.jpg",
+    "anatomy": "bilder/ultraljud/armbage/tennisarmbage/frisk-anatomi.20261015.webp",
+    "size": [
+      1280,
+      960
+    ],
+    "key": "35-tennisarmbage-frisk-anatomi",
+    "output": "bilder/ultraljud/armbage/tennisarmbage/frisk-anatomi.realistic.20261022.webp",
+    "notes": "Preserve lateral elbow tendon attachment, cortical shapes and existing tendon/ligament defect in the affected view; keep normal reference side intact.",
+    "original_sha256": "5d241069bececadb2d70d667b000424ba9911963d2624ae9ba6c30c487436795",
+    "previous_anatomy_sha256": "44aa563d81b51204dea3fe32baa1636bcf7e3aa43ffefc0d757ba3baaded5f2b",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89"
+  }
+]

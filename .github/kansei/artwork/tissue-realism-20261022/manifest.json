@@ -1,0 +1,1297 @@
+{
+  "01-bicepssena-tvarsnitt-anatomi": {
+    "source_image": "exec-7dc31366-14f5-462b-83e0-93ae67a7aede.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      120,
+      116,
+      1327,
+      1001.1333333333333
+    ],
+    "target_bounds": [
+      107,
+      109,
+      1172,
+      890
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/01-bicepssena-tvarsnitt-anatomi.painting.webp",
+    "archive_sha256": "40a5189b8aedc0b6416acca5b2577fe60cfd36d7b36afc0f4f066a3859b600f1",
+    "asset": "bilder/ultraljud/bicepssena/tvarsnitt-anatomi.realistic.20261022.webp",
+    "asset_sha256": "b6708205102d5310c86cdf4f3289d47e301c7bfd3f5ec5a32f7c0646a234bcda",
+    "qa_png": "realism-qa/tvarsnitt-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "01-bicepssena-tvarsnitt-anatomi",
+    "original": "bilder/ultraljud/bicepssena/tvarsnitt-helbild.20261009.jpg",
+    "original_sha256": "ca32616bfec0cb65e6f71822d2537289beae85414f32e0d5dffb0cfe56ca3352",
+    "previous_anatomy": "bilder/ultraljud/bicepssena/tvarsnitt-anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "14346f8b9748117657f76da9daa452eac8ed91bb83f808c7135982871d3ec948",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "41b59958825a87c1bc38b4b9f8c598daded91e2d0d0ba149ac46c936814154e6",
+    "preserves_alpha": false
+  },
+  "02-bicepssena-langdsnitt-anatomi": {
+    "source_image": "exec-701561dc-8220-423e-ac32-9ac1c9e544f4.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      72,
+      110,
+      1377,
+      1010.7964601769912
+    ],
+    "target_bounds": [
+      75,
+      110,
+      1205,
+      890
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/02-bicepssena-langdsnitt-anatomi.painting.webp",
+    "archive_sha256": "1845e086a9ed7d570443bd8650fb90d37855e99249c5f3083898f66ee806fa9d",
+    "asset": "bilder/ultraljud/bicepssena/langdsnitt-anatomi.realistic.20261022.webp",
+    "asset_sha256": "dbe0594edb1d2e4ebab6dd9675d544dc5f5fcda06beedb67ba912da1cfe0bf19",
+    "qa_png": "realism-qa/langdsnitt-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "02-bicepssena-langdsnitt-anatomi",
+    "original": "bilder/ultraljud/bicepssena/langdsnitt-helbild.20261009.jpg",
+    "original_sha256": "00f277b43a644f6ea62dcd4d8c039fb9ed428b24fa9a92682ad326a68c15c18d",
+    "previous_anatomy": "bilder/ultraljud/bicepssena/langdsnitt-anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "1016c5dd78e0eebdb673dba0c55b95bb5a30b84f6775b88d46d7c49e223c22d3",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "3984ce0d303d9572389d803a968297aa2a437caa6b7d2b12156327c970007bf6",
+    "preserves_alpha": false
+  },
+  "03-pectoralis-langdsnitt-anatomi": {
+    "source_image": "exec-a9d77200-5077-4622-93c4-7c320f2418c1.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      244,
+      152,
+      1205,
+      953.4157575757575
+    ],
+    "target_bounds": [
+      227,
+      142,
+      1052,
+      830
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/03-pectoralis-langdsnitt-anatomi.painting.webp",
+    "archive_sha256": "fb174954e23b8f6aad56497d793c776eafc3208959a82929e1235a4417edfed6",
+    "asset": "bilder/ultraljud/pectoralis/langdsnitt-anatomi.realistic.20261022.webp",
+    "asset_sha256": "95abc806008b959623ac0960d2242effaa2b0bc61a864b8e6a200e6585a6c1b6",
+    "qa_png": "realism-qa/langdsnitt-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "03-pectoralis-langdsnitt-anatomi",
+    "original": "bilder/ultraljud/pectoralis/langdsnitt-helbild.20261009.jpg",
+    "original_sha256": "12237e6db43839362547fe8f6d7d424f6d0960d0a3b6100f0cd41d2ad3af1751",
+    "previous_anatomy": "bilder/ultraljud/pectoralis/langdsnitt-anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "d3420a10322b51d0fe3aa4dce9128be833f25d85ca1dbf14fd6c568693513287",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "0b0a3837fb4cb6a0d2ce0529f10a78855a3d8310144be5fdc63193674e1d0a3b",
+    "preserves_alpha": false
+  },
+  "04-pectoralis-tvarsnitt-anatomi": {
+    "source_image": "exec-69c78b7e-25c0-4f09-a7e4-fe1aff5601cd.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      192,
+      138,
+      1257,
+      1026.1454545454544
+    ],
+    "target_bounds": [
+      227,
+      142,
+      1052,
+      830
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/04-pectoralis-tvarsnitt-anatomi.painting.webp",
+    "archive_sha256": "cb5ae83ac0af8cedb8ec90b38a153c850cd74d5085227f11aea58d0168d93496",
+    "asset": "bilder/ultraljud/pectoralis/tvarsnitt-anatomi.realistic.20261022.webp",
+    "asset_sha256": "eb7a712d22bb56d38b43488103cb58e8b00d538ad80e493b5aac36f711a14087",
+    "qa_png": "realism-qa/tvarsnitt-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "04-pectoralis-tvarsnitt-anatomi",
+    "original": "bilder/ultraljud/pectoralis/tvarsnitt-helbild.20261009.jpg",
+    "original_sha256": "fe51564c0a81b00f1a42a0335a9b434621bae55be07ef95cd0444568c6c3bcd2",
+    "previous_anatomy": "bilder/ultraljud/pectoralis/tvarsnitt-anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "35a25cbc8f96905a28dbe2c6d751d690a7dbb93110015170ee9231fea227e4bb",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "37a75a4f6a33d176eed03778fb875d8880f15a1f22a2517633cbbef867734498",
+    "preserves_alpha": false
+  },
+  "05-karpaltunnel-medianus-anatomi": {
+    "source_image": "exec-204f865e-e8f9-46de-9d19-9c9bbbb6ed0d.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      80,
+      106,
+      1367,
+      990.8124999999999
+    ],
+    "target_bounds": [
+      74,
+      112,
+      1162,
+      860
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/05-karpaltunnel-medianus-anatomi.painting.webp",
+    "archive_sha256": "b83b3b2812c54242b9016fba6bb135351cc4999b4133bf9d7080ad91f236f4c5",
+    "asset": "bilder/ultraljud/karpaltunnel/medianus-anatomi.realistic.20261022.webp",
+    "asset_sha256": "acadaefb2e6780a194354dfdce90710b86c9d253bc9833bbf4de68ab3ec90f2f",
+    "qa_png": "realism-qa/medianus-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "05-karpaltunnel-medianus-anatomi",
+    "original": "bilder/ultraljud/karpaltunnel/medianus-helbild.20261009.jpg",
+    "original_sha256": "1e4610372f9435cb5c7de5ff7dbc977952cecb2005964f81731b59eccfd7aff3",
+    "previous_anatomy": "bilder/ultraljud/karpaltunnel/medianus-anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "8fabb4847f15015d914eb1f63f5fa966c6fcbdbf441e5e88c47ee99441e2f01f",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "724e46e5a4a9c60222431ecfe592a5d94c2d5b0f859be02e5ea73600d0a1d9d9",
+    "preserves_alpha": false
+  },
+  "06-ac-led-jamforelse-skadad-anatomi": {
+    "source_image": "exec-524f1e25-81bf-40cc-9cfb-df9e9755a769.png",
+    "source_size": [
+      1558,
+      1010
+    ],
+    "source_bounds": [
+      206,
+      53,
+      1356,
+      894.7902542372882
+    ],
+    "target_bounds": [
+      168,
+      41,
+      1112,
+      732
+    ],
+    "canvas": [
+      1280,
+      830
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/06-ac-led-jamforelse-skadad-anatomi.painting.webp",
+    "archive_sha256": "37b34038333763631b626693803278dd5f81ff4632fa1943c690a1f2d46cafe6",
+    "asset": "bilder/ultraljud/ac-led/jamforelse-skadad-anatomi.realistic.20261022.webp",
+    "asset_sha256": "ef60a3b9403879358ce32b8274ebeda8fdc37f3dbd389d11abbad12918744e88",
+    "qa_png": "realism-qa/jamforelse-skadad-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "06-ac-led-jamforelse-skadad-anatomi",
+    "original": "bilder/ultraljud/ac-led/jamforelse-skadad.jpg",
+    "original_sha256": "dfe7e676ea57aaffba8c0c3fd701c0e1941ebd6364ee6725f386dbc8dc153a23",
+    "previous_anatomy": "bilder/ultraljud/ac-led/jamforelse-skadad-anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "caed1c4f37dd012766212c19e656a612e7aa3b210ba844f65d6efe23f91abf84",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "55e8bc2268b76ccec0a9347794ed61d8ccdad245f5b0b7e8020ae13cee47ad84",
+    "preserves_alpha": false
+  },
+  "07-ac-led-jamforelse-motsatt-anatomi": {
+    "source_image": "exec-f9f767a2-01c4-4888-bcf1-73eddc5b35ba.png",
+    "source_size": [
+      1558,
+      1010
+    ],
+    "source_bounds": [
+      207,
+      49,
+      1352,
+      888.3432203389831
+    ],
+    "target_bounds": [
+      168,
+      40,
+      1112,
+      732
+    ],
+    "canvas": [
+      1280,
+      830
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/07-ac-led-jamforelse-motsatt-anatomi.painting.webp",
+    "archive_sha256": "f5495ad28114e83bf0e4c713798df0c626a87ee6d8ce85773a1248beae247fe2",
+    "asset": "bilder/ultraljud/ac-led/jamforelse-motsatt-anatomi.realistic.20261022.webp",
+    "asset_sha256": "4786c54b0ce4d080994cf018a9e8b17baec29bb28e57c1e99e4ec0f9f566f376",
+    "qa_png": "realism-qa/jamforelse-motsatt-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "07-ac-led-jamforelse-motsatt-anatomi",
+    "original": "bilder/ultraljud/ac-led/jamforelse-motsatt.jpg",
+    "original_sha256": "bb387fb5673b38dfebf0444a8e6f3f86ee37908f4b417fa39caee6cb5d3fcb5a",
+    "previous_anatomy": "bilder/ultraljud/ac-led/jamforelse-motsatt-anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "67683e4e2f4f9395a6b33140e161c5a4ef8403f1b9264e2ba0bb1ae2bb3908df",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "75bbf3ebb67acbd66809dee96eb0cae2b9cabaafe81766c8c58dc5bf8649c0ab",
+    "preserves_alpha": false
+  },
+  "08-ac-led-ac-led-anatomi": {
+    "source_image": "exec-389dc2e6-81f7-4359-a317-b40dbb48eb9a.png",
+    "source_size": [
+      1465,
+      1073
+    ],
+    "source_bounds": [
+      24,
+      43,
+      1441,
+      992.1794055201698
+    ],
+    "target_bounds": [
+      0,
+      1,
+      942,
+      632
+    ],
+    "canvas": [
+      942,
+      690
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/08-ac-led-ac-led-anatomi.painting.webp",
+    "archive_sha256": "2d545c8d8fb1ae69084febede3948ff26ea53458b5bfe5e397e63f8c16b9e578",
+    "asset": "bilder/ultraljud/ac-led/ac-led-anatomi.realistic.20261022.webp",
+    "asset_sha256": "072d8ecd704be461b6d5b6c191be3551084f3e27f158d8d9455163c022ba2694",
+    "qa_png": "realism-qa/ac-led-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "08-ac-led-ac-led-anatomi",
+    "original": "bilder/ultraljud/ac-led/ac-led.jpg",
+    "original_sha256": "64ff66b1865115dab54b033e0ea989b3e661286d556e642fdcc65c1eacd21b0a",
+    "previous_anatomy": "bilder/ultraljud/ac-led/ac-led-anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "def0d43b85d109b0b0828885231ae10f64e731c2a88e7a4a9c383add63620a9e",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "0ad19cf8d594ef5413b855b88025e0be7610d6e5af43f3a6c8806604a1629d03",
+    "preserves_alpha": false
+  },
+  "09-ac-led-mjukdelsplan-anatomi": {
+    "source_image": "exec-1b662a37-6976-4d26-8885-be905fedf2c7.png",
+    "source_size": [
+      1466,
+      1073
+    ],
+    "source_bounds": [
+      0,
+      1,
+      1465,
+      725.7239915074309
+    ],
+    "target_bounds": [
+      0,
+      3,
+      942,
+      469
+    ],
+    "canvas": [
+      942,
+      690
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/09-ac-led-mjukdelsplan-anatomi.painting.webp",
+    "archive_sha256": "da0473f1d8a0b45ce26c8074c85fcf849cdb4391d734b1e3a9e682c30f9e733b",
+    "asset": "bilder/ultraljud/ac-led/mjukdelsplan-anatomi.realistic.20261022.webp",
+    "asset_sha256": "356a9805c657a477281191b78b2c975ddca52045bdd09676d144ecc0fe28c0c3",
+    "qa_png": "realism-qa/mjukdelsplan-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "09-ac-led-mjukdelsplan-anatomi",
+    "original": "bilder/ultraljud/ac-led/mjukdelsplan.jpg",
+    "original_sha256": "b4e7107fd36ff8d9b8c7682944697e17e51d76e2b2d10010ea27550c605d9b02",
+    "previous_anatomy": "bilder/ultraljud/ac-led/mjukdelsplan-anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "81d59de24aff3c64d53dc405dfcac8bfdeb33d03b96656846b20249f413e1b7a",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "abb049eb4eecda8d1fa7dab104439a43b2def64ef1c33b7c695b1be418cf8b8e",
+    "preserves_alpha": false
+  },
+  "10-kalkaxel-kalk": {
+    "source_image": "exec-9ad32008-a28f-4126-8bf1-e288cf71296c.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      120,
+      120,
+      1328,
+      808.5032863849765
+    ],
+    "target_bounds": [
+      107,
+      110,
+      1172,
+      717
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/10-kalkaxel-kalk.painting.webp",
+    "archive_sha256": "fcd11ad5477fd63c61a2b69458bc75922d0a3171b9e0bd2f0164fab637398b82",
+    "asset": "bilder/ultraljud/kalkaxel/kalk.anatomi.realistic.20261022.webp",
+    "asset_sha256": "9a8780462107620e20e1264ef792dbbb5e7539a0a4b6ce9689e868485258d948",
+    "qa_png": "realism-qa/kalk.anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "10-kalkaxel-kalk",
+    "original": "bilder/ultraljud/kalkaxel/kalk-ultraljud.jpg",
+    "original_sha256": "97a0e8b642102eac1a40da062995027ab6d57a4f5225efd0da0dd245fcd53b32",
+    "previous_anatomy": "bilder/ultraljud/kalkaxel/kalk.anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "25911669cb3b97b4fa637d0be5dc7373c0679988dc39dcf8dc036a7471971e9e",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "2e113e8da67be26b8e047a766a378d351ea9ec5c0736f6edfc3bfe8c1ec69ccb",
+    "preserves_alpha": false
+  },
+  "11-kalkaxel-frisk": {
+    "source_image": "exec-100fe223-589c-4734-95b4-0ba46128f2a8.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      124,
+      117,
+      1324,
+      904.7862595419848
+    ],
+    "target_bounds": [
+      107,
+      108,
+      1155,
+      796
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/11-kalkaxel-frisk.painting.webp",
+    "archive_sha256": "ec8a221295decadf50b45fdd288a93737d2ee823e0714e65e2485e52f95a8f83",
+    "asset": "bilder/ultraljud/kalkaxel/frisk.anatomi.realistic.20261022.webp",
+    "asset_sha256": "9e3ac0bb4b0ab2a86df9b2672e8d39fa819ec23b8842ab61554fa1d812cf2cd2",
+    "qa_png": "realism-qa/frisk.anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "11-kalkaxel-frisk",
+    "original": "bilder/ultraljud/kalkaxel/frisk-ultraljud.jpg",
+    "original_sha256": "b57647f25495c6d23d815855ca8c08f47e39c8f3d335d8fea72727e001022e27",
+    "previous_anatomy": "bilder/ultraljud/kalkaxel/frisk.anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "ca5b7cc3ef1cb834bd81f0e75a156de99ba6e8e491b8b3d43195fc9db29ace68",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "55ba46eca26ddccf65ba193d86944d76f25fe44cadd6742125b1aefb1e0b36f7",
+    "preserves_alpha": false
+  },
+  "12-bursit-axel-bursit-vy-1": {
+    "source_image": "exec-6e3f4f3e-1f59-4bb8-b6ca-c5958797aab9.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      21,
+      148,
+      1418,
+      971.3973509933775
+    ],
+    "target_bounds": [
+      24,
+      140,
+      1232,
+      852
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/12-bursit-axel-bursit-vy-1.painting.webp",
+    "archive_sha256": "442185ce1d866f8629e786bfdbc19fedb009c704b68d56a678ad7ac8caffb884",
+    "asset": "bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.realistic.20261022.webp",
+    "asset_sha256": "6d6d612415c1471259197affacbfee70486305917e63f1d0cec59d8ef709b8fb",
+    "qa_png": "realism-qa/bursit-vy-1.anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "12-bursit-axel-bursit-vy-1",
+    "original": "bilder/ultraljud/bursit-axel/bursit-vy-1.original.jpg",
+    "original_sha256": "9f278fdadc46796a4e0a05ad526f027ad7423f6db12e49588d3cf08c8c378767",
+    "previous_anatomy": "bilder/ultraljud/bursit-axel/bursit-vy-1.anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "0bef72dc14be163709b05bb5d058f50eb188c12f8442a81877d06cb730baacba",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "c5a6eb36662b97d46aa313e735913871e8efe51fcb579e44c23a5301b1afb38c",
+    "preserves_alpha": false
+  },
+  "13-bursit-axel-bursit-vy-2": {
+    "source_image": "exec-ebefb208-31fd-4139-a020-238bbe39878f.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      0,
+      141,
+      1443,
+      927.9882629107981
+    ],
+    "target_bounds": [
+      0,
+      132,
+      1278,
+      829
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/13-bursit-axel-bursit-vy-2.painting.webp",
+    "archive_sha256": "fe3d012bfa437cbd3d6a4b84beca3ebd39ea4f15d98763ab5e0ee5d95bd8f025",
+    "asset": "bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.realistic.20261022.webp",
+    "asset_sha256": "3e2df21fb9a25f8e3d111cb94caf0a7363cea7d862a17c47e2ae56d7f09bd6ee",
+    "qa_png": "realism-qa/bursit-vy-2.anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "13-bursit-axel-bursit-vy-2",
+    "original": "bilder/ultraljud/bursit-axel/bursit-vy-2.original.jpg",
+    "original_sha256": "5f4cfc20ca41788f0c6bab93a857d60c01756fb8987fb87155bb65202f182998",
+    "previous_anatomy": "bilder/ultraljud/bursit-axel/bursit-vy-2.anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "784a9e9e74bfb52311b5ce65a5a68649fb92f4d996a3789bbadee8e85d9fc132",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "0842637d59a180a00b4a65165b5d20cd7b7b7c8922a083e9dc619a6bd2feb3af",
+    "preserves_alpha": false
+  },
+  "14-bursit-axel-supraspinatus": {
+    "source_image": "exec-ff3b2d9e-88ca-43b0-b815-9348a4cb8412.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      18,
+      156,
+      1416,
+      914.5508684863523
+    ],
+    "target_bounds": [
+      17,
+      143,
+      1226,
+      799
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/14-bursit-axel-supraspinatus.painting.webp",
+    "archive_sha256": "c809344bc9b8a9469cbb4efface75a30ce81c584202922571c6ab78d6c5a4108",
+    "asset": "bilder/ultraljud/bursit-axel/supraspinatus.anatomi.realistic.20261022.webp",
+    "asset_sha256": "391fa02a4abfc35b5662885731da2857ac8a62a14252b1f6a814d27121a8cd5d",
+    "qa_png": "realism-qa/supraspinatus.anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "14-bursit-axel-supraspinatus",
+    "original": "bilder/ultraljud/bursit-axel/supraspinatus.original.jpg",
+    "original_sha256": "248c61e58a2bddb086c4d0b5c8808b8a00e43b42e2baaf07a256bb63baf454e1",
+    "previous_anatomy": "bilder/ultraljud/bursit-axel/supraspinatus.anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "713d54ef7b19851093404e79d50384cd1b9914f58b1310d8f1043701950ba189",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "12cf514ad01d2c064706673070a0b1e21c4215fedd5b81717be4be47e6af19e3",
+    "preserves_alpha": false
+  },
+  "15-bursit-axel-subscapularis": {
+    "source_image": "exec-e6dd3d77-d8c3-42d3-9535-67ca27d6755a.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      2,
+      147,
+      1428,
+      925.0237906423473
+    ],
+    "target_bounds": [
+      9,
+      141,
+      1270,
+      829
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/15-bursit-axel-subscapularis.painting.webp",
+    "archive_sha256": "a2457fdba2ce6b733880cd02640bec092712821f2c06b80eeb86ff7f30d2b6dd",
+    "asset": "bilder/ultraljud/bursit-axel/subscapularis.anatomi.realistic.20261022.webp",
+    "asset_sha256": "36ce5ded1fad1be8ad68096d4a1eecc9030905495e37dc6c0812bc81ab10a42f",
+    "qa_png": "realism-qa/subscapularis.anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "15-bursit-axel-subscapularis",
+    "original": "bilder/ultraljud/bursit-axel/subscapularis.original.jpg",
+    "original_sha256": "5b8204a8a1395b52164376dd133e29b4d39b123cd5b04f62142900249bd896d6",
+    "previous_anatomy": "bilder/ultraljud/bursit-axel/subscapularis.anatomi.20261016e.webp",
+    "previous_anatomy_sha256": "734e5919abf2c859b55f51232869dfdeb628632bed3acce2f4b73e4662164041",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "90871f78b606c4afd57f2781475ad6c0a2a954ad142fb54a670ad06e2f883b52",
+    "preserves_alpha": true
+  },
+  "16-kna-ledvatska-anatomi": {
+    "source_image": "exec-a22fb30e-7109-42fe-90ff-29d85d8624eb.png",
+    "source_size": [
+      1513,
+      1040
+    ],
+    "source_bounds": [
+      197,
+      72,
+      1318,
+      873.5625
+    ],
+    "target_bounds": [
+      168,
+      61,
+      1112,
+      736
+    ],
+    "canvas": [
+      1280,
+      880
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/16-kna-ledvatska-anatomi.painting.webp",
+    "archive_sha256": "3f14a4d822ac3dedf5bac35206744e2c9ef78774689ce3a940f2f16eb250bfdf",
+    "asset": "bilder/ultraljud/kna/ledvatska-anatomi.realistic.20261022.webp",
+    "asset_sha256": "5e5675a66d78c4625b080395a76c9d60f07ea14839797bf31593f00e63242ef5",
+    "qa_png": "realism-qa/ledvatska-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "16-kna-ledvatska-anatomi",
+    "original": "bilder/ultraljud/kna/ledvatska-ultraljud.webp",
+    "original_sha256": "9240bfe34d284f90e190997d27d7518ae797ee0580e5678226b0b9df021aad87",
+    "previous_anatomy": "bilder/ultraljud/kna/ledvatska-anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "08e2f78c36530339ebe4036c3828806c6bd6ee3ea64f4027a174701ec786f3fb",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "b6ff1b752f089afba2fcb1816c8a9483e57feb1cb90e99508d178f69d5608e86",
+    "preserves_alpha": false
+  },
+  "17-kna-bakercysta-anatomi": {
+    "source_image": "exec-efcab86e-e334-4df9-99cf-bfb04fde48c6.png",
+    "source_size": [
+      1513,
+      1040
+    ],
+    "source_bounds": [
+      195,
+      82,
+      1317,
+      905.4420600858368
+    ],
+    "target_bounds": [
+      168,
+      68,
+      1100,
+      752
+    ],
+    "canvas": [
+      1280,
+      880
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/17-kna-bakercysta-anatomi.painting.webp",
+    "archive_sha256": "5b0150a614227b192eb7e518d1e0e06fceb8788f57275af7968f52a2251d0a17",
+    "asset": "bilder/ultraljud/kna/bakercysta-anatomi.realistic.20261022.webp",
+    "asset_sha256": "8effd892761b6d629fa1a7617a4af13c4319ed498003fe7b47576826bf89a0f1",
+    "qa_png": "realism-qa/bakercysta-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "17-kna-bakercysta-anatomi",
+    "original": "bilder/ultraljud/kna/bakercysta-ultraljud.webp",
+    "original_sha256": "ec036da9b0cf0cc9fdfa3b9224415bdb0f4c053f9dd33dbab887a3327134c386",
+    "previous_anatomy": "bilder/ultraljud/kna/bakercysta-anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "9d0ef6776fd99fe70f2f838f568e93a04b4b911eda0e262291bcbcb5f7f93fc5",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "c6e7267c70b58d7abdbeef87a28ff1df22a50cf6e4445d0fb46d9c486839cd31",
+    "preserves_alpha": false
+  },
+  "18-kna-menisk-anatomi": {
+    "source_image": "exec-19a5b3fe-907a-47e5-b5d2-cebbf8c23589.png",
+    "source_size": [
+      1512,
+      1040
+    ],
+    "source_bounds": [
+      103,
+      67,
+      1410,
+      684.9836956521739
+    ],
+    "target_bounds": [
+      88,
+      58,
+      1192,
+      580
+    ],
+    "canvas": [
+      1280,
+      880
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/18-kna-menisk-anatomi.painting.webp",
+    "archive_sha256": "68b5fefcebb276d086e741ff54ac583029140eaeb35f383243754b1b468101f8",
+    "asset": "bilder/ultraljud/kna/menisk-anatomi.realistic.20261022.webp",
+    "asset_sha256": "1d5ba07d52471f01656ec2b00a5fe5b8696472267e65c9c65808e848c4584c11",
+    "qa_png": "realism-qa/menisk-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "18-kna-menisk-anatomi",
+    "original": "bilder/ultraljud/kna/menisk-ultraljud.webp",
+    "original_sha256": "762a618a489020081096389e5c945fc14187460f359370059b6722210b3279f8",
+    "previous_anatomy": "bilder/ultraljud/kna/menisk-anatomi.20261013-v5.webp",
+    "previous_anatomy_sha256": "94bb5285a2c887cce1473c05aacab17de20151fcbcccd9dce2e8bc05cf5e5fac",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "17bc45afc96909468bac5bb7e9cce65d0585166581b668bad1cbb5fec6e295db",
+    "preserves_alpha": false
+  },
+  "19-kna-brosk-jamforelse-anatomi": {
+    "source_image": "exec-f4fd8300-a60e-44d1-adc0-61d8eedb45a5.png",
+    "source_size": [
+      1512,
+      1040
+    ],
+    "source_bounds": [
+      0,
+      72,
+      1512,
+      741.7687500000001
+    ],
+    "target_bounds": [
+      0,
+      61,
+      1280,
+      628
+    ],
+    "canvas": [
+      1280,
+      880
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/19-kna-brosk-jamforelse-anatomi.painting.webp",
+    "archive_sha256": "281e6f9aa2d981a59b7d5f3f4990a8cc7f6359b8460c241ff377fb406d9539f2",
+    "asset": "bilder/ultraljud/kna/brosk-jamforelse-anatomi.realistic.20261022.webp",
+    "asset_sha256": "a9b3542eaa5e675c8427f7277acf8ce467422ca3531be827d076e9cbce5319b3",
+    "qa_png": "realism-qa/brosk-jamforelse-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "19-kna-brosk-jamforelse-anatomi",
+    "original": "bilder/ultraljud/kna/brosk-jamforelse-ultraljud.webp",
+    "original_sha256": "9024fafba45fbcfe5a59f6e720fc1ab6e4d17d216a72c97bed079ad5c9fd63b7",
+    "previous_anatomy": "bilder/ultraljud/kna/brosk-jamforelse-anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "b7347b33f46d48cb15d109ddb05c2922fe5536d9567e3e505db3150040a5bdce",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "2d1e3a181f490f5fb7bcc5b4af842b4c40996dd95d4200405cc14c33539d6a34",
+    "preserves_alpha": false
+  },
+  "20-kna-osteofyter-anatomi": {
+    "source_image": "exec-e9fbfed5-1978-427a-8024-cb88bd3d1a79.png",
+    "source_size": [
+      1513,
+      1040
+    ],
+    "source_bounds": [
+      126,
+      40,
+      1387,
+      962.9143932267168
+    ],
+    "target_bounds": [
+      107,
+      32,
+      1170,
+      810
+    ],
+    "canvas": [
+      1280,
+      880
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/20-kna-osteofyter-anatomi.painting.webp",
+    "archive_sha256": "fe7d7e9f20c2acd96b93da01dac36905824ad67819adf912a5d7b2a22d8d42cc",
+    "asset": "bilder/ultraljud/kna/osteofyter-anatomi.realistic.20261022.webp",
+    "asset_sha256": "85bc3f8b02dab3365bb15ae9a2c9e06d3e1471eea07ded752a6b4721c5039828",
+    "qa_png": "realism-qa/osteofyter-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "20-kna-osteofyter-anatomi",
+    "original": "bilder/ultraljud/kna/osteofyter-ultraljud.webp",
+    "original_sha256": "5bd3ca2531783e651160abf4c60af60fe4ec6d0311c7ddf845eb6950c32182b0",
+    "previous_anatomy": "bilder/ultraljud/kna/osteofyter-anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "63c0eb3a83bf5170de0274ec599182357ec3715d0ee207d7d6a1d31d74902227",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "0c778565778967e85cb85ea81a2e40154da425719461ea4194d3c2ac6144f2ef",
+    "preserves_alpha": false
+  },
+  "21-kna-brosk-anatomi": {
+    "source_image": "exec-f556055a-227a-4d79-b69e-f4234c583be2.png",
+    "source_size": [
+      1512,
+      1040
+    ],
+    "source_bounds": [
+      132,
+      36,
+      1381,
+      704.5616180620884
+    ],
+    "target_bounds": [
+      109,
+      30,
+      1172,
+      599
+    ],
+    "canvas": [
+      1280,
+      880
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/21-kna-brosk-anatomi.painting.webp",
+    "archive_sha256": "e840413f9a0da3580e41ce00e5052c98f26b4b2011cde789ac79c1e3def49b6c",
+    "asset": "bilder/ultraljud/kna/brosk-anatomi.realistic.20261022.webp",
+    "asset_sha256": "15e2e6f8bbff02be8890e4c5d49e640f0be17002571e2f978759bf14b13e7470",
+    "qa_png": "realism-qa/brosk-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "21-kna-brosk-anatomi",
+    "original": "bilder/ultraljud/kna/brosk-ultraljud.webp",
+    "original_sha256": "e823d5e6861f307a056c0f5ae465dc200c36cb13f93c8538b1f474c48acc91d3",
+    "previous_anatomy": "bilder/ultraljud/kna/brosk-anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "234dc48461a55f8dbe2d798abee08d1abc25d595da9765d6aac15e8a430cfb9a",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "8f9c52ac64c838b570dde415b8adccf4457aebb5c242c947266265569c17d3d8",
+    "preserves_alpha": false
+  },
+  "22-loparkna-lateral-fluid-anatomi": {
+    "source_image": "exec-1af9fa82-d988-44f7-a59e-cd9256b46351.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      115,
+      120,
+      1334,
+      861.7014084507042
+    ],
+    "target_bounds": [
+      107,
+      112,
+      1172,
+      760
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/22-loparkna-lateral-fluid-anatomi.painting.webp",
+    "archive_sha256": "827ff33c553860e775ea8e8ac1531bca86d205fe97eb0e997af0b0338f63332f",
+    "asset": "bilder/ultraljud/kna/loparkna/lateral-fluid-anatomi.realistic.20261022.webp",
+    "asset_sha256": "3296c42b536ff91d9610a220a927aff7eafcb5dad7c7554b879f24ebe39b14d1",
+    "qa_png": "realism-qa/lateral-fluid-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "22-loparkna-lateral-fluid-anatomi",
+    "original": "bilder/ultraljud/kna/loparkna/lateral-fluid-ultraljud.jpg",
+    "original_sha256": "aed774ee25baf7d822427726b38b52525e51539b772e5965aac503fe35fe9fcd",
+    "previous_anatomy": "bilder/ultraljud/kna/loparkna/lateral-fluid-anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "046fecd0967295287b34717985f26d26df365c64339229e250618e3cbf7cb7b4",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "cc54afe4c060507be57b759c267c30ed937c165f91ffcbe3ad5a5ab30a6f6696",
+    "preserves_alpha": false
+  },
+  "23-loparkna-itb-bursa-anatomi": {
+    "source_image": "exec-d77291e6-4228-4278-9bcd-4f9345b11565.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      113,
+      116,
+      1336,
+      656.8760563380282
+    ],
+    "target_bounds": [
+      107,
+      112,
+      1172,
+      583
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/23-loparkna-itb-bursa-anatomi.painting.webp",
+    "archive_sha256": "76abfeb2f06eeba4f8de10bd3e41ab1c5d837d013e4e88fb4cb1d142f1da6998",
+    "asset": "bilder/ultraljud/kna/loparkna/itb-bursa-anatomi.realistic.20261022.webp",
+    "asset_sha256": "a26cae45fd0ee673e93756be5b0e61dcf34376c3d00c6303ece30785f11b7b0e",
+    "qa_png": "realism-qa/itb-bursa-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "23-loparkna-itb-bursa-anatomi",
+    "original": "bilder/ultraljud/kna/loparkna/itb-bursa-ultraljud.jpg",
+    "original_sha256": "1bfa8eab7935799ed72abac82e3f4d834397b1f9012b94de78d7d78190ace9f0",
+    "previous_anatomy": "bilder/ultraljud/kna/loparkna/itb-bursa-anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "d3afc748b244b4cf78583ae994e9db927916364daa368cfe41995c4c3bf85fe7",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "23536108c12f749b4394310c330fcbbf7c19f88d03a53dc73cd8c3c518a0f6e5",
+    "preserves_alpha": false
+  },
+  "24-loparkna-posterior-meniscus-anatomi": {
+    "source_image": "exec-e81ab0f9-f1bd-4ed5-9fa8-9a2b3ac979af.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      195,
+      122,
+      1253,
+      776.952380952381
+    ],
+    "target_bounds": [
+      172,
+      112,
+      1096,
+      684
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/24-loparkna-posterior-meniscus-anatomi.painting.webp",
+    "archive_sha256": "4bd5ba95a9222a7b7667a1a1f41b3de3f03e9af31627f5eb92244767188dd4fd",
+    "asset": "bilder/ultraljud/kna/loparkna/posterior-meniscus-anatomi.realistic.20261022.webp",
+    "asset_sha256": "5840163890aa23233a6dcd1a0d009aa3e8990c97d9c5dfcbff9f86963ccde1f7",
+    "qa_png": "realism-qa/posterior-meniscus-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "24-loparkna-posterior-meniscus-anatomi",
+    "original": "bilder/ultraljud/kna/loparkna/posterior-meniscus-ultraljud.jpg",
+    "original_sha256": "8e838680c80b06bb0acc68fee72580e5df7b38a41669c9ae06ced3be79ec615e",
+    "previous_anatomy": "bilder/ultraljud/kna/loparkna/posterior-meniscus-anatomi.20261021f.webp",
+    "previous_anatomy_sha256": "2241fd5d6c7ff1891915ef4bad78f28bb476c9c1fd59d159757f8a8fd4491904",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "3f1ce4726ec157a9ca457339533f8d6faeecd14beed443d4af5eb309af50b682",
+    "preserves_alpha": false
+  },
+  "25-hoftled-kapsel": {
+    "source_image": "exec-802f2a71-95d4-4c57-8e53-f35e8f7cb251.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      213,
+      69,
+      1237,
+      1034.8041112454655
+    ],
+    "target_bounds": [
+      226,
+      111,
+      1053,
+      891
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/25-hoftled-kapsel.painting.webp",
+    "archive_sha256": "8f03f92a473705da184ad5170bb8e80956d645fa2b4c8aad9eaa991d6e69328a",
+    "asset": "bilder/ultraljud/hoftled/kapsel.anatomi.realistic.20261022.webp",
+    "asset_sha256": "408ea27bc2fd9f1ae2e301a3e842816a82af9e73fa7f5f23474e192493c4d99c",
+    "qa_png": "realism-qa/kapsel.anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "25-hoftled-kapsel",
+    "original": "bilder/ultraljud/hoftled/kapsel.original.jpg",
+    "original_sha256": "8d95290320f607b6962441a4ab06f89f21ee321ffdc12401b1cd1cce55093c2b",
+    "previous_anatomy": "bilder/ultraljud/hoftled/kapsel.anatomi.20261021c.webp",
+    "previous_anatomy_sha256": "f22bfa589118814f22bbd6f982239c44cbbec2aa383f0bafc86666e161799028",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "c6dd8af394fcf178c9c12be2c8c6404e877ed11f1779e10070e91f4e3e29c892",
+    "preserves_alpha": true
+  },
+  "26-hoftled-caput": {
+    "source_image": "exec-0325bf83-3f00-4310-bb28-5c2483a31c1b.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      243,
+      85,
+      1208,
+      995.1571946795647
+    ],
+    "target_bounds": [
+      226,
+      111,
+      1053,
+      891
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/26-hoftled-caput.painting.webp",
+    "archive_sha256": "64969504418a51c91af31fc6cd6f0c5d8957127bdbf2b3def175be17213c4e11",
+    "asset": "bilder/ultraljud/hoftled/caput.anatomi.realistic.20261022.webp",
+    "asset_sha256": "1798fef5885e0dad2e995abc1c6627430c82ac9393e136defca9d64e572c6862",
+    "qa_png": "realism-qa/caput.anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "26-hoftled-caput",
+    "original": "bilder/ultraljud/hoftled/caput.original.jpg",
+    "original_sha256": "23a898922544697ea9b8e1933734812d4a9f9e8c933f027e8d023bba34511ad4",
+    "previous_anatomy": "bilder/ultraljud/hoftled/caput.anatomi.20261021c.webp",
+    "previous_anatomy_sha256": "c7495611669e70c3d50c1515dd89054ba3a81683e8c538138406bf40fda2d461",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "981b4e936e755fa29efcfc66b6533e0ebd575b48ff79d70a5cafae3384e34c27",
+    "preserves_alpha": true
+  },
+  "27-hoftled-jamforelse": {
+    "source_image": "exec-cd746002-e82e-408b-bc64-90c478bad58f.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      74,
+      91,
+      1375,
+      990.627659574468
+    ],
+    "target_bounds": [
+      75,
+      111,
+      1203,
+      891
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/27-hoftled-jamforelse.painting.webp",
+    "archive_sha256": "55128f92d2796e227cec632243d92ebc19e4dc6dd5c8218676174b3f50381b56",
+    "asset": "bilder/ultraljud/hoftled/jamforelse.anatomi.realistic.20261022.webp",
+    "asset_sha256": "f666038b62bb241e84987bd2f4980446a5596ea11c36bfd34e51b3ae50ee5ab3",
+    "qa_png": "realism-qa/jamforelse.anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "27-hoftled-jamforelse",
+    "original": "bilder/ultraljud/hoftled/jamforelse.original.jpg",
+    "original_sha256": "e702eebe74fbbad5f5bf4f1c848aaba39f0a9a16f1b4b7eaf880e2c66a490ce1",
+    "previous_anatomy": "bilder/ultraljud/hoftled/jamforelse.anatomi.20261021c.webp",
+    "previous_anatomy_sha256": "8b53c3ad7d961fb3193a57a5d73c2c155f20fe0542f34763653ddd061e9f74ce",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "0bae5cb05660dc76d457736584bc7b3b8240924dd40aa4c40d87ace63545cb7b",
+    "preserves_alpha": true
+  },
+  "28-hoft-gmed": {
+    "source_image": "exec-3ae4eee6-3c46-40fc-99b7-c77942fba244.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      160,
+      91,
+      1288,
+      1036.048335123523
+    ],
+    "target_bounds": [
+      174,
+      111,
+      1105,
+      891
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/28-hoft-gmed.painting.webp",
+    "archive_sha256": "28b291e0c733f361ad42ccef38108fb07713c775abc5047521330468c6e38ab4",
+    "asset": "bilder/ultraljud/hoft/gmed.anatomi.realistic.20261022.webp",
+    "asset_sha256": "9e3fabbd45669bc5fcd48077826f9f0b935fc32fc8f646a42d8b8b8a1a62968f",
+    "qa_png": "realism-qa/gmed.anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "28-hoft-gmed",
+    "original": "bilder/ultraljud/hoft/gmed.original.jpg",
+    "original_sha256": "bfb44c738e827b15c3920ca3960fc1dd2661a907d3cd0d97c217d748d4e45863",
+    "previous_anatomy": "bilder/ultraljud/hoft/gmed.anatomi.20261021.webp",
+    "previous_anatomy_sha256": "d258c77017c78398410c4ae350c9ed24e14c6ba7cddcf29b826f751781e4badc",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "d1528543eb016604f07418fceebf434d0d0fa10b9e496f774e2b2de39ba3dfb2",
+    "preserves_alpha": true
+  },
+  "29-hoft-gmin": {
+    "source_image": "exec-7e1eab78-9d3b-4b1b-94b5-17f95ca09e3c.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      114,
+      69,
+      1334,
+      1091.1267454350163
+    ],
+    "target_bounds": [
+      174,
+      111,
+      1105,
+      891
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/29-hoft-gmin.painting.webp",
+    "archive_sha256": "c917db8d6c341cafb0b8d0b3f7f8a00ecd5a7b2c7f9f91fee2650deb1c778527",
+    "asset": "bilder/ultraljud/hoft/gmin.anatomi.realistic.20261022.webp",
+    "asset_sha256": "d5ddba509e694a3d8dbf86e4c3f4be88280b9061548cb8552fa65965bf261f91",
+    "qa_png": "realism-qa/gmin.anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "29-hoft-gmin",
+    "original": "bilder/ultraljud/hoft/gmin.original.jpg",
+    "original_sha256": "8acece8139a266f97b615dc5fb0d3da5b02a9871f49979bd320d503d12c17c43",
+    "previous_anatomy": "bilder/ultraljud/hoft/gmin.anatomi.20261021.webp",
+    "previous_anatomy_sha256": "3d4ff4f3d23fe1dbc92f5d4f191b6b12a4a7498688817121676953d0c03fbabf",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "9e3494a1d67f09afd9a015d920d26f032d62632b8cfc075c39df1febeed468cc",
+    "preserves_alpha": true
+  },
+  "30-hoft-paralabral": {
+    "source_image": "exec-1e197917-d24f-4254-8734-056bc72ebaf5.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      188,
+      111,
+      1260,
+      1009.1310418904404
+    ],
+    "target_bounds": [
+      174,
+      111,
+      1105,
+      891
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/30-hoft-paralabral.painting.webp",
+    "archive_sha256": "311fb659d3d390ded449dd8217aec8882ae47ddc8eff827cb7e00f873145f298",
+    "asset": "bilder/ultraljud/hoft/paralabral.anatomi.realistic.20261022.webp",
+    "asset_sha256": "7cb3971938338fd33e2034401edfc3fa685e5f0702afa3445486594b11e9ffb6",
+    "qa_png": "realism-qa/paralabral.anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "30-hoft-paralabral",
+    "original": "bilder/ultraljud/hoft/paralabral.original.jpg",
+    "original_sha256": "76778636563397b552e3eb644e60a1816f236a56ebb2c675cd05b9d455f46cab",
+    "previous_anatomy": "bilder/ultraljud/hoft/paralabral.anatomi.20261021.webp",
+    "previous_anatomy_sha256": "e7e95f08f4618abcb06f9cb46e76f40da9c7c094a07000e00127b83c261bd62e",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "565ef1ce9941c6c821c380c69de9c3233874c6947062a72825a13d7057fb01b4",
+    "preserves_alpha": true
+  },
+  "31-halsena-longitudinal-anatomi": {
+    "source_image": "exec-b09d5870-cb8c-4857-a743-8f2bdbad6df6.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      107,
+      91,
+      1342,
+      960.375
+    ],
+    "target_bounds": [
+      108,
+      141,
+      1172,
+      890
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/31-halsena-longitudinal-anatomi.painting.webp",
+    "archive_sha256": "5323ca2b62b3aa6397031839d010abdf3b6504e054051d5acb2d946f35b310e1",
+    "asset": "bilder/ultraljud/halsena/longitudinal-anatomi.realistic.20261022.webp",
+    "asset_sha256": "80c36398042d03a9eb2217b0296a217777b5d50f44d729b72c9e0a51c0b82f7f",
+    "qa_png": "realism-qa/longitudinal-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "31-halsena-longitudinal-anatomi",
+    "original": "bilder/ultraljud/halsena/longitudinal-ultraljud.jpg",
+    "original_sha256": "699f886574dff49d9f92ab1a62ac3cf5b50524a59ffc73e85d41cc66c508788e",
+    "previous_anatomy": "bilder/ultraljud/halsena/longitudinal-anatomi.20261015c.webp",
+    "previous_anatomy_sha256": "cba2daf231e73382d56f836cd32680996c527d033869c482cbea50ae7e6055eb",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "9d41ae8e043e064deafc4c3dc0650d0c49e50113f06559eb21e2ef0f32ca4fcc",
+    "preserves_alpha": false
+  },
+  "32-halsena-healthy-anatomi": {
+    "source_image": "exec-c4e57361-3fcc-4225-9740-884bf5489570.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      72,
+      108,
+      1376,
+      1035.751879699248
+    ],
+    "target_bounds": [
+      108,
+      133,
+      1172,
+      890
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/32-halsena-healthy-anatomi.painting.webp",
+    "archive_sha256": "4abd5a6587b4bc618df69beeab3a7bd2ca52e616add7d033185f927b748590a1",
+    "asset": "bilder/ultraljud/halsena/healthy-anatomi.realistic.20261022.webp",
+    "asset_sha256": "bc1aafa0fd2eef62ba0b7cd4b8cc12dd93740d4552c509188123054444e72615",
+    "qa_png": "realism-qa/healthy-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "32-halsena-healthy-anatomi",
+    "original": "bilder/ultraljud/halsena/healthy-ultraljud.jpg",
+    "original_sha256": "b1e761de1be96c92788c4294efa2f92aa1e2baa4c2a1b9a144c5075d1d910aa5",
+    "previous_anatomy": "bilder/ultraljud/halsena/healthy-anatomi.20261015.webp",
+    "previous_anatomy_sha256": "93222f87fb83fe0903be86bd4bf85c6cbb8818428e843e704ee55268fefd21e3",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "16e8b0dd744c22b50cff128459dfac9fd3dbb371c282ee8ea612d5d74e11b657",
+    "preserves_alpha": false
+  },
+  "33-halsena-transverse-anatomi": {
+    "source_image": "exec-2b0e6097-90a2-4066-8017-24c825fe0c16.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      76,
+      93,
+      1354,
+      1001.0526315789473
+    ],
+    "target_bounds": [
+      108,
+      134,
+      1172,
+      890
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/33-halsena-transverse-anatomi.painting.webp",
+    "archive_sha256": "550b2e5c604654cde3f5f7dc96733c0b692f23c85bddda37b022b25ef25b8158",
+    "asset": "bilder/ultraljud/halsena/transverse-anatomi.realistic.20261022.webp",
+    "asset_sha256": "bce434476a1961b886503f33abaf9d5ed53902b6fbc3b5614dbc9b0d285769d9",
+    "qa_png": "realism-qa/transverse-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "33-halsena-transverse-anatomi",
+    "original": "bilder/ultraljud/halsena/transverse-ultraljud.jpg",
+    "original_sha256": "d22ca0aae7d81ce2a6934fd7648e1e898afbc872504a1604bfe087776f128008",
+    "previous_anatomy": "bilder/ultraljud/halsena/transverse-anatomi.20261015.webp",
+    "previous_anatomy_sha256": "41becdc1e778b7433b7be245785151f1a653b8da30381477596e00ac6343d117",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "86dda6af4dc51e93ec8543087afd8968079a5723a2bda699f565066d79e4c879",
+    "preserves_alpha": false
+  },
+  "34-tennisarmbage-skadad-anatomi": {
+    "source_image": "exec-23b0775c-51fc-4bea-a9ec-e058a3feb046.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      18,
+      110,
+      1431,
+      1072.7855251544572
+    ],
+    "target_bounds": [
+      74,
+      118,
+      1207,
+      890
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/34-tennisarmbage-skadad-anatomi.painting.webp",
+    "archive_sha256": "f66d5561c758a58e9ae1307d72dbcabac61bce18f89d5662c8356a57aba080ad",
+    "asset": "bilder/ultraljud/armbage/tennisarmbage/skadad-anatomi.realistic.20261022.webp",
+    "asset_sha256": "2bf367335bb20bd9e9e12881c0e0c43513633edff4c2f86fbf0e60ba6cf27cf0",
+    "qa_png": "realism-qa/skadad-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "34-tennisarmbage-skadad-anatomi",
+    "original": "bilder/ultraljud/armbage/tennisarmbage/skadad-ultraljud.jpg",
+    "original_sha256": "a6c68a06ca8918085f1e11a3f1bfbf66095ed81883bb6f14459f57520696008d",
+    "previous_anatomy": "bilder/ultraljud/armbage/tennisarmbage/skadad-anatomi.20261015.webp",
+    "previous_anatomy_sha256": "bce27c784a14b3fa9b4c2806cb8f8b3c99a118b7ae1c07340731e70f61f827f9",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "01619e7b4e73e271e52fb81904fd66f5fd255140daeda7e3f0c34750595a04d3",
+    "preserves_alpha": false
+  },
+  "35-tennisarmbage-frisk-anatomi": {
+    "source_image": "exec-c27787c6-1730-481d-8e85-6dfc9a54b2fb.png",
+    "source_size": [
+      1448,
+      1086
+    ],
+    "source_bounds": [
+      70,
+      115,
+      1381,
+      1009.0742049469965
+    ],
+    "target_bounds": [
+      74,
+      118,
+      1206,
+      890
+    ],
+    "canvas": [
+      1280,
+      960
+    ],
+    "archive": ".github/kansei/artwork/tissue-realism-20261022/35-tennisarmbage-frisk-anatomi.painting.webp",
+    "archive_sha256": "8fa322407a82e53f4cc3b4f5835e1941ea09947e16585b09e6259d24e6b611fc",
+    "asset": "bilder/ultraljud/armbage/tennisarmbage/frisk-anatomi.realistic.20261022.webp",
+    "asset_sha256": "cac19a94b28c7ef0441182721cd7828eb71f77690998b82348389297a3d83643",
+    "qa_png": "realism-qa/frisk-anatomi.realistic.20261022.png",
+    "method": "One global rectangular registration, clipped to original scan; no local warp.",
+    "key": "35-tennisarmbage-frisk-anatomi",
+    "original": "bilder/ultraljud/armbage/tennisarmbage/frisk-ultraljud.jpg",
+    "original_sha256": "5d241069bececadb2d70d667b000424ba9911963d2624ae9ba6c30c487436795",
+    "previous_anatomy": "bilder/ultraljud/armbage/tennisarmbage/frisk-anatomi.20261015.webp",
+    "previous_anatomy_sha256": "44aa563d81b51204dea3fe32baa1636bcf7e3aa43ffefc0d757ba3baaded5f2b",
+    "approved_reference_sha256": "9882c09e88fbe5c86df19392e810fec49ee89bc87e18647879dfdd6787ee6d89",
+    "source_png_sha256": "bf53044e092452e07eea393ac3dd7e4764650f4b7733530bc8df64ad3f1ce62d",
+    "preserves_alpha": false
+  }
+}

@@ -19,7 +19,7 @@ def check_case(page, model):
             raise AssertionError('Clinic design differs: '+key+' '+str(actual[key])+' vs '+str(model[key]))
     if page.locator('.condition-hero .case-visit').count():
         raise AssertionError('Duplicate introductory booking box')
-    if page.locator('.case-page-nav').count()!=1 or page.locator('.case-page-nav a').first.get_attribute('href')!='#bilder':
+    if page.locator('.case-page-nav').count()!=1 or page.locator('.case-page-nav a[href="#bilder"]').count()!=1:
         raise AssertionError('Missing direct path to the images')
     if page.locator('.reader-deep details').count():
         raise AssertionError('Clinical explanation requires nested disclosures')

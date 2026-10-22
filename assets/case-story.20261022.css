@@ -1,0 +1,44 @@
+/* One patient journey for every ultrasound case, using the hip case as reference. */
+.clinic-site .case-story{background:var(--paper,#f8faf9);border-block:1px solid var(--line,#d7e2e5)}
+.case-story-heading{max-width:76ch;margin-bottom:40px}
+.clinic-site .case-story-heading h2{max-width:30ch}
+.case-story .case-story-lead{font-size:19px;line-height:1.75;color:var(--muted,#596b70)}
+.case-story .case-story-note{font-size:14px;line-height:1.7;color:var(--muted,#596b70)}
+.case-story-layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:56px;align-items:start}
+.case-story-chapters,.case-story-chapter>div{min-width:0}
+.case-story-chapter{display:grid;grid-template-columns:34px minmax(0,1fr);gap:16px;padding:0 0 30px;margin:0 0 30px;border-bottom:1px solid var(--line,#d7e2e5)}
+.case-story-step{font-size:12px;font-weight:600;color:var(--teal,#166c66);letter-spacing:.08em;padding-top:8px}
+.clinic-site .case-story-chapter h3,.clinic-site .case-story-takeaway h3{font:500 23px/1.35 var(--sans);letter-spacing:-.02em;margin:0 0 16px}
+.clinic-site .case-story-chapter p{font-size:17px;line-height:1.8;max-width:68ch;margin:0 0 18px}
+.case-story-image-links,.case-story-actions{display:flex;flex-wrap:wrap;gap:6px 22px}
+.case-story-image-links a,.case-story-actions a,.case-story-takeaway>a,.case-library-back{display:inline-flex;align-items:center;min-height:44px;font-size:15px;line-height:1.6;text-underline-offset:4px}
+.case-story-aside{position:sticky;top:calc(var(--reading-clearance,131px) + 24px);min-width:0;border:1px solid var(--line,#d7e2e5);border-radius:12px;overflow:hidden;background:#fff}
+.case-story-aside figure{margin:0;background:#000}
+.case-story-aside figure>a{display:block}
+.case-story-aside img{display:block;width:100%;height:auto;margin:0}
+.case-story-aside figcaption{font-size:13px;line-height:1.65;padding:16px 20px;background:var(--mist,#edf3f5);color:var(--muted,#596b70)}
+.case-story-facts{padding:25px}
+.clinic-site .case-story-facts h3{font:500 21px/1.35 var(--sans);letter-spacing:-.02em;margin:0 0 16px}
+.case-story-facts dl{margin:0}
+.case-story-facts dl>div{padding:14px 0;border-top:1px solid var(--line,#d7e2e5)}
+.case-story-facts dl>div:last-child{padding-bottom:0}
+.case-story-facts dt{font-size:12px;font-weight:500;letter-spacing:.05em;color:var(--muted,#596b70);margin-bottom:5px}
+.case-story-facts dd{font-size:15px;line-height:1.65;margin:0}
+.case-story-takeaway{padding:26px 30px;background:var(--mist,#edf3f5);border-radius:10px}
+.case-story-takeaway .eyebrow{margin-bottom:10px}
+.case-story-follow{padding:24px 0 0;margin:24px 0 16px;border-top:1px solid var(--line,#d7e2e5);font-size:16px;line-height:1.8}
+.case-story-source{margin-top:24px}
+.case-story-details{padding:18px 22px;margin:20px 0;background:var(--mist,#edf3f5);border-radius:8px}
+.case-story-details summary{cursor:pointer;line-height:1.6}
+.case-story-details ul{padding-left:20px;line-height:1.75}
+.case-story .knee-evidence-grid{grid-template-columns:minmax(0,1fr);gap:26px}
+.case-story .knee-evidence-item{display:flow-root;border-top:1px solid var(--line,#d7e2e5);padding-top:22px}
+.case-story .knee-evidence-image{float:left;width:42%;margin:0 22px 14px 0}
+.case-story .knee-evidence-item h4{font-size:19px;margin:0 0 12px}
+.case-story .knee-evidence-item p{font-size:16px;line-height:1.7}
+.case-story .knee-evidence-item>.text-link{display:inline-flex;align-items:center;min-height:44px}
+.case-library-back{margin:0 0 8px;color:var(--teal,#166c66)}
+.case-story :is(a,summary):focus-visible,.case-library-back:focus-visible{outline:3px solid var(--teal,#166c66);outline-offset:4px}
+@media(max-width:900px){.case-story-layout{gap:30px;grid-template-columns:minmax(0,1.5fr) minmax(240px,1fr)}}
+@media(max-width:760px){.case-story-heading{margin-bottom:30px}.case-story .case-story-lead{font-size:17px}.case-story-layout{grid-template-columns:minmax(0,1fr);gap:28px}.case-story-chapter{grid-template-columns:26px minmax(0,1fr);gap:10px;margin-bottom:24px;padding-bottom:24px}.clinic-site .case-story-chapter h3{font-size:22px}.clinic-site .case-story-chapter p{font-size:16px}.case-story-aside{position:static;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.case-story-aside figure{align-self:start}.case-story-takeaway{padding:23px}.case-story-facts{padding:20px}.case-story-follow{font-size:16px}}
+@media(max-width:480px){.case-story-aside{display:block}.case-story-aside img{max-height:250px;object-fit:contain}.case-story-chapter{grid-template-columns:minmax(0,1fr);gap:8px}.case-story-step{padding-top:0}.case-story .knee-evidence-image{float:none;width:100%;margin:0 0 18px}}

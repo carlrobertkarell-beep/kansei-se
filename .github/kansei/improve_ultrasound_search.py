@@ -352,6 +352,9 @@ def link_guide():
         card = f'<article class="knowledge-result" data-category="Knä &amp; höft" data-library-card data-search="Ont på utsidan av knät löparknä löpning vridning undersökning ultraljud"><span class="eyebrow">Knä &amp; höft</span><h2><a href="{GUIDE}">Ont på utsidan av knät – vad kan det bero på?</a></h2><p>Så skiljer sig frågor om löparknä, skada och svullnad. Läs om klinisk bedömning och vad ultraljud kan tillföra.</p><span aria-hidden="true" class="read-more">Läs artikeln ↗</span></article>'
         value, count = re.subn(r'(?=<article\b[^>]*class="knowledge-result")', lambda m: card, value, count=1)
         assert count == 1
+    article_count = len(re.findall(r'<article\b[^>]*\bdata-library-card\b', value))
+    value = re.sub(r'(<p\b[^>]*\bdata-library-count[^>]*>)\d+ artiklar(</p>)',
+                   lambda m: m[1] + f'{article_count} artiklar' + m[2], value, count=1)
     save(path, value)
     path = 'blogg/loparkna-eller-hopparkna/index.html'
     value = (ROOT / path).read_text()
@@ -360,6 +363,15 @@ def link_guide():
         value, count = re.subn(r'(<h2\b[^>]*>Löparknä: smärta på knäts utsida</h2>)', lambda m: m[1] + paragraph, value, count=1)
         assert count == 1
     value = value.replace('Text uppdaterad 14 oktober 2026', 'Text uppdaterad 22 oktober 2026', 1)
+    def update_article_date(match):
+        document = json.loads(match[2])
+        nodes = document.get('@graph', [document]) if isinstance(document, dict) else document
+        for node in nodes:
+            if node.get('@type') in ('Article', 'BlogPosting', 'MedicalWebPage'):
+                node['dateModified'] = DAY
+        return match[1] + json.dumps(document, ensure_ascii=False, separators=(',', ':')) + match[3]
+    value = re.sub(r'(<script\b[^>]*type="application/ld\+json"[^>]*>)(.*?)(</script>)',
+                   update_article_date, value, flags=re.S)
     save(path, value)
 
 
@@ -404,7 +416,10 @@ def hub():
 def sitemap():
     path = 'sitemap.xml'
     value = (ROOT / path).read_text()
-    changed_urls = {ORIGIN + '/' + p[:-len('index.html')] for p in CHANGED if p.endswith('/index.html')}
+    release_routes = set(json.loads((CONTENT / 'ultrasound-search-intent.20261022.json').read_text()))
+    release_routes.update({'kunskapsbank/', 'kunskapsbank/kna/',
+                           'blogg/loparkna-eller-hopparkna/', GUIDE.lstrip('/')})
+    changed_urls = {ORIGIN + '/' + route for route in release_routes}
 
     def lastmod(match):
         loc = html.unescape(re.search(r'<loc>(.*?)</loc>', match[0], re.S)[1])

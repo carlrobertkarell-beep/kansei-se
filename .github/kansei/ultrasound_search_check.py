@@ -52,4 +52,8 @@ def check_search_paths(page, path: str, output: Path, label: str):
         page.locator('#valj-besok').screenshot(path=str(output / f'lateral-knee-guide-booking-{label}.png'))
         page.locator('#faq summary').first.click()
         assert page.locator('#faq details').first.locator('p').is_visible()
+        page.evaluate("history.replaceState(null,'',location.pathname+location.search)")
+    # Every check may scroll to a control; later checks must see a fresh intro.
+    page.evaluate("window.scrollTo({top:0,behavior:'instant'})")
+    page.wait_for_timeout(120)
     return 'Symptom routes, existing service destinations, prices and reachable answers passed; no booking submitted'

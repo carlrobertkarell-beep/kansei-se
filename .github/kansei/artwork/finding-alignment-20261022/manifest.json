@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-22",
+  "base": "8a85547f4fca72ca116491b5e28aca8af9068b44",
+  "corrections": [
+    {
+      "key": "31-halsena-longitudinal-anatomi",
+      "source": ".github/kansei/artwork/finding-alignment-20261022/31-halsena-longitudinal-anatomi.source.webp",
+      "output": "bilder/ultraljud/halsena/longitudinal-anatomi.aligned.20261022.webp",
+      "source_bounds": [
+        95.95298378188743,
+        105.26883793204365,
+        1372.317124533589,
+        1076.573964838525
+      ],
+      "target_bounds": [
+        108,
+        110,
+        1172,
+        890
+      ],
+      "canvas": [
+        1280,
+        960
+      ],
+      "finding_geometry": "Unchanged clinician coordinates",
+      "method": "One global axis-aligned registration; no local warp or relocation of findings"
+    },
+    {
+      "key": "32-halsena-healthy-anatomi",
+      "source": ".github/kansei/artwork/finding-alignment-20261022/32-halsena-healthy-anatomi.source.webp",
+      "output": "bilder/ultraljud/halsena/healthy-anatomi.aligned.20261022.webp",
+      "source_bounds": [
+        122.17500000000001,
+        124.4375,
+        1325.825,
+        1006.8125
+      ],
+      "target_bounds": [
+        108,
+        110,
+        1172,
+        890
+      ],
+      "canvas": [
+        1280,
+        960
+      ],
+      "finding_geometry": "Unchanged clinician coordinates",
+      "method": "One global axis-aligned registration; no local warp or relocation of findings"
+    },
+    {
+      "key": "33-halsena-transverse-anatomi",
+      "source": ".github/kansei/artwork/finding-alignment-20261022/33-halsena-transverse-anatomi.source.webp",
+      "output": "bilder/ultraljud/halsena/transverse-anatomi.aligned.20261022.webp",
+      "source_bounds": [
+        102.05842391304347,
+        124.4375,
+        1410.3736413043478,
+        1006.8125
+      ],
+      "target_bounds": [
+        108,
+        110,
+        1172,
+        890
+      ],
+      "canvas": [
+        1280,
+        960
+      ],
+      "finding_geometry": "Unchanged clinician coordinates",
+      "method": "One global axis-aligned registration; no local warp or relocation of findings"
+    },
+    {
+      "key": "34-tennisarmbage-skadad-anatomi",
+      "source": ".github/kansei/artwork/finding-alignment-20261022/34-tennisarmbage-skadad-anatomi.source.webp",
+      "output": "bilder/ultraljud/armbage/tennisarmbage/skadad-anatomi.aligned.20261022.webp",
+      "source_bounds": [
+        46.06133048399907,
+        121.8822379976791,
+        1392.306642882408,
+        1082.598534275732
+      ],
+      "target_bounds": [
+        74,
+        110,
+        1207,
+        890
+      ],
+      "canvas": [
+        1280,
+        960
+      ],
+      "finding_geometry": "Unchanged clinician coordinates",
+      "method": "One global axis-aligned registration; no local warp or relocation of findings"
+    }
+  ],
+  "review_scope": "All 35 existing anatomy views compared against the original scan and fixed finding geometry. Four regenerated Achilles/elbow paintings required replacement; meniscus comparison separately corrected.",
+  "limitations": "Educational anatomy; colour, internal tissue texture and bone interior remain illustrative."
+}

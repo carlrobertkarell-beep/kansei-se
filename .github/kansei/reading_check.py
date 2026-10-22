@@ -5,6 +5,7 @@ TARGETS={
  '/ultraljud/':'in-3',
  '/ultraljud/axel/':'undersokning',
  '/ultraljud/kna/':'artros',
+ '/ultraljud/kna/forkalkad-menisk/':'bilder',
  '/ultraljud/kalkaxel/':'patientfall',
  '/hyaluronsyra/':'in-7',
  '/hyaluronsyra/kna/':'pris',

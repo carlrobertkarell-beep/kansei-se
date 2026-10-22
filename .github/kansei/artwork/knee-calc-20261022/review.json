@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-22",
+  "paintings": 3,
+  "public_originals": "Three JPEGs byte-identical to the clinician's uploaded originals; acquisition headers masked in page, thumbnails, story and zoom by the shared reader.",
+  "materials": "The exact approved biceps reference supplied for all three generations. Unestablished red muscle patch corrected to neutral connective tissue in the meniscus close view.",
+  "registration": "Whole paintings registered once to the 1280x960 clinical canvas; fixed finding coordinates derived from clinician guides. No local warping or lesion relocation.",
+  "visual_review": [
+    "Compared all three registered paintings with the corresponding original and clinician outlines.",
+    "Reviewed full-frame finding composites for meniscus comparison, meniscus close view and both cartilage mineral deposits.",
+    "Inspected cartilage original and anatomy with identical findings in the enlarged browser reader.",
+    "Inspected the shared reader at 390px and 320px via same-origin preview frames, including independent toggles and keyboard tab movement."
+  ],
+  "checks": ["Static SEO, JSON-LD and internal-link checks passed", "Six existing guard unit tests passed", "Three source originals byte-identical and three anatomical exports decode at 1280x960", "New reader regression added to existing CI for desktop, mobile and compact widths"],
+  "limits": "Pedagogic generated anatomy approximates scan contours; textures and bone interior are illustrative. Narrative is explicitly illustrative. Images alone do not establish crystal type, active inflammation, arthrosis grade, treatment choice or outcome."
+}

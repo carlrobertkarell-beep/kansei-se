@@ -1,11 +1,21 @@
 # Kansei ultrasound illustrations
 
-Owner clarification, 16 October 2026. The approved pectoralis, biceps and knee
-illustrations are the visual references. They define tissue appearance: fine
-brick-red muscle fascicles with delicate ivory septa, golden lobular fat, fine
-ivory collagen, small irregular tan trabeculae with a soft depth fade, and smooth
-dark navy fluid. Do not substitute a new texture style. Record the exact style
-references whenever producing new material.
+Owner clarification, 22 October 2026. The owner selected the near-photographic
+biceps tissue preview and requested the same treatment for every published
+anatomical layer. The exact approved reference is archived at
+`artwork/tissue-realism-20261022/approved-reference.webp`; its original filename
+and hash are recorded with each edit. This replaces the earlier saturated
+gold/brick-red material palette, while all geometry rules below still apply.
+
+Match lifelike human tissue under soft neutral clinical illumination: pale
+cream/straw lobular fat, muted pink/burgundy fine muscle fascicles, delicate
+moist translucent ivory/gray fascial laminae, compact pearly tendon collagen,
+and pale beige/pink irregular bone trabeculae with a thin ivory cortex and soft
+depth fade. Fluid has restrained watery gray depth. Preserve heterogeneous
+gray capsular contents as tissue where supplied; do not make them empty fluid.
+Keep existing small vessels, tears, calcification and disorganized fibers;
+do not add pathology or infer new structures. These remain explanatory
+anatomical visualizations, not photographs of a patient or diagnostic images.
 
 Owner clarification, 21 October 2026: fascia is part of the muscle anatomy.
 Follow visible intramuscular connective-tissue strands and the larger fascial

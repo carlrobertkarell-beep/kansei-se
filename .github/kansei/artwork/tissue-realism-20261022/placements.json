@@ -1,0 +1,492 @@
+{
+  "01-bicepssena-tvarsnitt-anatomi": {
+    "source_bounds": [
+      120,
+      116,
+      1327,
+      1001.1333333333333
+    ],
+    "target_bounds": [
+      107,
+      109,
+      1172,
+      890
+    ]
+  },
+  "02-bicepssena-langdsnitt-anatomi": {
+    "source_bounds": [
+      72,
+      110,
+      1377,
+      1010.7964601769912
+    ],
+    "target_bounds": [
+      75,
+      110,
+      1205,
+      890
+    ]
+  },
+  "03-pectoralis-langdsnitt-anatomi": {
+    "source_bounds": [
+      244,
+      152,
+      1205,
+      953.4157575757575
+    ],
+    "target_bounds": [
+      227,
+      142,
+      1052,
+      830
+    ]
+  },
+  "04-pectoralis-tvarsnitt-anatomi": {
+    "source_bounds": [
+      192,
+      138,
+      1257,
+      1026.1454545454544
+    ],
+    "target_bounds": [
+      227,
+      142,
+      1052,
+      830
+    ]
+  },
+  "05-karpaltunnel-medianus-anatomi": {
+    "source_bounds": [
+      80,
+      106,
+      1367,
+      990.8124999999999
+    ],
+    "target_bounds": [
+      74,
+      112,
+      1162,
+      860
+    ]
+  },
+  "06-ac-led-jamforelse-skadad-anatomi": {
+    "source_bounds": [
+      206,
+      53,
+      1356,
+      894.7902542372882
+    ],
+    "target_bounds": [
+      168,
+      41,
+      1112,
+      732
+    ]
+  },
+  "07-ac-led-jamforelse-motsatt-anatomi": {
+    "source_bounds": [
+      207,
+      49,
+      1352,
+      888.3432203389831
+    ],
+    "target_bounds": [
+      168,
+      40,
+      1112,
+      732
+    ]
+  },
+  "08-ac-led-ac-led-anatomi": {
+    "source_bounds": [
+      24,
+      43,
+      1441,
+      992.1794055201698
+    ],
+    "target_bounds": [
+      0,
+      1,
+      942,
+      632
+    ]
+  },
+  "09-ac-led-mjukdelsplan-anatomi": {
+    "source_bounds": [
+      0,
+      1,
+      1465,
+      725.7239915074309
+    ],
+    "target_bounds": [
+      0,
+      3,
+      942,
+      469
+    ]
+  },
+  "10-kalkaxel-kalk": {
+    "source_bounds": [
+      120,
+      120,
+      1328,
+      808.5032863849765
+    ],
+    "target_bounds": [
+      107,
+      110,
+      1172,
+      717
+    ]
+  },
+  "11-kalkaxel-frisk": {
+    "source_bounds": [
+      124,
+      117,
+      1324,
+      904.7862595419848
+    ],
+    "target_bounds": [
+      107,
+      108,
+      1155,
+      796
+    ]
+  },
+  "12-bursit-axel-bursit-vy-1": {
+    "source_bounds": [
+      21,
+      148,
+      1418,
+      971.3973509933775
+    ],
+    "target_bounds": [
+      24,
+      140,
+      1232,
+      852
+    ]
+  },
+  "13-bursit-axel-bursit-vy-2": {
+    "source_bounds": [
+      0,
+      141,
+      1443,
+      927.9882629107981
+    ],
+    "target_bounds": [
+      0,
+      132,
+      1278,
+      829
+    ]
+  },
+  "14-bursit-axel-supraspinatus": {
+    "source_bounds": [
+      18,
+      156,
+      1416,
+      914.5508684863523
+    ],
+    "target_bounds": [
+      17,
+      143,
+      1226,
+      799
+    ]
+  },
+  "15-bursit-axel-subscapularis": {
+    "source_bounds": [
+      2,
+      147,
+      1428,
+      925.0237906423473
+    ],
+    "target_bounds": [
+      9,
+      141,
+      1270,
+      829
+    ]
+  },
+  "16-kna-ledvatska-anatomi": {
+    "source_bounds": [
+      197,
+      72,
+      1318,
+      873.5625
+    ],
+    "target_bounds": [
+      168,
+      61,
+      1112,
+      736
+    ]
+  },
+  "17-kna-bakercysta-anatomi": {
+    "source_bounds": [
+      195,
+      82,
+      1317,
+      905.4420600858368
+    ],
+    "target_bounds": [
+      168,
+      68,
+      1100,
+      752
+    ]
+  },
+  "18-kna-menisk-anatomi": {
+    "source_bounds": [
+      103,
+      67,
+      1410,
+      684.9836956521739
+    ],
+    "target_bounds": [
+      88,
+      58,
+      1192,
+      580
+    ]
+  },
+  "19-kna-brosk-jamforelse-anatomi": {
+    "source_bounds": [
+      0,
+      72,
+      1512,
+      741.7687500000001
+    ],
+    "target_bounds": [
+      0,
+      61,
+      1280,
+      628
+    ]
+  },
+  "20-kna-osteofyter-anatomi": {
+    "source_bounds": [
+      126,
+      40,
+      1387,
+      962.9143932267168
+    ],
+    "target_bounds": [
+      107,
+      32,
+      1170,
+      810
+    ]
+  },
+  "25-hoftled-kapsel": {
+    "source_bounds": [
+      213,
+      69,
+      1237,
+      1034.8041112454655
+    ],
+    "target_bounds": [
+      226,
+      111,
+      1053,
+      891
+    ]
+  },
+  "26-hoftled-caput": {
+    "source_bounds": [
+      243,
+      85,
+      1208,
+      995.1571946795647
+    ],
+    "target_bounds": [
+      226,
+      111,
+      1053,
+      891
+    ]
+  },
+  "27-hoftled-jamforelse": {
+    "source_bounds": [
+      74,
+      91,
+      1375,
+      990.627659574468
+    ],
+    "target_bounds": [
+      75,
+      111,
+      1203,
+      891
+    ]
+  },
+  "28-hoft-gmed": {
+    "source_bounds": [
+      160,
+      91,
+      1288,
+      1036.048335123523
+    ],
+    "target_bounds": [
+      174,
+      111,
+      1105,
+      891
+    ]
+  },
+  "29-hoft-gmin": {
+    "source_bounds": [
+      114,
+      69,
+      1334,
+      1091.1267454350163
+    ],
+    "target_bounds": [
+      174,
+      111,
+      1105,
+      891
+    ]
+  },
+  "30-hoft-paralabral": {
+    "source_bounds": [
+      188,
+      111,
+      1260,
+      1009.1310418904404
+    ],
+    "target_bounds": [
+      174,
+      111,
+      1105,
+      891
+    ]
+  },
+  "31-halsena-longitudinal-anatomi": {
+    "source_bounds": [
+      107,
+      91,
+      1342,
+      960.375
+    ],
+    "target_bounds": [
+      108,
+      141,
+      1172,
+      890
+    ]
+  },
+  "32-halsena-healthy-anatomi": {
+    "source_bounds": [
+      72,
+      108,
+      1376,
+      1035.751879699248
+    ],
+    "target_bounds": [
+      108,
+      133,
+      1172,
+      890
+    ]
+  },
+  "33-halsena-transverse-anatomi": {
+    "source_bounds": [
+      76,
+      93,
+      1354,
+      1001.0526315789473
+    ],
+    "target_bounds": [
+      108,
+      134,
+      1172,
+      890
+    ]
+  },
+  "34-tennisarmbage-skadad-anatomi": {
+    "source_bounds": [
+      18,
+      110,
+      1431,
+      1072.7855251544572
+    ],
+    "target_bounds": [
+      74,
+      118,
+      1207,
+      890
+    ]
+  },
+  "35-tennisarmbage-frisk-anatomi": {
+    "source_bounds": [
+      70,
+      115,
+      1381,
+      1009.0742049469965
+    ],
+    "target_bounds": [
+      74,
+      118,
+      1206,
+      890
+    ]
+  },
+  "21-kna-brosk-anatomi": {
+    "source_bounds": [
+      132,
+      36,
+      1381,
+      704.5616180620884
+    ],
+    "target_bounds": [
+      109,
+      30,
+      1172,
+      599
+    ]
+  },
+  "22-loparkna-lateral-fluid-anatomi": {
+    "source_bounds": [
+      115,
+      120,
+      1334,
+      861.7014084507042
+    ],
+    "target_bounds": [
+      107,
+      112,
+      1172,
+      760
+    ]
+  },
+  "23-loparkna-itb-bursa-anatomi": {
+    "source_bounds": [
+      113,
+      116,
+      1336,
+      656.8760563380282
+    ],
+    "target_bounds": [
+      107,
+      112,
+      1172,
+      583
+    ]
+  },
+  "24-loparkna-posterior-meniscus-anatomi": {
+    "source_bounds": [
+      195,
+      122,
+      1253,
+      776.952380952381
+    ],
+    "target_bounds": [
+      172,
+      112,
+      1096,
+      684
+    ]
+  }
+}

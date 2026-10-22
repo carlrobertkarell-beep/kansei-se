@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-22",
+  "base": "9efc33728042c0836c01ea416796faa140b3830a",
+  "scope": {
+    "unique_anatomical_images": 35,
+    "case_readers": 12,
+    "public_html_pages": 15,
+    "public_references": 46
+  },
+  "reference": "Exact owner-selected image-edit-target-7848eb5668c9f094.png; SHA-256 in each generation specification.",
+  "method": "Each whole tissue painting generated with imagegen, using its previous published layer as the geometry master and the owner-selected reference for material appearance. Export uses one global rectangular placement only.",
+  "review": [
+    "Reviewed all 35 old/new/fixed-finding comparisons.",
+    "Retained original scan coordinate systems and SVG finding geometry.",
+    "Corrected unintended red muscle beneath clavicle in view 09; retained neutral gray fibrous tissue.",
+    "Removed an added satellite calcification in view 10; preserved the two published clusters.",
+    "Corrected an unestablished lower-left muscle region in the affected elbow image to neutral gray fibrous tissue.",
+    "Kept gray heterogeneous hip recess contents separate from thin capsular boundary.",
+    "Kept fascia between muscle bellies, knee cartilage separate from fluid, and Achilles neovessels and rupture clefts.",
+    "Retained the seven transparent anatomical layers.",
+    "Removed scanner UI from the five older Achilles/elbow illustrations while retaining the empty margins and scan aperture.",
+    "Browser-inspected new knee osteophytes, enlarged cartilage and hip caput findings."
+  ],
+  "clinical_originals": "All 35 original source files are byte-identical to the previous publication.",
+  "limitations": "Pedagogic anatomical illustrations; texture, bone interior and colour are explanatory. Fixed finding coordinates are unchanged; generated contours approximate the underlying ultrasound view."
+}

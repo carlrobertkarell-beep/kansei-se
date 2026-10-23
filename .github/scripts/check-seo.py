@@ -20,6 +20,18 @@ REDIRECTS = {
     "/team-kansei/": "/om-oss/",
     "/kontakt/contact-v1/": "/kontakt/",
     "/kliniken/odenplan/": "/kontakt/",
+    "/kontakt/contact-v2/": "/kontakt/",
+    "/blogg/blog-v1/faq-ultraljud-vs-mr-korta-svar/": "/blogg/ultraljud-eller-magnetkamera/",
+    "/hem/home-v3/": "/",
+    "/blogg/blog-v1/så-går-det-till-muskuloskelettalt-ultraljud/": "/blogg/vad-hander-vid-en-ultraljudsundersokning/",
+    "/blogg/blog-v3/": "/kunskapsbank/",
+    "/blogg/blog-v1/axelbesvär-vid-lyft-över-axelhöjd/": "/blogg/ont-i-axeln-nar-du-lyfter-armen/",
+    "/blogg/blog-v1/så-går-det-till-nybesök-naprapati/": "/blogg/forsta-besoket-hos-naprapat/",
+    "/hem/home-v2/": "/",
+    "/hem/home-v4/": "/",
+    "/blogg/q-a/": "/fragor-och-svar/",
+    "/priser/om/": "/om-oss/",
+    "/blogg/blog-v1/faq-kortisoninjektioner-ultraljudsledda/": "/kortison/",
 }
 
 
@@ -135,12 +147,13 @@ def check_static() -> None:
         check_redirect(pages[local_path(source)], destination)
         assert pages[local_path(destination)].refresh is None, f"Redirect chain: {source}"
     print(f"PASS: {len(files)} HTML files; {blocks} JSON-LD blocks parse; {len(urls)} sitemap URLs.")
-    print("PASS: internal HTML link targets exist; 404 and four legacy aliases pass regression checks.")
+    print(f"PASS: internal HTML link targets exist; 404 and {len(REDIRECTS)} legacy aliases pass regression checks.")
     print("Scope: JSON syntax and static targets only, not schema vocabulary, rankings or external links.")
 
 
 def fetch_public(path: str) -> tuple[int, Page]:
-    request = Request(ORIGIN + path, headers={"User-Agent": "Kansei-SEO-check/126"})
+    from urllib.parse import quote
+    request = Request(ORIGIN + quote(path, safe="/%"), headers={"User-Agent": "Kansei-SEO-check/126"})
     try:
         with urlopen(request, timeout=20) as response:
             return response.status, Page(response.read().decode("utf-8"))
@@ -158,7 +171,7 @@ def check_live() -> None:
                 status, page = fetch_public(source)
                 assert status == 200, f"Legacy alias {source}: HTTP {status}"
                 check_redirect(page, destination)
-            print("PASS: live HTTP 404 and all four targeted HTML redirects verified.")
+            print(f"PASS: live HTTP 404 and all {len(REDIRECTS)} targeted HTML redirects verified.")
             return
         except (AssertionError, OSError, UnicodeError) as exc:
             if attempt == 5:

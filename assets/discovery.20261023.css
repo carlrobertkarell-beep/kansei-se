@@ -1,0 +1,27 @@
+/* Contextual routes between examinations, original cases and booking information. */
+.discovery-block{margin-block:32px;padding:28px;background:#eef3f1;border:1px solid #d1ddd8;border-radius:12px;min-width:0}
+.discovery-block>.eyebrow,.discovery-local>.eyebrow{font-size:12px;letter-spacing:.12em;margin:0 0 12px;color:#31594f}
+.clinic-site .discovery-block>h3,.clinic-site .discovery-local>h3{font-size:clamp(21px,2.2vw,27px);font-weight:500;line-height:1.3;margin:0 0 14px;letter-spacing:-.02em}
+.discovery-block>p{max-width:72ch;font-size:16px;line-height:1.75}
+.discovery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}
+.discovery-grid:has(>.discovery-link:only-child){grid-template-columns:1fr}
+.discovery-grid:has(>.discovery-link:nth-child(2):last-child){grid-template-columns:repeat(2,minmax(0,1fr))}
+.clinic-site a.discovery-link{display:flex;flex-direction:column;gap:10px;padding:22px;background:#fafcfb;border:1px solid #c7d7d0;border-radius:8px;color:#17352e;text-decoration:none;min-width:0;min-height:44px}
+.discovery-link strong{font-size:18px;font-weight:600;line-height:1.4;overflow-wrap:anywhere}
+.discovery-link>span:not(.discovery-arrow){font-size:15px;line-height:1.65;color:#4e655d}
+.discovery-arrow{display:block;margin-top:auto;padding-top:4px;font-size:20px}
+.clinic-site a.discovery-link:hover{border-color:#216655;background:#f1f7f4}
+.clinic-site a.discovery-link:focus-visible{outline:3px solid #176357;outline-offset:3px}
+.discovery-inline{margin:26px 0 0;padding:20px 0 0;border-top:1px solid #d1ddd8;font-size:16px;line-height:1.8;max-width:78ch}
+.discovery-local{margin-top:32px;padding-top:28px;border-top:1px solid #cbd7d1}
+.discovery-local>p{max-width:75ch;font-size:16px;line-height:1.8}
+.discovery-local-links{display:flex;flex-wrap:wrap;gap:12px 28px}
+.discovery-local-links a{display:inline-flex;align-items:center;min-height:44px;font-size:16px}
+.original-main .discovery-block{margin-block:32px}
+.original-main .discovery-grid{grid-template-columns:1fr}
+@media(max-width:760px){
+ .discovery-block{padding:22px 18px;margin-block:24px}
+ .discovery-grid,.discovery-grid:has(>.discovery-link:nth-child(2):last-child){grid-template-columns:1fr}
+ .clinic-site a.discovery-link{padding:18px}
+ .discovery-local-links{flex-direction:column;align-items:flex-start;gap:4px}
+}

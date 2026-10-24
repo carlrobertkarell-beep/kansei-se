@@ -193,3 +193,15 @@ body.clinic-site{--teal:#086b62;--dark:#142e37;--ink:#173137;--muted:#53666b;--p
  .clinic-site .site-menu-toggle{padding-inline:10px;gap:6px;font-size:14px;flex:0 0 auto}
  .clinic-site .menu-injections{gap:8px 22px}
 }
+
+/* Space public calls to action as a group, separate from visit information. */
+.clinic-site main :is(.atlas-actions,.us-actions,.cta-row,.action-group,.us-booking-actions,.case-story-actions,.film-actions,.achilles-actions,.tjk-actions){column-gap:24px;row-gap:16px}
+.clinic-site .atlas-actions+.atlas-booking-note{margin-block:20px 0}
+.clinic-site .atlas-feature-list{margin-block-start:24px}
+@media(max-width:650px){
+ .clinic-site main :is(.atlas-actions,.us-actions,.cta-row,.action-group,.us-booking-actions,.film-actions,.achilles-actions,.tjk-actions){flex-direction:column;align-items:stretch}
+ .clinic-site main :is(.atlas-actions,.us-actions,.cta-row,.action-group,.us-booking-actions,.film-actions,.achilles-actions,.tjk-actions)>:is(.button,.btn){width:100%;max-width:100%;white-space:normal}
+ .clinic-site main :is(.atlas-actions,.us-actions,.cta-row,.action-group,.us-booking-actions,.film-actions,.achilles-actions,.tjk-actions)>.text-link{align-self:flex-start;min-height:48px;max-width:100%;padding-block:10px}
+ .clinic-site .atlas-actions>.button{justify-content:center}
+ .clinic-site .case-story-actions a{min-height:48px}
+}

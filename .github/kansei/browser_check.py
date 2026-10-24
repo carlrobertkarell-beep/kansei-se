@@ -440,6 +440,11 @@ def check(base, output):
                                 page.wait_for_function("img => img.complete && img.naturalWidth > 0", arg=picture.element_handle(), timeout=15000)
                             gallery.screenshot(path=str(output / f'product-gallery-{path.strip("/").replace("/", "-")}-{i}-{label}.png'), animations='disabled', style='body>header,body>a[href="#main"]{visibility:hidden!important}')
 
+                    # Show the action groups in the existing visual-review captures.
+                    if path in ('/', '/ultraljud/', '/ultraljud/bilder/', '/hyaluronsyra/kna/', '/ultraljud/fot-fotled/', '/hyaluronsyra/ultraljudsvagledd-injektion/'):
+                        actions = page.locator('main :is(.atlas-actions,.us-actions,.ha-hero-actions,.us-booking-actions,.film-actions)').first
+                        if actions.count():
+                            actions.scroll_into_view_if_needed()
                     slug = path.strip("/").replace("/", "-") or "home"
                     page.screenshot(path=str(output / f"{slug}-{label}.png"), full_page=False, animations="disabled")
                     if label == "mobile" and path not in ("/reda/", "/reda-rehab/") and page.locator("button.burger").count() == 1:

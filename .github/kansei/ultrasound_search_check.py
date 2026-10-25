@@ -2,7 +2,7 @@
 from pathlib import Path
 
 GUIDE = '/kunskapsbank/kna/ont-pa-utsidan-av-knat/'
-ULTRASOUND = 'https://www.bokadirekt.se/boka-tjanst/kansei-rehabcenter-48847/ultraljud-rorelseapparaten-1946824'
+ULTRASOUND = 'https://www.bokadirekt.se/boka-tjanst/kansei-naprapati-rehabcenter-48847/muskuloskeletalt-ultraljud-1946824'
 CLINICAL = 'https://www.bokadirekt.se/boka-tjanst/kansei-rehabcenter-48847/naprapati-ny-resp-aterbesok-3263299'
 REGIONS = tuple('/ultraljud/' + key + '/' for key in (
     'axel', 'armbage', 'hand-handled', 'hoft-ljumske', 'fot-fotled',

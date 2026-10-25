@@ -333,10 +333,10 @@ def check(base, output):
                                 row["errors"].append(f"Shoulder {pattern} still routes to shoulder assessment")
                             guide.locator('button[data-reset]').click()
 
-                        shoulder_route("lifting", "Muskuloskeletalt ultraljud", "ultraljud-rorelseapparaten")
-                        shoulder_route("night", "Muskuloskeletalt ultraljud", "ultraljud-rorelseapparaten")
+                        shoulder_route("lifting", "Muskuloskeletalt ultraljud", "muskuloskeletalt-ultraljud-1946824")
+                        shoulder_route("night", "Muskuloskeletalt ultraljud", "muskuloskeletalt-ultraljud-1946824")
                         shoulder_route("stiff", "Naprapatisk bedömning", "naprapati-ny-resp-aterbesok")
-                        shoulder_route("rehab", "Muskuloskeletalt ultraljud", "ultraljud-rorelseapparaten")
+                        shoulder_route("rehab", "Muskuloskeletalt ultraljud", "muskuloskeletalt-ultraljud-1946824")
 
                         guide.locator('button[data-guide-area="shoulder"]').click()
                         guide.locator('button[data-pattern="unclear"]').click()

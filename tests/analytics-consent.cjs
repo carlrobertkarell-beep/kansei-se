@@ -1,10 +1,11 @@
 /* Prototype browser checks; no live Analytics requests are permitted. */
-const {chromium}=require(process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES+'/playwright');
+const {chromium}=require(process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES ? process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES+'/playwright' : 'playwright');
 const fs=require('fs'),path=require('path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..');
 (async()=>{
- const browser=await chromium.launch({executablePath:process.env.KANSEI_CHROMIUM||'/workspace/scratch/d152b02a2d39/medianus-review/browser/chromium',headless:true,args:['--no-sandbox']});
- const fixture=id=>'<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="kansei-ga4" content="'+id+'"><link rel="canonical" href="https://www.kansei.se/for-vardgivare/?secret=removed#private"><link rel="stylesheet" href="/assets/analytics.20261009b.css"><title>För vårdgivare | Kansei</title><script defer src="/assets/analytics.20261009b.js"></script></head><body class="clinic-site"><main><h1>För vårdgivare</h1><a href="https://www.bokadirekt.se/places/clinic">Boka</a></main><footer class="footer"></footer></body></html>';
+ const browser=await chromium.launch({...(process.env.KANSEI_CHROMIUM ? {executablePath:process.env.KANSEI_CHROMIUM} : {}),headless:true,args:['--no-sandbox']});
+ const fixture=id=>'<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="kansei-ga4" content="'+id+'"><link rel="canonical" href="https://www.kansei.se/for-vardgivare/?secret=removed#private"><link rel="stylesheet" href="/assets/analytics.20261009b.css"><title>För vårdgivare | Kansei</title><script defer src="/assets/analytics.20261017.js"></script></head><body class="clinic-site"><main><h1>För vårdgivare</h1><a href="https://www.bokadirekt.se/places/clinic">Boka</a></main><footer class="footer"></footer></body></html>';
+ const emit=()=>document.dispatchEvent(new CustomEvent('kansei:booking-intent',{detail:{event:'booking_click',placement:'header',service:'private',patient:'secret',audience:'clinician'}}));
  async function setup(id='G-TEST123456',host='www.kansei.se'){
   const context=await browser.newContext({viewport:{width:320,height:850}});
   const google=[];
@@ -24,13 +25,15 @@ const root=path.resolve(__dirname,'..');
  const {context,page,google}=await setup();
  assert.equal(google.length,0);assert.equal(await page.evaluate(()=>document.cookie),'');
  assert.equal(await page.evaluate(()=>localStorage.length),0);
+ await page.evaluate(emit);
+ assert.equal(await page.evaluate(()=>(window.dataLayer||[]).length),0);
+ assert.equal(await page.evaluate(()=>sessionStorage.getItem('kansei-referral-v1')),null);
  await page.locator('[data-statistics="no"]').click();
  await page.reload();assert.equal(google.length,0);assert(await page.locator('.kansei-statistics').isHidden());
  await page.locator('.kansei-statistics-settings').click();
  await page.locator('[data-statistics="yes"]').click();
  await page.waitForFunction(()=>document.querySelector('script[src*="googletagmanager"]'));
  await page.waitForLoadState('networkidle');assert.equal(google.length,1);
- const emit=()=>document.dispatchEvent(new CustomEvent('kansei:booking-intent',{detail:{event:'booking_click',placement:'header',service:'private',patient:'secret',audience:'clinician'}}));
  await page.evaluate(emit);
  let events=await page.evaluate(()=>dataLayer.map(x=>Array.from(x)));
  assert.equal(events.filter(e=>e[0]==='event'&&e[1]==='page_view').length,1);
@@ -39,6 +42,11 @@ const root=path.resolve(__dirname,'..');
  assert(!JSON.stringify(events).includes('private'));
  assert(!JSON.stringify(events).includes('clinician'));
  assert(events.find(e=>e[1]==='page_view')[2].page_referrer==='https://chatgpt.com/');
+ const booking=events.find(e=>e[1]==='booking_click')[2];
+ assert.equal(booking.placement,'header');
+ assert.equal(booking.referral_group,'chatgpt');
+ assert.equal(booking.measurement_version,'20261016');
+ assert.deepEqual(Object.keys(booking).sort(),['send_to','page_location','page_referrer','page_title','referral_group','measurement_version','placement'].sort());
  await page.evaluate(()=>{document.cookie='_ga=test; Path=/; Secure';document.cookie='_ga_TEST123456=test; Domain=kansei.se; Path=/; Secure';});
  await page.locator('.kansei-statistics-settings').click();
  for(const width of [320,390,1440]){

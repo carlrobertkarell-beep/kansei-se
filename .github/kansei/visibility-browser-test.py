@@ -93,15 +93,32 @@ with sync_playwright() as pw:
     assert events(p,'booking_click')==[]
     p.goto(ORIGIN+'/hyaluronsyra/kna/')
     p.locator('.header-book').click()
-    p.wait_for_url(ORIGIN+'/hyaluronsyra/#in-7')
+    p.wait_for_url(ORIGIN+'/hyaluronsyra/kna/#pris')
     assert events(p,'booking_click')==[]
     p.goto(ORIGIN+'/ultraljud/axel/')
     p.wait_for_function("(window.dataLayer||[]).some(x=>x[0]==='event')")
-    assert p.locator('.header-book').get_attribute('href').endswith('/ultraljud-rorelseapparaten-1946824')
+    assert p.locator('.header-book').get_attribute('href').endswith('/muskuloskeletalt-ultraljud-1946824')
     p.locator('.header-book').click()
     assert len(events(p,'booking_click'))==1
     assert events(p,'booking_click')[0][2]['placement']=='header'
+    # Exercise actual booking links through the runtime and consent bridge,
+    # with outbound navigation intercepted. Each click must produce one event.
+    for selector,placement in [('main a[data-measure="booking_click"]','content'),('.footer-book','footer')]:
+        before=len(events(p,'booking_click'))
+        p.locator(selector).first.click()
+        assert len(events(p,'booking_click'))==before+1
+        payload=events(p,'booking_click')[-1][2]
+        assert payload['placement']==placement
+        assert payload['measurement_version']=='20261016'
+        assert set(payload)=={'send_to','page_location','page_referrer','page_title','referral_group','measurement_version','placement'}
+    p.locator('[data-site-menu]').first.click()
+    assert p.locator('#site-menu').is_visible()
+    before=len(events(p,'booking_click'))
+    p.locator('#site-menu a[href*="bokadirekt.se/"]').first.click()
+    assert len(events(p,'booking_click'))==before+1
+    assert events(p,'booking_click')[-1][2]['placement']=='menu'
     c.close();record('Hyaluron price navigation is not a booking event; ultrasound header counts one outbound booking intent')
+    record('Actual content, footer and menu booking links count once with reportable placement and an allowlisted payload')
     for width,label in [(320,'compact'),(390,'mobile'),(1280,'desktop')]:
         c,p,_=setup(browser,{'width':width,'height':900})
         for path,name in [('/','home'),('/naprapati/','naprapati'),('/ultraljud/','ultraljud'),('/cookie/','cookie')]:

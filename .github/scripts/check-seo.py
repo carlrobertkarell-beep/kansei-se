@@ -32,7 +32,22 @@ REDIRECTS = {
     "/blogg/q-a/": "/fragor-och-svar/",
     "/priser/om/": "/om-oss/",
     "/blogg/blog-v1/faq-kortisoninjektioner-ultraljudsledda/": "/kortison/",
+    "/2024/03/01/att-lyfta-halsa-och-valbefinnande-i-stockholm-kraften-av-integrativa-program/": "/rehabilitering/",
 }
+LEGACY_SITEMAPS = (
+    "/category-sitemap.xml",
+    "/page-sitemap.xml",
+    "/post-sitemap.xml",
+    "/post_tag-sitemap.xml",
+)
+
+
+def check_sitemap_index(text: str) -> None:
+    root = ET.fromstring(text)
+    namespace = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+    assert root.tag == "{" + namespace["s"] + "}sitemapindex", "Expected a sitemap index"
+    locations = [node.text for node in root.findall("s:sitemap/s:loc", namespace)]
+    assert locations == [ORIGIN + "/sitemap.xml"], "Legacy sitemap must reference only the current sitemap"
 
 
 class Page(HTMLParser):
@@ -146,8 +161,13 @@ def check_static() -> None:
     for source, destination in REDIRECTS.items():
         check_redirect(pages[local_path(source)], destination)
         assert pages[local_path(destination)].refresh is None, f"Redirect chain: {source}"
+        assert ORIGIN + source not in urls, f"Legacy redirect in sitemap: {source}"
+    for path in LEGACY_SITEMAPS:
+        check_sitemap_index((ROOT / path.lstrip("/")).read_text(encoding="utf-8"))
+    assert ET.parse(ROOT / "sitemap.xml").getroot().tag.endswith("}urlset"), "Sitemap index must not nest another index"
     print(f"PASS: {len(files)} HTML files; {blocks} JSON-LD blocks parse; {len(urls)} sitemap URLs.")
     print(f"PASS: internal HTML link targets exist; 404 and {len(REDIRECTS)} legacy aliases pass regression checks.")
+    print(f"PASS: {len(LEGACY_SITEMAPS)} former WordPress sitemap addresses reference the current sitemap.")
     print("Scope: JSON syntax and static targets only, not schema vocabulary, rankings or external links.")
 
 
@@ -171,7 +191,13 @@ def check_live() -> None:
                 status, page = fetch_public(source)
                 assert status == 200, f"Legacy alias {source}: HTTP {status}"
                 check_redirect(page, destination)
+            for path in LEGACY_SITEMAPS:
+                request = Request(ORIGIN + path, headers={"User-Agent": "Kansei-SEO-check/126"})
+                with urlopen(request, timeout=20) as response:
+                    assert response.status == 200, f"Legacy sitemap {path}: HTTP {response.status}"
+                    check_sitemap_index(response.read().decode("utf-8"))
             print(f"PASS: live HTTP 404 and all {len(REDIRECTS)} targeted HTML redirects verified.")
+            print(f"PASS: all {len(LEGACY_SITEMAPS)} legacy sitemap indexes are live and valid.")
             return
         except (AssertionError, OSError, UnicodeError) as exc:
             if attempt == 5:

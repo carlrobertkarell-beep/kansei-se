@@ -1,0 +1,62 @@
+{
+  "clinical_scope": "Godkänt fall: kvinna, långvarig knäsmärta, kvarstående besvär trots kortison, artrosförändringar och skada i inre ledbandet. Genomförd hyaluroninjektion med Sinovial från knäts utsida. Ingen ålder, artrosgrad eller behandlingseffekt angiven.",
+  "views": [
+    {
+      "view": "left",
+      "canvas": [
+        1280,
+        960
+      ],
+      "registration": {
+        "size": [
+          1062,
+          797
+        ],
+        "offset": [
+          108,
+          46
+        ]
+      },
+      "original_sha256": "d381990f5c72d00793d3a95889cb1597e9c18fe680cce6664ae374cc3ef30221",
+      "tissue_correction": "Hud separat; underhudsfett som fett; quadricepssena som kollagen sena utan muskelfibrer. Inre ledband med distension och partiella bristningar enligt klinikerns annotering."
+    },
+    {
+      "view": "right",
+      "canvas": [
+        1280,
+        960
+      ],
+      "registration": {
+        "size": [
+          1280,
+          960
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "original_sha256": "93a11bb4bd180956cf5247ad497d72a9b39cab90f45791341c69a355ac08ef21",
+      "tissue_correction": "Hud separat; underhudsfett som fett; quadricepssena som kollagen sena utan muskelfibrer. Inre ledband med distension och partiella bristningar enligt klinikerns annotering."
+    },
+    {
+      "view": "medial",
+      "canvas": [
+        1280,
+        960
+      ],
+      "registration": {
+        "size": [
+          1280,
+          960
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "original_sha256": "14df41972c4b82bf9739a68e396657d948fc94f9a3a1ebf1516eca439db76cd7",
+      "tissue_correction": "Hud separat; underhudsfett som fett; quadricepssena som kollagen sena utan muskelfibrer. Inre ledband med distension och partiella bristningar enligt klinikerns annotering."
+    }
+  ]
+}

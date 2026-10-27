@@ -10,7 +10,7 @@ import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.error import HTTPError
-from urllib.parse import unquote, urljoin, urlsplit
+from urllib.parse import parse_qs, unquote, urljoin, urlsplit
 from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -123,20 +123,46 @@ def check_redirect(page: Page, destination: str) -> None:
     assert "noindex" in page.robots, "Legacy alias requires noindex"
 
 
+def check_video_chapters(value: object, source: str) -> int:
+    """Catch the invalid-integer Clip offsets reported by Search Console."""
+    if isinstance(value, list):
+        return sum(check_video_chapters(item, source) for item in value)
+    if not isinstance(value, dict):
+        return 0
+    count = 0
+    types = value.get("@type", [])
+    if "Clip" in ([types] if isinstance(types, str) else types):
+        label = f"{source}: Clip {value.get('name', '')!r}"
+        start = value.get("startOffset")
+        assert type(start) is int and start >= 0, f"{label}: startOffset must be a non-negative integer"
+        if "endOffset" in value:
+            end = value["endOffset"]
+            assert type(end) is int and end > start, f"{label}: endOffset must be an integer greater than startOffset"
+        url = value.get("url")
+        assert isinstance(url, str) and url.startswith("https://"), f"{label}: missing HTTPS chapter URL"
+        timestamp = parse_qs(urlsplit(url).query).get("t")
+        if timestamp is not None:
+            assert timestamp == [str(start)], f"{label}: chapter URL must match startOffset"
+        count = 1
+    return count + sum(check_video_chapters(item, source) for item in value.values())
+
+
 def check_static() -> None:
     files = sorted(ROOT.rglob("*.html"))
     pages: dict[Path, Page] = {}
     blocks = 0
+    video_chapters = 0
     broken: list[str] = []
     for file in files:
         page = Page(file.read_text(encoding="utf-8"))
         pages[file] = page
         for block in page.jsonld:
             try:
-                json.loads(block)
+                value = json.loads(block)
             except json.JSONDecodeError as exc:
                 raise AssertionError(f"Invalid JSON-LD: {file.relative_to(ROOT)}: {exc}") from exc
             blocks += 1
+            video_chapters += check_video_chapters(value, file.relative_to(ROOT).as_posix())
         relative = file.relative_to(ROOT).as_posix()
         base = ORIGIN + "/" + (relative[:-10] if relative.endswith("index.html") else relative)
         for href in page.hrefs:
@@ -168,7 +194,8 @@ def check_static() -> None:
     print(f"PASS: {len(files)} HTML files; {blocks} JSON-LD blocks parse; {len(urls)} sitemap URLs.")
     print(f"PASS: internal HTML link targets exist; 404 and {len(REDIRECTS)} legacy aliases pass regression checks.")
     print(f"PASS: {len(LEGACY_SITEMAPS)} former WordPress sitemap addresses reference the current sitemap.")
-    print("Scope: JSON syntax and static targets only, not schema vocabulary, rankings or external links.")
+    print(f"PASS: {video_chapters} video chapters have integer offsets, valid intervals and matching timestamp links.")
+    print("Scope: JSON syntax, video chapter offsets and static targets, not full schema validation, rankings or external links.")
 
 
 def fetch_public(path: str) -> tuple[int, Page]:

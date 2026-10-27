@@ -46,6 +46,7 @@ def collection():
         start = source.index('id="omrade-kna"')
         end = source.index('</div></section>',start)
         source = source[:end]+card+source[end:]
+    source = source.replace('knä knäsmärta artros långvarig','knä knäsmärta smärta ont värk artros långvarig')
     source = re.sub(r'<title>.*?</title>','<title>'+TITLE+'</title>',source,count=1,flags=re.S)
     source = source.replace('<span>Bildexempel</span>','<span>Patientfall</span>')
     source = source.replace('KANSEIS EGNA ULTRALJUDSBILDER','FRÅN UNDERSÖKNING TILL FORTSATT PLAN')

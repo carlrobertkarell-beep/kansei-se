@@ -151,7 +151,8 @@ def check_explore(page):
         ('knät svullnar efter promenader',('/ultraljud/kna/','/ultraljud/kna/forkalkad-menisk/')),
         ('förkalkad menisk','/ultraljud/kna/forkalkad-menisk/'),
         ('CPPD','/ultraljud/kna/forkalkad-menisk/'),
-        ('hyaluronsyra',('/ultraljud/hoftled/bilder/','/ultraljud/kna/')),
+        ('hyaluronsyra',('/ultraljud/hoftled/bilder/','/ultraljud/kna/','/ultraljud/kna/artros-ledband-hyaluron/')),
+        ('Synovial',('/ultraljud/kna/','/ultraljud/kna/artros-ledband-hyaluron/')),
         ('Sinogel',('/ultraljud/hoftled/bilder/','/ultraljud/kna/')),
         ('caput','/ultraljud/hoftled/bilder/'),
     ):

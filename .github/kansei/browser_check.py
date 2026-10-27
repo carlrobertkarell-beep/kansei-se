@@ -23,6 +23,8 @@ PATHS = ("/", "/injektioner/", "/blogg/prp-eller-hyaluronsyra-vid-knaartros/", "
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/knaartros-vad-du-kan-gora/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/", "/blogg/domningar-i-handen-pa-natten/")
 KNOWLEDGE_PATHS += ("/blogg/ont-i-axeln-nar-du-lyfter-armen/",)
 CONTENT_PATHS = ("/fragor-och-svar/", "/ultraljud/underben/", "/ultraljud/hoft-ljumske/", "/ultraljud/hand-handled/", "/ultraljud/armbage/", "/ultraljud/halsena/", "/ultraljud/overarm/", "/ultraljud/underarm/", "/ultraljud/lar-muskulatur/")
+# New cases are tested on the candidate/live site; they do not exist in the trusted baseline.
+CONTENT_PATHS += ("/ultraljud/kna/artros-ledband-hyaluron/",)
 RUNNER_PATH = "/ultraljud/loparkna/"
 ACHILLES_PATH = "/ultraljud/halsena/bilder/"
 ELBOW_PATH = "/ultraljud/tennisarmbage/bilder/"

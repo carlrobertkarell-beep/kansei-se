@@ -636,7 +636,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/hyaluronsyra/kna/</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/kna/osteofyter-ultraljud.webp</image:loc>
     </image:image>
@@ -748,7 +748,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/bilder/</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-2.original.jpg</image:loc>
     </image:image>
@@ -763,6 +763,9 @@
     </image:image>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/kalkaxel/kalk.anatomi.realistic.20261022.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/kna/artros-ledband/medial.original.jpg</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/kna/kalk/brosk-kalk.original.jpg</image:loc>
@@ -1027,6 +1030,35 @@
       <video:description>En andra, kort Dopplersekvens från Kanseis undersökning av AC-ledregionen. Färgsignalerna behöver tolkas i det kliniska sammanhanget.</video:description>
       <video:content_loc>https://www.kansei.se/bilder/ultraljud/ac-led/ac-doppler-kort.mp4</video:content_loc>
       <video:publication_date>2026-10-07T15:24:20+02:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.kansei.se/ultraljud/kna/artros-ledband-hyaluron/</loc>
+    <lastmod>2026-10-27</lastmod>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/kna/artros-ledband/left.anatomi.20261027.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/kna/artros-ledband/left.original.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/kna/artros-ledband/medial.anatomi.20261027.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/kna/artros-ledband/medial.original.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/kna/artros-ledband/right.anatomi.20261027.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/kna/artros-ledband/right.original.jpg</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://www.kansei.se/bilder/ultraljud/kna/artros-ledband/film-poster.jpg</video:thumbnail_loc>
+      <video:title>Långvarig knäsmärta – ultraljud, anatomibilder och hyaluroninjektion</video:title>
+      <video:description>Patientfall med broskförändringar och skada i det inre ledbandet. Originalultraljud och anatomiska illustrationer följs av en ultraljudsvägledd hyaluroninjektion med Sinovial.</video:description>
+      <video:content_loc>https://www.kansei.se/bilder/ultraljud/kna/artros-ledband/knaartros-hyaluron.mp4</video:content_loc>
+      <video:publication_date>2026-10-27</video:publication_date>
     </video:video>
   </url>
 </urlset>

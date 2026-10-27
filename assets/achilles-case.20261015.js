@@ -56,7 +56,7 @@
   const original=panels[selected].querySelector('.knee-picture');if(!original)return;
   const picture=original.cloneNode(true);picture.removeAttribute('id');
   zoomFrame.dataset.key=panels[selected].dataset.key;zoomFrame.replaceChildren(picture);
-  zoomTitle.textContent=tabs[selected].querySelector('strong').textContent+' – förstorad bild';zoom.showModal();render();
+  zoomTitle.textContent=tabs[selected].querySelector('strong').textContent+'. Förstorad bild';zoom.showModal();render();
  });
  zoom.querySelector('[data-knee-zoom-close]').addEventListener('click',()=>zoom.close());
  zoom.addEventListener('close',()=>enlarge.focus({preventScroll:true}));

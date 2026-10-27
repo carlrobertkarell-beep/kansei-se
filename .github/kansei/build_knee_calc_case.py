@@ -25,13 +25,13 @@ SOURCE_1177 = 'https://www.1177.se/sjukdomar--besvar/skelett-leder-och-muskler/l
 ART = ROOT / '.github/kansei/artwork/knee-calc-20261022'
 
 FAQ = [
-    ('Vad betyder förkalkad menisk?', 'Undersökaren har identifierat kalkinlagringar i meniskens fiberbrosk. Det är ett annat fynd än en meniskspricka. Utseendet behöver bedömas i flera snitt och kopplas till symtom och funktion; ett kalkfynd ensamt visar inte vad som gör ont.'),
+    ('Vad betyder förkalkad menisk?', 'Undersökaren har identifierat kalkinlagringar i meniskens fiberbrosk. Det är ett annat fynd än en meniskspricka. Utseendet behöver bedömas i flera snitt och kopplas till symtom och funktion. Ett kalkfynd ensamt visar inte vad som gör ont.'),
     ('Vad är kondrokalcinos och CPPD?', 'Kondrokalcinos beskriver kalkinlagringar i brosk. CPPD handlar om deposition av kalciumpyrofosfatkristaller och kan ge olika kliniska bilder. En akut kristallutlöst ledinflammation kallas ibland pseudogikt. Bilderna här väcker frågan men fastställer inte i sig kristalltyp eller en aktiv CPPD-attack.'),
     ('Är kalk i brosket samma sak som fria kroppar i leden?', 'Nej. I det här bildfallet har undersökaren markerat två områden inne i ledbrosket. De återges därför i brosket även i anatomilagret. En fri kropp ligger löst i leden och är ett annat fynd.'),
     ('Betyder fyndet att jag har artros?', 'Kalkinlagringar och artros kan förekomma samtidigt, men är olika fynd. De här bilderna fastställer ingen artrosgrad. Knäbesvär bedöms med samtal och undersökning, ibland kompletterat med annan bilddiagnostik.'),
     ('Kan man ha kalk utan att ha ont?', 'Ja. Bildfynd av kristallinlagringar behöver inte motsvaras av symtom. Det är därför viktigt att bedöma när och hur knät gör ont och om det finns tecken på inflammation eller andra förändringar.'),
     ('Kan hyaluron ta bort kalken?', 'Hyaluron är inte en behandling för att lösa upp kalkinlagringar. Vid samtidig knäartros kan möjlig symtomlindring diskuteras efter individuell bedömning. På vår sida om hyaluron i knä finns forskningsläget, behandlingsalternativ och information inför bokning.'),
-    ('Är jämförelsen en före- och efterbild?', 'Nej. Det är en sidjämförelse enligt undersökarens markeringar. Vänster sida är frisk och höger visar en förkalkad menisk. Olika sidor, snitt och probvinklar påverkar utseendet; bilden visar ingen behandlingseffekt.'),
+    ('Är jämförelsen en före- och efterbild?', 'Nej. Det är en sidjämförelse enligt undersökarens markeringar. Vänster sida är frisk och höger visar en förkalkad menisk. Olika sidor, snitt och probvinklar påverkar utseendet. Bilden visar ingen behandlingseffekt.'),
 ]
 
 VIEWS = [
@@ -41,7 +41,7 @@ VIEWS = [
          caption='Frisk menisk till vänster och förkalkad menisk till höger. Menisken och det mediala kollateralligamentet, MCL, kan följas var för sig. Jämförelsen visar inte en behandlingseffekt.',
          heading='Börja med att orientera dig mellan sidorna.',
          cue='Följ MCL som löper ytligt över ledspringan. Menisken ligger djupare mellan lårben och skenben. Jämför dess utseende i de två halvorna.',
-         text='Undersökaren har angett vänster bildhalva som frisk och höger som påverkad med förkalkad menisk. Den friska menisken återges som jämnt grå fiberbrosk; den påverkade innehåller ljusa kalkinlagringar. Bilderna har olika snitt och benkonturer; skillnaden är inte i sig ett mått på skadans grad.',
+         text='Undersökaren har angett vänster bildhalva som frisk och höger som påverkad med förkalkad menisk. Den friska menisken återges som jämnt grå fiberbrosk. Den påverkade innehåller ljusa kalkinlagringar. Bilderna har olika snitt och benkonturer. Skillnaden är inte i sig ett mått på skadans grad.',
          labels=[(343,231,'MCL'),(824,286,'MCL'),(174,336,'Menisk'),(1031,310,'Menisk'),(393,469,'Lårben'),(1176,458,'Skenben')],
          finding='<path class="finding-region" d="M1031 266 C1062 259 1107 272 1114 293 Q1122 314 1090 322 L1072 333 Q1033 331 1012 349 Q1000 362 1020 381 Q1046 407 1027 420 Q1015 429 1004 405 L977 360 Q953 345 957 318 Q964 294 993 281 Z"/><text x="970" y="611">Förkalkad menisk</text><text x="320" y="661">Frisk sida</text><text x="970" y="661">Förkalkad sida</text>'),
     dict(key='menisk-narbild', name='Menisken i närbild', sub='Insidan av knät',
@@ -57,7 +57,7 @@ VIEWS = [
          original='6_202601211019285900006.jpg', guide='6_202601211019285900006 (kopia).jpg',
          alt='Tvärsnitt över femurs ledbrosk med två av undersökaren utpekade kalkområden inom broskbandet.',
          caption='Tvärsnitt framtill över lårbenets ledyta. Under quadricepssenan syns ledbrosket och den ljusa benkonturen. Två kalkområden är utpekade inne i brosket.',
-         heading='Två små områden inne i brosket – inte fria kroppar.',
+         heading='Två små områden inne i brosket. De är inte fria kroppar.',
          cue='Följ det mörkare broskbandet ovanför den ljusa benlinjen. De två små markeringarna ligger inne i detta band, under quadricepssenan.',
          text='Anatomilagret skiljer fast, grått ledbrosk från ben och sena. De utpekade kalkområdena återges som små inlagringar på samma platser. Stillbilden ger ingen säker kemisk analys av kristallerna och visar inte att en akut inflammation pågår.',
          labels=[(625,186,'Underhud'),(228,301,'Vastus medialis'),(959,272,'Vastus lateralis'),(583,340,'Quadricepssena'),(545,526,'Ledbrosk'),(643,706,'Lårben')],
@@ -75,7 +75,7 @@ def anatomy(v):
 
 def panel(v, index):
     labels = ''.join(f'<text x="{x}" y="{y}">{esc(t)}</text>' for x,y,t in v['labels'])
-    return f'''<article class="knee-panel" data-key="{v['key']}" id="view-{v['key']}" role="tabpanel" aria-labelledby="tab-{v['key']}" tabindex="0"{' hidden' if index else ''}><figure><div class="knee-picture" data-anatomy="false" data-findings="false"><img class="knee-original" src="{original(v)}" width="1280" height="960" alt="{esc(v['alt'])}" decoding="async"{HEADER}/><div class="knee-anatomy" aria-hidden="true"><div class="knee-anatomy-content"><img src="{anatomy(v)}" width="1280" height="960" alt="Pedagogisk illustration av {esc(v['name'].lower())} i samma bildsnitt." decoding="async" loading="eager"/><svg class="knee-labels" viewBox="0 0 1280 960" aria-hidden="true">{labels}</svg></div></div><svg class="knee-findings" viewBox="0 0 1280 960" aria-hidden="true">{v['finding']}</svg></div><figcaption>{esc(v['caption'])}</figcaption></figure><div class="knee-panel-copy"><h3>{esc(v['heading'])}</h3><p class="knee-cue"><strong>Titta efter:</strong> {esc(v['cue'])}</p><p>{esc(v['text'])}</p></div></article>'''
+    return f'''<article class="knee-panel" data-key="{v['key']}" id="view-{v['key']}" role="tabpanel" aria-labelledby="tab-{v['key']}" tabindex="0"{' hidden' if index else ''}><figure><div class="knee-picture" data-anatomy="false" data-findings="false"><img class="knee-original" src="{original(v)}" width="1280" height="960" alt="{esc(v['alt'])}" decoding="async"{HEADER}/><div class="knee-anatomy" aria-hidden="true"><div class="knee-anatomy-content"><img src="{anatomy(v)}" width="1280" height="960" alt="Pedagogisk illustration av {esc(v['name'].lower())} i samma bildsnitt." decoding="async" loading="eager"/><svg class="knee-labels" viewBox="0 0 1280 960" aria-hidden="true">{labels}</svg></div></div><svg class="knee-findings" viewBox="0 0 1280 960" aria-hidden="true">{v['finding']}</svg></div><figcaption>{esc(v['caption'])}</figcaption></figure><div class="knee-panel-copy"><h3>{esc(v['heading'])}</h3><p class="knee-cue">{esc(v['cue'])}</p><p>{esc(v['text'])}</p></div></article>'''
 
 def schema():
     person = {'@id':'https://www.kansei.se/team/carl-robert-karell/#person'}
@@ -123,7 +123,7 @@ def build_page():
 def add_catalogue():
     path=ROOT/'ultraljud/bilder/index.html';s=path.read_text()
     if PATH in s:return
-    card=f'''<article class="atlas-entry" data-atlas-entry data-region="kna" data-symptoms="svullnad gang traning" data-search="förkalkad menisk menisken förkalkning förkalkningar kalk brosk brosket ledbrosk ledbrosket kondrokalcinos CPPD pseudogikt insida knä stelhet svullnad promenad trappor"><div class="atlas-thumb" aria-hidden="true"><img src="{original(VIEWS[2])}" alt="" width="1280" height="960" loading="lazy" decoding="async"{HEADER}/></div><div class="atlas-entry-copy"><small>Knä · Kalk i menisk och ledbrosk</small><h4><a href="{PATH}" data-atlas-case>Stelt knä och frågor om kalk i menisk eller brosk?</a></h4><span class="atlas-case-type">Verkliga bilder och illustrativ patientberättelse</span><p>Jämför meniskbilder och se två kalkområden inne i ledbrosket, med naturtrogna anatomilager.</p><a class="atlas-image-shortcut" href="{PATH}#bilder">Direkt till bilder och fynd →</a></div></article>'''
+    card=f'''<article class="atlas-entry" data-atlas-entry data-region="kna" data-symptoms="svullnad gang traning" data-search="förkalkad menisk menisken förkalkning förkalkningar kalk brosk brosket ledbrosk ledbrosket kondrokalcinos CPPD pseudogikt insida knä stelhet svullnad promenad trappor"><div class="atlas-thumb" aria-hidden="true"><img src="{original(VIEWS[2])}" alt="" width="1280" height="960" loading="lazy" decoding="async"{HEADER}/></div><div class="atlas-entry-copy"><small>Knä · Kalk i menisk och ledbrosk</small><h4><a href="{PATH}" data-atlas-case>Stelt knä och frågor om kalk i menisk eller brosk?</a></h4><span class="atlas-case-type">Verkliga bilder och illustrativ patientberättelse</span><p>Jämför meniskbilder och se två kalkområden inne i ledbrosket, med naturtrogna anatomilager.</p><a class="atlas-image-shortcut" href="{PATH}#bilder">Direkt till bilder och fynd</a></div></article>'''
     start=s.index('id="omrade-kna"');end=s.index('</div></section>',start)
     s=s[:end]+card+s[end:]
     # Compute all counts from actual cards, including the existing hip-joint
@@ -152,7 +152,7 @@ def add_internal_links():
     # the artrosis story and treatment statements unmodified.
     p=ROOT/'ultraljud/kna/index.html';s=p.read_text()
     if PATH not in s:
-        link=f'<p><a href="{PATH}">Nytt bildfall: förkalkad menisk och kalk i ledbrosket →</a> Se tre vyer med sidjämförelse, naturtrogen anatomi och förklaring av fynden.</p>'
+        link=f'<p><a href="{PATH}">Nytt bildfall med förkalkad menisk och kalk i ledbrosket</a> Se tre vyer med sidjämförelse, naturtrogen anatomi och förklaring av fynden.</p>'
         marker='<section class="section" id="kallor"'
         i=s.index(marker);j=s.index('</h2>',i) if '</h2>' in s[i:s.index('</section>',i)] else -1
         if j>=0:s=s[:j+5]+link+s[j+5:]

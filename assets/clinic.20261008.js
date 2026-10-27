@@ -5,7 +5,7 @@
   const $ = (s, root = document) => root.querySelector(s);
   const $$ = (s, root = document) => Array.from(root.querySelectorAll(s));
   const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const arrow = '<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>';
+  const arrow = '';
   const booking = 'https://www.bokadirekt.se/places/kansei-rehabcenter-48847';
   const featureUrls={...(document.currentScript?.dataset || {})};
   const preview = window.KanseiPreview || null;

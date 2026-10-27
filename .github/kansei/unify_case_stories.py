@@ -14,7 +14,7 @@ CSS = '/assets/case-story.20261022.css'
 VOID = set('area base br col embed hr img input link meta param source track wbr'.split())
 FACTS = {
     'axel/bicepstendinopati': ('Bicepssenan i axeln', 'Strukturförändrad sena och senskidevätska', 'Anpassad belastning och gradvis träning'),
-    'axel/pectoralisruptur': ('Stora bröstmuskeln och dess sena', 'Partiell muskelskada; senfästet bedöms separat', 'Bedöma omfattningen före återgång till tung press'),
+    'axel/pectoralisruptur': ('Stora bröstmuskeln och dess sena', 'Partiell muskelskada. Senfästet bedöms separat', 'Bedöma omfattningen före återgång till tung press'),
     'axel/ac-ledsskada': ('AC-led och omgivande mjukdelar efter fall', 'Förändrat ledläge och skadade mjukdelar', 'Anpassad belastning, rehabilitering och uppföljning'),
     'hand-handled/karpaltunnelsyndrom': ('Medianusnerven i karpaltunneln', 'Lokal kompression vid karpalligamentet', 'Råd, avlastning och ställningstagande till vidare vård'),
     'kalkaxel': ('Supraspinatussenan i axeln', 'Kalkinlagringar och rupturområden', 'Bedöma senskadan och anpassa belastning och rehab'),
@@ -215,7 +215,7 @@ def unify(source, key):
     source = source[:nav.start] + replacement + source[nav.end:]
     if 'class="case-library-back"' not in source:
         marker = source.index('<nav class="case-page-nav"')
-        source = source[:marker] + '<a class="case-library-back" href="/ultraljud/bilder/">← Alla patientfall</a>' + source[marker:]
+        source = source[:marker] + '<a class="case-library-back" href="/ultraljud/bilder/">Alla patientfall</a>' + source[marker:]
 
     tree = Tree(source)
     changes = []

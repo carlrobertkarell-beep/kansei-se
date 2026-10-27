@@ -1,17 +1,17 @@
 {
   "ultraljud/": {
     "role": "examination-hub",
-    "title": "Ultraljud Stockholm – muskler och leder | Kansei",
+    "title": "Ultraljud av muskler och leder i Stockholm, 1 290 kr | Kansei",
     "description": "Boka diagnostiskt ultraljud av knä, axel, höft, senor och muskler vid Odenplan i Stockholm. Klinisk bedömning ingår. 1 290 kr, 45 min, utan remiss."
   },
   "ultraljud/axel/": {
     "role": "regional-examination",
-    "title": "Ultraljud axel Stockholm – 1 290 kr, utan remiss | Kansei",
+    "title": "Ultraljud av axel i Stockholm utan remiss, 1 290 kr | Kansei",
     "description": "Ont när du lyfter armen eller ligger på axeln? Boka axelultraljud vid Odenplan i Stockholm. Klinisk bedömning och genomgång av fynd. 1 290 kr, 45 min."
   },
   "ultraljud/kna/": {
     "role": "regional-examination",
-    "title": "Ultraljud knä Stockholm – 1 290 kr, utan remiss | Kansei",
+    "title": "Ultraljud av knä i Stockholm utan remiss, 1 290 kr | Kansei",
     "description": "Ont i knät, svullnad eller knöl i knävecket? Boka knäultraljud vid Odenplan i Stockholm. Klinisk bedömning och genomgång av fynd. 1 290 kr, utan remiss."
   },
   "ultraljud/hoft-ljumske/": {
@@ -21,7 +21,7 @@
   },
   "ultraljud/armbage/": {
     "role": "regional-examination",
-    "title": "Ultraljud armbåge Stockholm – utan remiss | Kansei",
+    "title": "Ultraljud av armbåge i Stockholm utan remiss | Kansei",
     "description": "Ont på armbågens utsida, insida eller vid senfästet? Boka ultraljud av armbågen i Stockholm. Bedömning och genomgång av fynd. 1 290 kr, 45 min."
   },
   "ultraljud/hand-handled/": {
@@ -36,17 +36,17 @@
   },
   "ultraljud/lar-muskulatur/": {
     "role": "regional-examination",
-    "title": "Ultraljud lår Stockholm – muskler och senor | Kansei",
+    "title": "Ultraljud av lårets muskler och senor i Stockholm | Kansei",
     "description": "Smärta i lårets fram- eller baksida efter träning eller skada? Boka riktat ultraljud av lårmuskler i Stockholm. 1 290 kr, 45 min, utan remiss."
   },
   "ultraljud/overarm/": {
     "role": "regional-examination",
-    "title": "Ultraljud överarm Stockholm – utan remiss | Kansei",
+    "title": "Ultraljud av överarm i Stockholm utan remiss | Kansei",
     "description": "Ont i överarmen eller misstänkt bristning i biceps eller triceps? Boka riktat ultraljud vid Odenplan i Stockholm. 1 290 kr, 45 min, utan remiss."
   },
   "ultraljud/underarm/": {
     "role": "regional-examination",
-    "title": "Ultraljud underarm Stockholm – utan remiss | Kansei",
+    "title": "Ultraljud av underarm i Stockholm utan remiss | Kansei",
     "description": "Smärta i underarmen vid grepp, lyft eller träning? Boka riktat ultraljud av muskler och senor i Stockholm. 1 290 kr, 45 min, utan remiss."
   },
   "ultraljud/underben/": {
@@ -83,12 +83,12 @@
   },
   "ultraljud/glutealsenor/": {
     "role": "focused-examination",
-    "title": "Ultraljud höftens utsida Stockholm – glutealsenor | Kansei",
+    "title": "Ultraljud av glutealsenor på höftens utsida i Stockholm | Kansei",
     "description": "Ont på utsidan av höften vid gång eller sidoliggande? Läs om ultraljud av glutealsenor och slemsäckar. Boka vid Odenplan i Stockholm. 1 290 kr."
   },
   "ultraljud/halsena/": {
     "role": "focused-examination",
-    "title": "Ultraljud hälsena Stockholm – utan remiss | Kansei",
+    "title": "Ultraljud av hälsena i Stockholm utan remiss | Kansei",
     "description": "Ont eller stelt i hälsenan? Boka ultraljud av akillessenan vid Odenplan i Stockholm. Klinisk undersökning och råd om nästa steg. 1 290 kr, 45 min.",
     "heading": "Ultraljud av hälsenan i Stockholm"
   },
@@ -106,7 +106,7 @@
     "role": "focused-examination",
     "title": "Ultraljud vid hopparknä Stockholm | Kansei",
     "description": "Ont under knäskålen vid hopp eller löpning? Läs när ultraljud av patellarsenan kan vara relevant vid hopparknä. Odenplan, Stockholm. 1 290 kr.",
-    "heading": "Ultraljud vid hopparknä – patellarsenan"
+    "heading": "Ultraljud av patellarsenan vid hopparknä"
   },
   "ultraljud/plantarfascia/": {
     "role": "focused-examination",
@@ -122,7 +122,7 @@
   },
   "ultraljud/rotatorkuff/": {
     "role": "focused-examination",
-    "title": "Ultraljud rotatorkuff Stockholm – axelns senor | Kansei",
+    "title": "Ultraljud av axelns rotatorkuffsenor i Stockholm | Kansei",
     "description": "Svaghet eller smärta när du lyfter armen? Läs vad ultraljud av rotatorkuffen kan visa vid misstänkt senskada. Boka i Stockholm. 1 290 kr, 45 min."
   },
   "ultraljud/svullet-kna/": {
@@ -142,22 +142,22 @@
   },
   "ultraljud/bilder/": {
     "role": "case-library",
-    "title": "Ultraljudsbilder – egna fall med anatomi och fynd | Kansei",
-    "description": "Se Kanseis egna ultraljudsfall från knä, axel, höft, armbåge och hälsena. Jämför ultraljud, anatomi och fynd och läs om bedömning och nästa steg."
+    "title": "Patientfall med ultraljud, anatomi och fynd | Kansei",
+    "description": "Följ Kanseis patientfall med ultraljud och läs om besvären, vad vi såg och vad vi gjorde. Se originalbilder, anatomilager, filmer och nästa steg i bedömningen."
   },
   "ultraljud/axel/ac-ledsskada/": {
     "role": "case",
-    "title": "AC-ledsskada efter fall – ultraljud och bedömning | Kansei",
+    "title": "Ultraljud och bedömning av AC-ledsskada efter fall | Kansei",
     "description": "Ont ovanpå axeln efter ett fall? Följ Kanseis bildfall med AC-ledsskada, sidjämförelse och klinisk bedömning. Läs om undersökning och nästa steg."
   },
   "ultraljud/axel/bicepstendinopati/": {
     "role": "case",
-    "title": "Bicepssenan på ultraljud – ont framtill i axeln | Kansei",
+    "title": "Bicepssenan på ultraljud vid smärta framtill i axeln | Kansei",
     "description": "Se Kanseis egna ultraljudsbilder av bicepssenan vid främre axelsmärta. Utforska anatomi, vätska och senfynd och läs hur de vägs mot funktionen."
   },
   "ultraljud/axel/pectoralisruptur/": {
     "role": "case",
-    "title": "Bröstmuskelskada efter bänkpress – ultraljud | Kansei",
+    "title": "Ultraljud av bröstmuskelskada efter bänkpress | Kansei",
     "description": "Plötslig smärta vid bänkpress? Se ett bildfall med pectoralisskada, ultraljud och anatomilager. Läs om bedömning och när skyndsam vård behövs."
   },
   "ultraljud/bursit-axel/": {
@@ -167,17 +167,17 @@
   },
   "ultraljud/glutealsenor/bilder/": {
     "role": "case",
-    "title": "Höftens utsida på ultraljud – senor och cysta | Kansei",
-    "description": "Följ ett patientfall med långvarig smärta på höftens utsida: glutealsenor, paralabral cysta och varför naprapatisk vård valdes som första steg."
+    "title": "Senor och cysta på höftens utsida med ultraljud | Kansei",
+    "description": "Följ ett patientfall med långvarig smärta på höftens utsida. Se glutealsenor och en paralabral cysta och läs om varför naprapatisk vård valdes som första steg."
   },
   "ultraljud/halsena/bilder/": {
     "role": "case",
-    "title": "Hälsena på ultraljud – tendinos, rupturer och kalk | Kansei",
+    "title": "Hälsena på ultraljud vid tendinos, rupturer och kalk | Kansei",
     "description": "Se egna ultraljud av hälsenetendinos, rupturområden och kalk. Jämför med frisk sena, utforska Doppler och läs hur fynden används i bedömningen."
   },
   "ultraljud/hand-handled/karpaltunnelsyndrom/": {
     "role": "case",
-    "title": "Karpaltunnel på ultraljud – medianusnerven | Kansei",
+    "title": "Medianusnerven i karpaltunneln på ultraljud | Kansei",
     "description": "Se medianusnerven och karpalligamentet i Kanseis egna ultraljudsbilder. Läs hur nervfynd, symtom och funktion behöver bedömas tillsammans."
   },
   "ultraljud/hoftled/bilder/": {
@@ -187,22 +187,22 @@
   },
   "ultraljud/kalkaxel/": {
     "role": "case-and-examination",
-    "title": "Ultraljud kalkaxel Stockholm – bilder och bedömning | Kansei",
+    "title": "Bilder och bedömning av kalkaxel med ultraljud i Stockholm | Kansei",
     "description": "Se kalk i supraspinatussenan och samtidiga rupturområden på ultraljud. Läs om bedömning och boka undersökning av axeln vid Odenplan i Stockholm."
   },
   "ultraljud/kna/forkalkad-menisk/": {
     "role": "case",
-    "title": "Förkalkad menisk och kalk i brosket – bildfall | Kansei",
+    "title": "Bildfall med förkalkad menisk och kalk i brosket | Kansei",
     "description": "Se frisk och förkalkad menisk samt kalk i knäts ledbrosk på ultraljud. Kanseis egna bilder med anatomi, fynd och förklaring av fortsatt bedömning."
   },
   "ultraljud/loparkna/": {
     "role": "case",
-    "title": "Löparknä på ultraljud – IT-band och slemsäck | Kansei",
+    "title": "IT-band och slemsäck vid löparknä på ultraljud | Kansei",
     "description": "Ont på utsidan av knät vid löpning? Se Kanseis egna ultraljud av IT-band och slemsäck. Läs hur fynden kopplas till undersökning och en fortsatt plan."
   },
   "ultraljud/tennisarmbage/bilder/": {
     "role": "case",
-    "title": "Tennisarmbåge på ultraljud – frisk och skadad sena | Kansei",
+    "title": "Frisk och skadad sena vid tennisarmbåge på ultraljud | Kansei",
     "description": "Se frisk och förändrad extensorsena på ultraljud vid tennisarmbåge. Kanseis egna bilder med tendinos, rupturområden, anatomi och klinisk förklaring."
   }
 }

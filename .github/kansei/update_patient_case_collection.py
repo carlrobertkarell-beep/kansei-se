@@ -11,8 +11,8 @@ import xml.etree.ElementTree as ET
 from build_knee_hyaluron_case import PATH, ASSETS, URL, HEADER, build
 
 ROOT = Path(__file__).resolve().parents[2]
-TITLE = 'Patientfall med ultraljud – anatomi och fynd | Kansei'
-DESCRIPTION = 'Följ Kanseis patientfall med ultraljud: besvären, vad vi såg och vad vi gjorde. Se originalbilder, anatomilager, filmer och nästa steg i bedömningen.'
+TITLE = 'Patientfall med ultraljud, anatomi och fynd | Kansei'
+DESCRIPTION = 'Följ Kanseis patientfall med ultraljud och läs om besvären, vad vi såg och vad vi gjorde. Se originalbilder, anatomilager, filmer och nästa steg i bedömningen.'
 
 
 def rename_collection_links():
@@ -23,7 +23,7 @@ def rename_collection_links():
             replacements = {
                 'Ultraljud i bild':'Patientfall',
                 'Alla bildfall':'Alla patientfall',
-                'Alla bildexempel:':'Alla patientfall:',
+                'Alla bildexempel:':'Alla patientfall',
                 'Till bildöversikten':'Till patientfallen',
                 'Utforska bildexemplen':'Utforska patientfallen',
                 'Utforska alla undersökningsfall':'Utforska alla patientfall',
@@ -42,7 +42,7 @@ def collection():
     path = ROOT/'ultraljud/bilder/index.html'
     source = path.read_text()
     if PATH not in source:
-        card = f'''<article class="atlas-entry" data-atlas-entry data-region="kna" data-symptoms="gang traning" data-search="knä knäsmärta artros långvarig kortison kortisoninjektioner hjälper inte ledband inre ledbandet uttänjt bristningar brosk hyaluron hyaluronsyra sinovial synovial promenad trappor stol"><div class="atlas-thumb" aria-hidden="true"><img src="{ASSETS}medial.original.jpg" alt="" width="1280" height="960" loading="lazy" decoding="async"{HEADER}/></div><div class="atlas-entry-copy"><small>Knä · Artros, ledband och hyaluron</small><h4><a href="{PATH}" data-atlas-case>Knäsmärta som kvarstår trots kortison?</a></h4><span class="atlas-case-type">Patientfall från Kansei</span><p>Följ kvinnans undersökning med artrosförändringar och skada i det inre ledbandet. Se anatomilagren och en ultraljudsvägledd hyaluroninjektion.</p><a class="atlas-image-shortcut" href="{PATH}#bilder">Direkt till bilder och fynd →</a></div></article>'''
+        card = f'''<article class="atlas-entry" data-atlas-entry data-region="kna" data-symptoms="gang traning" data-search="knä knäsmärta artros långvarig kortison kortisoninjektioner hjälper inte ledband inre ledbandet uttänjt bristningar brosk hyaluron hyaluronsyra sinovial synovial promenad trappor stol"><div class="atlas-thumb" aria-hidden="true"><img src="{ASSETS}medial.original.jpg" alt="" width="1280" height="960" loading="lazy" decoding="async"{HEADER}/></div><div class="atlas-entry-copy"><small>Knä · Artros, ledband och hyaluron</small><h4><a href="{PATH}" data-atlas-case>Knäsmärta som kvarstår trots kortison?</a></h4><span class="atlas-case-type">Patientfall från Kansei</span><p>Följ kvinnans undersökning med artrosförändringar och skada i det inre ledbandet. Se anatomilagren och en ultraljudsvägledd hyaluroninjektion.</p><a class="atlas-image-shortcut" href="{PATH}#bilder">Direkt till bilder och fynd</a></div></article>'''
         start = source.index('id="omrade-kna"')
         end = source.index('</div></section>',start)
         source = source[:end]+card+source[end:]
@@ -51,7 +51,7 @@ def collection():
     source = source.replace('<span>Bildexempel</span>','<span>Patientfall</span>')
     source = source.replace('KANSEIS EGNA ULTRALJUDSBILDER','FRÅN UNDERSÖKNING TILL FORTSATT PLAN')
     source = source.replace('Se och förstå<br><span>ultraljud.</span>','Patientfall med<br> <span>ultraljud.</span>')
-    source = source.replace('Följ våra egna undersökningsfall från vardagsrörelse till bilder, klinisk bedömning och nästa steg.','Följ våra patientfall: besvären, vad vi såg och vad vi gjorde – från undersökning till fortsatt plan.')
+    source = source.replace('Följ våra egna undersökningsfall från vardagsrörelse till bilder, klinisk bedömning och nästa steg.','Följ våra patientfall och läs om besvären, vad vi såg och vad vi gjorde från undersökning till fortsatt plan.')
     source = source.replace('Inget bildexempel matchar ditt val ännu.','Inget patientfall matchar ditt val ännu.')
     source = source.replace('Visa alla bildexempel','Visa alla patientfall').replace('Hitta bildfall efter besvär','Hitta patientfall efter besvär')
     def meta(match):
@@ -92,7 +92,7 @@ def contextual_links():
     for relative,anchor in [('ultraljud/kna/index.html','kallor'),('hyaluronsyra/kna/index.html','ultraljudsexempel')]:
         path=ROOT/relative;source=path.read_text()
         if PATH in source:continue
-        paragraph=f'<p><a href="{PATH}">Patientfall: knäsmärta trots kortison →</a> Följ en kvinnas undersökning med artrosförändringar och skada i det inre ledbandet. Se anatomilagren och den ultraljudsvägledda hyaluroninjektionen.</p>'
+        paragraph=f'<p><a href="{PATH}">Läs patientfallet om knäsmärta trots kortison</a> Följ en kvinnas undersökning med artrosförändringar och skada i det inre ledbandet. Se anatomilagren och den ultraljudsvägledda hyaluroninjektionen.</p>'
         start=source.index('id="'+anchor+'"');end=source.index('</section>',start)
         index=source.index('<ul',start) if anchor=='kallor' else end
         source=source[:index]+paragraph+source[index:]

@@ -382,7 +382,7 @@ def check(base, output):
                         if visible.count() != total or search.input_value():
                             row["errors"].append("Knowledge search reset failed")
                         search.fill("halseneruptur")
-                        if visible.count() != 1 or "Misstänkt hälseneruptur" not in visible.inner_text():
+                        if visible.count() != 1 or visible.locator('a[href="/blogg/misstankt-halseneruptur/"]').count() != 1:
                             row["errors"].append("Accent-insensitive article search failed")
                         search.fill("")
                         if page.locator("[data-library-count]").inner_text() != f"{total} artiklar":

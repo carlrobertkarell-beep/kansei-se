@@ -240,5 +240,6 @@ if __name__ == "__main__":
     check_static()
     import runpy
     runpy.run_path(str(ROOT / '.github/scripts/check-visibility.py'), run_name='__main__')
+    runpy.run_path(str(ROOT / '.github/scripts/check-video-watch-pages.py'), run_name='__main__')
     if args.live:
         check_live()

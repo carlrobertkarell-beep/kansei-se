@@ -27,6 +27,7 @@ class Media(HTMLParser):
     def __init__(self, source: str):
         super().__init__(convert_charrefs=True)
         self.main = False
+        self.watch_page = False
         self.images: set[str] = set()
         self.sources: set[str] = set()
         self.blocks: list[dict] = []
@@ -37,6 +38,7 @@ class Media(HTMLParser):
         attrs = dict(attrs)
         if tag == 'main':
             self.main = True
+            self.watch_page = bool({'film-watch', 'video-watch-page'} & set(attrs.get('class', '').split()))
         if self.main and tag == 'img':
             src = urljoin(ORIGIN, attrs.get('src', ''))
             if urlsplit(src).path.startswith(('/bilder/ultraljud/', '/bilder/produkter/')):
@@ -84,6 +86,10 @@ def generate():
             image = ET.SubElement(entry, '{' + IMAGE + '}image')
             ET.SubElement(image, '{' + IMAGE + '}loc').text = src
             image_count += 1
+        # Supplementary players stay on case/service pages. Advertise the single
+        # prominent player on each video's dedicated watch page to Google.
+        if not media.watch_page:
+            continue
         seen = set()
         for block in media.blocks:
             for item in block.get('@graph', [block]):

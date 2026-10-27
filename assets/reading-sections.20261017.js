@@ -10,7 +10,7 @@
  const row=document.createElement('span');row.className='wrap reading-position-row';
  const caption=document.createElement('span');caption.className='reading-position-caption';caption.textContent='Du läser';
  const current=document.createElement('span');current.className='reading-position-current';
- const action=document.createElement('span');action.className='reading-position-action';action.innerHTML='<span>Byt avsnitt </span><b aria-hidden="true">⌄</b>';
+ const action=document.createElement('span');action.className='reading-position-action';action.innerHTML='<span>Byt avsnitt</span>';
  row.append(caption,current,action);summary.append(row);
  const nav=document.createElement('nav');nav.className='wrap reading-position-links';nav.setAttribute('aria-label','Hoppa till ett avsnitt på sidan');
  const links=sections.map((section,index)=>{

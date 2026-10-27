@@ -206,7 +206,7 @@ REGIONS = {
 }
 
 REGION_COPY = {
- 'underarm': ('Strukturer i underarm', 'Ont i underarmen – vad kan undersökas?',
+ 'underarm': ('Strukturer i underarm', 'Vad kan undersökas vid smärta i underarmen?',
      'Frågeställningen styr', 'Smärta vid grepp, vridning eller träning?',
      'Flexor- och extensormuskulatur, senor, myotendinösa övergångar och ytliga nerver.',
      'Vid lokal smärta i underarmen kan vi undersöka tillgängliga böj- och sträckmuskler, senor och övergångar mellan muskel och sena. Besvärens läge och den kliniska undersökningen styr vad vi tittar på.'),
@@ -268,7 +268,7 @@ def region_page(key: str):
         blocks += ''.join(f'<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>' for q, a in REGION_FAQS[key])
         blocks += '</section>'
     if key != 'axel' and 'id="boka-ultraljud"' not in value:
-        blocks += f'<section class="section us-booking-next" id="boka-ultraljud" data-reading-section data-reading-title="Pris och bokning"><p class="eyebrow">KANSEI · ODENPLAN, STOCKHOLM</p><h2>Få dina besvär i {area} undersökta.</h2><p>Klinisk undersökning, riktat ultraljud och genomgång av fynden vid samma besök. Du får råd om nästa steg och behöver ingen remiss.</p><p><strong>1 290 kr · 45 minuter</strong><br>Upplandsgatan 26, Odenplan. På Bokadirekt väljer du ”Ultraljud av rörelseapparaten”.</p><div class="us-booking-actions"><a class="button button-dark" href="{BOOK}" target="_blank" rel="noopener noreferrer" data-measure="booking_click">Boka ultraljud av {area} →</a><a class="text-link" href="/hjalp-mig-boka/">Hjälp mig välja besök →</a></div></section>'
+        blocks += f'<section class="section us-booking-next" id="boka-ultraljud" data-reading-section data-reading-title="Pris och bokning"><p class="eyebrow">KANSEI · ODENPLAN, STOCKHOLM</p><h2>Få dina besvär i {area} undersökta.</h2><p>Klinisk undersökning, riktat ultraljud och genomgång av fynden vid samma besök. Du får råd om nästa steg och behöver ingen remiss.</p><p><strong>1 290 kr · 45 minuter</strong><br>Upplandsgatan 26, Odenplan. På Bokadirekt väljer du ”Ultraljud av rörelseapparaten”.</p><div class="us-booking-actions"><a class="button button-dark" href="{BOOK}" target="_blank" rel="noopener noreferrer" data-measure="booking_click">Boka ultraljud av {area}</a><a class="text-link" href="/hjalp-mig-boka/">Hjälp mig välja besök</a></div></section>'
     if blocks:
         value, count = re.subn(r'(?=<section\b[^>]*\bid="fler-omraden")', lambda m: blocks, value, count=1)
         assert count == 1, path
@@ -301,7 +301,7 @@ def new_guide():
     value = value.replace(ORIGIN + '/kunskapsbank/kna/ont-i-knat-i-trappor/', ORIGIN + GUIDE)
     page_schema = {'@context': 'https://schema.org', '@graph': [
         {'@type': 'MedicalWebPage', '@id': ORIGIN + GUIDE + '#webpage', 'url': ORIGIN + GUIDE,
-         'name': 'Ont på utsidan av knät – vad kan det bero på?', 'inLanguage': 'sv-SE',
+         'name': 'Vad kan smärta på utsidan av knät bero på?', 'inLanguage': 'sv-SE',
          'datePublished': DAY, 'dateModified': DAY,
          'author': {'@id': ORIGIN + '/team/carl-robert-karell/#person'},
          'isPartOf': {'@id': ORIGIN + '/#website'}, 'breadcrumb': {'@id': ORIGIN + GUIDE + '#breadcrumb'},
@@ -316,7 +316,7 @@ def new_guide():
     ]}
     value = value.replace('</head>', '<script type="application/ld+json">'
                           + json.dumps(page_schema, ensure_ascii=False) + '</script></head>', 1)
-    spec = {'title': 'Ont på utsidan av knät – orsaker och bedömning | Kansei',
+    spec = {'title': 'Ont på utsidan av knät och möjliga orsaker | Kansei',
             'description': 'Ont på utsidan av knät när du springer, går eller böjer benet? Läs om möjliga orsaker, vad ultraljud kan visa och bedömning hos Kansei i Stockholm.'}
     save(path, metadata(add_css(value), GUIDE.lstrip('/'), spec, sync_faq=True))
 
@@ -333,7 +333,7 @@ def link_guide():
     path = 'ultraljud/loparkna/index.html'
     value = (ROOT / path).read_text()
     if f'href="{GUIDE}"' not in value:
-        paragraph = f'<p class="knee-small">Vill du börja med symtomen? Läs guiden <a href="{GUIDE}">ont på utsidan av knät – löpning, skada och nästa steg</a>. Här nedan förklarar vi våra undersökningsbilder.</p>'
+        paragraph = f'<p class="knee-small">Vill du börja med symtomen? Läs guiden <a href="{GUIDE}">löpning, skada och nästa steg vid smärta på utsidan av knät</a>. Här nedan förklarar vi våra undersökningsbilder.</p>'
         value, count = re.subn(r'(<section\b[^>]*\bid="igenkanning"[^>]*>.*?)(</section>)',
                               lambda m: m[1] + paragraph + m[2], value, count=1, flags=re.S)
         assert count == 1
@@ -342,14 +342,14 @@ def link_guide():
     path = 'kunskapsbank/kna/index.html'
     value = (ROOT / path).read_text()
     if f'href="{GUIDE}"' not in value:
-        card = f'<a class="hub-guide" href="{GUIDE}"><span class="eyebrow">GUIDE / KNÄ</span><h3>Ont på utsidan av knät</h3><p>Löprelaterad smärta, besvär efter en vridning och när ultraljud kan tillföra något.</p><span class="reading-cta">Läs guiden →</span></a>'
+        card = f'<a class="hub-guide" href="{GUIDE}"><span class="eyebrow">GUIDE / KNÄ</span><h3>Ont på utsidan av knät</h3><p>Löprelaterad smärta, besvär efter en vridning och när ultraljud kan tillföra något.</p><span class="reading-cta">Läs guiden</span></a>'
         value = value.replace('<div class="hub-grid">', '<div class="hub-grid">' + card, 1)
         value = value.replace('9 guider', '10 guider', 1)
     save(path, value)
     path = 'kunskapsbank/index.html'
     value = (ROOT / path).read_text()
     if f'href="{GUIDE}"' not in value:
-        card = f'<article class="knowledge-result" data-category="Knä &amp; höft" data-library-card data-search="Ont på utsidan av knät löparknä löpning vridning undersökning ultraljud"><span class="eyebrow">Knä &amp; höft</span><h2><a href="{GUIDE}">Ont på utsidan av knät – vad kan det bero på?</a></h2><p>Så skiljer sig frågor om löparknä, skada och svullnad. Läs om klinisk bedömning och vad ultraljud kan tillföra.</p><span aria-hidden="true" class="read-more">Läs artikeln ↗</span></article>'
+        card = f'<article class="knowledge-result" data-category="Knä &amp; höft" data-library-card data-search="Ont på utsidan av knät löparknä löpning vridning undersökning ultraljud"><span class="eyebrow">Knä &amp; höft</span><h2><a href="{GUIDE}">Vad kan smärta på utsidan av knät bero på?</a></h2><p>Så skiljer sig frågor om löparknä, skada och svullnad. Läs om klinisk bedömning och vad ultraljud kan tillföra.</p><span aria-hidden="true" class="read-more">Läs artikeln ↗</span></article>'
         value, count = re.subn(r'(?=<article\b[^>]*class="knowledge-result")', lambda m: card, value, count=1)
         assert count == 1
     article_count = len(re.findall(r'<article\b[^>]*\bdata-library-card\b', value))
@@ -360,7 +360,7 @@ def link_guide():
     value = (ROOT / path).read_text()
     if f'href="{GUIDE}"' not in value:
         paragraph = f'<p>Smärta på utsidan behöver inte alltid vara löparknä. Läs vår guide om <a href="{GUIDE}">ont på utsidan av knät vid löpning, efter en skada eller tillsammans med svullnad</a>.</p>'
-        value, count = re.subn(r'(<h2\b[^>]*>Löparknä: smärta på knäts utsida</h2>)', lambda m: m[1] + paragraph, value, count=1)
+        value, count = re.subn(r'(<h2\b[^>]*>Löparknä ger smärta på knäts utsida</h2>)', lambda m: m[1] + paragraph, value, count=1)
         assert count == 1
     value = value.replace('Text uppdaterad 14 oktober 2026', 'Text uppdaterad 22 oktober 2026', 1)
     def update_article_date(match):
@@ -381,9 +381,9 @@ def hub():
     names = {
         '/ultraljud/halsena/': ('Ont i hälsenan', 'Stelhet och smärta bakom hälen vid belastning'),
         '/ultraljud/tennisarmbage/': ('Ont på utsidan av armbågen', 'Senfästet vid smärta när du greppar eller lyfter'),
-        '/ultraljud/plantarfascia/': ('Ont under hälen – hälsporre', 'När plantarfascian kan behöva undersökas'),
+        '/ultraljud/plantarfascia/': ('Hälsporre och smärta under hälen', 'När plantarfascian kan behöva undersökas'),
         '/ultraljud/glutealsenor/': ('Ont på utsidan av höften', 'Senfästen och slemsäckar kring höften'),
-        '/ultraljud/patellarsena/': ('Ont under knäskålen – hopparknä', 'Undersökning av patellarsenan vid belastningsbesvär'),
+        '/ultraljud/patellarsena/': ('Hopparknä och smärta under knäskålen', 'Undersökning av patellarsenan vid belastningsbesvär'),
         '/ultraljud/de-quervain/': ('Ont vid tummen och handleden', 'Tummens senor och senskidor')
     }
 
@@ -401,13 +401,13 @@ def hub():
         assert count == 1
     question = 'Är diagnostiskt ultraljud samma sak som ultraljudsbehandling?'
     if question not in value:
-        faq = f'<details><summary>{question}</summary><p>Hos Kansei använder vi diagnostiskt ultraljud för att undersöka muskler, senor, leder och vissa ytliga nerver. Du får bilderna förklarade och en klinisk bedömning. Ultraljudsbehandling är en annan användning av ljudvågor; besöket som beskrivs här är en undersökning.</p></details>'
+        faq = f'<details><summary>{question}</summary><p>Hos Kansei använder vi diagnostiskt ultraljud för att undersöka muskler, senor, leder och vissa ytliga nerver. Du får bilderna förklarade och en klinisk bedömning. Ultraljudsbehandling är en annan användning av ljudvågor. Besöket som beskrivs här är en undersökning.</p></details>'
         value, count = re.subn(r'(<div class="hub-faq-list">)(.*?)(</div>)', lambda m: m[1] + m[2] + faq + m[3], value, count=1, flags=re.S)
         assert count == 1
     save(path, value)
     path = 'ultraljud/bilder/index.html'
     value = (ROOT / path).read_text()
-    value = value.replace('href="/ultraljud/#boka-cta">Boka ultraljud →', f'href="{BOOK}" target="_blank" rel="noopener noreferrer" data-measure="booking_click">Boka ultraljud →', 1)
+    value = value.replace('href="/ultraljud/#boka-cta">Boka ultraljud', f'href="{BOOK}" target="_blank" rel="noopener noreferrer" data-measure="booking_click">Boka ultraljud', 1)
     if 'class="atlas-booking-note"' not in value:
         value = value.replace('<ul class="atlas-feature-list">', '<p class="atlas-booking-note">Ultraljud vid Odenplan i Stockholm · 1 290 kr, 45 minuter · Utan remiss.</p><ul class="atlas-feature-list">', 1)
     save(path, add_css(value))

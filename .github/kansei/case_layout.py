@@ -46,7 +46,7 @@ def polish_decision(section):
         else:
             label, title, link = 'Ultraljud', 'En riktad undersökning', 'Boka ultraljud'
         body = re.sub(r'<h3>.*?</h3>', '<h3>' + title + '</h3>', body, count=1)
-        body = re.sub(r'(<a\b[^>]*>).*?(</a>)', lambda m: m[1] + link + ' →' + m[2], body, count=1, flags=re.S)
+        body = re.sub(r'(<a\b[^>]*>).*?(</a>)', lambda m: m[1] + link + '' + m[2], body, count=1, flags=re.S)
         return '<article><p class="case-context-card-label">' + label + '</p>' + body + '</article>'
 
     care = re.sub(r'<article>(.*?)</article>', card, care, flags=re.S)

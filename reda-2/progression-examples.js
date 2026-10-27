@@ -1,7 +1,7 @@
 /* Fictional fixtures for interactive review and regression tests. Not patient protocols. */
 (function(root){'use strict';
 const profiles={
- daily:{name:'Vardagsfunktion',title:'Orka en längre promenad.',description:'Behov av stöd och tydlig guidning. Målet är en lättare vardag; åldern väljer inte träningsnivån.',options:{blueprintId:'knee_oa',capacity:'supported',stage:'protected',trainingHistory:'new',goalProfile:'daily',equipment:'home',guidance:'guided'}},
+ daily:{name:'Vardagsfunktion',title:'Orka en längre promenad.',description:'Behov av stöd och tydlig guidning. Målet är en lättare vardag. Åldern avgör inte träningsnivån.',options:{blueprintId:'knee_oa',capacity:'supported',stage:'protected',trainingHistory:'new',goalProfile:'daily',equipment:'home',guidance:'guided'}},
  hyrox:{name:'Hyrox',title:'Tillbaka till löpning och stationer.',description:'Hög träningsvana. Belastningen från löpning, styrka och stationsträning behöver vägas ihop. Detta visar en del av rehaben, inte ett komplett Hyroxprogram.',options:{blueprintId:'knee_pf',capacity:'high',stage:'higher',trainingHistory:'rehab_experienced',goalProfile:'hyrox',equipment:'gym',guidance:'trained'}},
  strength:{name:'Avancerad styrka',title:'Bygga vidare på hög kapacitet.',description:'En träningsvan person behöver en relevant utmaning och utrymme för återhämtning. Ett högt utgångsläge är inte i sig ett skäl att öka.',options:{blueprintId:'knee_pf',capacity:'high',stage:'build',trainingHistory:'rehab_experienced',goalProfile:'strength',equipment:'gym',guidance:'trained'}}
 };

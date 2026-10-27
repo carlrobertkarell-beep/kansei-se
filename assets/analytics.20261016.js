@@ -133,7 +133,7 @@
     panel.setAttribute('aria-labelledby','kansei-statistics-heading');
     panel.setAttribute('aria-describedby','kansei-statistics-description');
     panel.hidden = true;
-    panel.innerHTML = '<div class="kansei-statistics-inner"><div class="kansei-statistics-copy"><h2 id="kansei-statistics-heading">Valfri statistik</h2><p id="kansei-statistics-description">Google Analytics hjälper oss att förbättra hemsidan. Du kan ändra ditt val.</p></div><div class="kansei-statistics-controls"><div class="kansei-statistics-actions"><button type="button" data-statistics="no">Avstå</button><button type="button" data-statistics="yes">Godkänn</button></div><a class="kansei-statistics-info" href="/cookie/">Om cookies och ditt val <span aria-hidden="true">↗</span></a></div></div>';
+    panel.innerHTML = '<div class="kansei-statistics-inner"><div class="kansei-statistics-copy"><h2 id="kansei-statistics-heading">Valfri statistik</h2><p id="kansei-statistics-description">Google Analytics hjälper oss att förbättra hemsidan. Du kan ändra ditt val.</p></div><div class="kansei-statistics-controls"><div class="kansei-statistics-actions"><button type="button" data-statistics="no">Avstå</button><button type="button" data-statistics="yes">Godkänn</button></div><a class="kansei-statistics-info" href="/cookie/">Om cookies och ditt val</a></div></div>';
     document.body.append(panel);
     panel.addEventListener('click', e => {
       const button = e.target.closest('[data-statistics]');

@@ -49,7 +49,7 @@
     const old=element.id,next=old+'-zoom';element.id=next;
     picture.querySelectorAll('[filter]').forEach(path=>{if(path.getAttribute('filter')==='url(#'+old+')')path.setAttribute('filter','url(#'+next+')');});
    });
-   zoomFrame.dataset.key=panels[selected].dataset.key;zoomFrame.replaceChildren(picture);zoomTitle.textContent=tabs[selected].querySelector('strong').textContent+' – förstorad bild';
+   zoomFrame.dataset.key=panels[selected].dataset.key;zoomFrame.replaceChildren(picture);zoomTitle.textContent=tabs[selected].querySelector('strong').textContent+'. Förstorad bild';
    zoom.showModal();render();
   });
   zoom.querySelector('[data-knee-zoom-close]').addEventListener('click',()=>zoom.close());

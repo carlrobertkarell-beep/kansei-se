@@ -1,0 +1,27 @@
+/* Text labels and conventional link styling replace decorative direction arrows. */
+a.navigation-link{color:inherit;text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:.22em;text-decoration-skip-ink:auto;border-bottom:0}
+a.navigation-link:hover,a.navigation-link:focus-visible{text-decoration-thickness:2px!important}
+a.navigation-card :is(h2,h3,strong){text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.16em;text-decoration-skip-ink:auto}
+a.navigation-card:hover :is(h2,h3,strong),a.navigation-card:focus-visible :is(h2,h3,strong){text-decoration-thickness:2px}
+a.navigation-card.rel-row>span:first-child{text-decoration:underline;text-underline-offset:.22em}
+.text-link{border-bottom:0;text-decoration:underline;text-underline-offset:.22em;text-decoration-thickness:1px}
+:where(a,button,summary):focus-visible{outline:3px solid #a76d00;outline-offset:4px}
+.rel-arrow,.discovery-arrow{display:none}
+.editorial-body .rel-row,.rel-row{grid-template-columns:auto 1fr}
+.discovery-link h3,.discovery-link h2,.discovery-link>strong{text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+#site-menu .menu-primary>a.navigation-card strong{text-underline-offset:.16em}
+:where(details>summary){list-style:none}
+:where(details>summary)::-webkit-details-marker{display:none}
+:where(details:not(.reading-position)>summary)::after{content:'+';display:inline-block;margin-left:.75em;font-weight:400}
+:where(details[open]:not(.reading-position)>summary)::after{content:'−'}
+.clinic-site .reading-position-action span{display:inline!important}
+.clinic-site .reading-position-action b{display:none}
+.clinic-site .reading-position-action::after{content:'+';margin-left:.5em;font-size:16px}
+.clinic-site .reading-position[open] .reading-position-action::after{content:'−'}
+#plBladdra button{width:auto;min-width:44px;height:40px;border-radius:20px;font-size:.8rem;padding:0 12px}
+.navigation-action-label{font-family:inherit;font-weight:600;font-size:12px;line-height:1.35;white-space:nowrap}
+.icon-button:has(>.navigation-action-label),.player-back:has(>.navigation-action-label){width:auto;min-width:44px;padding-inline:10px}
+@media(max-width:640px){.editorial-body .rel-row,.rel-row{grid-template-columns:1fr}.clinic-site .reading-position-action{font-size:11px}.clinic-site .reading-position-caption{display:none}}
+
+.graph-step-label{font-size:12px;font-weight:600;color:inherit;align-self:center;text-align:center;padding:8px 4px}
+#closePlayer.player-icon{width:auto;min-width:62px;padding-inline:10px;font-family:inherit;font-size:12px;font-weight:600}

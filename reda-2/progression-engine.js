@@ -15,7 +15,7 @@ const messages={
  difficult:'Ett rapporterat pass möter inte villkoren för en ökning. Behåll den aktuella ordinationen medan underlaget följs upp.',
  evidence:'Fler avslutade träningsdagar med uppföljt svar behövs enligt den valda ramen.',time:'Mer tid på den här nivån behövs enligt den valda ramen.',
  ready:'Villkoren i testramen är uppfyllda. Nästa fördefinierade steg kan förhandsvisas.',
- complete:'Alla steg i ramen är prövade. En fortsatt väg behöver nya ramar; det betyder inte att rehabiliteringen är klar.'
+ complete:'Alla steg i ramen är prövade. En fortsatt väg behöver nya ramar. Det betyder inte att rehabiliteringen är klar.'
 };
 function canonical(x){if(Array.isArray(x))return '['+x.map(canonical).join(',')+']';if(x&&typeof x==='object')return '{'+Object.keys(x).filter(k=>x[k]!==undefined).sort().map(k=>JSON.stringify(k)+':'+canonical(x[k])).join(',')+'}';return JSON.stringify(x)}
 // Binding is a deterministic comparison key, not a signature or authorization proof.

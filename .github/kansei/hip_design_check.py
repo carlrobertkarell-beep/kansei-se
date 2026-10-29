@@ -13,7 +13,9 @@ def check_hip(page, output, label):
                 })};
     }''')
     assert abs(bounds['left'] - bounds['headingLeft']) < 2, 'Section navigation must align with the introduction'
-    assert len(bounds['links']) == 4 and all(r['height'] >= 43 for r in bounds['links']), 'Section links need separate touch targets'
+    targets = set(navigation.locator('a').evaluate_all('(links)=>links.map(a=>a.getAttribute("href"))'))
+    assert {'#patientfall', '#bilder', '#nasta-steg'} <= targets, 'Common case sections must be reachable'
+    assert all(r['height'] >= 43 for r in bounds['links']), 'Section links need separate touch targets'
     for previous, current in zip(bounds['links'], bounds['links'][1:]):
         if abs(previous['top'] - current['top']) < 2:
             assert current['left'] - previous['right'] >= 16, 'Section links must not run together'

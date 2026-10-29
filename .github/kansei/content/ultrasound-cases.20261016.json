@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16",
+  "updated": "2026-10-28",
   "cases": [
     {
       "key": "bursit", "path": "/ultraljud/bursit-axel/", "region": "axel", "story": "patientfall", "kind": "Illustrativt patientexempel",
@@ -10,7 +10,8 @@
       "key_title": "En enda vy berättar inte hela historien.",
       "key_text": "I bild 1–2 följer vätskan slemsäckens del under deltoideus och ned längs axelns utsida. I det valda supraspinatussnittet syns ingen tydlig vätskeutspänning ovanför senan. När proben flyttas blir utbredningen begriplig. Subscapularisbilden visar dessutom en senrest och kvarvarande fibrer i skadeområdet.",
       "implication": "Både slemsäcken och senornas funktion behöver tas med i planen. Styrka, rörlighet och vardagslyft avgör tillsammans med bilderna hur belastning, rehabilitering och eventuell vidare bedömning ska anpassas.",
-      "follow": "Vi följer sömn, armlyft, rörelse bakom ryggen och rotationsstyrka. I det illustrativa exemplet är detta mål för uppföljningen; något behandlingsresultat redovisas inte.",
+      "follow": "Vi följer sömn, armlyft, rörelse bakom ryggen och rotationsstyrka. I det illustrativa exemplet är detta mål för uppföljningen. Något behandlingsresultat redovisas inte.",
+      "education": {"intro": "Planen behöver förklara både slemsäcken och de skadade senorna. Det gör det lättare att förstå varför sömn, kraft och armens rörelser följs tillsammans.", "actions": ["Beskriv vilka lyft och sovställningar som är svåra.", "Följ den individuella belastningen och axelträningen efter bedömningen av senskadorna.", "Notera hur vardagslyft och rotation fungerar mellan besöken."]},
       "naprapati": "Få axelns rörelse, styrka och belastning bedömda och en plan för vardagen och rehabiliteringen.",
       "symptoms": ["lyft", "natt"], "search": "slemsäck bursit bursa subakromial subdeltoid supraspinatus subscapularis lyfter armen jacka sova sidan axelsmärta",
       "related": [["biceps", "Bicepssenan och senskidan vid liknande smärta under lyft."], ["kalkaxel", "Andra fynd i samma kroppsregion med kalk och skada i supraspinatussenan."]],
@@ -28,6 +29,7 @@
       "key_text": "De ljusa kalkinlagringarna och rupturområdena är olika fynd i samma supraspinatussena. Den friska jämförelsebilden hjälper dig att orientera dig. Filmerna kompletterar stillbilderna med fler snitt och en vy under rörelse.",
       "implication": "Behandlingsvalet behöver väga in senans tillstånd, kraft och rörlighet. Den mest iögonfallande kalken är en del av bedömningen. Även den omgivande senan behöver undersökas inför fortsatt rehabilitering eller annan behandling.",
       "follow": "I patientexemplet följs hur högt armen kan lyftas, nattsömnen och hur axeln reagerar på anpassad träning. Det beskriver vad som ska utvärderas, inte ett redovisat behandlingsresultat.",
+      "education": {"intro": "Patienten behöver kunna skilja kalken från senskadan och förstå vad träningsplanen tar hänsyn till. Den egna insatsen kopplas till hur armen fungerar.", "actions": ["Välj tillsammans med behandlaren en vardagsrörelse att följa, till exempel att nå en hylla.", "Följ de individuella råden om belastning, rörelse och styrka.", "Berätta hur sömnen och armens kraft förändras mellan besöken."]},
       "naprapati": "Undersök vilka rörelser som begränsar dig och få hjälp att anpassa belastning och axelträning efter bedömningen.",
       "symptoms": ["lyft", "natt"], "search": "kalkaxel kalkinlagring supraspinatus rotatorkuff ruptur lyfter armen hylla sidan sova natt",
       "related": [["bursit", "Se hur slemsäckens vätska kan ligga längre ned och utåt i axeln."], ["biceps", "Vid smärta framtill i axeln kan undersökningsfrågan gälla bicepssenan."]],
@@ -44,7 +46,8 @@
       "key_title": "Senan, senskidan och resten av axeln hör ihop.",
       "key_text": "Tvärsnittet visar senan och vätskan runt den. Längdsnittet följer förtjockningen längs senan och ger en jämförelse med den friska sidan. Dopplerfilmen visar blodflödessignaler som kompletterar strukturbedömningen.",
       "implication": "Vi kopplar fynden till var smärtan känns och hur lyft, styrka och rörelse fungerar. Då blir det lättare att välja vilka belastningar som behöver anpassas och hur axelträningen kan byggas upp.",
-      "follow": "Målen i exemplet är lättare vardagslyft och att kunna föra armen bakom kroppen. Funktion och reaktion efter träning följs upp; något senare behandlingsresultat anges inte.",
+      "follow": "Målen i exemplet är lättare vardagslyft och att kunna föra armen bakom kroppen. Funktion och reaktion efter träning följs upp. Något senare behandlingsresultat anges inte.",
+      "education": {"intro": "Förklaringen behöver visa var bicepssenan och senskidan ligger. Egeninsatsen kopplas till de lyft och rörelser som begränsar vardagen.", "actions": ["Beskriv vilka lyft och rörelser bakom kroppen som gör ont.", "Följ den överenskomna stegringen av rörelse och axelträning.", "Notera hur jackrörelsen och vanliga vardagslyft fungerar efter anpassad belastning."]},
       "naprapati": "Få hjälp att bedöma axelns funktion och planera stegvis återgång till de lyft och rörelser du behöver klara.",
       "symptoms": ["lyft"], "search": "biceps bicepstendinopati sena senskida vätska doppler framtill axel lyfter armen jacka bakåt",
       "related": [["bursit", "Se även vätska i slemsäcken under deltoideus."], ["ac", "Smärta ovanpå axeln efter ett fall ger en annan undersökningsfråga."]],
@@ -61,7 +64,8 @@
       "key_title": "Muskelbilderna och frågan om senfästet kompletterar varandra.",
       "key_text": "De två utvalda snitten visar skadade områden mellan bevarade muskelfibrer. Den samlade undersökningen bedömdes även tala för en partiell skada vid senfästet på överarmsbenet. Muskelbilderna visar därför en viktig del av undersökningen, men dokumenterar inte ensamma hela fästet.",
       "implication": "Skadans omfattning och kraftförlust styr vägen vidare. Tunga pressar pausas under bedömningen. Misstanke om större senfästesskada behöver skyndsam läkar- eller ortopedbedömning innan återgången till träning planeras.",
-      "follow": "Inför återgång till press följs rörelse, kraft och smärta vid belastning. Fallbeskrivningen redovisar undersökning och fortsatt plan; inget senare träningsresultat är dokumenterat här.",
+      "follow": "Inför återgång till press följs rörelse, kraft och smärta vid belastning. Fallbeskrivningen redovisar undersökning och fortsatt plan. Inget senare träningsresultat är dokumenterat här.",
+      "education": {"intro": "Det viktiga är att förstå vilken del av skadan som syns i muskelbilderna och varför senfästets funktion också behöver bedömas.", "actions": ["Avstå från tunga pressar medan skadans omfattning bedöms.", "Följ de individuella råden om rörlighet och lättare belastning.", "Beskriv kvarstående kraftförlust och vilka rörelser som fortfarande gör ont inför nästa bedömning."]},
       "naprapati": "Efter att skadans omfattning har bedömts kan belastning och rehabilitering planeras för en successiv återgång till träning.",
       "symptoms": ["lyft", "traning"], "search": "pectoralis major ruptur muskelbristning bänkpress styrketräning press blåmärke överarm armhåla",
       "related": [["biceps", "Vid belastningssmärta framtill i axeln kan frågan i stället gälla bicepssenan."], ["ac", "Jämför med ett fall där ett slag mot axeln skadade AC-leden."]],
@@ -79,6 +83,7 @@
       "key_text": "Bilderna visar förändrat läge mellan benytorna och skadade mjukdelar vid AC-leden. Jämförelsen med motsatt sida och mjukdelsvyn tillför olika information. Måtten behöver förstås ihop med hur fallet gick till, ömheten och armens funktion.",
       "implication": "I detta fall hade rörligheten börjat förbättras. Planen blev anpassad belastning och rehabilitering med uppföljning. Kvarstående instabilitet eller tydlig funktionsnedsättning kan ändra behovet av fortsatt medicinsk bedömning.",
       "follow": "Planerad uppföljning gällde rörlighet, smärta över leden och förmåga att klara vardag och träning. Ett senare behandlingsresultat finns inte redovisat i detta fall.",
+      "education": {"intro": "Förklaringen behöver koppla fyndet i leden ovanpå axeln till armens rörelser. Planen ska göra det tydligt hur belastningen kan återupptas.", "actions": ["Följ den anpassade belastningen och rehabiliteringen för axel och skulderblad.", "Jämför hur samma vardagsrörelser fungerar mellan besöken.", "Berätta om instabilitetskänsla eller försämrad funktion, så att planen kan omprövas."]},
       "naprapati": "Få axelns belastning och funktion bedömda och rehabiliteringen anpassad efter skadans omfattning och utveckling.",
       "symptoms": ["lyft", "efter-skada"], "search": "ac-led ac led nyckelben fall is halka ovanpå axeln över bröstet upphöjning knöl trauma skada",
       "related": [["pectoralis", "Se också ett fall med akut smärta under bänkpress och skada i bröstmuskeln."], ["bursit", "Axelbesvär kan också finnas utan något känt trauma. Här visas bursit och senskador."]],
@@ -96,6 +101,7 @@
       "key_text": "Ultraljudsbilden visar en lokal kompression vid karpalligamentet. Undersökningen behöver också följa symtomens fingermönster, känseln och tummens kraft. På så sätt kopplas den synliga passagen till det patienten upplever.",
       "implication": "Det hjälper till att välja fortsatt utredning och behandling. Vid lättare besvär kan anpassning och nattortos vara aktuellt. Ihållande känselbortfall eller ökande tumsvaghet behöver läkarbedömning. Neurografi kan komplettera bedömningen av nervfunktionen.",
       "follow": "I det illustrativa exemplet följs nattliga uppvaknanden, domningarnas varaktighet och handens känsel och grepp. Det är uppföljningsmål, inte dokumenterade behandlingsresultat.",
+      "education": {"intro": "Patienten behöver förstå både nervens passage på bilden och hur känsel och tummens styrka undersöks. Råden utgår från symtomens svårighetsgrad.", "actions": ["Notera vilka fingrar som domnar, när det händer och om besvären stör sömnen.", "Följ individuella råd om belastning och eventuell utprovad nattortos.", "Sök läkarbedömning vid ihållande känselbortfall eller tilltagande tumsvaghet."]},
       "naprapati": "Få symtomens utbredning och handens funktion bedömda, med ställningstagande till råd, avlastning och eventuell vidare vård.",
       "symptoms": ["domningar", "natt", "grepp"], "search": "karpaltunnel karpaltunnelsyndrom medianus stickningar domningar hand handen somnar natt natten tumme pekfinger långfinger känsel",
       "related": [["tennis", "Ont vid grepp kan också komma från armbågens senfäste. Se skillnaden i undersökningsfråga."], ["biceps", "Besvär längre upp i armen bedöms utifrån ett annat rörelse- och smärtmönster."]],
@@ -113,6 +119,7 @@
       "key_text": "Extensorsenan, kollateralligamentet och supinator ligger nära varandra men är olika strukturer. Den friska bilden hjälper dig att orientera dig. På den förändrade sidan är både tendinosområdet och rupturområdena utpekade inom senan.",
       "implication": "Planen kopplas till grepp, vardagslyft och den träning armen behöver klara. Belastningen kan anpassas och sedan byggas upp stegvis, med ny bedömning om symtom eller funktion utvecklas på ett oväntat sätt.",
       "follow": "I exemplet följs grepp, kaffekopp och matkasse samt toleransen för padelslag och reaktionen efter träning. Något senare behandlingsresultat anges inte.",
+      "education": {"intro": "En begriplig plan kopplar senfynden till grepp, vardagslyft och träning. Den egna insatsen handlar om hur armen används och belastningen byggs upp.", "actions": ["Anpassa de mest provocerande greppen enligt den individuella planen.", "Följ den stegvisa träningen för underarmens styrka och belastningstolerans.", "Jämför kaffekopp, matkasse och eventuella padelslag samt hur armbågen reagerar efteråt."]},
       "naprapati": "Få armbåge och underarm undersökta och en individuellt anpassad plan för grepp, styrka och återgång till aktivitet.",
       "symptoms": ["grepp", "lyft", "traning"], "search": "tennisarmbåge lateral epikondylalgi extensor senfäste grepp lyft tendinos ruptur kaffe kaffekopp matkasse bära padel backhand",
       "related": [["karpaltunnel", "Om handen också domnar blir nervens funktion en annan viktig undersökningsfråga."], ["biceps", "Vid smärta längre upp på armens framsida kan undersökningen riktas mot axeln och bicepssenan."]],
@@ -130,6 +137,7 @@
       "key_text": "I ITB-vyn ligger fickan under iliotibialbandet och har bedömts som en svullen slemsäck. Sidans andra bilder visar ledvätska respektive meniskens bakhorn. De exemplifierar andra fynd och ska inte läsas som tre bevis för samma löparknädiagnos.",
       "implication": "Vi kopplar undersökningen till smärtans plats och hur besvären utvecklas under löpningen. Därefter kan löpbelastning och styrke- och funktionsträning anpassas. Ett annat smärtmönster kan leda till en annan bedömning.",
       "follow": "I löparexemplet följs när smärtan kommer under rundan och hur knät reagerar efter den anpassade träningsdosen. Detta är mål för återgången, inte ett redovisat träningsresultat.",
+      "education": {"intro": "Förklaringen behöver skilja fickan under IT-bandet från sidans övriga knäfynd. Den egna planen kopplas till löpbelastningen och smärtans exakta plats.", "actions": ["Notera när under rundan smärtan börjar och var den sitter.", "Följ den anpassade löpmängden och de styrkeövningar som valts efter undersökningen.", "Ta med reaktionen efter löpningen till uppföljningen, så att återgången kan justeras."]},
       "naprapati": "Få hjälp med knäts funktion, belastningsplanering och en stegvis väg tillbaka till löpning utifrån undersökningen.",
       "symptoms": ["lopning", "traning"], "search": "löparknä itb iliotibialband it-band löpning springa springer jogga runda lateralt utsida knä bursa bursit",
       "related": [["kna", "Ett svullet knä med ledvätska och artrosfynd kräver en annan sammanvägning."], ["halsena", "Smärta bakom hälen vid löpning ger en annan undersökningsfråga. Se hälsenefallet."]],
@@ -140,13 +148,14 @@
     {
       "key": "kna", "path": "/ultraljud/kna/", "region": "kna", "story": "artros", "kind": "Patientfall och kompletterande bildexempel",
       "headline": "Svullnar knät och begränsar promenader eller trappor?",
-      "summary": "Se ledvätska, broskytor och benpålagringar och följ ett patientfall med knäartros. Bedömningen knyter ihop tidigare röntgen, knäts funktion, rehabilitering och möjlig hyaluronbehandling.",
+      "summary": "Se ledvätska, broskytor och benpålagringar och följ ett patientfall med knäartros. Bedömningen knyter ihop tidigare röntgen, knäts funktion, en genomförd Sinovialinjektion och fortsatt rehabilitering.",
       "recognition": ["Gå en längre promenad", "Ta trapporna lättare", "Träna med mindre reaktion i knät"],
       "question": "Var finns svullnaden, hur stämmer fynden med tidigare röntgen och vilka åtgärder kan underlätta vardagen?",
       "key_title": "Svullnaden, artrosfynden och vardagsfunktionen sätts ihop.",
       "key_text": "I patientfallet beskrivs ökad ledvätska, benpålagringar vid den mediala ledspringan och lokala broskförändringar. Tidigare röntgen och den kliniska undersökningen ger ytterligare delar av underlaget. Bildvisaren innehåller också kompletterande exempel på andra knäfynd.",
       "implication": "Fortsatt hjälp kan omfatta anpassad styrke- och funktionsträning och, för vissa med artrosrelaterad smärta, hyaluron som komplement. Hyaluron kan ge symtomlindring hos en del. Målet är lättare rörelse och bättre förutsättningar att vara aktiv. Behandlingsvalet görs individuellt och effekten följs upp.",
-      "follow": "Vi utvärderar promenader, trappor, svullnadsreaktion och träningsförmåga. Fallgenomgången beskriver en plan och möjlig behandling; något genomfört injektionsförlopp eller senare resultat påstås inte här.",
+      "follow": "Efter den genomförda Sinovialinjektionen följs promenader, trappor, svullnadsreaktion och träningsförmåga. Något senare behandlingsresultat redovisas inte i patientfallet.",
+      "education": {"intro": "Patienten behöver förstå injektionens mål och hur rehabiliteringen bidrar till funktionen. Den egna insatsen knyts till promenader, trappor och träning.", "actions": ["Följ den individuella planen för styrka, kontroll och successivt ökad belastning.", "Jämför samma promenad eller trappa över tid.", "Notera hur svullnaden och funktionen förändras efter aktivitet och ta med det till uppföljningen."]},
       "naprapati": "Få knäts rörelse och belastning undersökta och rehabiliteringen anpassad till det du vill kunna göra i vardagen.",
       "symptoms": ["svullnad", "gang", "traning"], "search": "svullet svullnad svullnar knäartros ledvätska bakercysta knäveck menisk brosk osteofyter promenad trappor hyaluron hyaluronsyra injektion sinovial sinogel",
       "related": [["loparkna", "Ont på knäts utsida under löpning kan leda till en annan riktad frågeställning."], ["halsena", "När frånskjut och promenader begränsas av hälen undersöks i stället hälsenans funktion."]],
@@ -163,7 +172,8 @@
       "key_title": "Flera slags förändringar kan finnas i samma sena.",
       "key_text": "Bildmaterialet visar ett mer uttalat tendinosområde, rupturområden och kalkinslag. Doppler/SMI-filmen kompletterar med kärlsignaler som undersökaren beskriver som neovaskularisering. Frisk sida, längdsnitt och tvärsnitt hjälper till att förstå vad som är sena och var förändringarna ligger.",
       "implication": "Senans funktion och rupturområdenas omfattning behöver bedömas inför belastningen. Därefter kan aktivitet och vadträning anpassas och följas över tid. Vid misstanke om akut eller större bristning behövs skyndsam medicinsk bedömning.",
-      "follow": "I patientexemplet följs gång, frånskjut och reaktion efter aktivitet. Målet är en belastning som senan klarar och en planerad återgång; något senare läknings- eller träningsresultat redovisas inte.",
+      "follow": "I patientexemplet följs gång, frånskjut och reaktion efter aktivitet. Målet är en belastning som senan klarar och en planerad återgång. Något senare läknings- eller träningsresultat redovisas inte.",
+      "education": {"intro": "Planen behöver förklara skillnaden mellan förändrad senstruktur och de rupturområden som undersökaren beskriver. Senans funktion och skadans omfattning styr hur träningen anpassas.", "actions": ["Följ den individuellt valda belastningen och vadträningen efter bedömningen.", "Lägg märke till gång, frånskjut och senans reaktion efter aktivitet.", "Följ den överenskomna stegringen i stället för att utgå från en enda bättre dag."]},
       "naprapati": "När skadans omfattning är bedömd kan du få hjälp med vadens funktion, belastningsanpassning och en individuellt vald rehabiliteringsplan.",
       "symptoms": ["lopning", "gang", "traning"], "search": "hälsena akillessena achilles akilles tendinos tendinopati kalk häl fot fotled doppler neovaskularisering kärl ruptur bristning stel morgon promenad frånskjut löpning springer",
       "related": [["loparkna", "Jämför med smärta vid löpning där undersökningen riktas mot knäts utsida."], ["tennis", "Se hur tendinos och rupturområden skiljs åt i en annan belastad sena."]],
@@ -171,5 +181,59 @@
       "faq": [["Visar kärlsignalerna i filmen att senan har läkt?", "Nej. Filmen visar blodflödessignaler i det undersökta området. Senans struktur, funktion och utveckling över tid behöver bedömas tillsammans. Signalerna är inte i sig ett läkningsbesked."], ["Varför behöver rupturområden bedömas före belastningsträning?", "Omfattningen och senans funktion påverkar vilken belastning som är lämplig. Vid misstanke om akut eller större bristning behövs skyndsam medicinsk bedömning. Träning anpassas därefter till undersökningsresultatet."]],
       "description": "Stel eller öm hälsena vid gång och löpning? Se Kanseis egna ultraljud av tendinos, rupturområden och kärlsignaler och följ vägen till bedömning och rehab."
     }
-  ]
+  ],
+  "additional_narratives": [
+  {
+    "path": "/ultraljud/glutealsenor/bilder/",
+    "kind": "Patientfall från Kansei",
+    "education": {
+      "intro": "Förklaringen behöver skilja fynden i glutealsenorna på höftens utsida från det separata cystfyndet framtill vid leden. Planen börjar med funktion och belastning.",
+      "actions": [
+        "Beskriv vilka vardagsaktiviteter som begränsas av smärtan på höftens utsida.",
+        "Följ den individuella planen för rörelse, funktion och belastning.",
+        "Notera vad som blir lättare eller svårare inför nästa bedömning."
+      ]
+    },
+    "follow": "Uppföljningen behöver utgå från smärtan på höftens utsida, höftens funktion och de aktiviteter patienten vill klara. Patienten sökte för en injektionskonsultation, men en injektion blev inte den första åtgärden. Något senare behandlingsresultat redovisas inte här."
+  },
+  {
+    "path": "/ultraljud/hoftled/bilder/",
+    "kind": "Patientfall från Kansei",
+    "education": {
+      "intro": "Patienten behöver kunna skilja ultraljudet före behandlingen från en senare bedömning av injektionens effekt. Bilderna är ingen före- och efterjämförelse.",
+      "actions": [
+        "Be om en tydlig plan för belastning och aktivitet efter den genomförda ledinjektionen.",
+        "Följ överenskomna vardagsmål för smärta, rörelse och funktion.",
+        "Ta med förändringar och eventuella besvär till den planerade uppföljningen."
+      ]
+    },
+    "follow": "Efter Sinogelinjektionen behöver smärta, rörelse och vardagsfunktion följas upp. Bildmaterialet visar undersökningen före behandlingen. Något senare behandlingsresultat redovisas inte."
+  },
+  {
+    "path": "/ultraljud/kna/forkalkad-menisk/",
+    "kind": "Illustrativt patientexempel",
+    "education": {
+      "intro": "Förklaringen behöver visa skillnaden mellan meniskens fiberbrosk och ledbrosket över benytan. Kalkfyndet i sig avgör inte vilken behandling som passar besvären.",
+      "actions": [
+        "Notera om obehaget kommer under promenaden, efteråt eller vid de första stegen efter vila.",
+        "Följ den individuella planen för aktivitet och gradvis träning efter bedömningen.",
+        "Berätta om återkommande svullnadsskov eller låsningar, så att orsaken kan bedömas vidare."
+      ]
+    },
+    "follow": "I det illustrativa exemplet följs gångsträcka, trappor, stelhet efter vila och knäts reaktion efter belastning. Det är mål för uppföljningen. Någon genomförd behandling eller effekt tillskrivs inte personen bakom bilderna."
+  },
+  {
+    "path": "/ultraljud/kna/artros-ledband-hyaluron/",
+    "kind": "Patientfall från Kansei",
+    "education": {
+      "intro": "En begriplig plan behöver skilja injektionens mål i själva leden från rehabiliteringen av hela knät. Ledbandsskadan behöver också tas med när belastning och träning anpassas.",
+      "actions": [
+        "Följ de individuella råden efter injektionen och planen för successiv styrketräning.",
+        "Jämför gång, trappgång och träning utifrån det som är viktigt i vardagen.",
+        "Notera om smärta eller svullnad förändras och ta med det till uppföljningen."
+      ]
+    },
+    "follow": "Efter den genomförda Sinovialinjektionen behöver gång, trappgång och träning följas tillsammans med smärta och svullnad. Effekten av injektionen behöver följas upp. Något senare behandlingsresultat redovisas inte här."
+  }
+]
 }

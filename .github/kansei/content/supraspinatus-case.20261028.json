@@ -1,0 +1,262 @@
+{
+  "views": [
+    {
+      "key": "sax-without",
+      "plane": "SAX",
+      "short": "SAX utan sena",
+      "title": "Tvärsnitt utan synlig supraspinatussena",
+      "source_bounds": [
+        82,
+        107,
+        1366,
+        937
+      ],
+      "scan": [
+        108,
+        112,
+        1171,
+        960
+      ],
+      "caption": "Supraspinatussenan saknas över ledhuvudet i den här vyn. Det utseendet kallas ibland bald head. Den vävnad som ligger ovanför brosket är markerad som subdeltoid fascia i undersökarens underlag.",
+      "copy": "Här visas rupturfyndet i tvärsnitt. Underhudsfett och deltoideus ligger ytligt. Djupare syns subdeltoid fascia och den tunna broskytan över humerus. Supraspinatussenan finns inte på sin förväntade plats.",
+      "labels": [
+        [
+          630,
+          145,
+          "Underhudsfett"
+        ],
+        [
+          585,
+          255,
+          "Deltoideus"
+        ],
+        [
+          565,
+          370,
+          "Subdeltoid fascia"
+        ],
+        [
+          705,
+          425,
+          "Brosk"
+        ],
+        [
+          665,
+          650,
+          "Humerus"
+        ]
+      ],
+      "findings": [
+        {
+          "path": "M460 705 L590 600 L690 385",
+          "end": [
+            690,
+            385
+          ],
+          "text": [
+            195,
+            746
+          ],
+          "label": "Supraspinatus saknas i vyn"
+        }
+      ]
+    },
+    {
+      "key": "sax-with",
+      "plane": "SAX",
+      "short": "SAX med sena",
+      "title": "Tvärsnitt med synlig supraspinatussena",
+      "source_bounds": [
+        115,
+        108,
+        1336,
+        887
+      ],
+      "scan": [
+        108,
+        112,
+        1171,
+        960
+      ],
+      "caption": "Jämförelsebild i tvärsnitt där supraspinatussenan syns mellan deltoideus och brosket över humerus. Bilden visar var senan förväntas ligga.",
+      "copy": "Jämför det sammanhängande senlagret ovanför broskytan med rupturvyn. Jämförelsen visar en synlig sena. Den ska inte tolkas som att hela jämförelseaxeln har bedömts som frisk.",
+      "labels": [
+        [
+          655,
+          142,
+          "Underhudsfett"
+        ],
+        [
+          585,
+          237,
+          "Deltoideus"
+        ],
+        [
+          530,
+          355,
+          "Supraspinatussena"
+        ],
+        [
+          670,
+          410,
+          "Brosk"
+        ],
+        [
+          660,
+          590,
+          "Humerus"
+        ]
+      ],
+      "findings": [
+        {
+          "path": "M470 710 L585 585 L650 355",
+          "end": [
+            650,
+            355
+          ],
+          "text": [
+            270,
+            750
+          ],
+          "label": "Synlig supraspinatussena"
+        }
+      ]
+    },
+    {
+      "key": "lax-without",
+      "plane": "LAX",
+      "short": "LAX utan sena",
+      "title": "Längdsnitt utan synlig supraspinatussena",
+      "source_bounds": [
+        139,
+        112,
+        1309,
+        988
+      ],
+      "scan": [
+        174,
+        112,
+        1105,
+        960
+      ],
+      "caption": "Längdsnitt där supraspinatussenan saknas i den visade vyn. Akromion ligger till vänster. Den markerade subdeltoida fascian ligger ovanför humerus i området där senan normalt finns.",
+      "copy": "I den här riktningen syns vävnaderna längs axeln. Fascian ovanför överarmsbenet behöver skiljas från supraspinatussenan. Utpekningen avser området där senan saknas i den undersökta vyn.",
+      "labels": [
+        [
+          620,
+          145,
+          "Underhudsfett"
+        ],
+        [
+          600,
+          285,
+          "Deltoideus"
+        ],
+        [
+          530,
+          443,
+          "Subdeltoid fascia"
+        ],
+        [
+          265,
+          440,
+          "Akromion"
+        ],
+        [
+          755,
+          575,
+          "Humerus"
+        ]
+      ],
+      "findings": [
+        {
+          "path": "M570 715 L655 600 L745 437",
+          "end": [
+            745,
+            437
+          ],
+          "text": [
+            235,
+            760
+          ],
+          "label": "Ingen synlig supraspinatussena"
+        }
+      ]
+    },
+    {
+      "key": "lax-with",
+      "plane": "LAX",
+      "short": "LAX med sena",
+      "title": "Längdsnitt med synlig supraspinatussena",
+      "source_bounds": [
+        69,
+        105,
+        1379,
+        903
+      ],
+      "scan": [
+        108,
+        112,
+        1171,
+        960
+      ],
+      "caption": "Jämförelsebild i längdsnitt med synlig supraspinatussena ovanför brosket och humerus. Slemsäcken ligger ovanför senan. Benets ojämna kontur följer originalbilden.",
+      "copy": "Här syns senan mellan slemsäcken och brosket över humerus. Växla mellan original och anatomi för att följa samma vävnadslager. Slå på Visa fynden för att se senan utpekad.",
+      "labels": [
+        [
+          490,
+          143,
+          "Underhudsfett"
+        ],
+        [
+          535,
+          220,
+          "Deltoideus"
+        ],
+        [
+          515,
+          286,
+          "Bursa"
+        ],
+        [
+          495,
+          355,
+          "Supraspinatussena"
+        ],
+        [
+          690,
+          408,
+          "Brosk"
+        ],
+        [
+          610,
+          525,
+          "Humerus"
+        ]
+      ],
+      "findings": [
+        {
+          "path": "M450 690 L550 540 L640 355",
+          "end": [
+            640,
+            355
+          ],
+          "text": [
+            255,
+            732
+          ],
+          "label": "Synlig supraspinatussena"
+        }
+      ]
+    }
+  ],
+  "sections": {
+    "bakgrund": "\n  <p>Patienten berättade om en skidolycka fem år före det aktuella besöket. Vid olyckan föll patienten med utsträckt arm och hade därefter mycket svårt att röra armen under ett par dygn.</p>\n  <p>Patienten sökte då sjukvård. Slätröntgen visade enligt patientens uppgifter ingen fraktur. En röntgenundersökning utan frakturfynd utesluter däremot inte en skada i axelns senor. Rotatorkuffens senor bedöms med andra metoder, till exempel ultraljud eller MR.<sup><a href=\"#kalla-aaos\" aria-label=\"Källa 1\">1</a></sup></p>\n  <h3>Nya besvär och en känsla av kraftlöshet</h3>\n  <p>Vid det aktuella besöket sökte patienten för stelhet och ömhet i nacken på samma sida, tillsammans med en ny sorts smärta kring axeln. Armen kändes också kraftlös i vardagen.</p>\n  <p>Det märktes bland annat när patienten skulle tvätta håret eller lyfta ett föremål ut från sidan av kroppen. Besvären behövde därför bedömas utifrån både smärtan och hur armen fungerade.</p>\n",
+    "undersokningen": "\n  <p>Vid ultraljudsundersökningen bedömdes supraspinatussenan vara helt av vid sitt fäste på överarmsbenet. Det innebär att senans förbindelse med benet hade gått förlorad. Supraspinatus ingår i rotatorkuffen, som hjälper till att styra och stabilisera axeln när armen lyfts.</p>\n  <p>I bildmaterialet syns inte senan på sin förväntade plats över ledhuvudet. Nedan visas fyndet i tvärsnitt och längdsnitt, tillsammans med jämförelsebilder där senan är synlig.</p>\n  <div class=\"patient-date-note\"><h3>När uppstod skadan?</h3><p>Det går inte att säkert fastställa om rupturen uppstod vid skidolyckan fem år tidigare. Den tidigare olyckan är relevant för bedömningen, men skadans exakta ålder kan inte avgöras utifrån det här underlaget.<sup><a href=\"#kalla-datering\" aria-label=\"Källa 2\">2</a></sup></p></div>\n  <p>Senrupturen kan ha betydelse för kraften och funktionen i axeln. Nackbesvären och den nya smärtan behöver samtidigt vägas in i den samlade kliniska bedömningen.</p>\n",
+    "behandling": "\n  <p>Behandlingen omfattade axeln, armen och skulderpartiet. Fokus låg på att förbättra rörligheten och samspelet mellan områdets olika delar, med målet att patienten skulle kunna använda armen bättre i vardagen.</p>\n  <p>Arbetet anpassades efter besvären och den konstaterade senskadan. Behandlingsmålet var att ta till vara den funktion som fanns och förbättra förutsättningarna för rörelse och belastning.</p>\n  <p>Rehabilitering kan förbättra axelns funktion även när det finns en senskada. Det innebär inte i sig att en helt avsliten sena återfästs vid benet.<sup><a href=\"#kalla-aaos\" aria-label=\"Källa 1\">1</a></sup></p>\n",
+    "sinogel": "<p>Utöver arbetet med axelns funktion fick patienten en intraartikulär injektion med Sinogel i glenohumeralleden, leden mellan överarmsbenets ledhuvud och skulderbladet.</p><p>Avsikten var att lindra besvär från själva leden och därigenom underlätta rörelse, vardaglig användning av armen och den fortsatta rehabiliteringen. Det var ett individuellt valt symtomlindrande tillägg.</p><p>Sinogel innehåller hyaluronsyra och kondroitinsulfat. Preparatet används som ett tillskott till ledvätskans smörjande och viskoelastiska egenskaper.<sup><a href=\"#kalla-sinogel\" aria-label=\"Källa 3\">3</a></sup> Det reparerar inte den avslitna supraspinatussenan. Målet med injektionen och målet med rehabiliteringen behöver därför hållas isär.</p><p>Effekten behöver följas upp utifrån patientens smärta och funktion, till exempel hur det går att tvätta håret eller använda armen vid lyft.</p><details class=\"sinogel-evidence\"><summary>Hur ska behandlingsvalet förstås?</summary><p>Sinogel valdes som ett individuellt symtomlindrande tillägg med målet att underlätta rörelse och rehabilitering. Behandlingsmålet gällde besvären från leden. Den konstaterade senrupturen behövde samtidigt tas om hand i den fortsatta vårdplaneringen.</p><p>Forskningsstödet för hyaluron skiljer sig mellan olika axeldiagnoser, preparat och injektionsmål. Riktlinjer för axelartros eller rotatorkuffbesvär utan ruptur kan inte direkt överföras till detta patientfall. Här följs behandlingsvalet därför upp utifrån patientens smärta och funktion.<sup><a href=\"#kalla-hyaluron\" aria-label=\"Källa 4\">4</a></sup></p></details>",
+    "egen-insats": "\n  <p class=\"patient-selfcare-lead\">En viktig del av besöket var att patienten fick en begriplig förklaring av vad undersökningen visade, hur senskadan kan påverka axeln och hur det påverkade det fortsatta arbetet.</p>\n  <div class=\"patient-selfcare-grid\">\n    <article><span>01</span><h3>Förstå vad bilderna visar</h3><p>Originalbilderna och anatomilagren gör det lättare att förstå var senan normalt ligger och vad som förändrats vid en ruptur.</p></article>\n    <article><span>02</span><h3>Veta hur armen kan användas</h3><p>Patientutbildningen omfattade vad patienten själv kan göra. Vägledning om rörelser och belastning behöver utgå från axelns funktion och de situationer som är svåra i vardagen.</p></article>\n    <article><span>03</span><h3>Ha en aktiv roll i rehabiliteringen</h3><p>Den egna insatsen är en del av arbetet med funktionen. Träning och egenvård behöver anpassas till förmågan och utvecklas utifrån hur axeln reagerar.</p></article>\n  </div>\n  <p class=\"patient-takeaway\">Du får förstå vad vi ser, hur det kan påverka dig och vad du kan göra själv.</p>\n",
+    "fortsatt-plan": "\n  <p>För den här patienten är det relevant att följa hur armen fungerar när håret ska tvättas och när något ska lyftas ut från kroppen. Smärtan kring axeln och besvären från nacke och skulderparti behöver också följas över tid.</p>\n  <p>En totalruptur med tydlig kraftnedsättning behöver värderas i den fortsatta vårdplaneringen. Behovet av läkarbedömning, kompletterande bilddiagnostik eller ortopedisk bedömning avgörs individuellt utifrån besvär, funktion och undersökningsfynd.<sup><a href=\"#kalla-aaos\" aria-label=\"Källa 1\">1</a></sup></p>\n  \n",
+    "kallor": "<p>Patientens bakgrund samt uppgifter om undersökning och behandling är återgivna utifrån Carl-Robert Kårells fallbeskrivning. Originalultraljud och vävnadsmarkeringar kommer från Kansei, Upplandsgatan 26, Odenplan. Anatomilagren är pedagogiska illustrationer.</p><ol class=\"patient-references\"><li id=\"kalla-aaos\"><a href=\"https://www.orthoinfo.org/diseases--conditions/rotator-cuff-tears\" target=\"_blank\" rel=\"noopener noreferrer\">AAOS om rotatorkuffrupturer, bilddiagnostik och behandlingsalternativ</a>.</li><li id=\"kalla-datering\"><a href=\"https://link.springer.com/article/10.1007/s11547-026-02248-3\" target=\"_blank\" rel=\"noopener noreferrer\">Albano med flera, 2026, om begränsningarna i att tidsbestämma rotatorkuffrupturer med MR</a>. Ultraljudsfynd kan också ge ledtrådar om skadans karaktär, men ger ingen säker datering. <a href=\"https://pubmed.ncbi.nlm.nih.gov/29308280/\" target=\"_blank\" rel=\"noopener noreferrer\">Artul och Habib, 2017, om ultraljudsfynd vid kortare respektive längre symtomduration</a>.</li><li id=\"kalla-sinogel\"><a href=\"https://www.ibsafrance.fr/Produits/Sinogel.html\" target=\"_blank\" rel=\"noopener noreferrer\">IBSA om Sinogels innehåll och avsedda användning</a>.</li><li id=\"kalla-hyaluron\"><a href=\"https://www.aaos.org/globalassets/quality-and-practice-resources/glenohumeral/glenohumeral-joint-osteoarthritis-3-18-20.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">AAOS om glenohumeral artros, 2020</a> och <a href=\"https://www.aaos.org/globalassets/quality-and-practice-resources/rotator-cuff/rotator-cuff-2025/rotator-cuff-cpg.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">AAOS om rotatorkuffskador, 2025</a>.</li></ol><p><a href=\"https://onlinelibrary.wiley.com/doi/10.1002/jum.16228\" target=\"_blank\" rel=\"noopener noreferrer\">AIUM om muskuloskeletalt ultraljud och undersökning av rotatorkuffen</a> · <a href=\"https://www.kansei.se/bildinformation/\">Bildkälla och återanvändning</a></p>"
+  }
+}

@@ -44,7 +44,9 @@ def check_knee_calc(page, output, label):
     page.locator('.case-story-image-links [data-case-tab="tab-menisk-jamforelse"]').click()
     expect(tabs.first).to_have_attribute('aria-selected', 'true')
     expect(findings).to_have_attribute('aria-checked', 'true')
-    expect(page.locator('.case-story-chapter')).to_have_count(3)
+    expect(page.locator('.case-story-chapter:not([data-case-education]):not([data-case-followup])')).to_have_count(3)
+    expect(page.locator('[data-case-education]')).to_have_count(1)
+    expect(page.locator('[data-case-followup]')).to_have_count(1)
     expect(page.locator('.case-story-note')).to_contain_text('illustrativt exempel')
     for heading in page.locator('#faq summary').all():
         heading.click()

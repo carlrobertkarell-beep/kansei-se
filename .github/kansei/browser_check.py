@@ -257,6 +257,18 @@ def check(base, output):
                         page.wait_for_function(detail_sources_match, arg='anatomy')
                         page.locator('#view-kalk .patient-picture').scroll_into_view_if_needed()
                         page.screenshot(path=str(output / f'kalkaxel-{label}-anatomy.png'))
+                        findings = viewer.locator('[data-patient-findings]')
+                        findings.click()
+                        viewer.locator('.patient-enlarge').click()
+                        enlarged = page.locator('.patient-reader-zoom')
+                        if not enlarged.is_visible():
+                            raise AssertionError('Kalkaxel enlarged view failed')
+                        if enlarged.locator('.patient-picture').get_attribute('data-mode') != 'anatomy' or enlarged.locator('.patient-picture').get_attribute('data-findings') != 'true':
+                            raise AssertionError('Kalkaxel enlarged anatomy/findings are not synchronized')
+                        enlarged.locator('[data-patient-zoom-findings]').click()
+                        if findings.get_attribute('aria-checked') != 'false':
+                            raise AssertionError('Kalkaxel enlarged findings control is not synchronized')
+                        enlarged.locator('[data-patient-zoom-close]').click()
                         page.locator('#tab-frisk').click()
                         if switch.get_attribute('aria-checked') != 'true' or not page.locator('#view-frisk .detail-comparison').is_visible():
                             raise AssertionError('Anatomy and comparison must follow the selected side')

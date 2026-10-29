@@ -3,7 +3,9 @@ HIP_JOINT_PATH = '/ultraljud/hoftled/bilder/'
 
 def check_hip_joint(page, output, label):
     nav = page.locator('.condition-hero .case-page-nav')
-    assert nav.count() == 1 and nav.locator('a').count() == 4
+    assert nav.count() == 1
+    targets = set(nav.locator('a').evaluate_all('(links)=>links.map(a=>a.getAttribute("href"))'))
+    assert {'#patientfall', '#bilder', '#nasta-steg'} <= targets
     for a in nav.locator('a').all():
         assert page.locator(a.get_attribute('href')).count() == 1
     viewer = page.locator('[data-knee-viewer]')

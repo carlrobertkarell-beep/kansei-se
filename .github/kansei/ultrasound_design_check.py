@@ -116,6 +116,7 @@ def check_explore(page):
     expected.add('/ultraljud/hoftled/bilder/')
     expected.add('/ultraljud/kna/forkalkad-menisk/')
     expected.add('/ultraljud/kna/artros-ledband-hyaluron/')
+    expected.add('/ultraljud/axel/supraspinatusruptur/')
     if set(entries.locator('[data-atlas-case]').evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))'))!=expected:
         raise AssertionError('A published image reader is missing or duplicated')
     if set(entries.locator('.atlas-image-shortcut').evaluate_all('(els)=>els.map(e=>e.getAttribute("href").replace(/#bilder$/,""))'))!=expected:
@@ -151,9 +152,9 @@ def check_explore(page):
         ('knät svullnar efter promenader',('/ultraljud/kna/','/ultraljud/kna/forkalkad-menisk/')),
         ('förkalkad menisk','/ultraljud/kna/forkalkad-menisk/'),
         ('CPPD','/ultraljud/kna/forkalkad-menisk/'),
-        ('hyaluronsyra',('/ultraljud/hoftled/bilder/','/ultraljud/kna/','/ultraljud/kna/artros-ledband-hyaluron/')),
+        ('hyaluronsyra',('/ultraljud/hoftled/bilder/','/ultraljud/kna/','/ultraljud/kna/artros-ledband-hyaluron/','/ultraljud/axel/supraspinatusruptur/')),
         ('Synovial',('/ultraljud/kna/','/ultraljud/kna/artros-ledband-hyaluron/')),
-        ('Sinogel',('/ultraljud/hoftled/bilder/','/ultraljud/kna/')),
+        ('Sinogel',('/ultraljud/hoftled/bilder/','/ultraljud/kna/','/ultraljud/axel/supraspinatusruptur/')),
         ('caput','/ultraljud/hoftled/bilder/'),
     ):
         search.fill(phrase)

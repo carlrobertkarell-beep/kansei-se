@@ -257,7 +257,7 @@ def check(base, output):
                         page.wait_for_function(detail_sources_match, arg='anatomy')
                         page.locator('#view-kalk .patient-picture').scroll_into_view_if_needed()
                         page.screenshot(path=str(output / f'kalkaxel-{label}-anatomy.png'))
-                        findings = viewer.get_by_role('switch', name='Visa fynden', exact=True)
+                        findings = viewer.locator('[data-patient-findings]')
                         findings.click()
                         viewer.locator('.patient-enlarge').click()
                         enlarged = page.locator('.patient-reader-zoom')

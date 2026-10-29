@@ -1,5 +1,11 @@
 # Kansei ultrasound illustrations
 
+Owner clarification, 29 October 2026: let the tissue painting remain unobstructed
+in anatomy mode. Do not cover it with a stack of labels for every tissue layer.
+Put supporting anatomical explanations beside or below the image. Use the
+independent “Visa fynden” control to reveal the main clinically relevant finding,
+with one short label and a restrained pointer placed away from the tissue detail.
+
 Owner clarification, 22 October 2026. The owner selected the near-photographic
 biceps tissue preview and requested the same treatment for every published
 anatomical layer. The exact approved reference is archived at

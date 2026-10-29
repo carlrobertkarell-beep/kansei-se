@@ -1,7 +1,5 @@
 /* Source-sized scan canvas; all other presentation comes from the shared case. */
 .simple-case main .supraspinatus-viewer .patient-picture{aspect-ratio:4/3}
 .simple-case main .supraspinatus-viewer .patient-picture>.original,.simple-case main .supraspinatus-viewer .anatomy-layer,.simple-case main .supraspinatus-viewer .anatomy-layer-content>img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:fill}
-.simple-case main .supraspinatus-viewer .anatomy-labels{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
-.supraspinatus-viewer .anatomy-labels text{font:600 25px Arial,sans-serif;fill:#fff;paint-order:stroke;stroke:#10272d;stroke-width:6;stroke-linejoin:round}
 .supraspinatus-viewer .patient-view-tab img{object-fit:cover;background:#000}
 .supraspinatus-case .condition-hero>.crumbs,.supraspinatus-case .condition-hero>.case-seo-byline,.supraspinatus-case .condition-hero>.case-library-back,.supraspinatus-case .condition-hero>.case-page-nav{grid-column:1/-1}

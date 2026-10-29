@@ -126,3 +126,24 @@
 .simple-case main .cta .contact{display:inline-flex;align-items:center;gap:15px;justify-self:start;font:400 15px/1.5 var(--sans);min-height:44px;margin:18px 0 0;border-bottom:1px solid currentColor}
 @media(max-width:760px){.simple-case main .cta{padding:24px}.simple-case main .cta .button{max-width:100%}.simple-case main .comparison-pair{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.simple-case main .patient-picture .patient-overlay,.simple-case main .patient-overlay-content,.simple-case main .cta .button{transition:none!important}}
+
+/* The same full-image reader is available to every shared patient case. */
+.simple-case main .patient-enlarge{display:inline-flex;align-items:center;min-height:44px;border:0;background:none;color:var(--teal);font:500 15px/1.5 var(--sans);padding:8px 4px;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.simple-case main .patient-enlarge[hidden]{display:none}
+.simple-case main .patient-reader-zoom{box-sizing:border-box;inset:0;margin:auto;width:min(1240px,96vw);max-width:96vw;max-height:96dvh;padding:20px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);overflow:auto;overscroll-behavior:contain}
+.simple-case main .patient-reader-zoom::backdrop{background:#071b20e8}
+.simple-case main .patient-zoom-head{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:16px}
+.simple-case main .patient-reader-zoom .patient-zoom-head h2{margin:0;font:500 20px/1.4 var(--sans);letter-spacing:-.02em}
+.simple-case main .patient-zoom-head button{min-height:44px;padding:8px 16px;background:var(--paper);border:1px solid var(--line);border-radius:6px;color:var(--ink);font:500 15px/1.4 var(--sans);cursor:pointer}
+.simple-case main .patient-zoom-frame{width:min(100%,1000px,calc(65dvh * 4 / 3));margin:auto;background:#000}
+.simple-case main .patient-reader-zoom .patient-picture{border-radius:0;isolation:isolate}
+.simple-case main .patient-reader-zoom .patient-picture>.original,.simple-case main .patient-reader-zoom .patient-picture>.story-scan{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.simple-case main .patient-reader-zoom .anatomy-layer,.simple-case main .patient-reader-zoom .patient-overlay{position:absolute;inset:0;width:100%;height:100%}
+.simple-case main .patient-reader-zoom .anatomy-layer-content,.simple-case main .patient-reader-zoom .patient-overlay-content{width:100%;height:100%}
+.simple-case main .patient-reader-zoom .anatomy-layer-content>img,.simple-case main .patient-reader-zoom .patient-overlay-content>img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:fill}
+.simple-case main .patient-reader-zoom .patient-toggle-area{max-width:none;margin:18px 0 0}
+.simple-case main .patient-picture .anatomy-labels{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+.case-seo-byline{font:400 14px/1.6 var(--sans,Arial,sans-serif);color:var(--muted);margin:16px 0 20px;max-width:76ch;overflow-wrap:anywhere}
+.case-seo-byline a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.case-seo-byline time{white-space:nowrap}
+@media(max-width:760px){.simple-case main .patient-reader-zoom{width:98vw;max-width:98vw;padding:12px;max-height:98dvh}.simple-case main .patient-zoom-head{gap:12px}.simple-case main .patient-reader-zoom .patient-zoom-head h2{font-size:17px}.simple-case main .patient-reader-zoom .patient-toggle-row{gap:8px}.case-seo-byline{font-size:13px}}

@@ -1,0 +1,184 @@
+{
+  "standard": ".github/kansei/ultrasound-visual-standard.md",
+  "approved_reference_sha256": "a17ba9bd33511452323d1a70c90323d280fc23e703fa35e48d8e2d48e74309ea",
+  "method": "Whole painting with one global registration; shared clinic viewer, pointers and header clipping.",
+  "views": [
+    {
+      "key": "sax-without",
+      "original_sha256": "1f65a603bab6d322e9892121a5fbf96e6fd77ef95a1adebd7e4f60311080401d",
+      "source_painting_sha256": "72e0b3a89626793cd016627820e00fc63cb7c8291630682000ea4dec84b91d83",
+      "placement": {
+        "scale": 0.8278816199376947,
+        "translation": [
+          40.113707165109034,
+          23.41666666666667
+        ],
+        "canvas": [
+          1280,
+          960
+        ],
+        "source_bounds": [
+          82,
+          107,
+          1366,
+          937
+        ],
+        "target_scan_bounds": [
+          108,
+          112,
+          1171,
+          960
+        ]
+      },
+      "finding_coordinates": [
+        {
+          "path": "M460 705 L590 600 L690 385",
+          "end": [
+            690,
+            385
+          ],
+          "text": [
+            195,
+            746
+          ],
+          "label": "Supraspinatus saknas i vyn"
+        }
+      ],
+      "date_header_clip": "68/960",
+      "original_unchanged": true
+    },
+    {
+      "key": "sax-with",
+      "original_sha256": "0864b7298b050d52c6b5a66c1364ce2f9edb6706feb7dc859392c460c82a4d83",
+      "source_painting_sha256": "f349f617c305b4d4c352d5e683be1d87b04bd92418b9323409e152ea72854ae6",
+      "placement": {
+        "scale": 0.8705978705978706,
+        "translation": [
+          7.881244881244882,
+          17.975429975429975
+        ],
+        "canvas": [
+          1280,
+          960
+        ],
+        "source_bounds": [
+          115,
+          108,
+          1336,
+          887
+        ],
+        "target_scan_bounds": [
+          108,
+          112,
+          1171,
+          960
+        ]
+      },
+      "finding_coordinates": [
+        {
+          "path": "M470 710 L585 585 L650 355",
+          "end": [
+            650,
+            355
+          ],
+          "text": [
+            270,
+            750
+          ],
+          "label": "Synlig supraspinatussena"
+        }
+      ],
+      "date_header_clip": "68/960",
+      "original_unchanged": true
+    },
+    {
+      "key": "lax-without",
+      "original_sha256": "78944a0434be69eae6c9d373d4c5a24fabc86390e6b8a0fed28c939f5494eada",
+      "source_painting_sha256": "410aebe1f01c8dca8d6bfb6868a615f4c4f4ea223ea62e38dcdbff04027f5e7d",
+      "placement": {
+        "scale": 0.7957264957264957,
+        "translation": [
+          63.3940170940171,
+          22.878632478632483
+        ],
+        "canvas": [
+          1280,
+          960
+        ],
+        "source_bounds": [
+          139,
+          112,
+          1309,
+          988
+        ],
+        "target_scan_bounds": [
+          174,
+          112,
+          1105,
+          960
+        ]
+      },
+      "finding_coordinates": [
+        {
+          "path": "M570 715 L655 600 L745 437",
+          "end": [
+            745,
+            437
+          ],
+          "text": [
+            235,
+            760
+          ],
+          "label": "Ingen synlig supraspinatussena"
+        }
+      ],
+      "date_header_clip": "68/960",
+      "original_unchanged": true
+    },
+    {
+      "key": "lax-with",
+      "original_sha256": "0fe13b11442aac104846902148c0ed2e425867812f4419c4a9c2585d84599d1f",
+      "source_painting_sha256": "990cfa07d3a42745bbb73a105248389c506175bf81e1963d7499d8b74cacf256",
+      "placement": {
+        "scale": 0.8114503816793893,
+        "translation": [
+          52.009923664122134,
+          26.797709923664115
+        ],
+        "canvas": [
+          1280,
+          960
+        ],
+        "source_bounds": [
+          69,
+          105,
+          1379,
+          903
+        ],
+        "target_scan_bounds": [
+          108,
+          112,
+          1171,
+          960
+        ]
+      },
+      "finding_coordinates": [
+        {
+          "path": "M450 690 L550 540 L640 355",
+          "end": [
+            640,
+            355
+          ],
+          "text": [
+            255,
+            732
+          ],
+          "label": "Synlig supraspinatussena"
+        }
+      ],
+      "date_header_clip": "68/960",
+      "original_unchanged": true
+    }
+  ],
+  "source": "Clinician supplied originals and guides; final anatomy is whole generated painting at one global registration."
+}

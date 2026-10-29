@@ -59,8 +59,12 @@
  render();
  panels.forEach((panel,index)=>{
   const image=panel.querySelector('.knee-anatomy img');image.loading='eager';
-  const decoded=image.decode?image.decode():new Promise((resolve,reject)=>{
-   if(image.complete&&image.naturalWidth)resolve();else{image.addEventListener('load',resolve,{once:true});image.addEventListener('error',reject,{once:true});}
+  const decoded=new Promise((resolve,reject)=>{
+   if(image.complete){image.naturalWidth?resolve():reject(new Error('Anatomy image unavailable'));return;}
+   const cleanup=()=>{image.removeEventListener('load',onload);image.removeEventListener('error',onerror)};
+   const onload=()=>{cleanup();image.naturalWidth?resolve():reject(new Error('Anatomy image unavailable'))};
+   const onerror=()=>{cleanup();reject(new Error('Anatomy image unavailable'))};
+   image.addEventListener('load',onload);image.addEventListener('error',onerror);
   });
   decoded.then(()=>{ready[index]=true;render();}).catch(()=>{failed[index]=true;render();});
  });

@@ -797,6 +797,9 @@
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/oversikt/09-halsena.20261015c.webp</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/supraspinatusruptur/sax-without.original.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.kansei.se/bildinformation/</loc>
@@ -1064,5 +1067,29 @@
   <url>
     <loc>https://www.kansei.se/ultraljud/axel/supraspinatusruptur/</loc>
     <lastmod>2026-10-28</lastmod>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/supraspinatusruptur/lax-with.anatomi.20261028.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/supraspinatusruptur/lax-with.original.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/supraspinatusruptur/lax-without.anatomi.20261028.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/supraspinatusruptur/lax-without.original.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/supraspinatusruptur/sax-with.anatomi.20261028.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/supraspinatusruptur/sax-with.original.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/supraspinatusruptur/sax-without.anatomi.20261028.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/supraspinatusruptur/sax-without.original.jpg</image:loc>
+    </image:image>
   </url>
 </urlset>

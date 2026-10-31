@@ -18,9 +18,6 @@
 .booking-service-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 .booking-service-actions .button{font-size:14px;min-height:46px;padding:10px 17px;justify-content:center;gap:10px}
 .care-service-card .booking-service-actions{margin-bottom:14px}
-.atlas-entry .atlas-booking-shortcut{display:inline-flex;align-items:center;min-height:46px;padding:8px 14px;border:1px solid var(--teal);border-radius:999px;color:var(--teal);font:600 13px/1.5 var(--sans);text-align:center;justify-content:center}
-.atlas-entry .atlas-booking-shortcut:hover{background:var(--teal);color:#fff}
-.atlas-entry .atlas-booking-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:8px}
 @media(max-width:760px){
  .clinic-site .booking-next{padding:22px 18px}
  .booking-options{grid-template-columns:1fr}
@@ -30,6 +27,4 @@
  .price-booking-actions{align-items:flex-start}
  .price-booking-actions .button{min-width:150px}
  .booking-service-actions .button{white-space:normal;text-align:center}
- .atlas-entry .atlas-booking-actions{align-items:stretch;flex-direction:column;gap:4px}
- .atlas-entry .atlas-booking-shortcut{align-self:flex-start;max-width:100%}
 }

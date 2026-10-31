@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://www.kansei.se/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-31</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/akupunktur/</loc>
@@ -85,7 +85,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/ryggskott-forsta-48-timmarna/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-31</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/sa-gar-en-prp-behandling-till/</loc>
@@ -143,7 +143,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/priser/</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-10-31</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/prp/</loc>
@@ -197,7 +197,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/domningar-i-handen-pa-natten/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/karpaltunnel/medianus-helbild.20261009.jpg</image:loc>
     </image:image>
@@ -748,7 +748,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/bilder/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/bursit-axel/bursit-vy-2.original.jpg</image:loc>
     </image:image>

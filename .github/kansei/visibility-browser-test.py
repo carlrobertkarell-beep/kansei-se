@@ -70,7 +70,7 @@ with sync_playwright() as pw:
     assert p.evaluate("window['ga-disable-G-F1EVW66L9S']") is True
     record('Consent withdrawal stops measurement and removes source storage')
     c.close()
-    seed="localStorage.setItem('kansei-statistics-v1',JSON.stringify({allowed:true,at:Date.now()}));"
+    seed="localStorage.setItem('kansei-statistics-v2',JSON.stringify({allowed:true,at:Date.now()}));"
     for ref,expected in [('https://www.perplexity.ai/search/PRIVATE','perplexity'),('https://copilot.microsoft.com/','copilot'),('https://gemini.google.com/app/PRIVATE','gemini'),('https://www.google.se/search?q=PRIVATE','google'),('https://www.bing.com/search?q=PRIVATE','bing'),('https://chatgpt.com.attacker.invalid/','other')]:
         c,p,_=setup(browser,seed=seed)
         p.goto(ORIGIN+'/naprapati/',referer=ref)
@@ -109,7 +109,7 @@ with sync_playwright() as pw:
         assert len(events(p,'booking_click'))==before+1
         payload=events(p,'booking_click')[-1][2]
         assert payload['placement']==placement
-        assert payload['measurement_version']=='20261016'
+        assert payload['measurement_version']=='20261031'
         assert set(payload)=={'send_to','page_location','page_referrer','page_title','referral_group','measurement_version','placement'}
     p.locator('[data-site-menu]').first.click()
     assert p.locator('#site-menu').is_visible()

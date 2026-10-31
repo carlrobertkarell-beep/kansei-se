@@ -53,8 +53,8 @@ for path in sorted(ROOT.rglob('*.html')):
     count += 1
 
 # The dynamic components use text labels too, including on the mobile reader.
-for filename in ('assets/clinic.20261008.js', 'assets/guide.20261019.js',
-                 'assets/analytics.20261017.js', 'assets/reading-sections.20261017.js',
+for filename in ('assets/clinic.20261031.js', 'assets/guide.20261019.js',
+                 'assets/analytics.20261031.js', 'assets/reading-sections.20261017.js',
                  'reda-2/ui.js', 'config.js'):
     source = (ROOT / filename).read_text()
     if ARROWS.intersection(source):

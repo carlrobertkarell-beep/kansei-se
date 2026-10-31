@@ -1,5 +1,9 @@
 # GA4 installation
 
+Current release: see the 31 October section in `booking-measurement.md` for
+service-category events, the 20261031 bridge and renewed version-2 consent.
+The exclusions below describe the original installation, before that approved update.
+
 Prepared for verified Kansei GA4 property 417935074.
 Owner-supplied screenshot identifies web stream 6422923083 and measurement ID G-F1EVW66L9S. The screenshot initially showed Enhanced Measurement enabled. The owner confirmed it switched OFF on 9 October 2026.
 

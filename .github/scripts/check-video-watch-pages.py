@@ -127,6 +127,19 @@ def check():
             assert content not in advertised, f'Duplicate video sitemap entry: {content}'
             advertised[content] = url
     assert advertised == targets, 'Video sitemap must list every unique film on its watch page'
+    film_entries = ET.parse(ROOT / 'video-sitemap.xml').findall('s:url', NS)
+    film_urls = [entry.findtext('s:loc', namespaces=NS) for entry in film_entries]
+    assert len(film_urls) == len(set(film_urls)), 'Duplicate watch URL in dedicated video sitemap'
+    assert set(film_urls) == watches, 'Dedicated video sitemap must contain only and all watch pages'
+    for entry in film_entries:
+        url = entry.findtext('s:loc', namespaces=NS)
+        listed = entry.findall('v:video', NS)
+        assert len(listed) == 1, f'Dedicated video sitemap needs one film per watch page: {url}'
+        schema = pages[url].video_objects()[0]
+        thumb = schema['thumbnailUrl']
+        assert listed[0].findtext('v:content_loc', namespaces=NS) == schema['contentUrl'], f'Wrong film in dedicated video sitemap: {url}'
+        assert listed[0].findtext('v:thumbnail_loc', namespaces=NS) == (thumb[0] if isinstance(thumb, list) else thumb), f'Wrong poster in dedicated video sitemap: {url}'
+    assert 'Sitemap: ' + ORIGIN + '/video-sitemap.xml' in (ROOT / 'robots.txt').read_text().splitlines(), 'Declare the dedicated video sitemap in robots.txt'
     print(f'PASS: {len(targets)} unique films have one visible watch page each, matching schema/poster, HTML links and video sitemap.')
     print('Scope: crawlable source and page structure; Google decides video indexing after recrawling.')
 

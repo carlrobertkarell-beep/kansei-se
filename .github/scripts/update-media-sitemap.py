@@ -8,6 +8,7 @@ packages are needed. --check reports drift without writing the sitemap.
 from __future__ import annotations
 
 import argparse
+from copy import deepcopy
 import json
 from html.parser import HTMLParser
 from pathlib import Path
@@ -117,14 +118,31 @@ def generate():
     return '<?xml version="1.0" encoding="UTF-8"?>\n' + output + '\n', image_count, video_count
 
 
+def video_only_sitemap(sitemap_text):
+    """Keep only watch URLs so Search Console can report films separately."""
+    source = ET.fromstring(sitemap_text)
+    root = ET.Element('{' + SITEMAP + '}urlset')
+    for entry in source.findall('{' + SITEMAP + '}url'):
+        if entry.find('{' + VIDEO + '}video') is None:
+            continue
+        watch = ET.SubElement(root, '{' + SITEMAP + '}url')
+        for child in entry:
+            if child.tag in ('{' + SITEMAP + '}loc', '{' + SITEMAP + '}lastmod',
+                             '{' + VIDEO + '}video'):
+                watch.append(deepcopy(child))
+    ET.indent(root, space='  ')
+    return '<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(root, encoding='unicode') + '\n'
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
     text, images, videos = generate()
-    if args.check:
-        if text != (ROOT / 'sitemap.xml').read_text(encoding='utf-8'):
-            raise SystemExit('Media sitemap is stale; run .github/scripts/update-media-sitemap.py')
-    else:
-        (ROOT / 'sitemap.xml').write_text(text, encoding='utf-8')
+    for name, output in [('sitemap.xml', text), ('video-sitemap.xml', video_only_sitemap(text))]:
+        if args.check:
+            if not (ROOT / name).is_file() or output != (ROOT / name).read_text(encoding='utf-8'):
+                raise SystemExit(f'{name} is stale; run .github/scripts/update-media-sitemap.py')
+        else:
+            (ROOT / name).write_text(output, encoding='utf-8')
     print(f'PASS: media sitemap matches published HTML: {images} image references and {videos} videos.')

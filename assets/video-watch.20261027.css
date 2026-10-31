@@ -1,10 +1,10 @@
 /* A single, immediately visible film is the main content on each watch page. */
-.video-watch-page{padding-bottom:56px}
-.clinic-site .video-watch-page>.wrap{max-width:1080px}
-.video-watch-page .watch-intro{padding-top:22px}
-.video-watch-page .crumbs{font-size:13px;line-height:1.6;margin:0 0 16px;color:var(--muted)}
-.video-watch-page .eyebrow{font-size:11px;letter-spacing:.12em;color:var(--teal);margin:0 0 10px}
-.clinic-site .video-watch-page h1{font-size:clamp(27px,3.2vw,42px);line-height:1.14;letter-spacing:-.035em;margin:0 0 20px;max-width:34ch}
+:is(.video-watch-page,.case-video-page){padding-bottom:56px}
+.clinic-site :is(.video-watch-page,.case-video-page)>.wrap{max-width:1080px}
+:is(.video-watch-page,.case-video-page) .watch-intro{padding-top:22px}
+:is(.video-watch-page,.case-video-page) .crumbs{font-size:13px;line-height:1.6;margin:0 0 16px;color:var(--muted)}
+:is(.video-watch-page,.case-video-page) .eyebrow{font-size:11px;letter-spacing:.12em;color:var(--teal);margin:0 0 10px}
+.clinic-site :is(.video-watch-page,.case-video-page) h1{font-size:clamp(27px,3.2vw,42px);line-height:1.14;letter-spacing:-.035em;margin:0 0 20px;max-width:34ch}
 .watch-figure{margin:0}
 .watch-player{display:block;width:100%;height:auto;max-height:62svh;object-fit:contain;background:#000;border-radius:6px}
 .watch-figure figcaption{font-size:12px;line-height:1.6;color:var(--muted);padding:12px 0 0;max-width:90ch}
@@ -13,13 +13,13 @@
 .watch-context>p{max-width:78ch;font-size:16px;line-height:1.7;margin:0 0 16px}
 .watch-case-link{font-weight:500;color:var(--teal)}
 .watch-actions{display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px;padding-top:12px}
-.watch-player:focus-visible,.video-watch-page a:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+.watch-player:focus-visible,:is(.video-watch-page,.case-video-page) a:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
 .clinic-site .case-film-links{display:flex;align-items:center;flex-wrap:wrap;gap:12px 26px;padding-block:18px;border-top:1px solid #d5dfdc;border-bottom:1px solid #d5dfdc;margin-block:0 24px;font-size:14px}
 .case-film-links>span{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
 .case-film-links>a{color:var(--teal);text-underline-offset:4px}
 @media(max-width:600px){
- .video-watch-page .watch-intro{padding-top:18px}
- .video-watch-page .crumbs{font-size:12px;margin-bottom:14px}
+ :is(.video-watch-page,.case-video-page) .watch-intro{padding-top:18px}
+ :is(.video-watch-page,.case-video-page) .crumbs{font-size:12px;margin-bottom:14px}
  .watch-figure figcaption{font-size:12px}
  .watch-context{padding-top:24px}
  .watch-actions{align-items:flex-start;flex-direction:column}

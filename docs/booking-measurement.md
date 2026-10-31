@@ -1,5 +1,55 @@
 # Clinic booking measurement
 
+## Current release — 31 October 2026
+
+The owner approved service-level booking measurement and the five conversion
+improvements on 31 October. This section supersedes the older payload exclusions
+below only for the fixed service-category event names described here.
+
+Public clinic pages now load `assets/clinic.20261031.js` and
+`assets/analytics.20261031.js`. The measurement version is `20261031`.
+The bridge still sends `booking_click` exactly once per eligible click. This
+remains the single existing booking-intent key event. One additional event
+identifies the actual destination's broad service category:
+
+| Event | Meaning |
+| --- | --- |
+| `booking_naprapathy_click` | Naprapatbehandling, service ID 3263299 |
+| `booking_ultrasound_click` | Muskuloskeletalt ultraljud, service ID 1946824 |
+| `booking_hyaluron_click` | Sinovial or Sinogel service; no product/body-area split |
+| `booking_prp_click` | PRP/ACP, service ID 3409514 |
+| `booking_consultation_click` | Injektionskonsultation, service ID 3409513 |
+| `booking_wellness_click` | Friskvård, service ID 1952697 |
+| `booking_general_click` | Profile/general booking link; service not yet chosen |
+
+These are website-sent custom events, so their event-name reports do not need a
+new Admin custom dimension. Do **not** mark the service events as additional key
+events or add their counts to `booking_click`: that would double-count one click.
+They do not confirm the final appointment, treatment or completed booking.
+
+Classification uses verified destination service IDs, never the page's topic,
+link text, arbitrary data attributes or the booking guide's symptom answers.
+Unknown destinations remain `general`. The existing `placement` custom dimension
+also accepts `price_list`, `article_visit`, `case_card` and `service_card`.
+
+The expanded statistics are disclosed on `/cookie/` and in the consent banner.
+Version 2 of the consent choice requires a new explicit opt-in from previous
+visitors. Rejection and withdrawal keep all Google measurement disabled. No
+patient/form data, body area, diagnosis, raw booking URL or product is sent.
+
+Validation: `node tests/booking-services.cjs` runs the actual consent bridge with
+stubbed Google calls. This proves dispatch/consent behaviour, not live ingestion.
+Check event reports after real consented traffic arrives. Historical events are
+not backfilled. Production QA must not create fake patient clicks in GA4.
+
+Verified Bokadirekt calendar URLs on 31 October: Naprapatbehandling 3263299,
+PRP/ACP 3409514, Friskvårdsbehandling 1952697 and Injektionskonsultation 3409513;
+the existing ultrasound/Sinovial/Sinogel direct destinations are reused.
+
+Source: https://developers.google.com/analytics/devguides/collection/ga4/events
+
+## Earlier measurement history
+
 The clinic runtime prepares `kansei:booking-intent` DOM events for clicks to the
 clinic's Bokadirekt profile and existing service URLs. A click is booking intent,
 not a completed booking. This code does not collect or transmit analytics, set

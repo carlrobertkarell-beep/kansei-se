@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Sitemap: https://www.kansei.se/sitemap.xml
+Sitemap: https://www.kansei.se/video-sitemap.xml
 # AI-crawlers välkomna. Faktablad: https://www.kansei.se/llms.txt

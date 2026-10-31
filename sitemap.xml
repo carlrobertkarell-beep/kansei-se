@@ -1037,7 +1037,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/kna/artros-ledband-hyaluron/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/kna/artros-ledband/left.anatomi.20261027.webp</image:loc>
     </image:image>
@@ -1056,13 +1056,6 @@
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/kna/artros-ledband/right.original.jpg</image:loc>
     </image:image>
-    <video:video>
-      <video:thumbnail_loc>https://www.kansei.se/bilder/ultraljud/kna/artros-ledband/film-poster.jpg</video:thumbnail_loc>
-      <video:title>Ultraljud, anatomibilder och hyaluroninjektion vid långvarig knäsmärta</video:title>
-      <video:description>Patientfall med broskförändringar och skada i det inre ledbandet. Originalultraljud och anatomiska illustrationer följs av en ultraljudsvägledd hyaluroninjektion med Sinovial.</video:description>
-      <video:content_loc>https://www.kansei.se/bilder/ultraljud/kna/artros-ledband/knaartros-hyaluron.mp4</video:content_loc>
-      <video:publication_date>2026-10-27</video:publication_date>
-    </video:video>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/axel/supraspinatusruptur/</loc>
@@ -1091,5 +1084,16 @@
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/supraspinatusruptur/sax-without.original.jpg</image:loc>
     </image:image>
+  </url>
+  <url>
+    <loc>https://www.kansei.se/ultraljud/kna/artros-ledband-hyaluron/film/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <video:video>
+      <video:thumbnail_loc>https://www.kansei.se/bilder/ultraljud/kna/artros-ledband/film-poster.jpg</video:thumbnail_loc>
+      <video:title>Ultraljud och hyaluroninjektion vid knäartros</video:title>
+      <video:description>Se originalultraljud, anatomibilder och en ultraljudsvägledd Sinovialinjektion i knäleden. Originalfilm från Kansei vid Odenplan i Stockholm.</video:description>
+      <video:content_loc>https://www.kansei.se/bilder/ultraljud/kna/artros-ledband/knaartros-hyaluron.mp4</video:content_loc>
+      <video:publication_date>2026-10-27</video:publication_date>
+    </video:video>
   </url>
 </urlset>

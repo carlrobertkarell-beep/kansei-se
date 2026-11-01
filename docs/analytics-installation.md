@@ -1,8 +1,21 @@
 # GA4 installation
 
-Current release: see the 31 October section in `booking-measurement.md` for
-service-category events, the 20261031 bridge and renewed version-2 consent.
-The exclusions below describe the original installation, before that approved update.
+Aktuell version den 1 november 2026 använder `assets/analytics.20261101.js`
+och mätversion `20261101`. Se avsnittet för 1 november i
+`booking-measurement.md` för tillåtna sammanställda kampanjparametrar,
+begränsad manuell källmärkning och statistikval version 3. Ett tidigare nej
+fortsätter att gälla, medan ett tidigare ja kräver ett nytt godkännande för
+den utökade mätningen. Bokningshändelserna från 31 oktober är oförändrade.
+
+Kontrollera rätt Ads–GA4-länkning och automatisk taggning i kontot, samt att
+verkliga annonslänkar innehåller de tillåtna kampanjparametrarna. Koden
+vidarebefordrar inte GCLID, DCLID, WBRAID eller fria kampanjnamn och sökord.
+Annonssamtycken och personlig annonsanpassning är fortsatt avstängda. Ändringen
+återskapar inte historiska uppgifter eller bevisar faktisk annonsattribuering.
+Lokala tester ersätter inte kontroll av riktiga, samtyckta besök i rätt GA4-egendom.
+
+Beskrivningen nedan gäller den ursprungliga installationen. Där den skiljer
+sig från den aktuella versionen gäller avsnittet för 1 november ovan.
 
 Prepared for verified Kansei GA4 property 417935074.
 Owner-supplied screenshot identifies web stream 6422923083 and measurement ID G-F1EVW66L9S. The screenshot initially showed Enhanced Measurement enabled. The owner confirmed it switched OFF on 9 October 2026.

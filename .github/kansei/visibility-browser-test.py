@@ -70,7 +70,7 @@ with sync_playwright() as pw:
     assert p.evaluate("window['ga-disable-G-F1EVW66L9S']") is True
     record('Consent withdrawal stops measurement and removes source storage')
     c.close()
-    seed="localStorage.setItem('kansei-statistics-v2',JSON.stringify({allowed:true,at:Date.now()}));"
+    seed="localStorage.setItem('kansei-statistics-v3',JSON.stringify({allowed:true,at:Date.now()}));"
     for ref,expected in [('https://www.perplexity.ai/search/PRIVATE','perplexity'),('https://copilot.microsoft.com/','copilot'),('https://gemini.google.com/app/PRIVATE','gemini'),('https://www.google.se/search?q=PRIVATE','google'),('https://www.bing.com/search?q=PRIVATE','bing'),('https://chatgpt.com.attacker.invalid/','other')]:
         c,p,_=setup(browser,seed=seed)
         p.goto(ORIGIN+'/naprapati/',referer=ref)
@@ -109,7 +109,7 @@ with sync_playwright() as pw:
         assert len(events(p,'booking_click'))==before+1
         payload=events(p,'booking_click')[-1][2]
         assert payload['placement']==placement
-        assert payload['measurement_version']=='20261031'
+        assert payload['measurement_version']=='20261101'
         assert set(payload)=={'send_to','page_location','page_referrer','page_title','referral_group','measurement_version','placement'}
     p.locator('[data-site-menu]').first.click()
     assert p.locator('#site-menu').is_visible()
@@ -119,11 +119,37 @@ with sync_playwright() as pw:
     assert events(p,'booking_click')[-1][2]['placement']=='menu'
     c.close();record('Hyaluron price navigation is not a booking event; ultrasound header counts one outbound booking intent')
     record('Actual content, footer and menu booking links count once with reportable placement and an allowlisted payload')
+    c,p,seen=setup(browser)
+    p.goto(ORIGIN+'/ultraljud/axel/?gbraid=0AAAA_AGGREGATE&gad_source=1&gad_campaignid=12345678901&gclid=PRIVATE_CLICK&utm_term=PRIVATE_QUERY#PRIVATE_FRAGMENT')
+    p.locator('[data-statistics="yes"]').wait_for()
+    assert seen==[] and events(p)==[]
+    p.locator('[data-statistics="yes"]').click()
+    p.wait_for_function("(window.dataLayer||[]).some(x=>x[0]==='event')")
+    measured=events(p,'page_view')[0][2]
+    assert measured['page_location']==ORIGIN+'/ultraljud/axel/?gbraid=0AAAA_AGGREGATE&gad_source=1&gad_campaignid=12345678901'
+    assert 'PRIVATE' not in json.dumps(events(p))
+    assert 'AGGREGATE' not in p.evaluate('JSON.stringify(sessionStorage)')
+    p.locator('.header-book').click()
+    assert len(events(p,'booking_click'))==1
+    assert events(p,'booking_click')[0][2]['page_location']==measured['page_location']
+    c.close();record('Consent-gated native aggregate campaign metadata survives; unique click IDs and free text stay excluded')
+    for allowed in (True,False):
+        old="localStorage.setItem('kansei-statistics-v2',JSON.stringify({allowed:%s,at:Date.now()}));" % ('true' if allowed else 'false')
+        c,p,seen=setup(browser,seed=old)
+        p.goto(ORIGIN+'/ultraljud/axel/?gad_source=1&gad_campaignid=12345678901')
+        p.locator('.kansei-statistics-settings').wait_for()
+        assert seen==[] and events(p)==[]
+        assert p.locator('.kansei-statistics').is_visible()==allowed
+        c.close()
+    record('Earlier approval requires renewed campaign consent; earlier refusal is respected')
     for width,label in [(320,'compact'),(390,'mobile'),(1280,'desktop')]:
         c,p,_=setup(browser,{'width':width,'height':900})
         for path,name in [('/','home'),('/naprapati/','naprapati'),('/ultraljud/','ultraljud'),('/cookie/','cookie')]:
             p.goto(ORIGIN+path)
-            if p.locator('[data-statistics="no"]:visible').count():p.locator('[data-statistics="no"]').click()
+            if p.locator('[data-statistics="no"]:visible').count():
+                assert p.evaluate('document.documentElement.scrollWidth')<=width+2
+                p.screenshot(path=str(OUT/f'consent-{name}-{label}.png'))
+                p.locator('[data-statistics="no"]').click()
             p.wait_for_timeout(120)
             assert p.locator('h1').count()==1
             assert p.locator('#site-menu .menu-secondary a[href="/ultraljud/bilder/"]').count()==1

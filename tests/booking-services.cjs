@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
-const source = fs.readFileSync(path.join(root,'assets/analytics.20261031.js'),'utf8');
+const source = fs.readFileSync(path.join(root,'assets/analytics.20261101.js'),'utf8');
 function fixture(saved = {}, host = 'www.kansei.se') {
  const storage=new Map(Object.entries(saved)), handlers={}, scripts=[], nodes=[];
  const node=()=>({hidden:false,listeners:{},setAttribute(){},focus(){},append(){},
@@ -35,7 +35,7 @@ for(const [service,event] of Object.entries(mapping)) {
  const before=s.events().length;s.emit(service,'price_list');
  const added=s.events().slice(before);
  assert.deepEqual(added.map(e=>e[1]),['booking_click',event]);
- for(const e of added){assert.equal(e[2].placement,'price_list');assert.equal(e[2].measurement_version,'20261031');assert(!JSON.stringify(e).includes('never'));assert(!('service'in e[2]));assert(!('booking_complete'in e[2]));}
+ for(const e of added){assert.equal(e[2].placement,'price_list');assert.equal(e[2].measurement_version,'20261101');assert(!JSON.stringify(e).includes('never'));assert(!('service'in e[2]));assert(!('booking_complete'in e[2]));}
 }
 s.emit('private-diagnosis','private-placement');
 assert.deepEqual(s.events().slice(-2).map(e=>e[1]),['booking_click','booking_general_click']);

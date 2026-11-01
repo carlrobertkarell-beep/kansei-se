@@ -1,6 +1,70 @@
 # Clinic booking measurement
 
-## Current release — 31 October 2026
+## Aktuell version 1 november 2026
+
+Hemsidan bevarar nu ett begränsat urval av Googles sammanställda
+kampanjparametrar så att Analytics kan skilja annonsbesök från annan trafik.
+Tidigare togs alla parametrar bort från den adress som skickades till Analytics.
+Det kunde hindra denna koppling. Ändringen återställer inte historiska uppgifter.
+
+Publika kliniksidor använder `assets/analytics.20261101.js` tillsammans med
+`assets/clinic.20261031.js`. Mätversionen är `20261101`. Bokningshändelserna och
+deras regler från 31 oktober är oförändrade.
+
+### Vilka uppgifter bevaras?
+
+`page_location` byggs fortfarande från sidans kanoniska adress utan ankare eller
+godtyckliga sökparametrar. Först efter godkänt statistikval får följande uppgifter
+från den faktiska sidans adress läggas till:
+
+| Parameter | Begränsning | Användning |
+| --- | --- | --- |
+| `gbraid` | Ett värde med 1–512 bokstäver, siffror, bindestreck eller understreck | Googles icke-unika kampanjidentifierare |
+| `gad_source` | Ett värde med 1–3 siffror | Annonskälla |
+| `gad_campaignid` | Ett värde med 1–20 siffror | Kampanj |
+
+Upprepade parametrar eller värden som inte följer formatet lämnas ute.
+Om ingen giltig parameter från tabellen finns får det exakta paret
+`utm_source=google` och `utm_medium=cpc` bevaras som fasta värden. Det ger en
+manuell källmärkning utan fria kampanjnamn eller sökord. Paret läggs inte till
+när giltiga sammanställda kampanjparametrar finns.
+
+GCLID, DCLID och WBRAID återinförs inte i det uttryckliga payloadet.
+`utm_campaign`, `utm_term`, `utm_content`, formulärvärden, frågor och andra fria
+värden skickas inte vidare. Koden lägger inte till egna kampanjöverskrivningar,
+antar inte en kampanj utifrån sidans ämne och sparar inga kampanjparametrar
+separat i webbläsaren. GA4 ansvarar för sin sessionshantering. Den befintliga
+tillfälliga hänvisningsgruppen är oförändrad.
+
+### Samtycke och verifiering
+
+Statistikvalet använder version 3. Ett giltigt nej från en tidigare version
+fortsätter att gälla. Ett tidigare ja aktiverar inte den utökade mätningen utan
+ett nytt godkännande. Före godkännande och efter återkallat samtycke hålls Googles
+mätning avstängd. `ad_storage`, `ad_user_data` och `ad_personalization` förblir
+`denied`; Google-signaler och personlig annonsanpassning är avstängda.
+
+För Googles sammanställda kampanjattribuering måste rätt Google Ads-konto vara
+länkat till GA4-egendomen. Automatisk taggning och de verkliga slutadresserna i
+annonserna måste kontrolleras i kontot. En länk som bara innehåller GCLID eller
+WBRAID omfattas inte av den här vidarebefordran. Det manuella paret anger
+källa och medium men återställer inte kampanjnamn, sökord, kostnader eller en
+Ads-koppling.
+
+Lokala tester med stubbade Google-anrop visar formatfiltrering och
+samtyckesbeteende. De visar inte att Google har tagit emot uppgifterna eller
+attribuerat ett verkligt annonsbesök. Kontrollera rapporterna efter riktiga
+besök med samtycke. Skicka inte påhittade annonsklick, bokningar eller
+konverteringar till produktionens GA4. Förbättrad rapportering är inte ett mått
+på fler genomförda bokningar och kan inte återskapa tidigare borttagna uppgifter.
+
+Källor:
+- https://support.google.com/analytics/answer/16479993
+- https://support.google.com/analytics/answer/16973975
+- https://support.google.com/analytics/answer/15612152
+- https://support.google.com/analytics/answer/11242841
+
+## Tidigare version 31 oktober 2026
 
 The owner approved service-level booking measurement and the five conversion
 improvements on 31 October. This section supersedes the older payload exclusions

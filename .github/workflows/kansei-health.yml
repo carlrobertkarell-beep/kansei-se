@@ -38,6 +38,7 @@ jobs:
         run: |
           node site/tests/analytics-attribution.cjs
           node site/tests/booking-services.cjs
+          node site/tests/booking-funnel.cjs
       - name: Static SEO checks
         run: python3 site/.github/scripts/check-seo.py
       - name: Install pinned browser tester

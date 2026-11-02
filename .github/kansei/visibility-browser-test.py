@@ -92,9 +92,25 @@ with sync_playwright() as pw:
     assert p.url==ORIGIN+'/hyaluronsyra/#in-7'
     assert events(p,'booking_click')==[]
     p.goto(ORIGIN+'/hyaluronsyra/kna/')
+    p.wait_for_function("window.KanseiMeasure===true")
     p.locator('.header-book').click()
-    p.wait_for_url(ORIGIN+'/hyaluronsyra/kna/#pris')
+    p.wait_for_url(ORIGIN+'/hyaluronsyra/kna/#boka')
     assert events(p,'booking_click')==[]
+    assert len(events(p,'booking_options_open'))==1
+    # The view intentionally requires one second of continuous visibility.
+    # Avoid Playwright's string-eval polling under the public page's strict CSP.
+    p.wait_for_timeout(1400)
+    assert len(events(p,'booking_options_view'))==1
+    p.locator('.ha-choice-links a[href="#pris"]').click()
+    p.wait_for_url(ORIGIN+'/hyaluronsyra/kna/#pris')
+    assert len(events(p,'booking_options_open'))==2
+    assert events(p,'booking_click')==[]
+    p.locator('.ha-choice a[data-measure="booking_click"]').first.click()
+    assert len(events(p,'booking_click'))==1
+    assert len(events(p,'booking_hyaluron_click'))==1
+    assert events(p,'booking_click')[0][2]['placement']=='service_card'
+    assert len(events(p,'booking_options_view'))==1
+    record('Hyaluron options navigation and one visible view are separate from one service-specific calendar click')
     p.goto(ORIGIN+'/ultraljud/axel/')
     p.wait_for_function("(window.dataLayer||[]).some(x=>x[0]==='event')")
     assert p.locator('.header-book').get_attribute('href').endswith('/muskuloskeletalt-ultraljud-1946824')

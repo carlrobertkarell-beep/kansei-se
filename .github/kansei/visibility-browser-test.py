@@ -97,7 +97,9 @@ with sync_playwright() as pw:
     p.wait_for_url(ORIGIN+'/hyaluronsyra/kna/#boka')
     assert events(p,'booking_click')==[]
     assert len(events(p,'booking_options_open'))==1
-    p.wait_for_function("(window.dataLayer||[]).some(x=>x[0]==='event'&&x[1]==='booking_options_view')")
+    # The view intentionally requires one second of continuous visibility.
+    # Avoid Playwright's string-eval polling under the public page's strict CSP.
+    p.wait_for_timeout(1400)
     assert len(events(p,'booking_options_view'))==1
     p.locator('.ha-choice-links a[href="#pris"]').click()
     p.wait_for_url(ORIGIN+'/hyaluronsyra/kna/#pris')

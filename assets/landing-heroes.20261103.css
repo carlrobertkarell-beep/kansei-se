@@ -21,6 +21,10 @@
   line-height: 1.07;
 }
 
+.clinic-site .landing-hero.landing-hero--home .landing-hero-copy h1 {
+  font-size: var(--page-heading);
+}
+
 .clinic-site .landing-hero .landing-hero-copy :is(.landing-hero-lead, .us-lead, .intro) {
   max-width: 47ch;
   margin: 0 0 16px;

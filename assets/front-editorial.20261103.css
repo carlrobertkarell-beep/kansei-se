@@ -101,6 +101,31 @@ body.clinic-site.front-editorial {
   color: var(--muted);
 }
 
+.front-editorial .editorial-hero .ha-hero-actions {
+  flex-direction: row;
+  gap: 6px 16px;
+  margin-top: 12px;
+}
+
+.front-editorial .ha-main .editorial-hero .ha-price-note {
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+.front-editorial .editorial-hero .ha-hero-detail {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.front-editorial .editorial-hero .ha-portrait figcaption {
+  margin-top: 0;
+}
+
+.front-editorial .editorial-hero .us-source {
+  margin-top: 12px;
+}
+
 .front-editorial .editorial-hero :is(a, button):focus-visible {
   outline-color: #f4d77b;
 }
@@ -210,6 +235,14 @@ body.clinic-site.front-editorial {
   font-weight: 690;
 }
 
+.front-editorial .editorial-feature:is(:hover, :active) {
+  background: #d8e6d4;
+}
+
+.front-editorial .editorial-reads a:is(:hover, :active) {
+  background: #eeefe6;
+}
+
 .front-editorial .editorial-next {
   display: flex;
   align-items: center;
@@ -286,6 +319,15 @@ body.clinic-site.front-editorial {
 
   .front-editorial .editorial-hero .landing-hero-media img {
     aspect-ratio: 16 / 10;
+  }
+
+  .front-editorial .editorial-hero .ha-portrait {
+    display: block;
+  }
+
+  .front-editorial .editorial-hero .ha-portrait img {
+    height: auto;
+    object-position: 50% 26%;
   }
 
   .front-editorial .editorial-discover-grid {

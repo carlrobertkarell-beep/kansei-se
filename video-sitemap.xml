@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
+    <loc>https://www.kansei.se/ultraljud/axel/ac-ledsartros/film/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <video:video>
+      <video:thumbnail_loc>https://www.kansei.se/bilder/ultraljud/ac-ledsartros/injektion-poster.jpg</video:thumbnail_loc>
+      <video:title>Ultraljudsvägledd hyaluroninjektion i AC-leden</video:title>
+      <video:description>Se nålen i realtid när AC-leden behandlas med Sinogel. Ett kort bildstopp visar nålen, ledkapseln och vävnaderna runt AC-leden. Sedan fortsätter ultraljudsfilmen från injektionen.</video:description>
+      <video:content_loc>https://www.kansei.se/bilder/ultraljud/ac-ledsartros/hyaluroninjektion-ac-led.mp4</video:content_loc>
+      <video:publication_date>2026-11-03</video:publication_date>
+    </video:video>
+  </url>
+  <url>
     <loc>https://www.kansei.se/hyaluronsyra/film/</loc>
     <lastmod>2026-10-27</lastmod>
     <video:video>

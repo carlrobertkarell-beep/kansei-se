@@ -1,0 +1,208 @@
+/* First screen for the homepage and service booking pages. */
+.clinic-site .landing-hero {
+  padding-block: clamp(22px, 3.3vw, 48px) clamp(28px, 4vw, 58px);
+}
+
+.landing-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(26px, 5vw, 76px);
+  align-items: center;
+}
+
+.landing-hero-copy {
+  min-width: 0;
+}
+
+.clinic-site .landing-hero .landing-hero-copy h1 {
+  max-width: 17ch;
+  margin: 10px 0 16px;
+  font-size: clamp(38px, 4.5vw, 62px);
+  line-height: 1.07;
+}
+
+.clinic-site .landing-hero.landing-hero--home .landing-hero-copy h1 {
+  font-size: var(--page-heading);
+}
+
+.clinic-site .landing-hero .landing-hero-copy :is(.landing-hero-lead, .us-lead, .intro) {
+  max-width: 47ch;
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: clamp(16px, 1.45vw, 19px);
+  line-height: 1.55;
+}
+
+.landing-hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin: 14px 0 0;
+}
+
+.clinic-site .landing-hero .landing-hero-actions .button {
+  min-height: 46px;
+  padding: 11px 19px;
+  font-size: 15px;
+}
+
+.clinic-site .landing-hero .landing-hero-copy :is(.landing-hero-facts, .landing-hero-meta, .landing-hero-note) {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.clinic-site .landing-hero .landing-hero-copy :is(.landing-hero-facts, .landing-hero-meta) strong {
+  color: var(--ink);
+}
+
+.landing-hero-media {
+  min-width: 0;
+  margin: 0;
+}
+
+.landing-hero-media :is(img, video) {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 9px;
+  background: var(--mist);
+}
+
+.landing-hero-media img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.landing-hero-media video {
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+
+.landing-hero-media figcaption {
+  padding: 9px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.landing-hero-media figcaption a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Keep the two equally prominent consent controls and reduce overlay height. */
+.clinic-site:has(.landing-hero) .kansei-statistics {
+  width: min(640px, calc(100% - 48px));
+}
+
+.clinic-site:has(.landing-hero) .kansei-statistics-inner {
+  grid-template-columns: minmax(0, 1fr) 215px;
+  gap: 16px;
+  padding: 14px 18px 8px;
+}
+
+.clinic-site:has(.landing-hero) .kansei-statistics h2 {
+  margin-bottom: 4px;
+  font-size: 18px;
+}
+
+.clinic-site:has(.landing-hero) .kansei-statistics p {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.clinic-site:has(.landing-hero) .kansei-statistics-actions button {
+  min-height: 48px;
+  padding: 8px 10px;
+  font-size: 15px;
+}
+
+.clinic-site:has(.landing-hero) .kansei-statistics-info {
+  min-height: 34px;
+  margin-top: 0;
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .landing-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .clinic-site .landing-hero .landing-hero-copy h1 {
+    max-width: 20ch;
+    margin-block: 8px 12px;
+    font-size: clamp(33px, 8.9vw, 46px);
+  }
+
+  .clinic-site .landing-hero .landing-hero-copy :is(.landing-hero-lead, .us-lead, .intro) {
+    margin-bottom: 11px;
+  }
+
+  .clinic-site .landing-hero .landing-hero-copy :is(.landing-hero-facts, .landing-hero-meta, .landing-hero-note) {
+    margin-top: 8px;
+    font-size: 14px;
+  }
+
+  .landing-hero-actions {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  .clinic-site:has(.landing-hero) .kansei-statistics {
+    width: auto;
+  }
+
+  .clinic-site:has(.landing-hero) .kansei-statistics-inner {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 10px 13px 3px;
+  }
+}
+
+.clinic-site .landing-hero .landing-hero-crumbs {
+  margin: 0 0 clamp(12px, 1.8vw, 24px);
+}
+
+.clinic-site .landing-hero .landing-hero-media figcaption .text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin: 0;
+}
+
+.landing-booking-section {
+  margin-bottom: 28px;
+}
+
+.landing-hero-film [hidden] {
+  display: none;
+}
+
+.landing-hero-film-poster {
+  display: block;
+  position: relative;
+}
+
+.landing-hero-film .landing-hero-film-poster img {
+  aspect-ratio: 16 / 9;
+}
+
+.landing-hero-film-play {
+  position: absolute;
+  inset: auto auto 14px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #12303a;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}

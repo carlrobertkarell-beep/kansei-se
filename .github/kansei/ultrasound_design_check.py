@@ -117,6 +117,7 @@ def check_explore(page):
     expected.add('/ultraljud/kna/forkalkad-menisk/')
     expected.add('/ultraljud/kna/artros-ledband-hyaluron/')
     expected.add('/ultraljud/axel/supraspinatusruptur/')
+    expected.add('/ultraljud/axel/ac-ledsartros/')
     if set(entries.locator('[data-atlas-case]').evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))'))!=expected:
         raise AssertionError('A published image reader is missing or duplicated')
     if set(entries.locator('.atlas-image-shortcut').evaluate_all('(els)=>els.map(e=>e.getAttribute("href").replace(/#bilder$/,""))'))!=expected:
@@ -152,9 +153,9 @@ def check_explore(page):
         ('knät svullnar efter promenader',('/ultraljud/kna/','/ultraljud/kna/forkalkad-menisk/')),
         ('förkalkad menisk','/ultraljud/kna/forkalkad-menisk/'),
         ('CPPD','/ultraljud/kna/forkalkad-menisk/'),
-        ('hyaluronsyra',('/ultraljud/hoftled/bilder/','/ultraljud/kna/','/ultraljud/kna/artros-ledband-hyaluron/','/ultraljud/axel/supraspinatusruptur/')),
+        ('hyaluronsyra',('/ultraljud/hoftled/bilder/','/ultraljud/kna/','/ultraljud/kna/artros-ledband-hyaluron/','/ultraljud/axel/supraspinatusruptur/','/ultraljud/axel/ac-ledsartros/')),
         ('Synovial',('/ultraljud/kna/','/ultraljud/kna/artros-ledband-hyaluron/')),
-        ('Sinogel',('/ultraljud/hoftled/bilder/','/ultraljud/kna/','/ultraljud/axel/supraspinatusruptur/')),
+        ('Sinogel',('/ultraljud/hoftled/bilder/','/ultraljud/kna/','/ultraljud/axel/supraspinatusruptur/','/ultraljud/axel/ac-ledsartros/')),
         ('caput','/ultraljud/hoftled/bilder/'),
     ):
         search.fill(phrase)
@@ -169,6 +170,6 @@ def check_explore(page):
     if 'besvar=natt' not in page.url:raise AssertionError('Symptom filter has no shareable URL')
     page.reload(wait_until='domcontentloaded')
     if page.locator('[data-atlas-symptom=natt]').get_attribute('aria-current')!='true':raise AssertionError('Direct symptom URL does not survive reload')
-    if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=3:raise AssertionError('Sleep filter must include shoulder and hand examples')
+    if entries.evaluate_all('(els)=>els.filter(e=>!e.hidden).length')!=4:raise AssertionError('Sleep filter must include shoulder and hand examples')
     page.locator('[data-atlas-symptom=alla]').click()
     return 'Whole cases, image shortcuts, area/symptom URLs, natural-language search, empty-state recovery and independent preview layers passed'

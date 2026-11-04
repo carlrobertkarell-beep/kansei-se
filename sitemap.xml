@@ -709,6 +709,21 @@
     </image:image>
   </url>
   <url>
+    <loc>https://www.kansei.se/ultraljud/axel/paralabral-cysta/</loc>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/paralabral-cysta/lax-anatomi.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/paralabral-cysta/lax.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/paralabral-cysta/sax-anatomi.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/paralabral-cysta/sax.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.kansei.se/ultraljud/axel/ac-ledsartros/film/</loc>
     <lastmod>2026-11-03</lastmod>
     <video:video>
@@ -820,6 +835,9 @@
     </image:image>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/oversikt/09-halsena.20261015c.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/paralabral-cysta/sax.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/supraspinatusruptur/sax-without.original.jpg</image:loc>

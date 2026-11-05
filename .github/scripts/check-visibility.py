@@ -55,11 +55,11 @@ def check():
     assert checked>=120,checked
     # Only current published offer schemas are compared; unrelated campaign prices are not touched.
     hy=Scan((ROOT/'hyaluronsyra/index.html').read_text())
-    offers=[x for b in hy.jsonld for x in objects(b) if x.get('@type')=='Offer' and str(x.get('price')) in ['3190','5790','3490','6290']]
-    assert {'3190','5790','3490','6290'}<={str(x['price']) for x in offers}, 'Hyaluron one/two-joint prices diverge'
+    offers=[x for b in hy.jsonld for x in objects(b) if x.get('@type')=='Offer' and str(x.get('price')) in ['2490','4980','2990','5980']]
+    assert {'2490','4980','2990','5980'}<={str(x['price']) for x in offers}, 'Hyaluron one/two-joint prices diverge'
     for rel in ['index.html','hyaluronsyra/index.html','priser/index.html','injektioner/index.html']:
         text=(ROOT/rel).read_text()
-        assert not re.search(r'(?<!\d)(?:2[ \u00a0]?590|2[ \u00a0]?990)\s*(?:kr|SEK)',text), 'Old hyaluron offer on '+rel
+        assert not re.search(r'(?<!\d)(?:3[ \u00a0]?190|5[ \u00a0]?790|6[ \u00a0]?290)\s*(?:kr|SEK)',text), 'Old hyaluron offer on '+rel
     nap=(ROOT/'naprapati/index.html').read_text()
     assert 'vi arbetar sida vid sida med leg. fysioterapeut' not in nap
     assert 'Specialistmedverkan sker efter förfrågan' in nap

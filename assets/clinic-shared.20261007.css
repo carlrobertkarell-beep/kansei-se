@@ -208,3 +208,9 @@ body.clinic-site{--teal:#254f3e;--dark:#20372b;--ink:#202f27;--muted:#506257;--p
 
 /* Keep the common clinic header aligned with the approved mobile layout. */
 @media(max-width:760px){.clinic-site .site-header .header-inner{padding-inline:20px}}
+/* Long clinical terms must wrap within a narrow mobile column. */
+@media(max-width:860px){
+ .clinic-site.hyaluron-page :is(.ha-split,.ha-hero-grid){grid-template-columns:minmax(0,1fr)}
+ .clinic-site.hyaluron-page :is(.ha-split,.ha-hero-grid)>*{min-width:0}
+}
+@media(max-width:480px){.clinic-site.hyaluron-page main :is(h1,h2,h3){overflow-wrap:anywhere}}

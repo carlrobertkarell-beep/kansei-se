@@ -40,6 +40,6 @@ def check_hip_joint(page, output, label):
     page.locator('[data-case-tab="tab-caput"]').first.click()
     assert viewer.locator('.knee-panel:not([hidden])').get_attribute('data-key') == 'caput'
     assert findings.get_attribute('aria-checked') == 'true'
-    assert page.locator('a[href*="/hyaluronsyra-sinogel-3478216"]').count() >= 1
+    assert page.locator('a[href="https://www.bokadirekt.se/boka-tjanst/kansei-naprapati-rehabcenter-48847/hyaluronsyra-sinovial-hl-64-3409516"]').count() >= 1
     assert page.locator('.hip-story-chapter').count() == 3
     return {'views':3,'independent_layers':'passed','all_zoom_views':'passed','keyboard':'passed','story_image_link':'passed'}

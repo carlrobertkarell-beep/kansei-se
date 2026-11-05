@@ -37,9 +37,15 @@ before captions and export.
 
 ## Film 7: Sinovial and Sinogel
 
-The 79.166667-second October 20 web edition uses the approved film-7 cut,
-product inserts, price graphic and original recorded voice. Its delivery copy
-is encoded as H.264 with the audio copied unchanged. Swedish speech captions
-and chapter timings are separate VTT files; the standalone review copy has
-burned captions. The price graphic is dated October 20, 2026. Update that
-graphic and the matching caption/page metadata together when prices change.
+The current 79.166667-second November 5 web edition
+`sinovial-sinogel-pris-bokning.20261105.mp4` preserves the approved film-7
+cut, product inserts and original recorded voice. Its price card shows
+Sinovial HL 64: SEK 2,490 for one joint / SEK 4,980 for two joints;
+Sinogel: SEK 2,990 for one joint / SEK 5,980 for two joints, at the same visit.
+The price scene at approximately 39.5–52.3 seconds replaces the old dated
+card, including its short transition frames, without changing the running time.
+The delivery copy uses H.264 (CRF 23) with the original audio copied unchanged.
+Swedish speech captions and chapter timings remain in the October 20 VTT
+files because the spoken script and timing are unchanged. The original
+October 20 MP4 is retained but no longer referenced by public HTML or sitemaps.
+Update the price card and matching page metadata together when prices change.

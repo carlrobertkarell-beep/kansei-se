@@ -88,12 +88,19 @@ with sync_playwright() as pw:
     c,p,_=setup(browser,seed=seed)
     p.goto(ORIGIN+'/hyaluronsyra/')
     p.wait_for_function("(window.dataLayer||[]).some(x=>x[0]==='event')")
+    hyaluron_booking=p.locator('.header-book').get_attribute('href')
+    assert urlsplit(hyaluron_booking).hostname=='www.bokadirekt.se'
+    assert urlsplit(hyaluron_booking).path.endswith('-3409516')
     p.locator('.header-book').click()
-    assert p.url==ORIGIN+'/hyaluronsyra/#in-7'
-    assert events(p,'booking_click')==[]
+    assert p.url==ORIGIN+'/hyaluronsyra/'
+    assert len(events(p,'booking_click'))==1
+    assert len(events(p,'booking_hyaluron_click'))==1
+    assert events(p,'booking_click')[0][2]['placement']=='header'
+    assert events(p,'booking_options_open')==[]
     p.goto(ORIGIN+'/hyaluronsyra/kna/')
     p.wait_for_function("window.KanseiMeasure===true")
-    p.locator('.header-book').click()
+    assert p.locator('.header-book').get_attribute('href')==hyaluron_booking
+    p.locator('main a[href="#boka"]').click()
     p.wait_for_url(ORIGIN+'/hyaluronsyra/kna/#boka')
     assert events(p,'booking_click')==[]
     assert len(events(p,'booking_options_open'))==1
@@ -101,7 +108,7 @@ with sync_playwright() as pw:
     # Avoid Playwright's string-eval polling under the public page's strict CSP.
     p.wait_for_timeout(1400)
     assert len(events(p,'booking_options_view'))==1
-    p.locator('.ha-choice-links a[href="#pris"]').click()
+    p.locator('.ha-single-booking-prices a[href="#pris"]').click()
     p.wait_for_url(ORIGIN+'/hyaluronsyra/kna/#pris')
     assert len(events(p,'booking_options_open'))==2
     assert events(p,'booking_click')==[]
@@ -110,7 +117,7 @@ with sync_playwright() as pw:
     assert len(events(p,'booking_hyaluron_click'))==1
     assert events(p,'booking_click')[0][2]['placement']=='service_card'
     assert len(events(p,'booking_options_view'))==1
-    record('Hyaluron options navigation and one visible view are separate from one service-specific calendar click')
+    record('Hyaluron header counts one service-specific calendar intent; internal price navigation and one visible view stay separate from calendar clicks')
     p.goto(ORIGIN+'/ultraljud/axel/')
     p.wait_for_function("(window.dataLayer||[]).some(x=>x[0]==='event')")
     assert p.locator('.header-book').get_attribute('href').endswith('/muskuloskeletalt-ultraljud-1946824')

@@ -1,0 +1,33 @@
+/* One treatment visit, with preparation and price information kept together. */
+.hyaluron-page .ha-single-booking-wrap { padding-block: 0 32px; }
+.hyaluron-page .ha-single-booking { margin-block: 22px 34px; }
+.hyaluron-page .ha-single-booking-card { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px 36px; padding: 30px; border: 1px solid var(--line); border-radius: 16px; background: #fffefb; }
+.hyaluron-page .ha-single-booking-copy h2 { font-size: clamp(25px,2.6vw,32px); margin: 8px 0 14px; }
+.hyaluron-page .ha-single-booking-copy > p:not(.eyebrow) { font-size: 15px; line-height: 1.6; margin: 0; color: var(--muted); }
+.hyaluron-page .ha-single-booking-copy ul { list-style: none; display: grid; gap: 8px; padding: 0; margin: 18px 0 0; font-size: 13px; color: var(--muted); }
+.hyaluron-page .ha-single-booking-copy li::before { content: ''; display: inline-block; width: 5px; height: 5px; margin: 0 9px 3px 0; background: #6e8b66; border-radius: 50%; }
+.hyaluron-page .ha-single-booking-action { padding: 24px; border-radius: 12px; background: #edf2e8; align-self: start; }
+.hyaluron-page .ha-single-booking-action .ha-choice-price { font-size: 30px; margin: 0; white-space: nowrap; }
+.hyaluron-page .ha-single-booking-action .ha-choice-unit { font-size: 13px; margin: 6px 0 20px; }
+.hyaluron-page .ha-single-booking-action .button { width: 100%; margin: 0; min-height: 48px; justify-content: center; text-align: center; white-space: normal; font-size: 14px; padding-inline: 12px; }
+.hyaluron-page .ha-calendar-note { font-size: 11px; color: var(--muted); line-height: 1.5; margin: 11px 0 0; text-align: center; }
+.hyaluron-page .ha-single-booking-prices { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 24px; border-top: 1px solid var(--line); padding-top: 16px; font-size: 13px; color: var(--muted); }
+.hyaluron-page .ha-single-booking-prices p { margin: 0; }
+.hyaluron-page .ha-single-booking-prices strong { font-weight: 600; color: var(--ink); }
+.hyaluron-page .ha-single-booking-prices p > span { display: inline-block; margin-inline: 10px; }
+.hyaluron-page .ha-single-booking-prices a { min-height: 44px; display: inline-flex; align-items: center; color: var(--teal); text-decoration: underline; text-underline-offset: 4px; }
+.hyaluron-page .ha-consultation-choice { margin-top: 16px; padding: 0 4px; font-size: 13px; color: var(--muted); }
+.hyaluron-page .ha-consultation-choice summary { min-height: 44px; padding-block: 12px; cursor: pointer; color: var(--teal); font-weight: 500; }
+.hyaluron-page .ha-consultation-choice div { max-width: 78ch; padding-block: 0 8px; }
+.hyaluron-page .ha-consultation-choice p { margin: 0 0 12px; }
+.hyaluron-page .ha-consultation-choice a { color: var(--teal); text-underline-offset: 4px; }
+.hyaluron-page .ha-single-booking :is(a,summary):focus-visible { outline: 3px solid #587f45; outline-offset: 4px; }
+@media(max-width:760px) {
+ .hyaluron-page .ha-single-booking-wrap { padding-bottom: 14px; }
+ .hyaluron-page .ha-single-booking-card { grid-template-columns: minmax(0,1fr); gap: 22px; padding: 23px; }
+ .hyaluron-page .ha-single-booking-copy h2 { font-size: 27px; }
+ .hyaluron-page .ha-single-booking-action { padding: 20px 0 0; border-top: 1px solid var(--line); border-radius: 0; background: transparent; }
+ .hyaluron-page .ha-single-booking-prices { display: block; }
+ .hyaluron-page .ha-single-booking-prices p > span { display: none; }
+ .hyaluron-page .ha-single-booking-prices strong:not(:first-child)::before { content: ''; display: block; margin-top: 5px; }
+}

@@ -165,3 +165,8 @@ body.kansei-care {
   .kansei-care { scroll-behavior: auto; }
   .kansei-care .button { transition: none; transform: none; }
 }
+
+/* Keep the treatment name whole on the narrowest phone screens. */
+@media (max-width:380px) {
+  .kansei-care.hyaluron-page .ha-hero .landing-hero-copy h1 { font-size: 32px; }
+}

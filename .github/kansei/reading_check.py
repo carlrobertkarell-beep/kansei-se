@@ -14,6 +14,32 @@ TARGETS={
 def check_reading(page,path,output,label):
     sections=page.locator('[data-reading-section]')
     bar=page.locator('.reading-position')
+    inline=page.locator('[data-reading-inline]')
+    if inline.count():
+        assert bar.count()==0, 'Inline contents must not add a floating reading bar'
+        assert sections.count()>=3
+        assert page.locator('.reading-chapter-number').count()==sections.count()
+        summary=inline.locator('summary')
+        summary.click()
+        assert inline.get_attribute('open') is not None
+        assert inline.locator('nav a').count()==sections.count()
+        page.keyboard.press('Escape')
+        assert inline.get_attribute('open') is None
+        assert summary.evaluate('el=>el===document.activeElement')
+        summary.click()
+        target=TARGETS[path]
+        inline.locator(f'nav a[href="#{target}"]').click()
+        page.wait_for_url('**/#'+target)
+        assert inline.get_attribute('open') is None
+        heading=page.locator('#'+target).locator('h2').first
+        expect(heading).to_be_focused()
+        header_box=page.locator('.site-header').bounding_box()
+        assert heading.bounding_box()['y']>=header_box['y']+header_box['height']-1, 'Section heading is covered'
+        assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+2')
+        page.screenshot(path=str(output/f'reading-inline-{path.strip("/").replace("/","-")}-{label}.png'),animations='disabled')
+        page.evaluate("() => {history.replaceState(null,'',location.pathname+location.search);window.scrollTo({top:0,behavior:'instant'});}")
+        page.wait_for_timeout(120)
+        return {'chapters':sections.count(),'inline_contents':'Passed','keyboard_and_anchor_clearance':'Passed'}
     assert bar.count()==1 and sections.count()>=3
     assert not bar.is_visible(), 'Reading position covers the introduction'
     assert page.locator('.reading-chapter-number').count()==sections.count()

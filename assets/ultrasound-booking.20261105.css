@@ -1,0 +1,57 @@
+/* Ultrasound hub: booking and optional reading navigation stay in the page flow. */
+.kansei-care .ultrasound-contents { padding: 0; margin: 20px 0 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.kansei-care .ultrasound-contents > summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 52px; cursor: pointer; list-style: none; color: var(--teal); font-size: 14px; font-weight: 600; }
+.kansei-care .ultrasound-contents > summary::-webkit-details-marker { display: none; }
+.kansei-care .ultrasound-contents > summary::after { content: '+'; font-size: 20px; font-weight: 400; }
+.kansei-care .ultrasound-contents[open] > summary::after { content: '−'; }
+.kansei-care .ultrasound-contents nav { display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px; padding-bottom: 16px; }
+.kansei-care .ultrasound-contents nav a { display: flex; align-items: center; min-height: 44px; font-size: 14px; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+.kansei-care:has(.ultrasound-contents) main [id] { scroll-margin-top: 108px; }
+.kansei-care .ultrasound-booking-section { padding-block: 48px; }
+.kansei-care .ultrasound-booking-panel { display: grid; grid-template-columns: 1.3fr 1fr; gap: 44px; align-items: center; padding: 36px; border: 1px solid var(--line); border-radius: 20px; background: #fffefb; }
+.kansei-care .ultrasound-booking-copy { min-width: 0; }
+.kansei-care .ultrasound-booking-copy > .eyebrow { display: flex; align-items: baseline; margin-bottom: 12px; }
+.kansei-care .ultrasound-booking-copy .reading-chapter-number { display: inline; min-width: 0; height: auto; padding: 0; margin: 0 10px 0 0; border: 0; border-radius: 0; background: transparent; font: inherit; color: var(--muted); transform: none; }
+.kansei-care .ultrasound-booking-copy h2 { font-size: clamp(30px,3.3vw,43px); line-height: 1.12; margin: 0 0 16px; }
+.kansei-care .ultrasound-booking-copy > p { font-size: 16px; max-width: 48ch; margin: 0; color: var(--muted); }
+.kansei-care .ultrasound-booking-included { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; list-style: none; padding: 0; margin: 24px 0; }
+.kansei-care .ultrasound-booking-included li { display: flex; align-items: baseline; gap: 9px; font-size: 13px; line-height: 1.55; color: var(--ink); }
+.kansei-care .ultrasound-booking-included li::before { content: ''; flex: 0 0 5px; width: 5px; height: 5px; border-radius: 50%; background: #6e8b66; transform: translateY(-2px); }
+.kansei-care .ultrasound-booking-copy > .ultrasound-booking-location { font-size: 12px; }
+.kansei-care .ultrasound-booking-action { min-width: 0; padding: 28px; border-radius: 14px; background: #edf2e8; }
+.kansei-care .ultrasound-booking-action h3 { font-size: 17px; font-weight: 600; line-height: 1.4; margin: 0 0 18px; }
+.kansei-care .ultrasound-booking-price { display: grid; gap: 4px; margin: 0 0 22px; }
+.kansei-care .ultrasound-booking-price strong { font-size: 36px; font-weight: 600; line-height: 1.15; letter-spacing: -.04em; color: var(--ink); }
+.kansei-care .ultrasound-booking-price span { font-size: 13px; color: var(--muted); }
+.kansei-care .ultrasound-booking-action > .button { width: 100%; justify-content: center; text-align: center; white-space: normal; font-size: 14px; padding-inline: 14px; }
+.kansei-care .ultrasound-booking-confirm { margin: 12px 0 0; font-size: 11px; line-height: 1.6; color: var(--muted); text-align: center; }
+.kansei-care .ultrasound-booking-support { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px 44px; align-items: start; padding: 18px 36px 0; font-size: 13px; color: var(--muted); }
+.kansei-care .ultrasound-booking-support > p { margin: 0; }
+.kansei-care .ultrasound-booking-support a { color: var(--teal); text-underline-offset: 4px; }
+.kansei-care .ultrasound-booking-support > p > a { display: inline-flex; align-items: center; min-height: 44px; }
+.kansei-care .ultrasound-booking-report > summary { display: list-item; min-height: 44px; padding-block: 10px; cursor: pointer; color: var(--teal); font-weight: 500; }
+.kansei-care .ultrasound-booking-report p { margin: 0 0 12px; font-size: 13px; }
+.kansei-care .ultrasound-booking-section :is(a,summary):focus-visible,
+.kansei-care .ultrasound-contents :is(a,summary):focus-visible { outline: 3px solid #587f45; outline-offset: 4px; }
+@media (max-width:1000px) {
+  .kansei-care .ultrasound-booking-panel { gap: 28px; padding: 28px; }
+  .kansei-care .ultrasound-booking-included { grid-template-columns: 1fr; gap: 9px; margin-block: 20px; }
+  .kansei-care .ultrasound-booking-action { padding: 24px; }
+  .kansei-care .ultrasound-booking-support { padding-inline: 28px; gap: 20px 28px; }
+}
+@media (max-width:760px) {
+  .kansei-care:has(.ultrasound-contents) main [id] { scroll-margin-top: 92px; }
+  .kansei-care .ultrasound-contents { margin-top: 16px; }
+  .kansei-care .ultrasound-contents nav { grid-template-columns: 1fr; }
+  .kansei-care .ultrasound-booking-section { padding-block: 32px; }
+  .kansei-care .ultrasound-booking-panel { grid-template-columns: minmax(0,1fr); gap: 24px; padding: 24px; border-radius: 16px; }
+  .kansei-care .ultrasound-booking-copy h2 { font-size: 32px; }
+  .kansei-care .ultrasound-booking-copy > p { font-size: 15px; }
+  .kansei-care .ultrasound-booking-action { padding: 23px; }
+  .kansei-care .ultrasound-booking-included { font-size: 13px; margin-block: 20px; }
+  .kansei-care .ultrasound-booking-support { grid-template-columns: minmax(0,1fr); gap: 4px; padding: 14px 0 0; }
+}
+@media (max-width:380px) {
+  .kansei-care .ultrasound-booking-panel { padding: 20px; }
+  .kansei-care .ultrasound-booking-action { padding: 20px; }
+}

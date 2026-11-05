@@ -1,0 +1,167 @@
+/* Kansei: approved mobile direction, with clinical assessment as the main value. */
+body.kansei-care {
+  --paper: #f9f8f3;
+  --white: #fffefb;
+  --ink: #202f27;
+  --muted: #506257;
+  --teal: #254f3e;
+  --dark: #20372b;
+  --line: #d5ddd2;
+  --mist: #eaf0e4;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+.kansei-care :is(h1,h2,h3) { font-family: var(--sans); text-wrap: balance; }
+.kansei-care :is(h1,h2) { font-weight: 580; letter-spacing: -.048em; }
+.kansei-care h3 { font-weight: 600; letter-spacing: -.025em; }
+.kansei-care p { line-height: 1.65; }
+.kansei-care .wrap { max-width: 1320px; padding-inline: clamp(22px,5vw,70px); }
+.kansei-care .site-header { background: rgba(249,248,243,.96); border-color: var(--line); }
+.kansei-care .header-inner { height: 78px; }
+.kansei-care .brand img { width: 155px; }
+.kansei-care .button { min-height: 48px; font-size: 15px; padding: 12px 21px; font-weight: 620; gap: 12px; }
+.kansei-care .button-dark { background: var(--teal); color: #fff; }
+.kansei-care .button-dark:hover { background: #193d2c; }
+.kansei-care :is(.button-outline,.button-ghost) { background: transparent; color: var(--teal); border: 1px solid #a8bbad; }
+.kansei-care .header-book { background: transparent; color: var(--teal); border: 1px solid #a8bbad; min-height: 44px; }
+.kansei-care .site-menu-toggle { color: var(--teal); }
+.kansei-care .eyebrow { color: var(--teal); font-size: 11px; line-height: 1.5; letter-spacing: .1em; font-weight: 650; }
+.kansei-care :is(.landing-hero,.ha-hero) { padding-block: clamp(28px,4vw,56px) 42px; background: var(--paper); }
+.kansei-care .landing-hero-grid { display: grid; grid-template-columns: 1fr 1.06fr; align-items: center; gap: clamp(32px,5vw,72px); }
+.kansei-care .landing-hero .landing-hero-copy h1,
+.kansei-care .ha-hero .landing-hero-copy h1 {
+  font-size: clamp(42px,4.65vw,66px); line-height: 1.045; letter-spacing: -.055em;
+  max-width: 17ch; margin: 10px 0 19px;
+}
+.kansei-care.care-home .landing-hero .landing-hero-copy h1 { max-width: 16ch; }
+.kansei-care .landing-hero .landing-hero-copy :is(.landing-hero-lead,.us-lead,.intro),
+.kansei-care .ha-hero .landing-hero-copy .intro {
+  font-size: clamp(16px,1.5vw,18px); line-height: 1.58; max-width: 48ch;
+  color: var(--muted); margin: 0 0 20px;
+}
+.kansei-care .landing-hero-crumbs { font-size: 12px; margin-bottom: 22px; color: var(--muted); }
+.kansei-care :is(.landing-hero-media,.us-hero-photo) { border-radius: 18px; overflow: hidden; margin: 0; position: relative; }
+.kansei-care .landing-hero-media :is(img,video) { display: block; width: 100%; height: auto; border-radius: 18px; }
+.kansei-care .landing-hero-media img { aspect-ratio: 4/3; object-fit: cover; }
+.kansei-care .landing-hero-media figcaption {
+  color: var(--muted); font-size: 12px; line-height: 1.5; padding: 10px 0 0; background: transparent;
+}
+.kansei-care .us-hero-photo figcaption { position: static; margin: 0; border-radius: 0; }
+.kansei-care .landing-hero-film { overflow: visible; }
+.kansei-care .landing-hero-film :is(img,video) { aspect-ratio: 16/9; object-fit: contain; }
+.kansei-care .landing-hero-film-play { background: var(--dark); }
+.kansei-care .landing-hero-actions,
+.kansei-care .ha-hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 18px; margin-top: 20px; }
+.kansei-care .landing-hero .landing-hero-facts,
+.kansei-care .us-price-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 5px 12px; font-size: 14px; padding: 0; margin: 18px 0 0; }
+.kansei-care .landing-hero-facts strong { font-weight: 660; font-size: 17px; }
+.kansei-care .care-provider { display: flex; flex-wrap: wrap; gap: 0 10px; font-size: 13px; color: var(--muted); margin-top: 20px; }
+.kansei-care .care-provider a { color: var(--teal); text-decoration: underline; text-underline-offset: 3px; font-weight: 650; }
+.kansei-care .care-signals { display: flex; flex-wrap: wrap; gap: 6px 15px; list-style: none; padding: 0; margin: 20px 0; color: var(--teal); }
+.kansei-care .care-signals li { font-size: 13px; line-height: 1.5; font-weight: 540; }
+.kansei-care .care-signals li::before { content: ''; display: inline-block; width: 4px; height: 4px; margin: 0 7px 3px 0; background: #66876b; border-radius: 50%; }
+.kansei-care .us-source { max-width: 59ch; font-size: 13px; margin-top: 14px; }
+.kansei-care .care-routes { padding-block: 24px 60px; }
+.kansei-care .care-routes h2 { font-size: clamp(30px,3.3vw,43px); max-width: 21ch; margin: 8px 0 24px; }
+.kansei-care .care-routes ul { display: grid; grid-template-columns: 1fr 1fr; gap: 0 55px; list-style: none; padding: 0; margin: 0; }
+.kansei-care .care-routes li { min-width: 0; border-top: 1px solid var(--line); }
+.kansei-care .care-route { min-height: 94px; display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 18px 0; text-decoration: none; }
+.kansei-care .care-route strong { display: block; font-size: 18px; font-weight: 610; letter-spacing: -.025em; line-height: 1.35; }
+.kansei-care .care-route small { display: block; font-size: 13px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+.kansei-care .care-route-action { flex-shrink: 0; font-size: 12px; font-weight: 620; color: var(--teal); text-decoration: underline; text-underline-offset: 4px; }
+.kansei-care .care-route:hover strong { color: var(--teal); text-decoration: underline; text-underline-offset: 4px; }
+.kansei-care :is(.us-section,.ha-section) { padding-block: clamp(42px,5vw,70px); }
+.kansei-care .care-services { border-top: 1px solid var(--line); }
+.kansei-care .care-service-grid { gap: 32px; }
+.kansei-care .care-service-card { border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 25px 0; background: transparent; }
+.kansei-care .care-service-card h3 { margin-bottom: 15px; }
+.kansei-care .care-service-card .eyebrow { color: var(--muted); }
+.kansei-care :is(.us-process,.footer) { background: var(--dark); }
+.kansei-care :is(.us-process,.footer) :is(h2,h3) { color: #fff; }
+.kansei-care .us-process .eyebrow { color: #c0d7b8; }
+.kansei-care :is(.us-soft,.ha-tint,.us-booking,.ha-booking,.clinic) { background: #e9eee2; }
+.kansei-care :is(.ha-choice,.ha-visit-summary,.ha-note,.decision-brief) { background: #eef2e8; border-color: var(--line); border-radius: 14px; }
+.kansei-care .care-knee-route { font-size: 15px; margin-top: 18px; }
+.kansei-care.hyaluron-page .ha-portrait { display: block; }
+.kansei-care.hyaluron-page .ha-portrait img { aspect-ratio: 4/3; object-position: center 30%; height: auto; }
+.kansei-care.hyaluron-page .ha-portrait figcaption { background: transparent; }
+.kansei-care .care-brief { padding-block: 32px 44px; }
+.kansei-care .care-section-heading h2 { font-size: clamp(30px,3vw,40px); margin: 7px 0 26px; }
+.kansei-care .care-brief-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 32px; }
+.kansei-care .care-brief-grid>div { padding-top: 17px; border-top: 1px solid var(--line); }
+.kansei-care .care-brief h3 { font-size: 21px; line-height: 1.25; margin-bottom: 10px; }
+.kansei-care .care-brief p { font-size: 15px; color: var(--muted); }
+.kansei-care .care-scope { margin-top: 26px; max-width: 85ch; }
+.kansei-care .atlas-gateway { background: #e9eee2; }
+.kansei-care .atlas-gateway-copy h2 { font-size: clamp(32px,3.5vw,46px); }
+.kansei-care .atlas-demo { border-radius: 16px; overflow: hidden; }
+.kansei-care .article-wrap { max-width: 1180px; padding-top: 44px; }
+.kansei-care.care-knowledge :is(.article-main>h1,header.page h1) { font-size: clamp(37px,4.9vw,62px); line-height: 1.07; max-width: 22ch; }
+.kansei-care.care-knowledge .article-main>.lead { color: var(--muted); font-size: 18px; line-height: 1.65; }
+.kansei-care .article-main>section { padding-block: 28px 10px; }
+.kansei-care .article-main h2 { font-size: clamp(27px,3vw,36px); line-height: 1.18; }
+.kansei-care .care-comparison { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px; margin: 22px 0; }
+.kansei-care .care-comparison>div { border-top: 1px solid var(--line); padding-top: 15px; min-width: 0; }
+.kansei-care .care-comparison h3 { font-size: 19px; line-height: 1.3; margin: 0 0 10px; }
+.kansei-care .care-comparison p { font-size: 15px; line-height: 1.65; color: var(--muted); }
+.kansei-care .care-article-note { background: #eaf0e4; border-radius: 14px; padding: 24px; margin: 28px 0; }
+.kansei-care .care-article-note h2 { font-size: 25px; margin: 0 0 12px; }
+.kansei-care .care-article-note p { font-size: 16px; }
+.kansei-care .article-aside .article-cta { background: #eaf0e4; border-color: var(--line); border-radius: 12px; }
+.kansei-care .knee-evidence-preview { background: #eaf0e4; border-color: var(--line); }
+.kansei-care :is(.ha-booking-choices,.ha-provider-card) { min-width: 0; }
+@media(max-width:1000px) {
+  .kansei-care .header-inner { gap: 16px; }
+  .kansei-care .desktop-nav { gap: 15px; }
+  .kansei-care .care-comparison { grid-template-columns: 1fr; gap: 4px; }
+}
+@media(max-width:860px) {
+  .kansei-care .landing-hero-grid { grid-template-columns: minmax(0,1fr); gap: 24px; }
+  .kansei-care .care-brief-grid { grid-template-columns: 1fr; gap: 20px; }
+  .kansei-care .care-signals { max-width: 43ch; }
+  .kansei-care.hyaluron-page .ha-hero-actions { flex-direction: row; }
+}
+@media(max-width:760px) {
+  .kansei-care .wrap { padding-inline: 23px; }
+  .kansei-care .header-inner { height: 67px; padding-inline: 20px; gap: 12px; }
+  .kansei-care .brand img { width: 123px; }
+  .kansei-care .header-actions { gap: 8px; }
+  .kansei-care .header-book { min-height: 42px; padding: 8px 15px; font-size: 13px; }
+  .kansei-care .site-menu-toggle { min-height: 42px; font-size: 13px; }
+  .kansei-care :is(.landing-hero,.ha-hero) { padding-top: 25px; padding-bottom: 24px; }
+  .kansei-care .landing-hero .landing-hero-copy h1,
+  .kansei-care .ha-hero .landing-hero-copy h1 { font-size: clamp(37px,10.3vw,47px); margin: 8px 0 14px; max-width: 17ch; }
+  .kansei-care .landing-hero .landing-hero-copy :is(.landing-hero-lead,.us-lead,.intro),
+  .kansei-care .ha-hero .landing-hero-copy .intro { font-size: 16px; line-height: 1.55; margin-bottom: 15px; }
+  .kansei-care .landing-hero-crumbs { font-size: 11px; margin-bottom: 20px; }
+  .kansei-care .landing-hero-media img { aspect-ratio: 3/2; }
+  .kansei-care .landing-hero-media figcaption { font-size: 11px; padding-top: 8px; }
+  .kansei-care .landing-hero-film :is(img,video) { aspect-ratio: 16/9; }
+  .kansei-care .care-signals { margin: 15px 0; gap: 5px 12px; }
+  .kansei-care .care-signals li { font-size: 12px; }
+  .kansei-care .care-provider { font-size: 12px; margin-top: 17px; }
+  .kansei-care .landing-hero-actions { margin-top: 17px; gap: 8px 15px; }
+  .kansei-care .landing-hero .landing-hero-facts { margin-top: 15px; font-size: 13px; gap: 5px 10px; }
+  .kansei-care .care-routes { padding-block: 26px 36px; }
+  .kansei-care .care-routes ul { grid-template-columns: 1fr; }
+  .kansei-care .care-routes h2 { font-size: 30px; margin-bottom: 18px; }
+  .kansei-care .care-route { min-height: 83px; gap: 12px; padding-block: 16px; }
+  .kansei-care .care-route strong { font-size: 16px; }
+  .kansei-care .care-route small { font-size: 12px; }
+  .kansei-care .care-route-action { font-size: 11px; }
+  .kansei-care :is(.us-section,.ha-section) { padding-block: 38px; }
+  .kansei-care .care-service-card { padding-block: 22px; }
+  .kansei-care .care-brief { padding-block: 25px 36px; }
+  .kansei-care .care-brief h3 { font-size: 20px; }
+  .kansei-care.care-knowledge .article-wrap { padding: 30px 23px; }
+  .kansei-care.care-knowledge .article-main>h1 { font-size: clamp(36px,9.5vw,43px); }
+  .kansei-care.care-knowledge .article-main>.lead { font-size: 17px; }
+  .kansei-care .article-main>section { padding-top: 23px; }
+  .kansei-care .care-article-note { padding: 20px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .kansei-care { scroll-behavior: auto; }
+  .kansei-care .button { transition: none; transform: none; }
+}

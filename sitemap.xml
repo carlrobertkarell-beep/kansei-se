@@ -700,7 +700,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/axel/ac-ledsartros/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-05</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/ac-ledsartros/ac-ledsartros-ultraljud.jpg</image:loc>
     </image:image>
@@ -709,7 +709,7 @@
     </image:image>
   </url>
   <url>
-    <loc>https://www.kansei.se/ultraljud/axel/paralabral-cysta/</loc>
+    <loc>https://www.kansei.se/ultraljud/axel/paralabral-cysta/</loc><lastmod>2026-11-05</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/paralabral-cysta/lax-anatomi.webp</image:loc>
     </image:image>
@@ -907,7 +907,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/glutealsenor/bilder/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-05</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/hoft/gmed.anatomi.realistic.20261022.webp</image:loc>
     </image:image>
@@ -929,7 +929,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/hoftled/bilder/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-05</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/produkter/ibsa-sinogel.20261017.png</image:loc>
     </image:image>
@@ -1079,7 +1079,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/kna/artros-ledband-hyaluron/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-05</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/kna/artros-ledband/left.anatomi.20261027.webp</image:loc>
     </image:image>

@@ -19,8 +19,8 @@ VERSION = '20261021c'
 PATH = '/ultraljud/hoftled/bilder/'
 URL = 'https://www.kansei.se' + PATH
 ASSETS = '/bilder/ultraljud/hoftled/'
-TITLE = 'Ultraljud av höftleden inför Sinogel | Kansei Stockholm'
-DESCRIPTION = 'Följ ett patientfall med ultraljud av höftleden före en Sinogel-injektion. Utforska originalbilder, muskler, fascia, ledkapsel och benkontur hos Kansei i Stockholm.'
+TITLE = 'Hyaluron i höften | Patientfall med ultraljud | Kansei'
+DESCRIPTION = 'Hyaluroninjektion i höften med ultraljud. Följ Kanseis patientfall med undersökning av höftleden, anatomilager och en genomförd injektion med Sinogel.'
 HEADER = ' data-scan-header="68/960" style="--scan-header:7.0833333%"'
 BOOK_US = 'https://www.bokadirekt.se/boka-tjanst/kansei-rehabcenter-48847/ultraljud-rorelseapparaten-1946824'
 BOOK_HA = 'https://www.bokadirekt.se/boka-tjanst/kansei-naprapati-rehabcenter-48847/hyaluronsyra-sinovial-hl-64-3409516'
@@ -93,7 +93,7 @@ def schema():
     person = {'@id':'https://www.kansei.se/team/carl-robert-karell/#person'}
     graph = [
         {'@type':'MedicalWebPage','@id':URL+'#webpage','url':URL,'name':TITLE,'description':DESCRIPTION,'inLanguage':'sv','datePublished':'2026-10-21','dateModified':'2026-10-21','author':person,'publisher':{'@id':'https://www.kansei.se/#clinic'},'isPartOf':{'@id':'https://www.kansei.se/#website'},'breadcrumb':{'@id':URL+'#breadcrumb'},'mainEntity':{'@id':URL+'#case'},'primaryImageOfPage':{'@id':URL+'#kapsel'}},
-        {'@type':'Article','@id':URL+'#case','headline':'Höftleden på ultraljud inför en Sinogel-injektion','description':DESCRIPTION,'inLanguage':'sv','datePublished':'2026-10-21','dateModified':'2026-10-21','author':person,'mainEntityOfPage':{'@id':URL+'#webpage'},'image':[{'@id':URL+'#'+v['key']} for v in VIEWS]},
+        {'@type':'Article','@id':URL+'#case','headline':'Hyaluroninjektion i höften med ultraljud','description':DESCRIPTION,'inLanguage':'sv','datePublished':'2026-10-21','dateModified':'2026-10-21','author':person,'mainEntityOfPage':{'@id':URL+'#webpage'},'image':[{'@id':URL+'#'+v['key']} for v in VIEWS]},
         {'@type':'BreadcrumbList','@id':URL+'#breadcrumb','itemListElement':[{'@type':'ListItem','position':i,'name':name,'item':url} for i,(name,url) in enumerate([('Kansei','https://www.kansei.se/'),('Ultraljud','https://www.kansei.se/ultraljud/'),('Höft och ljumske','https://www.kansei.se/ultraljud/hoft-ljumske/'),('Patientfall',URL)],1)]},
         {'@type':'Person',**person,'name':'Carl-Robert Kårell','jobTitle':'Legitimerad naprapat','url':'https://www.kansei.se/team/carl-robert-karell/'}]
     graph += [{'@type':'ImageObject','@id':URL+'#'+v['key'],'contentUrl':'https://www.kansei.se'+image(v['key']),'caption':v['caption'],'creator':person,'width':1280,'height':960,'inLanguage':'sv','creditText':'Carl-Robert Kårell / Kansei'} for v in VIEWS]

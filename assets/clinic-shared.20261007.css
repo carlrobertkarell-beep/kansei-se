@@ -1,6 +1,6 @@
 /* Public clinic interface. Load last on every clinic page, after component styles.
    Layouts can differ; navigation, outer gutters, heading scale and controls cannot. */
-body.clinic-site{--teal:#086b62;--dark:#142e37;--ink:#173137;--muted:#53666b;--paper:#f8faf9;--grid:1360px;--gutter:clamp(22px,4.5vw,68px);--page-heading:clamp(42px,4.6vw,62px);background:var(--paper);color:var(--ink)}
+body.clinic-site{--teal:#254f3e;--dark:#20372b;--ink:#202f27;--muted:#506257;--paper:#f9f8f3;--line:#d5ddd2;--mist:#eaf0e4;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;--grid:1320px;--gutter:clamp(22px,5vw,70px);--page-heading:clamp(42px,4.65vw,66px);background:var(--paper);color:var(--ink)}
 .clinic-site .wrap,.clinic-site .reading-inner,.clinic-site .hub-container,.clinic-site .article-wrap{width:100%;max-width:var(--grid);margin-inline:auto;padding-inline:var(--gutter)}
 .clinic-site .editorial-body .wrap,.clinic-site .us-area-article .wrap{width:100%;max-width:none;padding-inline:0}
 .clinic-site .site-header{background:rgba(248,250,249,.96)}
@@ -144,7 +144,7 @@ body.clinic-site{--teal:#086b62;--dark:#142e37;--ink:#173137;--muted:#53666b;--p
  .condition-page .grid{gap:28px}
 }
 @media(max-width:650px){
- body.clinic-site{--gutter:22px;--page-heading:clamp(37px,10.3vw,50px)}
+ body.clinic-site{--gutter:23px;--page-heading:clamp(37px,10.3vw,47px)}
  .clinic-site .site-header .header-inner{height:74px;gap:12px}
  .clinic-site .site-header .brand img{width:133px}
  .clinic-site .site-header .header-actions{gap:8px}
@@ -185,7 +185,7 @@ body.clinic-site{--teal:#086b62;--dark:#142e37;--ink:#173137;--muted:#53666b;--p
  .clinic-site .clinic-first-visit .button{width:100%}
 }
 @media(max-width:360px){
- body.clinic-site{--gutter:16px}
+ body.clinic-site{--gutter:23px}
  .clinic-site .site-header .brand img{width:100px}
  .clinic-site .site-header .header-inner{gap:8px}
  .clinic-site .site-header .header-actions{gap:7px}
@@ -205,3 +205,6 @@ body.clinic-site{--teal:#086b62;--dark:#142e37;--ink:#173137;--muted:#53666b;--p
  .clinic-site .atlas-actions>.button{justify-content:center}
  .clinic-site .case-story-actions a{min-height:48px}
 }
+
+/* Keep the common clinic header aligned with the approved mobile layout. */
+@media(max-width:760px){.clinic-site .site-header .header-inner{padding-inline:20px}}

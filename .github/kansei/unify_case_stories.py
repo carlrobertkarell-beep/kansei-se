@@ -1,7 +1,7 @@
 """Apply the reviewed case layout and a complete, consistent clinical journey.
 
 Preserves each reader byte-for-byte and keeps the recorded clinical narrative,
-illustrative-example disclosures, source links and existing public anchor IDs.
+clinician-approved case descriptions, source links and existing public anchor IDs.
 Run from any directory; no third-party parser or build dependencies required.
 """
 from html import escape, unescape
@@ -126,9 +126,8 @@ def shared_story(source, key):
         assert article.tag == 'article'
         body = inside(source, article).replace(raw(source, figure), '')
         chapters.append(chapter(body, index))
-    kind = text(raw(source, header.find(lambda n: n.has_class('eyebrow'))))
     exam, finding, plan = FACTS[key]
-    rows = [('Undersökning', exam), ('Bildfynd', finding), ('Fortsatt plan', plan), ('Falltyp', kind)]
+    rows = [('Undersökning', exam), ('Bildfynd', finding), ('Fortsatt plan', plan)]
     preview = raw(source, figure).replace(' class="us-case-figure"', '').replace('us-case-image-link', 'case-story-image-link')
     tail = source[grid.end:]
     # The caller replaces only the section's contents, so strip the old wrap/section closers.

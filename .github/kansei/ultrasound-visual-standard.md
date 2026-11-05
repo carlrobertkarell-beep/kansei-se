@@ -1,5 +1,23 @@
 # Kansei ultrasound illustrations
 
+## Patient cases and clinician review
+
+Owner clarification, 5 November 2026: the patient cases refer to real patients
+examined at Kansei. Do not describe the clinical narratives as fictional or as
+"illustrative patient examples". Do not add a "Falltyp" row to the summary box.
+The box should summarize the complaint, examination, findings and plan.
+
+Prepare the narrative as a draft for the clinician to review and edit before
+publication. Organize why the patient sought help, symptoms and course,
+examination findings, clinical assessment, management and next steps. Preserve
+the supplied findings; do not invent delivered treatments or treatment outcomes.
+Proposed additions to an incomplete history require clinician review.
+
+The anatomy layers are explanatory illustrations. The word "illustration"
+describes those image layers, not the authenticity of the patient case.
+Use patient search language in headlines and give each case a clear route to
+the relevant clinical assessment, ultrasound or joint-injection service.
+
 Owner clarification, 29 October 2026: let the tissue painting remain unobstructed
 in anatomy mode. Do not cover it with a stack of labels for every tissue layer.
 Put supporting anatomical explanations beside or below the image. Use the

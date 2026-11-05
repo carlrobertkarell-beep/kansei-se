@@ -47,7 +47,7 @@ def check_knee_calc(page, output, label):
     expect(page.locator('.case-story-chapter:not([data-case-education]):not([data-case-followup])')).to_have_count(3)
     expect(page.locator('[data-case-education]')).to_have_count(1)
     expect(page.locator('[data-case-followup]')).to_have_count(1)
-    expect(page.locator('.case-story-note')).to_contain_text('illustrativt exempel')
+    expect(page.locator('.case-story-note')).to_contain_text('Patientfall från Kansei')
     for heading in page.locator('#faq summary').all():
         heading.click()
         assert heading.locator('..').get_attribute('open') is not None

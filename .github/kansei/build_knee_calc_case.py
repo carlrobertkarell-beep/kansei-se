@@ -1,7 +1,7 @@
 """Build the clinician's knee mineral-deposition case with the shared reader.
 
 Whole imagegen paintings are registered once globally; scan bytes and fixed
-finding coordinates are preserved. Patient narrative is explicitly illustrative.
+finding coordinates are preserved. Patient narrative describes a real case and is reviewed by the clinician.
 """
 from pathlib import Path
 import argparse
@@ -18,7 +18,7 @@ URL = 'https://www.kansei.se' + PATH
 ASSETS = '/bilder/ultraljud/kna/kalk/'
 VERSION = '20261022'
 TITLE = 'Förkalkad menisk och kalk i brosket | Ultraljud knä | Kansei'
-DESCRIPTION = 'Se förkalkad menisk och kalk i knäets ledbrosk på ultraljud. Verkliga bilder med naturtrogen anatomi, sidjämförelse och ett vardagsnära patientexempel från Kansei.'
+DESCRIPTION = 'Se förkalkad menisk och kalk i knäets ledbrosk på ultraljud. Verkliga bilder med naturtrogen anatomi, sidjämförelse och ett vardagsnära patientfall från Kansei.'
 HEADER = ' data-scan-header="68/960" style="--scan-header:7.0833333%"'
 BOOK_US = 'https://www.bokadirekt.se/boka-tjanst/kansei-rehabcenter-48847/ultraljud-rorelseapparaten-1946824'
 SOURCE_1177 = 'https://www.1177.se/sjukdomar--besvar/skelett-leder-och-muskler/leder/ledvark/'
@@ -123,7 +123,7 @@ def build_page():
 def add_catalogue():
     path=ROOT/'ultraljud/bilder/index.html';s=path.read_text()
     if PATH in s:return
-    card=f'''<article class="atlas-entry" data-atlas-entry data-region="kna" data-symptoms="svullnad gang traning" data-search="förkalkad menisk menisken förkalkning förkalkningar kalk brosk brosket ledbrosk ledbrosket kondrokalcinos CPPD pseudogikt insida knä stelhet svullnad promenad trappor"><div class="atlas-thumb" aria-hidden="true"><img src="{original(VIEWS[2])}" alt="" width="1280" height="960" loading="lazy" decoding="async"{HEADER}/></div><div class="atlas-entry-copy"><small>Knä · Kalk i menisk och ledbrosk</small><h4><a href="{PATH}" data-atlas-case>Stelt knä och frågor om kalk i menisk eller brosk?</a></h4><span class="atlas-case-type">Verkliga bilder och illustrativ patientberättelse</span><p>Jämför meniskbilder och se två kalkområden inne i ledbrosket, med naturtrogna anatomilager.</p><a class="atlas-image-shortcut" href="{PATH}#bilder">Direkt till bilder och fynd</a></div></article>'''
+    card=f'''<article class="atlas-entry" data-atlas-entry data-region="kna" data-symptoms="svullnad gang traning" data-search="förkalkad menisk menisken förkalkning förkalkningar kalk brosk brosket ledbrosk ledbrosket kondrokalcinos CPPD pseudogikt insida knä stelhet svullnad promenad trappor"><div class="atlas-thumb" aria-hidden="true"><img src="{original(VIEWS[2])}" alt="" width="1280" height="960" loading="lazy" decoding="async"{HEADER}/></div><div class="atlas-entry-copy"><small>Knä · Kalk i menisk och ledbrosk</small><h4><a href="{PATH}" data-atlas-case>Stelt knä och frågor om kalk i menisk eller brosk?</a></h4><span class="atlas-case-type">Patientfall från Kansei</span><p>Jämför meniskbilder och se två kalkområden inne i ledbrosket, med naturtrogna anatomilager.</p><a class="atlas-image-shortcut" href="{PATH}#bilder">Direkt till bilder och fynd</a></div></article>'''
     start=s.index('id="omrade-kna"');end=s.index('</div></section>',start)
     s=s[:end]+card+s[end:]
     # Compute all counts from actual cards, including the existing hip-joint
@@ -179,7 +179,7 @@ def package_images(workspace, generation):
         rec.update({'key':v['key'],'original_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'guide_sha256':hashlib.sha256(guide.read_bytes()).hexdigest(),'clinician_guide':v['guide']})
         for key in ('archive','asset'):rec[key]=str(Path(rec[key]).relative_to(ROOT))
         records.append(rec)
-    (ART/'manifest.json').write_text(json.dumps({'canvas':[1280,960],'method':'One global painting placement; no local warp. Clinical originals byte-identical. Acquisition header clipped by shared reader.','clinical_scope':'Clinician supplied mineral deposition in meniscus and articular cartilage in one individual. No demographics, symptom history, confirmed crystal type, arthrosis grade, treatment or outcome supplied. Narrative explicitly illustrative.','views':records},ensure_ascii=False,indent=2)+'\n')
+    (ART/'manifest.json').write_text(json.dumps({'canvas':[1280,960],'method':'One global painting placement; no local warp. Clinical originals byte-identical. Acquisition header clipped by shared reader.','clinical_scope':'Clinician supplied mineral deposition in meniscus and articular cartilage in one individual. No demographics, symptom history, confirmed crystal type, arthrosis grade, treatment or outcome supplied. Real patient case; clinician reviews narrative before publication.','views':records},ensure_ascii=False,indent=2)+'\n')
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--workspace',type=Path);p.add_argument('--generation',type=Path);args=p.parse_args()

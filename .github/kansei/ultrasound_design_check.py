@@ -1,4 +1,5 @@
 """Verify the public clinic model and every ultrasound reader without contacting booking services."""
+import re
 CASE_PATHS = ('/ultraljud/axel/bicepstendinopati/', '/ultraljud/axel/pectoralisruptur/', '/ultraljud/hand-handled/karpaltunnelsyndrom/', '/ultraljud/axel/ac-ledsskada/', '/ultraljud/kalkaxel/', '/ultraljud/bursit-axel/')
 
 def clinic_model(page):
@@ -98,7 +99,7 @@ def check_hub(page, model):
 def check_sample(page):
     sample=page.locator('[data-atlas-demo]')
     sample.scroll_into_view_if_needed()
-    anatomy=sample.get_by_role('switch',name='Anatomi',exact=True)
+    anatomy=sample.get_by_role('switch',name=re.compile(r'^(Anatomi|Visa anatomin)$'))
     findings=sample.get_by_role('switch',name='Visa fynden',exact=True)
     page.wait_for_function("!document.querySelector('[data-atlas-anatomy]').disabled")
     if anatomy.get_attribute('aria-checked')!='true':raise AssertionError('Anatomy preview is not discoverable')
@@ -118,6 +119,7 @@ def check_explore(page):
     expected.add('/ultraljud/kna/artros-ledband-hyaluron/')
     expected.add('/ultraljud/axel/supraspinatusruptur/')
     expected.add('/ultraljud/axel/ac-ledsartros/')
+    expected.add('/ultraljud/axel/paralabral-cysta/')
     if set(entries.locator('[data-atlas-case]').evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))'))!=expected:
         raise AssertionError('A published image reader is missing or duplicated')
     if set(entries.locator('.atlas-image-shortcut').evaluate_all('(els)=>els.map(e=>e.getAttribute("href").replace(/#bilder$/,""))'))!=expected:

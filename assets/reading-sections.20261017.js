@@ -5,6 +5,17 @@
  if(!main||!header)return;
  const sections=[...main.querySelectorAll('[data-reading-section]')];
  if(sections.length<3)return;
+ const inline=main.querySelector('[data-reading-inline]');
+ if(inline){
+  inline.querySelectorAll('nav a[href^="#"]').forEach(a=>a.addEventListener('click',event=>{
+   if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+   inline.open=false;
+   requestAnimationFrame(()=>{const target=document.getElementById(a.hash.slice(1));const heading=target?.querySelector('h2');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}});
+  }));
+  inline.addEventListener('keydown',event=>{if(event.key==='Escape'&&inline.open){inline.open=false;inline.querySelector('summary').focus();event.preventDefault();}});
+  return;
+ }
+
  const bar=document.createElement('details');bar.className='reading-position';bar.hidden=true;
  const summary=document.createElement('summary');
  const row=document.createElement('span');row.className='wrap reading-position-row';

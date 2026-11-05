@@ -30,50 +30,74 @@ MONTHS = ('januari februari mars april maj juni juli augusti september oktober n
 # Case-specific intent is separate from the region and examination landing pages.
 CASES = {
     '/ultraljud/axel/bicepstendinopati/': (
-        'Bicepssenan på ultraljud | Kansei patientfall',
-        'Ont framtill i axeln vid lyft? Följ ett patientexempel med förändrad bicepssena och senskidevätska, ultraljudsbilder, Doppler och fortsatt plan.'),
+        'Ont framtill i axeln | Bicepssenan på ultraljud | Kansei',
+        'Ont framtill i axeln vid lyft? Följ ett patientfall med förändrad bicepssena och senskidevätska, ultraljudsbilder, Doppler och fortsatt plan.'),
     '/ultraljud/axel/pectoralisruptur/': (
         'Bröstmuskelskada efter bänkpress | Kansei patientfall',
         'Smärta vid bänkpress och blåmärke på överarmen. Se Kanseis patientfall med pectoralisskada, ultraljudsfynd och bedömning inför fortsatt belastning.'),
     '/ultraljud/axel/ac-ledsskada/': (
-        'AC-ledsskada efter fall | Kansei patientfall',
+        'Ont ovanpå axeln efter fall | AC-ledsskada | Kansei',
         'Ont ovanpå axeln efter ett fall? Se hur ultraljud, sidjämförelse och axelns funktion bidrog till bedömning och plan i Kanseis patientfall.'),
     '/ultraljud/hand-handled/karpaltunnelsyndrom/': (
-        'Karpaltunnelsyndrom på ultraljud | Kansei patientfall',
-        'Domningar i handen? Följ ett patientexempel med medianusnerven i karpaltunneln, ultraljudsfynd och hur nervfunktion och symtom påverkar nästa steg.'),
+        'Handen somnar på natten | Karpaltunnelsyndrom | Kansei',
+        'Domningar i handen? Följ ett patientfall med medianusnerven i karpaltunneln, ultraljudsfynd och hur nervfunktion och symtom påverkar nästa steg.'),
     '/ultraljud/kalkaxel/': (
-        'Kalkaxel och senskada på ultraljud | Kansei patientfall',
-        'Se kalkinlagringar och samtidig skada i supraspinatussenan på ultraljud. Patientexempel med anatomilager, film och plan för axelns funktion.'),
+        'Kalkaxel och smärta vid armlyft | Patientfall | Kansei',
+        'Se kalkinlagringar och samtidig skada i supraspinatussenan på ultraljud. Patientfall med anatomilager, film och plan för axelns funktion.'),
     '/ultraljud/bursit-axel/': (
-        'Bursit och senskador i axeln | Kansei patientfall',
-        'Ont vid armlyft och svårt att ligga på axeln? Se ett patientexempel med bursavätska och senskador, flera ultraljudsvyer och fortsatt bedömning.'),
+        'Ont i axeln vid lyft | Bursit och senskador | Kansei',
+        'Ont vid armlyft och svårt att ligga på axeln? Se ett patientfall med bursavätska och senskador, flera ultraljudsvyer och fortsatt bedömning.'),
     '/ultraljud/loparkna/': (
-        'Löparknä på ultraljud | Kansei patientfall',
-        'Ont på knäts utsida när du springer? Se IT-bandet och vätskan under det på ultraljud och följ ett patientexempel om bedömning och löpbelastning.'),
+        'Ont på utsidan av knät vid löpning | Löparknä | Kansei',
+        'Ont på knäts utsida när du springer? Se IT-bandet och vätskan under det på ultraljud och följ ett patientfall om bedömning och löpbelastning.'),
     '/ultraljud/hoftled/bilder/': (
-        'Höftleden på ultraljud inför Sinogel | Kansei patientfall',
-        'Följ ett patientfall där höftleden undersöktes med ultraljud före en Sinogel-injektion. Se anatomin, undersökningsfynden och behandlingsresonemanget.'),
+        'Hyaluron i höften | Patientfall med ultraljud | Kansei',
+        'Hyaluroninjektion i höften med ultraljud. Följ Kanseis patientfall med undersökning av höftleden, anatomilager och en genomförd injektion med Sinogel.'),
     '/ultraljud/glutealsenor/bilder/': (
-        'Glutealsenor och cysta på ultraljud | Kansei patientfall',
+        'Ont på höftens utsida | Ultraljud och patientfall | Kansei',
         'Långvarig smärta på höftens utsida utan artrosfynd på röntgen. Följ Kanseis patientfall med glutealsenor, cystfynd och en plan för höftens funktion.'),
     '/ultraljud/halsena/bilder/': (
-        'Hälsena med tendinos och rupturer | Kansei patientfall',
-        'Se tendinos, rupturområden och kalk i hälsenan på ultraljud. Patientexempel med anatomilager, Doppler och hur fynden vägs in inför rehabilitering.'),
+        'Ont i hälsenan | Tendinos och kalk på ultraljud | Kansei',
+        'Stel eller öm hälsena vid gång och löpning? Se ett patientfall med tendinos, rupturområden och kalk på ultraljud, anatomilager och fortsatt rehabilitering.'),
     '/ultraljud/tennisarmbage/bilder/': (
-        'Tennisarmbåge på ultraljud | Kansei patientfall',
-        'Ont vid grepp, lyft eller padel? Jämför frisk och förändrad extensorsena på ultraljud och följ ett patientexempel om bedömning och belastning.'),
+        'Ont på utsidan av armbågen | Tennisarmbåge | Kansei',
+        'Ont vid grepp, lyft eller padel? Jämför frisk och förändrad extensorsena på ultraljud och följ ett patientfall om bedömning och belastning.'),
     '/ultraljud/kna/forkalkad-menisk/': (
         'Förkalkad menisk och kalk i brosket | Kansei patientfall',
-        'Vad betyder kalk i menisk och ledbrosk? Se ultraljudsbilder och anatomilager och följ ett patientexempel där fynd, besvär och fortsatt plan sätts ihop.'),
+        'Vad betyder kalk i menisk och ledbrosk? Se ultraljudsbilder och anatomilager och följ ett patientfall där fynd, besvär och fortsatt plan sätts ihop.'),
     '/ultraljud/kna/artros-ledband-hyaluron/': (
-        'Knäartros med ledbandsskada | Kansei patientfall',
+        'Ont i knät trots kortison | Artros och hyaluron | Kansei',
         'Följ ett patientfall med långvarig knäsmärta, artros och skada i inre ledbandet. Se ultraljud, hyaluroninjektion och planen för knäts funktion.'),
     '/ultraljud/axel/supraspinatusruptur/': (
-        'Totalruptur av supraspinatus | Kansei patientfall',
+        'Svårt att lyfta armen | Senruptur i axeln | Kansei',
         'Kraftlös axel vid hårtvätt och lyft. Följ Kanseis patientfall med totalruptur av supraspinatussenan, ultraljudsbilder, anatomilager och fortsatt plan.'),
+    '/ultraljud/axel/ac-ledsartros/': (
+        'Ont ovanpå axeln | AC-ledsartros och hyaluron | Kansei',
+        'Ont ovanpå axeln vid lyft eller när du ligger på sidan? Se ett patientfall med AC-ledsartros, ultraljud och en genomförd hyaluroninjektion med Sinogel.'),
+    '/ultraljud/axel/paralabral-cysta/': (
+        'Ont baktill i axeln | Paralabral cysta på ultraljud | Kansei',
+        'Ont baktill i axeln när du för armen bakåt eller tvättar håret? Följ ett patientfall med misstänkt paralabral cysta och se ultraljud i två snitt med anatomilager.'),
     # Preserve this established URL's primary examination/booking intent.
     '/ultraljud/kna/': (None, None),
 }
+# Use the patient's words in the main heading while retaining the condition in
+# metadata and the clinical narrative. Regional examination pages keep their intent.
+HEADLINES = {
+    '/ultraljud/bursit-axel/': 'Ont när du lyfter armen eller ligger på axeln?',
+    '/ultraljud/kalkaxel/': 'Ont i axeln vid lyft och när du ligger på sidan?',
+    '/ultraljud/axel/bicepstendinopati/': 'Ont framtill i axeln när du lyfter armen?',
+    '/ultraljud/axel/pectoralisruptur/': 'Ont i bröstmuskeln efter bänkpress?',
+    '/ultraljud/axel/ac-ledsskada/': 'Ont ovanpå axeln efter ett fall?',
+    '/ultraljud/axel/ac-ledsartros/': 'Ont ovanpå axeln vid lyft och när du ligger på sidan?',
+    '/ultraljud/axel/supraspinatusruptur/': 'Kraftlös axel och svårt att lyfta armen?',
+    '/ultraljud/tennisarmbage/bilder/': 'Ont på utsidan av armbågen när du greppar eller lyfter?',
+    '/ultraljud/hand-handled/karpaltunnelsyndrom/': 'Vaknar du av att handen somnar?',
+    '/ultraljud/hoftled/bilder/': 'Hyaluroninjektion i höften med ultraljud',
+    '/ultraljud/loparkna/': 'Ont på utsidan av knät när du springer?',
+    '/ultraljud/kna/artros-ledband-hyaluron/': 'Ont i knät trots kortison?',
+    '/ultraljud/halsena/bilder/': 'Stel och öm hälsena när du går eller springer?',
+}
+
 OPTIONAL = {'/ultraljud/axel/supraspinatusruptur/'}
 
 
@@ -337,6 +361,12 @@ def add_byline(source, modified):
 def harmonize(source, path, updated=None):
     original_media = re.findall(r'<(?:img|video|source|track)\b[^>]*>', source)
     document = Document(source)
+    if path in HEADLINES:
+        h1s = document.nodes('h1')
+        assert len(h1s) == 1, f'{path}: expected one main heading'
+        source = replace_ranges(source, [(h1s[0].content_start, h1s[0].content_end,
+                                          escape(HEADLINES[path]))])
+        document = Document(source)
     configured_title, configured_description = CASES[path]
     title = configured_title or plain(inner(source, document.nodes('title')[0]))
     description = configured_description or get_meta(document, 'description')
@@ -408,6 +438,12 @@ def main():
     args = parser.parse_args()
     if args.updated:
         date.fromisoformat(args.updated)
+    collection = Document((ROOT / 'ultraljud/bilder/index.html').read_text())
+    published_cases = {node.attrs['href'] for node in collection.nodes('a')
+                       if 'data-atlas-case' in node.attrs}
+    assert published_cases == set(CASES), (
+        'Case metadata must cover the complete published collection',
+        sorted(published_cases - set(CASES)), sorted(set(CASES) - published_cases))
     results, missing, changed_paths = [], [], []
     for path in CASES:
         file = ROOT / path.strip('/') / 'index.html'

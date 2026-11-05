@@ -4,6 +4,7 @@ Keep established addresses, add the approved knee case and derive catalogue
 counts and ItemList from the actual cards. This does not migrate existing URLs.
 """
 from pathlib import Path
+from datetime import date
 import html
 import json
 import re
@@ -68,7 +69,7 @@ def collection():
         for node in data.get('@graph',[]):
             kind=node.get('@type')
             if kind=='CollectionPage':
-                node.update(name=TITLE,description=DESCRIPTION,dateModified='2026-10-27')
+                node.update(name=TITLE,description=DESCRIPTION,dateModified=date.today().isoformat())
             if kind=='ItemList':
                 entries=[]
                 for i,card in enumerate(cards,1):

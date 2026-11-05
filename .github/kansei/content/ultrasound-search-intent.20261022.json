@@ -147,62 +147,62 @@
   },
   "ultraljud/axel/ac-ledsskada/": {
     "role": "case",
-    "title": "Ultraljud och bedömning av AC-ledsskada efter fall | Kansei",
-    "description": "Ont ovanpå axeln efter ett fall? Följ Kanseis bildfall med AC-ledsskada, sidjämförelse och klinisk bedömning. Läs om undersökning och nästa steg."
+    "title": "Ont ovanpå axeln efter fall | AC-ledsskada | Kansei",
+    "description": "Ont ovanpå axeln efter ett fall? Se hur ultraljud, sidjämförelse och axelns funktion bidrog till bedömning och plan i Kanseis patientfall."
   },
   "ultraljud/axel/bicepstendinopati/": {
     "role": "case",
-    "title": "Bicepssenan på ultraljud vid smärta framtill i axeln | Kansei",
-    "description": "Se Kanseis egna ultraljudsbilder av bicepssenan vid främre axelsmärta. Utforska anatomi, vätska och senfynd och läs hur de vägs mot funktionen."
+    "title": "Ont framtill i axeln | Bicepssenan på ultraljud | Kansei",
+    "description": "Ont framtill i axeln vid lyft? Följ ett patientfall med förändrad bicepssena och senskidevätska, ultraljudsbilder, Doppler och fortsatt plan."
   },
   "ultraljud/axel/pectoralisruptur/": {
     "role": "case",
-    "title": "Ultraljud av bröstmuskelskada efter bänkpress | Kansei",
-    "description": "Plötslig smärta vid bänkpress? Se ett bildfall med pectoralisskada, ultraljud och anatomilager. Läs om bedömning och när skyndsam vård behövs."
+    "title": "Bröstmuskelskada efter bänkpress | Kansei patientfall",
+    "description": "Smärta vid bänkpress och blåmärke på överarmen. Se Kanseis patientfall med pectoralisskada, ultraljudsfynd och bedömning inför fortsatt belastning."
   },
   "ultraljud/bursit-axel/": {
     "role": "case-and-examination",
-    "title": "Ultraljud vid bursit i axeln Stockholm | Kansei",
-    "description": "Ont vid armlyft eller när du ligger på axeln? Se ultraljud av slemsäck och senskador. Läs om bedömning och boka axelultraljud i Stockholm."
+    "title": "Ont i axeln vid lyft | Bursit och senskador | Kansei",
+    "description": "Ont vid armlyft och svårt att ligga på axeln? Se ett patientfall med bursavätska och senskador, flera ultraljudsvyer och fortsatt bedömning."
   },
   "ultraljud/glutealsenor/bilder/": {
     "role": "case",
-    "title": "Senor och cysta på höftens utsida med ultraljud | Kansei",
-    "description": "Följ ett patientfall med långvarig smärta på höftens utsida. Se glutealsenor och en paralabral cysta och läs om varför naprapatisk vård valdes som första steg."
+    "title": "Ont på höftens utsida | Ultraljud och patientfall | Kansei",
+    "description": "Långvarig smärta på höftens utsida utan artrosfynd på röntgen. Följ Kanseis patientfall med glutealsenor, cystfynd och en plan för höftens funktion."
   },
   "ultraljud/halsena/bilder/": {
     "role": "case",
-    "title": "Hälsena på ultraljud vid tendinos, rupturer och kalk | Kansei",
-    "description": "Se egna ultraljud av hälsenetendinos, rupturområden och kalk. Jämför med frisk sena, utforska Doppler och läs hur fynden används i bedömningen."
+    "title": "Ont i hälsenan | Tendinos och kalk på ultraljud | Kansei",
+    "description": "Stel eller öm hälsena vid gång och löpning? Se ett patientfall med tendinos, rupturområden och kalk på ultraljud, anatomilager och fortsatt rehabilitering."
   },
   "ultraljud/hand-handled/karpaltunnelsyndrom/": {
     "role": "case",
-    "title": "Medianusnerven i karpaltunneln på ultraljud | Kansei",
-    "description": "Se medianusnerven och karpalligamentet i Kanseis egna ultraljudsbilder. Läs hur nervfynd, symtom och funktion behöver bedömas tillsammans."
+    "title": "Handen somnar på natten | Karpaltunnelsyndrom | Kansei",
+    "description": "Domningar i handen? Följ ett patientfall med medianusnerven i karpaltunneln, ultraljudsfynd och hur nervfunktion och symtom påverkar nästa steg."
   },
   "ultraljud/hoftled/bilder/": {
     "role": "case",
-    "title": "Höftleden på ultraljud inför Sinogel | Kansei",
-    "description": "Se ett patientfall från Kansei där höftleden undersöktes inför Sinogel. Utforska ledkapsel, muskler och anatomi samt bedömningen inför injektionen."
+    "title": "Hyaluron i höften | Patientfall med ultraljud | Kansei",
+    "description": "Hyaluroninjektion i höften med ultraljud. Följ Kanseis patientfall med undersökning av höftleden, anatomilager och en genomförd injektion med Sinogel."
   },
   "ultraljud/kalkaxel/": {
     "role": "case-and-examination",
-    "title": "Bilder och bedömning av kalkaxel med ultraljud i Stockholm | Kansei",
-    "description": "Se kalk i supraspinatussenan och samtidiga rupturområden på ultraljud. Läs om bedömning och boka undersökning av axeln vid Odenplan i Stockholm."
+    "title": "Kalkaxel och smärta vid armlyft | Patientfall | Kansei",
+    "description": "Se kalkinlagringar och samtidig skada i supraspinatussenan på ultraljud. Patientfall med anatomilager, film och plan för axelns funktion."
   },
   "ultraljud/kna/forkalkad-menisk/": {
     "role": "case",
-    "title": "Bildfall med förkalkad menisk och kalk i brosket | Kansei",
-    "description": "Se frisk och förkalkad menisk samt kalk i knäts ledbrosk på ultraljud. Kanseis egna bilder med anatomi, fynd och förklaring av fortsatt bedömning."
+    "title": "Förkalkad menisk och kalk i brosket | Kansei patientfall",
+    "description": "Vad betyder kalk i menisk och ledbrosk? Se ultraljudsbilder och anatomilager och följ ett patientfall där fynd, besvär och fortsatt plan sätts ihop."
   },
   "ultraljud/loparkna/": {
     "role": "case",
-    "title": "IT-band och slemsäck vid löparknä på ultraljud | Kansei",
-    "description": "Ont på utsidan av knät vid löpning? Se Kanseis egna ultraljud av IT-band och slemsäck. Läs hur fynden kopplas till undersökning och en fortsatt plan."
+    "title": "Ont på utsidan av knät vid löpning | Löparknä | Kansei",
+    "description": "Ont på knäts utsida när du springer? Se IT-bandet och vätskan under det på ultraljud och följ ett patientfall om bedömning och löpbelastning."
   },
   "ultraljud/tennisarmbage/bilder/": {
     "role": "case",
-    "title": "Frisk och skadad sena vid tennisarmbåge på ultraljud | Kansei",
-    "description": "Se frisk och förändrad extensorsena på ultraljud vid tennisarmbåge. Kanseis egna bilder med tendinos, rupturområden, anatomi och klinisk förklaring."
+    "title": "Ont på utsidan av armbågen | Tennisarmbåge | Kansei",
+    "description": "Ont vid grepp, lyft eller padel? Jämför frisk och förändrad extensorsena på ultraljud och följ ett patientfall om bedömning och belastning."
   }
 }

@@ -100,6 +100,26 @@ def check_mobile_menu(page, screenshot, keyboard=False, close_button=False, redu
             raise AssertionError('Clinic menu does not respect reduced motion')
     page.screenshot(path=str(screenshot), animations='disabled')
     if keyboard:
+        if dialog.evaluate("el => el.classList.contains('menu-premium')"):
+            shortcuts = dialog.locator('.menu-service-shortcuts')
+            expected = (
+                ('/ultraljud/axel/', '/ultraljud/kna/', '/ultraljud/'),
+                ('/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/'),
+            )
+            if shortcuts.count() != len(expected):
+                raise AssertionError('Expected ultrasound and hyaluron shortcut groups')
+            if dialog.locator('.menu-more').evaluate('el => el.open'):
+                raise AssertionError('Clinic menu disclosure must start collapsed')
+            for group, destinations in zip(shortcuts.all(), expected):
+                links = group.locator('a[href]')
+                if links.evaluate_all('els => els.map(el => el.getAttribute("href"))') != list(destinations):
+                    raise AssertionError('Clinic service shortcuts do not lead to the expected pages')
+                for link in links.all():
+                    if not link.is_visible() or not link.evaluate('''el => {
+                        const r = el.getBoundingClientRect();
+                        return !el.closest('details:not([open])') && r.height >= 44 && r.width >= 44;
+                    }'''):
+                        raise AssertionError('Clinic service shortcut is hidden or has a small touch target')
         summary = dialog.locator('.menu-more > summary')
         if summary.count():
             summary.focus()
@@ -107,6 +127,9 @@ def check_mobile_menu(page, screenshot, keyboard=False, close_button=False, redu
             if not summary.evaluate('el => el.parentElement.open'):
                 raise AssertionError('Clinic menu disclosure does not open from the keyboard')
             check_geometry()
+            if dialog.evaluate("el => el.classList.contains('menu-premium')"):
+                summary.evaluate("el => el.scrollIntoView({block:'start'})")
+                page.screenshot(path=str(screenshot.with_name(screenshot.stem + '-more.png')), animations='disabled')
             if dialog.evaluate("el => el.classList.contains('menu-refined')"):
                 body = dialog.locator('.site-menu-body')
                 body.evaluate('el => { el.scrollTop = el.scrollHeight; }')

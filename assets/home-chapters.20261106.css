@@ -1,0 +1,167 @@
+/* A quieter mobile journey with five distinct chapters, not repeated cards. */
+.clinic-site.home-chapters { --home-night:#132921; --home-sage:#e4eadb; }
+.home-chapters .home-chapter-label { display:flex; align-items:center; gap:14px; font:500 10px/1.5 var(--sans); letter-spacing:.13em; text-transform:uppercase; }
+.home-chapters .home-chapter-label::before { content:''; width:28px; height:1px; background:currentColor; opacity:.5; }
+.home-chapters .home-chapter-label span { opacity:.55; }
+.home-chapters .home-intro.landing-hero { padding:52px 0 0; background:#f9f8f3; overflow:hidden; }
+.home-chapters .home-intro-grid { display:grid; grid-template-columns:1fr 1.06fr; gap:64px; align-items:center; }
+.home-chapters .home-intro .landing-hero-copy h1 { max-width:16ch; margin:24px 0; }
+.home-chapters .home-intro h1 span { display:block; }
+.home-chapters .home-intro h1 span+span { color:#68816b; }
+.home-chapters .home-intro .landing-hero-lead { max-width:37ch; font-size:18px; line-height:1.65; margin-bottom:25px; }
+.home-chapters .home-intro .landing-hero-actions { margin-top:0; gap:12px 22px; }
+.home-chapters .home-intro-secondary { color:var(--teal); font-size:14px; text-decoration:underline; text-underline-offset:5px; min-height:46px; display:inline-flex; align-items:center; }
+.home-chapters .home-intro-location { margin-top:25px; font-size:12px; color:var(--muted); }
+.home-chapters .home-intro-image { position:relative; margin:0; overflow:hidden; border-radius:3px 70px 3px 3px; background:#dbe4d3; }
+.home-chapters .home-intro-image>img { width:100%; aspect-ratio:1.1; object-fit:cover; object-position:55% 50%; }
+.home-chapters .home-intro-image::after { content:''; position:absolute; inset:40% 0 0; background:linear-gradient(transparent,rgba(13,34,23,.6)); pointer-events:none; }
+.home-chapters .home-intro-image figcaption { position:absolute; bottom:25px; left:28px; z-index:1; color:#fff; font-size:12px; line-height:1.6; }
+.home-chapters .home-intro-image figcaption strong { display:block; font-size:16px; font-weight:500; }
+.home-chapters .home-intro-tail { display:flex; align-items:center; justify-content:space-between; gap:24px; padding-block:28px 36px; color:var(--muted); font-size:12px; }
+.home-chapters .home-intro-tail p { margin:0; }
+.home-chapters .home-intro-tail a { color:var(--teal); min-height:44px; display:inline-flex; align-items:center; text-decoration:underline; text-underline-offset:4px; }
+.home-chapters .home-intro-tail .home-intro-scroll { letter-spacing:.12em; font-size:10px; text-transform:uppercase; }
+.home-chapters .home-diagnostic .home-case-links { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0 32px; padding-top:32px; margin-top:52px; border:0; border-top:1px solid #405547; border-radius:0; background:transparent; box-shadow:none; }
+.home-chapters .home-case-links>span { grid-column:1/-1; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#b4c5b1; margin-bottom:15px; }
+.home-chapters .home-case-links>a { display:flex; align-items:center; min-height:50px; font-size:12px; color:#ecf0df; text-decoration:underline; text-underline-offset:5px; }
+.home-chapters .home-case-links>a:last-child { grid-column:1/-1; margin-top:10px; color:#b4c5b1; font-size:11px; }
+.home-chapters .home-services { padding-block:100px 110px; background:#fffefb; }
+.home-chapters .home-services-top { display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:end; margin-bottom:48px; }
+.home-chapters .home-services h2 { max-width:15ch; margin-top:22px; font-size:clamp(36px,4vw,54px); line-height:1.05; }
+.home-chapters .home-services-top>p { color:var(--muted); max-width:38ch; font-size:16px; }
+.home-chapters .home-visit { display:grid; grid-template-columns:1.1fr 1fr auto; align-items:center; gap:40px; padding-block:34px; border-top:1px solid var(--line); }
+.home-chapters .home-visit-name { display:grid; grid-template-columns:30px 1fr; gap:12px; }
+.home-chapters .home-visit-index { font-size:11px; padding-top:10px; color:#819080; }
+.home-chapters .home-visit h3 { font-size:30px; line-height:1.1; margin:0 0 9px; }
+.home-chapters .home-visit-name p { color:var(--muted); font-size:13px; }
+.home-chapters .home-visit-price strong { font-size:21px; font-weight:550; letter-spacing:-.025em; }
+.home-chapters .home-visit-price small { display:block; color:var(--muted); font-size:12px; margin-top:3px; }
+.home-chapters .home-visit-actions { display:flex; align-items:center; gap:22px; }
+.home-chapters .home-visit-actions a { font-size:13px; min-height:44px; display:inline-flex; align-items:center; white-space:nowrap; text-decoration:underline; text-underline-offset:5px; }
+.home-chapters .home-visit-actions a:first-child { color:var(--teal); font-weight:650; }
+.home-chapters .home-visit-help { border-top:1px solid var(--line); display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px 30px; padding-top:28px; font-size:13px; color:var(--muted); }
+.home-chapters .home-visit-help a { display:inline-flex; align-items:center; min-height:44px; color:var(--teal); text-decoration:underline; text-underline-offset:4px; }
+.home-chapters .home-human { background:var(--home-sage); padding-block:90px; position:relative; }
+.home-chapters .home-human-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:clamp(50px,8vw,110px); align-items:center; }
+.home-chapters .home-human-portrait { position:relative; margin:0; }
+.home-chapters .home-human-portrait img { width:100%; max-height:560px; object-fit:cover; object-position:center 25%; border-radius:3px 3px 90px 3px; }
+.home-chapters .home-human h2 { font-size:clamp(36px,4.3vw,58px); margin:24px 0; max-width:16ch; line-height:1.08; }
+.home-chapters .home-human-intro { max-width:49ch; font-size:16px; color:#455b47; }
+.home-chapters .home-human-intro a { text-decoration:underline; text-underline-offset:4px; }
+.home-chapters .home-approach { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin:34px 0 24px; padding:0; list-style:none; }
+.home-chapters .home-approach li { padding-top:16px; border-top:1px solid #bbc8b4; }
+.home-chapters .home-approach span { display:block; font-size:10px; letter-spacing:.06em; color:#687e62; margin-bottom:12px; }
+.home-chapters .home-approach strong { display:block; font-weight:600; font-size:15px; margin-bottom:7px; }
+.home-chapters .home-approach p { font-size:13px; color:#455b47; line-height:1.6; }
+.home-chapters .home-human-link { display:inline-flex; align-items:center; min-height:44px; text-decoration:underline; text-underline-offset:5px; font-size:13px; }
+.home-chapters .home-rating { display:flex; align-items:baseline; gap:20px; border-top:1px solid #bbc8b4; padding-top:22px; margin-top:20px; }
+.home-chapters .home-rating>strong { font-size:40px; font-weight:500; letter-spacing:-.06em; }
+.home-chapters .home-rating p { font-size:12px; color:#455b47; }
+.home-chapters .home-rating a { text-decoration:underline; text-underline-offset:4px; }
+.home-chapters .home-rating small { display:block; font-size:10px; margin-top:4px; }
+.home-chapters .home-arrival { background:#f9f8f3; padding-block:100px 80px; }
+.home-chapters .home-arrival-top { display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-bottom:60px; align-items:center; }
+.home-chapters .home-arrival h2 { font-size:clamp(36px,4.8vw,64px); line-height:1.05; max-width:14ch; margin:24px 0; }
+.home-chapters .home-arrival-location { font-size:17px; color:var(--muted); margin-bottom:20px; }
+.home-chapters .home-arrival-actions { display:flex; flex-wrap:wrap; gap:14px 25px; align-items:center; }
+.home-chapters .home-arrival-actions>a:not(.button) { font-size:13px; min-height:44px; display:inline-flex; align-items:center; text-decoration:underline; text-underline-offset:4px; }
+.home-chapters .home-arrival-note { font-size:13px; color:var(--muted); max-width:41ch; border-left:1px solid var(--line); padding-left:34px; }
+.home-chapters .home-arrival-note a { text-decoration:underline; text-underline-offset:4px; }
+.home-chapters .home-practical { display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+.home-chapters .home-practical h3 { font-size:21px; margin:0 0 24px; }
+.home-chapters .home-practical details { border-top:1px solid var(--line); }
+.home-chapters .home-practical summary { min-height:60px; padding-block:17px; display:flex; justify-content:space-between; align-items:center; gap:18px; font-size:14px; cursor:pointer; }
+.home-chapters .home-practical details>p { padding:0 0 22px; font-size:14px; color:var(--muted); line-height:1.7; }
+.home-chapters .home-practical details>p a { text-decoration:underline; text-underline-offset:4px; }
+.home-chapters .home-knowledge-links { display:flex; flex-direction:column; gap:0; }
+.home-chapters .home-knowledge-links>a { min-height:54px; padding-block:13px; border-top:1px solid var(--line); font-size:14px; text-decoration:underline; text-underline-offset:4px; }
+.home-chapters .home-area-links { display:flex; flex-wrap:wrap; gap:8px 18px; padding-block:20px; font-size:12px; }
+.home-chapters .home-area-links a { display:inline-flex; align-items:center; min-height:44px; text-decoration:underline; text-underline-offset:4px; }
+.home-chapters .home-knowledge-all { font-size:12px; display:inline-flex; min-height:44px; align-items:center; text-decoration:underline; text-underline-offset:4px; }
+.home-chapters .footer { padding-top:0; }
+.home-chapters .footer-bottom { margin-top:0; border-top:0; padding-top:38px; padding-bottom:28px; }
+.home-chapters .footer-bottom .brand img { max-width:140px; }
+.home-chapters .footer-bottom p { font-size:12px; }
+.home-chapters .footer-utilities { padding-bottom:26px; }
+@media(max-width:1000px) {
+  .home-chapters .home-intro-grid { gap:35px; }
+  .home-chapters .home-visit { grid-template-columns:1fr 1fr; gap:18px 35px; }
+  .home-chapters .home-visit-actions { grid-column:2; }
+  .home-chapters .home-visit-name { grid-row:1/3; }
+  .home-chapters .home-human-grid { gap:42px; }
+}
+@media(max-width:760px) {
+  .home-chapters .home-intro.landing-hero { padding-top:39px; }
+  .home-chapters .home-intro-grid { display:flex; flex-direction:column; gap:35px; align-items:stretch; }
+  .home-chapters .home-intro .landing-hero-copy h1 { margin:23px 0 20px; }
+  .home-chapters .home-intro .landing-hero-lead { font-size:16px; line-height:1.6; margin:0 0 23px; max-width:34ch; }
+  .home-chapters .home-intro .landing-hero-actions { gap:10px 21px; }
+  .home-chapters .home-intro-location { font-size:11px; margin-top:23px; }
+  .home-chapters .home-intro-image { border-radius:2px 48px 2px 2px; }
+  .home-chapters .home-intro-image>img { aspect-ratio:1.6; object-position:center 44%; }
+  .home-chapters .home-intro-image figcaption { bottom:17px; left:18px; font-size:10px; }
+  .home-chapters .home-intro-image figcaption strong { font-size:13px; }
+  .home-chapters .home-intro-tail { padding-block:18px 35px; gap:10px; font-size:10px; }
+  .home-chapters .home-intro-tail .home-intro-scroll { display:none; }
+  .home-chapters .home-diagnostic .home-case-links { grid-template-columns:1fr; padding-top:28px; margin-top:36px; }
+  .home-chapters .home-case-links>a { border-bottom:1px solid #354e3f; min-height:48px; }
+  .home-chapters .home-case-links>a:last-child { border:0; }
+  .home-chapters .home-chapter-label { font-size:9px; gap:10px; }
+  .home-chapters .home-services { padding-block:78px 82px; }
+  .home-chapters .home-services-top { display:block; margin-bottom:33px; }
+  .home-chapters .home-services h2 { font-size:38px; margin:22px 0 20px; }
+  .home-chapters .home-services-top>p { font-size:15px; max-width:34ch; }
+  .home-chapters .home-visit { grid-template-columns:1fr auto; gap:14px 12px; padding-block:27px; }
+  .home-chapters .home-visit-name { grid-column:1/-1; grid-row:auto; gap:9px; grid-template-columns:22px 1fr; }
+  .home-chapters .home-visit h3 { font-size:28px; margin-bottom:8px; }
+  .home-chapters .home-visit-name p { font-size:13px; max-width:30ch; }
+  .home-chapters .home-visit-index { padding-top:7px; }
+  .home-chapters .home-visit-price { padding-left:31px; }
+  .home-chapters .home-visit-price strong { font-size:18px; }
+  .home-chapters .home-visit-price small { font-size:10px; max-width:18ch; }
+  .home-chapters .home-visit-actions { grid-column:2; gap:13px; align-items:flex-start; flex-direction:column; }
+  .home-chapters .home-visit-actions a { min-height:44px; font-size:12px; }
+  .home-chapters .home-visit-actions a:first-child { min-height:44px; }
+  .home-chapters .home-visit-help { display:block; font-size:12px; padding-top:22px; }
+  .home-chapters .home-visit-help>a { margin-top:10px; }
+  .home-chapters .home-human { padding-block:78px 75px; }
+  .home-chapters .home-human-grid { display:grid; grid-template-columns:1fr; gap:30px; }
+  .home-chapters .home-human-portrait { grid-row:2; max-width:190px; }
+  .home-chapters .home-human-portrait img { aspect-ratio:1; object-position:center 25%; border-radius:2px 2px 48px 2px; }
+  .home-chapters .home-human-copy { display:contents; }
+  .home-chapters .home-human-heading { grid-row:1; }
+  .home-chapters .home-human h2 { font-size:38px; max-width:14ch; margin:22px 0 0; }
+  .home-chapters .home-human-body { grid-row:3; }
+  .home-chapters .home-human-intro { font-size:15px; }
+  .home-chapters .home-approach { gap:14px; margin-block:29px 18px; }
+  .home-chapters .home-approach strong { font-size:13px; }
+  .home-chapters .home-approach p { font-size:11px; }
+  .home-chapters .home-approach span { font-size:9px; }
+  .home-chapters .home-rating { gap:18px; margin-top:22px; padding-top:20px; }
+  .home-chapters .home-rating>strong { font-size:36px; }
+  .home-chapters .home-rating p { font-size:11px; }
+  .home-chapters .home-arrival { padding-block:78px 70px; }
+  .home-chapters .home-arrival-top { display:block; margin-bottom:48px; }
+  .home-chapters .home-arrival h2 { font-size:40px; max-width:12ch; margin-top:22px; }
+  .home-chapters .home-arrival-location { font-size:16px; margin-bottom:24px; }
+  .home-chapters .home-arrival-note { border-left:0; padding:26px 0 0; font-size:12px; max-width:36ch; }
+  .home-chapters .home-practical { display:block; }
+  .home-chapters .home-practical>div+div { margin-top:42px; }
+  .home-chapters .home-practical h3 { font-size:20px; margin-bottom:22px; }
+  .home-chapters .home-practical summary { font-size:13px; }
+  .home-chapters .home-knowledge-links>a { font-size:13px; }
+  .home-chapters .footer-bottom { gap:18px; padding-top:30px; }
+}
+@media(max-width:360px) {
+  .home-chapters .home-intro .landing-hero-actions { gap:8px 16px; }
+  .home-chapters .home-intro .button { padding-inline:18px; }
+  .home-chapters .home-intro-secondary { font-size:12px; }
+  .home-chapters .home-visit { grid-template-columns:1fr; }
+  .home-chapters .home-visit-actions { grid-column:1; flex-direction:row; gap:20px; padding-left:31px; align-items:center; }
+  .home-chapters .home-visit-actions a { min-height:44px; }
+  .home-chapters .home-approach { grid-template-columns:1fr; gap:15px; }
+  .home-chapters .home-approach li { display:grid; grid-template-columns:26px 1fr; gap:0 8px; padding-top:13px; }
+  .home-chapters .home-approach span { grid-row:1/3; padding-top:3px; }
+  .home-chapters .home-approach strong { margin-bottom:4px; }
+  .home-chapters .home-approach p { font-size:12px; }
+}

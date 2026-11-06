@@ -20,7 +20,7 @@
 .home-chapters .home-diagnostic .hd-findings-button { color:#294c3d; border-color:#9bb09f; }
 .home-chapters .home-diagnostic .hd-findings-button[aria-pressed="true"] { background:#e0e9dc; }
 .home-chapters .home-diagnostic .hd-caption { color:#526b61; font-size:11px; }
-.home-chapters .home-diagnostic :is(a,button):focus-visible { outline-color:#294c3d; }
+.home-chapters .home-diagnostic :is(a,button,.hd-stage):focus-visible { outline-color:#294c3d; }
 .home-chapters .home-diagnostic .home-case-links { border-top-color:#c6d2c9; }
 .home-chapters .home-diagnostic .home-case-links>span { color:#526b61; letter-spacing:.05em; }
 .home-chapters .home-diagnostic .home-case-links>a { color:#294c3d; border-color:#ccd7ce; }

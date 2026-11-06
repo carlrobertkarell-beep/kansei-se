@@ -1,5 +1,6 @@
 """Verify the public clinic model and every ultrasound reader without contacting booking services."""
 import re
+from urllib.parse import urlsplit
 CASE_PATHS = ('/ultraljud/axel/bicepstendinopati/', '/ultraljud/axel/pectoralisruptur/', '/ultraljud/hand-handled/karpaltunnelsyndrom/', '/ultraljud/axel/ac-ledsskada/', '/ultraljud/kalkaxel/', '/ultraljud/bursit-axel/')
 
 def check_anatomy_label_surfaces(page):
@@ -24,6 +25,21 @@ def clinic_model(page):
       gutter:getComputedStyle(document.querySelector('.header-inner')).paddingLeft,
       heading_left:document.querySelector('h1').getBoundingClientRect().left
     })""")
+
+def clinic_reference(page):
+    """Keep clinical readers consistent with their service hub, not the home hero."""
+    origin = urlsplit(page.url)
+    reference = page.context.new_page()
+    try:
+        response = reference.goto(origin.scheme + '://' + origin.netloc + '/ultraljud/',
+                                  wait_until='domcontentloaded', timeout=45000)
+        if response is None or response.status != 200:
+            raise AssertionError('Clinical design reference does not return HTTP 200')
+        reference.locator('h1').wait_for(state='visible', timeout=15000)
+        reference.evaluate('() => document.fonts.ready.then(() => true)')
+        return clinic_model(reference)
+    finally:
+        reference.close()
 
 def check_case(page, model):
     actual=clinic_model(page)

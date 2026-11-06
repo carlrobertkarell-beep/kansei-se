@@ -26,125 +26,131 @@ a.navigation-card.rel-row>span:first-child{text-decoration:underline;text-underl
 .graph-step-label{font-size:12px;font-weight:600;color:inherit;align-self:center;text-align:center;padding:8px 4px}
 #closePlayer.player-icon{width:auto;min-width:62px;padding-inline:10px;font-family:inherit;font-size:12px;font-weight:600}
 
-/* The clinic menu: a quiet surface, three clear care paths, booking always in reach. */
-.clinic-site #site-menu.menu-refined {
- --menu-paper:#f9f8f3;--menu-ink:#20372b;--menu-muted:#526258;--menu-line:#d6dfd4;
- width:min(580px,100%);max-width:100%;height:100dvh;max-height:100dvh;
- overflow:hidden;background:var(--menu-paper);color:var(--menu-ink);
- border-left:1px solid var(--menu-line);box-shadow:-24px 0 80px -30px #10283844;
+/* Kansei navigation: a forest-green room for finding the right care. */
+.clinic-site #site-menu.menu-refined.menu-premium {
+ --menu-paper:#12352c;--menu-ink:#f6f5ed;--menu-muted:#becdc1;--menu-line:rgba(221,235,216,.21);--menu-accent:#dce7ce;
+ width:min(640px,100%);max-width:100%;height:100dvh;max-height:100dvh;margin:0 0 0 auto;
+ border:0;padding:0;overflow:hidden;color:var(--menu-ink);
+ background:radial-gradient(ellipse at 100% 0%,#244a3b 0,transparent 64%),var(--menu-paper);
+ box-shadow:-24px 0 80px -30px #10283866;
 }
-.clinic-site #site-menu.menu-refined[open] {display:grid;grid-template-rows:auto minmax(0,1fr) auto}
-.clinic-site #site-menu.menu-refined .site-menu-head {
- position:relative;z-index:2;padding:20px 30px;gap:16px;
- background:var(--menu-paper);border-bottom:1px solid var(--menu-line);
+.clinic-site #site-menu.menu-refined.menu-premium[open] {display:grid;grid-template-rows:auto minmax(0,1fr) auto;animation:clinic-menu-reveal .34s cubic-bezier(.22,.75,.25,1) both}
+.clinic-site #site-menu.menu-refined.menu-premium[open].is-leaving {animation:clinic-menu-leave .17s ease both}
+.clinic-site #site-menu.menu-refined.menu-premium::backdrop {background:rgba(12,29,23,.48);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.clinic-site #site-menu.menu-premium .site-menu-head {
+ position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;
+ padding:25px 36px 24px;gap:20px;background:transparent;border-bottom:1px solid var(--menu-line);
 }
-.clinic-site #site-menu.menu-refined .site-menu-head img {width:144px}
-.clinic-site #site-menu.menu-refined .site-menu-close {
- min-height:44px;min-width:88px;padding:8px 14px;border-color:var(--menu-line);
- color:var(--menu-ink);background:transparent;font-size:14px;
+.clinic-site #site-menu.menu-premium .site-menu-head>a {display:grid;align-content:center;gap:7px;min-height:48px;color:var(--menu-ink)}
+.clinic-site #site-menu.menu-premium .site-menu-head img {width:150px;filter:brightness(0) invert(1)}
+.clinic-site #site-menu.menu-premium .menu-brand-caption {font:400 11px/1.4 var(--sans);letter-spacing:.025em;color:var(--menu-muted)}
+.clinic-site #site-menu.menu-premium .site-menu-close {
+ display:flex;align-items:center;justify-content:flex-end;gap:10px;min-height:48px;min-width:78px;width:auto;height:auto;
+ margin:0;padding:10px 0 10px 12px;border:0;border-radius:0;background:transparent;color:var(--menu-ink);font-size:13px;
 }
-.clinic-site #site-menu.menu-refined .site-menu-body {
+.clinic-site #site-menu.menu-premium .site-menu-close .icon {width:21px;height:21px;stroke-width:1.25}
+.clinic-site #site-menu.menu-premium .site-menu-close:hover {color:var(--menu-accent)}
+.clinic-site #site-menu.menu-premium .site-menu-body {
  min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
- padding:26px 30px 24px;scrollbar-width:thin;scrollbar-color:#a7b9a8 transparent;
+ padding:24px 36px 20px;scrollbar-width:thin;scrollbar-color:#658472 transparent;
 }
-.clinic-site #site-menu.menu-refined .menu-intro {margin-bottom:22px}
-.clinic-site #site-menu.menu-refined .menu-location {
- margin:0 0 10px;font-size:12px;line-height:1.5;color:var(--menu-muted);letter-spacing:.015em;
+.clinic-site #site-menu.menu-premium .menu-intro {margin:0 0 14px}
+.clinic-site #site-menu.menu-premium .menu-location {
+ margin:0;font:400 11px/1.5 var(--sans);letter-spacing:.065em;color:var(--menu-muted);
 }
-.clinic-site #site-menu.menu-refined .menu-title {
- margin:0;font-size:30px;font-weight:400;line-height:1.15;letter-spacing:-.035em;color:var(--menu-ink);
+.clinic-site #site-menu.menu-premium .menu-primary {display:block}
+.clinic-site #site-menu.menu-premium .menu-service {padding:17px 0 10px;border-bottom:1px solid var(--menu-line)}
+.clinic-site #site-menu.menu-premium .menu-service:first-child {padding-top:7px}
+.clinic-site #site-menu.menu-premium .menu-service>a {
+ display:flex;align-items:center;min-height:74px;padding:0;border:0;border-radius:0;
+ background:transparent;box-shadow:none;color:var(--menu-ink);letter-spacing:-.045em;transform:none;
 }
-.clinic-site #site-menu.menu-refined .menu-primary {display:grid;gap:10px}
-.clinic-site #site-menu.menu-refined .menu-primary>a {
- min-height:90px;padding:17px 20px;border:1px solid var(--menu-line);border-radius:16px;
- background:#fffefa;color:var(--menu-ink);font-size:30px;line-height:1.15;letter-spacing:-.035em;
- box-shadow:0 3px 12px -10px #20372b45;transform:none;
- transition:background-color .18s ease,border-color .18s ease;
+.clinic-site #site-menu.menu-premium .menu-service>a>span {display:grid;gap:9px;min-width:0}
+.clinic-site #site-menu.menu-premium .menu-service strong {
+ font:400 49px/1.06 var(--sans);letter-spacing:-.045em;text-decoration:none;
+ transition:color .2s ease;
 }
-.clinic-site #site-menu.menu-refined .menu-primary>a>span {gap:6px;min-width:0}
-.clinic-site #site-menu.menu-refined .menu-primary strong {font-weight:400;text-decoration:none;line-height:1.12}
-.clinic-site #site-menu.menu-refined .menu-primary small {
- font:400 14px/1.45 var(--sans);letter-spacing:0;color:var(--menu-muted);
+.clinic-site #site-menu.menu-premium .menu-service small {font:400 13px/1.5 var(--sans);letter-spacing:0;color:var(--menu-muted)}
+.clinic-site #site-menu.menu-premium .menu-service>a:is(:hover,:focus-visible,[aria-current]) strong {color:var(--menu-accent)}
+.clinic-site #site-menu.menu-premium .menu-service-routes {display:flex;flex-wrap:wrap;align-items:center;gap:0 23px;margin-top:3px}
+.clinic-site #site-menu.menu-premium .menu-service-routes a {
+ display:inline-flex;align-items:center;min-height:44px;min-width:44px;padding:8px 0;color:var(--menu-accent);
+ font:500 13px/1.5 var(--sans);letter-spacing:0;text-decoration:underline;text-decoration-color:rgba(220,231,206,.4);text-underline-offset:5px;text-decoration-thickness:1px;
 }
-.clinic-site #site-menu.menu-refined .menu-primary>a:is(:hover,:focus-visible,[aria-current]) {
- background:#eaf0e4;border-color:#819c80;transform:none;
+.clinic-site #site-menu.menu-premium .menu-service-routes a:is(:hover,:focus-visible,[aria-current]) {color:#fff;text-decoration-color:currentColor}
+.clinic-site #site-menu.menu-premium .menu-service:last-child {padding-bottom:21px}
+.clinic-site #site-menu.menu-premium .menu-quick {display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:10px 0 0;padding:0;border:0}
+.clinic-site #site-menu.menu-premium .menu-quick>a {
+ display:flex;align-items:center;justify-content:flex-start;min-height:48px;padding:8px 0;border:0;border-radius:0;background:transparent;
+ color:var(--menu-ink);font:500 15px/1.4 var(--sans);text-align:left;
 }
-.clinic-site #site-menu.menu-refined .menu-primary>a:focus-visible {outline:3px solid #a76d00;outline-offset:2px}
-.clinic-site #site-menu.menu-refined .menu-quick {
- display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:16px 0 12px;
+.clinic-site #site-menu.menu-premium .menu-quick>a:is(:hover,:focus-visible,[aria-current]) {color:var(--menu-accent);text-decoration:underline;text-underline-offset:5px}
+.clinic-site #site-menu.menu-premium .menu-more {border-top:1px solid var(--menu-line);margin:0}
+.clinic-site #site-menu.menu-premium .menu-more>summary {
+ display:flex;align-items:center;justify-content:space-between;min-height:52px;gap:20px;padding:10px 0;
+ color:var(--menu-muted);font:400 14px/1.5 var(--sans);cursor:pointer;list-style:none;
 }
-.clinic-site #site-menu.menu-refined .menu-quick>a {
- display:flex;align-items:center;justify-content:center;min-height:48px;padding:8px 6px;
- border:1px solid var(--menu-line);border-radius:10px;background:transparent;
- font-size:13px;font-weight:600;line-height:1.35;text-align:center;
+.clinic-site #site-menu.menu-premium .menu-more>summary::after {font-size:22px;line-height:1;font-weight:300;margin-left:auto;color:var(--menu-accent)}
+.clinic-site #site-menu.menu-premium :is(.menu-injections,.menu-secondary,.menu-practical) {display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;margin:0;padding:12px 0;border:0}
+.clinic-site #site-menu.menu-premium .menu-injections {border-bottom:1px solid var(--menu-line)}
+.clinic-site #site-menu.menu-premium .menu-practical {border-top:1px solid var(--menu-line)}
+.clinic-site #site-menu.menu-premium :is(.menu-injections,.menu-secondary,.menu-practical) a {
+ display:flex;align-items:center;min-height:44px;padding:4px 0;font:400 14px/1.5 var(--sans);color:var(--menu-ink);text-decoration:none;
 }
-.clinic-site #site-menu.menu-refined .menu-quick>a:is(:hover,:focus-visible,[aria-current]) {background:#eaf0e4}
-.clinic-site #site-menu.menu-refined .menu-more {border-top:1px solid var(--menu-line);margin-top:8px}
-.clinic-site #site-menu.menu-refined .menu-more>summary {
- display:flex;align-items:center;justify-content:space-between;min-height:54px;gap:20px;
- padding:12px 2px;font-size:15px;font-weight:500;cursor:pointer;list-style:none;
+.clinic-site #site-menu.menu-premium :is(.menu-injections,.menu-secondary,.menu-practical) a:is(:hover,:focus-visible,[aria-current]) {text-decoration:underline;text-underline-offset:5px;color:var(--menu-accent)}
+.clinic-site #site-menu.menu-premium .menu-contact {padding:14px 0 8px;margin:0;font:400 13px/1.7 var(--sans);color:var(--menu-muted)}
+.clinic-site #site-menu.menu-premium .menu-contact a {display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:5px}
+.clinic-site #site-menu.menu-premium>.menu-bottom {
+ display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:12px;
+ margin:0;padding:16px 36px max(10px,env(safe-area-inset-bottom));border-top:1px solid var(--menu-line);
+ background:#12352c;box-shadow:0 -16px 32px -24px #0c261dcc;z-index:2;
 }
-.clinic-site #site-menu.menu-refined .menu-more>summary::after {font-size:22px;line-height:1;font-weight:400;margin-left:auto}
-.clinic-site #site-menu.menu-refined :is(.menu-injections,.menu-secondary,.menu-practical) {
- display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;margin:0;padding:12px 0;border:0;
+.clinic-site #site-menu.menu-premium .menu-bottom .button {
+ grid-column:1/-1;display:flex;width:100%;justify-content:center;min-height:54px;padding:13px 18px;border:1px solid transparent;border-radius:5px;
+ background:var(--menu-accent);color:#14372c;font:500 17px/1.4 var(--sans);letter-spacing:-.01em;transform:none;
 }
-.clinic-site #site-menu.menu-refined .menu-injections {border-bottom:1px solid var(--menu-line)}
-.clinic-site #site-menu.menu-refined .menu-practical {border-top:1px solid var(--menu-line)}
-.clinic-site #site-menu.menu-refined :is(.menu-injections,.menu-secondary,.menu-practical) a {
- display:flex;align-items:center;min-height:44px;font-size:14px;line-height:1.5;text-decoration:none;
-}
-.clinic-site #site-menu.menu-refined :is(.menu-injections,.menu-secondary,.menu-practical) a:is(:hover,:focus-visible,[aria-current]) {
- text-decoration:underline;text-underline-offset:.2em;
-}
-.clinic-site #site-menu.menu-refined .menu-contact {padding:14px 0 8px;font-size:13px;line-height:1.7;color:var(--menu-muted)}
-.clinic-site #site-menu.menu-refined .menu-contact a {display:inline-flex;min-height:44px;align-items:center;text-decoration:underline;text-underline-offset:.2em}
-.clinic-site #site-menu.menu-refined>.menu-bottom {
- margin:0;padding:16px 30px max(12px,env(safe-area-inset-bottom));border-top:1px solid var(--menu-line);
- background:var(--menu-paper);box-shadow:0 -14px 28px -28px #20372b60;z-index:2;
-}
-.clinic-site #site-menu.menu-refined .menu-bottom .button {
- display:flex;width:100%;justify-content:center;min-height:50px;padding:12px 16px;border-radius:12px;
- background:#254f3e;color:#fff;font-size:15px;font-weight:600;line-height:1.4;
-}
-.clinic-site #site-menu.menu-refined .menu-bottom .button:hover {background:#20372b;transform:none}
-.clinic-site #site-menu.menu-refined .menu-booking-help {
- display:flex;align-items:center;justify-content:center;min-height:44px;margin-top:3px;
- font-size:13px;text-decoration:underline;text-underline-offset:.2em;
-}
+.clinic-site #site-menu.menu-premium .menu-bottom .button:hover {background:#f2f5e8;transform:none}
+.clinic-site #site-menu.menu-premium .menu-booking-caption {margin:0;min-height:44px;display:flex;align-items:center;font:400 11px/1.5 var(--sans);color:var(--menu-muted)}
+.clinic-site #site-menu.menu-premium .menu-booking-help {display:flex;align-items:center;justify-content:flex-end;min-height:44px;margin:0;padding:5px 0;font:400 12px/1.5 var(--sans);color:var(--menu-ink);text-decoration:underline;text-underline-offset:4px}
+.clinic-site #site-menu.menu-premium :is(a,button,summary):focus-visible {outline:2px solid #e0ecca;outline-offset:4px;border-radius:2px}
+.clinic-site #site-menu.menu-premium[open] .menu-service {animation:clinic-menu-line .36s cubic-bezier(.22,.75,.25,1) both}
+.clinic-site #site-menu.menu-premium[open] .menu-service:nth-child(2) {animation-delay:.035s}
+.clinic-site #site-menu.menu-premium[open] .menu-service:nth-child(3) {animation-delay:.07s}
 @media(max-width:760px) {
- .clinic-site #site-menu.menu-refined {width:100vw;max-width:100vw;margin:0;border:0;box-shadow:none}
- .clinic-site #site-menu.menu-refined[open] {animation:clinic-menu-down .26s cubic-bezier(.22,.75,.25,1) both}
- .clinic-site #site-menu.menu-refined[open].is-leaving {animation:clinic-menu-up .17s ease both}
- .clinic-site #site-menu.menu-refined .site-menu-head {padding:14px 22px}
- .clinic-site #site-menu.menu-refined .site-menu-head img {width:128px}
- .clinic-site #site-menu.menu-refined .site-menu-body {padding:20px 22px 18px}
- .clinic-site #site-menu.menu-refined .menu-intro {margin-bottom:18px}
- .clinic-site #site-menu.menu-refined .menu-title {font-size:28px}
- .clinic-site #site-menu.menu-refined .menu-primary {gap:8px}
- .clinic-site #site-menu.menu-refined .menu-primary>a {min-height:86px;padding:15px 17px;font-size:30px;border-radius:14px}
- .clinic-site #site-menu.menu-refined .menu-primary small {font-size:13px}
- .clinic-site #site-menu.menu-refined>.menu-bottom {padding:12px 22px max(8px,env(safe-area-inset-bottom))}
+ .clinic-site #site-menu.menu-refined.menu-premium {width:100vw;max-width:100vw;margin:0;box-shadow:none}
+ .clinic-site #site-menu.menu-premium .site-menu-head {padding:20px 26px 18px}
+ .clinic-site #site-menu.menu-premium .site-menu-head img {width:140px}
+ .clinic-site #site-menu.menu-premium .site-menu-body {padding:20px 26px 16px}
+ .clinic-site #site-menu.menu-premium .menu-service strong {font-size:44px}
+ .clinic-site #site-menu.menu-premium .menu-service>a {min-height:70px}
+ .clinic-site #site-menu.menu-premium .menu-service small {font-size:12px}
+ .clinic-site #site-menu.menu-premium>.menu-bottom {padding:14px 26px max(8px,env(safe-area-inset-bottom))}
 }
 @media(max-width:360px) {
- .clinic-site #site-menu.menu-refined :is(.site-menu-head,.site-menu-body) {padding-inline:18px}
- .clinic-site #site-menu.menu-refined .menu-primary>a {padding-inline:14px;font-size:28px}
- .clinic-site #site-menu.menu-refined .menu-primary small {font-size:12px}
- .clinic-site #site-menu.menu-refined .menu-quick {gap:6px}
- .clinic-site #site-menu.menu-refined .menu-quick>a {font-size:12px}
- .clinic-site #site-menu.menu-refined>.menu-bottom {padding-inline:18px}
+ .clinic-site #site-menu.menu-premium :is(.site-menu-head,.site-menu-body) {padding-inline:22px}
+ .clinic-site #site-menu.menu-premium .menu-service strong {font-size:39px}
+ .clinic-site #site-menu.menu-premium .menu-service-routes {gap:0 20px}
+ .clinic-site #site-menu.menu-premium .menu-service small {font-size:11px}
+ .clinic-site #site-menu.menu-premium>.menu-bottom {padding-inline:22px}
+ .clinic-site #site-menu.menu-premium .menu-booking-help {font-size:11px}
 }
 @media(max-width:760px) and (max-height:660px) {
- .clinic-site #site-menu.menu-refined .site-menu-body {padding-block:14px}
- .clinic-site #site-menu.menu-refined .menu-intro {margin-bottom:12px}
- .clinic-site #site-menu.menu-refined .menu-location {font-size:11px;margin-bottom:6px}
- .clinic-site #site-menu.menu-refined .menu-title {font-size:24px}
- .clinic-site #site-menu.menu-refined .menu-primary>a {min-height:78px;padding-block:12px;font-size:27px}
- .clinic-site #site-menu.menu-refined .menu-primary small {font-size:12px}
- .clinic-site #site-menu.menu-refined .menu-quick {margin-block:12px 8px}
+ .clinic-site #site-menu.menu-premium .site-menu-head {padding-block:13px}
+ .clinic-site #site-menu.menu-premium .site-menu-body {padding-block:12px}
+ .clinic-site #site-menu.menu-premium .menu-intro {margin-bottom:8px}
+ .clinic-site #site-menu.menu-premium .menu-service {padding-block:11px 6px}
+ .clinic-site #site-menu.menu-premium .menu-service strong {font-size:35px}
+ .clinic-site #site-menu.menu-premium .menu-service>a {min-height:60px}
+ .clinic-site #site-menu.menu-premium .menu-service>a>span {gap:6px}
+ .clinic-site #site-menu.menu-premium .menu-service-routes {margin-top:0}
+ .clinic-site #site-menu.menu-premium .menu-service:last-child {padding-bottom:13px}
+ .clinic-site #site-menu.menu-premium>.menu-bottom {padding-block:10px max(4px,env(safe-area-inset-bottom))}
+ .clinic-site #site-menu.menu-premium .menu-bottom .button {min-height:48px;padding-block:10px}
 }
-@keyframes clinic-menu-down {from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
-@keyframes clinic-menu-up {to{opacity:0;transform:translateY(-8px)}}
+@keyframes clinic-menu-reveal {from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes clinic-menu-leave {to{opacity:0;transform:translateY(-8px)}}
+@keyframes clinic-menu-line {from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce) {
- .clinic-site #site-menu.menu-refined[open],.clinic-site #site-menu.menu-refined[open].is-leaving {animation:none!important}
- .clinic-site #site-menu.menu-refined .menu-primary>a {transition:none}
+ .clinic-site #site-menu.menu-refined.menu-premium[open],.clinic-site #site-menu.menu-refined.menu-premium[open].is-leaving,.clinic-site #site-menu.menu-premium[open] .menu-service {animation:none!important}
+ .clinic-site #site-menu.menu-premium :is(a,button,summary,strong) {transition:none!important}
 }

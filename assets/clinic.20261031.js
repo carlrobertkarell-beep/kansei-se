@@ -242,15 +242,33 @@
   if(body&&primary&&bottom&&heading){
    const intro=document.createElement('div');intro.className='menu-intro';
    const location=document.createElement('p');location.className='menu-location';location.textContent='Upplandsgatan 26 · Odenplan';
-   const title=document.createElement('h2');title.className='menu-title';title.textContent='Välj ditt nästa steg.';
-   intro.append(location,title);body.prepend(intro);
+   intro.append(location);body.prepend(intro);
+   const brand=dialog.querySelector('.site-menu-head>a');
+   if(brand){
+    const caption=document.createElement('span');caption.className='menu-brand-caption';caption.textContent='Naprapati & Rehabcenter';
+    brand.append(caption);brand.setAttribute('aria-label','Kansei Naprapati & Rehabcenter, startsida');
+   }
    ['/ultraljud/','/hyaluronsyra/','/naprapati/'].forEach(href=>{
     const link=primary.querySelector('a[href="'+href+'"]');if(link)primary.append(link);
    });
+   const shortcuts=[
+    {service:'/ultraljud/',label:'Ultraljud efter område',links:[['Axel','/ultraljud/axel/'],['Knä','/ultraljud/kna/'],['Fler områden','/ultraljud/']]},
+    {service:'/hyaluronsyra/',label:'Hyaluron för din led',links:[['Knä','/hyaluronsyra/kna/'],['Höft','/hyaluronsyra/hoft/'],['Axel','/hyaluronsyra/axel/']]}
+   ];
+   [...primary.children].forEach(link=>{
+    const group=document.createElement('div');group.className='menu-service';link.before(group);group.append(link);
+    const paths=shortcuts.find(item=>item.service===link.getAttribute('href'));
+    if(paths){
+     const routes=document.createElement('div');routes.className='menu-service-routes menu-service-shortcuts';routes.setAttribute('role','group');routes.setAttribute('aria-label',paths.label);
+     paths.links.forEach(([label,href])=>{const a=document.createElement('a');a.textContent=label;a.href=href;routes.append(a);});
+     group.append(routes);
+    }
+   });
    heading.classList.add('sr-only');
    const quick=document.createElement('nav');quick.className='menu-quick';quick.setAttribute('aria-label','Genvägar');
-   ['/priser/','/kontakt/','/ultraljud/bilder/'].forEach(href=>{
-    const link=dialog.querySelector('.menu-secondary a[href="'+href+'"]');if(link)quick.append(link);
+   ['/priser/','/om-oss/','/kontakt/'].forEach(href=>{
+    const link=dialog.querySelector('.menu-secondary a[href="'+href+'"]');
+    if(link){if(href==='/kontakt/')link.textContent='Hitta hit';quick.append(link);}
    });
    primary.after(quick);
    const more=document.createElement('details');more.className='menu-more';
@@ -261,11 +279,16 @@
     const section=body.querySelector(selector);if(section)more.append(section);
    });
    const contact=bottom.querySelector('p');if(contact){contact.classList.add('menu-contact');more.append(contact);}
-   body.append(more);dialog.append(bottom);dialog.classList.add('menu-refined');
+   const book=bottom.querySelector('.button');
+   if(book){book.textContent='Boka besök';book.setAttribute('aria-label','Boka besök på Bokadirekt');}
+   const bookingCaption=document.createElement('p');bookingCaption.className='menu-booking-caption';bookingCaption.textContent='Via Bokadirekt';
+   bottom.insertBefore(bookingCaption,help||null);
+   body.append(more);dialog.append(bottom);dialog.classList.add('menu-refined','menu-premium');
    dialog.querySelector('[data-site-close]')?.setAttribute('autofocus','');
    dialog.querySelectorAll('a[href^="/"]').forEach(link=>{
     const href=link.getAttribute('href');
     if(href===locationPath())link.setAttribute('aria-current','page');
+    else if(link.closest('.menu-service')&&!link.closest('.menu-service-routes')&&href!=='/'&&locationPath().startsWith(href))link.setAttribute('aria-current','location');
    });
   }
  }

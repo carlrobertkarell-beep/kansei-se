@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 from achilles_design_check import check_achilles
-from ultrasound_design_check import CASE_PATHS, clinic_reference, check_case, check_hub, check_explore, check_sample, check_anatomy_label_surfaces
+from ultrasound_design_check import CASE_PATHS, clinic_model, clinic_reference, check_case, check_hub, check_explore, check_sample, check_anatomy_label_surfaces
 from case_story_check import STORY_PATHS, check_story
 from bursa_design_check import check_bursa
 from case_context_check import CONTEXT_PATHS, check_context

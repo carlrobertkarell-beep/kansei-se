@@ -16,7 +16,7 @@
   transform: translate3d(0,var(--home-caption-pan,0px),0);
 }
 .home-chapters.has-home-scroll .home-diagnostic .hd-instrument {
-  transform: perspective(1400px) translate3d(0,var(--home-panel-rise,0px),0) rotateX(var(--home-panel-pitch,0deg)) scale(var(--home-panel-scale,1));
+  transform: translate3d(0,var(--home-panel-rise,0px),0) scale(var(--home-panel-scale,1));
   transform-origin: 50% 100%;
   box-shadow: 0 var(--home-panel-shadow-y,26px) 90px -40px rgba(0,0,0,var(--home-panel-shadow-alpha,.45));
   will-change: transform;

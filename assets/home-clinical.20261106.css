@@ -1,0 +1,75 @@
+/* A clinical homepage: warm white, soft mineral tones and human explanations. */
+.home-chapters .home-chapter-label { font-size:11px; letter-spacing:.07em; }
+.home-chapters .home-chapter-label span { opacity:1; color:#526b61; }
+.home-chapters .home-intro-image { border-radius:22px; }
+.home-chapters.has-home-scroll .home-intro-image { border-radius:22px; }
+.home-chapters .home-treatment-routes { display:flex; flex-wrap:wrap; gap:6px 24px; border-top:1px solid #d9e0d8; padding-top:12px; margin-top:26px; }
+.home-chapters .home-treatment-routes a { display:inline-flex; align-items:center; min-height:44px; font-size:14px; color:#294c3d; text-decoration:underline; text-underline-offset:5px; }
+.home-chapters .home-intro-location { margin-top:12px; }
+.home-chapters .home-intro-tail .home-intro-scroll { text-transform:none; font-size:12px; letter-spacing:0; }
+.home-chapters .home-diagnostic { --hd-ink:#183b30; --hd-muted:#50665e; --hd-line:#d6e0da; background:#eaf0ed; }
+.home-chapters .home-diagnostic .hd-kicker { color:#526b61; font:500 11px/1.6 var(--sans); letter-spacing:.07em; }
+.home-chapters .home-diagnostic .hd-copy h2 { font-size:clamp(38px,4.5vw,60px); letter-spacing:-.045em; max-width:12ch; }
+.home-chapters .home-diagnostic .hd-copy-links a:first-child { border-color:#a7b9ad; background:transparent; }
+.home-chapters .home-diagnostic .hd-instrument { background:#fffefb; border-color:#d1dcd4; }
+.home-chapters.has-home-scroll .home-diagnostic .hd-instrument { box-shadow:0 18px 48px -30px #173b303d; }
+.home-chapters .home-diagnostic .hd-instrument-head span { font:500 11px/1.6 var(--sans); letter-spacing:0; color:#526b61; }
+.home-chapters .home-diagnostic .hd-modes { background:#edf1ed; }
+.home-chapters .home-diagnostic .hd-mode { color:#52665a; }
+.home-chapters .home-diagnostic .hd-mode[aria-pressed="true"] { background:#fff; color:#173b30; box-shadow:0 2px 8px #173b3012; }
+.home-chapters .home-diagnostic .hd-findings-button { color:#294c3d; border-color:#9bb09f; }
+.home-chapters .home-diagnostic .hd-findings-button[aria-pressed="true"] { background:#e0e9dc; }
+.home-chapters .home-diagnostic .hd-caption { color:#526b61; font-size:11px; }
+.home-chapters .home-diagnostic :is(a,button,.hd-stage):focus-visible { outline-color:#294c3d; }
+.home-chapters .home-diagnostic .home-case-links { border-top-color:#c6d2c9; }
+.home-chapters .home-diagnostic .home-case-links>span { color:#526b61; letter-spacing:.05em; }
+.home-chapters .home-diagnostic .home-case-links>a { color:#294c3d; border-color:#ccd7ce; }
+.home-chapters .home-hyaluron { padding-block:clamp(76px,8vw,116px); background:#faf8f2; scroll-margin-top:0; }
+.home-chapters .home-hyaluron-grid { display:grid; grid-template-columns:1fr 1.05fr; gap:clamp(36px,6vw,88px); align-items:center; }
+.home-chapters .home-hyaluron h2 { font-size:clamp(38px,4.5vw,60px); line-height:1.08; font-weight:500; letter-spacing:-.045em; margin:24px 0; color:#183b30; }
+.home-chapters .home-hyaluron-lead { max-width:39ch; font-size:17px; line-height:1.75; color:#50665e; }
+.home-chapters .home-joint-links { display:flex; flex-wrap:wrap; gap:10px; margin-block:23px 26px; }
+.home-chapters .home-joint-links a { display:inline-flex; align-items:center; justify-content:center; min-width:70px; min-height:44px; padding:9px 18px; border:1px solid #bdcbbf; border-radius:999px; color:#294c3d; font-size:14px; background:#fff9; transition:background .2s ease,border-color .2s ease; }
+.home-chapters .home-joint-links a:hover { background:#e5ece2; border-color:#68816b; }
+.home-chapters .home-hyaluron-actions { display:flex; flex-wrap:wrap; align-items:center; gap:12px 22px; }
+.home-chapters .home-hyaluron-actions>a:not(.button),.home-chapters .home-hyaluron-more { display:inline-flex; align-items:center; min-height:44px; color:#294c3d; text-decoration:underline; text-underline-offset:5px; font-size:13px; }
+.home-chapters .home-hyaluron-note { margin-top:16px; max-width:43ch; font-size:12px; color:#526b61; line-height:1.7; }
+.home-chapters .home-hyaluron-film { min-width:0; margin:0; }
+.home-chapters .home-hyaluron-film video { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:20px; background:#dce3d9; }
+.home-chapters .home-hyaluron-film figcaption { padding-top:18px; max-width:46ch; font-size:13px; line-height:1.7; color:#526b61; }
+.home-chapters .home-hyaluron-film figcaption strong { display:block; color:#294c3d; font-size:16px; font-weight:550; margin-bottom:2px; }
+.home-chapters .home-hyaluron-more { margin-top:8px; }
+.home-chapters .home-visit-index { display:none; }
+.home-chapters .home-visit-name { display:block; }
+.home-chapters .home-visit-price { padding-left:0; }
+.home-chapters.has-home-scroll .home-human-portrait { border-radius:20px; }
+.home-chapters .home-human-portrait img { border-radius:20px; }
+.home-chapters .home-reviews-stage { color:#183b30; background:#f0f3ee; background-image:none; }
+.home-chapters .home-reviews-stage::after { content:none; }
+.home-chapters .home-reviews-stage .hr-heading { color:#183b30; font-size:clamp(38px,4.2vw,56px); }
+.home-chapters .home-reviews-stage .hr-stat { border-color:#c5d1c7; }
+.home-chapters .home-reviews-stage .hr-number { color:#365c45; font-size:clamp(78px,8vw,108px); }
+.home-chapters .home-reviews-stage :is(.hr-stat-label,.hr-author span,.hr-footer p) { color:#526b61; }
+.home-chapters .home-reviews-stage :is(.hr-author,.hr-footer a) { color:#294c3d; }
+.home-chapters .home-reviews-stage .hr-starline { color:#526f4c; }
+.home-chapters .home-reviews-stage .hr-quote::before { color:#68816b; }
+.home-chapters .home-reviews-stage :is(.hr-quotes,.hr-footer) { border-color:#c5d1c7; }
+.home-chapters .home-reviews-stage a:focus-visible { outline-color:#294c3d; }
+@media(max-width:860px) {
+ .home-chapters .home-hyaluron-grid { grid-template-columns:1fr; gap:34px; }
+ .home-chapters .home-hyaluron-film { width:100%; max-width:650px; justify-self:center; }
+}
+@media(max-width:760px) {
+ .home-chapters .home-chapter-label { font-size:10px; }
+ .home-chapters .home-treatment-routes { gap:4px 22px; margin-top:22px; padding-top:8px; }
+ .home-chapters .home-treatment-routes a { font-size:13px; }
+ .home-chapters .home-diagnostic .hd-copy h2 { font-size:40px; }
+ .home-chapters .home-hyaluron h2 { font-size:40px; margin:22px 0 20px; }
+ .home-chapters .home-hyaluron-lead { font-size:16px; }
+ .home-chapters .home-hyaluron-actions { gap:8px 18px; }
+ .home-chapters .home-hyaluron-film video { border-radius:16px; }
+ .home-chapters .home-visit-actions { padding-left:0; }
+ .home-chapters .home-reviews-stage .hr-heading { font-size:38px; }
+ .home-chapters .home-reviews-stage .hr-number { font-size:clamp(68px,21vw,86px); }
+}
+@media(prefers-reduced-motion:reduce) { .home-chapters .home-joint-links a { transition:none; } }

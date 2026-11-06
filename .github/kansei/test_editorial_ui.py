@@ -5,6 +5,7 @@ import re
 import subprocess
 import sys
 import unittest
+from navigation_check import Navigation
 
 ROOT = Path(__file__).resolve().parents[2]
 ARROWS = re.compile(r'[←→↑↓↗↘↙↖⇐⇒⇑⇓↔↕➜➝➞➔⟶⟵]')
@@ -36,6 +37,44 @@ class Reader(HTMLParser):
 
 
 class EditorialUI(unittest.TestCase):
+    def test_duplicate_booking_actions_are_rejected(self):
+        page = Navigation('fixture')
+        page.feed('<body class="clinic-site"><div class="ha-hero-actions">'
+                  '<a class="button button-dark" href="https://booking.example/hyaluron">Boka hyaluron</a>'
+                  '<a class="button button-ghost" href="https://booking.example/hyaluron"><span>Boka hyaluron</span></a>'
+                  '</div></body>')
+        page.check_actions()
+        self.assertTrue(any('duplicate sibling action' in error for error in page.errors))
+
+    def test_separate_booking_groups_and_price_route_are_allowed(self):
+        page = Navigation('fixture')
+        page.feed('<body class="clinic-site"><header><a href="https://booking.example/hyaluron">Boka hyaluron</a></header>'
+                  '<div><a href="https://booking.example/hyaluron">Boka hyaluron</a>'
+                  '<a href="#priser">Se pris och preparat</a></div>'
+                  '<footer><a href="https://booking.example/hyaluron">Boka hyaluron</a></footer></body>')
+        page.check_actions()
+        self.assertFalse(page.errors)
+
+    def test_hyaluron_is_reachable_directly_from_both_main_menus(self):
+        page = Navigation('fixture')
+        page.feed('<body class="clinic-site"><nav class="desktop-nav">'
+                  '<a href="/ultraljud/">Ultraljud</a><a href="/injektioner/">Injektioner</a>'
+                  '</nav><nav class="menu-primary">'
+                  '<a href="/ultraljud/"><strong>Ultraljud</strong></a>'
+                  '<a href="/injektioner/"><strong>Injektioner</strong></a></nav></body>')
+        page.check_actions()
+        self.assertIn('desktop navigation needs one direct Hyaluron route', page.errors)
+        self.assertIn('primary menu needs one direct Hyaluron route', page.errors)
+
+        valid = Navigation('fixture')
+        valid.feed('<body class="clinic-site"><nav class="desktop-nav">'
+                   '<a href="/ultraljud/">Ultraljud</a><a href="/hyaluronsyra/">Hyaluron</a>'
+                   '</nav><nav class="menu-primary">'
+                   '<a href="/ultraljud/"><strong>Ultraljud</strong></a>'
+                   '<a href="/hyaluronsyra/"><strong>Hyaluron</strong></a></nav></body>')
+        valid.check_actions()
+        self.assertFalse(valid.errors)
+
     def test_navigation_assets(self):
         result = subprocess.run([sys.executable, str(ROOT / '.github/kansei/navigation_check.py')],
                                 capture_output=True, text=True)

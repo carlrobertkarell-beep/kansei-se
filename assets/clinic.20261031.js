@@ -245,6 +245,7 @@
    intro.append(location);body.prepend(intro);
    const brand=dialog.querySelector('.site-menu-head>a');
    if(brand){
+    const logo=brand.querySelector('img');if(logo){logo.src='/assets/kansei-logo-light.20261106.svg';logo.width=2397;logo.height=600;logo.loading='eager';}
     const caption=document.createElement('span');caption.className='menu-brand-caption';caption.textContent='Naprapati & Rehabcenter';
     brand.append(caption);brand.setAttribute('aria-label','Kansei Naprapati & Rehabcenter, startsida');
    }

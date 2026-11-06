@@ -27,6 +27,7 @@ a.navigation-card.rel-row>span:first-child{text-decoration:underline;text-underl
 #closePlayer.player-icon{width:auto;min-width:62px;padding-inline:10px;font-family:inherit;font-size:12px;font-weight:600}
 
 /* Kansei navigation: a forest-green room for finding the right care. */
+html:has(#site-menu.menu-premium[open]) {scrollbar-gutter:auto}
 .clinic-site #site-menu.menu-refined.menu-premium {
  --menu-paper:#12352c;--menu-ink:#f6f5ed;--menu-muted:#becdc1;--menu-line:rgba(221,235,216,.21);--menu-accent:#dce7ce;
  width:min(640px,100%);max-width:100%;height:100dvh;max-height:100dvh;margin:0 0 0 auto;
@@ -42,7 +43,7 @@ a.navigation-card.rel-row>span:first-child{text-decoration:underline;text-underl
  padding:25px 36px 24px;gap:20px;background:transparent;border-bottom:1px solid var(--menu-line);
 }
 .clinic-site #site-menu.menu-premium .site-menu-head>a {display:grid;align-content:center;gap:7px;min-height:48px;color:var(--menu-ink)}
-.clinic-site #site-menu.menu-premium .site-menu-head img {width:150px;filter:brightness(0) invert(1)}
+.clinic-site #site-menu.menu-premium .site-menu-head img {width:150px}
 .clinic-site #site-menu.menu-premium .menu-brand-caption {font:400 11px/1.4 var(--sans);letter-spacing:.025em;color:var(--menu-muted)}
 .clinic-site #site-menu.menu-premium .site-menu-close {
  display:flex;align-items:center;justify-content:flex-end;gap:10px;min-height:48px;min-width:78px;width:auto;height:auto;

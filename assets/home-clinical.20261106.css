@@ -24,7 +24,7 @@
 .home-chapters .home-diagnostic .home-case-links { border-top-color:#c6d2c9; }
 .home-chapters .home-diagnostic .home-case-links>span { color:#526b61; letter-spacing:.05em; }
 .home-chapters .home-diagnostic .home-case-links>a { color:#294c3d; border-color:#ccd7ce; }
-.home-chapters .home-hyaluron { padding-block:clamp(76px,8vw,116px); background:#faf8f2; scroll-margin-top:100px; }
+.home-chapters .home-hyaluron { padding-block:clamp(76px,8vw,116px); background:#faf8f2; scroll-margin-top:0; }
 .home-chapters .home-hyaluron-grid { display:grid; grid-template-columns:1fr 1.05fr; gap:clamp(36px,6vw,88px); align-items:center; }
 .home-chapters .home-hyaluron h2 { font-size:clamp(38px,4.5vw,60px); line-height:1.08; font-weight:500; letter-spacing:-.045em; margin:24px 0; color:#183b30; }
 .home-chapters .home-hyaluron-lead { max-width:39ch; font-size:17px; line-height:1.75; color:#50665e; }

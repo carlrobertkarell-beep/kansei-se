@@ -67,30 +67,30 @@
     const node = record.node;
     if (record.type === 'hero') {
       const expansion = ease((travel - (compact.matches ? .42 : .54)) / .4);
-      write(node, '--home-photo-expand', (1 + expansion * (compact.matches ? .145 : .09)).toFixed(4));
-      write(node, '--home-photo-scale', (1.08 + travel * .08).toFixed(4));
-      write(node, '--home-photo-pan', ((.5 - travel) * (compact.matches ? 22 : 46)).toFixed(2) + 'px');
+      write(node, '--home-photo-expand', (1 + expansion * (compact.matches ? .055 : .035)).toFixed(4));
+      write(node, '--home-photo-scale', (1.035 + travel * .025).toFixed(4));
+      write(node, '--home-photo-pan', ((.5 - travel) * (compact.matches ? 12 : 24)).toFixed(2) + 'px');
       write(node, '--home-caption-pan', (-travel * (compact.matches ? 6 : 14)).toFixed(2) + 'px');
       write(node, '--home-photo-corner', Math.round((compact.matches ? 48 : 70) * (1 - expansion) + expansion * 7) + 'px');
     } else if (record.type === 'panel') {
-      write(node, '--home-panel-rise', ((1 - enter) * (compact.matches ? 48 : 76)).toFixed(2) + 'px');
-      write(node, '--home-panel-pitch', ((1 - enter) * (compact.matches ? 7 : 10)).toFixed(3) + 'deg');
-      write(node, '--home-panel-scale', (.87 + enter * .13).toFixed(4));
+      write(node, '--home-panel-rise', ((1 - enter) * (compact.matches ? 20 : 30)).toFixed(2) + 'px');
+      write(node, '--home-panel-pitch', ((1 - enter) * 0).toFixed(3) + 'deg');
+      write(node, '--home-panel-scale', (.975 + enter * .025).toFixed(4));
       write(node, '--home-panel-shadow-y', (24 + enter * 20).toFixed(1) + 'px');
       write(node, '--home-panel-shadow-alpha', (.3 + enter * .23).toFixed(3));
     } else if (record.type === 'visit') {
-      write(node, '--home-row-shift', ((1 - enter) * (compact.matches ? 16 : 30)).toFixed(2) + 'px');
-      write(node, '--home-row-rise', ((1 - enter) * 20).toFixed(2) + 'px');
+      write(node, '--home-row-shift', ((1 - enter) * 0).toFixed(2) + 'px');
+      write(node, '--home-row-rise', ((1 - enter) * 12).toFixed(2) + 'px');
       write(node, '--home-row-opacity', (.62 + enter * .38).toFixed(3));
       write(node, '--home-line-progress', enter.toFixed(4));
     } else if (record.type === 'human') {
       write(node, '--home-human-pan', ((.5 - travel) * (compact.matches ? 22 : 45)).toFixed(2) + 'px');
     } else if (record.type === 'reviews') {
-      write(node, '--home-review-rise', ((1 - enter) * 50).toFixed(2) + 'px');
+      write(node, '--home-review-rise', ((1 - enter) * 20).toFixed(2) + 'px');
       node.classList.toggle('is-scroll-entered', enter > .5);
     } else if (record.type === 'reveal') {
-      write(node, '--home-reveal-rise', ((1 - enter) * 45).toFixed(2) + 'px');
-      write(node, '--home-reveal-scale', (.96 + enter * .04).toFixed(4));
+      write(node, '--home-reveal-rise', ((1 - enter) * 22).toFixed(2) + 'px');
+      write(node, '--home-reveal-scale', '1');
     } else if (record.type === 'text') {
       const progress = clamp((viewport * .88 - top) / (viewport * .48 + Math.min(record.height, viewport) * .3));
       const count = record.words.length;

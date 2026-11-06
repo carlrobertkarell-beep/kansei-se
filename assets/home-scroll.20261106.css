@@ -1,0 +1,94 @@
+/* Scroll choreography is an optional homepage layer. Layout and booking stay native. */
+.home-chapters.has-home-scroll .home-intro-image {
+  border-top-right-radius: var(--home-photo-corner, 60px);
+  transform: scale(var(--home-photo-expand,1));
+  transform-origin: center;
+  isolation: isolate;
+  will-change: transform;
+}
+.home-chapters.has-home-scroll .home-intro { overflow:hidden; }
+.home-chapters.has-home-scroll .home-intro-image>img {
+  transform: translate3d(0,var(--home-photo-pan,0px),0) scale(var(--home-photo-scale,1.16));
+  transform-origin: 50% 52%;
+  will-change: transform;
+}
+.home-chapters.has-home-scroll .home-intro-image figcaption {
+  transform: translate3d(0,var(--home-caption-pan,0px),0);
+}
+.home-chapters.has-home-scroll .home-diagnostic .hd-instrument {
+  transform: perspective(1400px) translate3d(0,var(--home-panel-rise,0px),0) rotateX(var(--home-panel-pitch,0deg)) scale(var(--home-panel-scale,1));
+  transform-origin: 50% 100%;
+  box-shadow: 0 var(--home-panel-shadow-y,26px) 90px -40px rgba(0,0,0,var(--home-panel-shadow-alpha,.45));
+  will-change: transform;
+}
+.home-chapters.has-home-scroll .home-visit {
+  position: relative;
+  transform: translate3d(var(--home-row-shift,0px),var(--home-row-rise,0px),0);
+  opacity: var(--home-row-opacity,1);
+}
+.home-chapters.has-home-scroll .home-visit::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #72866c;
+  transform: scaleX(var(--home-line-progress,1));
+  transform-origin: left;
+  pointer-events: none;
+}
+.home-chapters.has-home-scroll .home-human-portrait {
+  overflow: hidden;
+  border-radius: 3px 3px 90px 3px;
+  isolation: isolate;
+}
+.home-chapters.has-home-scroll .home-human-portrait>img {
+  border-radius: 0;
+  transform: translate3d(0,var(--home-human-pan,0px),0) scale(1.15);
+  transform-origin: center;
+  will-change: transform;
+}
+.home-chapters.has-home-scroll .home-reviews-stage>.wrap {
+  transform: translate3d(0,var(--home-review-rise,0px),0);
+}
+.home-chapters.has-home-scroll [data-scroll-reveal] {
+  transform: translate3d(0,var(--home-reveal-rise,0px),0) scale(var(--home-reveal-scale,1));
+  transform-origin: center bottom;
+}
+.home-chapters.has-home-scroll [data-scroll-text] .home-scroll-word {
+  display: inline-block;
+  opacity: var(--home-word-opacity,1);
+  transform: translate3d(0,var(--home-word-rise,0px),0);
+  transition: none;
+}
+/* A brief hold gives the copy and clinical image a shared stage on larger screens. */
+@media (min-width:1001px) and (min-height:700px) {
+  .home-chapters.has-home-scroll .home-diagnostic .hd-grid { align-items: start; }
+  .home-chapters.has-home-scroll .home-diagnostic .hd-copy {
+    position: sticky;
+    top: 140px;
+    padding-block: 25px;
+  }
+}
+@media (max-width:760px) {
+  .home-chapters.has-home-scroll .home-human-portrait { border-radius: 2px 2px 48px 2px; }
+}
+/* Measurements never depend on a transform applied by the previous frame. */
+.home-chapters.home-scroll-measuring :is(.home-intro-image,.home-intro-image>img,.home-intro-image figcaption,.hd-instrument,.home-visit,.home-human-portrait>img,.home-reviews-stage>.wrap,[data-scroll-reveal],.home-scroll-word) {
+  transform: none!important;
+}
+@media (prefers-reduced-motion:reduce) {
+  .home-chapters.has-home-scroll :is(.home-intro-image,.home-intro-image>img,.home-intro-image figcaption,.hd-instrument,.home-visit,.home-human-portrait>img,.home-reviews-stage>.wrap,[data-scroll-reveal],.home-scroll-word) {
+    transform: none!important;
+    will-change: auto!important;
+    opacity: 1!important;
+  }
+  .home-chapters.has-home-scroll .home-intro-image { border-top-right-radius: 60px; }
+  .home-chapters.has-home-scroll .home-visit::before { transform: scaleX(1); }
+  .home-chapters.has-home-scroll .home-diagnostic .hd-copy { position: static; padding-block: 0; }
+}
+@media print {
+  .home-chapters.has-home-scroll :is(.home-intro-image,.home-intro-image>img,.home-intro-image figcaption,.hd-instrument,.home-visit,.home-human-portrait>img,.home-reviews-stage>.wrap,[data-scroll-reveal],.home-scroll-word) { transform:none!important; opacity:1!important; }
+  .home-chapters.has-home-scroll .home-diagnostic .hd-copy { position:static; }
+}

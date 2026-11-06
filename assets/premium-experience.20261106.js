@@ -28,6 +28,7 @@
     sync();
   }
 
+  if (document.body.classList.contains('home-scroll-site')) return;
   if (!('IntersectionObserver' in window) || !Element.prototype.animate) return;
   const seen = new WeakSet();
   const observer = new IntersectionObserver(entries => {

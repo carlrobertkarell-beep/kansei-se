@@ -175,7 +175,7 @@ with sync_playwright() as pw:
                 p.locator('[data-statistics="no"]').click()
             p.wait_for_timeout(120)
             assert p.locator('h1').count()==1
-            assert p.locator('#site-menu .menu-secondary a[href="/ultraljud/bilder/"]').count()==1
+            assert p.locator('#site-menu a[href="/ultraljud/bilder/"]').count()==1
             width_now=p.evaluate('document.documentElement.scrollWidth')
             assert width_now<=width+2,(path,label,width_now,width)
             p.screenshot(path=str(OUT/f'{name}-{label}.png'))

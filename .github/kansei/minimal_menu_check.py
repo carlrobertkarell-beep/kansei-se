@@ -237,6 +237,71 @@ def check_minimal_menu_motion(page, output):
             raise AssertionError('Menu skips or instantly finishes its normal-motion animation: ' + str(frame))
         return frame
 
+    def settled_dialog():
+        # Filled CSS animations remain in getAnimations() after finishing.
+        # Await this snapshot's finished promises rather than an empty list.
+        probe.locator('#site-menu').evaluate('''async d => {
+            await Promise.all(d.getAnimations().map(a => a.finished.catch(() => {})));
+        }''')
+
+    def arm_pane(selector, label, outgoing, incoming):
+        probe.locator(selector).evaluate('''(el, args) => {
+            el.addEventListener('click', () => {
+                const started = performance.now();
+                for (const sampleAt of [160, 280]) setTimeout(() => {
+                    const d = document.querySelector('#site-menu');
+                    const view = key => {
+                        const v = d.querySelector('[data-menu-view="' + key + '"]');
+                        return {key, hidden:v.hidden, inert:v.inert,
+                            opacity:parseFloat(getComputedStyle(v).opacity),
+                            hasFocus:v.contains(document.activeElement),
+                            animations:v.getAnimations().map(a => {
+                                const t = a.effect.getComputedTiming();
+                                return {state:a.playState, currentTime:a.currentTime,
+                                    duration:t.duration, delay:t.delay, endTime:t.endTime,
+                                    progress:t.progress};
+                            })};
+                    };
+                    window.__recordMinimalFrame({label:args.label, sampleAt,
+                        elapsed:Math.round(performance.now() - started),
+                        open:d.open, active:d.dataset.menuActive,
+                        transitioning:d.dataset.menuTransition === 'true',
+                        outgoing:view(args.outgoing), incoming:view(args.incoming)});
+                }, sampleAt);
+            }, {once:true});
+        }''', {'label': label, 'outgoing': outgoing, 'incoming': incoming})
+
+    def pane_samples(label):
+        frames = [frame for frame in samples if frame['label'] == label]
+        if sorted(frame['sampleAt'] for frame in frames) != [160, 280]:
+            raise AssertionError('Missing real pane animation frames: ' + label)
+        for frame in frames:
+            incoming = frame['incoming']
+            panes_inert = all(not frame[k]['hidden'] and frame[k]['inert']
+                              for k in ('outgoing', 'incoming'))
+            moving = any(a['state'] == 'running' and a['progress'] is not None and
+                         0 < a['progress'] < 1 for a in incoming['animations'])
+            if not (frame['open'] and frame['transitioning'] and panes_inert and moving and
+                    frame['active'] == incoming['key'] and not incoming['hasFocus'] and
+                    0 < incoming['opacity'] < 1):
+                raise AssertionError('Pane change finishes abruptly or enables focus too early: ' + str(frame))
+
+    def visit_and_back(key):
+        selector = f'#site-menu button[data-menu-target="{key}"]'
+        arm_pane(selector, key + '-forward', 'root', key)
+        probe.locator(selector).click()
+        _active(probe, key, focus=True)
+        pane_samples(key + '-forward')
+        probe.wait_for_timeout(1000)
+        back = '#site-menu button[data-menu-back]:visible'
+        arm_pane(back, key + '-back', key, 'root')
+        probe.locator(back).click()
+        _active(probe, 'root')
+        probe.wait_for_function('''key => document.activeElement ===
+            document.querySelector('#site-menu button[data-menu-target="' + key + '"]')''', arg=key)
+        pane_samples(key + '-back')
+        probe.wait_for_timeout(1000)
+
     try:
         probe.goto(base + '/', wait_until='load', timeout=45000)
         probe.wait_for_function("() => document.querySelector('#site-menu')?.classList.contains('menu-minimal')")
@@ -247,15 +312,12 @@ def check_minimal_menu_motion(page, output):
         probe.locator('button[data-site-menu]').click()
         probe.wait_for_timeout(80)
         probe.screenshot(path=str(output / 'menu-normal-opening.png'), animations='allow')
-        probe.wait_for_timeout(300)
+        settled_dialog()
         sample('opening')
         _active(probe, 'root')
-        probe.locator('#site-menu button[data-menu-target="ultraljud"]').click()
-        _active(probe, 'ultraljud', focus=True)
-        probe.wait_for_timeout(250)
-        probe.locator('#site-menu button[data-menu-back]:visible').click()
-        _active(probe, 'root')
-        probe.wait_for_timeout(250)
+        probe.wait_for_timeout(1000)
+        visit_and_back('ultraljud')
+        visit_and_back('hyaluron')
         arm('#site-menu [data-site-close]', 'closing')
         probe.locator('#site-menu [data-site-close]').click()
         probe.wait_for_timeout(80)
@@ -266,10 +328,12 @@ def check_minimal_menu_motion(page, output):
         # A genuine internal link must keep the dialog open while exiting. This
         # catches the older generic body listener that called native close().
         probe.locator('button[data-site-menu]').click()
-        probe.wait_for_timeout(350)
+        settled_dialog()
         _active(probe, 'root')
+        probe.wait_for_timeout(1000)
         probe.locator('#site-menu button[data-menu-target="ultraljud"]').click()
         _active(probe, 'ultraljud', focus=True)
+        probe.wait_for_timeout(1000)
         selector = '#site-menu .menu-view[data-menu-view="ultraljud"] a[href="/ultraljud/axel/"]'
         arm(selector, 'internal-link-exit')
         probe.locator(selector).click()

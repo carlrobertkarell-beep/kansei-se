@@ -33,10 +33,10 @@ html:has(#site-menu.menu-minimal[open]) {scrollbar-gutter:auto}
  width:min(560px,100%);max-width:100%;height:100dvh;max-height:100dvh;margin:0 0 0 auto;
  padding:0;border:0;overflow:hidden;background:#fff;color:var(--menu-ink);box-shadow:-20px 0 72px -28px #1b342433;
 }
-.clinic-site #site-menu.menu-minimal[open] {display:grid;grid-template-rows:auto minmax(0,1fr) auto;animation:minimal-menu-in 320ms cubic-bezier(.22,.75,.25,1) both}
-.clinic-site #site-menu.menu-minimal[open].is-leaving {animation:minimal-menu-out 220ms cubic-bezier(.4,0,.6,1) both}
-.clinic-site #site-menu.menu-minimal[open]::backdrop {background:rgba(21,39,29,.2);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);animation:minimal-veil-in 320ms ease both}
-.clinic-site #site-menu.menu-minimal[open].is-leaving::backdrop {animation:minimal-veil-out 220ms ease both}
+.clinic-site #site-menu.menu-minimal[open] {display:grid;grid-template-rows:auto minmax(0,1fr) auto;animation:minimal-menu-in 440ms cubic-bezier(.25,.1,.25,1) both}
+.clinic-site #site-menu.menu-minimal[open].is-leaving {animation:minimal-menu-out 300ms cubic-bezier(.4,0,.2,1) both}
+.clinic-site #site-menu.menu-minimal[open]::backdrop {background:rgba(21,39,29,.2);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);animation:minimal-veil-in 440ms ease both}
+.clinic-site #site-menu.menu-minimal[open].is-leaving::backdrop {animation:minimal-veil-out 300ms ease both}
 .clinic-site #site-menu.menu-minimal .site-menu-head {
  position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:20px;
  padding:20px 30px;background:#fff;border-bottom:1px solid #edf1ee;

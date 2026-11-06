@@ -302,10 +302,11 @@
     if(!back){lastChoice=choices.get(key);rootScroll=from.scrollTop;}
     stopPaneMotion();const token=viewToken;current=key;dialog.dataset.menuActive=key;dialog.dataset.menuTransition='true';
     views.forEach(view=>{view.inert=true;if(view!==from&&view!==to)view.hidden=true;});to.hidden=false;to.scrollTop=back?rootScroll:0;
-    const finish=()=>{if(token!==viewToken||closing)return;showOnly(key);animations=[];delete dialog.dataset.menuTransition;const focus=back?lastChoice:to.querySelector('.menu-view-title');focus?.focus({preventScroll:true});if(back)focus?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});};
+    const finish=()=>{if(token!==viewToken||closing)return;showOnly(key);const completed=animations;animations=[];completed.forEach(a=>a.cancel());delete dialog.dataset.menuTransition;const focus=back?lastChoice:to.querySelector('.menu-view-title');focus?.focus({preventScroll:true});if(back)focus?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});};
     if(reduced()||typeof to.animate!=='function'){finish();return;}
-    const direction=back?-1:1,options={duration:220,easing:'cubic-bezier(.22,.75,.25,1)'};
-    animations=[from.animate([{opacity:1,transform:'translateX(0)'},{opacity:0,transform:'translateX('+(-12*direction)+'px)'}],options),to.animate([{opacity:0,transform:'translateX('+(12*direction)+'px)'},{opacity:1,transform:'translateX(0)'}],options)];
+    // Let the old view leave before the next one settles; keep the frame still.
+    const direction=back?-1:1;
+    animations=[from.animate([{opacity:1,transform:'translateX(0)'},{opacity:0,transform:'translateX('+(-6*direction)+'px)'}],{duration:180,easing:'cubic-bezier(.4,0,1,1)',fill:'both'}),to.animate([{opacity:0,transform:'translateX('+(8*direction)+'px)'},{opacity:1,transform:'translateX(0)'}],{duration:360,delay:60,easing:'cubic-bezier(.25,.1,.25,1)',fill:'both'})];
     Promise.all(animations.map(a=>a.finished.catch(()=>{}))).then(finish);
    }
    function finishClose(){clearTimeout(timer);if(dialog.open)dialog.close();}
@@ -313,7 +314,7 @@
     if(!dialog.open||closing)return;
     closing=true;stopPaneMotion();showOnly(current);dialog.classList.add('is-leaving');
     if(reduced()){finishClose();return;}
-    timer=setTimeout(finishClose,360);
+    timer=setTimeout(finishClose,500);
    }
    choices.forEach((button,key)=>button.addEventListener('click',()=>changeView(key)));
    dialog.querySelectorAll('[data-menu-back]').forEach(button=>button.addEventListener('click',()=>changeView('root')));

@@ -133,6 +133,15 @@ a.navigation-card.rel-row>span:first-child{text-decoration:underline;text-underl
  .clinic-site #site-menu.menu-refined .menu-quick>a {font-size:12px}
  .clinic-site #site-menu.menu-refined>.menu-bottom {padding-inline:18px}
 }
+@media(max-width:760px) and (max-height:660px) {
+ .clinic-site #site-menu.menu-refined .site-menu-body {padding-block:14px}
+ .clinic-site #site-menu.menu-refined .menu-intro {margin-bottom:12px}
+ .clinic-site #site-menu.menu-refined .menu-location {font-size:11px;margin-bottom:6px}
+ .clinic-site #site-menu.menu-refined .menu-title {font-size:24px}
+ .clinic-site #site-menu.menu-refined .menu-primary>a {min-height:78px;padding-block:12px;font-size:27px}
+ .clinic-site #site-menu.menu-refined .menu-primary small {font-size:12px}
+ .clinic-site #site-menu.menu-refined .menu-quick {margin-block:12px 8px}
+}
 @keyframes clinic-menu-down {from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes clinic-menu-up {to{opacity:0;transform:translateY(-8px)}}
 @media(prefers-reduced-motion:reduce) {

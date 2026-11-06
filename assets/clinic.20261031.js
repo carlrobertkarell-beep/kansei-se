@@ -275,7 +275,13 @@
  function close(){if(!dialog?.open||closing)return;closing=true;dialog.classList.add('is-leaving');
   const finish=()=>{clearTimeout(timer);dialog.close();};if(reduced())finish();else timer=setTimeout(finish,185);}
  if(dialog){
-  buttons.forEach(b=>b.addEventListener('click',()=>{if(dialog.open){close();return;}opener=b;closing=false;dialog.classList.remove('is-leaving');document.body.classList.add('locked');b.setAttribute('aria-expanded','true');dialog.showModal();dialog.scrollTop=0;}));
+  buttons.forEach(b=>b.addEventListener('click',()=>{
+   if(dialog.open){close();return;}
+   opener=b;closing=false;dialog.classList.remove('is-leaving');document.body.classList.add('locked');b.setAttribute('aria-expanded','true');
+   const more=dialog.querySelector('.menu-more');if(more)more.open=false;
+   dialog.showModal();dialog.scrollTop=0;
+   const body=dialog.querySelector('.site-menu-body');if(body)body.scrollTop=0;
+  }));
   dialog.querySelector('[data-site-close]').addEventListener('click',close);
   dialog.addEventListener('cancel',e=>{e.preventDefault();close();});
   dialog.addEventListener('close',()=>{clearTimeout(timer);closing=false;dialog.classList.remove('is-leaving');document.body.classList.remove('locked');buttons.forEach(b=>b.setAttribute('aria-expanded','false'));if(opener?.isConnected)opener.focus({preventScroll:true});});

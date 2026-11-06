@@ -1,0 +1,33 @@
+/* Fade registered reader layers in place. Geometry, image crops and original
+   scans remain owned by the existing clinical viewers. Load after their CSS. */
+body.clinic-site :is(main,#knee-zoom,.patient-reader-zoom) :is(.patient-overlay,.anatomy-layer,.knee-anatomy,.atlas-demo-reveal){
+ transform:none!important;
+ clip-path:none!important;
+ will-change:auto!important;
+ opacity:0!important;
+ transition:opacity .32s cubic-bezier(.22,.61,.36,1)!important;
+}
+body.clinic-site :is(main,#knee-zoom,.patient-reader-zoom) :is(.patient-overlay-content,.anatomy-layer-content,.knee-anatomy-content,.atlas-demo-reveal-inner){
+ transform:none!important;
+ will-change:auto!important;
+ transition:none!important;
+}
+body.clinic-site :is(main,#knee-zoom,.patient-reader-zoom) :is(.patient-overlay,.anatomy-layer,.knee-anatomy,.atlas-demo-reveal)[aria-hidden="false"]{
+ opacity:1!important;
+}
+body.clinic-site :is(main,#knee-zoom,.patient-reader-zoom) :is(.patient-finding,.knee-findings,.atlas-demo-markers,.knee-finding-ultrasound,.knee-finding-anatomy,.anatomy-labels,.knee-labels){
+ transition:opacity .22s ease!important;
+}
+/* A selected image appears gently without delaying keyboard or touch input. */
+@media(prefers-reduced-motion:no-preference){
+ body.clinic-site :is(main,#knee-zoom,.patient-reader-zoom) :is(.reader-panel,.knee-panel):not([hidden]){
+  animation:kansei-reader-enter .24s ease-out;
+ }
+}
+@keyframes kansei-reader-enter{from{opacity:.5}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){
+ body.clinic-site :is(main,#knee-zoom,.patient-reader-zoom) :is(.patient-overlay,.anatomy-layer,.knee-anatomy,.atlas-demo-reveal,.patient-finding,.knee-findings,.atlas-demo-markers,.knee-finding-ultrasound,.knee-finding-anatomy,.anatomy-labels,.knee-labels){
+  transition:none!important;
+ }
+ body.clinic-site :is(main,#knee-zoom,.patient-reader-zoom) :is(.reader-panel,.knee-panel){animation:none!important;}
+}

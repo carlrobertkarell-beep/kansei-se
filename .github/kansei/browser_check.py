@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 from achilles_design_check import check_achilles
-from ultrasound_design_check import CASE_PATHS, clinic_model, check_case, check_hub, check_explore, check_sample
+from ultrasound_design_check import CASE_PATHS, clinic_model, check_case, check_hub, check_explore, check_sample, check_anatomy_label_surfaces
 from case_story_check import STORY_PATHS, check_story
 from bursa_design_check import check_bursa
 from case_context_check import CONTEXT_PATHS, check_context
@@ -96,6 +96,8 @@ def check(base, output):
                     row["broken_visible_images"] = page.locator("img").evaluate_all("els=>els.filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0&&r.top<innerHeight&&r.bottom>0&&e.complete&&e.naturalWidth===0}).map(e=>new URL(e.src).pathname)")
                     if row["broken_visible_images"]:
                         row["errors"].append("Broken visible image")
+                    if not baseline_only:
+                        row['transparent_anatomy_label_surfaces'] = check_anatomy_label_surfaces(page)
 
                     if not baseline_only and path in DISCOVERY_PATHS:
                         row['case_discovery'] = check_discovery(page, path, output, label)

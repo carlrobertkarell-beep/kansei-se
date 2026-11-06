@@ -2,6 +2,18 @@
 import re
 CASE_PATHS = ('/ultraljud/axel/bicepstendinopati/', '/ultraljud/axel/pectoralisruptur/', '/ultraljud/hand-handled/karpaltunnelsyndrom/', '/ultraljud/axel/ac-ledsskada/', '/ultraljud/kalkaxel/', '/ultraljud/bursit-axel/')
 
+def check_anatomy_label_surfaces(page):
+    """Labels must not paint an opaque rectangle over a loaded anatomical image."""
+    labels = page.locator('.patient-overlay svg.anatomy-labels, .anatomy-layer svg.anatomy-labels')
+    opaque = labels.evaluate_all("""nodes => nodes.map(node => ({
+      background: getComputedStyle(node).backgroundColor,
+      image: getComputedStyle(node).backgroundImage,
+      view: node.closest('[role=tabpanel]')?.id || node.closest('.patient-picture')?.id
+    })).filter(style => style.background !== 'transparent' && style.background !== 'rgba(0, 0, 0, 0)' || style.image !== 'none')""")
+    if opaque:
+        raise AssertionError('Anatomy labels cover the tissue image: ' + str(opaque))
+    return labels.count()
+
 def clinic_model(page):
     return page.evaluate("""()=>({
       font:getComputedStyle(document.querySelector('h1')).fontFamily,

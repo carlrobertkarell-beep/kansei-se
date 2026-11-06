@@ -1,0 +1,90 @@
+/* The homepage's clinical demonstration. Both image layers retain one coordinate frame. */
+.home-diagnostic {
+  --hd-ink: #f5f5e9;
+  --hd-muted: #b6c6ba;
+  --hd-line: rgba(191,215,194,.2);
+  color: var(--hd-ink);
+  background: #13251e;
+  background-image: radial-gradient(ellipse at 15% 15%,rgba(120,160,115,.13),transparent 58%);
+  padding-block: clamp(76px,9vw,128px);
+}
+.home-diagnostic .hd-grid { display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:clamp(34px,6vw,88px); align-items:center; }
+.home-diagnostic .hd-copy { min-width:0; }
+.home-diagnostic .hd-kicker { display:flex; align-items:center; gap:12px; margin:0 0 26px; color:#b7d3ad; font-size:10px; font-weight:620; letter-spacing:.13em; line-height:1.6; }
+.home-diagnostic .hd-kicker::before { content:''; display:block; width:24px; height:1px; background:currentColor; }
+.home-diagnostic .hd-copy h2 { max-width:9ch; margin:0 0 24px; color:var(--hd-ink); font-size:clamp(42px,5.5vw,76px); font-weight:500; line-height:1.04; letter-spacing:-.055em; }
+.home-diagnostic .hd-intro { margin:0; max-width:36ch; color:var(--hd-muted); font-size:17px; line-height:1.75; }
+.home-diagnostic .hd-copy-links { display:flex; flex-wrap:wrap; align-items:center; gap:8px 22px; margin-top:30px; }
+.home-diagnostic .hd-copy-links a { display:inline-flex; align-items:center; min-height:44px; color:var(--hd-ink); font-size:13px; text-decoration:underline; text-underline-offset:5px; text-decoration-thickness:1px; }
+.home-diagnostic .hd-copy-links a:first-child { padding:11px 20px; border:1px solid #8ba98a; border-radius:999px; text-decoration:none; background:rgba(180,208,164,.06); }
+.home-diagnostic .hd-instrument { min-width:0; padding:17px; border:1px solid var(--hd-line); border-radius:24px; background:#1b2f25; box-shadow:0 26px 80px -44px #000; }
+.home-diagnostic .hd-instrument-head { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px 15px; padding:1px 2px 15px; }
+.home-diagnostic .hd-instrument-head span { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:9px; line-height:1.6; letter-spacing:.1em; color:#a6c39f; }
+.home-diagnostic .hd-instrument-head strong { font-size:13px; font-weight:520; letter-spacing:-.01em; }
+.home-diagnostic .hd-stage { --hd-split:50%; position:relative; aspect-ratio:1280/892; overflow:hidden; border-radius:13px; isolation:isolate; background:#070d0c; touch-action:pan-y; }
+.home-diagnostic .hd-stage img { position:absolute; top:-7.623318386%; left:0; width:100%; max-width:none; height:auto; aspect-ratio:1280/960; object-fit:fill; margin:0; border:0; border-radius:0; }
+.home-diagnostic .hd-original { z-index:0; }
+.home-diagnostic .hd-anatomy { position:absolute; inset:0; z-index:1; display:none; clip-path:inset(0 calc(100% - var(--hd-split)) 0 0); }
+.home-diagnostic.is-ready .hd-anatomy { display:block; }
+.home-diagnostic .hd-divider { position:absolute; top:0; bottom:0; left:var(--hd-split); z-index:4; display:none; width:1px; background:#f1f4da; pointer-events:none; box-shadow:0 0 15px rgba(0,0,0,.45); }
+.home-diagnostic.is-ready[data-diagnostic-mode="compare"] .hd-divider { display:block; }
+.home-diagnostic .hd-divider>span { position:absolute; top:52%; left:50%; display:flex; justify-content:center; align-items:center; gap:7px; width:42px; height:42px; border:1px solid rgba(245,247,223,.85); border-radius:50%; background:rgba(20,39,29,.9); transform:translate(-50%,-50%); box-shadow:0 3px 15px rgba(0,0,0,.3); }
+.home-diagnostic .hd-divider>span::before,.home-diagnostic .hd-divider>span::after { content:''; width:1px; height:12px; background:#eef5dd; }
+.home-diagnostic .hd-image-label { position:absolute; top:12px; z-index:5; padding:5px 8px; border:1px solid rgba(210,223,211,.22); border-radius:5px; background:rgba(13,25,21,.82); color:#f1f3e7; font:500 8px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing:.09em; pointer-events:none; }
+.home-diagnostic .hd-image-label--anatomy { left:12px; display:none; }
+.home-diagnostic .hd-image-label--original { right:12px; }
+.home-diagnostic.is-ready .hd-image-label--anatomy { display:block; }
+.home-diagnostic[data-diagnostic-mode="original"] .hd-image-label--anatomy,
+.home-diagnostic[data-diagnostic-mode="anatomy"] .hd-image-label--original { display:none; }
+.home-diagnostic .hd-findings { position:absolute; inset:0; z-index:3; width:100%; height:100%; opacity:0; pointer-events:none; transition:opacity .2s ease; }
+.home-diagnostic[data-diagnostic-findings="true"] .hd-findings { opacity:1; }
+.home-diagnostic .hd-findings text { font:600 42px/1 system-ui,sans-serif; paint-order:stroke; stroke:#06130c; stroke-width:8px; stroke-linejoin:round; }
+.home-diagnostic .hd-findings .hd-pointer { fill:none; stroke-width:3.5px; stroke-linecap:round; }
+.home-diagnostic .hd-findings .hd-pointer-shadow { fill:none; stroke:#06130c; stroke-width:10px; stroke-linecap:round; }
+.home-diagnostic .hd-ui { margin-top:17px; }
+.home-diagnostic .hd-modes { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:3px; padding:3px; border:1px solid var(--hd-line); border-radius:12px; background:#14271e; }
+.home-diagnostic .hd-mode { min-height:44px; padding:9px 5px; border:0; border-radius:8px; background:transparent; color:#bdd0c1; font-family:inherit; font-size:12px; font-weight:520; line-height:1.4; cursor:pointer; }
+.home-diagnostic .hd-mode[aria-pressed="true"] { color:#14271e; background:#dce7cb; box-shadow:0 2px 6px #0002; }
+.home-diagnostic .hd-mode:disabled { opacity:.4; cursor:default; }
+.home-diagnostic .hd-bottom-controls { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:5px; }
+.home-diagnostic .hd-findings-button { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:44px; padding:9px 13px; border:1px solid #78927a; border-radius:999px; color:#edf3e7; background:transparent; font-family:inherit; font-size:11px; line-height:1.4; cursor:pointer; }
+.home-diagnostic .hd-findings-button::before { content:''; width:5px; height:5px; border:1px solid currentColor; border-radius:50%; }
+.home-diagnostic .hd-findings-button[aria-pressed="true"] { color:#14271e; background:#dce7cb; border-color:#dce7cb; }
+.home-diagnostic .hd-findings-button[aria-pressed="true"]::before { background:currentColor; }
+.home-diagnostic .hd-caption { margin:18px 1px 0; padding-top:14px; border-top:1px solid var(--hd-line); color:#a9c0ae; font-size:10px; line-height:1.7; }
+.home-diagnostic .hd-state { margin:10px 1px 0; min-height:1.6em; color:#d2dfce; font-size:11px; line-height:1.6; }
+.home-diagnostic :is(a,button,input):focus-visible { outline:2px solid #e2edc6; outline-offset:4px; }
+.home-diagnostic .hd-stage.is-dragging { cursor:ew-resize; }
+.home-diagnostic .hd-stage[role="slider"] { cursor:ew-resize; user-select:none; -webkit-user-select:none; }
+.home-diagnostic .hd-stage[role="slider"]:focus-visible { outline:3px solid #e2edc6; outline-offset:4px; }
+.home-diagnostic .hd-drag-hint { display:none; position:absolute; z-index:5; bottom:12px; left:50%; transform:translateX(-50%); border:1px solid #dce7cb44; border-radius:999px; padding:7px 12px; color:#eef3df; background:#10241ddd; font-size:10px; line-height:1.4; white-space:nowrap; pointer-events:none; }
+.home-diagnostic.is-ready .hd-drag-hint { display:block; }
+.home-diagnostic.has-compared .hd-drag-hint { opacity:0; }
+.home-diagnostic .hd-bottom-controls { margin-top:12px; }
+@media(max-width:860px) {
+ .home-diagnostic .hd-grid { grid-template-columns:minmax(0,1fr); gap:34px; }
+ .home-diagnostic .hd-copy h2 { max-width:12ch; font-size:clamp(40px,10vw,58px); margin-bottom:18px; }
+ .home-diagnostic .hd-intro { font-size:16px; max-width:42ch; line-height:1.7; }
+ .home-diagnostic .hd-copy-links { margin-top:20px; }
+ .home-diagnostic .hd-kicker { margin-bottom:22px; }
+ .home-diagnostic .hd-instrument { max-width:650px; width:100%; justify-self:center; }
+}
+@media(max-width:420px) {
+ .home-diagnostic .hd-instrument { padding:12px; border-radius:19px; }
+ .home-diagnostic .hd-instrument-head { padding-bottom:12px; gap:4px 10px; }
+ .home-diagnostic .hd-instrument-head span { font-size:8px; }
+ .home-diagnostic .hd-instrument-head strong { font-size:11px; }
+ .home-diagnostic .hd-stage { border-radius:9px; }
+ .home-diagnostic .hd-image-label { top:8px; font-size:7px; padding:4px 5px; }
+ .home-diagnostic .hd-image-label--anatomy { left:8px; }
+ .home-diagnostic .hd-image-label--original { right:8px; }
+ .home-diagnostic .hd-mode { font-size:11px; }
+ .home-diagnostic .hd-copy-links { gap:8px 16px; }
+ .home-diagnostic .hd-copy-links a { font-size:12px; }
+}
+@media(prefers-reduced-motion:reduce) { .home-diagnostic .hd-findings { transition:none; } }
+@media print {
+ .home-diagnostic { color:#111; background:#fff; }
+ .home-diagnostic .hd-copy h2,.home-diagnostic .hd-intro,.home-diagnostic .hd-caption { color:#111; }
+ .home-diagnostic .hd-ui,.home-diagnostic .hd-divider { display:none!important; }
+}

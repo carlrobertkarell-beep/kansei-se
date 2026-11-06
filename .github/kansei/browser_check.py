@@ -18,6 +18,7 @@ from hip_joint_design_check import HIP_JOINT_PATH, check_hip_joint
 from knee_calc_design_check import KNEE_CALC_PATH, check_knee_calc
 from ultrasound_search_check import SEARCH_PATHS, check_search_paths
 from discovery_check import DISCOVERY_PATHS, check_discovery
+from home_experience_check import check_home_experience
 
 PATHS = ("/", "/injektioner/", "/blogg/prp-eller-hyaluronsyra-vid-knaartros/", "/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/", "/kunskapsbank/kna/svullet-kna/", "/kunskapsbank/axel/ont-i-axeln-pa-natten/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/", "/hyaluronsyra/sinovial-sinogel/", "/prp/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/knaartros-vad-du-kan-gora/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/", "/blogg/domningar-i-handen-pa-natten/")
@@ -119,6 +120,7 @@ def check(base, output):
 
                     if not baseline_only:
                         if path == '/':
+                            row['home_experience'] = check_home_experience(page)
                             model = clinic_model(page)
                         elif path in CASE_PATHS:
                             row['ultrasound_design'] = check_case(page, model)

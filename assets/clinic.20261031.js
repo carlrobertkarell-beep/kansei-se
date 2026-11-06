@@ -240,14 +240,11 @@
   const body=dialog.querySelector('.site-menu-body'),primary=dialog.querySelector('.menu-primary');
   const bottom=dialog.querySelector('.menu-bottom'),heading=dialog.querySelector('.menu-heading');
   if(body&&primary&&bottom&&heading){
-   const intro=document.createElement('div');intro.className='menu-intro';
-   const location=document.createElement('p');location.className='menu-location';location.textContent='Upplandsgatan 26 · Odenplan';
-   intro.append(location);body.prepend(intro);
    const brand=dialog.querySelector('.site-menu-head>a');
    if(brand){
-    const logo=brand.querySelector('img');if(logo){logo.src='/assets/kansei-logo-light.20261106.svg';logo.width=2397;logo.height=600;logo.loading='eager';}
+    const name=document.createElement('span');name.className='menu-brand-name';name.textContent='Kansei';
     const caption=document.createElement('span');caption.className='menu-brand-caption';caption.textContent='Naprapati & Rehabcenter';
-    brand.append(caption);brand.setAttribute('aria-label','Kansei Naprapati & Rehabcenter, startsida');
+    brand.replaceChildren(name,caption);brand.setAttribute('aria-label','Kansei Naprapati & Rehabcenter, startsida');
    }
    ['/ultraljud/','/hyaluronsyra/','/naprapati/'].forEach(href=>{
     const link=primary.querySelector('a[href="'+href+'"]');if(link)primary.append(link);
@@ -265,18 +262,19 @@
      group.append(routes);
     }
    });
-   heading.classList.add('sr-only');
-   const quick=document.createElement('nav');quick.className='menu-quick';quick.setAttribute('aria-label','Genvägar');
-   ['/priser/','/om-oss/','/kontakt/'].forEach(href=>{
-    const link=dialog.querySelector('.menu-secondary a[href="'+href+'"]');
+   heading.classList.remove('sr-only');heading.classList.add('menu-section-label');
+   const practicalHeading=document.createElement('p');practicalHeading.className='menu-section-label menu-visit-heading';practicalHeading.id='menu-visit-heading';practicalHeading.textContent='Kliniken & ditt besök';
+   const quick=document.createElement('nav');quick.className='menu-quick';quick.setAttribute('aria-labelledby','menu-visit-heading');
+   ['/priser/','/om-oss/','/kontakt/','/patientinformation/'].forEach(href=>{
+    const link=dialog.querySelector('.menu-secondary a[href="'+href+'"],.menu-practical a[href="'+href+'"]');
     if(link){if(href==='/kontakt/')link.textContent='Hitta hit';quick.append(link);}
    });
-   primary.after(quick);
+   primary.after(practicalHeading,quick);
    const more=document.createElement('details');more.className='menu-more';
    const summary=document.createElement('summary');summary.textContent='Mer på Kansei';more.append(summary);
    const help=dialog.querySelector('.menu-practical a[href="/hjalp-mig-boka/"]');
    if(help){help.classList.add('menu-booking-help');bottom.append(help);}
-   ['.menu-injections','.menu-secondary','.menu-practical'].forEach(selector=>{
+   ['.menu-secondary','.menu-practical','.menu-injections'].forEach(selector=>{
     const section=body.querySelector(selector);if(section)more.append(section);
    });
    const contact=bottom.querySelector('p');if(contact){contact.classList.add('menu-contact');more.append(contact);}
@@ -284,7 +282,7 @@
    if(book){book.textContent='Boka besök';book.setAttribute('aria-label','Boka besök på Bokadirekt');}
    const bookingCaption=document.createElement('p');bookingCaption.className='menu-booking-caption';bookingCaption.textContent='Via Bokadirekt';
    bottom.insertBefore(bookingCaption,help||null);
-   body.append(more);dialog.append(bottom);dialog.classList.add('menu-refined','menu-premium');
+   body.append(more);dialog.append(bottom);dialog.classList.add('menu-refined','menu-premium','menu-clinical');
    dialog.querySelector('[data-site-close]')?.setAttribute('autofocus','');
    dialog.querySelectorAll('a[href^="/"]').forEach(link=>{
     const href=link.getAttribute('href');

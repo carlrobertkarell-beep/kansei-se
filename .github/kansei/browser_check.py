@@ -75,7 +75,14 @@ def check_mobile_menu(page, screenshot, keyboard=False, close_button=False, redu
                 raise AssertionError('Clinic menu booking action is outside the viewport')
 
     def check_closed():
-        page.wait_for_function("() => !document.querySelector('#site-menu')?.open", timeout=5000)
+        # Native close() clears `open` before dispatching the queued close
+        # event. Wait for its state/focus cleanup rather than racing that task.
+        page.wait_for_function('''() => {
+            const dialog = document.querySelector('#site-menu');
+            const opener = document.querySelector('button[data-site-menu]');
+            return !dialog?.open && opener?.getAttribute('aria-expanded') === 'false' &&
+                document.activeElement === opener && !document.body.classList.contains('locked');
+        }''', timeout=5000)
         if opener.get_attribute('aria-expanded') != 'false':
             raise AssertionError('Closed clinic menu still exposes expanded state')
         if not opener.evaluate('el => document.activeElement === el'):

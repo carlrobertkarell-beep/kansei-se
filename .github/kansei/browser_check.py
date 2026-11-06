@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 from achilles_design_check import check_achilles
-from ultrasound_design_check import CASE_PATHS, clinic_model, check_case, check_hub, check_explore, check_sample, check_anatomy_label_surfaces
+from ultrasound_design_check import CASE_PATHS, clinic_reference, check_case, check_hub, check_explore, check_sample, check_anatomy_label_surfaces
 from case_story_check import STORY_PATHS, check_story
 from bursa_design_check import check_bursa
 from case_context_check import CONTEXT_PATHS, check_context
@@ -19,6 +19,7 @@ from knee_calc_design_check import KNEE_CALC_PATH, check_knee_calc
 from ultrasound_search_check import SEARCH_PATHS, check_search_paths
 from discovery_check import DISCOVERY_PATHS, check_discovery
 from home_experience_check import check_home_experience
+from home_hero_check import check_home_hero
 from minimal_menu_check import check_minimal_menu, check_minimal_menu_motion
 
 PATHS = ("/", "/injektioner/", "/blogg/prp-eller-hyaluronsyra-vid-knaartros/", "/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/", "/kunskapsbank/kna/svullet-kna/", "/kunskapsbank/axel/ont-i-axeln-pa-natten/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/", "/hyaluronsyra/sinovial-sinogel/", "/prp/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
@@ -272,8 +273,9 @@ def check(base, output):
 
                     if not baseline_only:
                         if path == '/':
+                            model = clinic_reference(page)
+                            row['home_hero'] = check_home_hero(page, output, label)
                             row['home_experience'] = check_home_experience(page)
-                            model = clinic_model(page)
                         elif path in CASE_PATHS:
                             row['ultrasound_design'] = check_case(page, model)
                         elif path == '/ultraljud/':

@@ -19,7 +19,9 @@
     records.push(record);
     return record;
   }
-  document.querySelectorAll('.home-intro-image').forEach(node => add(node, 'hero'));
+  document.querySelectorAll('.home-intro-image').forEach(node => {
+    if (!node.closest('.home-first-impression')) add(node, 'hero');
+  });
   document.querySelectorAll('.home-diagnostic .hd-instrument').forEach(node => add(node, 'panel'));
   document.querySelectorAll('.home-visit').forEach(node => add(node, 'visit'));
   document.querySelectorAll('.home-human-portrait').forEach(node => add(node, 'human'));

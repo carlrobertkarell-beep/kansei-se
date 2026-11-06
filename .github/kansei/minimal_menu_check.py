@@ -308,6 +308,16 @@ def check_minimal_menu_motion(page, output):
         denied = probe.locator('[data-statistics="no"]:visible')
         if denied.count():
             denied.click()
+        welcome = probe.locator('.home-first-impression')
+        if welcome.count():
+            probe.wait_for_timeout(750)
+            if not welcome.locator('.home-intro-image img').evaluate('''image =>
+                getComputedStyle(image).opacity === '1' &&
+                getComputedStyle(image).transform === 'none' &&
+                getComputedStyle(image.parentElement).opacity === '1'
+            '''):
+                raise AssertionError('The first photograph is hidden or moves while reading')
+            probe.screenshot(path=str(output / 'home-first-impression-normal.png'), animations='allow')
         arm('button[data-site-menu]', 'opening')
         probe.locator('button[data-site-menu]').click()
         probe.wait_for_timeout(80)

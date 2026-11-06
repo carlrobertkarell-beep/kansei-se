@@ -43,14 +43,15 @@
  transform:none!important;will-change:auto!important;
 }
 .clinic-site.home-chapters .home-first-impression .home-intro-image::after {
- content:'';position:absolute;inset:55% 0 0;background:linear-gradient(transparent,rgba(15,35,26,.7));pointer-events:none;
+ content:none;
 }
 .clinic-site.home-chapters .home-first-impression .home-intro-image figcaption {
- position:absolute;z-index:1;bottom:24px;left:30px;right:24px;transform:none!important;
- font:400 13px/1.5 var(--sans);color:#fff;
+ position:absolute;z-index:1;bottom:0;left:30px;right:auto;transform:none!important;
+ padding:9px 18px 7px;background:#f8f6f0;border-radius:10px 10px 0 0;
+ font:400 13px/1.5 var(--sans);color:#284b3c;
 }
-.clinic-site.home-chapters .home-first-impression .home-intro-image figcaption a {display:inline-flex;flex-direction:column;justify-content:center;min-height:44px;color:#fff;text-decoration:none}
-.clinic-site.home-chapters .home-first-impression .home-intro-image figcaption span {display:block;font-size:11px;color:#edf2eb}
+.clinic-site.home-chapters .home-first-impression .home-intro-image figcaption a {display:inline-flex;flex-direction:column;justify-content:center;min-height:44px;color:#284b3c;text-decoration:none}
+.clinic-site.home-chapters .home-first-impression .home-intro-image figcaption span {display:block;font-size:11px;color:#526b5d}
 .clinic-site.home-chapters .home-first-impression .home-intro-image figcaption a:hover {text-decoration:underline;text-underline-offset:4px}
 .clinic-site.home-chapters .home-first-impression .home-treatment-routes {
  display:grid;grid-template-columns:minmax(130px,1.4fr) repeat(3,minmax(0,1fr));align-items:center;gap:0;
@@ -59,7 +60,7 @@
 .clinic-site.home-chapters .home-first-impression .home-treatment-routes p {font:400 12px/1.5 var(--sans);color:#5b7161}
 .clinic-site.home-chapters .home-first-impression .home-treatment-routes a {display:flex;justify-content:center;min-height:46px;padding:4px 12px;font-size:14px;color:#284b3c;border-left:1px solid #e0e6dd;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
 .clinic-site.home-chapters .home-first-impression :is(a,button):focus-visible {outline:2px solid #315b47;outline-offset:4px}
-.clinic-site.home-chapters .home-first-impression .home-intro-image a:focus-visible {outline-color:#fff}
+.clinic-site.home-chapters .home-first-impression .home-intro-image a:focus-visible {outline-color:#315b47}
 @media(max-width:1000px) and (min-width:761px) {
  .clinic-site.home-chapters .home-first-impression .home-intro-grid {grid-template-columns:1fr 1fr}
  .clinic-site.home-chapters .home-first-impression .landing-hero-copy {padding-inline:30px}
@@ -70,8 +71,7 @@
  .clinic-site.home-chapters .home-first-impression .home-intro-grid {grid-template-columns:1fr;grid-template-rows:auto auto}
  .clinic-site.home-chapters .home-first-impression .home-intro-image {grid-column:1;grid-row:1;min-height:0;height:clamp(210px,34svh,290px);border-radius:0 0 36px 0}
  .clinic-site.home-chapters .home-first-impression .home-intro-image>img {object-position:62% 39%}
- .clinic-site.home-chapters .home-first-impression .home-intro-image::after {inset:57% 0 0}
- .clinic-site.home-chapters .home-first-impression .home-intro-image figcaption {left:24px;bottom:15px;font-size:12px}
+ .clinic-site.home-chapters .home-first-impression .home-intro-image figcaption {left:24px;bottom:0;padding:5px 15px 3px;font-size:12px}
  .clinic-site.home-chapters .home-first-impression .home-intro-image figcaption span {font-size:10px}
  .clinic-site.home-chapters .home-first-impression .landing-hero-copy {grid-column:1;grid-row:2;padding:27px 24px 28px}
  .clinic-site.home-chapters .home-first-impression .home-chapter-label {font-size:9px;gap:8px;letter-spacing:.075em}

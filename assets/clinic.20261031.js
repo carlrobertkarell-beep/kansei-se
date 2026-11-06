@@ -152,7 +152,7 @@
           document.dispatchEvent(new CustomEvent('kansei:booking-intent',{detail:{event:'booking_click',service,audience:a.dataset.audience==='clinician'?'clinician':'visitor',placement:['header','footer','guide','menu','content','price_list','article_visit','case_card','service_card'].includes(placement)?placement:'content',version:'business-v3'}}));
         }
       }
-      if(a.closest('dialog') && !a.hasAttribute('data-close'))closeDialog(a.closest('dialog'));
+      if(a.closest('dialog') && !a.closest('dialog').classList.contains('menu-minimal') && !a.hasAttribute('data-close'))closeDialog(a.closest('dialog'));
       if(event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button!==0 || a.target==='_blank')return;
       if(preview && a.dataset.route){event.preventDefault();navigate(a.dataset.route,a.dataset.destinationAnchor || '');}
       else if(a.dataset.anchor){event.preventDefault();if(preview)navigate(currentRoute,a.dataset.anchor);else{history.pushState(null,'','#'+a.dataset.anchor);jump(a.dataset.anchor,true);}}
@@ -234,81 +234,118 @@
   if(location.pathname==='/ultraljud/bilder/')link.setAttribute('aria-current','page');
   imageMenu.append(link);
  }
- // Enhance the existing links rather than replacing the page's navigation.
- // One scrollable body keeps close and booking controls within reach on a phone.
+ // Present a small first level; keep existing destinations in focused detail panes.
  if(dialog){
-  const body=dialog.querySelector('.site-menu-body'),primary=dialog.querySelector('.menu-primary');
-  const bottom=dialog.querySelector('.menu-bottom'),heading=dialog.querySelector('.menu-heading');
-  if(body&&primary&&bottom&&heading){
-   const brand=dialog.querySelector('.site-menu-head>a');
-   if(brand){
-    const name=document.createElement('span');name.className='menu-brand-name';name.textContent='Kansei';
-    const caption=document.createElement('span');caption.className='menu-brand-caption';caption.textContent='Naprapati & Rehabcenter';
-    brand.replaceChildren(name,caption);brand.setAttribute('aria-label','Kansei Naprapati & Rehabcenter, startsida');
+  const body=dialog.querySelector('.site-menu-body'),primary=dialog.querySelector('.menu-primary'),bottom=dialog.querySelector('.menu-bottom');
+  if(body&&primary&&bottom){
+   const element=(tag,className,text)=>{const el=document.createElement(tag);if(className)el.className=className;if(text)el.textContent=text;return el;};
+   const graphic=(paths,className,viewBox='0 0 24 24')=>{
+    const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('viewBox',viewBox);svg.setAttribute('class',className);svg.setAttribute('aria-hidden','true');svg.setAttribute('focusable','false');
+    paths.forEach(d=>{const path=document.createElementNS(svg.namespaceURI,'path');path.setAttribute('d',d);svg.append(path);});return svg;
+   };
+   const chevron=()=>graphic(['m9 6 6 6-6 6'],'menu-chevron');
+   const existing=new Map();dialog.querySelectorAll('a[href]').forEach(a=>{if(!existing.has(a.getAttribute('href')))existing.set(a.getAttribute('href'),a);});
+   function route(href,label,copy=false){
+    const source=existing.get(href),a=source?(copy?source.cloneNode(true):source):element('a');
+    a.href=href;a.className='menu-route';a.replaceChildren(element('span','',label),chevron());return a;
    }
-   ['/ultraljud/','/hyaluronsyra/','/naprapati/'].forEach(href=>{
-    const link=primary.querySelector('a[href="'+href+'"]');if(link)primary.append(link);
+   const sections=['.menu-secondary','.menu-practical','.menu-injections'].map(selector=>dialog.querySelector(selector)).filter(Boolean);
+   const contact=bottom.querySelector('p'),book=bottom.querySelector('.button'),help=existing.get('/hjalp-mig-boka/');
+   const brand=dialog.querySelector('.site-menu-head>a');
+   if(brand){brand.replaceChildren(element('span','menu-brand-name','Kansei'),element('span','menu-brand-caption','Naprapati & Rehabcenter'));brand.setAttribute('aria-label','Kansei Naprapati & Rehabcenter, startsida');}
+   const stage=element('div','menu-stage'),views=new Map(),choices=new Map();
+   const root=element('section','menu-view menu-view-root');root.dataset.menuView='root';root.id='menu-view-root';root.setAttribute('aria-label','Meny');views.set('root',root);
+   const navigation=element('nav','menu-root-nav');navigation.setAttribute('aria-label','Välj besök eller klinikinformation');
+   [['ultraljud','Ultraljud'],['hyaluron','Hyaluron'],['naprapati','Naprapati'],['kliniken','Kliniken & ditt besök']].forEach(([key,label])=>{
+    const button=element('button','menu-choice'+(key==='kliniken'?' menu-choice-practical':''));button.type='button';button.dataset.menuTarget=key;button.setAttribute('aria-controls','menu-view-'+key);
+    button.append(element('span','',label),chevron());choices.set(key,button);navigation.append(button);
    });
-   const shortcuts=[
-    {service:'/ultraljud/',label:'Ultraljud efter område',links:[['Axel','/ultraljud/axel/'],['Knä','/ultraljud/kna/'],['Fler områden','/ultraljud/']]},
-    {service:'/hyaluronsyra/',label:'Hyaluron för din led',links:[['Knä','/hyaluronsyra/kna/'],['Höft','/hyaluronsyra/hoft/'],['Axel','/hyaluronsyra/axel/']]}
-   ];
-   [...primary.children].forEach(link=>{
-    const group=document.createElement('div');group.className='menu-service';link.before(group);group.append(link);
-    const paths=shortcuts.find(item=>item.service===link.getAttribute('href'));
-    if(paths){
-     const routes=document.createElement('div');routes.className='menu-service-routes menu-service-shortcuts';routes.setAttribute('role','group');routes.setAttribute('aria-label',paths.label);
-     paths.links.forEach(([label,href])=>{const a=document.createElement('a');a.textContent=label;a.href=href;routes.append(a);});
-     group.append(routes);
-    }
-   });
-   heading.classList.remove('sr-only');heading.classList.add('menu-section-label');
-   const practicalHeading=document.createElement('p');practicalHeading.className='menu-section-label menu-visit-heading';practicalHeading.id='menu-visit-heading';practicalHeading.textContent='Kliniken & ditt besök';
-   const quick=document.createElement('nav');quick.className='menu-quick';quick.setAttribute('aria-labelledby','menu-visit-heading');
-   ['/priser/','/om-oss/','/kontakt/','/patientinformation/'].forEach(href=>{
-    const link=dialog.querySelector('.menu-secondary a[href="'+href+'"],.menu-practical a[href="'+href+'"]');
-    if(link){if(href==='/kontakt/')link.textContent='Hitta hit';quick.append(link);}
-   });
-   primary.after(practicalHeading,quick);
-   const more=document.createElement('details');more.className='menu-more';
-   const summary=document.createElement('summary');summary.textContent='Mer på Kansei';more.append(summary);
-   const help=dialog.querySelector('.menu-practical a[href="/hjalp-mig-boka/"]');
-   if(help){help.classList.add('menu-booking-help');bottom.append(help);}
-   ['.menu-secondary','.menu-practical','.menu-injections'].forEach(selector=>{
-    const section=body.querySelector(selector);if(section)more.append(section);
-   });
-   const contact=bottom.querySelector('p');if(contact){contact.classList.add('menu-contact');more.append(contact);}
-   const book=bottom.querySelector('.button');
+   const art=element('div','menu-root-art');art.setAttribute('aria-hidden','true');
+   art.append(graphic([
+    'M218 24C165-8 94 24 70 84s-17 116 28 143c45 27 111 16 139-34s31-137-19-169Z',
+    'M201 48C161 26 116 51 98 96s-13 82 19 104c32 22 75 10 95-26s25-102-11-126Z',
+    'M184 74C157 61 135 80 125 110s-6 51 14 63c20 12 42 2 55-20s14-65-10-79Z'
+   ],'menu-contours','0 0 280 280'));
+   root.append(navigation,art,element('p','menu-root-location','Upplandsgatan 26 · Odenplan'));stage.append(root);
+   function pane(key,title,description){
+    const view=element('section','menu-view');view.id='menu-view-'+key;view.dataset.menuView=key;view.hidden=true;view.inert=true;view.setAttribute('aria-labelledby','menu-title-'+key);
+    const back=element('button','menu-back');back.type='button';back.dataset.menuBack='';back.setAttribute('aria-label','Tillbaka till menyn');back.append(chevron(),element('span','','Tillbaka'));
+    const heading=element('h2','menu-view-title',title);heading.id='menu-title-'+key;heading.tabIndex=-1;
+    const intro=element('p','menu-view-intro',description),links=element('nav','menu-route-list');links.setAttribute('aria-label',title);
+    view.append(back,heading,intro,links);views.set(key,view);stage.append(view);return {view,links};
+   }
+   const us=pane('ultraljud','Ultraljud','Välj det område du vill undersöka.');
+   us.links.append(route('/ultraljud/axel/','Axel'),route('/ultraljud/kna/','Knä'),route('/ultraljud/','Alla områden'));
+   const ha=pane('hyaluron','Hyaluron','Välj led eller läs om behandlingen.');
+   ha.links.append(route('/hyaluronsyra/kna/','Knä'),route('/hyaluronsyra/hoft/','Höft'),route('/hyaluronsyra/axel/','Axel'),route('/hyaluronsyra/','Om hyaluron'));
+   const nap=pane('naprapati','Naprapati','Undersökning, behandling och rehabilitering.');
+   nap.links.append(route('/naprapati/','Om naprapati & rehab'),route('/priser/','Besök och priser',true));
+   const clinic=pane('kliniken','Kliniken & ditt besök','Praktisk information inför ditt besök.');
+   clinic.links.append(route('/priser/','Priser'),route('/om-oss/','Om kliniken'),route('/kontakt/','Kontakt & hitta hit'),route('/patientinformation/','Inför besöket'));
+   const more=element('details','menu-more');more.append(element('summary','','Mer på Kansei'));sections.forEach(section=>more.append(section));if(contact){contact.className='menu-contact';more.append(contact);}clinic.view.append(more);
    if(book){book.textContent='Boka besök';book.setAttribute('aria-label','Boka besök på Bokadirekt');}
-   const bookingCaption=document.createElement('p');bookingCaption.className='menu-booking-caption';bookingCaption.textContent='Via Bokadirekt';
-   bottom.insertBefore(bookingCaption,help||null);
-   body.append(more);dialog.append(bottom);dialog.classList.add('menu-refined','menu-premium','menu-clinical');
+   if(help)help.className='menu-booking-help';
+   bottom.replaceChildren(...[book,help].filter(Boolean));dialog.append(bottom);body.replaceChildren(stage);
+   dialog.classList.add('menu-refined','menu-minimal');dialog.dataset.menuActive='root';
    dialog.querySelector('[data-site-close]')?.setAttribute('autofocus','');
-   dialog.querySelectorAll('a[href^="/"]').forEach(link=>{
-    const href=link.getAttribute('href');
-    if(href===locationPath())link.setAttribute('aria-current','page');
-    else if(link.closest('.menu-service')&&!link.closest('.menu-service-routes')&&href!=='/'&&locationPath().startsWith(href))link.setAttribute('aria-current','location');
+   dialog.querySelectorAll('a[href^="/"]').forEach(a=>{if(a.getAttribute('href')===location.pathname.replace(/index\.html$/,'').replace(/\/?$/,'/'))a.setAttribute('aria-current','page');});
+
+   const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+   let opener=null,closing=false,timer=null,current='root',lastChoice=null,rootScroll=0,viewToken=0,animations=[],destination=null;
+   function stopPaneMotion(){viewToken++;animations.forEach(a=>a.cancel());animations=[];delete dialog.dataset.menuTransition;}
+   function showOnly(key){views.forEach((view,name)=>{view.hidden=name!==key;view.inert=name!==key;});current=key;dialog.dataset.menuActive=key;}
+   function reset(){stopPaneMotion();more.open=false;views.forEach(view=>view.scrollTop=0);showOnly('root');lastChoice=null;rootScroll=0;}
+   function changeView(key){
+    if(!views.has(key)||key===current||closing||dialog.dataset.menuTransition)return;
+    const from=views.get(current),to=views.get(key),back=key==='root';
+    if(!back){lastChoice=choices.get(key);rootScroll=from.scrollTop;}
+    stopPaneMotion();const token=viewToken;current=key;dialog.dataset.menuActive=key;dialog.dataset.menuTransition='true';
+    views.forEach(view=>{view.inert=true;if(view!==from&&view!==to)view.hidden=true;});to.hidden=false;to.scrollTop=back?rootScroll:0;
+    const finish=()=>{if(token!==viewToken||closing)return;showOnly(key);animations=[];delete dialog.dataset.menuTransition;const focus=back?lastChoice:to.querySelector('.menu-view-title');focus?.focus({preventScroll:true});if(back)focus?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});};
+    if(reduced()||typeof to.animate!=='function'){finish();return;}
+    const direction=back?-1:1,options={duration:220,easing:'cubic-bezier(.22,.75,.25,1)'};
+    animations=[from.animate([{opacity:1,transform:'translateX(0)'},{opacity:0,transform:'translateX('+(-12*direction)+'px)'}],options),to.animate([{opacity:0,transform:'translateX('+(12*direction)+'px)'},{opacity:1,transform:'translateX(0)'}],options)];
+    Promise.all(animations.map(a=>a.finished.catch(()=>{}))).then(finish);
+   }
+   function finishClose(){clearTimeout(timer);if(dialog.open)dialog.close();}
+   function close(){
+    if(!dialog.open||closing)return;
+    closing=true;stopPaneMotion();showOnly(current);dialog.classList.add('is-leaving');
+    if(reduced()){finishClose();return;}
+    timer=setTimeout(finishClose,360);
+   }
+   choices.forEach((button,key)=>button.addEventListener('click',()=>changeView(key)));
+   dialog.querySelectorAll('[data-menu-back]').forEach(button=>button.addEventListener('click',()=>changeView('root')));
+   buttons.forEach(button=>button.addEventListener('click',()=>{
+    if(dialog.open){close();return;}
+    clearTimeout(timer);destination=null;opener=button;closing=false;dialog.classList.remove('is-leaving');reset();document.body.classList.add('locked');
+    buttons.forEach(b=>b.setAttribute('aria-expanded','true'));dialog.showModal();views.get('root').scrollTop=0;
+   }));
+   dialog.querySelector('[data-site-close]').addEventListener('click',close);
+   dialog.addEventListener('animationend',event=>{if(event.target===dialog&&closing&&event.animationName==='minimal-menu-out')finishClose();});
+   dialog.addEventListener('cancel',event=>{event.preventDefault();close();});
+   dialog.addEventListener('close',()=>{
+    clearTimeout(timer);stopPaneMotion();closing=false;dialog.classList.remove('is-leaving');document.body.classList.remove('locked');buttons.forEach(b=>b.setAttribute('aria-expanded','false'));
+    const next=destination;destination=null;if(opener?.isConnected)opener.focus({preventScroll:true});if(next)location.assign(next);
+   });
+   dialog.addEventListener('click',event=>{
+    const a=event.target.closest('a[href]');
+    if(a){
+     if(event.defaultPrevented||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||event.button!==0||a.hasAttribute('download'))return;
+     const url=new URL(a.href,location.href);
+     if((!a.target||a.target==='_self')&&['http:','https:'].includes(url.protocol)){event.preventDefault();destination=url.href;}
+     close();return;
+    }
+    const rect=dialog.getBoundingClientRect();if(event.target===dialog&&(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom))close();
+   });
+   dialog.addEventListener('keydown',event=>{
+    if(event.key!=='Tab')return;
+    const items=[...dialog.querySelectorAll('a[href],button:not([disabled]),summary,[tabindex="0"]')].filter(el=>!el.closest('[inert],[hidden]')&&el.getClientRects().length);
+    const first=items[0],last=items.at(-1);if(!first)return;
+    if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
    });
   }
- }
- function locationPath(){return window.location.pathname.replace(/index\.html$/,'').replace(/\/?$/,'/');}
- const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
- let opener=null,closing=false,timer=null;
- function close(){if(!dialog?.open||closing)return;closing=true;dialog.classList.add('is-leaving');
-  const finish=()=>{clearTimeout(timer);dialog.close();};if(reduced())finish();else timer=setTimeout(finish,185);}
- if(dialog){
-  buttons.forEach(b=>b.addEventListener('click',()=>{
-   if(dialog.open){close();return;}
-   opener=b;closing=false;dialog.classList.remove('is-leaving');document.body.classList.add('locked');b.setAttribute('aria-expanded','true');
-   const more=dialog.querySelector('.menu-more');if(more)more.open=false;
-   dialog.showModal();dialog.scrollTop=0;
-   const body=dialog.querySelector('.site-menu-body');if(body)body.scrollTop=0;
-  }));
-  dialog.querySelector('[data-site-close]').addEventListener('click',close);
-  dialog.addEventListener('cancel',e=>{e.preventDefault();close();});
-  dialog.addEventListener('close',()=>{clearTimeout(timer);closing=false;dialog.classList.remove('is-leaving');document.body.classList.remove('locked');buttons.forEach(b=>b.setAttribute('aria-expanded','false'));if(opener?.isConnected)opener.focus({preventScroll:true});});
-  dialog.addEventListener('click',e=>{const r=dialog.getBoundingClientRect();if(e.target===dialog&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))close();});
-  dialog.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const items=[...dialog.querySelectorAll('a[href],button:not([disabled]),summary,[tabindex="0"]')].filter(x=>x.getClientRects().length);const first=items[0],last=items.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
  }
  const search=document.querySelector('[data-library-search]'),filters=[...document.querySelectorAll('[data-topic]')],cards=[...document.querySelectorAll('[data-library-card]')];let topic='Alla';
  const norm=s=>s.toLocaleLowerCase('sv').normalize('NFD').replace(/[\u0300-\u036f]/g,'');

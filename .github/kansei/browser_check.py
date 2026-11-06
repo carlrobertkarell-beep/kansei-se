@@ -19,6 +19,7 @@ from knee_calc_design_check import KNEE_CALC_PATH, check_knee_calc
 from ultrasound_search_check import SEARCH_PATHS, check_search_paths
 from discovery_check import DISCOVERY_PATHS, check_discovery
 from home_experience_check import check_home_experience
+from minimal_menu_check import check_minimal_menu, check_minimal_menu_motion
 
 PATHS = ("/", "/injektioner/", "/blogg/prp-eller-hyaluronsyra-vid-knaartros/", "/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/", "/kunskapsbank/kna/svullet-kna/", "/kunskapsbank/axel/ont-i-axeln-pa-natten/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/", "/hyaluronsyra/sinovial-sinogel/", "/prp/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/knaartros-vad-du-kan-gora/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/", "/blogg/domningar-i-handen-pa-natten/")
@@ -35,6 +36,8 @@ SIZES = (("mobile", 390, 844), ("desktop", 1440, 1000), ("compact", 320, 780))
 
 def check_mobile_menu(page, screenshot, keyboard=False, close_button=False, reduced_motion=False):
     """Exercise the shared clinic dialog; retain the older burger screenshot path."""
+    if page.locator('#site-menu.menu-minimal').count():
+        return check_minimal_menu(page, screenshot, keyboard, close_button, reduced_motion)
     opener = page.locator('button[data-site-menu]')
     if not opener.count():
         legacy = page.locator('button.burger')
@@ -627,6 +630,8 @@ def check(base, output):
                                 page.set_viewport_size({'width': menu_width, 'height': menu_height})
                                 check_mobile_menu(page, output / f'home-mobile-menu-{size_name}.png', keyboard=True, close_button=True, reduced_motion=True)
                             page.set_viewport_size({'width': width, 'height': height})
+                            if not baseline_only and page.locator('#site-menu.menu-minimal').count():
+                                row['menu_motion'] = check_minimal_menu_motion(page, output)
                     if js_errors:
                         row["errors"].append("JavaScript runtime error")
                         row["js_errors"] = js_errors[:5]

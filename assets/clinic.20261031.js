@@ -234,17 +234,59 @@
   if(location.pathname==='/ultraljud/bilder/')link.setAttribute('aria-current','page');
   imageMenu.append(link);
  }
+ // Enhance the existing links rather than replacing the page's navigation.
+ // One scrollable body keeps close and booking controls within reach on a phone.
+ if(dialog){
+  const body=dialog.querySelector('.site-menu-body'),primary=dialog.querySelector('.menu-primary');
+  const bottom=dialog.querySelector('.menu-bottom'),heading=dialog.querySelector('.menu-heading');
+  if(body&&primary&&bottom&&heading){
+   const intro=document.createElement('div');intro.className='menu-intro';
+   const location=document.createElement('p');location.className='menu-location';location.textContent='Upplandsgatan 26 · Odenplan';
+   const title=document.createElement('h2');title.className='menu-title';title.textContent='Välj ditt nästa steg.';
+   intro.append(location,title);body.prepend(intro);
+   ['/ultraljud/','/hyaluronsyra/','/naprapati/'].forEach(href=>{
+    const link=primary.querySelector('a[href="'+href+'"]');if(link)primary.append(link);
+   });
+   heading.classList.add('sr-only');
+   const quick=document.createElement('nav');quick.className='menu-quick';quick.setAttribute('aria-label','Genvägar');
+   ['/priser/','/kontakt/','/ultraljud/bilder/'].forEach(href=>{
+    const link=dialog.querySelector('.menu-secondary a[href="'+href+'"]');if(link)quick.append(link);
+   });
+   primary.after(quick);
+   const more=document.createElement('details');more.className='menu-more';
+   const summary=document.createElement('summary');summary.textContent='Mer på Kansei';more.append(summary);
+   const help=dialog.querySelector('.menu-practical a[href="/hjalp-mig-boka/"]');
+   if(help){help.classList.add('menu-booking-help');bottom.append(help);}
+   ['.menu-injections','.menu-secondary','.menu-practical'].forEach(selector=>{
+    const section=body.querySelector(selector);if(section)more.append(section);
+   });
+   const contact=bottom.querySelector('p');if(contact){contact.classList.add('menu-contact');more.append(contact);}
+   body.append(more);dialog.append(bottom);dialog.classList.add('menu-refined');
+   dialog.querySelector('[data-site-close]')?.setAttribute('autofocus','');
+   dialog.querySelectorAll('a[href^="/"]').forEach(link=>{
+    const href=link.getAttribute('href');
+    if(href===locationPath())link.setAttribute('aria-current','page');
+   });
+  }
+ }
+ function locationPath(){return window.location.pathname.replace(/index\.html$/,'').replace(/\/?$/,'/');}
  const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
  let opener=null,closing=false,timer=null;
  function close(){if(!dialog?.open||closing)return;closing=true;dialog.classList.add('is-leaving');
   const finish=()=>{clearTimeout(timer);dialog.close();};if(reduced())finish();else timer=setTimeout(finish,185);}
  if(dialog){
-  buttons.forEach(b=>b.addEventListener('click',()=>{if(dialog.open){close();return;}opener=b;closing=false;dialog.classList.remove('is-leaving');document.body.classList.add('locked');b.setAttribute('aria-expanded','true');dialog.showModal();dialog.scrollTop=0;}));
+  buttons.forEach(b=>b.addEventListener('click',()=>{
+   if(dialog.open){close();return;}
+   opener=b;closing=false;dialog.classList.remove('is-leaving');document.body.classList.add('locked');b.setAttribute('aria-expanded','true');
+   const more=dialog.querySelector('.menu-more');if(more)more.open=false;
+   dialog.showModal();dialog.scrollTop=0;
+   const body=dialog.querySelector('.site-menu-body');if(body)body.scrollTop=0;
+  }));
   dialog.querySelector('[data-site-close]').addEventListener('click',close);
   dialog.addEventListener('cancel',e=>{e.preventDefault();close();});
   dialog.addEventListener('close',()=>{clearTimeout(timer);closing=false;dialog.classList.remove('is-leaving');document.body.classList.remove('locked');buttons.forEach(b=>b.setAttribute('aria-expanded','false'));if(opener?.isConnected)opener.focus({preventScroll:true});});
   dialog.addEventListener('click',e=>{const r=dialog.getBoundingClientRect();if(e.target===dialog&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))close();});
-  dialog.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const items=[...dialog.querySelectorAll('a[href],button:not([disabled])')].filter(x=>x.getClientRects().length);const first=items[0],last=items.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
+  dialog.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const items=[...dialog.querySelectorAll('a[href],button:not([disabled]),summary,[tabindex="0"]')].filter(x=>x.getClientRects().length);const first=items[0],last=items.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
  }
  const search=document.querySelector('[data-library-search]'),filters=[...document.querySelectorAll('[data-topic]')],cards=[...document.querySelectorAll('[data-library-card]')];let topic='Alla';
  const norm=s=>s.toLocaleLowerCase('sv').normalize('NFD').replace(/[\u0300-\u036f]/g,'');

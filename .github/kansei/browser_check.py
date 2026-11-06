@@ -33,6 +33,130 @@ EXPLORE_PATH = "/ultraljud/bilder/"
 SIZES = (("mobile", 390, 844), ("desktop", 1440, 1000), ("compact", 320, 780))
 
 
+def check_mobile_menu(page, screenshot, keyboard=False, close_button=False, reduced_motion=False):
+    """Exercise the shared clinic dialog; retain the older burger screenshot path."""
+    opener = page.locator('button[data-site-menu]')
+    if not opener.count():
+        legacy = page.locator('button.burger')
+        if legacy.count() == 1 and legacy.is_visible():
+            legacy.click(timeout=5000)
+            if legacy.get_attribute('aria-expanded') != 'true':
+                raise AssertionError('Mobile menu does not expose expanded state')
+            page.screenshot(path=str(screenshot), animations='disabled')
+            return {'type': 'legacy'}
+        return None
+    if opener.count() != 1 or not opener.is_visible():
+        raise AssertionError('Expected one visible clinic menu button')
+    dialog = page.locator('#site-menu')
+    opener.click(timeout=5000)
+    page.wait_for_function("() => document.querySelector('#site-menu')?.open", timeout=5000)
+    if opener.get_attribute('aria-expanded') != 'true':
+        raise AssertionError('Clinic menu does not expose expanded state')
+
+    def check_geometry():
+        if not dialog.evaluate('(el) => el.scrollWidth <= el.clientWidth + 3'):
+            raise AssertionError('Horizontal overflow in clinic menu')
+        if not dialog.locator('[data-site-close]').evaluate('''el => {
+            const r = el.getBoundingClientRect();
+            return r.top >= -1 && r.bottom <= innerHeight + 1;
+        }'''):
+            raise AssertionError('Clinic menu close button is outside the viewport')
+        if dialog.evaluate("el => el.classList.contains('menu-refined')"):
+            footer = dialog.locator(':scope > .menu-bottom')
+            if not footer.evaluate('''el => {
+                const r = el.getBoundingClientRect();
+                return r.top >= -1 && r.bottom <= innerHeight + 1;
+            }'''):
+                raise AssertionError('Clinic menu booking footer is outside the viewport')
+            if not footer.locator('.button').evaluate('''el => {
+                const r = el.getBoundingClientRect();
+                return r.height >= 44 && r.top >= -1 && r.bottom <= innerHeight + 1;
+            }'''):
+                raise AssertionError('Clinic menu booking action is outside the viewport')
+
+    def check_closed():
+        # Native close() clears `open` before dispatching the queued close
+        # event. Wait for its state/focus cleanup rather than racing that task.
+        page.wait_for_function('''() => {
+            const dialog = document.querySelector('#site-menu');
+            const opener = document.querySelector('button[data-site-menu]');
+            return !dialog?.open && opener?.getAttribute('aria-expanded') === 'false' &&
+                document.activeElement === opener && !document.body.classList.contains('locked');
+        }''', timeout=5000)
+        if opener.get_attribute('aria-expanded') != 'false':
+            raise AssertionError('Closed clinic menu still exposes expanded state')
+        if not opener.evaluate('el => document.activeElement === el'):
+            raise AssertionError('Closing clinic menu does not restore focus to its opener')
+        if page.locator('body').evaluate("el => el.classList.contains('locked')"):
+            raise AssertionError('Closing clinic menu leaves the page scroll locked')
+
+    check_geometry()
+    if reduced_motion and dialog.evaluate("el => el.classList.contains('menu-refined')"):
+        if not dialog.evaluate('''el =>
+            matchMedia('(prefers-reduced-motion: reduce)').matches &&
+            getComputedStyle(el).animationName === 'none' &&
+            getComputedStyle(el, '::backdrop').animationName === 'none'
+        '''):
+            raise AssertionError('Clinic menu does not respect reduced motion')
+    page.screenshot(path=str(screenshot), animations='disabled')
+    if keyboard:
+        summary = dialog.locator('.menu-more > summary')
+        if summary.count():
+            summary.focus()
+            page.keyboard.press('Enter')
+            if not summary.evaluate('el => el.parentElement.open'):
+                raise AssertionError('Clinic menu disclosure does not open from the keyboard')
+            check_geometry()
+            if dialog.evaluate("el => el.classList.contains('menu-refined')"):
+                body = dialog.locator('.site-menu-body')
+                body.evaluate('el => { el.scrollTop = el.scrollHeight; }')
+                if body.evaluate('el => el.scrollTop') <= 0:
+                    raise AssertionError('Expanded clinic menu body cannot scroll')
+                check_geometry()
+                page.keyboard.press('Escape')
+                check_closed()
+                opener.click(timeout=5000)
+                page.wait_for_function("() => document.querySelector('#site-menu')?.open", timeout=5000)
+                if body.evaluate('el => el.scrollTop') > 1:
+                    raise AssertionError('Reopened clinic menu does not reset its body scroll')
+                if summary.evaluate('el => el.parentElement.open'):
+                    raise AssertionError('Reopened clinic menu does not collapse its disclosure')
+                check_geometry()
+                summary.focus()
+                page.keyboard.press('Enter')
+        focusable = dialog.locator('a[href],button:not([disabled]),summary,[tabindex="0"]')
+        visible_indexes = focusable.evaluate_all('''els => els.flatMap((el, i) =>
+            el.getClientRects().length && el.tabIndex >= 0 ? [i] : [])''')
+        if not visible_indexes:
+            raise AssertionError('Clinic menu has no keyboard focus targets')
+        first, last = focusable.nth(visible_indexes[0]), focusable.nth(visible_indexes[-1])
+        first.focus()
+        page.keyboard.press('Shift+Tab')
+        if not last.evaluate('el => document.activeElement === el'):
+            raise AssertionError('Clinic menu reverse Tab does not wrap to its last control')
+        page.keyboard.press('Tab')
+        if not first.evaluate('el => document.activeElement === el'):
+            raise AssertionError('Clinic menu Tab does not wrap to its first control')
+        for _ in range(len(visible_indexes) + 1):
+            page.keyboard.press('Tab')
+            if not dialog.evaluate('el => el.contains(document.activeElement)'):
+                raise AssertionError('Keyboard focus escaped the open clinic menu')
+        if summary.count():
+            summary.focus()
+            page.keyboard.press('Space')
+            if summary.evaluate('el => el.parentElement.open'):
+                raise AssertionError('Clinic menu disclosure does not close from the keyboard')
+
+    page.keyboard.press('Escape')
+    check_closed()
+    if close_button:
+        opener.click(timeout=5000)
+        page.wait_for_function("() => document.querySelector('#site-menu')?.open", timeout=5000)
+        dialog.locator('[data-site-close]').click()
+        check_closed()
+    return {'type': 'dialog', 'keyboard': keyboard, 'close_button': close_button}
+
+
 def check(base, output):
     parsed = urlsplit(base)
     if base not in ("https://www.kansei.se", "http://127.0.0.1:4173", "http://127.0.0.1:4174"):
@@ -74,7 +198,7 @@ def check(base, output):
                 try:
                     response = page.goto(base + path, wait_until="domcontentloaded", timeout=45000)
                     page.wait_for_timeout(800)
-                    page.add_style_tag(content="*,*::before,*::after{animation-duration:0s!important;transition-duration:0s!important;scroll-behavior:auto!important}")
+                    motion_override = page.add_style_tag(content="*,*::before,*::after{animation-duration:0s!important;transition-duration:0s!important;scroll-behavior:auto!important}")
                     if response is None or response.status != 200:
                         row["errors"].append("Page does not return HTTP 200")
                     if page.locator("h1").count() != 1:
@@ -465,14 +589,21 @@ def check(base, output):
                             actions.scroll_into_view_if_needed()
                     slug = path.strip("/").replace("/", "-") or "home"
                     page.screenshot(path=str(output / f"{slug}-{label}.png"), full_page=False, animations="disabled")
-                    if label == "mobile" and path not in ("/reda/", "/reda-rehab/") and page.locator("button.burger").count() == 1:
-                        menu = page.locator("button.burger")
-                        if menu.is_visible():
-                            menu.click(timeout=5000)
-                            page.wait_for_timeout(100)
-                            if menu.get_attribute("aria-expanded") != "true":
-                                row["errors"].append("Mobile menu does not expose expanded state")
-                            page.screenshot(path=str(output / f"{slug}-mobile-menu.png"), animations="disabled")
+                    if label == "mobile" and path not in ("/reda/", "/reda-rehab/"):
+                        if path == '/':
+                            # Check the site's own reduced-motion CSS, without the
+                            # screenshot helper masking a missing media rule.
+                            motion_override.evaluate('el => el.remove()')
+                        row['mobile_menu'] = check_mobile_menu(
+                            page, output / f'{slug}-mobile-menu.png',
+                            keyboard=path == '/', close_button=path == '/', reduced_motion=path == '/')
+                        # Two extra home-only sizes cover small phones and landscape
+                        # without multiplying the full public-page test matrix.
+                        if path == '/' and row['mobile_menu'] and row['mobile_menu']['type'] == 'dialog':
+                            for size_name, menu_width, menu_height in (('short', 320, 568), ('landscape', 667, 375)):
+                                page.set_viewport_size({'width': menu_width, 'height': menu_height})
+                                check_mobile_menu(page, output / f'home-mobile-menu-{size_name}.png', keyboard=True, close_button=True, reduced_motion=True)
+                            page.set_viewport_size({'width': width, 'height': height})
                     if js_errors:
                         row["errors"].append("JavaScript runtime error")
                         row["js_errors"] = js_errors[:5]

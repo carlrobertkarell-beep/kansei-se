@@ -40,7 +40,7 @@ def check_home_hero(page, output, viewport):
         if photo.get_attribute('loading') == 'lazy' or photo.get_attribute('fetchpriority') != 'high':
             raise AssertionError('The first hero photograph is delayed behind lazy or low-priority loading')
         introduction = lead.inner_text().casefold()
-        if any(term not in introduction for term in ('naprapati', 'ultraljud', 'hyaluron', 'odenplan', 'stockholm')):
+        if any(term not in introduction for term in ('naprapati', 'ultraljud', 'injektioner', 'hyaluron', 'prp', 'odenplan', 'stockholm')):
             raise AssertionError('Hero introduction no longer identifies services and local clinic')
         actions = hero.locator('.landing-hero-actions')
         booking = actions.locator('a[data-measure="booking_click"]')
@@ -53,8 +53,11 @@ def check_home_hero(page, output, viewport):
             raise AssertionError('The hero no longer offers one clear booking helper')
         routes = hero.locator('.home-treatment-routes a')
         if set(routes.evaluate_all('links => links.map(link => link.getAttribute("href"))')) != {
-                '/ultraljud/', '/hyaluronsyra/', '/naprapati/'} or routes.count() != 3:
+                '/ultraljud/', '/injektioner/', '/naprapati/'} or routes.count() != 3:
             raise AssertionError('Hero treatment routes must link directly to the three services')
+        injection_actions = page.locator('.home-visit').filter(has=page.get_by_role('heading', name='Injektioner', exact=True)).locator('a')
+        if injection_actions.evaluate_all('links => links.map(link => link.getAttribute("href"))') != ['/hyaluronsyra/', '/prp/']:
+            raise AssertionError('Homepage injection options must link directly to hyaluron and PRP')
         for control in (booking, help_link, *routes.all()):
             if not control.is_visible() or not control.evaluate('''element => {
                 const box = element.getBoundingClientRect();

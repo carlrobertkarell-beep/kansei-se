@@ -11,10 +11,10 @@ import subprocess
 from urllib.parse import urlsplit
 
 
-KEYS = ('ultraljud', 'hyaluron', 'naprapati', 'kliniken')
+KEYS = ('ultraljud', 'injektioner', 'naprapati', 'kliniken')
 DESTINATIONS = {
     'ultraljud': ('/ultraljud/axel/', '/ultraljud/kna/', '/ultraljud/'),
-    'hyaluron': ('/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/hyaluronsyra/'),
+    'injektioner': ('/hyaluronsyra/', '/prp/', '/injektioner/'),
     'naprapati': ('/naprapati/', '/priser/'),
 }
 
@@ -65,10 +65,10 @@ def _closed(page):
     }''', timeout=5000)
 
 
-def _root(page, fresh=False):
+def _root(page, keys, destinations, fresh=False):
     root = _active(page, 'root')
     buttons = root.locator('button[data-menu-target]')
-    if buttons.evaluate_all('els => els.map(el => el.dataset.menuTarget)') != list(KEYS):
+    if buttons.evaluate_all('els => els.map(el => el.dataset.menuTarget)') != list(keys):
         raise AssertionError('First menu pane does not present exactly the four main choices')
     if not buttons.evaluate_all('''els => els.every(el => {
         const r = el.getBoundingClientRect();
@@ -83,7 +83,7 @@ def _root(page, fresh=False):
         return r.top >= head.bottom - 1 && r.bottom <= footer.top + 1;
     })'''):
         raise AssertionError('The first menu pane requires portrait scrolling to reach its main choices')
-    for href in set(sum(DESTINATIONS.values(), ())):
+    for href in set(sum(destinations.values(), ())):
         if page.locator(f'#site-menu a[href="{href}"]:visible').count():
             raise AssertionError('Area/detail links clutter the first menu pane')
     if fresh:
@@ -119,9 +119,14 @@ def _tab_loop(page):
 
 
 def check_minimal_menu(page, screenshot, keyboard=False, close_button=False, reduced_motion=False):
+    keys, destinations = KEYS, DESTINATIONS
+    if urlsplit(page.url).port == 4174 and page.locator('[data-menu-target="hyaluron"]').count():
+        keys = ('ultraljud', 'hyaluron', 'naprapati', 'kliniken')
+        destinations = {**DESTINATIONS, 'hyaluron': (
+            '/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/hyaluronsyra/')}
     opener = page.locator('button[data-site-menu]')
     opener.click(timeout=5000)
-    _root(page, fresh=True)
+    _root(page, keys, destinations, fresh=True)
     if opener.get_attribute('aria-expanded') != 'true':
         raise AssertionError('Progressive menu lacks expanded state')
     if reduced_motion and not page.locator('#site-menu').evaluate('''d =>
@@ -133,14 +138,14 @@ def check_minimal_menu(page, screenshot, keyboard=False, close_button=False, red
     page.screenshot(path=str(screenshot), animations='disabled')
     if keyboard:
         _tab_loop(page)
-        for key in KEYS:
+        for key in keys:
             trigger = page.locator(f'#site-menu button[data-menu-target="{key}"]')
             trigger.click()
             pane = _active(page, key, focus=True)
             _geometry(page)
-            if key in DESTINATIONS:
+            if key in destinations:
                 links = pane.locator('a[href]')
-                if links.evaluate_all('els => els.map(el => el.getAttribute("href"))') != list(DESTINATIONS[key]):
+                if links.evaluate_all('els => els.map(el => el.getAttribute("href"))') != list(destinations[key]):
                     raise AssertionError('Incorrect progressive service destinations: ' + key)
                 if not links.evaluate_all('''els => els.every(el => {
                     const r = el.getBoundingClientRect();
@@ -173,7 +178,7 @@ def check_minimal_menu(page, screenshot, keyboard=False, close_button=False, red
             _active(page, 'root')
             page.wait_for_function('''key => document.activeElement ===
                 document.querySelector('#site-menu button[data-menu-target="' + key + '"]')''', arg=key, timeout=5000)
-            _root(page)
+            _root(page, keys, destinations)
             if not trigger.evaluate('''el => {
                 const r = el.getBoundingClientRect();
                 const view = el.closest('.menu-view').getBoundingClientRect();
@@ -187,7 +192,7 @@ def check_minimal_menu(page, screenshot, keyboard=False, close_button=False, red
     _closed(page)
     if keyboard or close_button:
         opener.click()
-        _root(page, fresh=True)
+        _root(page, keys, destinations, fresh=True)
         if close_button:
             page.locator('#site-menu [data-site-close]').click()
         else:
@@ -327,7 +332,7 @@ def check_minimal_menu_motion(page, output):
         _active(probe, 'root')
         probe.wait_for_timeout(1000)
         visit_and_back('ultraljud')
-        visit_and_back('hyaluron')
+        visit_and_back('injektioner')
         arm('#site-menu [data-site-close]', 'closing')
         probe.locator('#site-menu [data-site-close]').click()
         probe.wait_for_timeout(80)

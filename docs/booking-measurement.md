@@ -1,5 +1,20 @@
 # Clinic booking measurement
 
+## Bokningshjälpen 7 november 2026
+
+Efter godkänt statistikval skickar guiden `booking_guide_start` när en omgång
+öppnas och `booking_guide_result_view` första gången ett besöksförslag visas i
+samma omgång. Den använder samma publika guideadress och `placement=guide`
+oavsett ingång. Inga svar, diagnoser, symtom, förslag eller val skickas eller
+sparas för mätningen. Händelserna är vanliga analysmått, inte nyckelhändelser.
+
+Ett direkt klick från guiden till Bokadirekt använder fortfarande
+`booking_click` med `placement=guide`. Om besökaren läser en tjänstesida först
+registreras ett eventuellt senare klick på sin faktiska sida. I GA4 kan en
+sekvens i samma session visa hur många besökare som öppnar guiden, ser ett
+förslag och sedan klickar till Bokadirekt. Mätningen kan inte visa om besöket
+slutligen bokades.
+
 ## Aktuell version 1 november 2026
 
 Hemsidan bevarar nu ett begränsat urval av Googles sammanställda

@@ -1,0 +1,258 @@
+/* Shared opening for the PRP and hyaluron treatment pages. */
+.treatment-page #main .treatment-hero {
+  background: #f8f6f0;
+  border-bottom: 1px solid #d8ded4;
+}
+
+.treatment-hero > .wrap {
+  padding-block: clamp(22px, 4vw, 48px) clamp(28px, 5vw, 66px);
+}
+
+.treatment-page #main .treatment-hero .crumbs {
+  margin: 0 0 clamp(22px, 4vw, 46px);
+  font-size: .8125rem;
+  line-height: 1.5;
+}
+
+.treatment-page #main .treatment-hero .crumbs a {
+  text-underline-offset: .22em;
+  text-decoration-color: #84968a;
+}
+
+.treatment-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(20rem, .78fr);
+  grid-template-areas: "copy offer" "provider offer";
+  gap: 26px clamp(36px, 7vw, 96px);
+  align-items: center;
+}
+
+.treatment-hero-copy { grid-area: copy; align-self: end; }
+
+.treatment-page #main .treatment-hero .treatment-kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  color: #35604d;
+  font: 650 .73rem/1.5 var(--sans);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.treatment-kicker::before {
+  content: "";
+  flex: 0 0 22px;
+  height: 1px;
+  background: #739480;
+}
+
+.treatment-page #main .treatment-hero h1 {
+  margin: 0 0 16px;
+  max-width: 15ch;
+  color: #193b31;
+  font-size: clamp(2.9rem, 5.2vw, 4.8rem);
+  line-height: 1.02;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+
+.treatment-page #main .treatment-hero .treatment-lead {
+  max-width: 47ch;
+  margin: 0;
+  color: #40564b;
+  font-size: clamp(1rem, 1.55vw, 1.1875rem);
+  line-height: 1.55;
+}
+
+.treatment-offer {
+  grid-area: offer;
+  align-self: center;
+  padding: clamp(22px, 3.2vw, 36px);
+  border-radius: 16px;
+  color: #fbfaf4;
+  background: #1f4034;
+  box-shadow: 0 16px 30px -24px #172f28;
+  scroll-margin-top: 110px;
+}
+
+.treatment-prices {
+  display: grid;
+  margin: 0 0 19px;
+}
+
+.treatment-prices--pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.treatment-prices > div + div {
+  padding-inline-start: clamp(12px, 2vw, 22px);
+  border-inline-start: 1px solid #668174;
+}
+
+.treatment-prices dt {
+  color: #d7e5da;
+  font-size: .8125rem;
+  line-height: 1.35;
+}
+
+.treatment-prices dd {
+  margin: 3px 0 0;
+  font: 400 clamp(1.65rem, 3.3vw, 2.55rem)/1.08 var(--clinic-display);
+  letter-spacing: -.035em;
+  white-space: nowrap;
+}
+
+.treatment-prices dd small {
+  font: 500 .82rem/1 var(--sans);
+  letter-spacing: 0;
+}
+
+.treatment-page #main .treatment-offer .treatment-book {
+  display: flex;
+  width: 100%;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  border-radius: .55rem;
+  background: #fbfaf4;
+  color: #193b31;
+  font-size: .9375rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.treatment-page #main .treatment-offer .treatment-book:hover {
+  background: #e7eee3;
+  color: #193b31;
+}
+
+.treatment-page #main .treatment-offer .treatment-book:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+.treatment-offer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 16px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.treatment-page #main .treatment-offer .treatment-offer-links p,
+.treatment-page #main .treatment-offer .treatment-offer-links a {
+  color: #e0ebe2;
+  margin: 0;
+  font-size: .8125rem;
+  line-height: 1.4;
+}
+
+.treatment-page #main .treatment-offer .treatment-offer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  text-decoration: underline;
+  text-underline-offset: .22em;
+}
+
+.treatment-page #main .treatment-offer .treatment-offer-links a:focus-visible {
+  outline-color: #fff;
+}
+
+.treatment-provider {
+  grid-area: provider;
+  align-self: start;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.treatment-provider img {
+  width: 42px;
+  height: 42px;
+  flex: none;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 27%;
+}
+
+.treatment-page #main .treatment-provider p {
+  margin: 0;
+  color: #40564b;
+  font-size: .8125rem;
+  line-height: 1.45;
+}
+
+.treatment-page #main .treatment-provider a {
+  color: #224b3d;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.treatment-page #main .treatment-provider span { display: block; }
+
+.treatment-page .ha-page-nav { margin-top: 0; }
+
+.treatment-joints {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.treatment-page #main .treatment-joints a {
+  display: grid;
+  gap: 5px;
+  padding: 16px;
+  border: 1px solid #d4dfd3;
+  border-radius: .65rem;
+  background: #fffefa;
+  color: #193b31;
+  text-decoration: none;
+}
+
+.treatment-page #main .treatment-joints a:hover {
+  border-color: #769583;
+  background: #edf3eb;
+}
+
+.treatment-joints strong {
+  font: 400 1.45rem/1.15 var(--clinic-display);
+  text-decoration: underline;
+  text-decoration-color: #8aa597;
+  text-underline-offset: .18em;
+}
+
+.treatment-joints span {
+  color: #40564b;
+  font-size: .84rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 760px) {
+  body.treatment-page .site-header .header-book { display: none; }
+
+  .treatment-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "copy" "offer" "provider";
+    gap: 18px;
+  }
+
+  .treatment-page #main .treatment-hero h1 {
+    font-size: clamp(2rem, 9.6vw, 3.2rem);
+    margin-bottom: 11px;
+  }
+
+  .treatment-offer { padding: 18px; }
+  .treatment-prices { margin-bottom: 14px; }
+
+  .treatment-joints { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .treatment-page #main .treatment-joints a { padding: 12px 14px; }
+}
+
+@media (max-width: 360px) {
+  .treatment-prices dd { font-size: 1.5rem; }
+  .treatment-prices dd small { font-size: .75rem; }
+}

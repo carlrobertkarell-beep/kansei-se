@@ -22,6 +22,7 @@ from home_experience_check import check_home_experience
 from home_hero_check import check_home_hero
 from minimal_menu_check import check_minimal_menu, check_minimal_menu_motion
 from booking_guide_check import check_booking_guide
+from site_design_check import DESIGN_PATHS, check_site_design
 
 PATHS = ("/", "/injektioner/", "/blogg/prp-eller-hyaluronsyra-vid-knaartros/", "/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/", "/kunskapsbank/kna/svullet-kna/", "/kunskapsbank/axel/ont-i-axeln-pa-natten/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/", "/hyaluronsyra/sinovial-sinogel/", "/prp/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/knaartros-vad-du-kan-gora/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/", "/blogg/domningar-i-handen-pa-natten/")
@@ -235,6 +236,10 @@ def check(base, output):
                         row["errors"].append("Expected one H1")
                     if not page.title().strip():
                         row["errors"].append("Title missing")
+                    # A push also checks the live Pages site before the new
+                    # styles necessarily reach it. Enforce them on the candidate.
+                    if base == "http://127.0.0.1:4173" and path in DESIGN_PATHS:
+                        row["site_design"] = check_site_design(page, path)
                     dimensions = page.evaluate("({width:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth})")
                     row["overflow_px"] = max(0, dimensions["scroll"] - dimensions["width"])
                     if row["overflow_px"] > 3:

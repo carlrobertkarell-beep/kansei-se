@@ -22,7 +22,7 @@ Faktauppgifterna i denna fil kontrollerades den 8 oktober 2026. Aktuella tjänst
 
 - [Kliniken vid Odenplan](https://www.kansei.se/om-oss/): verksamhet, behandlare och arbetssätt.
 - [Naprapati](https://www.kansei.se/naprapati/): undersökning, behandling och rehabilitering.
-- [Elektroakupunktur vid Odenplan](https://www.kansei.se/elektroakupunktur/): nålbehandling med elektrisk stimulering som kan ingå i ett naprapatbesök efter bedömning hos Carl-Robert Kårell, vidareutbildad vid McMaster University. Ultraljud används i utvalda fall för nålplacering.
+- [Elektroakupunktur vid Odenplan](https://www.kansei.se/elektroakupunktur/): neurofunktionell nålbehandling med eller utan ström som kan ingå i ett naprapatbesök efter bedömning hos Carl-Robert Kårell, vidareutbildad vid McMaster University. Sidan beskriver anatomiskt punktval, smärtlindring som stöd för rehab och ultraljud för nålplacering i utvalda fall.
 - [Injektioner](https://www.kansei.se/injektioner/): hyaluron, PRP och kortison, bokningsvägar och valfri separat konsultation.
 
 - [Ultraljud hos Kansei](https://www.kansei.se/ultraljud/): undersökningens omfattning, upplägg och bokning.

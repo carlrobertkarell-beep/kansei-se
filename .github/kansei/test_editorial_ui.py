@@ -55,20 +55,20 @@ class EditorialUI(unittest.TestCase):
         page.check_actions()
         self.assertFalse(page.errors)
 
-    def test_hyaluron_is_reachable_directly_from_both_main_menus(self):
+    def test_both_main_menus_need_an_injection_route(self):
         page = Navigation('fixture')
         page.feed('<body class="clinic-site"><nav class="desktop-nav">'
-                  '<a href="/ultraljud/">Ultraljud</a><a href="/injektioner/">Injektioner</a>'
+                  '<a href="/ultraljud/">Ultraljud</a>'
                   '</nav><nav class="menu-primary">'
                   '<a href="/ultraljud/"><strong>Ultraljud</strong></a>'
-                  '<a href="/injektioner/"><strong>Injektioner</strong></a></nav></body>')
+                  '</nav></body>')
         page.check_actions()
-        self.assertIn('desktop navigation needs one direct Hyaluron route', page.errors)
-        self.assertIn('primary menu needs one direct Hyaluron route', page.errors)
+        self.assertIn('desktop navigation needs one injection route', page.errors)
+        self.assertIn('primary menu needs one injection route', page.errors)
 
         valid = Navigation('fixture')
         valid.feed('<body class="clinic-site"><nav class="desktop-nav">'
-                   '<a href="/ultraljud/">Ultraljud</a><a href="/hyaluronsyra/">Hyaluron</a>'
+                   '<a href="/ultraljud/">Ultraljud</a><a href="/injektioner/">Injektioner</a>'
                    '</nav><nav class="menu-primary">'
                    '<a href="/ultraljud/"><strong>Ultraljud</strong></a>'
                    '<a href="/hyaluronsyra/"><strong>Hyaluron</strong></a></nav></body>')

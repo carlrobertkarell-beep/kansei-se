@@ -227,6 +227,10 @@
 /* Native dialog with a short, cancellable transition; no layout jump or library. */
 (()=>{'use strict';
  const dialog=document.querySelector('#site-menu'),buttons=[...document.querySelectorAll('[data-site-menu]')];
+ const injectionNav=document.querySelector('.desktop-nav a[href="/hyaluronsyra/"]');
+ if(injectionNav){
+  injectionNav.href='/injektioner/';injectionNav.textContent='Injektioner';injectionNav.removeAttribute('aria-current');
+ }
  // Keep the image overview discoverable from every public clinic menu.
  const imageMenu=dialog?.querySelector('.menu-secondary');
  if(imageMenu&&!imageMenu.querySelector('a[href="/ultraljud/bilder/"]')){
@@ -250,14 +254,14 @@
     const source=existing.get(href),a=source?(copy?source.cloneNode(true):source):element('a');
     a.href=href;a.className='menu-route';a.replaceChildren(element('span','',label),chevron());return a;
    }
-   const sections=['.menu-secondary','.menu-practical','.menu-injections'].map(selector=>dialog.querySelector(selector)).filter(Boolean);
+   const sections=['.menu-secondary','.menu-practical'].map(selector=>dialog.querySelector(selector)).filter(Boolean);
    const contact=bottom.querySelector('p'),book=bottom.querySelector('.button'),help=existing.get('/hjalp-mig-boka/');
    const brand=dialog.querySelector('.site-menu-head>a');
    if(brand){brand.replaceChildren(element('span','menu-brand-name','Kansei'),element('span','menu-brand-caption','Naprapati & Rehabcenter'));brand.setAttribute('aria-label','Kansei Naprapati & Rehabcenter, startsida');}
    const stage=element('div','menu-stage'),views=new Map(),choices=new Map();
    const root=element('section','menu-view menu-view-root');root.dataset.menuView='root';root.id='menu-view-root';root.setAttribute('aria-label','Meny');views.set('root',root);
    const navigation=element('nav','menu-root-nav');navigation.setAttribute('aria-label','Välj besök eller klinikinformation');
-   [['ultraljud','Ultraljud'],['hyaluron','Hyaluron'],['naprapati','Naprapati'],['kliniken','Kliniken & ditt besök']].forEach(([key,label])=>{
+   [['ultraljud','Ultraljud'],['injektioner','Injektioner'],['naprapati','Naprapati'],['kliniken','Kliniken & ditt besök']].forEach(([key,label])=>{
     const button=element('button','menu-choice'+(key==='kliniken'?' menu-choice-practical':''));button.type='button';button.dataset.menuTarget=key;button.setAttribute('aria-controls','menu-view-'+key);
     button.append(element('span','',label),chevron());choices.set(key,button);navigation.append(button);
    });
@@ -277,8 +281,8 @@
    }
    const us=pane('ultraljud','Ultraljud','Välj det område du vill undersöka.');
    us.links.append(route('/ultraljud/axel/','Axel'),route('/ultraljud/kna/','Knä'),route('/ultraljud/','Alla områden'));
-   const ha=pane('hyaluron','Hyaluron','Välj led eller läs om behandlingen.');
-   ha.links.append(route('/hyaluronsyra/kna/','Knä'),route('/hyaluronsyra/hoft/','Höft'),route('/hyaluronsyra/axel/','Axel'),route('/hyaluronsyra/','Om hyaluron'));
+   const injections=pane('injektioner','Injektioner','Läs om hyaluron och PRP, se priser och boka.');
+   injections.links.append(route('/hyaluronsyra/','Hyaluron'),route('/prp/','PRP (ACP)'),route('/injektioner/','Alla injektioner'));
    const nap=pane('naprapati','Naprapati','Undersökning, behandling och rehabilitering.');
    nap.links.append(route('/naprapati/','Om naprapati & rehab'),route('/priser/','Besök och priser',true));
    const clinic=pane('kliniken','Kliniken & ditt besök','Praktisk information inför ditt besök.');

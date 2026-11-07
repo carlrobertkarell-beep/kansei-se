@@ -91,9 +91,9 @@ class Navigation(HTMLParser):
                     parent = parent['parent']
                 if parent is nav:
                     links.append(anchor['attrs'].get('href'))
-            if links.count('/hyaluronsyra/') != 1:
+            if sum(links.count(route) for route in ('/injektioner/', '/hyaluronsyra/')) != 1:
                 name = 'desktop navigation' if nav in self.desktop_navs else 'primary menu'
-                self.errors.append(name + ' needs one direct Hyaluron route')
+                self.errors.append(name + ' needs one injection route')
 
 def main():
     errors = []
@@ -119,7 +119,7 @@ def main():
 
     if errors:
         raise SystemExit('\n'.join(errors))
-    print(f'Navigation, distinct action groups and direct Hyaluron routes verified on {count} HTML files and six dynamic components.')
+    print(f'Navigation, distinct action groups and injection routes verified on {count} HTML files and six dynamic components.')
 
 
 if __name__ == "__main__":

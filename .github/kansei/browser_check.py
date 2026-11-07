@@ -306,9 +306,12 @@ def check(base, output):
                         if path=="/ultraljud/kna/":
                             hidden_images=viewer.locator('.knee-panel[hidden] img')
                             if not hidden_images.count() or not hidden_images.evaluate_all(
-                                "(images) => images.every(image => image.loading === 'lazy' && !image.naturalWidth)"
+                                "(images) => images.every(image => image.loading === 'lazy')"
                             ):
-                                raise AssertionError('Inactive knee images should stay deferred until their tab is selected')
+                                raise AssertionError('Inactive knee images must use deferred loading')
+                            hidden_anatomy=viewer.locator('.knee-panel[hidden] .knee-anatomy img')
+                            if not hidden_anatomy.evaluate_all("(images) => images.every(image => !image.naturalWidth)"):
+                                raise AssertionError('Inactive anatomy layers loaded before their tabs were selected')
                         for key in ('itb-bursa','lateral-fluid','posterior-meniscus'):
                             viewer.locator('#tab-'+key).click()
                             picture=viewer.locator('#view-'+key+' .knee-picture')

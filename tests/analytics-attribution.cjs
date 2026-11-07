@@ -22,7 +22,8 @@ function fixture(query = '', saved = {}) {
   return {storage,session,scripts,nodes,window,
     choose(allowed){nodes[0].listeners.click({target:{closest(){return {dataset:{statistics:allowed?'yes':'no'}};}}});},
     events(){return Array.from(window.dataLayer||[],args=>Array.from(args));},
-    booking(){handlers['kansei:booking-intent']({detail:{event:'booking_click',service:'ultrasound',placement:'header',patient:'PRIVATE_PATIENT'}});}};
+    booking(){handlers['kansei:booking-intent']({detail:{event:'booking_click',service:'ultrasound',placement:'header',patient:'PRIVATE_PATIENT'}});},
+    guide(event){handlers['kansei:booking-guide']({detail:{event,area:'PRIVATE_AREA',symptom:'PRIVATE_SYMPTOM',goal:'PRIVATE_GOAL'}});}};
 }
 const choice = allowed => JSON.stringify({allowed,at:Date.now()});
 const query = '?gbraid=0AAAA_VALID_AGGREGATE&gad_source=1&gad_campaignid=12345678901'
@@ -50,6 +51,27 @@ assert(!JSON.stringify([...f.session]).includes('AGGREGATE'));
 assert(!JSON.stringify([...f.storage]).includes('AGGREGATE'));
 assert(!JSON.stringify(f.events()).includes('utm_source'));
 const count = f.events().length;f.choose(false);f.booking();assert.equal(f.events().length,count);assert.equal(f.session.size,0);
+const guide = fixture(query);
+guide.guide('booking_guide_start');
+guide.guide('booking_guide_result_view');
+assert.equal(guide.events().length,0);
+guide.choose(true);
+guide.guide('booking_guide_start');
+guide.guide('PRIVATE_SYMPTOM');
+guide.guide('booking_guide_result_view');
+const guideEvents = guide.events().filter(e=>e[0]==='event' && e[1].startsWith('booking_guide_'));
+assert.deepEqual(guideEvents.map(e=>e[1]), ['booking_guide_start','booking_guide_result_view']);
+for (const [, , fields] of guideEvents) {
+  assert.equal(fields.page_location,'https://www.kansei.se/hjalp-mig-boka/');
+  assert.equal(fields.page_title,'Hjälp mig boka rätt | Kansei');
+  assert.equal(fields.placement,'guide');
+  assert.deepEqual(Object.keys(fields).sort(),
+    ['measurement_version','page_location','page_referrer','page_title','placement','referral_group','send_to']);
+}
+assert(!JSON.stringify(guideEvents).includes('PRIVATE'));
+guide.choose(false);
+guide.guide('booking_guide_start');
+assert.equal(guide.events().filter(e=>e[0]==='event' && e[1].startsWith('booking_guide_')).length,2);
 for(const legacy of ['kansei-statistics-v1','kansei-statistics-v2']) {
   const declined = fixture(query,{[legacy]:choice(false)});
   assert.equal(declined.scripts.length,0);assert.equal(declined.nodes[0].hidden,true);
@@ -78,4 +100,4 @@ for(const [query,expected] of cases) {
   assert.equal(c.events().find(e=>e[0]==='config')[2].page_location,expected,query);
   assert(!JSON.stringify(c.events()).includes('PRIVATE'));
 }
-console.log('PASS: native aggregate attribution, exact manual fallback, parameter validation, no raw click IDs/free text, renewed consent, old refusals, one page view and one booking intent, no identifier storage.');
+console.log('PASS: aggregate attribution, parameter validation, consent and withdrawal, booking intent and guide events without guide choices.');

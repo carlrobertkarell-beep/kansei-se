@@ -21,6 +21,7 @@ from discovery_check import DISCOVERY_PATHS, check_discovery
 from home_experience_check import check_home_experience
 from home_hero_check import check_home_hero
 from minimal_menu_check import check_minimal_menu, check_minimal_menu_motion
+from booking_guide_check import check_booking_guide
 
 PATHS = ("/", "/injektioner/", "/blogg/prp-eller-hyaluronsyra-vid-knaartros/", "/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/", "/kunskapsbank/kna/svullet-kna/", "/kunskapsbank/axel/ont-i-axeln-pa-natten/", "/ultraljud/svullet-kna/", "/ultraljud/quadricepssena/", "/ultraljud/bursit-axel/", "/hyaluronsyra/", "/hyaluronsyra/sinovial-sinogel/", "/prp/", "/hyaluronsyra/kna/", "/hyaluronsyra/hoft/", "/hyaluronsyra/axel/", "/hyaluronsyra/infor-och-efter/", "/hjalp-mig-boka/", "/naprapati/", "/ultraljud/", "/ultraljud/axel/", "/ultraljud/kalkaxel/", "/ultraljud/kna/", "/ultraljud/fot-fotled/", "/kontakt/", "/priser/", "/om-oss/", "/reda/", "/reda-rehab/")
 KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/knaartros-vad-du-kan-gora/", "/blogg/forsta-besoket-hos-naprapat/", "/blogg/normalt-ultraljud-men-fortfarande-ont/", "/blogg/misstankt-halseneruptur/", "/blogg/domningar-i-handen-pa-natten/")
@@ -214,6 +215,8 @@ def check(base, output):
             paths = tuple(dict.fromkeys(PATHS + film_paths + CASE_PATHS + (() if baseline_only else KNOWLEDGE_PATHS + CONTENT_PATHS + (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH, HIP_PATH, HIP_JOINT_PATH, KNEE_CALC_PATH))))
             if label == 'compact':
                 paths = ('/', '/ultraljud/', '/ultraljud/axel/', '/hyaluronsyra/', '/injektioner/', '/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/blogg/prp-eller-hyaluronsyra-vid-knaartros/', '/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/') + film_paths[1:] + CASE_PATHS + (() if baseline_only else (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH, HIP_PATH, HIP_JOINT_PATH, KNEE_CALC_PATH))
+                if not baseline_only:
+                    paths += ("/hjalp-mig-boka/",)
             if not baseline_only:
                 paths = tuple(dict.fromkeys(paths + SEARCH_PATHS))
             model = None
@@ -492,59 +495,8 @@ def check(base, output):
                         if any(link.is_visible() for link in reda_links.all()):
                             row["errors"].append("Unreleased Reda link is visible on clinic page")
 
-                    if not baseline_only and path == "/hjalp-mig-boka/" and label == "desktop":
-                        # The homepage now links to the dedicated booking helper. Keep all shoulder-routing checks there.
-                        # Shoulder routing is temporary while the dedicated shoulder clinician is unavailable.
-                        opener = page.locator('button[data-area="shoulder"]').first
-                        opener.click()
-                        page.locator('#guide-dialog[open]').wait_for(timeout=5000)
-                        guide = page.locator('#guide-dialog')
-
-                        def shoulder_route(pattern, expected_title, href_fragment):
-                            if guide.locator('[data-guide-screen="areas"]').count():
-                                pass
-                            if guide.locator('button[data-guide-area="shoulder"]').count():
-                                guide.locator('button[data-guide-area="shoulder"]').click()
-                            guide.locator(f'button[data-pattern="{pattern}"]').click()
-                            guide.locator('button[data-safety="continue"]').click()
-                            if guide.locator('.result-main h3').inner_text().strip() != expected_title:
-                                row["errors"].append(f"Shoulder {pattern} has wrong recommended visit")
-                            href = guide.locator('.guide-booking a[href*="bokadirekt.se/"]').get_attribute("href") or ""
-                            if href_fragment not in href:
-                                row["errors"].append(f"Shoulder {pattern} has wrong booking link")
-                            if "axelbedomning" in href.lower() or "magnus-wennerlund" in href.lower():
-                                row["errors"].append(f"Shoulder {pattern} still routes to shoulder assessment")
-                            guide.locator('button[data-reset]').click()
-
-                        shoulder_route("lifting", "Muskuloskeletalt ultraljud", "muskuloskeletalt-ultraljud-1946824")
-                        shoulder_route("night", "Muskuloskeletalt ultraljud", "muskuloskeletalt-ultraljud-1946824")
-                        shoulder_route("stiff", "Naprapatisk bedömning", "naprapati-ny-resp-aterbesok")
-                        shoulder_route("rehab", "Muskuloskeletalt ultraljud", "muskuloskeletalt-ultraljud-1946824")
-
-                        guide.locator('button[data-guide-area="shoulder"]').click()
-                        guide.locator('button[data-pattern="unclear"]').click()
-                        guide.locator('button[data-safety="continue"]').click()
-                        if guide.locator('.result-main h3').inner_text().strip() != "Naprapatisk bedömning":
-                            row["errors"].append("Unclear shoulder symptoms do not route to naprapathy")
-                        unclear_href = guide.locator('.guide-booking a[href*="bokadirekt.se/"]').get_attribute("href") or ""
-                        if "naprapati-ny-resp-aterbesok" not in unclear_href:
-                            row["errors"].append("Unclear shoulder symptoms have wrong booking link")
-                        guide.locator('button[data-reset]').click()
-
-                        guide.locator('button[data-guide-area="shoulder"]').click()
-                        guide.locator('button[data-pattern="injury"]').click()
-                        if guide.get_by_role("heading", name="Börja inte med en vanlig bokning.").count() != 1:
-                            row["errors"].append("Shoulder injury no longer routes to care guidance")
-                        if guide.locator('.guide-booking a[href*="bokadirekt.se/"]').count():
-                            row["errors"].append("Shoulder injury exposes a commercial booking CTA")
-                        guide.locator('button[data-reset]').click()
-
-                        guide.locator('button[data-guide-services]').click()
-                        if guide.get_by_text("Axelbedömning", exact=True).count():
-                            row["errors"].append("Shoulder assessment still appears in direct service picker")
-                        if guide.locator('a[href="/skuldra/"]').count():
-                            row["errors"].append("Direct service picker still links to shoulder assessment")
-                        page.keyboard.press("Escape")
+                    if not baseline_only and path == "/hjalp-mig-boka/":
+                        check_booking_guide(page, output, label)
 
                     if not baseline_only and path == "/kunskapsbank/":
                         cards = page.locator("[data-library-card]")

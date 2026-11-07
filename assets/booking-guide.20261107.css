@@ -1,0 +1,647 @@
+/* Shared booking guide, with a page-specific entry point. */
+.booking-guide-page,
+#guide-dialog {
+  --booking-paper: #fbfaf6;
+  --booking-white: #fffefa;
+  --booking-ink: #193b31;
+  --booking-muted: #4d665b;
+  --booking-line: #d7e1d7;
+  --booking-tint: #edf3eb;
+  --booking-accent: #285343;
+  --booking-serif: Georgia, 'Times New Roman', serif;
+  color: var(--booking-ink);
+  background: var(--booking-paper);
+}
+
+.clinic-site .booking-guide-page > .wrap {
+  max-width: 70rem;
+}
+
+.booking-guide-page .page-top {
+  padding-block: clamp(1.6rem, 4vw, 3.6rem) clamp(1.45rem, 4vw, 3rem);
+}
+
+.booking-guide-page .page-top .crumbs {
+  color: var(--booking-muted);
+  margin: 0 0 clamp(1.15rem, 3vw, 2rem);
+}
+
+.booking-guide-page .page-top .eyebrow,
+.booking-guide-page .finder-visual-label {
+  color: var(--booking-accent);
+  font: 600 .6875rem/1.5 var(--sans);
+  letter-spacing: .085em;
+}
+
+.clinic-site .booking-guide-page .page-top h1 {
+  max-width: 16ch;
+  margin: .75rem 0 1rem;
+  color: var(--booking-ink);
+  font: 400 clamp(2.3rem, 6.1vw, 4.85rem)/1.05 var(--booking-serif);
+  letter-spacing: -.041em;
+}
+
+.clinic-site .booking-guide-page .page-top .page-lead {
+  max-width: 50ch;
+  margin: 0;
+  color: var(--booking-muted);
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.65;
+}
+
+.booking-guide-page .section-space {
+  padding-block: 0 clamp(2.6rem, 7vw, 5.4rem);
+}
+
+.booking-guide-page .finder-area-heading {
+  margin: 0 0 .7rem;
+  font: 600 .75rem/1.5 var(--sans);
+  letter-spacing: .075em;
+  color: var(--booking-accent);
+}
+
+.booking-guide-page .finder-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1.1rem, 3vw, 2rem);
+  padding: 0;
+}
+
+.booking-guide-page .area-list {
+  display: grid;
+  align-content: start;
+  gap: .45rem;
+  margin: 0;
+}
+
+.booking-guide-page .area-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.8rem minmax(0, 1fr) .55rem;
+  gap: .6rem;
+  align-items: center;
+  min-height: 3.35rem;
+  width: 100%;
+  padding: .7rem .9rem;
+  border: 1px solid var(--booking-line);
+  border-radius: .55rem;
+  color: var(--booking-ink);
+  background: var(--booking-white);
+  transition: background-color .18s ease, border-color .18s ease;
+}
+
+.booking-guide-page .area-item::after {
+  content: '';
+  display: block;
+  width: .38rem;
+  height: .38rem;
+  border-block-start: 1.5px solid currentColor;
+  border-inline-end: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.booking-guide-page .area-item:is(:hover, :focus-visible) {
+  padding-inline: .9rem;
+  border-color: #8ba398;
+  color: var(--booking-ink);
+  background: var(--booking-tint);
+}
+
+.booking-guide-page .area-item > span:first-child {
+  color: var(--booking-muted);
+  font: 600 .6875rem/1 var(--sans);
+  font-variant-numeric: tabular-nums;
+}
+
+.booking-guide-page .area-item > span:nth-child(2) {
+  color: inherit;
+  font: 600 clamp(.9375rem, 2vw, 1.0625rem)/1.4 var(--sans);
+  letter-spacing: -.01em;
+}
+
+.booking-guide-page .finder-visual {
+  display: none;
+  isolation: isolate;
+  min-height: 24rem;
+  border: 1px solid var(--booking-line);
+  border-radius: .75rem;
+  color: var(--booking-ink);
+  background: var(--booking-tint);
+}
+
+.booking-guide-page .finder-visual::before,
+.booking-guide-page .finder-visual::after {
+  position: absolute;
+  z-index: -1;
+  inset: auto -5rem -11rem auto;
+  width: 22rem;
+  aspect-ratio: 1;
+  border: 1px solid #cfddd2;
+  border-radius: 50%;
+  content: '';
+  pointer-events: none;
+}
+
+.booking-guide-page .finder-visual::after {
+  inset: auto -3rem -9rem auto;
+  width: 18rem;
+}
+
+.booking-guide-page .finder-visual-label {
+  inset: 1.45rem auto auto 1.5rem;
+}
+
+.booking-guide-page .finder-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 3.5rem 1.5rem 4rem;
+  text-align: start;
+}
+
+.booking-guide-page .finder-center p {
+  max-width: 14ch;
+  margin: 0;
+  color: var(--booking-ink);
+  font: 400 clamp(1.85rem, 3.8vw, 3.45rem)/1.08 var(--booking-serif);
+  letter-spacing: -.032em;
+}
+
+.booking-guide-page .finder-guide-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1.15rem;
+  margin: 0;
+  padding-inline-start: 1.15rem;
+  color: var(--booking-muted);
+  font: 500 .8125rem/1.65 var(--sans);
+}
+
+.booking-guide-page .finder-guide-steps li {
+  padding-inline-start: .15rem;
+}
+
+.booking-guide-page .finder-bottom {
+  inset: auto 1.5rem 1.25rem;
+  gap: 1rem;
+  border-color: #c7d6c9;
+  color: var(--booking-muted);
+  font: 500 .75rem/1.5 var(--sans);
+}
+
+.booking-guide-page .finder-intents {
+  margin-top: clamp(1.5rem, 4vw, 2.6rem);
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--booking-line);
+}
+
+.booking-guide-page .finder-intent-links {
+  display: grid;
+  gap: .45rem;
+}
+
+.booking-guide-page .finder-intent-links .area-item {
+  background: var(--booking-tint);
+}
+
+.booking-guide-page .finder-intent-links .area-item:is(:hover, :focus-visible) {
+  background: var(--booking-white);
+}
+
+.booking-guide-page .finder-next-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.5rem;
+  margin-top: .75rem;
+}
+
+.booking-guide-page .finder-next-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin: 0;
+  color: var(--booking-accent);
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.booking-guide-page .finder-report-note {
+  max-width: 68ch;
+  margin: 1.15rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--booking-line);
+  color: var(--booking-muted);
+  font-size: .875rem;
+  line-height: 1.65;
+}
+
+.booking-guide-page .finder-report-note a {
+  color: var(--booking-accent);
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+#guide-dialog {
+  --booking-gutter: clamp(1.2rem, 4vw, 2.5rem);
+  width: min(100%, 42rem);
+}
+
+#guide-dialog[open] {
+  animation: booking-guide-enter .26s cubic-bezier(.22,.68,.18,1) both;
+}
+
+#guide-dialog::backdrop {
+  background: rgb(17 37 30 / .43);
+}
+
+#guide-dialog .guide-header {
+  min-height: 3.75rem;
+  padding: max(.5rem, env(safe-area-inset-top)) max(var(--booking-gutter), env(safe-area-inset-right)) .5rem max(var(--booking-gutter), env(safe-area-inset-left));
+  border-color: var(--booking-line);
+  background: var(--booking-paper);
+}
+
+#guide-dialog .guide-header .eyebrow {
+  color: var(--booking-accent);
+  letter-spacing: .08em;
+}
+
+#guide-dialog .guide-header [data-close] {
+  border-color: #c6d4ca;
+  color: var(--booking-ink);
+}
+
+#guide-dialog .guide-header [data-close]:hover {
+  background: var(--booking-tint);
+}
+
+#guide-dialog #guide-content {
+  padding: .55rem max(var(--booking-gutter), env(safe-area-inset-right)) 1.5rem max(var(--booking-gutter), env(safe-area-inset-left));
+}
+
+#guide-dialog .guide-progress {
+  min-height: 2.75rem;
+  color: var(--booking-muted);
+}
+
+#guide-dialog .guide-step,
+#guide-dialog .guide-task-label {
+  font: 600 .75rem/1.4 var(--sans);
+  font-variant-numeric: tabular-nums;
+}
+
+#guide-dialog .guide-progress-track {
+  height: .2rem;
+  margin: .1rem 0 1.35rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #e1e9de;
+}
+
+#guide-dialog .guide-progress-track::before {
+  display: block;
+  inline-size: var(--guide-progress, 0%);
+  height: 100%;
+  border-radius: inherit;
+  background: var(--booking-accent);
+  content: '';
+}
+
+#guide-dialog .guide-current-area {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 1.65rem;
+  padding: .2rem .55rem;
+  border: 1px solid var(--booking-line);
+  border-radius: 99px;
+  color: var(--booking-accent);
+  background: var(--booking-tint);
+  font: 600 .6875rem/1.35 var(--sans);
+}
+
+#guide-dialog #guide-title {
+  margin: .55rem 0 .8rem;
+  color: var(--booking-ink);
+  font: 400 clamp(1.95rem, 6.7vw, 3.15rem)/1.08 var(--booking-serif);
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+
+#guide-dialog p {
+  color: var(--booking-muted);
+  line-height: 1.6;
+}
+
+#guide-dialog #guide-title + p {
+  margin-bottom: 1.05rem;
+}
+
+#guide-dialog .guide-choices {
+  gap: .5rem;
+  margin-top: 1rem;
+}
+
+#guide-dialog .guide-choice {
+  gap: .85rem;
+  min-height: 3.35rem;
+  padding: .75rem .95rem;
+  border-color: var(--booking-line);
+  border-radius: .55rem;
+  color: var(--booking-ink);
+  background: var(--booking-white);
+  transition: background-color .18s ease, border-color .18s ease;
+}
+
+#guide-dialog .guide-choice:is(:hover, :focus-visible, [data-current-choice]) {
+  border-color: #8ba398;
+  background: var(--booking-tint);
+}
+
+#guide-dialog .guide-choice::after {
+  content: '';
+  flex: 0 0 .4rem;
+  height: .4rem;
+  margin-right: .15rem;
+  border-block-start: 1.5px solid var(--booking-accent);
+  border-inline-end: 1.5px solid var(--booking-accent);
+  transform: rotate(45deg);
+}
+
+#guide-dialog .guide-choice b {
+  font: 600 .9375rem/1.45 var(--sans);
+  color: inherit;
+}
+
+#guide-dialog .guide-choice small {
+  margin-top: .2rem;
+  color: var(--booking-muted);
+  font: 400 .8125rem/1.45 var(--sans);
+}
+
+#guide-dialog .guide-back {
+  color: var(--booking-accent);
+}
+
+#guide-dialog .guide-actions {
+  gap: .2rem 1.25rem;
+  margin-top: 1rem;
+  padding-top: .35rem;
+  border-color: var(--booking-line);
+}
+
+#guide-dialog .guide-selection {
+  margin: .8rem 0 1rem;
+  padding-left: .75rem;
+  border-color: #aec3b3;
+}
+
+#guide-dialog .result-tag {
+  color: var(--booking-accent);
+}
+
+#guide-dialog .result-summary {
+  color: var(--booking-muted);
+  font-size: .875rem;
+}
+
+#guide-dialog .result-main {
+  padding: clamp(1rem, 4vw, 1.55rem);
+  border-color: #cbdacc;
+  border-radius: .7rem;
+  background: var(--booking-tint);
+}
+
+#guide-dialog .result-main > .eyebrow {
+  display: block;
+  margin: 0 0 .45rem;
+  color: var(--booking-accent);
+  letter-spacing: .075em;
+}
+
+#guide-dialog .result-main h3 {
+  margin: 0 0 .6rem;
+  color: var(--booking-ink);
+  font: 400 clamp(1.58rem, 5vw, 2.25rem)/1.15 var(--booking-serif);
+  letter-spacing: -.026em;
+}
+
+#guide-dialog .result-main .guide-visit-copy,
+#guide-dialog .guide-booking-note,
+#guide-dialog .guide-price {
+  color: var(--booking-muted);
+}
+
+#guide-dialog .guide-booking {
+  gap: .65rem;
+  margin-top: 1rem;
+  padding-top: .85rem;
+  border-color: #cbdacc;
+}
+
+#guide-dialog .guide-price strong {
+  color: var(--booking-ink);
+  font-size: 1.125rem;
+}
+
+#guide-dialog .button {
+  min-height: 3rem;
+  padding: .75rem 1rem;
+  border-radius: .45rem;
+  font-size: .9375rem;
+}
+
+#guide-dialog .button-dark {
+  border-color: var(--booking-accent);
+  color: #fff;
+  background: var(--booking-accent);
+}
+
+#guide-dialog .button-dark:hover {
+  border-color: var(--booking-ink);
+  background: var(--booking-ink);
+}
+
+#guide-dialog .result-details,
+#guide-dialog .result-details details,
+#guide-dialog .result-links > .text-link {
+  border-color: var(--booking-line);
+}
+
+#guide-dialog .result-links,
+#guide-dialog .result-details {
+  margin-top: 1.15rem;
+}
+
+#guide-dialog .result-links {
+  gap: .4rem;
+}
+
+#guide-dialog .guide-result-next {
+  margin: 1.2rem 0 0;
+}
+
+#guide-dialog .guide-result-next h3,
+#guide-dialog .guide-comparison-grid h3 {
+  margin: 0;
+  color: var(--booking-ink);
+  font: 600 .9375rem/1.45 var(--sans);
+}
+
+#guide-dialog .guide-next-steps {
+  margin: .45rem 0 .85rem;
+  padding-left: 1.2rem;
+  color: var(--booking-muted);
+  line-height: 1.55;
+}
+
+#guide-dialog .guide-next-steps li + li {
+  margin-top: .3rem;
+}
+
+#guide-dialog .guide-case {
+  display: block;
+  min-height: 2.75rem;
+  margin: .8rem 0;
+  padding: .8rem .95rem;
+  border: 1px solid var(--booking-line);
+  border-radius: .55rem;
+  color: var(--booking-ink);
+  background: var(--booking-white);
+}
+
+#guide-dialog .guide-case .eyebrow {
+  display: block;
+  color: var(--booking-accent);
+  font-size: .6875rem;
+  letter-spacing: .075em;
+}
+
+#guide-dialog .guide-case .text-link,
+#guide-dialog .guide-comparison-grid .text-link {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin: .15rem 0 0;
+  padding-block: .4rem;
+  color: var(--booking-accent);
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+#guide-dialog .guide-comparison {
+  margin-top: .8rem;
+  padding-inline: .9rem;
+  border: 1px solid var(--booking-line);
+  border-radius: .55rem;
+  background: var(--booking-white);
+}
+
+#guide-dialog .guide-comparison > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .65rem;
+  min-height: 3rem;
+  padding-block: .5rem;
+  list-style: none;
+  color: var(--booking-ink);
+  cursor: pointer;
+  font: 600 .875rem/1.45 var(--sans);
+}
+
+#guide-dialog .guide-comparison > summary::after {
+  content: '+';
+  flex: 0 0 1rem;
+  color: var(--booking-accent);
+  font-size: 1.25rem;
+}
+
+#guide-dialog .guide-comparison[open] > summary::after { content: '−'; }
+#guide-dialog .guide-comparison[open] { padding-bottom: .85rem; }
+
+#guide-dialog .guide-comparison-grid {
+  display: grid;
+  gap: .55rem;
+}
+
+#guide-dialog .guide-comparison-grid > div {
+  min-width: 0;
+  padding: .8rem;
+  border-radius: .35rem;
+  background: var(--booking-tint);
+}
+
+#guide-dialog .guide-comparison-grid p {
+  margin: .25rem 0 0;
+  font-size: .875rem;
+}
+
+#guide-dialog .safety-box,
+#guide-dialog .warning-box {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--booking-line);
+  border-radius: .55rem;
+  color: var(--booking-ink);
+  background: var(--booking-tint);
+}
+
+#guide-dialog .warning-box {
+  border-color: #dfceba;
+  background: #f7eee3;
+}
+
+#guide-dialog .safety-box li + li {
+  margin-top: .45rem;
+}
+
+#guide-dialog .guide-small,
+#guide-dialog .guide-source {
+  margin-top: .9rem;
+  color: var(--booking-muted);
+  font-size: .8125rem;
+  line-height: 1.55;
+}
+
+#guide-dialog .guide-privacy {
+  margin-inline: var(--booking-gutter);
+  padding-block: .85rem max(1.3rem, env(safe-area-inset-bottom));
+  border-color: var(--booking-line);
+  color: var(--booking-muted);
+}
+
+.booking-guide-page :is(a, button):focus-visible,
+#guide-dialog :is(a, button, summary):focus-visible {
+  outline: 2px solid var(--booking-accent);
+  outline-offset: 2px;
+}
+
+@media (min-width: 46rem) {
+  .booking-guide-page .finder-workspace {
+    grid-template-columns: minmax(16rem, .95fr) minmax(0, 1.05fr);
+    align-items: stretch;
+  }
+
+  .booking-guide-page .finder-visual { display: block; }
+  .booking-guide-page .finder-intent-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 701px) {
+  #guide-dialog { box-shadow: -1rem 0 4rem rgb(20 46 35 / .16); }
+  #guide-dialog .guide-comparison-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@keyframes booking-guide-enter {
+  from { opacity: 0; transform: translateX(.65rem); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .booking-guide-page .area-item,
+  #guide-dialog .guide-choice {
+    transition: none;
+  }
+}

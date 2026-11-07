@@ -118,25 +118,34 @@
 
     let guideController=null,requestTicket=0;
     function guideContext(){return {$,$$,escapeHTML,arrow,areas:window.KanseiAreas||{},prepareLinks,listen,guide,content,openDialog};}
-    function startReady(opener,area,screen,pattern){
+    function startReady(opener,area,screen,pattern,intent){
       if(!guideController)guideController=window.KanseiGuide(guideContext());
-      guideController.start(opener,area,screen,pattern);
+      guideController.start(opener,area,screen,pattern,intent);
     }
-    function requestGuide(opener,area=null,screen=null,pattern=null){
-      if(window.KanseiGuide && window.KanseiAreas){startReady(opener,area,screen,pattern);return;}
+    function requestGuide(opener,area=null,screen=null,pattern=null,intent=null){
+      const guideStyle='/assets/booking-guide.20261107.css';
+      if(!$('link[href="'+guideStyle+'"]')){
+        const style=document.createElement('link');style.rel='stylesheet';style.href=guideStyle;document.head.append(style);
+      }
+      if(window.KanseiGuide && window.KanseiAreas && window.KanseiGuideRoutes){startReady(opener,area,screen,pattern,intent);return;}
       const ticket=++requestTicket;
       content.innerHTML='<h2 id="guide-title" tabindex="-1">Bokningshjälp</h2><p class="guide-loading" role="status">Öppnar guiden…</p><p class="guide-small">Du kan också läsa om besöken eller boka direkt utan guiden.</p><div class="guide-error-links"><a class="text-link" href="/boka/">Se besök och priser '+arrow+'</a><a class="text-link" href="'+booking+'" target="_blank" rel="noopener noreferrer">Öppna Bokadirekt '+arrow+'</a></div>';
       openDialog(guide,opener);$('#guide-title',content)?.focus({preventScroll:true});
-      Promise.all([loadScript(featureUrls.areaSrc,'KanseiAreas'),loadScript(featureUrls.guideSrc,'KanseiGuide')]).then(()=>{
+      Promise.all([loadScript(featureUrls.areaSrc,'KanseiAreas'),loadScript(featureUrls.guideSrc,'KanseiGuide'),loadScript('/assets/guide-routes.20261107.js','KanseiGuideRoutes')]).then(()=>{
         if(abort.signal.aborted || !guide.open || ticket!==requestTicket)return;
-        startReady(opener,area,screen,pattern);
+        startReady(opener,area,screen,pattern,intent);
       }).catch(()=>{
         if(abort.signal.aborted || !guide.open || ticket!==requestTicket)return;
         const loading=$('.guide-loading',content);if(loading)loading.textContent='Guiden kunde inte öppnas. Du kan fortfarande välja besök och boka via länkarna nedan.';
       });
     }
+    if(guide && currentRoute==='/hjalp-mig-boka/'){
+      const entry={'#ultraljud':'investigate','#injektioner':'injection'}[location.hash];
+      const entryLink=entry && $('[data-guide-intent="'+entry+'"]');
+      if(entryLink)requestGuide(entryLink,null,null,null,entry);
+    }
     $$('[data-area]').forEach(b=>listen(b,'click',e=>{e.preventDefault();requestGuide(b,b.dataset.area,null,b.dataset.initialPattern||null);}));
-    $$('[data-start-guide]').forEach(b=>listen(b,'click',e=>{e.preventDefault();requestGuide(b);}));
+    $$('[data-start-guide]').forEach(b=>listen(b,'click',e=>{e.preventDefault();requestGuide(b,null,null,null,b.dataset.guideIntent||null);}));
     $$('[data-services]').forEach(b=>listen(b,'click',e=>{e.preventDefault();requestGuide(b,null,'services');}));
     $$('[data-care]').forEach(b=>listen(b,'click',e=>{e.preventDefault();requestGuide(b,null,'care');}));
 
@@ -175,10 +184,10 @@
       panel.classList.remove('changed');void panel.offsetWidth;panel.classList.add('changed');if(focus)tabs[index].focus({preventScroll:true});
     }
     tabs.forEach((t,i)=>{listen(t,'click',()=>selectMethod(i));listen(t,'keydown',event=>{let n=null;if(event.key==='ArrowRight')n=(i+1)%tabs.length;if(event.key==='ArrowLeft')n=(i+tabs.length-1)%tabs.length;if(event.key==='Home')n=0;if(event.key==='End')n=tabs.length-1;if(n!==null){event.preventDefault();selectMethod(n,true);}});});
-    const visual=$('.finder-visual'),hoverLabel=$('#finder-hover-label');
+    const visual=$('.finder-visual'),hoverLabel=$('#finder-hover-label'),defaultFinderLabel=hoverLabel?.innerHTML;
     const setHover=k=>{if(visual && hoverLabel){visual.classList.add('is-active');hoverLabel.textContent=$('[data-area="'+k+'"]>span:nth-child(2)')?.textContent || 'Vi ser hela dig.';}};
-    const resetHover=()=>{if(visual && hoverLabel){visual.classList.remove('is-active');hoverLabel.innerHTML='Vi ser<br>hela dig.';}};
-    $$('.area-item').forEach(b=>{listen(b,'pointerenter',()=>setHover(b.dataset.area));listen(b,'focus',()=>setHover(b.dataset.area));listen(b,'pointerleave',()=>{if(document.activeElement!==b)resetHover();});listen(b,'blur',resetHover);});
+    const resetHover=()=>{if(visual && hoverLabel){visual.classList.remove('is-active');hoverLabel.innerHTML=defaultFinderLabel;}};
+    $$('.area-item[data-area]').forEach(b=>{listen(b,'pointerenter',()=>setHover(b.dataset.area));listen(b,'focus',()=>setHover(b.dataset.area));listen(b,'pointerleave',()=>{if(document.activeElement!==b)resetHover();});listen(b,'blur',resetHover);});
 
     $$('[data-service-filter]').forEach(b=>listen(b,'click',()=>{
       $$('[data-service-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));

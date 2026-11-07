@@ -79,6 +79,18 @@ window.KanseiAreas = Object.freeze({
       ['injury', 'Knät har låst sig eller nyligen skadats', 'Till exempel efter en vridning.', null, true]
     ]
   },
+  lowerLeg: {
+    label: 'Hälsena & underben', question: 'Vad känner du i underbenet?',
+    service: 'Klinisk bedömning', page: '/naprapati/',
+    focus: 'Vi går igenom var besvären sitter och undersöker hur gång, rörelse och belastning påverkar dem.',
+    imaging: 'Ultraljud kan komplettera en riktad undersökning av hälsenan eller andra mjukdelar. Vilken undersökning som passar beror på frågeställningen.',
+    patterns: [
+      ['achilles', 'Ont eller stelt vid hälsenan', 'Till exempel på morgonen eller vid träning.', '/blogg/halsenesmarta-vila-racker-inte/'],
+      ['calf', 'Återkommande besvär i vaden', 'I samband med aktivitet eller belastning.', null],
+      ['shin', 'Ont längs underbenet', 'Till exempel vid löpning eller hopp.', null],
+      ['injury', 'Ett plötsligt knäpp eller en ny skada', 'Till exempel om du har svårt att belasta eller skjuta ifrån.', null, true]
+    ]
+  },
   foot: {
     label: 'Fot & fotled', question: 'Vad känner du i fot eller fotled?',
     service: 'Klinisk bedömning', page: '/naprapati/',

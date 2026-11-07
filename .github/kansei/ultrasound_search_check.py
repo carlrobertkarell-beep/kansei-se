@@ -18,7 +18,8 @@ def check_search_paths(page, path: str, output: Path, label: str):
         if path != '/ultraljud/axel/':
             booking = page.locator('#boka-ultraljud')
             assert booking.locator('a[data-measure="booking_click"]').get_attribute('href') == ULTRASOUND
-            assert '1 290 kr' in booking.inner_text() and '45 minuter' in booking.inner_text()
+            booking_copy = booking.inner_text()
+            assert '1 290 kr' in booking_copy and 'genomgång av fynden' in booking_copy
             booking.screenshot(path=str(output / f'search-booking-{path.strip("/").replace("/", "-")}-{label}.png'))
         if path in tuple('/ultraljud/' + key + '/' for key in ('overarm', 'underarm', 'lar-muskulatur', 'underben')):
             faq = page.locator('#faq details').first

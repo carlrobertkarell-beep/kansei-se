@@ -2,12 +2,12 @@
   "ultraljud/": {
     "role": "examination-hub",
     "title": "Ultraljud av muskler och leder i Stockholm, 1 290 kr | Kansei",
-    "description": "Boka diagnostiskt ultraljud av knä, axel, höft, senor och muskler vid Odenplan i Stockholm. Klinisk bedömning ingår. 1 290 kr, 45 min, utan remiss."
+    "description": "Boka diagnostiskt ultraljud av knä, axel, höft, senor och muskler vid Odenplan i Stockholm. Klinisk bedömning ingår. 1 290 kr utan remiss."
   },
   "ultraljud/axel/": {
     "role": "regional-examination",
     "title": "Ultraljud av axel i Stockholm utan remiss, 1 290 kr | Kansei",
-    "description": "Ont när du lyfter armen eller ligger på axeln? Boka axelultraljud vid Odenplan i Stockholm. Klinisk bedömning och genomgång av fynd. 1 290 kr, 45 min."
+    "description": "Ont när du lyfter armen eller ligger på axeln? Boka axelultraljud vid Odenplan i Stockholm. Klinisk bedömning och genomgång av fynd. 1 290 kr."
   },
   "ultraljud/kna/": {
     "role": "regional-examination",
@@ -17,42 +17,42 @@
   "ultraljud/hoft-ljumske/": {
     "role": "regional-examination",
     "title": "Ultraljud höft och ljumske Stockholm | Kansei",
-    "description": "Ont på höftens utsida eller i ljumsken? Boka ultraljud av höft och ljumske vid Odenplan i Stockholm. Klinisk bedömning ingår. 1 290 kr, 45 min."
+    "description": "Ont på höftens utsida eller i ljumsken? Boka ultraljud av höft och ljumske vid Odenplan i Stockholm. Klinisk bedömning ingår. 1 290 kr."
   },
   "ultraljud/armbage/": {
     "role": "regional-examination",
     "title": "Ultraljud av armbåge i Stockholm utan remiss | Kansei",
-    "description": "Ont på armbågens utsida, insida eller vid senfästet? Boka ultraljud av armbågen i Stockholm. Bedömning och genomgång av fynd. 1 290 kr, 45 min."
+    "description": "Ont på armbågens utsida, insida eller vid senfästet? Boka ultraljud av armbågen i Stockholm. Bedömning och genomgång av fynd. 1 290 kr."
   },
   "ultraljud/hand-handled/": {
     "role": "regional-examination",
     "title": "Ultraljud hand och handled Stockholm | Kansei",
-    "description": "Smärta vid tummen, svullnad eller knöl i handleden? Boka ultraljud av hand och handled vid Odenplan i Stockholm. 1 290 kr, 45 min, utan remiss."
+    "description": "Smärta vid tummen, svullnad eller knöl i handleden? Boka ultraljud av hand och handled vid Odenplan i Stockholm. 1 290 kr utan remiss."
   },
   "ultraljud/fot-fotled/": {
     "role": "regional-examination",
     "title": "Ultraljud fot och fotled Stockholm | Kansei",
-    "description": "Ont under hälen, i hälsenan eller efter en stukning? Boka ultraljud av fot och fotled vid Odenplan i Stockholm. 1 290 kr, 45 min, utan remiss."
+    "description": "Ont under hälen, i hälsenan eller efter en stukning? Boka ultraljud av fot och fotled vid Odenplan i Stockholm. 1 290 kr utan remiss."
   },
   "ultraljud/lar-muskulatur/": {
     "role": "regional-examination",
     "title": "Ultraljud av lårets muskler och senor i Stockholm | Kansei",
-    "description": "Smärta i lårets fram- eller baksida efter träning eller skada? Boka riktat ultraljud av lårmuskler i Stockholm. 1 290 kr, 45 min, utan remiss."
+    "description": "Smärta i lårets fram- eller baksida efter träning eller skada? Boka riktat ultraljud av lårmuskler i Stockholm. 1 290 kr utan remiss."
   },
   "ultraljud/overarm/": {
     "role": "regional-examination",
     "title": "Ultraljud av överarm i Stockholm utan remiss | Kansei",
-    "description": "Ont i överarmen eller misstänkt bristning i biceps eller triceps? Boka riktat ultraljud vid Odenplan i Stockholm. 1 290 kr, 45 min, utan remiss."
+    "description": "Ont i överarmen eller misstänkt bristning i biceps eller triceps? Boka riktat ultraljud vid Odenplan i Stockholm. 1 290 kr utan remiss."
   },
   "ultraljud/underarm/": {
     "role": "regional-examination",
     "title": "Ultraljud av underarm i Stockholm utan remiss | Kansei",
-    "description": "Smärta i underarmen vid grepp, lyft eller träning? Boka riktat ultraljud av muskler och senor i Stockholm. 1 290 kr, 45 min, utan remiss."
+    "description": "Smärta i underarmen vid grepp, lyft eller träning? Boka riktat ultraljud av muskler och senor i Stockholm. 1 290 kr utan remiss."
   },
   "ultraljud/underben/": {
     "role": "regional-examination",
     "title": "Ultraljud vad och underben Stockholm | Kansei",
-    "description": "Kvarstående vadsmärta efter en muskelskada? Boka muskuloskeletalt ultraljud av vad och underben vid Odenplan i Stockholm. 1 290 kr, 45 min."
+    "description": "Kvarstående vadsmärta efter en muskelskada? Boka muskuloskeletalt ultraljud av vad och underben vid Odenplan i Stockholm. 1 290 kr."
   },
   "ultraljud/bakercysta/": {
     "role": "focused-examination",
@@ -89,7 +89,7 @@
   "ultraljud/halsena/": {
     "role": "focused-examination",
     "title": "Ultraljud av hälsena i Stockholm utan remiss | Kansei",
-    "description": "Ont eller stelt i hälsenan? Boka ultraljud av akillessenan vid Odenplan i Stockholm. Klinisk undersökning och råd om nästa steg. 1 290 kr, 45 min.",
+    "description": "Ont eller stelt i hälsenan? Boka ultraljud av akillessenan vid Odenplan i Stockholm. Klinisk undersökning och råd om nästa steg. 1 290 kr.",
     "heading": "Ultraljud av hälsenan i Stockholm"
   },
   "ultraljud/karpaltunnel/": {
@@ -117,13 +117,13 @@
   "ultraljud/quadricepssena/": {
     "role": "focused-examination",
     "title": "Ultraljud quadricepssena Stockholm | Kansei",
-    "description": "Ont ovanför knäskålen vid trappor eller träning? Ultraljud av quadricepssenan med klinisk bedömning vid Odenplan i Stockholm. 1 290 kr, 45 min.",
+    "description": "Ont ovanför knäskålen vid trappor eller träning? Ultraljud av quadricepssenan med klinisk bedömning vid Odenplan i Stockholm. 1 290 kr.",
     "heading": "Ultraljud av quadricepssenan ovanför knäskålen"
   },
   "ultraljud/rotatorkuff/": {
     "role": "focused-examination",
     "title": "Ultraljud av axelns rotatorkuffsenor i Stockholm | Kansei",
-    "description": "Svaghet eller smärta när du lyfter armen? Läs vad ultraljud av rotatorkuffen kan visa vid misstänkt senskada. Boka i Stockholm. 1 290 kr, 45 min."
+    "description": "Svaghet eller smärta när du lyfter armen? Läs vad ultraljud av rotatorkuffen kan visa vid misstänkt senskada. Boka i Stockholm. 1 290 kr."
   },
   "ultraljud/svullet-kna/": {
     "role": "focused-examination",
@@ -133,7 +133,7 @@
   "ultraljud/tennisarmbage/": {
     "role": "focused-examination",
     "title": "Ultraljud tennisarmbåge Stockholm | Kansei",
-    "description": "Ont på utsidan av armbågen när du greppar eller lyfter? Boka bedömning med ultraljud vid misstänkt tennisarmbåge i Stockholm. 1 290 kr, 45 min."
+    "description": "Ont på utsidan av armbågen när du greppar eller lyfter? Boka bedömning med ultraljud vid misstänkt tennisarmbåge i Stockholm. 1 290 kr."
   },
   "ultraljud/ulnarisnerv/": {
     "role": "focused-examination",

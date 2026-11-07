@@ -228,19 +228,19 @@ REGION_FAQS = {
  'underarm': [
     ('Vad kan ultraljud visa vid ont i underarmen?', 'Tillgängliga muskler, senor och övergångar mellan muskel och sena kan bedömas vid en riktad fråga. Smärtans läge, rörelser som provocerar och den kliniska undersökningen avgör vilka strukturer som är relevanta.'),
     ('Kan besvären komma från armbågen eller handleden?', 'Ja. Underarmens muskler fortsätter i senor mot armbåge och handled. Undersökningen kan därför behöva riktas mot ett senfäste eller en sena utanför själva muskelbuken.'),
-    ('Vad kostar ultraljud av underarmen i Stockholm?', 'Hos Kansei vid Odenplan kostar besöket 1 290 kr och tar 45 minuter. Klinisk undersökning, riktat ultraljud, genomgång av fynden och rekommendation om nästa steg ingår. Ingen remiss behövs.')],
+    ('Vad kostar ultraljud av underarmen i Stockholm?', 'Hos Kansei vid Odenplan kostar besöket 1 290 kr. Klinisk undersökning, riktat ultraljud, genomgång av fynden och rekommendation om nästa steg ingår. Ingen remiss behövs.')],
  'overarm': [
     ('Kan en bristning i biceps eller triceps ses med ultraljud?', 'Många tillgängliga muskelskador, vätskeansamlingar och skador i övergången mellan muskel och sena kan bedömas. Djupa eller omfattande skador kan behöva annan bilddiagnostik. Bilderna vägs mot styrka och funktion.'),
     ('Är ultraljud av överarmen samma undersökning som av axeln?', 'Frågeställningen skiljer sig. I överarmen undersöks främst muskelbukar och övergångar till sena. Bicepssenans övre del bedöms vid axeln och det nedre fästet vid armbågen.'),
-    ('Kan jag boka ultraljud av överarmen utan remiss?', 'Ja. Du bokar direkt hos Kansei vid Odenplan i Stockholm. Besöket tar 45 minuter och kostar 1 290 kr. Klinisk undersökning och genomgång av fynden ingår.')],
+    ('Kan jag boka ultraljud av överarmen utan remiss?', 'Ja. Du bokar direkt hos Kansei vid Odenplan i Stockholm. Besöket kostar 1 290 kr. Klinisk undersökning och genomgång av fynden ingår.')],
  'lar-muskulatur': [
     ('Kan ultraljud användas vid en muskelbristning i låret?', 'Ja, vid en riktad fråga om en tillgänglig muskelskada kan ultraljud ge information om muskelfibrer, vätska och blödning. Djupa eller omfattande skador kan kräva MR eller annan medicinsk bedömning.'),
     ('Avgör ultraljudet när jag kan börja springa igen?', 'Nej. Bildfynd kan bidra med information, men styrka, funktion, belastningstolerans och hur besvären utvecklas behöver också bedömas innan återgång till träning.'),
-    ('Vad ingår i ultraljud av låret hos Kansei?', 'Besöket omfattar klinisk undersökning, riktat ultraljud, genomgång av fynden och rekommendation om nästa steg. Det tar 45 minuter och kostar 1 290 kr. Du bokar vid Odenplan i Stockholm utan remiss.')],
+    ('Vad ingår i ultraljud av låret hos Kansei?', 'Besöket omfattar klinisk undersökning, riktat ultraljud, genomgång av fynden och rekommendation om nästa steg. Det kostar 1 290 kr. Du bokar vid Odenplan i Stockholm utan remiss.')],
  'underben': [
     ('Kan ultraljud visa en bristning i vadmuskeln?', 'Tillgängliga delar av gastrocnemius, soleus och övergången mellan muskel och sena kan undersökas vid en riktad fråga. Skadans djup och omfattning kan begränsa vad som går att bedöma.'),
     ('Är detta en undersökning för blodpropp i vaden?', 'Nej. Kanseis muskuloskeletala ultraljud ersätter inte kärlultraljud eller medicinsk utredning vid misstänkt blodpropp. Nytillkommen ensidig vadsvullnad eller andra symtom som väcker sådan misstanke ska bedömas av sjukvården.'),
-    ('Vad kostar ultraljud av vad och underben?', 'Hos Kansei vid Odenplan i Stockholm kostar besöket 1 290 kr och tar 45 minuter. Klinisk undersökning, riktat ultraljud, genomgång av fynden och råd om nästa steg ingår. Ingen remiss behövs.')]
+    ('Vad kostar ultraljud av vad och underben?', 'Hos Kansei vid Odenplan i Stockholm kostar besöket 1 290 kr. Klinisk undersökning, riktat ultraljud, genomgång av fynden och råd om nästa steg ingår. Ingen remiss behövs.')]
 }
 
 
@@ -268,7 +268,7 @@ def region_page(key: str):
         blocks += ''.join(f'<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>' for q, a in REGION_FAQS[key])
         blocks += '</section>'
     if key != 'axel' and 'id="boka-ultraljud"' not in value:
-        blocks += f'<section class="section us-booking-next" id="boka-ultraljud" data-reading-section data-reading-title="Pris och bokning"><p class="eyebrow">KANSEI · ODENPLAN, STOCKHOLM</p><h2>Få dina besvär i {area} undersökta.</h2><p>Klinisk undersökning, riktat ultraljud och genomgång av fynden vid samma besök. Du får råd om nästa steg och behöver ingen remiss.</p><p><strong>1 290 kr · 45 minuter</strong><br>Upplandsgatan 26, Odenplan. På Bokadirekt väljer du ”Ultraljud av rörelseapparaten”.</p><div class="us-booking-actions"><a class="button button-dark" href="{BOOK}" target="_blank" rel="noopener noreferrer" data-measure="booking_click">Boka ultraljud av {area}</a><a class="text-link" href="/hjalp-mig-boka/">Hjälp mig välja besök</a></div></section>'
+        blocks += f'<section class="section us-booking-next" id="boka-ultraljud" data-reading-section data-reading-title="Pris och bokning"><p class="eyebrow">KANSEI · ODENPLAN, STOCKHOLM</p><h2>Få dina besvär i {area} undersökta.</h2><p>Klinisk undersökning, riktat ultraljud och genomgång av fynden vid samma besök. Du får råd om nästa steg och behöver ingen remiss.</p><p><strong>1 290 kr</strong><br>Upplandsgatan 26, Odenplan. På Bokadirekt väljer du ”Ultraljud av rörelseapparaten”.</p><div class="us-booking-actions"><a class="button button-dark" href="{BOOK}" target="_blank" rel="noopener noreferrer" data-measure="booking_click">Boka ultraljud av {area}</a><a class="text-link" href="/hjalp-mig-boka/">Hjälp mig välja besök</a></div></section>'
     if blocks:
         value, count = re.subn(r'(?=<section\b[^>]*\bid="fler-omraden")', lambda m: blocks, value, count=1)
         assert count == 1, path
@@ -409,7 +409,7 @@ def hub():
     value = (ROOT / path).read_text()
     value = value.replace('href="/ultraljud/#boka-cta">Boka ultraljud', f'href="{BOOK}" target="_blank" rel="noopener noreferrer" data-measure="booking_click">Boka ultraljud', 1)
     if 'class="atlas-booking-note"' not in value:
-        value = value.replace('<ul class="atlas-feature-list">', '<p class="atlas-booking-note">Ultraljud vid Odenplan i Stockholm · 1 290 kr, 45 minuter · Utan remiss.</p><ul class="atlas-feature-list">', 1)
+        value = value.replace('<ul class="atlas-feature-list">', '<p class="atlas-booking-note">Ultraljud vid Odenplan i Stockholm · 1 290 kr · Utan remiss.</p><ul class="atlas-feature-list">', 1)
     save(path, add_css(value))
 
 

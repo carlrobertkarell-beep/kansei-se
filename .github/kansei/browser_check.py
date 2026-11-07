@@ -303,11 +303,24 @@ def check(base, output):
                             raise AssertionError('Runner knee examples missing')
                         if path==RUNNER_PATH and actual_keys!=expected_keys:
                             raise AssertionError('Unexpected runner knee example')
-                        page.wait_for_function("[...document.querySelectorAll('.knee-anatomy img')].every(i=>i.complete&&i.naturalWidth>0)")
+                        if path=="/ultraljud/kna/":
+                            hidden_images=viewer.locator('.knee-panel[hidden] img')
+                            if not hidden_images.count() or not hidden_images.evaluate_all(
+                                "(images) => images.every(image => image.loading === 'lazy')"
+                            ):
+                                raise AssertionError('Inactive knee images must use deferred loading')
+                            hidden_anatomy=viewer.locator('.knee-panel[hidden] .knee-anatomy img')
+                            if not hidden_anatomy.evaluate_all("(images) => images.every(image => !image.naturalWidth)"):
+                                raise AssertionError('Inactive anatomy layers loaded before their tabs were selected')
                         for key in ('itb-bursa','lateral-fluid','posterior-meniscus'):
                             viewer.locator('#tab-'+key).click()
                             picture=viewer.locator('#view-'+key+' .knee-picture')
                             picture.scroll_into_view_if_needed()
+                            page.wait_for_function(
+                                """key => [...document.querySelectorAll('#view-'+key+' .knee-picture img')]
+                                    .every(image => image.complete && image.naturalWidth > 0)""",
+                                arg=key,
+                            )
                             if anatomy.get_attribute('aria-checked')=='true': anatomy.click()
                             if findings.get_attribute('aria-checked')=='true': findings.click()
                             page.screenshot(path=str(output/f'{key}-{label}-original.png'))

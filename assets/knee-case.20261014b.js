@@ -59,7 +59,7 @@
  // Wait for paintable anatomy assets. A missing layer
  // leaves the ultrasound image visible and does not break the remaining examples.
  panels.forEach((panel,index)=>{
-  const image=panel.querySelector('.knee-anatomy img');image.loading='eager';
+  const image=panel.querySelector('.knee-anatomy img');
   const decoded=new Promise((resolve,reject)=>{
    if(image.complete){image.naturalWidth?resolve():reject(new Error('Anatomy image unavailable'));return;}
    const cleanup=()=>{image.removeEventListener('load',onload);image.removeEventListener('error',onerror)};

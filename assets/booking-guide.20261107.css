@@ -8,7 +8,7 @@
   --booking-line: #d7e1d7;
   --booking-tint: #edf3eb;
   --booking-accent: #285343;
-  --booking-serif: Georgia, 'Times New Roman', serif;
+  --booking-serif: var(--clinic-display, Georgia, 'Times New Roman', serif);
   color: var(--booking-ink);
   background: var(--booking-paper);
 }

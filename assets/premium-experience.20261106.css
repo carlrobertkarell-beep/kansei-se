@@ -97,3 +97,110 @@
   .clinic-site { background: #fff; }
   .clinic-site .site-header { box-shadow: none; backdrop-filter: none; }
 }
+
+/* Shared type and treatment actions across the public clinic pages. */
+body.clinic-site {
+  --clinic-display: Georgia, 'Times New Roman', serif;
+  --clinic-title: #193b31;
+  --clinic-primary: #284f3e;
+  --clinic-surface: #f8f6f0;
+  --clinic-tint: #edf3eb;
+  --clinic-rule: #d4dfd3;
+  --clinic-control-radius: .55rem;
+}
+
+body.clinic-site #main h1,
+.clinic-site .footer-cta h2 {
+  font-family: var(--clinic-display);
+  font-weight: 400;
+}
+
+body.clinic-site:not(.care-home) #main
+  :where(.us-hero,.ha-hero,.us-area-hero,.editorial-top,.hub-head,.knowledge-top,.atlas-hero,.condition-hero,.page-top) h1 {
+  color: var(--clinic-title);
+  letter-spacing: -.037em;
+}
+
+body.clinic-site .site-header .header-book {
+  color: var(--clinic-primary);
+  background: transparent;
+  border: 1px solid #a8baad;
+  box-shadow: none;
+}
+
+body.clinic-site .site-header .header-book:hover {
+  color: var(--clinic-title);
+  background: var(--clinic-tint);
+  border-color: #769583;
+}
+
+.clinic-site #main :where(.landing-hero,.ha-hero) {
+  background-color: var(--clinic-surface);
+  background-image: none;
+}
+
+.clinic-site #main :where(.us-hero,.ha-hero,.us-area-hero,.editorial-top,.hub-head,.knowledge-top,.atlas-hero,.condition-hero,.page-top)
+  :is(.us-lead,.intro,.hub-lead,.page-lead,.atlas-lead,.lead) {
+  max-inline-size: 59ch;
+  line-height: 1.65;
+}
+
+.clinic-site #main :where(.us-hero,.ha-hero,.us-area-hero,.editorial-top,.atlas-hero,.condition-hero,.page-top)
+  :is(a.button-dark,a.btn-teal) {
+  min-height: 48px;
+  border-color: var(--clinic-primary);
+  border-radius: var(--clinic-control-radius);
+  color: #fff;
+  background-color: var(--clinic-primary);
+}
+
+.clinic-site #main :where(.us-hero,.ha-hero,.us-area-hero,.editorial-top,.atlas-hero,.condition-hero,.page-top)
+  :is(a.button-dark,a.btn-teal):hover {
+  border-color: var(--clinic-title);
+  background-color: var(--clinic-title);
+}
+
+.clinic-site #main :where(.editorial-top) .tjfakta {
+  border-color: var(--clinic-rule);
+  border-radius: .75rem;
+  background: #fffefa;
+}
+
+.clinic-site #main :where(.editorial-top) .tf-fot {
+  border-color: var(--clinic-rule);
+}
+
+.clinic-site #main :where(.editorial-body,.article-body,.us-area-article) h2,
+.clinic-site #main :where(.us-section-heading,.atlas-section-heading,.knowledge-top) h2 {
+  font-family: var(--clinic-display);
+  font-weight: 400;
+  letter-spacing: -.028em;
+}
+
+.clinic-site.atlas-page #main .atlas-entry {
+  border-color: var(--clinic-rule);
+}
+
+.clinic-site.atlas-page #main .atlas-entry h4 {
+  color: var(--clinic-title);
+  line-height: 1.35;
+}
+
+@media (max-width: 760px) {
+  .clinic-site.atlas-page #main .atlas-entry {
+    padding-block: 1rem;
+    align-items: start;
+  }
+
+  .clinic-site.atlas-page #main .atlas-entry p {
+    font-size: .875rem;
+  }
+
+  .clinic-site.atlas-page #main .atlas-entry-copy > small {
+    font-size: .6875rem;
+  }
+
+  .clinic-site #main :where(.editorial-top) .tjfakta {
+    padding: clamp(1rem, 5vw, 1.4rem);
+  }
+}

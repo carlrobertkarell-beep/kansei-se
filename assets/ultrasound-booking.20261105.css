@@ -29,7 +29,7 @@
 .kansei-care .ultrasound-booking-support > p { margin: 0; }
 .kansei-care .ultrasound-booking-support a { color: var(--teal); text-underline-offset: 4px; }
 .kansei-care .ultrasound-booking-support > p > a { display: inline-flex; align-items: center; min-height: 44px; }
-.kansei-care .ultrasound-booking-report > summary { display: list-item; min-height: 44px; padding-block: 10px; cursor: pointer; color: var(--teal); font-weight: 500; }
+.kansei-care .ultrasound-booking-report > summary { min-height: 44px; padding-block: 10px; cursor: pointer; color: var(--teal); font-weight: 500; }
 .kansei-care .ultrasound-booking-report p { margin: 0 0 12px; font-size: 13px; }
 .kansei-care .ultrasound-booking-section :is(a,summary):focus-visible,
 .kansei-care .ultrasound-contents :is(a,summary):focus-visible { outline: 3px solid #587f45; outline-offset: 4px; }

@@ -44,7 +44,7 @@
 .hyaluron-page .ha-main .ha-small{font-size:14px;line-height:1.7;margin-top:20px}
 .hyaluron-page .ha-faq{max-width:920px}
 .hyaluron-page .ha-faq details,.hyaluron-page .ha-disclosure{border-top:1px solid var(--line);margin:0;border-radius:0;background:transparent;padding:0;scroll-margin-top:100px}
-.hyaluron-page .ha-faq summary,.hyaluron-page .ha-disclosure summary{font-size:18px;line-height:1.5;padding:22px 40px 22px 0;cursor:pointer;font-weight:500}
+.hyaluron-page .ha-faq summary,.hyaluron-page .ha-disclosure summary{font-size:18px;line-height:1.5;padding:22px 0;cursor:pointer;font-weight:500}
 .hyaluron-page .ha-faq details p,.hyaluron-page .ha-disclosure>div{font-size:16px;max-width:80ch;padding-bottom:14px}
 .hyaluron-page .ha-disclosure>div p{margin-bottom:16px}
 .hyaluron-page #fordjupning{padding-top:0}

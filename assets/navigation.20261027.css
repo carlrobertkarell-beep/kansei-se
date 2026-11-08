@@ -14,6 +14,9 @@ a.navigation-card.rel-row>span:first-child{text-decoration:underline;text-underl
 :where(details>summary)::-webkit-details-marker{display:none}
 :where(details:not(.reading-position)>summary)::after{content:'+';display:inline-block;margin-left:.75em;font-weight:400}
 :where(details[open]:not(.reading-position)>summary)::after{content:'−'}
+/* Keep the disclosure marker in its own column when the label wraps. */
+:where(.clinic-site details:not(.reading-position)>summary){display:flex;align-items:center;gap:.75em}
+:where(.clinic-site details:not(.reading-position)>summary)::after{flex-shrink:0;margin-inline-start:auto}
 .clinic-site .reading-position-action span{display:inline!important}
 .clinic-site .reading-position-action b{display:none}
 .clinic-site .reading-position-action::after{content:'+';margin-left:.5em;font-size:16px}

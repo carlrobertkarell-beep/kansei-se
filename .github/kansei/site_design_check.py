@@ -35,4 +35,28 @@ def check_site_design(page, path):
         booking = styles['booking']
         if not booking or min(booking.values()) < 44:
             raise AssertionError(f"Primary booking action is smaller than 44 × 44 px: {booking}")
+    disclosure_selectors = {
+        '/hyaluronsyra/': '.ha-faq summary, #fordjupning summary',
+        '/ultraljud/': '.ultrasound-booking-report > summary',
+    }
+    if path in disclosure_selectors:
+        markers = page.locator(disclosure_selectors[path]).evaluate_all("""summaries => summaries.map(summary => {
+            const marker = getComputedStyle(summary, '::after');
+            const rect = summary.getBoundingClientRect();
+            const text = document.createRange();
+            text.selectNodeContents(summary);
+            const textEnd = Math.max(...Array.from(text.getClientRects(), line => line.right));
+            return {
+                display: getComputedStyle(summary).display,
+                marker: marker.content,
+                markerWidth: parseFloat(marker.width),
+                freeSpace: rect.right - textEnd,
+            };
+        })""")
+        if not markers or any(
+            item['display'] != 'flex' or item['marker'] != '"+"'
+            or not 0 < item['markerWidth'] <= item['freeSpace']
+            for item in markers
+        ):
+            raise AssertionError(f"Disclosure label overlaps the right-hand marker: {markers}")
     return styles

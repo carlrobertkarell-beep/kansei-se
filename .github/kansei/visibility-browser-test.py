@@ -97,22 +97,21 @@ with sync_playwright() as pw:
     assert len(events(p,'booking_hyaluron_click'))==1
     assert events(p,'booking_click')[0][2]['placement']=='header'
     assert events(p,'booking_options_open')==[]
-    p.goto(ORIGIN+'/hyaluronsyra/kna/')
+    p.goto(ORIGIN+'/hyaluronsyra/kna/#boka')
     p.wait_for_function("window.KanseiMeasure===true")
     assert p.locator('.header-book').get_attribute('href')==hyaluron_booking
-    p.locator('main a[href="#boka"]').click()
-    p.wait_for_url(ORIGIN+'/hyaluronsyra/kna/#boka')
+    assert p.locator('#boka .treatment-book').is_visible()
     assert events(p,'booking_click')==[]
-    assert len(events(p,'booking_options_open'))==1
+    assert events(p,'booking_options_open')==[]
     # The view intentionally requires one second of continuous visibility.
     # Avoid Playwright's string-eval polling under the public page's strict CSP.
     p.wait_for_timeout(1400)
     assert len(events(p,'booking_options_view'))==1
-    p.locator('.ha-single-booking-prices a[href="#pris"]').click()
+    p.locator('#boka a[href="#pris"]').click()
     p.wait_for_url(ORIGIN+'/hyaluronsyra/kna/#pris')
-    assert len(events(p,'booking_options_open'))==2
+    assert len(events(p,'booking_options_open'))==1
     assert events(p,'booking_click')==[]
-    p.locator('.ha-choice a[data-measure="booking_click"]').first.click()
+    p.locator('#boka .treatment-book').click()
     assert len(events(p,'booking_click'))==1
     assert len(events(p,'booking_hyaluron_click'))==1
     assert events(p,'booking_click')[0][2]['placement']=='service_card'

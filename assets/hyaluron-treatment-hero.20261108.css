@@ -1,0 +1,139 @@
+/* Clinic footage, pricing and next steps on the two hyaluron entry pages. */
+.hyaluron-page #main .treatment-hero > .wrap {
+  padding-block: clamp(20px, 3.2vw, 40px) clamp(28px, 4.5vw, 58px);
+}
+
+.hyaluron-page #main .treatment-hero .crumbs {
+  margin-bottom: clamp(18px, 3vw, 34px);
+}
+
+.hyaluron-page .treatment-hero-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+  grid-template-areas: "copy visual" "offer visual" "provider visual";
+  gap: 18px clamp(32px, 5.5vw, 80px);
+}
+
+.hyaluron-page #main .treatment-hero h1 {
+  max-width: 19ch;
+  font-size: clamp(2.65rem, 4.3vw, 4.25rem);
+}
+
+.hyaluron-page #main .treatment-hero .treatment-kicker { margin-bottom: 8px; }
+
+.hyaluron-page .treatment-offer {
+  padding: 15px 19px 11px;
+  border: 1px solid #d4dfd3;
+  border-radius: 13px;
+  background: #edf2e9;
+  box-shadow: none;
+  color: #193b31;
+}
+
+.hyaluron-page .treatment-prices { margin-bottom: 12px; }
+.hyaluron-page .treatment-prices dt { color: #40564b; }
+.hyaluron-page .treatment-prices dd { font-size: clamp(1.65rem, 2.5vw, 2.25rem); }
+.hyaluron-page .treatment-prices > div + div { border-color: #c2d2c5; }
+
+.hyaluron-page #main .treatment-offer .treatment-book {
+  background: #234d3d;
+  color: #fff;
+}
+
+.hyaluron-page #main .treatment-offer .treatment-book:hover {
+  background: #193b31;
+  color: #fff;
+}
+
+.hyaluron-page #main .treatment-offer .treatment-book:focus-visible,
+.hyaluron-page #main .treatment-offer .treatment-offer-links a:focus-visible {
+  outline-color: #234d3d;
+}
+
+.hyaluron-page #main .treatment-offer .treatment-offer-links :is(p, a) { color: #40564b; }
+.hyaluron-page .treatment-offer-links { margin-top: 4px; }
+
+.hyaluron-hero-visual {
+  grid-area: visual;
+  min-width: 0;
+  margin: 0;
+}
+
+.hyaluron-hero-visual img,
+.hyaluron-hero-visual video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 13px;
+  background: #e6e7df;
+}
+
+.hyaluron-hero-visual video { background: #192720; }
+
+.hyaluron-hero-visual figcaption {
+  margin-top: 8px;
+  color: #40564b;
+  font-size: .8125rem;
+  line-height: 1.45;
+}
+
+.hyaluron-hero-visual .landing-hero-film-play {
+  inset: auto 10px 10px auto;
+}
+
+.hyaluron-page #main #leder,
+.hyaluron-page #main .hyaluron-visit-summary {
+  padding-block: clamp(24px, 4vw, 46px);
+}
+
+.hyaluron-page #main :is(#leder, .hyaluron-visit-summary) h2 {
+  margin-bottom: 14px;
+  font-family: var(--clinic-display);
+  font-weight: 400;
+  letter-spacing: -.025em;
+}
+
+.hyaluron-page .hyaluron-visit-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #d4dfd3;
+  list-style: none;
+}
+
+.hyaluron-visit-steps li {
+  padding: 14px 16px 0;
+  border-left: 1px solid #d4dfd3;
+}
+
+.hyaluron-visit-steps li:first-child { padding-left: 0; border-left: 0; }
+
+.hyaluron-page #main .hyaluron-visit-steps h3 { margin: 0 0 5px; font-size: 1rem; }
+.hyaluron-page #main .hyaluron-visit-steps p { margin: 0; font-size: .9375rem; line-height: 1.55; }
+
+@media (max-width: 760px) {
+  .hyaluron-page .treatment-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "copy" "visual" "offer" "provider";
+    gap: 13px;
+  }
+
+  .hyaluron-page #main .treatment-hero h1 { font-size: clamp(1.95rem, 8.7vw, 3.2rem); }
+  .hyaluron-page .treatment-offer { padding: 12px 14px 8px; }
+
+  .hyaluron-hero-visual :is(img, .landing-hero-film-poster img) {
+    aspect-ratio: 2.2;
+    object-position: 50% 15%;
+  }
+  .hyaluron-hero-visual figcaption { margin-top: 5px; font-size: .75rem; }
+
+  .hyaluron-page .hyaluron-visit-steps { grid-template-columns: minmax(0, 1fr); }
+  .hyaluron-visit-steps li,
+  .hyaluron-visit-steps li:first-child { padding: 10px 0; border: 0; border-bottom: 1px solid #d4dfd3; }
+}
+
+@media (max-width: 360px) {
+  .hyaluron-page .treatment-prices dd { font-size: 1.5rem; }
+}

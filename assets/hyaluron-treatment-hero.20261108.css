@@ -52,6 +52,20 @@
 .hyaluron-page #main .treatment-offer .treatment-offer-links :is(p, a) { color: #40564b; }
 .hyaluron-page .treatment-offer-links { margin-top: 4px; }
 
+.treatment-visit-cost {
+  padding-top: 9px;
+  border-top: 1px solid #c2d2c5;
+}
+
+.hyaluron-page #main .treatment-visit-cost p {
+  margin: 0;
+  color: #40564b;
+  font-size: .85rem;
+  line-height: 1.45;
+}
+
+.hyaluron-page #main .treatment-visit-cost p + p { margin-top: 6px; }
+
 .hyaluron-hero-visual {
   grid-area: visual;
   min-width: 0;
@@ -118,6 +132,10 @@
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: "copy" "visual" "offer" "provider";
     gap: 13px;
+  }
+
+  .hyaluron-page .treatment-hero-grid--booking-first {
+    grid-template-areas: "copy" "offer" "visual" "provider";
   }
 
   .hyaluron-page #main .treatment-hero h1 { font-size: clamp(1.95rem, 8.7vw, 3.2rem); }

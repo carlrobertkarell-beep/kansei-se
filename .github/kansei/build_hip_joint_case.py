@@ -96,7 +96,7 @@ def schema():
         {'@type':'Article','@id':URL+'#case','headline':'Hyaluroninjektion i höften med ultraljud','description':DESCRIPTION,'inLanguage':'sv','datePublished':'2026-10-21','dateModified':'2026-10-21','author':person,'mainEntityOfPage':{'@id':URL+'#webpage'},'image':[{'@id':URL+'#'+v['key']} for v in VIEWS]},
         {'@type':'BreadcrumbList','@id':URL+'#breadcrumb','itemListElement':[{'@type':'ListItem','position':i,'name':name,'item':url} for i,(name,url) in enumerate([('Kansei','https://www.kansei.se/'),('Ultraljud','https://www.kansei.se/ultraljud/'),('Höft och ljumske','https://www.kansei.se/ultraljud/hoft-ljumske/'),('Patientfall',URL)],1)]},
         {'@type':'Person',**person,'name':'Carl-Robert Kårell','jobTitle':'Legitimerad naprapat','url':'https://www.kansei.se/team/carl-robert-karell/'}]
-    graph += [{'@type':'ImageObject','@id':URL+'#'+v['key'],'contentUrl':'https://www.kansei.se'+image(v['key']),'caption':v['caption'],'creator':person,'width':1280,'height':960,'inLanguage':'sv','creditText':'Carl-Robert Kårell / Kansei'} for v in VIEWS]
+    graph += [{'@type':'ImageObject','@id':URL+'#'+v['key'],'contentUrl':'https://www.kansei.se'+image(v['key']),'caption':v['caption'],'creator':{'@type':'Person',**person,'name':'Carl-Robert Kårell'},'width':1280,'height':960,'inLanguage':'sv','creditText':'Carl-Robert Kårell / Kansei'} for v in VIEWS]
     return '<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False,separators=(',',':'))+'</script>'
 
 def build_page():

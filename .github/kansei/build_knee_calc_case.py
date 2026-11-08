@@ -86,7 +86,7 @@ def schema():
         {'@type':'Person',**person,'name':'Carl-Robert Kårell','jobTitle':'Legitimerad naprapat','url':'https://www.kansei.se/team/carl-robert-karell/'},
         {'@type':'FAQPage','@id':URL+'#faq','mainEntity':[{'@type':'Question','name':q,'acceptedAnswer':{'@type':'Answer','text':a}} for q,a in FAQ]},
     ]
-    graph += [{'@type':'ImageObject','@id':URL+'#'+v['key'],'contentUrl':'https://www.kansei.se'+original(v),'caption':v['caption'],'creator':person,'width':1280,'height':960,'inLanguage':'sv-SE','creditText':'Carl-Robert Kårell / Kansei'} for v in VIEWS]
+    graph += [{'@type':'ImageObject','@id':URL+'#'+v['key'],'contentUrl':'https://www.kansei.se'+original(v),'caption':v['caption'],'creator':{'@type':'Person',**person,'name':'Carl-Robert Kårell'},'width':1280,'height':960,'inLanguage':'sv-SE','creditText':'Carl-Robert Kårell / Kansei'} for v in VIEWS]
     return '<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False,separators=(',',':'))+'</script>'
 
 def build_page():

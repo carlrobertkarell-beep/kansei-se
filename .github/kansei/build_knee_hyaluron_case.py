@@ -57,7 +57,7 @@ def schema():
         {'@type':'BreadcrumbList','@id':URL+'#breadcrumb','itemListElement':[{'@type':'ListItem','position':i,'name':name,'item':url} for i,(name,url) in enumerate([('Kansei',ORIGIN+'/'),('Patientfall',ORIGIN+'/ultraljud/bilder/'),('Knäartros och ledbandsskada',URL)],1)]},
         {'@type':'VideoObject','@id':URL+'#video','url':URL,'mainEntityOfPage':{'@id':URL+'#webpage'},'name':'Ultraljud, anatomibilder och hyaluroninjektion vid långvarig knäsmärta','description':'Patientfall med broskförändringar och skada i det inre ledbandet. Originalultraljud och anatomiska illustrationer följs av en ultraljudsvägledd hyaluroninjektion med Sinovial.','thumbnailUrl':ORIGIN+ASSETS+'film-poster.jpg','contentUrl':ORIGIN+ASSETS+'knaartros-hyaluron.mp4','uploadDate':'2026-10-27','duration':'PT1M28S','inLanguage':'sv-SE','creator':AUTHOR},
     ]
-    graph += [{'@type':'ImageObject','@id':URL+'#bild-'+v['key'],'contentUrl':ORIGIN+ASSETS+v['key']+'.original.jpg','caption':v['caption'],'creator':AUTHOR,'width':1280,'height':960,'creditText':'Carl-Robert Kårell / Kansei'} for v in VIEWS]
+    graph += [{'@type':'ImageObject','@id':URL+'#bild-'+v['key'],'contentUrl':ORIGIN+ASSETS+v['key']+'.original.jpg','caption':v['caption'],'creator':{'@type':'Person',**AUTHOR,'name':'Carl-Robert Kårell'},'width':1280,'height':960,'creditText':'Carl-Robert Kårell / Kansei'} for v in VIEWS]
     return '<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False,separators=(',',':'))+'</script>'
 
 

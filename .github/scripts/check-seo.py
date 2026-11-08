@@ -147,11 +147,40 @@ def check_video_chapters(value: object, source: str) -> int:
     return count + sum(check_video_chapters(item, source) for item in value.values())
 
 
+def check_image_creators(value: object, source: str) -> int:
+    """Catch invalid ImageObject creator types reported by Search Console."""
+    if isinstance(value, list):
+        return sum(check_image_creators(item, source) for item in value)
+    if not isinstance(value, dict):
+        return 0
+    count = 0
+    types = value.get("@type", [])
+    if "ImageObject" in ([types] if isinstance(types, str) else types) and "creator" in value:
+        label = f"{source}: ImageObject {value.get('contentUrl', value.get('@id', ''))!r}"
+        creators = value["creator"]
+        if not isinstance(creators, list):
+            creators = [creators]
+        assert creators, f"{label}: creator must contain at least one object"
+        for creator in creators:
+            assert isinstance(creator, dict), f"{label}: creator must be an object"
+            creator_types = creator.get("@type", [])
+            if isinstance(creator_types, str):
+                creator_types = [creator_types]
+            assert isinstance(creator_types, list) and any(
+                kind in ("Person", "Organization") for kind in creator_types
+            ), f"{label}: creator must declare Person or Organization"
+            name = creator.get("name")
+            assert isinstance(name, str) and name.strip(), f"{label}: creator must have a name"
+        count = len(creators)
+    return count + sum(check_image_creators(item, source) for item in value.values())
+
+
 def check_static() -> None:
     files = sorted(ROOT.rglob("*.html"))
     pages: dict[Path, Page] = {}
     blocks = 0
     video_chapters = 0
+    image_creators = 0
     broken: list[str] = []
     for file in files:
         page = Page(file.read_text(encoding="utf-8"))
@@ -162,7 +191,9 @@ def check_static() -> None:
             except json.JSONDecodeError as exc:
                 raise AssertionError(f"Invalid JSON-LD: {file.relative_to(ROOT)}: {exc}") from exc
             blocks += 1
-            video_chapters += check_video_chapters(value, file.relative_to(ROOT).as_posix())
+            source = file.relative_to(ROOT).as_posix()
+            video_chapters += check_video_chapters(value, source)
+            image_creators += check_image_creators(value, source)
         relative = file.relative_to(ROOT).as_posix()
         base = ORIGIN + "/" + (relative[:-10] if relative.endswith("index.html") else relative)
         for href in page.hrefs:
@@ -195,7 +226,8 @@ def check_static() -> None:
     print(f"PASS: internal HTML link targets exist; 404 and {len(REDIRECTS)} legacy aliases pass regression checks.")
     print(f"PASS: {len(LEGACY_SITEMAPS)} former WordPress sitemap addresses reference the current sitemap.")
     print(f"PASS: {video_chapters} video chapters have integer offsets, valid intervals and matching timestamp links.")
-    print("Scope: JSON syntax, video chapter offsets and static targets, not full schema validation, rankings or external links.")
+    print(f"PASS: {image_creators} image creators have an explicit supported type and name.")
+    print("Scope: JSON syntax, image creators, video chapter offsets and static targets, not full schema validation, rankings or external links.")
 
 
 def fetch_public(path: str) -> tuple[int, Page]:

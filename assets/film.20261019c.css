@@ -7,6 +7,7 @@
 .film-watch-top{padding-block:28px 0}
 .hyaluron-page .film-watch h1{font-size:clamp(34px,3.8vw,52px);max-width:26ch;margin-bottom:24px}
 .film-watch .film-watch-top>.eyebrow{margin-bottom:10px}
+.film-watch-actions{margin-bottom:16px}
 .film-watch>.wrap{max-width:1120px}
 .hyaluron-page .film-watch .film-byline{font-size:14px;margin-top:24px;max-width:82ch}
 .film-watch-top>p:last-child{max-width:82ch}

@@ -3,7 +3,7 @@ from pathlib import Path
 import re
 import unittest
 
-from unify_case_stories import Tree
+from unify_case_stories import Tree, text, inside
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -42,7 +42,30 @@ class PatientCases(unittest.TestCase):
         paths = [n.attrs.get('href') for entry in entries for n in entry.walk() if n.tag == 'a' and 'data-atlas-case' in n.attrs]
         self.assertEqual(len(paths), len(set(paths)))
         expected = {'/' + str(file.parent.relative_to(ROOT)) + '/' for file in cases}
+        expected.remove('/ultraljud/kna/')
+        expected.add('/ultraljud/kna/#artros')
         self.assertEqual(set(paths), expected)
+
+    def test_shared_presentation_and_summary(self):
+        for file in (ROOT / 'ultraljud').rglob('index.html'):
+            source = file.read_text()
+            if not re.search(r'<body\b[^>]*class="[^"]*\bultrasound-case\b', source):
+                continue
+            with self.subTest(page=str(file.relative_to(ROOT))):
+                root = Tree(source).root
+                story = root.find(lambda n: n.has_class('case-edition-story'))
+                viewer = root.find(lambda n: n.has_class('case-edition-viewer'))
+                decision = root.find(lambda n: n.has_class('case-edition-decision'))
+                self.assertIn('/assets/ultrasound-case.20261109.css', source)
+                self.assertLess(story.start, viewer.start)
+                self.assertLess(viewer.start, decision.start)
+                aside = story.find(lambda n: n.has_class('case-story-aside'))
+                image = aside.find(lambda n: n.tag == 'img')
+                brief = aside.find(lambda n: n.has_class('case-story-facts'))
+                self.assertLess(image.start, brief.start)
+                self.assertEqual(text(inside(source, brief.children[0])), 'Fallet i korthet')
+                self.assertEqual([text(inside(source, n)) for n in brief.walk() if n.tag == 'dt'],
+                                 ['Bakgrund', 'Ultraljudsfynd', 'Bedömning och nästa steg'])
 
 
 if __name__ == '__main__':

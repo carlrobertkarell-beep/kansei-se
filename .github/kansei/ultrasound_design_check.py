@@ -149,8 +149,12 @@ def check_explore(page):
     expected.add('/ultraljud/axel/ac-ledsartros/')
     expected.add('/ultraljud/axel/paralabral-cysta/')
     expected.add('/ultraljud/axel/frusen-skuldra/')
-    if set(entries.locator('[data-atlas-case]').evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))'))!=expected:
+    case_links=entries.locator('[data-atlas-case]')
+    case_pages=case_links.evaluate_all('(els)=>els.map(e=>e.getAttribute("href").split("#")[0])')
+    if len(case_pages)!=len(expected) or set(case_pages)!=expected:
         raise AssertionError('A published image reader is missing or duplicated')
+    if entries.locator('[data-atlas-case][href="/ultraljud/kna/#artros"]').count()!=1:
+        raise AssertionError('The knee osteoarthritis link must open the case on its service page')
     if set(entries.locator('.atlas-image-shortcut').evaluate_all('(els)=>els.map(e=>e.getAttribute("href").replace(/#bilder$/,""))'))!=expected:
         raise AssertionError('Whole-case links must retain separate image shortcuts')
     search=page.locator('[data-atlas-search]')
@@ -190,7 +194,7 @@ def check_explore(page):
         ('caput','/ultraljud/hoftled/bilder/'),
     ):
         search.fill(phrase)
-        visible=entries.locator('[data-atlas-case]').evaluate_all('(els)=>els.filter(e=>!e.closest("[data-atlas-entry]").hidden).map(e=>e.getAttribute("href"))')
+        visible=case_links.evaluate_all('(els)=>els.filter(e=>!e.closest("[data-atlas-entry]").hidden).map(e=>e.getAttribute("href").split("#")[0])')
         expected_matches = {expected_path} if isinstance(expected_path,str) else set(expected_path)
         if set(visible)!=expected_matches:raise AssertionError('Natural-language case search failed: '+phrase+' '+str(visible))
     search.fill('ont när jag lyfter armen')

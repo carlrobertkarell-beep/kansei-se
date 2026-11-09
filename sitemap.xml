@@ -294,9 +294,19 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/hoft-ljumske/</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/hoft/gmed.original.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.kansei.se/ultraljud/hoft-ljumske/ljumsksmarta-vid-lopning/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/ljumsksmarta-vid-lopning/adduktorsenfaste-anatomi.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/ljumsksmarta-vid-lopning/adduktorsenfaste-ultraljud.webp</image:loc>
     </image:image>
   </url>
   <url>
@@ -419,7 +429,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/ljumsksmarta-adduktorer-och-hoft/</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-11-09</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/golfarmbage-ont-pa-insidan/</loc>
@@ -838,6 +848,9 @@
     </image:image>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/kna/kalk/brosk-kalk.original.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/ljumsksmarta-vid-lopning/adduktorsenfaste-ultraljud.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/oversikt/01-kalkaxel.webp</image:loc>

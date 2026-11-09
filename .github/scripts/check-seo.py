@@ -15,6 +15,9 @@ from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[2]
 ORIGIN = "https://www.kansei.se"
+RETIRED_REHAB_ARTICLE = (
+    "/2024/03/01/att-lyfta-halsa-och-valbefinnande-i-stockholm-kraften-av-integrativa-program/"
+)
 REDIRECTS = {
     "/mot-vart-team/": "/om-oss/",
     "/team-kansei/": "/om-oss/",
@@ -32,7 +35,6 @@ REDIRECTS = {
     "/blogg/q-a/": "/fragor-och-svar/",
     "/priser/om/": "/om-oss/",
     "/blogg/blog-v1/faq-kortisoninjektioner-ultraljudsledda/": "/kortison/",
-    "/2024/03/01/att-lyfta-halsa-och-valbefinnande-i-stockholm-kraften-av-integrativa-program/": "/rehabilitering/",
 }
 LEGACY_SITEMAPS = (
     "/category-sitemap.xml",
@@ -215,6 +217,7 @@ def check_static() -> None:
         assert page.refresh is None, f"Redirect URL in sitemap: {url}"
         assert page.canonicals == [url], f"Sitemap/canonical mismatch: {url}"
     check_404(pages[ROOT / "404.html"])
+    assert not local_path(RETIRED_REHAB_ARTICLE).exists(), "Retired rehabilitation article must return 404"
     for source, destination in REDIRECTS.items():
         check_redirect(pages[local_path(source)], destination)
         assert pages[local_path(destination)].refresh is None, f"Redirect chain: {source}"
@@ -243,8 +246,8 @@ def fetch_public(path: str) -> tuple[int, Page]:
 def check_live() -> None:
     for attempt in range(6):
         try:
-            status, page = fetch_public("/__kansei-seo-check-v126-not-found__/")
-            assert status == 404, f"Missing URL returned HTTP {status}, expected 404"
+            status, page = fetch_public(RETIRED_REHAB_ARTICLE)
+            assert status == 404, f"Retired rehabilitation article returned HTTP {status}, expected 404"
             check_404(page)
             for source, destination in REDIRECTS.items():
                 status, page = fetch_public(source)

@@ -1,5 +1,11 @@
 # Legacy URL and sitemap compatibility
 
+Update 2026-11-09: The old WordPress article URL described below was removed.
+It now returns HTTP 404. The current rehabilitation page remains published.
+The live SEO check verifies that the old URL returns 404.
+
+## October 2026 migration
+
 The retired WordPress address
 `/2024/03/01/att-lyfta-halsa-och-valbefinnande-i-stockholm-kraften-av-integrativa-program/`
 now leads to `/rehabilitering/`. The current page covers individual programmes,

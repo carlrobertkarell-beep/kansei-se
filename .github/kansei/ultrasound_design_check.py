@@ -148,6 +148,7 @@ def check_explore(page):
     expected.add('/ultraljud/axel/supraspinatusruptur/')
     expected.add('/ultraljud/axel/ac-ledsartros/')
     expected.add('/ultraljud/axel/paralabral-cysta/')
+    expected.add('/ultraljud/axel/frusen-skuldra/')
     if set(entries.locator('[data-atlas-case]').evaluate_all('(els)=>els.map(e=>e.getAttribute("href"))'))!=expected:
         raise AssertionError('A published image reader is missing or duplicated')
     if set(entries.locator('.atlas-image-shortcut').evaluate_all('(els)=>els.map(e=>e.getAttribute("href").replace(/#bilder$/,""))'))!=expected:

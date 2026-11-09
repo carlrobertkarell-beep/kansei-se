@@ -103,6 +103,10 @@
 
 .hyaluron-page #main :is(#leder, .hyaluron-visit-summary) h2 {
   margin-bottom: 14px;
+}
+
+.hyaluron-page #main section[data-reading-section] h2,
+.hyaluron-page #main .hyaluron-visit-summary h2 {
   font-family: var(--clinic-display);
   font-weight: 400;
   letter-spacing: -.025em;

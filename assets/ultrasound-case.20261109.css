@@ -25,7 +25,7 @@
 .clinic-site.ultrasound-case main .case-edition-hero h1 {
   max-width: 26ch !important;
   margin-bottom: 16px;
-  font: 500 clamp(32px, 4.1vw, 58px)/1.08 var(--sans);
+  font: 500 var(--page-heading)/1.1 var(--sans);
   letter-spacing: -.045em;
   text-wrap: balance;
 }

@@ -5,30 +5,44 @@ SERVICE_PATHS = frozenset((
 ))
 
 DESIGN_PATHS = SERVICE_PATHS | {
-    '/om-oss/', '/kontakt/', '/fragor-och-svar/', '/hjalp-mig-boka/',
+    '/om-oss/', '/kontakt/', '/priser/', '/en/', '/fragor-och-svar/', '/hjalp-mig-boka/',
     '/kunskapsbank/', '/ultraljud/bilder/', '/ultraljud/bursit-axel/',
+    '/hyaluronsyra/film/',
     '/blogg/prp-eller-hyaluronsyra-vid-knaartros/',
 }
 
 
 def check_site_design(page, path):
     styles = page.evaluate("""checkBooking => {
-        const title = document.querySelector('main h1');
         const primary = checkBooking && document.querySelector(
             'main a:is(.button-dark,.btn-teal)[href*="bokadirekt.se/"]'
         );
-        const firstFont = el => getComputedStyle(el).fontFamily
-            .split(',')[0].trim().replace(/^["']|["']$/g, '').toLowerCase();
+        const headings = document.querySelectorAll(
+            'main h1, main h2:not(:where(nav *, dialog *, [role="dialog"] *, .knowledge-result *)), ' +
+            '.footer-cta h2, body.clinic-heading-style :is(h1, h2)'
+        );
         const bookingRect = primary && primary.getBoundingClientRect();
         return {
-            titleFont: title && firstFont(title),
+            headings: Array.from(headings, heading => {
+                const {fontFamily, fontStyle, fontWeight} = getComputedStyle(heading);
+                return {
+                    text: heading.textContent.trim(),
+                    font: fontFamily.split(',')[0].trim().replace(/^["']|["']$/g, '').toLowerCase(),
+                    style: fontStyle,
+                    weight: fontWeight,
+                };
+            }),
             bodyFont: getComputedStyle(document.body).fontFamily,
             booking: bookingRect && {width: bookingRect.width, height: bookingRect.height},
         };
     }""", path in SERVICE_PATHS)
 
-    if styles['titleFont'] != 'georgia':
-        raise AssertionError(f"Clinic H1 lost its shared serif: {styles['titleFont']!r}")
+    mismatches = [
+        heading for heading in styles['headings']
+        if (heading['font'], heading['style'], heading['weight']) != ('georgia', 'normal', '400')
+    ]
+    if not styles['headings'] or mismatches:
+        raise AssertionError(f"Clinic headings do not use the shared upright serif: {mismatches}")
     if 'sans-serif' not in styles['bodyFont'].lower():
         raise AssertionError(f"Clinic body lost its sans serif: {styles['bodyFont']!r}")
     if path in SERVICE_PATHS:

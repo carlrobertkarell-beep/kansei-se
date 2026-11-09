@@ -29,7 +29,7 @@ KNOWLEDGE_PATHS = ("/kunskapsbank/", "/blogg/knaartros-vad-du-kan-gora/", "/blog
 KNOWLEDGE_PATHS += ("/blogg/ont-i-axeln-nar-du-lyfter-armen/",)
 CONTENT_PATHS = ("/fragor-och-svar/", "/ultraljud/underben/", "/ultraljud/hoft-ljumske/", "/ultraljud/hand-handled/", "/ultraljud/armbage/", "/ultraljud/halsena/", "/ultraljud/overarm/", "/ultraljud/underarm/", "/ultraljud/lar-muskulatur/")
 # New cases are tested on the candidate/live site; they do not exist in the trusted baseline.
-CONTENT_PATHS += ("/ultraljud/kna/artros-ledband-hyaluron/",)
+CONTENT_PATHS += ("/ultraljud/kna/artros-ledband-hyaluron/", "/en/")
 RUNNER_PATH = "/ultraljud/loparkna/"
 ACHILLES_PATH = "/ultraljud/halsena/bilder/"
 ELBOW_PATH = "/ultraljud/tennisarmbage/bilder/"
@@ -217,7 +217,7 @@ def check(base, output):
             if label == 'compact':
                 paths = ('/', '/ultraljud/', '/ultraljud/axel/', '/hyaluronsyra/', '/injektioner/', '/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/blogg/prp-eller-hyaluronsyra-vid-knaartros/', '/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/') + film_paths[1:] + CASE_PATHS + (() if baseline_only else (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH, HIP_PATH, HIP_JOINT_PATH, KNEE_CALC_PATH))
                 if not baseline_only:
-                    paths += ("/hjalp-mig-boka/",)
+                    paths += ("/hjalp-mig-boka/", "/en/")
             if not baseline_only:
                 paths = tuple(dict.fromkeys(paths + SEARCH_PATHS))
             model = None

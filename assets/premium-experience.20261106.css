@@ -99,8 +99,11 @@
 }
 
 /* Shared type and treatment actions across the public clinic pages. */
-body.clinic-site {
+:is(body.clinic-site, body.clinic-heading-style) {
   --clinic-display: Georgia, 'Times New Roman', serif;
+}
+
+body.clinic-site {
   --clinic-title: #193b31;
   --clinic-primary: #284f3e;
   --clinic-surface: #f8f6f0;
@@ -109,9 +112,13 @@ body.clinic-site {
   --clinic-control-radius: .55rem;
 }
 
-body.clinic-site #main h1,
-.clinic-site .footer-cta h2 {
+/* Page titles and section headings share the display face. Search results,
+   navigation and dialogs are interface text, even when marked as headings. */
+body.clinic-site #main :is(h1, h2):not(:where(nav *, dialog *, [role="dialog"] *, .knowledge-result *)),
+.clinic-site .footer-cta h2,
+body.clinic-heading-style :is(h1, h2) {
   font-family: var(--clinic-display);
+  font-style: normal;
   font-weight: 400;
 }
 
@@ -172,8 +179,6 @@ body.clinic-site .site-header .header-book:hover {
 
 .clinic-site #main :where(.editorial-body,.article-body,.us-area-article) h2,
 .clinic-site #main :where(.us-section-heading,.atlas-section-heading,.knowledge-top) h2 {
-  font-family: var(--clinic-display);
-  font-weight: 400;
   letter-spacing: -.028em;
 }
 

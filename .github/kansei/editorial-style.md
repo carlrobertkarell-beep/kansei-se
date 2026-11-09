@@ -11,3 +11,11 @@ Webbplatsen ska använda naturlig, lättläst svenska. Utgå från vad besökare
 - Anatomiska utpekningar och nödvändiga symboler i bildmaterial har en annan funktion än navigering.
 
 Språkgranskning får inte ändra fynd, medicinska innebörder, priser, källor eller behandlingsresultat. Håll sidtext, metadata och källmallar samstämmiga.
+
+## Så förklarar vi ultraljudsfynd
+
+I ett patientfall ska bildtexten hjälpa läsaren att hitta fyndet. Den kliniska förklaringen ska gå vidare och visa hur fyndets läge och utseende vägdes mot patientens symtom, styrka eller rörelser. Beskriv vilken fråga undersökningen hjälpte till att besvara och vad som skulle vara relevant att följa upp. Skilj dokumenterad uppföljning från ett möjligt nästa steg.
+
+Låt varje svar i en utfällbar fråga tillföra något som läsaren ännu inte har fått veta. Om två förändringar syns på samma bild, förklara hur de skiljs åt och hur respektive fynd påverkade bedömningen. Säg vad som behöver bedömas kliniskt när bilden ensam lämnar en viktig fråga öppen.
+
+På tjänstesidor kan ett konkret exempel visa hur två närliggande strukturer eller fynd skiljs åt och vilken undersökningsfråga det hjälper att besvara. Använd dokumenterade fall och sidans källor som underlag.

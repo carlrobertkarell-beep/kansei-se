@@ -3,6 +3,12 @@
   <url>
     <loc>https://www.kansei.se/</loc>
     <lastmod>2026-11-05</lastmod>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/kalkaxel/kalk-ultraljud.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/kalkaxel/kalk.anatomi.realistic.20261022.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.kansei.se/akupunktur/</loc>
@@ -289,6 +295,9 @@
   <url>
     <loc>https://www.kansei.se/ultraljud/hoft-ljumske/</loc>
     <lastmod>2026-10-25</lastmod>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/hoft/gmed.original.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/lar-muskulatur/</loc>
@@ -713,7 +722,8 @@
     </image:image>
   </url>
   <url>
-    <loc>https://www.kansei.se/ultraljud/axel/paralabral-cysta/</loc><lastmod>2026-11-05</lastmod>
+    <loc>https://www.kansei.se/ultraljud/axel/paralabral-cysta/</loc>
+    <lastmod>2026-11-05</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/paralabral-cysta/lax-anatomi.webp</image:loc>
     </image:image>
@@ -735,7 +745,7 @@
       <video:title>Ultraljudsvägledd hyaluroninjektion i AC-leden</video:title>
       <video:description>Se nålen i realtid när AC-leden behandlas med Sinogel. Ett kort bildstopp visar nålen, ledkapseln och vävnaderna runt AC-leden. Sedan fortsätter ultraljudsfilmen från injektionen.</video:description>
       <video:content_loc>https://www.kansei.se/bilder/ultraljud/ac-ledsartros/hyaluroninjektion-ac-led.mp4</video:content_loc>
-      <video:publication_date>2026-11-03</video:publication_date>
+      <video:publication_date>2026-11-03T12:36:37+01:00</video:publication_date>
     </video:video>
   </url>
   <url>
@@ -1139,7 +1149,7 @@
       <video:title>Ultraljud och hyaluroninjektion vid knäartros</video:title>
       <video:description>Se originalultraljud, anatomibilder och en ultraljudsvägledd Sinovialinjektion i knäleden. Originalfilm från Kansei vid Odenplan i Stockholm.</video:description>
       <video:content_loc>https://www.kansei.se/bilder/ultraljud/kna/artros-ledband/knaartros-hyaluron.mp4</video:content_loc>
-      <video:publication_date>2026-10-27</video:publication_date>
+      <video:publication_date>2026-10-27T15:45:35+01:00</video:publication_date>
     </video:video>
   </url>
 </urlset>

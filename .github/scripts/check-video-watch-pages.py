@@ -3,6 +3,7 @@
 import json
 import re
 import xml.etree.ElementTree as ET
+from datetime import datetime
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
@@ -12,6 +13,7 @@ ORIGIN = 'https://www.kansei.se'
 NS = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9',
       'v': 'http://www.google.com/schemas/sitemap-video/1.1'}
 VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'}
+UPLOAD_DATE = re.compile(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})')
 
 
 def objects(value):
@@ -92,6 +94,7 @@ def check():
     urls = {entry.findtext('s:loc', namespaces=NS) for entry in entries}
     pages = {url: Page((ROOT / urlsplit(url).path.lstrip('/') / 'index.html').read_text()) for url in urls}
     targets = {}
+    publication_dates = {}
     incoming = set()
     for source, page in pages.items():
         incoming.update(urljoin(source, href).split('#')[0].split('?')[0]
@@ -102,6 +105,12 @@ def check():
             content = video['contentUrl']
             assert targets.setdefault(content, target) == target, f'Duplicate watch URLs for {content}'
             assert video.get('mainEntityOfPage', {}).get('@id') == target + '#webpage', f'Wrong mainEntityOfPage: {source}'
+            upload_date = video.get('uploadDate')
+            assert isinstance(upload_date, str) and UPLOAD_DATE.fullmatch(upload_date), (
+                f'{source}: uploadDate needs a complete date, time and time zone: {upload_date!r}'
+            )
+            datetime.fromisoformat(upload_date.replace('Z', '+00:00'))
+            assert publication_dates.setdefault(content, upload_date) == upload_date, f'Conflicting uploadDate for {content}'
     watches = {url for url, page in pages.items() if page.watch}
     assert watches == set(targets.values()), 'Watch pages and video destinations diverge'
     for url in sorted(watches):
@@ -125,6 +134,7 @@ def check():
             assert url in watches, f'Supplementary page advertised as watch page in sitemap: {url}'
             content = video.findtext('v:content_loc', namespaces=NS)
             assert content not in advertised, f'Duplicate video sitemap entry: {content}'
+            assert video.findtext('v:publication_date', namespaces=NS) == publication_dates.get(content), f'Wrong publication date in main sitemap: {url}'
             advertised[content] = url
     assert advertised == targets, 'Video sitemap must list every unique film on its watch page'
     film_entries = ET.parse(ROOT / 'video-sitemap.xml').findall('s:url', NS)
@@ -139,8 +149,9 @@ def check():
         thumb = schema['thumbnailUrl']
         assert listed[0].findtext('v:content_loc', namespaces=NS) == schema['contentUrl'], f'Wrong film in dedicated video sitemap: {url}'
         assert listed[0].findtext('v:thumbnail_loc', namespaces=NS) == (thumb[0] if isinstance(thumb, list) else thumb), f'Wrong poster in dedicated video sitemap: {url}'
+        assert listed[0].findtext('v:publication_date', namespaces=NS) == schema['uploadDate'], f'Wrong publication date in dedicated video sitemap: {url}'
     assert 'Sitemap: ' + ORIGIN + '/video-sitemap.xml' in (ROOT / 'robots.txt').read_text().splitlines(), 'Declare the dedicated video sitemap in robots.txt'
-    print(f'PASS: {len(targets)} unique films have one visible watch page each, matching schema/poster, HTML links and video sitemap.')
+    print(f'PASS: {len(targets)} unique films have one visible watch page each, matching schema, poster, HTML links and sitemaps with time-zoned publication dates.')
     print('Scope: crawlable source and page structure; Google decides video indexing after recrawling.')
 
 

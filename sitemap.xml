@@ -28,7 +28,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/frusen-skuldra-faser-och-behandling/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-09</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/blogg/halsenesmarta-vila-racker-inte/</loc>
@@ -268,7 +268,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/axel/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/kalkaxel/kalk-ultraljud.jpg</image:loc>
     </image:image>
@@ -738,6 +738,22 @@
     </image:image>
   </url>
   <url>
+    <loc>https://www.kansei.se/ultraljud/axel/frusen-skuldra/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/frusen-skuldra/axel-med-besvar.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/frusen-skuldra/axel-med-besvar-anatomi.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/frusen-skuldra/axel-utan-besvar.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/frusen-skuldra/axel-utan-besvar-anatomi.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.kansei.se/ultraljud/axel/ac-ledsartros/film/</loc>
     <lastmod>2026-11-03</lastmod>
     <video:video>
@@ -798,7 +814,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/bilder/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/ac-ledsartros/ac-ledsartros-ultraljud.jpg</image:loc>
     </image:image>

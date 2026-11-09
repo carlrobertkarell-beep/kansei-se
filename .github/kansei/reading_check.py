@@ -65,7 +65,7 @@ def check_reading(page,path,output,label):
     expect(bar.locator('.reading-position-current')).to_have_text(re.compile(r'^'+str(position)+r' / '))
     assert bar.get_attribute('open') is None
     heading=page.locator('#'+target).locator('h2').first
-    assert heading.evaluate('el=>el===document.activeElement')
+    expect(heading).to_be_focused()
     header_bottom=page.locator('.site-header').bounding_box()['y']+page.locator('.site-header').bounding_box()['height']
     bar_box=bar.bounding_box()
     assert bar_box and bar_box['y']>=header_bottom-1

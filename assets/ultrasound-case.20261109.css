@@ -45,7 +45,7 @@
 }
 
 .clinic-site.ultrasound-case main .case-edition-hero .case-page-nav {
-  gap: 8px;
+  gap: 8px 16px;
   max-width: none;
   margin: 24px 0 0;
   padding: 16px 0 0;
@@ -79,7 +79,7 @@
 .clinic-site.ultrasound-case main :is(.case-edition-story, .case-edition-viewer, .case-edition-decision) .case-edition-heading h2 {
   max-width: 32ch;
   margin-bottom: 16px;
-  font: 500 clamp(27px, 3.25vw, 41px)/1.15 var(--sans);
+  font: 500 clamp(27px, 3.25vw, 40px)/1.15 var(--sans);
   letter-spacing: -.035em;
   text-wrap: balance;
 }

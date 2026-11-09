@@ -1,60 +1,210 @@
-.referral-template {
-  max-width: 720px;
-  padding-block: 32px 52px;
+.referral-page {
+  --referral-ink: #193b31;
+  --referral-primary: #284f3e;
+  --referral-surface: #f8f6f0;
+  --referral-tint: #edf3eb;
+  --referral-line: #d4dfd3;
+  --referral-muted: #4d6257;
+  background: var(--referral-surface);
+  color: var(--referral-ink);
 }
 
-.referral-editor .eyebrow { margin-top: 20px; }
-.referral-editor h1 { font-size: clamp(34px, 7vw, 56px); margin: 12px 0 16px; }
+.referral-width { max-width: 1180px; }
+
+.referral-header {
+  background: #fff;
+  border-bottom: 1px solid var(--referral-line);
+}
+
+.referral-header .wrap {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  min-height: 66px;
+}
+
+.referral-header img { flex: 0 1 auto; max-width: 43%; }
+.referral-page .text-link { font-weight: 600; }
+
+.referral-template { padding-block: clamp(30px, 5vw, 64px) 54px; }
+.referral-intro { margin-bottom: clamp(22px, 3.5vw, 36px); }
+.referral-page .eyebrow { color: var(--referral-muted); }
+
+.referral-intro h1 {
+  font-size: clamp(35px, 5.4vw, 62px);
+  letter-spacing: -.037em;
+  margin: 10px 0 12px;
+}
+
+.referral-layout {
+  align-items: start;
+  display: grid;
+  gap: clamp(14px, 2.6vw, 28px);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+}
+
+.referral-editor,
+.referral-preview,
+.referral-transfer {
+  border: 1px solid var(--referral-line);
+  border-radius: 16px;
+  padding: clamp(16px, 3vw, 30px);
+}
+
+.referral-editor,
+.referral-preview { background: #fff; }
+
+.referral-card-heading {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  justify-content: space-between;
+}
+
+.referral-layout h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  letter-spacing: -.025em;
+  line-height: 1.16;
+  margin: 0;
+}
+
+.referral-card-heading span,
+.referral-question span,
+.referral-note,
+.referral-address {
+  color: var(--referral-muted);
+  font-size: 14px;
+}
 
 .referral-editor fieldset {
   border: 0;
-  margin: 24px 0 16px;
+  margin: 20px 0 18px;
   min-inline-size: 0;
   padding: 0;
 }
 
 .referral-editor legend,
-.referral-editor label[for] { font-weight: 600; }
+.referral-question { font-weight: 600; }
 
-.referral-editor fieldset label {
+.referral-options { display: grid; gap: 7px; margin-top: 7px; }
+
+.referral-options label {
   align-items: center;
+  border: 1px solid var(--referral-line);
+  border-radius: 8px;
   cursor: pointer;
   display: flex;
   gap: 10px;
-  min-height: 44px;
+  line-height: 1.3;
+  min-height: 46px;
+  padding: 9px 11px;
 }
 
-.referral-editor input { accent-color: var(--teal); height: 19px; margin: 0; width: 19px; flex: 0 0 auto; }
-.referral-note { color: var(--muted); font-size: 14px; margin-block: 7px 12px; }
-.referral-note a { text-decoration: underline; }
+.referral-options label:has(input:checked) {
+  background: var(--referral-tint);
+  border-color: var(--referral-primary);
+}
+
+.referral-options label:focus-within,
+.referral-editor textarea:focus {
+  outline: 2px solid var(--referral-primary);
+  outline-offset: 2px;
+}
+
+.referral-options input {
+  accent-color: var(--referral-primary);
+  flex: 0 0 18px;
+  height: 18px;
+  margin: 0;
+  width: 18px;
+}
+
+.referral-question { display: flex; flex-wrap: wrap; gap: 6px 12px; }
+.referral-question span { font-weight: 400; }
 
 .referral-editor textarea {
   background: #fff;
-  border: 1px solid var(--line);
+  border: 1px solid var(--referral-line);
   border-radius: 8px;
   color: inherit;
   display: block;
   font: inherit;
-  margin-bottom: 16px;
-  padding: 10px 12px;
+  line-height: 1.4;
+  margin-top: 7px;
+  min-height: 72px;
+  padding: 10px 11px;
   resize: vertical;
   width: 100%;
 }
 
-.referral-print { display: none; }
+.referral-editor textarea::placeholder { color: var(--referral-muted); }
+.referral-note { line-height: 1.45; margin-block: 8px 16px; }
+
+.referral-page .referral-button {
+  background: var(--referral-primary);
+  border-radius: 8px;
+  justify-content: center;
+  width: 100%;
+}
+
+.referral-page .referral-button:hover { background: var(--referral-ink); transform: none; }
+.referral-side { display: grid; gap: 14px; min-width: 0; }
+.referral-preview h2 { margin-top: 8px; }
+
+.referral-preview dl {
+  border-block: 1px solid var(--referral-line);
+  margin: 16px 0;
+  padding: 12px 0;
+}
+
+.referral-preview dt { font-weight: 600; }
+.referral-preview dd + dt { margin-top: 12px; }
+
+.referral-print-value {
+  margin: 0;
+  min-height: 1.5em;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.referral-address { line-height: 1.45; margin-top: 9px; }
+.referral-transfer { background: var(--referral-tint); }
+.referral-transfer h2 { font-size: clamp(23px, 2.6vw, 28px); }
+.referral-transfer p { margin-block: 8px; }
+
+@media screen {
+  .referral-print-value:empty::before {
+    color: var(--referral-muted);
+    content: attr(data-empty);
+  }
+}
+
+@media (max-width: 720px) {
+  .referral-layout { grid-template-columns: minmax(0, 1fr); }
+  .referral-header .wrap { min-height: 57px; }
+  .referral-side { grid-template-columns: minmax(0, 1fr); }
+}
 
 @media print {
-  body { background: #fff; color: #000; }
-  .referral-template { max-width: none; padding: 0; }
-  .referral-editor { display: none; }
-  .referral-print { display: block; }
-  .referral-print h2 { font-size: 22pt; margin-bottom: 16pt; }
-  .referral-print p { max-width: none; }
+  @page { margin: 18mm; }
+  .referral-page { background: #fff; color: #000; }
+  .referral-header .wrap { min-height: 0; padding: 0 0 12pt; }
+  .referral-header a,
+  .referral-intro,
+  .referral-editor,
+  .referral-transfer,
+  .referral-preview .eyebrow { display: none; }
+  .referral-template { max-width: none; padding: 18pt 0 0; }
+  .referral-layout,
+  .referral-side { display: block; }
+  .referral-preview { border: 0; padding: 0; }
+  .referral-preview h2 { font-size: 25pt; margin: 0 0 18pt; }
+  .referral-preview dl { border: 0; padding: 0; }
   .referral-print-value {
     border-bottom: 1px solid #777;
     margin: 4pt 0 16pt;
     min-height: 20pt;
-    overflow-wrap: anywhere;
-    white-space: pre-wrap;
   }
 }

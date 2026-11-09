@@ -5,47 +5,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="robots" content="noindex,follow"/>
   <meta name="referrer" content="no-referrer"/>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'"/>
   <title>Hänvisningsmall för vårdgivare | Kansei</title>
   <link rel="stylesheet" href="/assets/clinic.3b72d1ed0f4d.css"/>
   <link rel="stylesheet" href="/assets/navigation.20261027.css"/>
-  <link rel="stylesheet" href="/assets/referral-template.20261109.css"/>
   <link rel="stylesheet" href="/assets/premium-experience.20261106.css"/>
-  <script defer src="/assets/referral-template.20261109.js"></script>
+  <link rel="stylesheet" href="/assets/referral-template.20261109.css?v=2"/>
+  <script defer src="/assets/referral-template.20261109.js?v=2"></script>
 </head>
-<body class="clinic-heading-style">
-  <main class="referral-template wrap">
-    <div class="referral-editor">
+<body class="clinic-heading-style referral-page">
+  <header class="referral-header">
+    <div class="referral-width wrap">
+      <img src="/assets/kansei-logo-green.20261105.svg" alt="Kansei Naprapati &amp; Rehabcenter" width="132" height="33"/>
       <a class="text-link" href="/for-vardgivare/#hanvisa">För vårdgivare</a>
-      <p class="eyebrow">KANSEI · ODENPLAN</p>
-      <h1>Hänvisningsmall</h1>
-      <p>Välj besök, skriv en kort rad om det behövs och skriv ut till patienten. Patienten bokar själv utan remiss.</p>
+    </div>
+  </header>
 
-      <fieldset>
-        <legend>Typ av besök (valfritt)</legend>
-        <label><input type="radio" name="besok" value="Riktat ultraljud" autocomplete="off"/> Riktat ultraljud</label>
-        <label><input type="radio" name="besok" value="Bedömning inför hyaluroninjektion" autocomplete="off"/> Bedömning inför hyaluroninjektion</label>
-        <label><input type="radio" name="besok" value="Hjälp att välja besök" autocomplete="off"/> Hjälp att välja besök</label>
-      </fieldset>
-
-      <label for="fragestallning">Område, sida och frågeställning (valfritt)</label>
-      <p class="referral-note" id="fragestallning-hjalp">Till exempel: Höger axel. Bedöm rotatorkuffen efter fall. Ange inga namn, personnummer eller journaluppgifter.</p>
-      <textarea id="fragestallning" rows="2" maxlength="120" aria-describedby="fragestallning-hjalp" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-
-      <button class="button button-teal" type="button" id="skriv-ut" hidden>Skriv ut till patienten</button>
-      <noscript><p>Använd webbläsarens utskriftsfunktion för att skriva ut en tom mall.</p></noscript>
-      <p class="referral-note">Kansei tar inte emot eller sparar det du fyller i. Behöver du överföra patientuppgifter eller journalunderlag? <a href="tel:+46733988588">Ring 073-398 85 88</a> så kommer vi överens om en säker kanal.</p>
+  <main class="referral-template referral-width wrap">
+    <div class="referral-intro">
+      <p class="eyebrow">FÖR VÅRDGIVARE</p>
+      <h1>Hänvisa en patient till Kansei</h1>
+      <p>Ge hänvisningen till patienten. Patienten bokar själv utan remiss och tar med den till Kansei.</p>
     </div>
 
-    <article class="referral-print">
-      <h2>Hänvisning till Kansei</h2>
-      <p>Typ av besök</p>
-      <p class="referral-print-value" id="utskrift-besok"></p>
-      <p>Område, sida och frågeställning</p>
-      <p class="referral-print-value" id="utskrift-fraga"></p>
-      <p>Boka ditt besök på kansei.se. Ta med hänvisningen till besöket.</p>
-      <p>Kansei Naprapati &amp; Rehabcenter · Upplandsgatan 26 · Odenplan, Stockholm</p>
-    </article>
+    <div class="referral-layout">
+      <section class="referral-editor" aria-labelledby="mallrubrik">
+        <div class="referral-card-heading">
+          <h2 id="mallrubrik">Fyll i hänvisningen</h2>
+          <span>Valfri mall</span>
+        </div>
+
+        <fieldset>
+          <legend>Typ av besök</legend>
+          <div class="referral-options">
+            <label><input type="radio" name="besok" value="Riktat ultraljud" autocomplete="off"/> Riktat ultraljud</label>
+            <label><input type="radio" name="besok" value="Bedömning inför hyaluroninjektion" autocomplete="off"/> Bedömning inför hyaluroninjektion</label>
+            <label><input type="radio" name="besok" value="Hjälp att välja besök" autocomplete="off"/> Hjälp att välja besök</label>
+          </div>
+        </fieldset>
+
+        <label class="referral-question" for="fragestallning">Frågeställning <span>Valfritt</span></label>
+        <textarea id="fragestallning" rows="2" maxlength="120" placeholder="Exempel: Höger axel. Bedöm rotatorkuffen efter fall." aria-describedby="fragestallning-hjalp" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+        <p class="referral-note" id="fragestallning-hjalp">Ange bara område, sida och fråga. Utelämna namn, personnummer och journaluppgifter.</p>
+
+        <button class="button referral-button" type="button" id="skriv-ut" hidden>Skriv ut till patienten</button>
+        <noscript><p>Använd webbläsarens utskriftsfunktion för att skriva ut en tom mall.</p></noscript>
+      </section>
+
+      <div class="referral-side">
+        <article class="referral-preview" aria-labelledby="utskriftsrubrik">
+          <p class="eyebrow">FÖRHANDSVISNING</p>
+          <h2 id="utskriftsrubrik">Hänvisning till Kansei</h2>
+          <dl>
+            <dt>Typ av besök</dt>
+            <dd class="referral-print-value" id="utskrift-besok" data-empty="Inget besök valt"></dd>
+            <dt>Område, sida och frågeställning</dt>
+            <dd class="referral-print-value" id="utskrift-fraga" data-empty="Ingen frågeställning angiven"></dd>
+          </dl>
+          <p>Boka på <strong>kansei.se</strong> och ta med hänvisningen till besöket.</p>
+          <p class="referral-address">Kansei Naprapati &amp; Rehabcenter<br/>Upplandsgatan 26 · Odenplan, Stockholm</p>
+        </article>
+
+        <section class="referral-transfer" aria-labelledby="overforingsrubrik">
+          <h2 id="overforingsrubrik">Lämna hänvisningen direkt till Kansei</h2>
+          <p>Ring oss om du vill överföra hänvisningen eller journalunderlag direkt. Vi kommer överens om en säker kanal.</p>
+          <a class="text-link" href="tel:+46733988588">Ring Kansei · 073-398 85 88</a>
+        </section>
+      </div>
+    </div>
   </main>
 </body>
 </html>

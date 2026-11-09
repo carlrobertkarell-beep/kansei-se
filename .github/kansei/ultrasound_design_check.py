@@ -149,6 +149,7 @@ def check_explore(page):
     expected.add('/ultraljud/axel/ac-ledsartros/')
     expected.add('/ultraljud/axel/paralabral-cysta/')
     expected.add('/ultraljud/axel/frusen-skuldra/')
+    expected.add('/ultraljud/hoft-ljumske/ljumsksmarta-vid-lopning/')
     case_links=entries.locator('[data-atlas-case]')
     case_pages=case_links.evaluate_all('(els)=>els.map(e=>e.getAttribute("href").split("#")[0])')
     if len(case_pages)!=len(expected) or set(case_pages)!=expected:
@@ -192,6 +193,7 @@ def check_explore(page):
         ('Synovial',('/ultraljud/kna/','/ultraljud/kna/artros-ledband-hyaluron/')),
         ('Sinogel',('/ultraljud/hoftled/bilder/','/ultraljud/kna/','/ultraljud/axel/supraspinatusruptur/','/ultraljud/axel/ac-ledsartros/')),
         ('caput','/ultraljud/hoftled/bilder/'),
+        ('ljumsksmärta vid löpning','/ultraljud/hoft-ljumske/ljumsksmarta-vid-lopning/'),
     ):
         search.fill(phrase)
         visible=case_links.evaluate_all('(els)=>els.filter(e=>!e.closest("[data-atlas-entry]").hidden).map(e=>e.getAttribute("href").split("#")[0])')

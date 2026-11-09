@@ -99,3 +99,7 @@
  .hyaluron-page .ha-visit-summary{padding:24px;margin-top:0}
  .hyaluron-page .ha-main .ha-joint-card{padding:24px}
 }
+
+@media (max-width:760px){
+ .hyaluron-joint-landing .site-header .header-book{display:none}
+}

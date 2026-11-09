@@ -52,7 +52,8 @@
     lowerLeg: {
       exam: 'Vi undersöker var besvären sitter i underbenet och hur gång, rörelse och belastning påverkar dem.',
       ultrasound: {href: '/ultraljud/underben/', reason: 'Vid en riktad fråga om vadens muskler eller senor kan ultraljud komplettera undersökningen.'},
-      imagingPatterns: ['calf']
+      imagingPatterns: ['calf'],
+      related: {title: 'Läs om ultraljud av vad och underben', href: '/ultraljud/underben/'}
     },
     achilles: {
       exam: 'Vi undersöker hälsenan, fotledens rörlighet och hur besvären påverkar gång och belastning.',
@@ -128,7 +129,7 @@
         primary: imaging,
         alternative: clinical,
         patientCase: caseForPattern || null,
-        related: null,
+        related: region.related || null,
         nextSteps: 'Vid besöket går vi igenom din fråga och förklarar vad undersökningen visar. Därefter diskuterar vi om du behöver rehab, uppföljning eller annan bedömning.'
       };
     }

@@ -21,7 +21,7 @@
    modes.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.diagnosticModeButton===mode)));
    findings.setAttribute('aria-pressed',String(marked));marker.setAttribute('aria-hidden',String(!marked));
    image.parentElement.setAttribute('aria-hidden',String(split===0));
-   if(announce)state.textContent=(mode==='compare'?'Jämförelse av original och illustrerad anatomi.':mode==='anatomy'?'Illustrerad anatomi visas.':'Ultraljudsbilden visas.')+(marked?' Kalk och rupturområdet är markerade.':'');
+   if(announce)state.textContent=(mode==='compare'?'Jämförelse av original och illustrerad anatomi.':mode==='anatomy'?'Illustrerad anatomi visas.':'Ultraljudsbilden visas.')+(marked?' Fynden är markerade.':'');
   }
   function setPosition(value){
    if(!ready)return;

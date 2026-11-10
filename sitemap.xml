@@ -2,12 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://www.kansei.se/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <image:image>
-      <image:loc>https://www.kansei.se/bilder/ultraljud/kalkaxel/kalk-ultraljud.jpg</image:loc>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/kna/osteofyter-ultraljud.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://www.kansei.se/bilder/ultraljud/kalkaxel/kalk.anatomi.realistic.20261022.webp</image:loc>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/kna/osteofyter-anatomi.realistic.20261022.webp</image:loc>
     </image:image>
   </url>
   <url>
@@ -54,7 +54,7 @@
     <loc>https://www.kansei.se/blogg/knaartros-vad-du-kan-gora/</loc>
     <lastmod>2026-11-10</lastmod>
     <image:image>
-      <image:loc>https://www.kansei.se/bilder/ultraljud/kna/osteofyter-ultraljud.webp</image:loc>
+      <image:loc>https://www.kansei.se/bilder/ultraljud/kna/ledvatska-ultraljud.webp</image:loc>
     </image:image>
   </url>
   <url>
@@ -315,7 +315,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/ultraljud/kna/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/kna/bakercysta-anatomi.realistic.20261022.webp</image:loc>
     </image:image>

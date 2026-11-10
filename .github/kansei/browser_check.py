@@ -261,6 +261,8 @@ def check(base, output):
                         assert booking.count() == 1, 'Expected one booking action in the first view'
                         box = booking.bounding_box()
                         assert box and box['height'] >= 44 and box['y'] + box['height'] <= height, 'Booking action needs to fit in the first view'
+                        if width <= 760:
+                            assert not page.locator('.site-header .header-book').is_visible(), 'Mobile header duplicates the service booking action'
                         details = clinical_hero.locator('details.clinical-landing-details')
                         assert details.count() == 1 and not details.evaluate('el => el.open'), 'Practical information starts collapsed'
                         slug = path.strip('/').replace('/', '-')

@@ -189,6 +189,7 @@
 }
 
 @media (max-width: 760px) {
+  body.clinic-site:has(.clinical-landing-hero) .site-header .header-book { display: none; }
   .clinic-site #main .clinical-landing-hero.landing-hero { padding-block: 16px 24px; }
   .hyaluron-page #main .clinical-landing-hero.treatment-hero > .wrap { padding-block: 16px 24px; }
 

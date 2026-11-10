@@ -22,7 +22,7 @@
 .kansei-care .ultrasound-booking-action h3 { font-size: 17px; font-weight: 600; line-height: 1.4; margin: 0 0 18px; }
 .kansei-care .ultrasound-booking-price { display: grid; gap: 4px; margin: 0 0 22px; }
 .kansei-care .ultrasound-booking-price strong { font-size: 36px; font-weight: 600; line-height: 1.15; letter-spacing: -.04em; color: var(--ink); }
-.kansei-care .ultrasound-booking-price span { font-size: 13px; color: var(--muted); }
+.kansei-care .ultrasound-booking-price > span { font-size: 13px; color: var(--muted); }
 .kansei-care .ultrasound-booking-action > .button { width: 100%; justify-content: center; text-align: center; white-space: normal; font-size: 14px; padding-inline: 14px; }
 .kansei-care .ultrasound-booking-confirm { margin: 12px 0 0; font-size: 11px; line-height: 1.6; color: var(--muted); text-align: center; }
 .kansei-care .ultrasound-booking-support { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px 44px; align-items: start; padding: 18px 36px 0; font-size: 13px; color: var(--muted); }

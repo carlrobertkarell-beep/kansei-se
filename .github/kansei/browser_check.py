@@ -255,6 +255,18 @@ def check(base, output):
                     row["broken_visible_images"] = page.locator("img").evaluate_all("els=>els.filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&r.height>0&&r.top<innerHeight&&r.bottom>0&&e.complete&&e.naturalWidth===0}).map(e=>new URL(e.src).pathname)")
                     if row["broken_visible_images"]:
                         row["errors"].append("Broken visible image")
+                    clinical_hero = page.locator('.clinical-landing-hero')
+                    if clinical_hero.count():
+                        booking = clinical_hero.locator('a[data-measure="booking_click"]')
+                        assert booking.count() == 1, 'Expected one booking action in the first view'
+                        box = booking.bounding_box()
+                        assert box and box['height'] >= 44 and box['y'] + box['height'] <= height, 'Booking action needs to fit in the first view'
+                        if width <= 760:
+                            assert not page.locator('.site-header .header-book').is_visible(), 'Mobile header duplicates the service booking action'
+                        details = clinical_hero.locator('details.clinical-landing-details')
+                        assert details.count() == 1 and not details.evaluate('el => el.open'), 'Practical information starts collapsed'
+                        slug = path.strip('/').replace('/', '-')
+                        page.screenshot(path=str(output / f'clinical-first-view-{slug}-{label}.png'), animations='disabled')
                     if not baseline_only:
                         row['transparent_anatomy_label_surfaces'] = check_anatomy_label_surfaces(page)
 

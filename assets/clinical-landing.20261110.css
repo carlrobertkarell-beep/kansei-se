@@ -1,0 +1,252 @@
+/* A shared first view for Kansei's search landing pages. */
+.clinic-site #main .clinical-landing-hero {
+  background: linear-gradient(155deg, #faf9f5 26%, #eff3ed 100%);
+  border-bottom: 1px solid #dce4db;
+}
+
+.clinic-site #main .clinical-landing-hero .landing-hero-grid {
+  align-items: center;
+  gap: clamp(24px, 5vw, 72px);
+}
+
+.clinic-site #main .clinical-landing-hero h1 {
+  margin-block: 8px 12px;
+  line-height: 1.05;
+}
+
+.clinic-site.ultrasound-hub #main .clinical-landing-hero h1 {
+  font-size: var(--page-heading);
+}
+
+.clinic-site #main .clinical-landing-hero :is(.landing-hero-lead, .treatment-lead) {
+  max-width: 49ch;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.clinical-landing-booking,
+.hyaluron-page #main .clinical-landing-hero .treatment-offer {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border: 1px solid #d8e1d7;
+  border-radius: 14px;
+  background: #fffefa;
+  box-shadow: 0 8px 24px #233d2910;
+}
+
+.clinical-landing-booking {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+.clinic-site #main .clinical-landing-booking :is(.landing-hero-facts, .landing-hero-actions) {
+  margin: 0;
+}
+
+.clinic-site #main .clinical-landing-booking .landing-hero-facts {
+  display: grid;
+  gap: 3px;
+}
+
+.clinic-site #main .clinical-landing-booking .landing-hero-actions { width: auto; }
+
+.clinical-landing-booking .landing-hero-facts strong {
+  display: block;
+  color: #163b2d;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.clinic-site #main .clinical-landing-hero .clinical-landing-booking .button {
+  min-height: 48px;
+  padding-inline: 18px;
+  border-radius: 9px;
+  background: #234d3d;
+  color: #fff;
+}
+
+.clinic-site #main .clinical-landing-hero .clinical-landing-booking .button:hover {
+  background: #17382b;
+}
+
+.clinical-landing-identity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  min-width: 0;
+  color: #3e5549;
+  font-size: .85rem;
+  line-height: 1.4;
+}
+
+.clinical-landing-portrait {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #e9ece3;
+  object-fit: cover;
+  object-position: center 27%;
+}
+
+.clinic-site #main .clinical-landing-identity .clinical-landing-person {
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.clinical-landing-person span,
+.clinical-landing-rating {
+  display: block;
+}
+
+.clinical-landing-identity a {
+  color: #254f3f;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.clinical-landing-identity a:not(.clinical-landing-rating) { font-weight: 650; }
+
+.clinical-landing-identity > .clinical-landing-rating {
+  max-width: 16ch;
+  margin-left: auto;
+  font-size: .8rem;
+}
+
+.clinic-site #main .clinical-landing-details {
+  margin: 6px 0 0;
+  color: #3e5549;
+  font-size: .875rem;
+}
+
+.clinic-site #main .clinical-landing-details summary {
+  min-height: 44px;
+  padding-block: 11px;
+  color: #254f3f;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.clinic-site #main .clinical-landing-details :is(p, ul) {
+  margin: 0 0 8px;
+  color: inherit;
+  font-size: inherit;
+  line-height: 1.5;
+}
+
+.clinical-landing-hero :is(.landing-hero-media, .hyaluron-hero-visual) :is(img, video) {
+  border-radius: 15px;
+}
+
+.clinical-landing-hero .clinical-landing-scan img {
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+}
+
+.hyaluron-page #main .clinical-landing-hero .treatment-hero-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas: "copy visual";
+  align-items: center;
+  gap: clamp(24px, 5vw, 72px);
+}
+
+.hyaluron-page #main .clinical-landing-hero .treatment-prices { margin-bottom: 10px; }
+.hyaluron-page #main .clinical-landing-hero .treatment-prices dd { font-size: clamp(1.4rem, 2.4vw, 2rem); }
+.hyaluron-page #main .clinical-landing-hero .treatment-prices > div + div { border-color: #d8e1d7; }
+.hyaluron-page #main .clinical-landing-hero .treatment-offer .treatment-book {
+  min-height: 48px;
+  border-radius: 9px;
+}
+
+.hyaluron-page #main .clinical-landing-hero .treatment-offer-links {
+  margin-top: 4px;
+  gap: 6px 12px;
+}
+
+.hyaluron-page #main .clinical-landing-hero .clinical-landing-details {
+  margin: 0;
+  border-top: 1px solid #d8e1d7;
+}
+
+.hyaluron-page #main .clinical-landing-hero .clinical-landing-details summary {
+  min-height: 44px;
+  padding-bottom: 3px;
+}
+
+.hyaluron-page #main .clinical-landing-visit .hyaluron-visit-steps {
+  counter-reset: visit-step;
+  gap: 12px;
+  border-top: 0;
+}
+
+.hyaluron-page #main .clinical-landing-visit .hyaluron-visit-steps li {
+  counter-increment: visit-step;
+  padding: 15px;
+  border: 1px solid #d8e1d7;
+  border-radius: 12px;
+  background: #fffefa;
+}
+
+.clinical-landing-visit .hyaluron-visit-steps li::before {
+  display: block;
+  margin-bottom: 6px;
+  color: #416453;
+  content: counter(visit-step, decimal-leading-zero);
+  font-size: .8rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 760px) {
+  body.clinic-site:has(.clinical-landing-hero) .site-header .header-book { display: none; }
+  .clinic-site #main .clinical-landing-hero.landing-hero { padding-block: 16px 24px; }
+  .hyaluron-page #main .clinical-landing-hero.treatment-hero > .wrap { padding-block: 16px 24px; }
+
+  .hyaluron-page #main .clinical-landing-hero .treatment-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "copy" "visual";
+    gap: 16px;
+  }
+
+  .clinic-site #main .clinical-landing-hero :is(.landing-hero-crumbs, .crumbs) { margin-bottom: 12px; }
+  .clinic-site #main .clinical-landing-hero :is(.landing-hero-lead, .treatment-lead) { font-size: 1rem; }
+
+  .clinical-landing-booking,
+  .hyaluron-page #main .clinical-landing-hero .treatment-offer {
+    margin-top: 12px;
+    padding: 12px;
+  }
+
+  .clinic-site #main .clinical-landing-booking .landing-hero-actions { width: 100%; }
+  .clinical-landing-booking .landing-hero-actions .button { width: 100%; justify-content: center; }
+  .clinic-site #main .clinical-landing-hero .landing-hero-grid { gap: 16px; }
+
+  .clinical-landing-identity {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 2px 10px;
+  }
+
+  .clinical-landing-portrait { grid-row: span 2; }
+  .clinical-landing-identity > .clinical-landing-rating {
+    grid-column: 2;
+    margin: 0;
+    max-width: none;
+  }
+
+  .hyaluron-page #main .clinical-landing-visit .hyaluron-visit-steps li {
+    display: grid;
+    grid-template-columns: 1.5rem minmax(0, 1fr);
+    gap: 3px 10px;
+    padding: 12px;
+  }
+
+  .clinical-landing-visit .hyaluron-visit-steps li::before { grid-row: span 2; }
+}

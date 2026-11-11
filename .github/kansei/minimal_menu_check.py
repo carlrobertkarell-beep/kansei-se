@@ -123,10 +123,15 @@ def _tab_loop(page):
 
 def check_minimal_menu(page, screenshot, keyboard=False, close_button=False, reduced_motion=False):
     keys, destinations = KEYS, DESTINATIONS
-    if urlsplit(page.url).port == 4174 and page.locator('[data-menu-target="hyaluron"]').count():
-        keys = ('ultraljud', 'hyaluron', 'naprapati', 'kliniken')
-        destinations = {**DESTINATIONS, 'hyaluron': (
-            '/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/hyaluronsyra/')}
+    if urlsplit(page.url).port == 4174:
+        # Review screenshots also run against the previous production menu.
+        if not page.locator('#menu-view-ultraljud a[href="/ultraljud/#in-2"]').count():
+            destinations = {**destinations, 'ultraljud': (
+                '/ultraljud/axel/', '/ultraljud/kna/', '/ultraljud/')}
+        if page.locator('[data-menu-target="hyaluron"]').count():
+            keys = ('ultraljud', 'hyaluron', 'naprapati', 'kliniken')
+            destinations = {**destinations, 'hyaluron': (
+                '/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/hyaluronsyra/')}
     opener = page.locator('button[data-site-menu]')
     opener.click(timeout=5000)
     _root(page, keys, destinations, fresh=True)

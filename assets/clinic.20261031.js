@@ -289,7 +289,15 @@
     view.append(back,heading,intro,links);views.set(key,view);stage.append(view);return {view,links};
    }
    const us=pane('ultraljud','Ultraljud','Välj det område du vill undersöka.');
-   us.links.append(route('/ultraljud/axel/','Axel'),route('/ultraljud/kna/','Knä'),route('/ultraljud/','Alla områden'));
+   const allAreas=route('/ultraljud/#in-2','Se alla ultraljudsområden');
+   allAreas.classList.add('menu-overview-route');
+   us.links.append(
+    route('/ultraljud/axel/','Axel'),
+    route('/ultraljud/kna/','Knä'),
+    route('/ultraljud/hoft-ljumske/','Höft & ljumske'),
+    route('/ultraljud/fot-fotled/','Fot & fotled'),
+    allAreas
+   );
    const injections=pane('injektioner','Injektioner','Läs om hyaluron och PRP, se priser och boka.');
    injections.links.append(route('/hyaluronsyra/','Hyaluron'),route('/prp/','PRP (ACP)'),route('/injektioner/','Alla injektioner'));
    const nap=pane('naprapati','Naprapati','Undersökning, behandling och rehabilitering.');

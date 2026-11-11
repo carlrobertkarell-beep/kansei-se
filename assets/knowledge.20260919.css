@@ -9,3 +9,15 @@
 .knowledge-article .article-sources li{font-size:14px;line-height:1.8}
 .knowledge-article .editorial-top .crumbs a:hover{text-decoration:underline}
 .knowledge-directory .knowledge-filter button{min-height:44px}
+.knowledge-directory .knowledge-featured{grid-template-columns:repeat(3,minmax(0,1fr))}
+.knowledge-directory .knowledge-feature-guides{scroll-margin-top:96px}
+.knowledge-directory .knowledge-feature-guides:hover{background:var(--dark)}
+.knowledge-directory .knowledge-feature-guides h2{margin-bottom:8px}
+.knowledge-directory .knowledge-feature-guides nav{display:grid;width:100%}
+.knowledge-directory .knowledge-feature-guides a{
+  display:flex;align-items:center;min-height:44px;padding:6px 0;
+  border-top:1px solid rgba(255,255,255,.25);color:inherit;font-size:14px;
+  text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere;
+}
+.knowledge-directory .knowledge-feature-guides a:focus-visible{outline-color:currentColor}
+@media(max-width:760px){.knowledge-directory .knowledge-featured{grid-template-columns:1fr}}

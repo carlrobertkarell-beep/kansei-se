@@ -13,7 +13,10 @@ from urllib.parse import urlsplit
 
 KEYS = ('ultraljud', 'injektioner', 'naprapati', 'kliniken')
 DESTINATIONS = {
-    'ultraljud': ('/ultraljud/axel/', '/ultraljud/kna/', '/ultraljud/'),
+    'ultraljud': (
+        '/ultraljud/axel/', '/ultraljud/kna/', '/ultraljud/hoft-ljumske/',
+        '/ultraljud/fot-fotled/', '/ultraljud/#in-2',
+    ),
     'injektioner': ('/hyaluronsyra/', '/prp/', '/injektioner/'),
     'naprapati': ('/naprapati/', '/priser/'),
 }

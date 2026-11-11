@@ -34,6 +34,7 @@ REDIRECTS = {
     "/hem/home-v4/": "/",
     "/blogg/q-a/": "/fragor-och-svar/",
     "/priser/om/": "/om-oss/",
+    "/tjanster/tjanster/neurofunktionell-akupunktur/": "/elektroakupunktur/",
     "/blogg/blog-v1/faq-kortisoninjektioner-ultraljudsledda/": "/kortison/",
 }
 LEGACY_SITEMAPS = (

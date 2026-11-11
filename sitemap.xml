@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://www.kansei.se/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <image:image>
       <image:loc>https://www.kansei.se/bilder/ultraljud/kna/osteofyter-ultraljud.webp</image:loc>
     </image:image>
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/akupunktur/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-11</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/elektroakupunktur/</loc>
@@ -141,7 +141,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/naprapati/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-11-11</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/om-oss/</loc>
@@ -173,7 +173,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/rehabilitering/</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-11-11</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/team/carl-robert-karell/</loc>
@@ -249,7 +249,7 @@
   </url>
   <url>
     <loc>https://www.kansei.se/kunskapsbank/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-11</lastmod>
   </url>
   <url>
     <loc>https://www.kansei.se/kunskapsbank/kna/</loc>

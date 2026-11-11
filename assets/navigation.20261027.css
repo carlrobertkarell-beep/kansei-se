@@ -80,6 +80,8 @@ html:has(#site-menu.menu-minimal[open]) {scrollbar-gutter:auto}
 .clinic-site #site-menu.menu-minimal .menu-route-list {display:block}
 .clinic-site #site-menu.menu-minimal .menu-route {display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:60px;padding:15px 0;border-bottom:1px solid var(--menu-line);font:500 17px/1.5 var(--sans);letter-spacing:-.015em;color:var(--menu-ink)}
 .clinic-site #site-menu.menu-minimal .menu-route:is(:hover,:focus-visible,[aria-current]) {color:var(--menu-accent)}
+.clinic-site #site-menu.menu-minimal .menu-overview-route {border-bottom:0;color:var(--menu-accent);font-size:15px}
+.clinic-site #site-menu.menu-minimal .menu-overview-route:is(:hover,:focus-visible)>span {text-decoration:underline;text-underline-offset:4px}
 .clinic-site #site-menu.menu-minimal .menu-more {margin-top:22px;border:0}
 .clinic-site #site-menu.menu-minimal .menu-more>summary {display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:52px;padding:10px 0;color:var(--menu-muted);font:400 14px/1.5 var(--sans);list-style:none;cursor:pointer}
 .clinic-site #site-menu.menu-minimal .menu-more>summary::after {font-size:22px;line-height:1;margin-left:auto;font-weight:300}
@@ -98,6 +100,9 @@ html:has(#site-menu.menu-minimal[open]) {scrollbar-gutter:auto}
  .clinic-site #site-menu.menu-refined.menu-minimal {width:100vw;max-width:100vw;margin:0;box-shadow:none}
  .clinic-site #site-menu.menu-minimal .site-menu-head {padding:18px 24px}
  .clinic-site #site-menu.menu-minimal .menu-view {padding:20px 24px 22px}
+ .clinic-site #site-menu.menu-minimal [data-menu-view="ultraljud"] .menu-back {margin-bottom:14px}
+ .clinic-site #site-menu.menu-minimal [data-menu-view="ultraljud"] .menu-view-intro {margin-bottom:16px}
+ .clinic-site #site-menu.menu-minimal [data-menu-view="ultraljud"] .menu-route {min-height:54px;padding-block:12px}
  .clinic-site #site-menu.menu-minimal>.menu-bottom {padding:12px 24px max(6px,env(safe-area-inset-bottom))}
 }
 @media(max-width:360px) {
@@ -117,6 +122,8 @@ html:has(#site-menu.menu-minimal[open]) {scrollbar-gutter:auto}
  .clinic-site #site-menu.menu-minimal .menu-view-title {font-size:26px}
  .clinic-site #site-menu.menu-minimal .menu-view-intro {margin-bottom:18px}
  .clinic-site #site-menu.menu-minimal .menu-route {min-height:54px;padding-block:12px;font-size:16px}
+ .clinic-site #site-menu.menu-minimal [data-menu-view="ultraljud"] .menu-route {min-height:48px;padding-block:10px}
+ .clinic-site #site-menu.menu-minimal .menu-overview-route {font-size:15px}
  .clinic-site #site-menu.menu-minimal>.menu-bottom {padding-block:10px max(4px,env(safe-area-inset-bottom))}
  .clinic-site #site-menu.menu-minimal .menu-bottom .button {min-height:50px;padding-block:12px}
 }

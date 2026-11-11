@@ -3,8 +3,6 @@
 .home-chapters .home-chapter-label span { opacity:1; color:#526b61; }
 .home-chapters .home-intro-image { border-radius:22px; }
 .home-chapters.has-home-scroll .home-intro-image { border-radius:22px; }
-.home-chapters .home-treatment-routes { display:flex; flex-wrap:wrap; gap:6px 24px; border-top:1px solid #d9e0d8; padding-top:12px; margin-top:26px; }
-.home-chapters .home-treatment-routes a { display:inline-flex; align-items:center; min-height:44px; font-size:14px; color:#294c3d; text-decoration:underline; text-underline-offset:5px; }
 .home-chapters .home-intro-location { margin-top:12px; }
 .home-chapters .home-intro-tail .home-intro-scroll { text-transform:none; font-size:12px; letter-spacing:0; }
 .home-chapters .home-diagnostic { --hd-ink:#183b30; --hd-muted:#50665e; --hd-line:#d6e0da; background:#eaf0ed; }
@@ -61,8 +59,6 @@
 }
 @media(max-width:760px) {
  .home-chapters .home-chapter-label { font-size:10px; }
- .home-chapters .home-treatment-routes { gap:4px 22px; margin-top:22px; padding-top:8px; }
- .home-chapters .home-treatment-routes a { font-size:13px; }
  .home-chapters .home-diagnostic .hd-copy h2 { font-size:40px; }
  .home-chapters .home-hyaluron h2 { font-size:40px; margin:22px 0 20px; }
  .home-chapters .home-hyaluron-lead { font-size:16px; }

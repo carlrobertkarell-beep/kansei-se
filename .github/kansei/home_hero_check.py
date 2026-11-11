@@ -51,19 +51,20 @@ def check_home_hero(page, output, viewport):
         help_link = actions.locator('a[href="/hjalp-mig-boka/"]')
         if help_link.count() != 1:
             raise AssertionError('The hero no longer offers one clear booking helper')
-        routes = hero.locator('.home-treatment-routes a')
-        if set(routes.evaluate_all('links => links.map(link => link.getAttribute("href"))')) != {
-                '/ultraljud/', '/injektioner/', '/naprapati/'} or routes.count() != 3:
-            raise AssertionError('Hero treatment routes must link directly to the three services')
-        injection_actions = page.locator('.home-visit').filter(has=page.get_by_role('heading', name='Injektioner', exact=True)).locator('a')
+        if hero.locator('.home-treatment-routes').count():
+            raise AssertionError('Hero repeats the service choices immediately below it')
+        services = page.locator('main > section:nth-of-type(2)#vara-huvudtjanster .home-visit')
+        if services.locator('h3').all_text_contents() != ['Naprapati', 'Ultraljud', 'Injektioner']:
+            raise AssertionError('The introduction must be followed by the three service choices')
+        injection_actions = services.filter(has=page.get_by_role('heading', name='Injektioner', exact=True)).locator('a')
         if injection_actions.evaluate_all('links => links.map(link => link.getAttribute("href"))') != ['/hyaluronsyra/', '/prp/']:
             raise AssertionError('Homepage injection options must link directly to hyaluron and PRP')
-        for control in (booking, help_link, *routes.all()):
+        for control in (booking, help_link, *services.locator('.home-visit-actions a').all()):
             if not control.is_visible() or not control.evaluate('''element => {
                 const box = element.getBoundingClientRect();
                 return box.width >= 44 && box.height >= 44;
             }'''):
-                raise AssertionError('A hero action is hidden or too small for touch')
+                raise AssertionError('A homepage booking or service action is hidden or too small for touch')
         if page.evaluate('document.documentElement.scrollWidth > innerWidth + 3'):
             raise AssertionError('Homepage hero causes horizontal overflow')
         if viewport == 'mobile':

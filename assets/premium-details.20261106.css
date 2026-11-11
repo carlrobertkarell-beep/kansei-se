@@ -31,3 +31,253 @@ body.clinic-site :is(main,#knee-zoom,.patient-reader-zoom) :is(.patient-finding,
  }
  body.clinic-site :is(main,#knee-zoom,.patient-reader-zoom) :is(.reader-panel,.knee-panel){animation:none!important;}
 }
+
+/* Shared reading hierarchy for the clinic. Page-specific content remains in each template. */
+body.clinic-site {
+  --paper: #fff;
+  --clinic-surface: #fff;
+  --clinic-tint: #f1f5f3;
+  --clinic-rule: #dbe4de;
+  --line: #dbe4de;
+  --page-heading: clamp(2.5rem, 4.25vw, 3.9rem);
+  --clinic-header-height: 76px;
+  background: var(--paper);
+}
+
+body.clinic-site .site-header,
+body.clinic-site .site-header.is-scrolled {
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+body.clinic-site .site-header .header-inner { height: var(--clinic-header-height); }
+body.clinic-site .site-header .brand img { width: 148px; }
+body.clinic-site .site-header.is-scrolled .brand img { transform: none; }
+body.clinic-site .site-header .site-menu-toggle { min-height: 44px; border-radius: 8px; }
+
+body.clinic-site #site-menu.menu-minimal .menu-choice {
+  min-height: 60px;
+  padding-block: 14px;
+  font-size: 22px;
+  letter-spacing: -.02em;
+}
+
+body.clinic-site #site-menu.menu-minimal .menu-choice-practical { font-size: 16px; }
+
+body.clinic-site #main :is(.service-overview,.knowledge-top,.atlas-hero,.editorial-top,.condition-hero) {
+  background-color: var(--paper);
+  background-image: none;
+}
+
+body.clinic-site #main :is(.service-overview,.knowledge-top,.atlas-hero,.editorial-top,.condition-hero) > .wrap {
+  padding-block: clamp(20px, 3.2vw, 42px);
+}
+
+body.clinic-site #main :is(.service-overview,.knowledge-top,.atlas-hero,.editorial-top,.condition-hero) :is(.crumbs,.us-crumbs,.hub-crumbs,.landing-hero-crumbs) {
+  margin-block: 0 18px;
+  font-size: .8125rem;
+  line-height: 1.5;
+}
+
+body.clinic-site #main :is(.service-overview,.knowledge-top,.atlas-hero,.editorial-top,.condition-hero) :is(.eyebrow,.treatment-kicker) {
+  margin-block: 0 7px;
+  font-size: .75rem;
+  letter-spacing: .025em;
+}
+
+body.clinic-site #main :is(.service-overview,.knowledge-top,.atlas-hero,.editorial-top,.condition-hero) :is(.treatment-lead,.landing-hero-lead,.us-lead,.atlas-lead,.lead,.intro) {
+  max-inline-size: 52ch;
+  line-height: 1.55;
+}
+
+body.clinic-site #main :is(.service-choice,.hub-region,.us-region,.knowledge-result,.discovery-link,.ha-choice,.case-library-card) {
+  background-image: none;
+  box-shadow: none;
+  transform: none;
+}
+
+body.clinic-site #main :is(.service-choice,.hub-region,.us-region,.knowledge-result,.discovery-link,.ha-choice,.case-library-card):hover {
+  border-color: #a6b9ad;
+}
+
+body.clinic-site #main .reading-chapter-number,
+body.clinic-site #main .ha-benefits .ha-number { display: none; }
+
+body.clinic-site #main section[data-reading-section] {
+  border-top-width: 1px;
+  scroll-margin-top: calc(var(--clinic-header-height) + 18px);
+}
+
+body.clinic-site #main .service-overview-meta { margin-block: 14px; }
+
+body.clinic-site #main .clinical-hero-provider.service-overview-meta {
+  --clinical-portrait-size: 40px;
+  border-block: 0;
+  padding-block: 0;
+}
+
+body.clinic-site #main :is(.service-overview-details,.service-overview-disclosure,.home-more) {
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+
+body.clinic-site #main :is(.service-overview-details,.service-overview-disclosure,.home-more) > summary {
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 9px 0;
+  color: #244e3e;
+  font-size: .9375rem;
+  font-weight: 600;
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+body.clinic-site #main .service-overview-details > :is(p, dl) {
+  margin: 0 0 12px;
+  color: #394a42;
+  font-size: .9375rem;
+  line-height: 1.55;
+}
+
+body.clinic-site #main .service-reading { max-width: 43rem; margin-block: 18px 10px; }
+
+body.clinic-site #main .service-reading[open] > nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(11rem,100%), 1fr));
+  gap: 0 24px;
+  padding: 0 0 12px;
+}
+
+body.clinic-site #main .service-reading > nav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding-block: 8px;
+  color: #244e3e;
+  font-size: .9rem;
+  line-height: 1.45;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+body.clinic-site #main .hyaluron-service-overview .treatment-hero-grid {
+  grid-template-columns: minmax(0,1fr) minmax(0,.9fr);
+  grid-template-areas: "copy visual" "support visual";
+  gap: 18px clamp(32px,6vw,92px);
+}
+
+body.clinic-site #main :is(.hyaluron-service-overview,.hyaluron-comparison-overview) h1 {
+  max-width: 21ch;
+  margin-block: 0 12px;
+  font-size: var(--page-heading);
+  line-height: 1.08;
+}
+
+body.clinic-site #main .hyaluron-service-overview .treatment-hero-copy { align-self: start; }
+
+body.clinic-site #main .hyaluron-service-overview .treatment-offer {
+  max-width: 34rem;
+  margin-block: 18px 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+body.clinic-site #main .hyaluron-service-overview .treatment-book {
+  width: auto;
+  min-width: 11rem;
+  min-height: 48px;
+}
+
+body.clinic-site #main .service-overview-price {
+  margin: 0 0 10px;
+  color: #233d31;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+body.clinic-site #main .service-overview-price strong { font-size: 1.16rem; }
+
+body.clinic-site #main .service-overview-booking-note {
+  margin: 8px 0 0;
+  color: #4f6257;
+  font-size: .875rem;
+  line-height: 1.45;
+}
+
+body.clinic-site #main .service-overview-support { grid-area: support; max-width: 34rem; }
+
+body.clinic-site #main .service-overview-support > details:last-child { border-bottom: 1px solid var(--line); }
+
+body.clinic-site #main .service-overview-comparison {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(min(8.75rem,100%),1fr));
+  gap: 10px 22px;
+  padding-block: 2px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+body.clinic-site #main .service-overview-comparison :is(dt,dd) { margin: 0; }
+
+body.clinic-site #main .hyaluron-comparison-overview .treatment-hero-grid {
+  grid-template-columns: minmax(0,1fr);
+  grid-template-areas: "copy";
+}
+
+body.clinic-site #main .service-overview-guide-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  margin-top: 16px;
+}
+
+body.clinic-site #main .service-overview-guide-actions > a { min-height: 44px; display: inline-flex; align-items: center; }
+
+body.clinic-site #main .atlas-explainer > .atlas-demo { max-width: 42rem; }
+body.clinic-site #main .knowledge-top .knowledge-toolbar { margin-block: 20px 14px; }
+
+body.clinic-site.home-chapters #main .home-first-impression.landing-hero { background: #fff; }
+body.clinic-site.home-chapters #main .home-first-impression .home-intro-image::after { background: none; }
+body.clinic-site.home-chapters #main .home-first-impression .landing-hero-copy h1 { max-width: 20ch; }
+body.clinic-site.home-chapters #main .home-support-section { padding-block: clamp(32px, 5vw, 66px); }
+
+body.clinic-site .footer-cta { padding-block: 16px 26px; gap: 20px; }
+body.clinic-site .footer-cta h2 { font-size: clamp(1.9rem,3.2vw,2.8rem); }
+body.clinic-site .footer-cta .footer-book { min-height: 80px; padding: 16px 20px; }
+
+@media (max-width:760px) {
+  body.clinic-site { --page-heading: clamp(1.95rem, 8.9vw, 2.7rem); --clinic-header-height: 64px; }
+  body.clinic-site .site-header .brand img { width: 126px; }
+  body.clinic-site #main .hyaluron-service-overview .treatment-hero-grid {
+    grid-template-columns: minmax(0,1fr);
+    grid-template-areas: "copy" "support" "visual";
+    gap: 16px;
+  }
+  body.clinic-site #main .hyaluron-service-overview .treatment-book { width: 100%; }
+  body.clinic-site #main .hyaluron-service-overview .hyaluron-hero-visual img {
+    aspect-ratio: 2.35 / 1;
+    object-fit: cover;
+  }
+  body.clinic-site #main .hyaluron-service-overview .clinical-landing-scan img {
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+  }
+  body.clinic-site.hyaluron-page #main #skillnaden .ha-product-table table {
+    min-width: 0;
+    table-layout: fixed;
+  }
+  body.clinic-site.hyaluron-page #main #skillnaden .ha-product-table :is(th,td) {
+    padding: 9px 7px;
+    font-size: .8125rem;
+    overflow-wrap: anywhere;
+  }
+  body.clinic-site.home-chapters #main .home-first-impression .home-intro-image { height: clamp(184px, 29svh, 225px); }
+  body.clinic-site.home-chapters #main .home-first-impression .landing-hero-copy h1 { font-size: clamp(2rem, 8.9vw, 2.6rem); }
+}

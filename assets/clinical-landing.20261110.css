@@ -1,37 +1,37 @@
-/* A shared first view for Kansei's search landing pages. */
-.clinic-site #main .clinical-landing-hero {
-  background: linear-gradient(155deg, #faf9f5 26%, #eff3ed 100%);
+/* Keep the clinician, visit and next step in the same order across service pages. */
+.clinic-site #main :is(.clinical-landing-hero, .clinical-service-hero) {
+  background: #f5f7f3;
   border-bottom: 1px solid #dce4db;
 }
 
-.clinic-site #main .clinical-landing-hero .landing-hero-grid {
-  align-items: center;
+.clinic-site #main :is(.clinical-landing-hero, .clinical-service-hero) .landing-hero-grid {
+  align-items: start;
   gap: clamp(24px, 5vw, 72px);
 }
 
-.clinic-site #main .clinical-landing-hero h1 {
+.clinic-site #main :is(.clinical-landing-hero, .clinical-service-hero) h1 {
   margin-block: 8px 12px;
   line-height: 1.05;
 }
 
-.clinic-site.ultrasound-hub #main .clinical-landing-hero h1 {
+.clinic-site.ultrasound-hub #main :is(.clinical-landing-hero, .clinical-service-hero) h1 {
   font-size: var(--page-heading);
 }
 
-.clinic-site #main .clinical-landing-hero :is(.landing-hero-lead, .treatment-lead) {
+.clinic-site #main :is(.clinical-landing-hero, .clinical-service-hero) :is(.landing-hero-lead, .treatment-lead) {
   max-width: 49ch;
   margin: 0;
   line-height: 1.5;
 }
 
 .clinical-landing-booking,
-.hyaluron-page #main .clinical-landing-hero .treatment-offer {
+.hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .treatment-offer {
   margin-top: 16px;
   padding: 14px 16px;
   border: 1px solid #d8e1d7;
-  border-radius: 14px;
-  background: #fffefa;
-  box-shadow: 0 8px 24px #233d2910;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: none;
 }
 
 .clinical-landing-booking {
@@ -56,12 +56,12 @@
 .clinical-landing-booking .landing-hero-facts strong {
   display: block;
   color: #163b2d;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   line-height: 1.2;
   font-variant-numeric: tabular-nums;
 }
 
-.clinic-site #main .clinical-landing-hero .clinical-landing-booking .button {
+.clinic-site #main :is(.clinical-landing-hero, .clinical-service-hero) .clinical-landing-booking .button {
   min-height: 48px;
   padding-inline: 18px;
   border-radius: 9px;
@@ -69,7 +69,7 @@
   color: #fff;
 }
 
-.clinic-site #main .clinical-landing-hero .clinical-landing-booking .button:hover {
+.clinic-site #main :is(.clinical-landing-hero, .clinical-service-hero) .clinical-landing-booking .button:hover {
   background: #17382b;
 }
 
@@ -120,6 +120,62 @@
   font-size: .8rem;
 }
 
+.clinic-site #main .clinical-hero-provider {
+  --clinical-portrait-size: 50px;
+  display: grid;
+  grid-template-columns: var(--clinical-portrait-size) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 3px 12px;
+  max-width: 37rem;
+  margin: 16px 0 12px;
+  padding-block: 10px;
+  border-block: 1px solid #d5dfd6;
+  color: #3e5549;
+  font-size: .9rem;
+  line-height: 1.4;
+}
+
+.clinic-site #main .clinical-hero-provider > img {
+  grid-column: 1;
+  grid-row: 1;
+  width: var(--clinical-portrait-size);
+  height: var(--clinical-portrait-size);
+  border-radius: 9px;
+  object-fit: cover;
+  object-position: center 27%;
+}
+
+.clinic-site #main .clinical-hero-provider .clinical-landing-person {
+  grid-column: 2;
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.clinic-site #main .clinical-hero-provider .clinical-landing-person > a {
+  color: #163b2d;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #9db1a5;
+  text-underline-offset: 3px;
+}
+
+.clinic-site #main .clinical-hero-provider .clinical-landing-rating {
+  color: #3e5549;
+  font-size: .8rem;
+  text-underline-offset: 3px;
+}
+
+.clinic-site #main .clinical-hero-visit {
+  max-width: 49ch;
+  margin: 0 0 10px;
+  color: #2d4739;
+  font-size: .975rem;
+  line-height: 1.5;
+}
+
 .clinic-site #main .clinical-landing-details {
   margin: 6px 0 0;
   color: #3e5549;
@@ -141,41 +197,50 @@
   line-height: 1.5;
 }
 
-.clinical-landing-hero :is(.landing-hero-media, .hyaluron-hero-visual) :is(img, video) {
-  border-radius: 15px;
+:is(.clinical-landing-hero, .clinical-service-hero) :is(.landing-hero-media, .hyaluron-hero-visual) :is(img, video) {
+  border-radius: 12px;
 }
 
-.clinical-landing-hero .clinical-landing-scan img {
+:is(.clinical-landing-hero, .clinical-service-hero) .clinical-landing-scan img {
   aspect-ratio: 4 / 3;
   object-fit: contain;
 }
 
-.hyaluron-page #main .clinical-landing-hero .treatment-hero-grid {
+.hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .treatment-hero-grid {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   grid-template-areas: "copy visual";
-  align-items: center;
+  align-items: start;
   gap: clamp(24px, 5vw, 72px);
 }
 
-.hyaluron-page #main .clinical-landing-hero .treatment-prices { margin-bottom: 10px; }
-.hyaluron-page #main .clinical-landing-hero .treatment-prices dd { font-size: clamp(1.4rem, 2.4vw, 2rem); }
-.hyaluron-page #main .clinical-landing-hero .treatment-prices > div + div { border-color: #d8e1d7; }
-.hyaluron-page #main .clinical-landing-hero .treatment-offer .treatment-book {
+.treatment-page #main .clinical-service-hero .treatment-hero-grid--clinical-offer {
+  grid-template-areas: "copy offer";
+  align-items: center;
+}
+
+.treatment-page #main .clinical-service-hero .treatment-hero-grid--clinical-offer .treatment-hero-copy {
+  align-self: center;
+}
+
+.hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .treatment-prices { margin-bottom: 10px; }
+.hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .treatment-prices dd { font-size: clamp(1.25rem, 2.4vw, 1.65rem); }
+.hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .treatment-prices > div + div { border-color: #d8e1d7; }
+.hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .treatment-offer .treatment-book {
   min-height: 48px;
   border-radius: 9px;
 }
 
-.hyaluron-page #main .clinical-landing-hero .treatment-offer-links {
+.hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .treatment-offer-links {
   margin-top: 4px;
   gap: 6px 12px;
 }
 
-.hyaluron-page #main .clinical-landing-hero .clinical-landing-details {
+.hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .clinical-landing-details {
   margin: 0;
   border-top: 1px solid #d8e1d7;
 }
 
-.hyaluron-page #main .clinical-landing-hero .clinical-landing-details summary {
+.hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .clinical-landing-details summary {
   min-height: 44px;
   padding-bottom: 3px;
 }
@@ -205,28 +270,34 @@
 }
 
 @media (max-width: 760px) {
-  body.clinic-site:has(.clinical-landing-hero) .site-header .header-book { display: none; }
-  .clinic-site #main .clinical-landing-hero.landing-hero { padding-block: 16px 24px; }
-  .hyaluron-page #main .clinical-landing-hero.treatment-hero > .wrap { padding-block: 16px 24px; }
+  body.clinic-site:has(:is(.clinical-landing-hero, .clinical-service-hero) :is(.clinical-landing-booking, .treatment-offer)) .site-header .header-book { display: none; }
+  .clinic-site #main :is(.clinical-landing-hero, .clinical-service-hero).landing-hero { padding-block: 16px 24px; }
+  .hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero).treatment-hero > .wrap { padding-block: 16px 24px; }
 
-  .hyaluron-page #main .clinical-landing-hero .treatment-hero-grid {
+  .hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .treatment-hero-grid {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: "copy" "visual";
     gap: 16px;
   }
 
-  .clinic-site #main .clinical-landing-hero :is(.landing-hero-crumbs, .crumbs) { margin-bottom: 12px; }
-  .clinic-site #main .clinical-landing-hero :is(.landing-hero-lead, .treatment-lead) { font-size: 1rem; }
+  .treatment-page #main .clinical-service-hero .treatment-hero-grid--clinical-offer {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "copy" "offer";
+    gap: 16px;
+  }
+
+  .clinic-site #main :is(.clinical-landing-hero, .clinical-service-hero) :is(.landing-hero-crumbs, .crumbs) { margin-bottom: 12px; }
+  .clinic-site #main :is(.clinical-landing-hero, .clinical-service-hero) :is(.landing-hero-lead, .treatment-lead) { font-size: 1rem; }
 
   .clinical-landing-booking,
-  .hyaluron-page #main .clinical-landing-hero .treatment-offer {
+  .hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .treatment-offer {
     margin-top: 12px;
     padding: 12px;
   }
 
   .clinic-site #main .clinical-landing-booking .landing-hero-actions { width: 100%; }
   .clinical-landing-booking .landing-hero-actions .button { width: 100%; justify-content: center; }
-  .clinic-site #main .clinical-landing-hero .landing-hero-grid { gap: 16px; }
+  .clinic-site #main :is(.clinical-landing-hero, .clinical-service-hero) .landing-hero-grid { gap: 16px; }
 
   .clinical-landing-identity {
     display: grid;
@@ -240,6 +311,17 @@
     margin: 0;
     max-width: none;
   }
+
+  .clinic-site #main .clinical-hero-provider {
+    --clinical-portrait-size: 44px;
+    grid-template-columns: var(--clinical-portrait-size) minmax(0, 1fr);
+    gap: 2px 10px;
+    margin-block: 12px 10px;
+    padding-block: 8px;
+  }
+
+  .clinic-site #main .clinical-hero-provider > img { grid-row: 1 / span 2; }
+  .clinic-site #main .clinical-hero-provider .clinical-landing-rating { grid-column: 2; }
 
   .hyaluron-page #main .clinical-landing-visit .hyaluron-visit-steps li {
     display: grid;

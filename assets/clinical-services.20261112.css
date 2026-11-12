@@ -91,6 +91,10 @@ body.clinic-site #main .service-first-hero .treatment-offer .service-overview-pr
   margin: 0;
 }
 
+body.clinic-site #main .service-first-hero .treatment-offer .service-overview-price strong {
+  white-space: nowrap;
+}
+
 body.clinic-site #main .service-first-hero .treatment-offer .treatment-book {
   width: auto;
   min-width: 0;

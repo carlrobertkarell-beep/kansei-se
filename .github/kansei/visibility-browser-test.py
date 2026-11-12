@@ -135,12 +135,19 @@ with sync_playwright() as pw:
         assert payload['placement']==placement
         assert payload['measurement_version']=='20261101'
         assert set(payload)=={'send_to','page_location','page_referrer','page_title','referral_group','measurement_version','placement'}
-    p.locator('[data-site-menu]').first.click()
-    assert p.locator('#site-menu').is_visible()
-    before=len(events(p,'booking_click'))
-    p.locator('#site-menu a[href*="bokadirekt.se/"]').first.click()
-    assert len(events(p,'booking_click'))==before+1
-    assert events(p,'booking_click')[-1][2]['placement']=='menu'
+    for width in (1280,390):
+        p.set_viewport_size({'width':width,'height':900})
+        p.locator('[data-site-menu]').first.click()
+        assert p.locator('#site-menu').is_visible()
+        before=len(events(p,'booking_click'))
+        menu_booking=p.locator('#site-menu a[href*="bokadirekt.se/"]:visible')
+        assert menu_booking.count()==1
+        assert menu_booking.get_attribute('href')==p.locator('.header-book').get_attribute('href')
+        menu_booking.click()
+        assert len(events(p,'booking_click'))==before+1
+        assert events(p,'booking_click')[-1][2]['placement']=='menu'
+        p.locator('#site-menu [data-site-close]').click()
+        p.locator('#site-menu').wait_for(state='hidden')
     c.close();record('Hyaluron price navigation is not a booking event; ultrasound header counts one outbound booking intent')
     record('Actual content, footer and menu booking links count once with reportable placement and an allowlisted payload')
     c,p,seen=setup(browser)
@@ -176,7 +183,8 @@ with sync_playwright() as pw:
                 p.locator('[data-statistics="no"]').click()
             p.wait_for_timeout(120)
             assert p.locator('h1').count()==1
-            assert p.locator('#site-menu a[href="/ultraljud/bilder/"]').count()==1
+            menu_view = '.menu-mobile' if width <= 760 else '.menu-more'
+            assert p.locator(f'#site-menu {menu_view} a[href="/ultraljud/bilder/"]').count()==1
             width_now=p.evaluate('document.documentElement.scrollWidth')
             assert width_now<=width+2,(path,label,width_now,width)
             p.screenshot(path=str(OUT/f'{name}-{label}.png'))
@@ -201,7 +209,7 @@ with sync_playwright() as pw:
         assert p.locator('#site-menu').is_visible()
         p.screenshot(path=str(OUT/f'menu-{label}.png'))
         c.close()
-    record('Desktop/mobile layout without horizontal overflow; static image-library menu link remains single after JavaScript')
+    record('Desktop/mobile layout without horizontal overflow; each menu has one image-library link')
     browser.close()
 (OUT/'checks.json').write_text(json.dumps({'checks':checks,'all_passed':True,'scope':'Local checkout with third parties stubbed. Does not verify actual GA4 collection, live deployments or rankings.'},ensure_ascii=False,indent=2))
 print('BROWSER TESTS COMPLETE:',len(checks))

@@ -20,6 +20,15 @@ DESTINATIONS = {
     'injektioner': ('/hyaluronsyra/', '/prp/', '/injektioner/'),
     'naprapati': ('/naprapati/', '/priser/'),
 }
+MOBILE_CATEGORIES = {
+    'Ultraljud': ('/ultraljud/', *DESTINATIONS['ultraljud'], '/ultraljud/bilder/'),
+    'Injektioner': (*DESTINATIONS['injektioner'], '/kortison/'),
+    'Naprapati & rehab': ('/naprapati/', '/rehabilitering/', '/tjanster/'),
+    'Kliniken & ditt besök': (
+        '/priser/', '/om-oss/', '/kontakt/', '/patientinformation/', '/team/carl-robert-karell/',
+        '/fragor-och-svar/', '/for-vardgivare/', 'mailto:info@kansei.se',
+    ),
+}
 
 
 def _active(page, key, focus=False):
@@ -102,8 +111,11 @@ def _root(page, keys, destinations, fresh=False):
 
 def _tab_loop(page):
     targets = page.locator('#site-menu a[href], #site-menu button:not([disabled]), #site-menu summary, #site-menu [tabindex="0"]')
-    indexes = targets.evaluate_all('''els => els.flatMap((el, i) =>
-        el.getClientRects().length && el.tabIndex >= 0 && !el.closest('[inert],[hidden]') ? [i] : [])''')
+    indexes = targets.evaluate_all('''els => els.flatMap((el, i) => {
+        const collapsed = el.closest('details:not([open])');
+        return el.getClientRects().length && el.tabIndex >= 0 && !el.closest('[inert],[hidden]') &&
+            (!collapsed || el === collapsed.firstElementChild) ? [i] : [];
+    })''')
     if not indexes:
         raise AssertionError('Progressive menu has no focusable controls')
     first, last = targets.nth(indexes[0]), targets.nth(indexes[-1])
@@ -121,7 +133,105 @@ def _tab_loop(page):
             raise AssertionError('Keyboard focus entered an inactive pane or left the menu')
 
 
+def _uses_shortcuts(page):
+    return page.evaluate('''() => matchMedia('(max-width: 760px)').matches &&
+        !!document.querySelector('#site-menu.menu-with-shortcuts')''')
+
+
+def _mobile_root(page):
+    root = _active(page, 'root')
+    layout = root.evaluate('''el => {
+        const dialog = el.closest('dialog');
+        const box = el.getBoundingClientRect();
+        const close = dialog.querySelector('[data-site-close]').getBoundingClientRect();
+        const head = dialog.querySelector('.site-menu-head').getBoundingClientRect();
+        const grid = el.querySelector('.menu-shortcuts').getBoundingClientRect();
+        const tiles = [...el.querySelectorAll('.menu-shortcut')];
+        const [a,b,c,d] = tiles.map(t => t.getBoundingClientRect());
+        const book = dialog.querySelector(':scope > .menu-bottom .button');
+        const near = (x,y) => Math.abs(x-y) <= 2;
+        return {
+            fit: el.scrollWidth <= el.clientWidth + 1 && near(grid.left,box.left) &&
+                near(grid.right,box.right) && near(grid.top,head.bottom) &&
+                close.height >= 44 && close.width >= 44 && close.bottom <= innerHeight,
+            grid: tiles.length === 4 && near(a.top,b.top) && near(c.top,d.top) &&
+                near(a.left,c.left) && near(b.left,d.left) && a.bottom <= c.top &&
+                tiles.every(t => {
+                    const r = t.getBoundingClientRect();
+                    return r.width >= 44 && r.height >= 44 && r.top >= head.bottom - 1 &&
+                        r.bottom <= Math.min(innerHeight,box.bottom) + 1;
+                }),
+            links: tiles.map(t => t.getAttribute('href')),
+            originalBooking: book?.getAttribute('href'),
+            sameBooking: ['target','rel','data-measure'].every(attr =>
+                book?.getAttribute(attr) === tiles[0]?.getAttribute(attr)),
+        };
+    }''')
+    if not layout['fit'] or not layout['grid']:
+        raise AssertionError('Mobile shortcuts overflow or fail to form two visible columns: ' + str(layout))
+    if not layout['sameBooking'] or layout['links'] != [
+        layout['originalBooking'], '/hjalp-mig-boka/', '/kunskapsbank/', '/kontakt/'
+    ]:
+        raise AssertionError('Mobile shortcuts change booking behavior or lead to incorrect destinations')
+    categories = root.locator('.menu-category')
+    if root.locator('.menu-category > summary').all_text_contents() != list(MOBILE_CATEGORIES):
+        raise AssertionError('Mobile menu lacks its four section disclosures')
+    if categories.evaluate_all('els => els.some(el => el.open)') or root.evaluate('el => el.scrollTop') > 1:
+        raise AssertionError('Reopened mobile menu retains its disclosure or scroll state')
+    return categories
+
+
+def _check_shortcut_menu(page, screenshot, keyboard, close_button, reduced_motion):
+    opener = page.locator('button[data-site-menu]')
+    opener.click(timeout=5000)
+    categories = _mobile_root(page)
+    if opener.get_attribute('aria-expanded') != 'true':
+        raise AssertionError('Mobile menu lacks expanded state')
+    if reduced_motion and not page.locator('#site-menu').evaluate('''d =>
+        matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        getComputedStyle(d).animationName === 'none' &&
+        getComputedStyle(d, '::backdrop').animationName === 'none'
+    '''):
+        raise AssertionError('Mobile menu ignores reduced-motion preference')
+    page.screenshot(path=str(screenshot), animations='disabled')
+    if keyboard:
+        _tab_loop(page)
+        for category, (label, destinations) in zip(categories.all(), MOBILE_CATEGORIES.items()):
+            summary = category.locator('summary')
+            summary.focus()
+            page.keyboard.press('Enter')
+            if not category.evaluate('el => el.open') or categories.evaluate_all('els => els.filter(el => el.open).length') != 1:
+                raise AssertionError('Mobile sections do not open one at a time with the keyboard')
+            links = category.locator('a[href]')
+            if links.evaluate_all('els => els.map(el => el.getAttribute("href"))') != list(destinations):
+                raise AssertionError('Incorrect mobile menu destinations: ' + label)
+            if not links.evaluate_all('els => els.every(el => el.getBoundingClientRect().height >= 44)'):
+                raise AssertionError('A mobile menu link has a small touch target')
+            _tab_loop(page)
+        categories.last.locator('summary').scroll_into_view_if_needed()
+        page.screenshot(path=str(screenshot.with_name(screenshot.stem + '-more.png')), animations='disabled')
+        categories.last.locator('summary').focus()
+        page.keyboard.press('Space')
+        if categories.last.evaluate('el => el.open'):
+            raise AssertionError('Mobile section does not close with the keyboard')
+        categories.last.locator('summary').focus()
+        page.keyboard.press('Enter')
+    page.keyboard.press('Escape')
+    _closed(page)
+    if keyboard or close_button:
+        opener.click()
+        _mobile_root(page)
+        if close_button:
+            page.locator('#site-menu [data-site-close]').click()
+        else:
+            page.keyboard.press('Escape')
+        _closed(page)
+    return {'type': 'dialog', 'model': 'shortcuts', 'keyboard': keyboard, 'close_button': close_button}
+
+
 def check_minimal_menu(page, screenshot, keyboard=False, close_button=False, reduced_motion=False):
+    if _uses_shortcuts(page):
+        return _check_shortcut_menu(page, screenshot, keyboard, close_button, reduced_motion)
     keys, destinations = KEYS, DESTINATIONS
     if urlsplit(page.url).port == 4174:
         # Review screenshots also run against the previous production menu.
@@ -339,8 +449,16 @@ def check_minimal_menu_motion(page, output):
         sample('opening')
         _active(probe, 'root')
         probe.wait_for_timeout(1000)
-        visit_and_back('ultraljud')
-        visit_and_back('injektioner')
+        mobile = _uses_shortcuts(probe)
+        if mobile:
+            categories = _mobile_root(probe)
+            categories.nth(0).locator('summary').click()
+            probe.wait_for_timeout(1000)
+            categories.nth(1).locator('summary').click()
+            probe.wait_for_timeout(1000)
+        else:
+            visit_and_back('ultraljud')
+            visit_and_back('injektioner')
         arm('#site-menu [data-site-close]', 'closing')
         probe.locator('#site-menu [data-site-close]').click()
         probe.wait_for_timeout(80)
@@ -354,10 +472,15 @@ def check_minimal_menu_motion(page, output):
         settled_dialog()
         _active(probe, 'root')
         probe.wait_for_timeout(1000)
-        probe.locator('#site-menu button[data-menu-target="ultraljud"]').click()
-        _active(probe, 'ultraljud', focus=True)
+        if mobile:
+            category = probe.locator('#site-menu .menu-category').first
+            category.locator('summary').click()
+            selector = '#site-menu .menu-category a[href="/ultraljud/axel/"]'
+        else:
+            probe.locator('#site-menu button[data-menu-target="ultraljud"]').click()
+            _active(probe, 'ultraljud', focus=True)
+            selector = '#site-menu .menu-view[data-menu-view="ultraljud"] a[href="/ultraljud/axel/"]'
         probe.wait_for_timeout(1000)
-        selector = '#site-menu .menu-view[data-menu-view="ultraljud"] a[href="/ultraljud/axel/"]'
         arm(selector, 'internal-link-exit')
         probe.locator(selector).click()
         probe.wait_for_url(base + '/ultraljud/axel/', timeout=15000)

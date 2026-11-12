@@ -272,6 +272,7 @@
     a.href=href;a.className='menu-route';a.replaceChildren(element('span','',label),chevron());return a;
    }
    const sections=['.menu-secondary','.menu-practical'].map(selector=>dialog.querySelector(selector)).filter(Boolean);
+   sections.forEach(section=>section.querySelector('a[href="/reda/"]')?.remove());
    const contact=bottom.querySelector('p'),book=bottom.querySelector('.button'),help=existing.get('/hjalp-mig-boka/');
    const brand=dialog.querySelector('.site-menu-head>a');
    if(brand){brand.replaceChildren(element('span','menu-brand-name','Kansei'),element('span','menu-brand-caption','Naprapati & Rehabcenter'));brand.setAttribute('aria-label','Kansei Naprapati & Rehabcenter, startsida');}
@@ -306,17 +307,66 @@
     route('/ultraljud/fot-fotled/','Fot & fotled'),
     allAreas
    );
-   const injections=pane('injektioner','Injektioner','Läs om hyaluron och PRP, se priser och boka.');
+   const injections=pane('injektioner','Injektioner','Läs om hyaluron och PRP.');
    injections.links.append(route('/hyaluronsyra/','Hyaluron'),route('/prp/','PRP (ACP)'),route('/injektioner/','Alla injektioner'));
    const nap=pane('naprapati','Naprapati','Undersökning, behandling och rehabilitering.');
    nap.links.append(route('/naprapati/','Om naprapati & rehab'),route('/priser/','Besök och priser',true));
    const clinic=pane('kliniken','Kliniken & ditt besök','Praktisk information inför ditt besök.');
    clinic.links.append(route('/priser/','Priser'),route('/om-oss/','Om kliniken'),route('/kontakt/','Kontakt & hitta hit'),route('/patientinformation/','Inför besöket'));
    const more=element('details','menu-more');more.append(element('summary','','Mer på Kansei'));sections.forEach(section=>more.append(section));if(contact){contact.className='menu-contact';more.append(contact);}clinic.view.append(more);
-   if(book){book.textContent='Boka besök';book.setAttribute('aria-label','Boka besök på Bokadirekt');}
+   if(book){
+    book.textContent='Boka besök';
+    if(new URL(book.href).hostname==='www.bokadirekt.se')book.setAttribute('aria-label','Boka besök på Bokadirekt');
+   }
    if(help)help.className='menu-booking-help';
+
+   const mobile=element('div','menu-mobile');
+   const shortcuts=element('nav','menu-shortcuts');shortcuts.setAttribute('aria-label','Genvägar');
+   function addShortcut(link,label,paths){
+    link.className='menu-shortcut';
+    link.replaceChildren(graphic(paths,'menu-shortcut-icon'),element('span','',label));
+    shortcuts.append(link);
+   }
+   if(book)addShortcut(book.cloneNode(true),'Boka besök',[
+    'M8 3v4m8-4v4M4 10h16M6 5h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z',
+    'M8 14h2m4 0h2m-8 3h2m4 0h2'
+   ]);
+   addShortcut(route('/hjalp-mig-boka/','Hitta rätt besök',true),'Hitta rätt besök',[
+    'M6 5h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-6l-5 4v-4H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z',
+    'M10 9a2 2 0 1 1 3 1.73c-.5.3-1 .62-1 1.27m0 2h.01'
+   ]);
+   addShortcut(route('/kunskapsbank/','Kunskapsbanken',true),'Kunskapsbanken',[
+    'M12 6c-3-2-6-2-9-1v13c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Zm0 0v13'
+   ]);
+   addShortcut(route('/kontakt/','Hitta hit',true),'Hitta hit',[
+    'M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z',
+    'M14.5 10a2.5 2.5 0 1 1-5 0 2.5 2.5 0 1 1 5 0Z'
+   ]);
+   const categories=element('nav','menu-categories');categories.setAttribute('aria-label','Undersökning, behandling och klinikinformation');
+   function addCategory(label,links){
+    const disclosure=element('details','menu-category');
+    disclosure.setAttribute('name','kansei-menu-category');
+    const summary=element('summary','',label);summary.append(chevron());
+    const content=element('div','menu-category-links');content.append(...links);
+    disclosure.append(summary,content);categories.append(disclosure);
+   }
+   const copyLinks=pane=>[...pane.links.children].map(link=>link.cloneNode(true));
+   addCategory('Ultraljud',[
+    route('/ultraljud/','Om ultraljud',true),...copyLinks(us),route('/ultraljud/bilder/','Ultraljud i bild',true)
+   ]);
+   addCategory('Injektioner',[...copyLinks(injections),route('/kortison/','Kortison',true)]);
+   addCategory('Naprapati & rehab',[
+    route('/naprapati/','Om naprapati',true),route('/rehabilitering/','Rehabilitering',true),route('/tjanster/','Alla behandlingar',true)
+   ]);
+   addCategory('Kliniken & ditt besök',[
+    ...copyLinks(clinic),route('/team/carl-robert-karell/','Möt Carl-Robert',true),
+    route('/fragor-och-svar/','Vanliga frågor',true),
+    route('/for-vardgivare/','För vårdgivare',true),...(contact?[contact.cloneNode(true)]:[])
+   ]);
+   mobile.append(shortcuts,categories);root.prepend(mobile);
+
    bottom.replaceChildren(...[book,help].filter(Boolean));dialog.append(bottom);body.replaceChildren(stage);
-   dialog.classList.add('menu-refined','menu-minimal');dialog.dataset.menuActive='root';
+   dialog.classList.add('menu-refined','menu-minimal','menu-with-shortcuts');dialog.dataset.menuActive='root';
    dialog.querySelector('[data-site-close]')?.setAttribute('autofocus','');
    dialog.querySelectorAll('a[href^="/"]').forEach(a=>{if(a.getAttribute('href')===location.pathname.replace(/index\.html$/,'').replace(/\/?$/,'/'))a.setAttribute('aria-current','page');});
 
@@ -324,7 +374,11 @@
    let opener=null,closing=false,timer=null,current='root',lastChoice=null,rootScroll=0,viewToken=0,animations=[],destination=null;
    function stopPaneMotion(){viewToken++;animations.forEach(a=>a.cancel());animations=[];delete dialog.dataset.menuTransition;}
    function showOnly(key){views.forEach((view,name)=>{view.hidden=name!==key;view.inert=name!==key;});current=key;dialog.dataset.menuActive=key;}
-   function reset(){stopPaneMotion();more.open=false;views.forEach(view=>view.scrollTop=0);showOnly('root');lastChoice=null;rootScroll=0;}
+   function reset(){
+    stopPaneMotion();more.open=false;
+    categories.querySelectorAll('details[open]').forEach(category=>category.open=false);
+    views.forEach(view=>view.scrollTop=0);showOnly('root');lastChoice=null;rootScroll=0;
+   }
    function changeView(key){
     if(!views.has(key)||key===current||closing||dialog.dataset.menuTransition)return;
     const from=views.get(current),to=views.get(key),back=key==='root';
@@ -371,7 +425,10 @@
    });
    dialog.addEventListener('keydown',event=>{
     if(event.key!=='Tab')return;
-    const items=[...dialog.querySelectorAll('a[href],button:not([disabled]),summary,[tabindex="0"]')].filter(el=>!el.closest('[inert],[hidden]')&&el.getClientRects().length);
+    const items=[...dialog.querySelectorAll('a[href],button:not([disabled]),summary,[tabindex="0"]')].filter(el=>{
+     const collapsed=el.closest('details:not([open])');
+     return !el.closest('[inert],[hidden]')&&el.getClientRects().length&&(!collapsed||el===collapsed.firstElementChild);
+    });
     const first=items[0],last=items.at(-1);if(!first)return;
     if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
    });

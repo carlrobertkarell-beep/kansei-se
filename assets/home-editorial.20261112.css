@@ -1,89 +1,104 @@
 /* Homepage composition. Shared typography and controls live in the clinic stylesheet. */
 body.clinic-site #main .clinic-home-intro {
-  padding-block: clamp(38px, 6.5vw, 104px);
-  background: #fff;
+  position: relative;
+  isolation: isolate;
+  padding: 0;
+  background: #102d46;
+  color: #fff;
 }
 
 body.clinic-site #main .clinic-home-intro .home-intro-grid {
   display: grid;
-  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
-  align-items: center;
-  gap: clamp(28px, 5vw, 76px);
+  grid-template-columns: minmax(0, 1fr);
+  align-content: end;
+  gap: 0;
+  min-height: clamp(490px, 72svh, 670px);
+  padding-block: clamp(72px, 15svh, 160px) clamp(40px, 6.5vw, 98px);
+}
+
+body.clinic-site #main .clinic-home-intro .landing-hero-copy {
+  position: relative;
+  z-index: 1;
+  padding: 0;
 }
 
 body.clinic-site #main .clinic-home-intro h1 {
   max-width: 15ch;
   margin: 0;
-  color: #162735;
-  font-size: clamp(2.4rem, 4.85vw, 4.7rem);
-  line-height: 1.04;
+  color: #fff;
+  font-size: clamp(2.65rem, 5.4vw, 5.2rem);
+  line-height: 1.02;
   letter-spacing: -.035em;
+  text-wrap: balance;
 }
 
 body.clinic-site #main .clinic-home-intro .landing-hero-lead {
-  max-width: 39ch;
-  margin: 19px 0 0;
-  color: #465a6b;
-  font-size: clamp(1rem, 1.4vw, 1.2rem);
-  line-height: 1.55;
+  max-width: 41ch;
+  margin: 16px 0 0;
+  color: #fff;
+  font-size: clamp(1rem, 1.45vw, 1.2rem);
+  line-height: 1.5;
 }
 
 body.clinic-site #main .clinic-home-intro .landing-hero-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px 20px;
-  margin-top: 22px;
+  gap: 8px 22px;
+  margin-top: 24px;
 }
 
 body.clinic-site #main .clinic-home-intro .landing-hero-actions .button {
   display: inline-flex;
+  justify-content: center;
   width: auto;
-  min-height: 48px;
-  padding-inline: 22px;
-  border: 1px solid #075d9d;
-  border-radius: 5px;
-  background: #075d9d;
+  min-height: 50px;
+  padding-inline: 28px;
+  border: 1.5px solid currentColor;
+  border-radius: 100px;
+  background: transparent;
   color: #fff;
+  box-shadow: none;
 }
 
 body.clinic-site #main .clinic-home-intro .landing-hero-actions .button:hover {
-  background: #064779;
+  background: #fff;
+  color: #102d46;
+  transform: none;
+}
+
+body.clinic-site #main .clinic-home-intro .home-intro-secondary {
+  color: #fff;
+  font-size: .9375rem;
+  text-underline-offset: .22em;
+}
+
+body.clinic-site #main .clinic-home-intro a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
 }
 
 body.clinic-site #main .clinic-home-intro .home-intro-image {
-  position: static;
-  margin: 0;
-  overflow: visible;
+  position: absolute;
+  inset: 0;
   border-radius: 0;
-  background: none;
+  background: transparent;
 }
 
-body.clinic-site #main .clinic-home-intro .home-intro-image::after { content: none; }
+body.clinic-site #main .clinic-home-intro .home-intro-image::after {
+  content: "";
+  inset: 0;
+  background: linear-gradient(90deg, rgba(9,25,40,.94), rgba(9,25,40,.8) 35%, rgba(9,25,40,.25) 62%, transparent 82%),
+    linear-gradient(0deg, rgba(9,25,40,.52), transparent 45%);
+}
 
 body.clinic-site #main .clinic-home-intro .home-intro-image img {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 6 / 5;
+  height: 100%;
+  aspect-ratio: auto;
   object-fit: cover;
-  object-position: 55% center;
-  border-radius: 4px;
-}
-
-body.clinic-site #main .clinic-home-intro .home-intro-image figcaption {
-  position: static;
-  padding-top: 9px;
-  color: #465a6b;
-  font-size: .875rem;
-  line-height: 1.45;
-}
-
-body.clinic-site #main .clinic-home-intro .home-intro-image figcaption a {
-  display: inline;
-  color: #075d9d;
-  text-decoration: underline;
-  text-underline-offset: .18em;
+  object-position: 65% 26%;
 }
 
 body.clinic-site #main .home-services {
@@ -209,23 +224,44 @@ body.clinic-site #main .home-human .home-human-portrait img {
 body.clinic-site #main .home-reviews-stage { background: #edf5fb; }
 
 @media (max-width: 760px) {
-  body.clinic-site #main .clinic-home-intro .home-intro-grid,
-  .clinic-feature .clinic-feature-layout {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 24px;
+  body.clinic-site #main .clinic-home-intro .home-intro-grid {
+    min-height: clamp(430px, 75svh, 580px);
+    padding-block: clamp(156px, 27svh, 245px) 24px;
   }
 
   body.clinic-site #main .clinic-home-intro h1 {
-    max-width: 16ch;
-    font-size: clamp(2.08rem, 9vw, 3.25rem);
+    max-width: 17ch;
+    font-size: clamp(2rem, 9vw, 3.4rem);
   }
 
-  body.clinic-site #main .clinic-home-intro .landing-hero-lead { margin-top: 13px; }
-  body.clinic-site #main .clinic-home-intro .landing-hero-actions { margin-top: 16px; }
-  body.clinic-site #main .clinic-home-intro .home-intro-image img { aspect-ratio: 8 / 5; }
+  body.clinic-site #main .clinic-home-intro .landing-hero-lead { margin-top: 12px; }
+
+  body.clinic-site #main .clinic-home-intro .landing-hero-actions {
+    display: grid;
+    gap: 3px;
+    margin-top: 15px;
+  }
+
+  body.clinic-site #main .clinic-home-intro .home-intro-secondary { justify-self: end; }
+
+  body.clinic-site #main .clinic-home-intro .home-intro-image img { object-position: 86% top; }
+
+  body.clinic-site #main .clinic-home-intro .home-intro-image::after {
+    background: linear-gradient(0deg, #091928 3%, rgba(9,25,40,.9) 38%, rgba(9,25,40,.64) 59%, transparent 88%);
+  }
+
+  .clinic-feature .clinic-feature-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
 }
 
-@media (max-width: 360px) {
-  body.clinic-site #main .clinic-home-intro .landing-hero-actions { gap: 6px 14px; }
-  body.clinic-site #main .clinic-home-intro .landing-hero-actions .button { padding-inline: 15px; }
+@media print {
+  body.clinic-site #main .clinic-home-intro .home-intro-grid { min-height: 0; padding-block: 20px; }
+  body.clinic-site #main .clinic-home-intro .home-intro-image { display: none; }
+  body.clinic-site #main .clinic-home-intro,
+  body.clinic-site #main .clinic-home-intro :is(h1,.landing-hero-lead,.home-intro-secondary,.landing-hero-actions .button) {
+    color: #000;
+    background: #fff;
+  }
 }

@@ -88,7 +88,7 @@ body.clinic-site #main .clinic-home-intro .home-intro-image {
 body.clinic-site #main .clinic-home-intro .home-intro-image::after {
   content: "";
   inset: 0;
-  background: linear-gradient(90deg, rgba(9,25,40,.94), rgba(9,25,40,.8) 30%, rgba(9,25,40,.25) 58%, transparent 82%),
+  background: linear-gradient(90deg, rgba(9,25,40,.94), rgba(9,25,40,.8) 35%, rgba(9,25,40,.25) 62%, transparent 82%),
     linear-gradient(0deg, rgba(9,25,40,.52), transparent 45%);
 }
 

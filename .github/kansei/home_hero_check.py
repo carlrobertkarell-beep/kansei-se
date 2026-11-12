@@ -67,13 +67,19 @@ def check_home_hero(page, output, viewport):
                 raise AssertionError('A homepage booking or service action is hidden or too small for touch')
         if page.evaluate('document.documentElement.scrollWidth > innerWidth + 3'):
             raise AssertionError('Homepage hero causes horizontal overflow')
-        if viewport == 'mobile':
-            if not photo.evaluate('''image => {
-                const photo = image.getBoundingClientRect();
-                const heading = document.querySelector('.home-first-impression h1').getBoundingClientRect();
-                return heading.top < photo.top && photo.top < innerHeight - 175 && photo.height >= 175;
-            }'''):
-                raise AssertionError('Mobile introduction no longer pairs the service heading with a prominent photograph')
+        if not photo.evaluate('''image => {
+            const photo = image.getBoundingClientRect();
+            const hero = image.closest('.home-first-impression').getBoundingClientRect();
+            const heading = image.closest('.home-first-impression').querySelector('h1').getBoundingClientRect();
+            return Math.abs(photo.top - hero.top) <= 1 && Math.abs(photo.width - hero.width) <= 1 &&
+                Math.abs(photo.bottom - hero.bottom) <= 1 && photo.height >= 350 &&
+                heading.top >= photo.top && heading.bottom < photo.bottom;
+        }'''):
+            raise AssertionError('The homepage photograph must fill the hero behind its text')
+        feature = page.locator('.clinic-feature')
+        if feature.locator('h2').inner_text() != 'Alla skador behöver inte opereras.' or \
+                feature.locator('a[href="/ultraljud/"]').count() != 1:
+            raise AssertionError('The homepage needs a clear injury message with a route to ultrasound information')
         if viewport == 'mobile':
             for element in (heading, lead, booking):
                 if not element.evaluate('''element => {

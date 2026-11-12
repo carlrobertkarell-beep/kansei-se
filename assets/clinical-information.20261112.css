@@ -47,7 +47,7 @@
 .information-photo figcaption {
   max-width: 48ch;
   margin-top: 10px;
-  color: var(--muted, #4d6057);
+  color: var(--muted, #465a6b);
   font: 400 .875rem / 1.5 var(--sans, Arial, sans-serif);
 }
 
@@ -77,7 +77,7 @@ body.information-prices #main .editorial-top .pris-not {
 }
 
 body.information-contact #main .page-top {
-  border-bottom: 1px solid var(--line, #d8dfdb);
+  border-bottom: 1px solid var(--line, #d6e2ec);
 }
 
 body.information-contact #main .page-top .page-lead {
@@ -101,7 +101,7 @@ body.information-contact #main .contact-actions :is(.button-ghost, .text-link) {
   padding: 0;
   border: 0;
   background: transparent;
-  color: var(--ink, #182820);
+  color: var(--ink, #162735);
   text-underline-offset: .23em;
   text-decoration: underline;
 }
@@ -113,7 +113,7 @@ body.information-contact #main .contact-tasks {
 body.information-contact #main .contact-task {
   padding: 18px 0;
   border: 0;
-  border-top: 1px solid var(--line, #d8dfdb);
+  border-top: 1px solid var(--line, #d6e2ec);
   border-radius: 0;
   background: transparent;
 }
@@ -124,7 +124,7 @@ body.information-contact #main .contact-task h3 {
 
 body.information-library #main .knowledge-top {
   padding-bottom: 26px;
-  border-bottom: 1px solid var(--line, #d8dfdb);
+  border-bottom: 1px solid var(--line, #d6e2ec);
 }
 
 body.information-library #main .knowledge-top .knowledge-toolbar {
@@ -157,7 +157,7 @@ body.information-library #main .knowledge-results {
 body.information-library #main .knowledge-result {
   padding: 22px 0;
   border: 0;
-  border-bottom: 1px solid var(--line, #d8dfdb);
+  border-bottom: 1px solid var(--line, #d6e2ec);
   border-radius: 0;
   background: transparent;
   box-shadow: none;

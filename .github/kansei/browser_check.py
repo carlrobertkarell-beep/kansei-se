@@ -585,12 +585,20 @@ def check(base, output):
                         galleries = page.locator('[data-product-gallery]')
                         for i in range(galleries.count()):
                             gallery = galleries.nth(i)
+                            opened = []
                             pictures = gallery.locator('img')
                             for j in range(pictures.count()):
                                 picture = pictures.nth(j)
+                                for disclosure in picture.locator('xpath=ancestor::details').all():
+                                    if not disclosure.evaluate('(el) => el.open'):
+                                        summary = disclosure.locator(':scope > summary')
+                                        summary.click()
+                                        opened.append(summary)
                                 picture.scroll_into_view_if_needed()
                                 page.wait_for_function("img => img.complete && img.naturalWidth > 0", arg=picture.element_handle(), timeout=15000)
                             gallery.screenshot(path=str(output / f'product-gallery-{path.strip("/").replace("/", "-")}-{i}-{label}.png'), animations='disabled', style='body>header,body>a[href="#main"]{visibility:hidden!important}')
+                            for summary in reversed(opened):
+                                summary.click()
 
                     # Show the action groups in the existing visual-review captures.
                     if path in ('/', '/ultraljud/', '/ultraljud/bilder/', '/hyaluronsyra/kna/', '/ultraljud/fot-fotled/', '/hyaluronsyra/ultraljudsvagledd-injektion/'):

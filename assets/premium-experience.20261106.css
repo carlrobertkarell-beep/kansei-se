@@ -1,8 +1,8 @@
 /* Kansei: shared materials and motion for the public clinic website. */
 .clinic-site {
   --premium-ease: cubic-bezier(.22,.75,.25,1);
-  --premium-shadow: 0 12px 36px -24px rgba(29,57,43,.28);
-  background-image: radial-gradient(ellipse at 85% 0%,rgba(167,188,151,.12),transparent 42rem);
+  --premium-shadow: 0 12px 36px -24px rgba(16,45,70,.28);
+  background-image: radial-gradient(ellipse at 85% 0%,rgba(159,183,201,.12),transparent 42rem);
 }
 .clinic-site .site-header {
   background: rgba(249,248,243,.91);
@@ -12,23 +12,23 @@
 }
 .clinic-site .site-header.is-scrolled {
   background: rgba(249,248,243,.96);
-  border-bottom-color: rgba(103,129,111,.22);
-  box-shadow: 0 5px 24px -15px rgba(22,45,32,.28);
+  border-bottom-color: rgba(49,94,128,.22);
+  box-shadow: 0 5px 24px -15px rgba(16,45,70,.28);
 }
 .clinic-site .site-header .brand img { transition: transform .3s var(--premium-ease); transform-origin: left center; }
 .clinic-site .site-header.is-scrolled .brand img { transform: scale(.96); }
 .clinic-site :is(.landing-hero,.ha-hero) {
-  background-image: radial-gradient(ellipse at 85% 25%,rgba(169,188,148,.17),transparent 64%);
+  background-image: radial-gradient(ellipse at 85% 25%,rgba(159,183,201,.17),transparent 64%);
 }
 .clinic-site :is(.us-soft,.ha-tint,.atlas-gateway,.clinic) {
   background-image: linear-gradient(125deg,rgba(255,255,255,.22),transparent 65%);
 }
 .clinic-site :is(.us-process,.footer) {
-  background-image: radial-gradient(ellipse at 90% 0%,rgba(154,191,139,.11),transparent 65%);
+  background-image: radial-gradient(ellipse at 90% 0%,rgba(159,183,201,.11),transparent 65%);
 }
 .clinic-site :is(.landing-hero-media,.us-hero-photo,.ha-portrait)>img {
-  box-shadow: 0 15px 38px -24px rgba(24,49,35,.45);
-  border: 1px solid rgba(87,115,93,.10);
+  box-shadow: 0 15px 38px -24px rgba(16,45,70,.45);
+  border: 1px solid rgba(49,94,128,.10);
 }
 .clinic-site :is(.service-choice,.hub-region,.us-region,.knowledge-result,.discovery-link,.ha-choice,.ha-provider-card,.case-library-card) {
   box-shadow: var(--premium-shadow);
@@ -38,7 +38,7 @@
   background-image: linear-gradient(145deg,rgba(255,255,255,.38),transparent 75%);
 }
 .clinic-site :is(.button,.btn,.footer-book,.site-menu-toggle,.site-menu-close,.hub-region,.us-region,.knowledge-result,.discovery-link,.care-route,.navigation-card,button[data-topic],button[data-view]) {
-  -webkit-tap-highlight-color: rgba(66,105,74,.12);
+  -webkit-tap-highlight-color: rgba(49,94,128,.12);
   transition: transform .22s var(--premium-ease),box-shadow .22s ease,background-color .22s ease,color .22s ease,border-color .22s ease;
 }
 .clinic-site :is(.button,.btn,.footer-book,.site-menu-toggle,.site-menu-close,.hub-region,.us-region,.knowledge-result,.discovery-link,.care-route,.navigation-card,button[data-topic],button[data-view]):active {
@@ -56,7 +56,7 @@
 /* The native dialog keeps its focus trap and Escape behavior. */
 .clinic-site #site-menu[open] { animation: premium-menu-in .32s var(--premium-ease) both; }
 .clinic-site #site-menu[open]::backdrop {
-  background: rgba(16,31,23,.38);
+  background: rgba(16,45,70,.38);
   -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px);
   animation: premium-backdrop-in .28s ease both;
 }
@@ -69,21 +69,21 @@
 }
 @keyframes premium-menu-in { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes premium-menu-out { to { opacity: 0; transform: translateX(18px); } }
-@keyframes premium-backdrop-in { from { background-color: rgba(16,31,23,0); } }
-@keyframes premium-backdrop-out { to { background-color: rgba(16,31,23,0); } }
+@keyframes premium-backdrop-in { from { background-color: rgba(16,45,70,0); } }
+@keyframes premium-backdrop-out { to { background-color: rgba(16,45,70,0); } }
 @media (hover:hover) and (pointer:fine) {
   .clinic-site :is(.service-choice,.hub-region,.us-region,.knowledge-result,.discovery-link,.case-library-card):hover {
     transform: translateY(-3px);
-    box-shadow: 0 17px 36px -23px rgba(29,57,43,.32);
-    border-color: rgba(83,120,91,.38);
+    box-shadow: 0 17px 36px -23px rgba(16,45,70,.32);
+    border-color: rgba(49,94,128,.38);
   }
-  .clinic-site :is(.button-dark,.footer-book):hover { box-shadow: 0 8px 23px -12px rgba(26,63,43,.48); }
+  .clinic-site :is(.button-dark,.footer-book):hover { box-shadow: 0 8px 23px -12px rgba(16,45,70,.48); }
   .clinic-site .desktop-nav>a:hover::after { transform: scaleX(1); }
   .clinic-site #site-menu .menu-primary>a:hover { transform: translateX(4px); }
 }
 @media (max-width:760px) {
   .clinic-site :is(.service-choice,.hub-region,.us-region,.knowledge-result,.discovery-link) {
-    --premium-shadow: 0 7px 24px -19px rgba(29,57,43,.25);
+    --premium-shadow: 0 7px 24px -19px rgba(16,45,70,.25);
   }
 }
 @media (prefers-reduced-motion:reduce) {
@@ -104,11 +104,11 @@
 }
 
 body.clinic-site {
-  --clinic-title: #193b31;
-  --clinic-primary: #284f3e;
+  --clinic-title: #162735;
+  --clinic-primary: #17364f;
   --clinic-surface: #f8f6f0;
-  --clinic-tint: #edf3eb;
-  --clinic-rule: #d4dfd3;
+  --clinic-tint: #edf5fb;
+  --clinic-rule: #d6e2ec;
   --clinic-control-radius: .55rem;
 }
 
@@ -131,14 +131,14 @@ body.clinic-site:not(.care-home) #main
 body.clinic-site .site-header .header-book {
   color: var(--clinic-primary);
   background: transparent;
-  border: 1px solid #a8baad;
+  border: 1px solid #9fb7c9;
   box-shadow: none;
 }
 
 body.clinic-site .site-header .header-book:hover {
   color: var(--clinic-title);
   background: var(--clinic-tint);
-  border-color: #769583;
+  border-color: #465a6b;
 }
 
 .clinic-site #main :where(.landing-hero,.ha-hero) {
@@ -170,7 +170,7 @@ body.clinic-site .site-header .header-book:hover {
 .clinic-site #main :where(.editorial-top) .tjfakta {
   border-color: var(--clinic-rule);
   border-radius: .75rem;
-  background: #fffefa;
+  background: #ffffff;
 }
 
 .clinic-site #main :where(.editorial-top) .tf-fot {

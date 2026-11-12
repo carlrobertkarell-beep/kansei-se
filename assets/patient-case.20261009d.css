@@ -45,13 +45,13 @@
 /* Visible image choices keep every view discoverable. */
 .simple-case main .patient-media-head{margin-bottom:14px}
 .simple-case main .patient-view-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:24px}
-.simple-case main .patient-view-tab{display:flex;align-items:center;gap:15px;min-width:0;text-align:left;border:1px solid #cedbd7;border-radius:10px;padding:10px;background:#fff;color:var(--ink);cursor:pointer;transition:border-color .18s ease,background .18s ease,box-shadow .18s ease}
+.simple-case main .patient-view-tab{display:flex;align-items:center;gap:15px;min-width:0;text-align:left;border:1px solid #b9cddb;border-radius:10px;padding:10px;background:#fff;color:var(--ink);cursor:pointer;transition:border-color .18s ease,background .18s ease,box-shadow .18s ease}
 .simple-case main .patient-view-tab img{display:block;width:88px;height:64px;flex:0 0 88px;object-fit:cover;border-radius:5px;background:#102b30}
 .simple-case main .patient-view-tab span{display:block;min-width:0}
 .simple-case main .patient-view-tab strong{display:block;font:500 16px/1.35 var(--sans)}
 .simple-case main .patient-view-tab small{display:block;margin-top:4px;font:400 13px/1.4 var(--sans);color:var(--muted)}
-.simple-case main .patient-view-tab[aria-selected=true]{border-color:var(--teal);background:#e9f2ee;box-shadow:inset 0 0 0 1px var(--teal)}
-.simple-case main .patient-view-tab[aria-selected=true] strong{color:#00685f}
+.simple-case main .patient-view-tab[aria-selected=true]{border-color:var(--teal);background:#edf5fb;box-shadow:inset 0 0 0 1px var(--teal)}
+.simple-case main .patient-view-tab[aria-selected=true] strong{color:#17364f}
 .simple-case main .patient-view-tab:hover{border-color:var(--teal)}
 .simple-case main .patient-view-tab:focus-visible{outline:3px solid #bc8c42;outline-offset:3px}
 .simple-case main .reader-panel:focus-visible{outline:2px solid var(--teal);outline-offset:6px}
@@ -68,16 +68,16 @@
 /* One clear action for the current picture. */
 .simple-case main .patient-toggle-area{position:relative;max-width:960px;margin:0 auto 24px}
 .simple-case main .patient-toggle-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.simple-case main .patient-toggle{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:14px 22px;min-height:52px;border:1px solid #00685f;border-radius:10px;background:#00685f;color:#fff;font:500 16px/1.4 var(--sans);cursor:pointer;transition:background .2s,border-color .2s,box-shadow .2s}
+.simple-case main .patient-toggle{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:14px 22px;min-height:52px;border:1px solid #17364f;border-radius:10px;background:#17364f;color:#fff;font:500 16px/1.4 var(--sans);cursor:pointer;transition:background .2s,border-color .2s,box-shadow .2s}
 .simple-case main .patient-toggle svg{width:23px;height:23px;flex:none}
-.simple-case main .patient-toggle[aria-pressed=true]{background:#e8f2ee;color:#00685f;border-color:#9abdb0}
-.simple-case main .patient-toggle:hover{box-shadow:0 3px 12px #00685f24}
+.simple-case main .patient-toggle[aria-pressed=true]{background:#edf5fb;color:#17364f;border-color:#9fb7c9}
+.simple-case main .patient-toggle:hover{box-shadow:0 3px 12px #17364f24}
 .simple-case main .patient-toggle:disabled{cursor:default;opacity:.6}
 .simple-case main .patient-image-state{font:400 14px/1.45 var(--sans);color:var(--muted)}
-.simple-case main .patient-toggle-hint{position:absolute;z-index:3;top:calc(100% + 8px);left:0;margin:0;padding:10px 14px;border-radius:8px;background:#fff7e7;border:1px solid #e8d1a8;color:#493b26;box-shadow:0 4px 18px #12352d15;font:400 14px/1.5 var(--sans);max-width:min(340px,100%);pointer-events:none}
+.simple-case main .patient-toggle-hint{position:absolute;z-index:3;top:calc(100% + 8px);left:0;margin:0;padding:10px 14px;border-radius:8px;background:#fff7e7;border:1px solid #e8d1a8;color:#493b26;box-shadow:0 4px 18px #16273515;font:400 14px/1.5 var(--sans);max-width:min(340px,100%);pointer-events:none}
 .simple-case main .patient-toggle-hint[hidden]{display:none!important}
 .simple-case main .patient-toggle.needs-discovery{animation:patient-invite 1s ease-out 2}
-@keyframes patient-invite{50%{box-shadow:0 0 0 5px #00685f20}}
+@keyframes patient-invite{50%{box-shadow:0 0 0 5px #075d9d20}}
 .simple-case main .patient-viewer .panel-media,.simple-case main .patient-viewer .panel-copy,.simple-case main .patient-caption,.biceps-anatomy-case main .patient-view-navigation{max-width:960px}
 .simple-case.biceps-anatomy-case main .patient-view-navigation{max-width:960px}
 .simple-case main .patient-viewer .patient-media-head,.simple-case main .patient-viewer .patient-view-tabs{max-width:960px;margin-inline:auto}
@@ -94,9 +94,9 @@
 .simple-case main .patient-toggle,.simple-case main .patient-toggle[aria-pressed=true]{padding:6px 0;gap:12px;border:0;border-radius:0;background:transparent;color:var(--ink);box-shadow:none}
 .simple-case main .patient-toggle:hover{box-shadow:none}
 .simple-case main .patient-toggle:focus-visible{outline:3px solid #bc8c42;outline-offset:6px;border-radius:8px}
-.simple-case main .patient-switch-track{position:relative;display:block;width:64px;height:36px;border-radius:24px;background:#737e79;flex:none;transition:background .22s ease}
+.simple-case main .patient-switch-track{position:relative;display:block;width:64px;height:36px;border-radius:24px;background:#465a6b;flex:none;transition:background .22s ease}
 .simple-case main .patient-switch-thumb{position:absolute;left:4px;top:4px;width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:0 1px 3px #102b3033;transition:transform .22s ease}
-.simple-case main .patient-toggle[aria-checked=true] .patient-switch-track{background:#00685f}
+.simple-case main .patient-toggle[aria-checked=true] .patient-switch-track{background:#17364f}
 .simple-case main .patient-toggle[aria-checked=true] .patient-switch-thumb{transform:translateX(28px)}
 .simple-case main .patient-toggle.needs-discovery{animation:none}
 .simple-case main .patient-toggle.needs-discovery .patient-switch-track{animation:patient-invite 1s ease-out 2}

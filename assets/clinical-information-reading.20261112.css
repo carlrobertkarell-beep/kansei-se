@@ -1,0 +1,159 @@
+/* Secondary clinic pages read as sections and lists, with detail available on demand. */
+body.clinic-site #main :is(.information-service-group,.information-injection-prices) > h3 {
+  margin: 1.5rem 0 .35rem;
+}
+
+body.clinic-site #main .information-service-list > .tjk {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  column-gap: clamp(1rem,4vw,2.5rem);
+  padding: 1rem 0;
+  border: 0;
+  border-top: 1px solid var(--clinic-rule, var(--line));
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.clinic-site #main .information-service-list > .tjk > h4 {
+  margin: 0 0 .35rem;
+  font-family: var(--sans);
+  font-size: clamp(1rem,2.1vw,1.2rem);
+  line-height: 1.3;
+}
+
+body.clinic-site #main .information-service-list > .tjk > p {
+  grid-column: 1;
+  margin: 0;
+  max-width: 58ch;
+}
+
+body.clinic-site #main .information-service-list > .tjk > .tjk-fot {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: grid;
+  align-content: center;
+  justify-items: end;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body.clinic-site #main .information-injection-prices > .pricebox {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.clinic-site #main .information-injection-prices .pricebox > .row:first-child {
+  border-top: 1px solid var(--clinic-rule, var(--line));
+}
+
+body.clinic-site #main .information-reading-disclosure {
+  margin-block: .7rem;
+  padding: 0;
+  border: 0;
+  border-block-start: 1px solid var(--clinic-rule, var(--line));
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.clinic-site #main .information-reading-disclosure > summary {
+  min-height: 44px;
+  padding-block: .7rem;
+}
+
+body.clinic-site #main .information-reading-disclosure > :not(summary) {
+  max-width: 68ch;
+}
+
+body.clinic-site #main .information-clinic-person {
+  display: flow-root;
+  margin-block: 1.5rem;
+}
+
+body.clinic-site #main .information-clinic-person picture {
+  float: left;
+  width: clamp(74px,20%,124px);
+  margin: 0 1rem .55rem 0;
+}
+
+body.clinic-site #main .information-clinic-story picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+body.clinic-site #main .information-clinic-story details picture {
+  display: block;
+  width: 96px;
+  margin: .3rem 0 .8rem;
+}
+
+body.clinic-site #main .information-clinic-person h3 {
+  margin: .35rem 0;
+}
+
+body.clinic-site #main .information-clinic-approach {
+  max-width: 68ch;
+  margin-bottom: 1.4rem;
+}
+
+body.clinic-site #main .information-visit-list li {
+  margin-block: .5rem;
+}
+
+body.clinic-site #main .information-contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem .7rem;
+  margin-top: .5rem;
+}
+
+body.clinic-heading-style .wrap > section > h3 {
+  margin: 1.35rem 0 .45rem;
+}
+
+@media (max-width: 720px) {
+  body.clinic-site #main .information-service-list > .tjk {
+    grid-template-columns: minmax(0,1fr);
+    gap: .35rem;
+  }
+
+  body.clinic-site #main .information-service-list > .tjk > .tjk-fot {
+    grid-column: 1;
+    grid-row: auto;
+    grid-template-columns: minmax(0,1fr) auto;
+    justify-items: start;
+    gap: .35rem .65rem;
+    align-items: center;
+  }
+
+  body.clinic-site #main .information-service-list .tjk-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .35rem .65rem;
+  }
+
+  body.clinic-site #main .information-service-list .tjk-boka {
+    margin-inline-start: auto;
+  }
+}
+
+@media (max-width: 400px) {
+  body.clinic-site #main .information-service-list > .tjk > .tjk-fot {
+    grid-template-columns: minmax(0,1fr);
+    justify-items: stretch;
+  }
+
+  body.clinic-site #main .information-service-list .tjk-actions {
+    justify-content: space-between;
+  }
+}

@@ -11,15 +11,15 @@
 .ultrasound-hub .hub-search{max-width:680px;margin-bottom:20px}
 .ultrasound-hub .hub-search label{display:block;font-size:14px;font-weight:600;margin-bottom:8px}
 .ultrasound-hub .hub-search-row{display:flex;gap:10px}
-.ultrasound-hub .hub-search input{min-width:0;flex:1;width:100%;border:1px solid #9fb5b1;border-radius:4px;padding:12px 14px;background:white;color:var(--ink);font:inherit;font-size:16px}
-.ultrasound-hub .hub-search button{padding:10px 14px;border:1px solid #9fb5b1;border-radius:4px;background:transparent;color:var(--teal);font:inherit;cursor:pointer}
+.ultrasound-hub .hub-search input{min-width:0;flex:1;width:100%;border:1px solid #6e879b;border-radius:4px;padding:12px 14px;background:white;color:var(--ink);font:inherit;font-size:16px}
+.ultrasound-hub .hub-search button{padding:10px 14px;border:1px solid #6e879b;border-radius:4px;background:transparent;color:var(--teal);font:inherit;cursor:pointer}
 .ultrasound-hub .hub-search-status{font-size:13px;min-height:23px;margin-top:5px}
 .ultrasound-hub .hub-region-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:24px}
 .ultrasound-hub .hub-region{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px;background:#fff;border:1px solid var(--line);border-radius:5px;min-height:105px}
 .ultrasound-hub .hub-region strong{display:block;font-size:19px;font-weight:500;line-height:1.3}
 .ultrasound-hub .hub-region small{display:block;font-size:13px;line-height:1.5;color:var(--muted);margin-top:6px}
 .ultrasound-hub .hub-region svg,.ultrasound-hub .hub-directory-link svg{width:20px;height:20px;flex-shrink:0;color:var(--teal)}
-.ultrasound-hub .hub-region:hover,.ultrasound-hub .hub-directory-link:hover{background:#edf5f2;border-color:var(--teal)}
+.ultrasound-hub .hub-region:hover,.ultrasound-hub .hub-directory-link:hover{background:#edf5fb;border-color:var(--teal)}
 .ultrasound-hub .hub-directory,.ultrasound-hub .hub-disclosure{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .ultrasound-hub .hub-directory+.hub-directory,.ultrasound-hub .hub-disclosure+.hub-disclosure{border-top:0}
 .ultrasound-hub .hub-directory>summary,.ultrasound-hub .hub-disclosure>summary,.ultrasound-hub .hub-faq-list summary{display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;cursor:pointer;font-size:18px;line-height:1.45;font-weight:500;padding:20px 0}
@@ -32,7 +32,7 @@
 .ultrasound-hub .hub-directory-link small{display:block;font-size:14px;line-height:1.5;color:var(--muted)}
 .ultrasound-hub .hub-directory-link .us-region-tag{font-size:13px;color:var(--teal)}
 .ultrasound-hub .hub-help{margin-top:18px;font-size:14px;color:var(--muted)}
-.ultrasound-hub .hub-tint{background:#edf3f1}
+.ultrasound-hub .hub-tint{background:#edf5fb}
 .ultrasound-hub .hub-cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .ultrasound-hub .hub-case{display:block;background:#fff;border:1px solid var(--line);border-radius:5px;overflow:hidden}
 .ultrasound-hub .hub-case>img{width:100%;height:150px;object-fit:cover;background:#142e37}

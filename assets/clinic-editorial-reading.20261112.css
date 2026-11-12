@@ -1,0 +1,158 @@
+/* Reading layouts for knowledge guides and practical information. */
+.clinic-site #main.clinic-guide-reading {
+  --guide-measure: 66ch;
+}
+
+.clinic-site #main.clinic-guide-reading :is(.editorial-top .intro, .article-main > .lead, .guide-intro-note, .ref-hero > p, .ref-section > p) {
+  max-inline-size: var(--guide-measure);
+}
+
+.clinic-site #main.clinic-guide-reading .article-main > .guide-intro-note {
+  margin-block: 0.6em 0;
+  color: var(--clinic-secondary, inherit);
+}
+
+.clinic-site #main.clinic-guide-reading .guide-summary {
+  max-inline-size: var(--guide-measure);
+  margin-block: 1.35rem 0.8rem;
+  padding: 0.85rem 0 0;
+  border: 0;
+  border-block-start: 1px solid var(--clinic-rule, var(--line));
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.clinic-site #main.clinic-guide-reading .guide-summary > span {
+  display: block;
+  margin-block-end: 0.25em;
+  color: inherit;
+  font-size: 0.875rem;
+  font-weight: 650;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.clinic-site #main.clinic-guide-reading .guide-summary > p {
+  margin: 0;
+}
+
+.clinic-site #main.clinic-guide-reading .guide-visit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 1.5rem;
+  padding-block: 0.8rem;
+  border-block-end: 1px solid var(--clinic-rule, var(--line));
+}
+
+.clinic-site #main.clinic-guide-reading .guide-visit .cta-row {
+  margin: 0;
+}
+
+.clinic-site #main.clinic-guide-reading :is(.guide-visit, .guide-contact) .pris-rad {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.clinic-site #main.clinic-guide-reading .guide-contact {
+  padding-block: 1rem;
+  border-block: 1px solid var(--clinic-rule, var(--line));
+}
+
+.clinic-site #main.clinic-guide-reading :is(.original-main, .article-main) > section > :is(p, ul, ol) {
+  max-inline-size: var(--guide-measure);
+}
+
+.clinic-site #main.clinic-guide-reading :is(.original-main, .article-main) > section > h3 {
+  margin-block: 1.25rem 0.5rem;
+}
+
+.clinic-site #main.clinic-guide-reading :is(.original-main, .article-main) > section > h3 + p {
+  margin-block-start: 0;
+}
+
+.clinic-site #main.clinic-guide-reading .guide-detail {
+  max-inline-size: var(--guide-measure);
+  margin-block: 1.15rem;
+  border: 0;
+  border-block: 1px solid var(--clinic-rule, var(--line));
+  border-radius: 0;
+  background: none;
+}
+
+.clinic-site #main.clinic-guide-reading .guide-detail > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  min-block-size: 44px;
+  list-style: none;
+  padding: 0.7rem 0.15rem;
+  color: var(--clinic-primary, currentColor);
+  font-weight: 650;
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.clinic-site #main.clinic-guide-reading .guide-detail > summary::after {
+  flex: 0 0 0.75rem;
+  inline-size: 0.75rem;
+  block-size: 0.75rem;
+  background:
+    linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat,
+    linear-gradient(currentColor, currentColor) center / 1px 100% no-repeat;
+  content: "";
+}
+
+.clinic-site #main.clinic-guide-reading .guide-detail[open] > summary::after {
+  background: linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat;
+}
+
+.clinic-site #main.clinic-guide-reading .guide-detail-body {
+  padding: 0 0.15rem 0.9rem;
+}
+
+.clinic-site #main.clinic-guide-reading .guide-detail-body > :first-child {
+  margin-block-start: 0;
+}
+
+.clinic-site #main.clinic-guide-reading .guide-detail-body > :last-child {
+  margin-block-end: 0;
+}
+
+.clinic-site #main.clinic-guide-reading .guide-index .hub-grid {
+  column-gap: clamp(1.5rem, 4vw, 3rem);
+  row-gap: 0;
+}
+
+.clinic-site #main.clinic-guide-reading .guide-index .hub-guide {
+  gap: 0.4rem;
+  padding: 1rem 0.25rem 1.2rem;
+  border: 0;
+  border-block-start: 1px solid var(--clinic-rule, var(--line));
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.clinic-site #main.clinic-guide-reading .guide-index .hub-guide:hover h3 {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+@media (max-width: 700px) {
+  .clinic-site #main.clinic-guide-reading .guide-category-filter {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 6.75rem), 1fr));
+    gap: 0.35rem;
+  }
+
+  .clinic-site #main.clinic-guide-reading .guide-category-filter button {
+    min-block-size: 44px;
+    padding-inline: 0.4rem;
+    white-space: normal;
+    line-height: 1.2;
+  }
+}

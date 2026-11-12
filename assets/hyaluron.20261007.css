@@ -22,11 +22,11 @@
 .hyaluron-page .ha-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(28px,6vw,88px);align-items:start}
 .hyaluron-page .ha-list{padding-left:22px;margin:22px 0}
 .hyaluron-page .ha-list li{margin-bottom:9px}
-.hyaluron-page .ha-note{margin-top:28px;padding:24px 30px;background:#edf3f1;border-radius:6px;font-size:16px}
+.hyaluron-page .ha-note{margin-top:28px;padding:24px 30px;background:#edf5fb;border-radius:6px;font-size:16px}
 .hyaluron-page .ha-note p{margin:8px 0 0}
-.hyaluron-page .ha-tint{background:#edf3f1}
+.hyaluron-page .ha-tint{background:#edf5fb}
 .hyaluron-page .ha-benefits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:38px;margin-block:34px 24px}
-.hyaluron-page .ha-benefits article{padding-top:20px;border-top:1px solid #bbcfc8}
+.hyaluron-page .ha-benefits article{padding-top:20px;border-top:1px solid #b9cddb}
 .hyaluron-page .ha-benefits p{font-size:16px}
 .hyaluron-page .ha-number{display:block;font-size:13px;font-weight:600;color:var(--teal);margin-bottom:16px}
 .hyaluron-page .ha-text-link{font-size:15px;font-weight:500;display:inline-block}
@@ -52,7 +52,7 @@
 .hyaluron-page .ha-reading a{display:block;padding:22px;border:1px solid var(--line);border-radius:6px}
 .hyaluron-page .ha-reading span{display:block;font-size:14px;color:var(--muted);margin-top:9px}
 .hyaluron-page .ha-updated{border-top:1px solid var(--line);padding-top:20px}
-.hyaluron-page .ha-booking{padding-block:48px;background:#dcebe5;scroll-margin-top:100px}
+.hyaluron-page .ha-booking{padding-block:48px;background:#e4eef6;scroll-margin-top:100px}
 .hyaluron-page .ha-bottom-actions{display:flex;flex-direction:column;align-items:flex-start;gap:20px;padding-top:24px}
 @media(max-width:860px){
  .hyaluron-page .ha-hero-grid,.hyaluron-page .ha-split{grid-template-columns:1fr;gap:24px}
@@ -85,10 +85,10 @@
 .hyaluron-page .ha-joint-card h3{font-size:32px}
 .hyaluron-page .ha-main .ha-joint-card p{font-size:16px;margin-bottom:24px}
 .hyaluron-page .ha-card-link{margin-top:auto;text-decoration:underline;text-underline-offset:4px;font-size:15px;font-weight:500}
-.hyaluron-page .ha-joint-card:hover{border-color:var(--teal);background:#edf3f1}
+.hyaluron-page .ha-joint-card:hover{border-color:var(--teal);background:#edf5fb}
 .hyaluron-page .ha-joint-card:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
 .hyaluron-page #leder{padding-bottom:0}
-.hyaluron-page .ha-visit-summary{padding:28px 32px;background:#edf3f1;border-radius:8px;margin-top:8px}
+.hyaluron-page .ha-visit-summary{padding:28px 32px;background:#edf5fb;border-radius:8px;margin-top:8px}
 .hyaluron-page .ha-visit-summary h2{font-size:28px;margin-bottom:18px}
 .hyaluron-page .ha-visit-summary ul{padding-left:20px;margin:22px 0}
 .hyaluron-page .ha-visit-summary li{margin-bottom:10px;font-size:16px}

@@ -1,5 +1,5 @@
 /* Readable article accents and sources, scoped to the knowledge library. */
-.knowledge-article,.knowledge-directory{--teal:#086b62}
+.knowledge-article,.knowledge-directory{--teal:#17364f}
 .knowledge-article .editorial-top h1{max-width:22ch}
 .knowledge-article .editorial-top .intro{max-width:65ch}
 .knowledge-article .editorial-body .source-note{font-size:13px;line-height:1.75;color:#52616b;margin-top:1.25rem}

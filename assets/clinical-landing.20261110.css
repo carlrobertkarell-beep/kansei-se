@@ -1,7 +1,7 @@
 /* Keep the clinician, visit and next step in the same order across service pages. */
 .clinic-site #main :is(.clinical-landing-hero, .clinical-service-hero) {
-  background: #f5f7f3;
-  border-bottom: 1px solid #dce4db;
+  background: #f7fafd;
+  border-bottom: 1px solid #d6e2ec;
 }
 
 .clinic-site #main :is(.clinical-landing-hero, .clinical-service-hero) .landing-hero-grid {
@@ -28,7 +28,7 @@
 .hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .treatment-offer {
   margin-top: 16px;
   padding: 14px 16px;
-  border: 1px solid #d8e1d7;
+  border: 1px solid #d6e2ec;
   border-radius: 12px;
   background: #fff;
   box-shadow: none;
@@ -55,7 +55,7 @@
 
 .clinical-landing-booking .landing-hero-facts strong {
   display: block;
-  color: #163b2d;
+  color: #17364f;
   font-size: 1.2rem;
   line-height: 1.2;
   font-variant-numeric: tabular-nums;
@@ -65,12 +65,12 @@
   min-height: 48px;
   padding-inline: 18px;
   border-radius: 9px;
-  background: #234d3d;
+  background: #075d9d;
   color: #fff;
 }
 
 .clinic-site #main :is(.clinical-landing-hero, .clinical-service-hero) .clinical-landing-booking .button:hover {
-  background: #17382b;
+  background: #162735;
 }
 
 .clinical-landing-identity {
@@ -79,7 +79,7 @@
   gap: 10px;
   margin-top: 14px;
   min-width: 0;
-  color: #3e5549;
+  color: #17364f;
   font-size: .85rem;
   line-height: 1.4;
 }
@@ -107,7 +107,7 @@
 }
 
 .clinical-landing-identity a {
-  color: #254f3f;
+  color: #17364f;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -129,8 +129,8 @@
   max-width: 37rem;
   margin: 16px 0 12px;
   padding-block: 10px;
-  border-block: 1px solid #d5dfd6;
-  color: #3e5549;
+  border-block: 1px solid #d6e2ec;
+  color: #17364f;
   font-size: .9rem;
   line-height: 1.4;
 }
@@ -154,16 +154,16 @@
 }
 
 .clinic-site #main .clinical-hero-provider .clinical-landing-person > a {
-  color: #163b2d;
+  color: #17364f;
   font-size: 1rem;
   font-weight: 700;
   text-decoration: underline;
-  text-decoration-color: #9db1a5;
+  text-decoration-color: #6e879b;
   text-underline-offset: 3px;
 }
 
 .clinic-site #main .clinical-hero-provider .clinical-landing-rating {
-  color: #3e5549;
+  color: #17364f;
   font-size: .8rem;
   text-underline-offset: 3px;
 }
@@ -171,21 +171,21 @@
 .clinic-site #main .clinical-hero-visit {
   max-width: 49ch;
   margin: 0 0 10px;
-  color: #2d4739;
+  color: #17364f;
   font-size: .975rem;
   line-height: 1.5;
 }
 
 .clinic-site #main .clinical-landing-details {
   margin: 6px 0 0;
-  color: #3e5549;
+  color: #17364f;
   font-size: .875rem;
 }
 
 .clinic-site #main .clinical-landing-details summary {
   min-height: 44px;
   padding-block: 11px;
-  color: #254f3f;
+  color: #17364f;
   cursor: pointer;
   font-weight: 600;
 }
@@ -224,7 +224,7 @@
 
 .hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .treatment-prices { margin-bottom: 10px; }
 .hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .treatment-prices dd { font-size: clamp(1.25rem, 2.4vw, 1.65rem); }
-.hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .treatment-prices > div + div { border-color: #d8e1d7; }
+.hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .treatment-prices > div + div { border-color: #d6e2ec; }
 .hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .treatment-offer .treatment-book {
   min-height: 48px;
   border-radius: 9px;
@@ -237,7 +237,7 @@
 
 .hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .clinical-landing-details {
   margin: 0;
-  border-top: 1px solid #d8e1d7;
+  border-top: 1px solid #d6e2ec;
 }
 
 .hyaluron-page #main :is(.clinical-landing-hero, .clinical-service-hero) .clinical-landing-details summary {
@@ -254,15 +254,15 @@
 .hyaluron-page #main .clinical-landing-visit .hyaluron-visit-steps li {
   counter-increment: visit-step;
   padding: 15px;
-  border: 1px solid #d8e1d7;
+  border: 1px solid #d6e2ec;
   border-radius: 12px;
-  background: #fffefa;
+  background: #ffffff;
 }
 
 .clinical-landing-visit .hyaluron-visit-steps li::before {
   display: block;
   margin-bottom: 6px;
-  color: #416453;
+  color: #465a6b;
   content: counter(visit-step, decimal-leading-zero);
   font-size: .8rem;
   font-weight: 700;

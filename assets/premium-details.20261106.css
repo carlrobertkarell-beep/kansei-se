@@ -36,9 +36,9 @@ body.clinic-site :is(main,#knee-zoom,.patient-reader-zoom) :is(.patient-finding,
 body.clinic-site {
   --paper: #fff;
   --clinic-surface: #fff;
-  --clinic-tint: #f1f5f3;
-  --clinic-rule: #dbe4de;
-  --line: #dbe4de;
+  --clinic-tint: #edf5fb;
+  --clinic-rule: #d6e2ec;
+  --line: #d6e2ec;
   --page-heading: clamp(2.5rem, 4.25vw, 3.9rem);
   --clinic-header-height: 76px;
   background: var(--paper);
@@ -99,7 +99,7 @@ body.clinic-site #main :is(.service-choice,.hub-region,.us-region,.knowledge-res
 }
 
 body.clinic-site #main :is(.service-choice,.hub-region,.us-region,.knowledge-result,.discovery-link,.ha-choice,.case-library-card):hover {
-  border-color: #a6b9ad;
+  border-color: #9fb7c9;
 }
 
 body.clinic-site #main .reading-chapter-number,
@@ -130,7 +130,7 @@ body.clinic-site #main :is(.service-overview-details,.service-overview-disclosur
   align-items: center;
   min-height: 46px;
   padding: 9px 0;
-  color: #244e3e;
+  color: #075d9d;
   font-size: .9375rem;
   font-weight: 600;
   line-height: 1.45;
@@ -139,7 +139,7 @@ body.clinic-site #main :is(.service-overview-details,.service-overview-disclosur
 
 body.clinic-site #main .service-overview-details > :is(p, dl) {
   margin: 0 0 12px;
-  color: #394a42;
+  color: #17364f;
   font-size: .9375rem;
   line-height: 1.55;
 }
@@ -158,7 +158,7 @@ body.clinic-site #main .service-reading > nav a {
   align-items: center;
   min-height: 44px;
   padding-block: 8px;
-  color: #244e3e;
+  color: #075d9d;
   font-size: .9rem;
   line-height: 1.45;
   text-decoration: underline;
@@ -197,7 +197,7 @@ body.clinic-site #main .hyaluron-service-overview .treatment-book {
 
 body.clinic-site #main .service-overview-price {
   margin: 0 0 10px;
-  color: #233d31;
+  color: #162735;
   font-size: 1rem;
   line-height: 1.4;
 }
@@ -206,7 +206,7 @@ body.clinic-site #main .service-overview-price strong { font-size: 1.16rem; }
 
 body.clinic-site #main .service-overview-booking-note {
   margin: 8px 0 0;
-  color: #4f6257;
+  color: #465a6b;
   font-size: .875rem;
   line-height: 1.45;
 }
@@ -280,12 +280,14 @@ body.clinic-site .footer-cta .footer-book { min-height: 80px; padding: 16px 20px
 /* Common reading and navigation styles for the public clinic. */
 :is(body.clinic-site, body.clinic-heading-style) {
   --clinic-display: Georgia, "Times New Roman", serif;
-  --clinic-ink: #172720;
-  --clinic-primary: #204d3d;
-  --clinic-secondary: #4c5c55;
+  --clinic-ink: #162735;
+  --clinic-primary: #075d9d;
+  --clinic-navy: #102d46;
+  --clinic-hover: #064779;
+  --clinic-secondary: #465a6b;
   --clinic-surface: #fff;
-  --clinic-tint: #f1f5f1;
-  --clinic-rule: #d9e0da;
+  --clinic-tint: #f0f6fb;
+  --clinic-rule: #d6e2ec;
   --clinic-control-radius: 5px;
   --clinic-header-height: 76px;
   --clinic-reading-measure: 68ch;
@@ -295,6 +297,9 @@ body.clinic-site .footer-cta .footer-book { min-height: 80px; padding: 16px 20px
   --ink: var(--clinic-ink);
   --muted: var(--clinic-secondary);
   --line: var(--clinic-rule);
+  --teal: var(--clinic-primary);
+  --dark: var(--clinic-navy);
+  --mist: var(--clinic-tint);
   --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--clinic-ink);
   background: var(--clinic-surface);
@@ -382,8 +387,8 @@ body.clinic-site .site-header .header-book {
 
 body.clinic-site .site-header .header-book:hover,
 body.clinic-site #main :is(a.button-dark, a.btn-teal)[href*="bokadirekt.se"]:hover {
-  border-color: #153b2e;
-  background: #153b2e;
+  border-color: var(--clinic-hover);
+  background: var(--clinic-hover);
   color: #fff;
   box-shadow: none;
 }
@@ -472,7 +477,7 @@ body.clinic-site #main :is(.service-choice, .hub-region, .us-region, .knowledge-
 }
 
 body.clinic-site #main :is(.service-choice, .hub-region, .us-region, .knowledge-result, .discovery-link, .ha-choice, .case-library-card):is(:hover, :focus-visible) {
-  border-color: #9daf9f;
+  border-color: #6e879b;
   box-shadow: none;
   transform: none;
 }
@@ -484,7 +489,7 @@ body.clinic-site #main :is(.us-soft, .ha-tint, .us-booking, .ha-booking, .atlas-
 
 body.clinic-site .footer {
   padding-block: clamp(32px, 5vw, 56px) clamp(26px, 4vw, 40px);
-  background: #18382d;
+  background: var(--clinic-navy);
   color: #fff;
 }
 
@@ -518,11 +523,11 @@ body.clinic-site .footer-links a {
 }
 
 body.clinic-site .footer-utilities {
-  color: #dce7e1;
+  color: #d6e2ec;
 }
 
 body.clinic-site .footer :is(a, button):focus-visible {
-  outline-color: #b8dfcd;
+  outline-color: #b9cddb;
 }
 
 body.clinic-heading-style {
@@ -585,4 +590,15 @@ body.clinic-heading-style .btn:not(.btn-line) {
   body.clinic-site .footer-cta .footer-book {
     margin-top: 14px;
   }
+}
+
+/* Keep the short answer readable without surrounding it with a second card. */
+body.clinic-site #main :is(.editorial-top, .article-main) .snabbsvar {
+  max-inline-size: var(--clinic-reading-measure);
+  padding: 1rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--clinic-rule);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }

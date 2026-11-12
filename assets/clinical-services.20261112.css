@@ -1,7 +1,7 @@
 /* Service entry pages share the same visit, provider and booking order. */
 body.clinic-site #main .service-first-hero {
-  --service-first-rule: #d8e3db;
-  --service-first-copy: #2e443a;
+  --service-first-rule: #d6e2ec;
+  --service-first-copy: #17364f;
   background: #fff;
   border-bottom: 1px solid var(--service-first-rule);
 }
@@ -32,7 +32,7 @@ body.clinic-site #main .service-first-hero .service-first-provider {
 body.clinic-site #main .service-first-hero .service-first-provider .clinical-landing-rating {
   color: var(--service-first-copy);
   text-decoration: underline;
-  text-decoration-color: #a2b4a9;
+  text-decoration-color: #9fb7c9;
 }
 
 body.clinic-site #main .service-first-hero .service-first-note {

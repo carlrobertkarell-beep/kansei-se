@@ -1,0 +1,112 @@
+/* Service reading layouts use the site's existing clinical color tokens. */
+body.clinic-site #main .service-reading-disclosure {
+  margin-block: 1.35rem;
+  border-block: 1px solid var(--clinic-rule, var(--line));
+  background: transparent;
+}
+
+body.clinic-site #main .service-reading-disclosure > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 44px;
+  padding: .65rem 0;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-weight: 600;
+  list-style: none;
+}
+
+body.clinic-site #main .service-reading-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+body.clinic-site #main .service-reading-disclosure > summary::after {
+  flex: 0 0 1.25em;
+  content: "+";
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+body.clinic-site #main .service-reading-disclosure[open] > summary::after {
+  content: "−";
+}
+
+body.clinic-site #main .service-reading-disclosure > summary:focus-visible {
+  outline: 2px solid var(--clinic-primary, var(--teal));
+  outline-offset: 3px;
+}
+
+body.clinic-site #main .service-reading-detail {
+  min-width: 0;
+  padding-block: .35rem 1rem;
+}
+
+body.clinic-site #main .service-reading-detail > :first-child {
+  margin-top: .25rem;
+}
+
+body.clinic-site #main .service-reading-detail > :last-child {
+  margin-bottom: 0;
+}
+
+body.clinic-site #main .service-reading-note,
+body.clinic-site #main .service-reading-links {
+  margin-block: 1.6rem;
+  padding: 1.2rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--clinic-rule, var(--line));
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.clinic-site #main .service-reading-links .discovery-grid > a {
+  box-shadow: none;
+}
+
+body.clinic-site #main .service-faq-group + .service-faq-group {
+  margin-top: 1.7rem;
+}
+
+body.clinic-site #main :is(.service-faq-group > h3, .service-reading-subhead) {
+  margin-block: 1.2rem .55rem;
+  font-size: clamp(1.15rem, 2.1vw, 1.36rem);
+  line-height: 1.3;
+}
+
+body.clinic-site #main .service-reading-steps .us-step {
+  padding-inline: 0;
+  border: 0;
+  border-top: 1px solid var(--clinic-rule, var(--line));
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+@media (max-width: 760px) {
+  body.clinic-site #main .service-reading-disclosure > summary {
+    padding-block: .7rem;
+  }
+
+  body.clinic-site #main .service-faq-group + .service-faq-group {
+    margin-top: 1.4rem;
+  }
+}
+
+body.clinic-site #main .cardgrid.service-reading-steps {
+  gap: 1rem 1.5rem;
+  border: 0;
+  background: transparent;
+}
+
+body.clinic-site #main .cardgrid.service-reading-steps > .card {
+  padding: 1rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--clinic-rule, var(--line));
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}

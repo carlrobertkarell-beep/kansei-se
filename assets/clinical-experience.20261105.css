@@ -1,13 +1,13 @@
 /* Kansei: approved mobile direction, with clinical assessment as the main value. */
 body.kansei-care {
-  --paper: #f9f8f3;
-  --white: #fffefb;
-  --ink: #202f27;
-  --muted: #506257;
-  --teal: #254f3e;
-  --dark: #20372b;
-  --line: #d5ddd2;
-  --mist: #eaf0e4;
+  --paper: #ffffff;
+  --white: #ffffff;
+  --ink: #162735;
+  --muted: #465a6b;
+  --teal: #075d9d;
+  --dark: #102d46;
+  --line: #d6e2ec;
+  --mist: #e4eef6;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   background: var(--paper);
   color: var(--ink);
@@ -23,9 +23,9 @@ body.kansei-care {
 .kansei-care .brand img { width: 155px; }
 .kansei-care .button { min-height: 48px; font-size: 15px; padding: 12px 21px; font-weight: 620; gap: 12px; }
 .kansei-care .button-dark { background: var(--teal); color: #fff; }
-.kansei-care .button-dark:hover { background: #193d2c; }
-.kansei-care :is(.button-outline,.button-ghost) { background: transparent; color: var(--teal); border: 1px solid #a8bbad; }
-.kansei-care .header-book { background: transparent; color: var(--teal); border: 1px solid #a8bbad; min-height: 44px; }
+.kansei-care .button-dark:hover { background: #162735; }
+.kansei-care :is(.button-outline,.button-ghost) { background: transparent; color: var(--teal); border: 1px solid #9fb7c9; }
+.kansei-care .header-book { background: transparent; color: var(--teal); border: 1px solid #9fb7c9; min-height: 44px; }
 .kansei-care .site-menu-toggle { color: var(--teal); }
 .kansei-care .eyebrow { color: var(--teal); font-size: 11px; line-height: 1.5; letter-spacing: .1em; font-weight: 650; }
 .kansei-care :is(.landing-hero,.ha-hero) { padding-block: clamp(28px,4vw,56px) 42px; background: var(--paper); }
@@ -61,7 +61,7 @@ body.kansei-care {
 .kansei-care .care-provider a { color: var(--teal); text-decoration: underline; text-underline-offset: 3px; font-weight: 650; }
 .kansei-care .care-signals { display: flex; flex-wrap: wrap; gap: 6px 15px; list-style: none; padding: 0; margin: 20px 0; color: var(--teal); }
 .kansei-care .care-signals li { font-size: 13px; line-height: 1.5; font-weight: 540; }
-.kansei-care .care-signals li::before { content: ''; display: inline-block; width: 4px; height: 4px; margin: 0 7px 3px 0; background: #66876b; border-radius: 50%; }
+.kansei-care .care-signals li::before { content: ''; display: inline-block; width: 4px; height: 4px; margin: 0 7px 3px 0; background: #465a6b; border-radius: 50%; }
 .kansei-care .us-source { max-width: 59ch; font-size: 13px; margin-top: 14px; }
 .kansei-care .care-routes { padding-block: 24px 60px; }
 .kansei-care .care-routes h2 { font-size: clamp(30px,3.3vw,43px); max-width: 21ch; margin: 8px 0 24px; }
@@ -80,9 +80,9 @@ body.kansei-care {
 .kansei-care .care-service-card .eyebrow { color: var(--muted); }
 .kansei-care :is(.us-process,.footer) { background: var(--dark); }
 .kansei-care :is(.us-process,.footer) :is(h2,h3) { color: #fff; }
-.kansei-care .us-process .eyebrow { color: #c0d7b8; }
-.kansei-care :is(.us-soft,.ha-tint,.us-booking,.ha-booking,.clinic) { background: #e9eee2; }
-.kansei-care :is(.ha-choice,.ha-visit-summary,.ha-note,.decision-brief) { background: #eef2e8; border-color: var(--line); border-radius: 14px; }
+.kansei-care .us-process .eyebrow { color: #b9cddb; }
+.kansei-care :is(.us-soft,.ha-tint,.us-booking,.ha-booking,.clinic) { background: #e4eef6; }
+.kansei-care :is(.ha-choice,.ha-visit-summary,.ha-note,.decision-brief) { background: #edf5fb; border-color: var(--line); border-radius: 14px; }
 .kansei-care .care-knee-route { font-size: 15px; margin-top: 18px; }
 .kansei-care.hyaluron-page .ha-portrait { display: block; }
 .kansei-care.hyaluron-page .ha-portrait img { aspect-ratio: 4/3; object-position: center 30%; height: auto; }
@@ -94,7 +94,7 @@ body.kansei-care {
 .kansei-care .care-brief h3 { font-size: 21px; line-height: 1.25; margin-bottom: 10px; }
 .kansei-care .care-brief p { font-size: 15px; color: var(--muted); }
 .kansei-care .care-scope { margin-top: 26px; max-width: 85ch; }
-.kansei-care .atlas-gateway { background: #e9eee2; }
+.kansei-care .atlas-gateway { background: #e4eef6; }
 .kansei-care .atlas-gateway-copy h2 { font-size: clamp(32px,3.5vw,46px); }
 .kansei-care .atlas-demo { border-radius: 16px; overflow: hidden; }
 .kansei-care .article-wrap { max-width: 1180px; padding-top: 44px; }
@@ -106,11 +106,11 @@ body.kansei-care {
 .kansei-care .care-comparison>div { border-top: 1px solid var(--line); padding-top: 15px; min-width: 0; }
 .kansei-care .care-comparison h3 { font-size: 19px; line-height: 1.3; margin: 0 0 10px; }
 .kansei-care .care-comparison p { font-size: 15px; line-height: 1.65; color: var(--muted); }
-.kansei-care .care-article-note { background: #eaf0e4; border-radius: 14px; padding: 24px; margin: 28px 0; }
+.kansei-care .care-article-note { background: #e4eef6; border-radius: 14px; padding: 24px; margin: 28px 0; }
 .kansei-care .care-article-note h2 { font-size: 25px; margin: 0 0 12px; }
 .kansei-care .care-article-note p { font-size: 16px; }
-.kansei-care .article-aside .article-cta { background: #eaf0e4; border-color: var(--line); border-radius: 12px; }
-.kansei-care .knee-evidence-preview { background: #eaf0e4; border-color: var(--line); }
+.kansei-care .article-aside .article-cta { background: #e4eef6; border-color: var(--line); border-radius: 12px; }
+.kansei-care .knee-evidence-preview { background: #e4eef6; border-color: var(--line); }
 .kansei-care :is(.ha-booking-choices,.ha-provider-card) { min-width: 0; }
 @media(max-width:1000px) {
   .kansei-care .header-inner { gap: 16px; }

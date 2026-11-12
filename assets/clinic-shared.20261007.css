@@ -1,6 +1,6 @@
 /* Public clinic interface. Load last on every clinic page, after component styles.
    Layouts can differ; navigation, outer gutters, heading scale and controls cannot. */
-body.clinic-site{--teal:#254f3e;--dark:#20372b;--ink:#202f27;--muted:#506257;--paper:#f9f8f3;--line:#d5ddd2;--mist:#eaf0e4;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;--grid:1320px;--gutter:clamp(22px,5vw,70px);--page-heading:clamp(42px,4.65vw,66px);background:var(--paper);color:var(--ink)}
+body.clinic-site{--teal:#075d9d;--dark:#102d46;--ink:#162735;--muted:#465a6b;--paper:#ffffff;--line:#d6e2ec;--mist:#e4eef6;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;--grid:1320px;--gutter:clamp(22px,5vw,70px);--page-heading:clamp(42px,4.65vw,66px);background:var(--paper);color:var(--ink)}
 .clinic-site .wrap,.clinic-site .reading-inner,.clinic-site .hub-container,.clinic-site .article-wrap{width:100%;max-width:var(--grid);margin-inline:auto;padding-inline:var(--gutter)}
 .clinic-site .editorial-body .wrap,.clinic-site .us-area-article .wrap{width:100%;max-width:none;padding-inline:0}
 .clinic-site .site-header{background:rgba(248,250,249,.96)}
@@ -32,7 +32,7 @@ body.clinic-site{--teal:#254f3e;--dark:#20372b;--ink:#202f27;--muted:#506257;--p
 .clinic-site .editorial-layout{padding-block:48px 64px}
 .clinic-site .editorial-wide .original-main>.band>.wrap>.col>h2{font-size:clamp(32px,3.5vw,48px)}
 .clinic-site .knowledge-feature{border-radius:8px;padding:32px}
-.clinic-site .knowledge-feature .eyebrow,.clinic-site .us-process .eyebrow{color:#b7dbd2}
+.clinic-site .knowledge-feature .eyebrow,.clinic-site .us-process .eyebrow{color:#b9cddb}
 .clinic-site .knowledge-feature h2{font-size:36px;margin:8px 0 24px}
 .clinic-site .knowledge-result .eyebrow{font-size:11px}
 .clinic-site .knowledge-result h2{font-size:26px}
@@ -48,8 +48,8 @@ body.clinic-site{--teal:#254f3e;--dark:#20372b;--ink:#202f27;--muted:#506257;--p
 /* Clear treatment paths, readable copy and a consistent clinic menu. */
 .clinic-site main :is(.editorial-body p,.editorial-body li,.article-body p,.article-body li,.us-section-heading>p,.care-service-card>p,.us-expert p,.us-step p,.faq-list p){font-size:18px;line-height:1.75}
 .clinic-site main :is(.care-hero-help,.us-section-note p){font-size:16px;line-height:1.7}
-.clinic-site a:focus-visible,.clinic-site button:focus-visible,.clinic-site summary:focus-visible,.clinic-site input:focus-visible{outline:3px solid #086b62;outline-offset:4px}
-.clinic-site .footer a:focus-visible{outline-color:#b7dbd2}
+.clinic-site a:focus-visible,.clinic-site button:focus-visible,.clinic-site summary:focus-visible,.clinic-site input:focus-visible{outline:3px solid #17364f;outline-offset:4px}
+.clinic-site .footer a:focus-visible{outline-color:#b9cddb}
 .clinic-site .site-header .desktop-nav{gap:20px;font-size:15px}
 .clinic-site .desktop-nav>a{font-size:15px;min-height:48px;white-space:nowrap}
 .clinic-site .desktop-nav a[aria-current=page]{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
@@ -94,7 +94,7 @@ body.clinic-site{--teal:#254f3e;--dark:#20372b;--ink:#202f27;--muted:#506257;--p
 .clinic-site .home-review-context p,.clinic-site .home-reviews-intro>p{font-size:17px;line-height:1.75}
 .clinic-site .clinic-title h2{max-width:15ch}
 .clinic-site .clinic-training-link{margin-top:24px}
-.clinic-site .clinic-first-visit{padding:40px;background:#edf3f1;border-radius:8px;margin:48px 0 0}
+.clinic-site .clinic-first-visit{padding:40px;background:#edf5fb;border-radius:8px;margin:48px 0 0}
 .clinic-site .clinic-first-visit h2{font-size:clamp(30px,3.4vw,44px);margin-top:0}
 .clinic-site .clinic-first-visit .button{margin-top:18px}
 .clinic-site .clinic-visit-links{display:flex;flex-wrap:wrap;gap:10px 24px;margin-block:22px}
@@ -118,7 +118,7 @@ body.clinic-site{--teal:#254f3e;--dark:#20372b;--ink:#202f27;--muted:#506257;--p
 .condition-page .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px}
 .condition-page .section h2{font-size:clamp(29px,3vw,40px);margin:0 0 20px}
 .condition-page .section p{color:var(--muted)}
-.condition-page .note{padding:26px;background:#edf3f1;border-radius:8px}
+.condition-page .note{padding:26px;background:#edf5fb;border-radius:8px}
 .condition-page main p a,.condition-page main li a{text-decoration:underline;text-underline-offset:4px}
 .condition-page .page-nav{display:flex;flex-wrap:wrap;gap:12px 24px;padding-bottom:28px}
 .condition-page .section li{margin-bottom:10px}
@@ -127,7 +127,7 @@ body.clinic-site{--teal:#254f3e;--dark:#20372b;--ink:#202f27;--muted:#506257;--p
 .condition-page .section details p{padding-bottom:22px}
 .condition-page .sources{font-size:14px;color:var(--muted);padding-bottom:28px}
 .condition-page .sources a{overflow-wrap:anywhere}
-.condition-page .condition-booking{background:#edf3f1;padding-block:48px}
+.condition-page .condition-booking{background:#edf5fb;padding-block:48px}
 .condition-page .condition-booking h2{font-size:clamp(32px,3.5vw,48px);margin-bottom:20px}
 .condition-page .condition-booking .btn{margin-top:24px}
 @media(max-width:1150px){

@@ -2,12 +2,12 @@
 .booking-guide-page,
 #guide-dialog {
   --booking-paper: #fbfaf6;
-  --booking-white: #fffefa;
-  --booking-ink: #193b31;
-  --booking-muted: #4d665b;
-  --booking-line: #d7e1d7;
-  --booking-tint: #edf3eb;
-  --booking-accent: #285343;
+  --booking-white: #ffffff;
+  --booking-ink: #162735;
+  --booking-muted: #465a6b;
+  --booking-line: #d6e2ec;
+  --booking-tint: #edf5fb;
+  --booking-accent: #17364f;
   --booking-serif: var(--clinic-display, Georgia, 'Times New Roman', serif);
   color: var(--booking-ink);
   background: var(--booking-paper);
@@ -102,7 +102,7 @@
 
 .booking-guide-page .area-item:is(:hover, :focus-visible) {
   padding-inline: .9rem;
-  border-color: #8ba398;
+  border-color: #6e879b;
   color: var(--booking-ink);
   background: var(--booking-tint);
 }
@@ -136,7 +136,7 @@
   inset: auto -5rem -11rem auto;
   width: 22rem;
   aspect-ratio: 1;
-  border: 1px solid #cfddd2;
+  border: 1px solid #b9cddb;
   border-radius: 50%;
   content: '';
   pointer-events: none;
@@ -186,7 +186,7 @@
 .booking-guide-page .finder-bottom {
   inset: auto 1.5rem 1.25rem;
   gap: 1rem;
-  border-color: #c7d6c9;
+  border-color: #b9cddb;
   color: var(--booking-muted);
   font: 500 .75rem/1.5 var(--sans);
 }
@@ -269,7 +269,7 @@
 }
 
 #guide-dialog .guide-header [data-close] {
-  border-color: #c6d4ca;
+  border-color: #b9cddb;
   color: var(--booking-ink);
 }
 
@@ -297,7 +297,7 @@
   margin: .1rem 0 1.35rem;
   border-radius: 1rem;
   overflow: hidden;
-  background: #e1e9de;
+  background: #e4eef6;
 }
 
 #guide-dialog .guide-progress-track::before {
@@ -356,7 +356,7 @@
 }
 
 #guide-dialog .guide-choice:is(:hover, :focus-visible, [data-current-choice]) {
-  border-color: #8ba398;
+  border-color: #6e879b;
   background: var(--booking-tint);
 }
 
@@ -395,7 +395,7 @@
 #guide-dialog .guide-selection {
   margin: .8rem 0 1rem;
   padding-left: .75rem;
-  border-color: #aec3b3;
+  border-color: #9fb7c9;
 }
 
 #guide-dialog .result-tag {
@@ -409,7 +409,7 @@
 
 #guide-dialog .result-main {
   padding: clamp(1rem, 4vw, 1.55rem);
-  border-color: #cbdacc;
+  border-color: #b9cddb;
   border-radius: .7rem;
   background: var(--booking-tint);
 }
@@ -438,7 +438,7 @@
   gap: .65rem;
   margin-top: 1rem;
   padding-top: .85rem;
-  border-color: #cbdacc;
+  border-color: #b9cddb;
 }
 
 #guide-dialog .guide-price strong {

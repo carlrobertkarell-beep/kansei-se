@@ -1,7 +1,7 @@
 /* Shared opening for the PRP and hyaluron treatment pages. */
 .treatment-page #main .treatment-hero {
   background: #f8f6f0;
-  border-bottom: 1px solid #d8ded4;
+  border-bottom: 1px solid #d6e2ec;
 }
 
 .treatment-hero > .wrap {
@@ -16,7 +16,7 @@
 
 .treatment-page #main .treatment-hero .crumbs a {
   text-underline-offset: .22em;
-  text-decoration-color: #84968a;
+  text-decoration-color: #6e879b;
 }
 
 .treatment-hero-grid {
@@ -34,7 +34,7 @@
   align-items: center;
   gap: 10px;
   margin: 0 0 12px;
-  color: #35604d;
+  color: #075d9d;
   font: 650 .73rem/1.5 var(--sans);
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -44,13 +44,13 @@
   content: "";
   flex: 0 0 22px;
   height: 1px;
-  background: #739480;
+  background: #465a6b;
 }
 
 .treatment-page #main .treatment-hero h1 {
   margin: 0 0 16px;
   max-width: 15ch;
-  color: #193b31;
+  color: #162735;
   font-size: clamp(2.9rem, 5.2vw, 4.8rem);
   line-height: 1.02;
   letter-spacing: -.045em;
@@ -60,7 +60,7 @@
 .treatment-page #main .treatment-hero .treatment-lead {
   max-width: 47ch;
   margin: 0;
-  color: #40564b;
+  color: #465a6b;
   font-size: clamp(1rem, 1.55vw, 1.1875rem);
   line-height: 1.55;
 }
@@ -71,8 +71,8 @@
   padding: clamp(22px, 3.2vw, 36px);
   border-radius: 16px;
   color: #fbfaf4;
-  background: #1f4034;
-  box-shadow: 0 16px 30px -24px #172f28;
+  background: #162735;
+  box-shadow: 0 16px 30px -24px #162735;
   scroll-margin-top: 110px;
 }
 
@@ -85,11 +85,11 @@
 
 .treatment-prices > div + div {
   padding-inline-start: clamp(12px, 2vw, 22px);
-  border-inline-start: 1px solid #668174;
+  border-inline-start: 1px solid #465a6b;
 }
 
 .treatment-prices dt {
-  color: #d7e5da;
+  color: #d6e2ec;
   font-size: .8125rem;
   line-height: 1.35;
 }
@@ -116,15 +116,15 @@
   border: 1px solid transparent;
   border-radius: .55rem;
   background: #fbfaf4;
-  color: #193b31;
+  color: #162735;
   font-size: .9375rem;
   font-weight: 700;
   text-decoration: none;
 }
 
 .treatment-page #main .treatment-offer .treatment-book:hover {
-  background: #e7eee3;
-  color: #193b31;
+  background: #e4eef6;
+  color: #162735;
 }
 
 .treatment-page #main .treatment-offer .treatment-book:focus-visible {
@@ -143,7 +143,7 @@
 
 .treatment-page #main .treatment-offer .treatment-offer-links p,
 .treatment-page #main .treatment-offer .treatment-offer-links a {
-  color: #e0ebe2;
+  color: #e4eef6;
   margin: 0;
   font-size: .8125rem;
   line-height: 1.4;
@@ -180,13 +180,13 @@
 
 .treatment-page #main .treatment-provider p {
   margin: 0;
-  color: #40564b;
+  color: #465a6b;
   font-size: .8125rem;
   line-height: 1.45;
 }
 
 .treatment-page #main .treatment-provider a {
-  color: #224b3d;
+  color: #17364f;
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: .2em;
@@ -206,27 +206,27 @@
   display: grid;
   gap: 5px;
   padding: 16px;
-  border: 1px solid #d4dfd3;
+  border: 1px solid #d6e2ec;
   border-radius: .65rem;
-  background: #fffefa;
-  color: #193b31;
+  background: #ffffff;
+  color: #162735;
   text-decoration: none;
 }
 
 .treatment-page #main .treatment-joints a:hover {
-  border-color: #769583;
-  background: #edf3eb;
+  border-color: #465a6b;
+  background: #edf5fb;
 }
 
 .treatment-joints strong {
   font: 400 1.45rem/1.15 var(--clinic-display);
   text-decoration: underline;
-  text-decoration-color: #8aa597;
+  text-decoration-color: #6e879b;
   text-underline-offset: .18em;
 }
 
 .treatment-joints span {
-  color: #40564b;
+  color: #465a6b;
   font-size: .84rem;
   line-height: 1.4;
 }

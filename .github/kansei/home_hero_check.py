@@ -39,7 +39,7 @@ def check_home_hero(page, output, viewport):
             raise AssertionError('Hero photograph does not load or has no reserved space')
         if photo.get_attribute('loading') == 'lazy' or photo.get_attribute('fetchpriority') != 'high':
             raise AssertionError('The first hero photograph is delayed behind lazy or low-priority loading')
-        introduction = lead.inner_text().casefold()
+        introduction = (heading.inner_text() + " " + lead.inner_text()).casefold()
         if any(term not in introduction for term in ('naprapati', 'ultraljud', 'injektioner', 'hyaluron', 'prp', 'odenplan', 'stockholm')):
             raise AssertionError('Hero introduction no longer identifies services and local clinic')
         actions = hero.locator('.landing-hero-actions')

@@ -107,7 +107,9 @@ with sync_playwright() as pw:
     # Avoid Playwright's string-eval polling under the public page's strict CSP.
     p.wait_for_timeout(1400)
     assert len(events(p,'booking_options_view'))==1
-    p.locator('#boka a[href="#pris"]').click()
+    reading = p.locator("details.service-reading")
+    reading.locator("summary").click()
+    reading.locator('nav a[href="#pris"]').click()
     p.wait_for_url(ORIGIN+'/hyaluronsyra/kna/#pris')
     assert len(events(p,'booking_options_open'))==1
     assert events(p,'booking_click')==[]

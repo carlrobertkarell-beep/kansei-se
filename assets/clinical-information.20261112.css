@@ -1,0 +1,201 @@
+/* Editorial layouts for the clinic, clinician and practical information. */
+.information-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, .95fr);
+  align-items: center;
+  gap: clamp(32px, 6vw, 96px);
+}
+
+.information-intro-grid .page {
+  min-width: 0;
+}
+
+.information-intro-grid .page > p:not(.intro) {
+  max-width: 47ch;
+  margin-block: 14px 0;
+  line-height: 1.65;
+}
+
+.information-intro-grid .information-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.information-photo {
+  min-width: 0;
+  margin: 0;
+}
+
+.information-photo picture {
+  display: block;
+}
+
+.information-photo img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.information-clinic-photo img {
+  aspect-ratio: 16 / 10;
+  height: auto;
+}
+
+.information-photo figcaption {
+  max-width: 48ch;
+  margin-top: 10px;
+  color: var(--muted, #4d6057);
+  font: 400 .875rem / 1.5 var(--sans, Arial, sans-serif);
+}
+
+.information-profile .information-intro-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(230px, 320px);
+  max-width: 64rem;
+}
+
+.information-portrait img {
+  max-height: 370px;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  object-position: 50% 34%;
+}
+
+.information-clinic-name {
+  max-width: 60ch;
+  margin-block: 32px;
+}
+
+body.information-prices #main .editorial-top .pris-not {
+  max-width: 58ch;
+  margin-block: 10px 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+body.information-contact #main .page-top {
+  border-bottom: 1px solid var(--line, #d8dfdb);
+}
+
+body.information-contact #main .page-top .page-lead {
+  max-width: 42ch;
+}
+
+body.information-contact #main .contact-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 22px;
+}
+
+body.information-contact #main .contact-actions :is(.button-ghost, .text-link) {
+  display: inline-flex;
+  width: auto;
+  min-height: 44px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink, #182820);
+  text-underline-offset: .23em;
+  text-decoration: underline;
+}
+
+body.information-contact #main .contact-tasks {
+  gap: 0;
+}
+
+body.information-contact #main .contact-task {
+  padding: 18px 0;
+  border: 0;
+  border-top: 1px solid var(--line, #d8dfdb);
+  border-radius: 0;
+  background: transparent;
+}
+
+body.information-contact #main .contact-task h3 {
+  margin-top: 0;
+}
+
+body.information-library #main .knowledge-top {
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--line, #d8dfdb);
+}
+
+body.information-library #main .knowledge-top .knowledge-toolbar {
+  max-width: 52rem;
+  margin-block: 26px 18px;
+}
+
+body.information-library #main .knowledge-search input {
+  min-height: 48px;
+  border-radius: 3px;
+}
+
+body.information-library #main .knowledge-filter button {
+  min-height: 44px;
+  border-radius: 3px;
+}
+
+body.information-library #main .knowledge-top .service-overview-details {
+  width: 100%;
+  max-width: 52rem;
+  margin-top: 18px;
+}
+
+body.information-library #main .knowledge-results {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(26px, 5vw, 76px);
+}
+
+body.information-library #main .knowledge-result {
+  padding: 22px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line, #d8dfdb);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body.information-library #main .knowledge-result :is(h2, p) {
+  margin-inline: 0;
+}
+
+body.information-library #main .knowledge-result .read-more {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .information-intro-grid,
+  .information-profile .information-intro-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+  }
+
+  .information-clinic-photo img {
+    max-height: 280px;
+  }
+
+  .information-portrait {
+    max-width: 300px;
+  }
+
+  .information-portrait img {
+    max-height: 320px;
+  }
+
+  body.information-contact #main .contact-actions .button-dark {
+    width: max-content;
+    flex: 0 0 auto;
+  }
+
+  body.information-library #main .knowledge-results {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

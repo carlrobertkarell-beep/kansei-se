@@ -1,4 +1,4 @@
-"""Check the homepage's image-first introduction without opening a booking service."""
+"""Check the homepage's introduction without opening a booking service."""
 from pathlib import Path
 
 
@@ -39,7 +39,7 @@ def check_home_hero(page, output, viewport):
             raise AssertionError('Hero photograph does not load or has no reserved space')
         if photo.get_attribute('loading') == 'lazy' or photo.get_attribute('fetchpriority') != 'high':
             raise AssertionError('The first hero photograph is delayed behind lazy or low-priority loading')
-        introduction = lead.inner_text().casefold()
+        introduction = (heading.inner_text() + " " + lead.inner_text()).casefold()
         if any(term not in introduction for term in ('naprapati', 'ultraljud', 'injektioner', 'hyaluron', 'prp', 'odenplan', 'stockholm')):
             raise AssertionError('Hero introduction no longer identifies services and local clinic')
         actions = hero.locator('.landing-hero-actions')
@@ -71,9 +71,9 @@ def check_home_hero(page, output, viewport):
             if not photo.evaluate('''image => {
                 const photo = image.getBoundingClientRect();
                 const heading = document.querySelector('.home-first-impression h1').getBoundingClientRect();
-                return photo.top < heading.top && photo.top < innerHeight / 2 && photo.height >= 180;
+                return heading.top < photo.top && photo.top < innerHeight - 175 && photo.height >= 175;
             }'''):
-                raise AssertionError('Mobile introduction no longer leads with a prominent photograph')
+                raise AssertionError('Mobile introduction no longer pairs the service heading with a prominent photograph')
         if viewport == 'mobile':
             for element in (heading, lead, booking):
                 if not element.evaluate('''element => {

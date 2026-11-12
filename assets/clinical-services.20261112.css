@@ -1,0 +1,158 @@
+/* Service entry pages share the same visit, provider and booking order. */
+body.clinic-site #main .service-first-hero {
+  --service-first-rule: #d8e3db;
+  --service-first-copy: #2e443a;
+  background: #fff;
+  border-bottom: 1px solid var(--service-first-rule);
+}
+
+body.clinic-site #main .service-first-hero .editorial-top {
+  background: transparent;
+}
+
+.service-first-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .94fr);
+  align-items: center;
+  gap: clamp(24px, 5vw, 72px);
+}
+
+body.clinic-site #main .service-first-hero :is(.landing-hero-grid, .us-hero-grid) {
+  align-items: center;
+}
+
+body.clinic-site #main .service-first-hero .service-first-provider {
+  --clinical-portrait-size: 46px;
+  max-width: 33rem;
+  margin-block: 19px 14px;
+  padding-block: 0;
+  border: 0;
+}
+
+body.clinic-site #main .service-first-hero .service-first-provider .clinical-landing-rating {
+  color: var(--service-first-copy);
+  text-decoration: underline;
+  text-decoration-color: #a2b4a9;
+}
+
+body.clinic-site #main .service-first-hero .service-first-note {
+  margin-block: 7px 0;
+  color: var(--service-first-copy);
+  line-height: 1.5;
+}
+
+body.clinic-site #main .service-first-hero .clinical-landing-booking {
+  justify-content: space-between;
+  max-width: 34rem;
+  margin-block: 10px 0;
+  padding: 12px 0 0;
+  border: 0;
+  border-top: 1px solid var(--service-first-rule);
+  border-radius: 0;
+  background: transparent;
+}
+
+body.clinic-site #main .service-first-hero .landing-hero-actions {
+  flex: 0 1 auto;
+  width: auto;
+  margin-inline-start: auto;
+}
+
+body.clinic-site #main .service-first-hero .service-first-related {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 5px;
+}
+
+body.clinic-site #main .service-first-hero .us-booking-card {
+  border-color: var(--service-first-rule);
+  box-shadow: none;
+}
+
+body.clinic-site #main .service-first-hero .hyaluron-hero-visual {
+  align-self: center;
+}
+
+body.clinic-site #main .service-first-hero .treatment-offer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 12px;
+  margin-block: 10px 0;
+  padding: 12px 0 0;
+  border: 0;
+  border-top: 1px solid var(--service-first-rule);
+  border-radius: 0;
+  background: transparent;
+}
+
+body.clinic-site #main .service-first-hero .treatment-offer .service-overview-price {
+  margin: 0;
+}
+
+body.clinic-site #main .service-first-hero .treatment-offer .service-overview-price strong {
+  white-space: nowrap;
+}
+
+body.clinic-site #main .service-first-hero .treatment-offer .treatment-book {
+  width: auto;
+  min-width: 0;
+  justify-self: end;
+}
+
+body.clinic-site #main .service-first-hero .treatment-offer .service-overview-booking-note {
+  grid-column: 1 / -1;
+}
+
+body.clinic-site #main .service-first-hero :is(.landing-hero-media, .us-hero-photo, .hyaluron-hero-visual) img {
+  border-radius: 6px;
+}
+
+@media (max-width: 760px) {
+  .service-first-intro-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+
+  body.clinic-site #main .service-first-hero :is(.landing-hero-media, .us-hero-photo) {
+    display: block;
+  }
+
+  body.clinic-site #main .service-first-hero :is(.landing-hero-media, .us-hero-photo) img {
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+
+  body.clinic-site #main .service-first-hero .clinical-landing-scan img {
+    aspect-ratio: 4 / 3;
+  }
+
+  body.clinic-site #main .service-first-hero .service-first-provider {
+    --clinical-portrait-size: 42px;
+    margin-block: 14px 12px;
+  }
+
+  body.clinic-site #main .service-first-hero .clinical-landing-booking .landing-hero-actions .button {
+    width: auto;
+  }
+
+  body.clinic-site #main .service-first-hero .treatment-hero-grid {
+    grid-template-areas: "copy" "visual" "support";
+  }
+
+  body.clinic-site #main .service-first-hero .treatment-offer .service-overview-price {
+    font-size: .875rem;
+  }
+}
+
+@media (max-width: 380px) {
+  body.clinic-site #main .service-first-hero .treatment-offer {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 8px;
+  }
+
+  body.clinic-site #main .service-first-hero .treatment-offer .service-overview-booking-note {
+    margin-top: 0;
+  }
+}

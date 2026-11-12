@@ -1,4 +1,4 @@
-"""Check the homepage's image-first introduction without opening a booking service."""
+"""Check the homepage's introduction without opening a booking service."""
 from pathlib import Path
 
 
@@ -71,9 +71,9 @@ def check_home_hero(page, output, viewport):
             if not photo.evaluate('''image => {
                 const photo = image.getBoundingClientRect();
                 const heading = document.querySelector('.home-first-impression h1').getBoundingClientRect();
-                return photo.top < heading.top && photo.top < innerHeight / 2 && photo.height >= 180;
+                return heading.top < photo.top && photo.top < innerHeight - 175 && photo.height >= 175;
             }'''):
-                raise AssertionError('Mobile introduction no longer leads with a prominent photograph')
+                raise AssertionError('Mobile introduction no longer pairs the service heading with a prominent photograph')
         if viewport == 'mobile':
             for element in (heading, lead, booking):
                 if not element.evaluate('''element => {

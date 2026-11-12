@@ -236,6 +236,14 @@
 /* Native dialog with a short, cancellable transition; no layout jump or library. */
 (()=>{'use strict';
  const dialog=document.querySelector('#site-menu'),buttons=[...document.querySelectorAll('[data-site-menu]')];
+ // Match the visible header order when navigating with a keyboard.
+ for(const button of buttons){
+  const booking=button.parentElement?.querySelector('a.header-book');
+  if(booking?.nextElementSibling===button)button.after(booking);
+ }
+ const logo=document.querySelector('.site-header .brand img[src="/assets/logo-dark.webp"]');
+ if(logo)logo.src='/assets/kansei-logo-green.20261105.svg';
+
  const injectionNav=document.querySelector('.desktop-nav a[href="/hyaluronsyra/"]');
  if(injectionNav){
   injectionNav.href='/injektioner/';injectionNav.textContent='Injektioner';injectionNav.removeAttribute('aria-current');

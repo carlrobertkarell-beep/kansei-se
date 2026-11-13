@@ -215,7 +215,7 @@ def check(base, output):
             context.route("**/*", route)
             paths = tuple(dict.fromkeys(PATHS + film_paths + CASE_PATHS + (() if baseline_only else KNOWLEDGE_PATHS + CONTENT_PATHS + (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH, HIP_PATH, HIP_JOINT_PATH, KNEE_CALC_PATH))))
             if label == 'compact':
-                paths = ('/', '/ultraljud/', '/ultraljud/axel/', '/hyaluronsyra/', '/injektioner/', '/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/blogg/prp-eller-hyaluronsyra-vid-knaartros/', '/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/') + film_paths[1:] + CASE_PATHS + (() if baseline_only else (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH, HIP_PATH, HIP_JOINT_PATH, KNEE_CALC_PATH))
+                paths = ('/', '/ultraljud/', '/ultraljud/axel/', '/hyaluronsyra/', '/injektioner/', '/hyaluronsyra/kna/', '/hyaluronsyra/hoft/', '/hyaluronsyra/axel/', '/blogg/prp-eller-hyaluronsyra-vid-knaartros/', '/blogg/hyaluronsyra-vid-artros-vad-sager-evidensen/') + film_paths[1:] + CASE_PATHS + (() if baseline_only else (RUNNER_PATH, ELBOW_PATH, ACHILLES_PATH, EXPLORE_PATH, HIP_PATH, HIP_JOINT_PATH, KNEE_CALC_PATH, '/priser/'))
                 if not baseline_only:
                     paths += ("/hjalp-mig-boka/", "/en/")
             if not baseline_only:

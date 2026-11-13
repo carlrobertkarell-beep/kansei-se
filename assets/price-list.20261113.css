@@ -1,0 +1,174 @@
+.information-prices #main .price-inner {
+  max-width: 960px;
+}
+
+.information-prices .price-intro {
+  padding-block: clamp(24px, 4.8vw, 60px) clamp(28px, 5vw, 58px);
+  border-bottom: 1px solid var(--clinic-rule);
+}
+
+.information-prices .price-intro .crumbs {
+  margin: 0 0 14px;
+  color: var(--clinic-secondary);
+  font-size: .875rem;
+}
+
+.information-prices #main h1 {
+  margin: 0;
+  font-size: clamp(2.65rem, 6vw, 4.25rem);
+  line-height: 1.05;
+}
+
+.information-prices .price-intro-lead {
+  margin: 14px 0 0;
+  max-width: 48ch;
+  font-size: clamp(1.0625rem, 1.65vw, 1.1875rem);
+  line-height: 1.55;
+}
+
+.information-prices .price-practical {
+  margin: 8px 0 0;
+  color: var(--clinic-secondary);
+  line-height: 1.6;
+}
+
+.information-prices #main a {
+  color: var(--clinic-primary);
+  text-underline-offset: .16em;
+}
+
+.information-prices #main :is(a, summary):focus-visible {
+  outline: 2px solid var(--clinic-primary);
+  outline-offset: 3px;
+}
+
+.information-prices .price-intro-actions,
+.information-prices .price-index {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 20px;
+}
+
+.information-prices .price-intro-actions { margin-top: 14px; }
+.information-prices .price-index { padding-block: 10px; border-bottom: 1px solid var(--clinic-rule); }
+.information-prices .price-index a { font-size: .875rem; }
+
+.information-prices #main :is(.price-intro-actions, .price-index, .price-entry-actions) > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: underline;
+}
+
+.information-prices #main .price-intro-actions .price-primary {
+  justify-content: center;
+  padding: 8px 20px;
+  border-radius: var(--clinic-control-radius);
+  background: var(--clinic-primary);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.information-prices #main .price-intro-actions .price-primary:hover {
+  background: var(--clinic-hover);
+}
+
+.information-prices .price-content {
+  padding-bottom: clamp(48px, 7vw, 90px);
+}
+
+.information-prices .price-content > section {
+  margin-top: clamp(36px, 6vw, 70px);
+}
+
+.information-prices #main .price-content h2 {
+  margin: 0 0 16px;
+  font-size: clamp(1.75rem, 3.5vw, 2.7rem);
+  line-height: 1.15;
+  scroll-margin-top: calc(var(--clinic-header-height) + 20px);
+}
+
+.information-prices .price-content h3 {
+  margin: 24px 0 8px;
+  font-size: 1.0625rem;
+  line-height: 1.4;
+}
+
+.information-prices .price-list,
+.information-prices .price-policies {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--clinic-rule);
+}
+
+.information-prices .price-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 3px 12px;
+  padding-block: 12px;
+  border-top: 1px solid var(--clinic-rule);
+}
+
+.information-prices .price-entry p { margin: 0; }
+.information-prices .price-service { font-size: 1rem; font-weight: 650; line-height: 1.4; }
+.information-prices #main .price-service a { color: var(--clinic-ink); text-decoration: underline; }
+.information-prices #main .price-service a:hover { color: var(--clinic-primary); }
+
+.information-prices .price-amount {
+  white-space: nowrap;
+  color: var(--clinic-ink);
+  font-size: clamp(.875rem, 2.6vw, 1.0625rem);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+  text-align: right;
+}
+
+.information-prices .price-description,
+.information-prices .price-policies dd,
+.information-prices .price-content details p {
+  color: var(--clinic-secondary);
+  font-size: .9375rem;
+  line-height: 1.55;
+}
+
+.information-prices .price-description { grid-column: 1; }
+.information-prices .price-entry-actions { grid-column: 2; justify-self: end; }
+.information-prices #main .price-entry-actions .price-book { font-size: .875rem; font-weight: 600; }
+
+.information-prices .price-content details {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid var(--clinic-rule);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.information-prices .price-content details:first-of-type { margin-top: 14px; }
+.information-prices .price-content summary { min-height: 44px; padding: 10px 0; font-size: .9375rem; }
+.information-prices .price-content details p { margin-block: 0 12px; max-width: 68ch; }
+.information-prices .price-explainer { max-width: 65ch; }
+.information-prices .price-policies > div { padding-block: 14px; border-top: 1px solid var(--clinic-rule); }
+.information-prices .price-policies dt { font-weight: 650; }
+.information-prices .price-policies dd { max-width: 68ch; margin: 3px 0 0; }
+
+.information-prices .price-related a {
+  border-radius: 0;
+  border-width: 1px 0 0;
+  border-color: var(--clinic-rule);
+  box-shadow: none;
+}
+
+@media (max-width: 600px) {
+  .information-prices #main .price-inner { padding-inline: clamp(18px, 5vw, 24px); }
+  .information-prices .price-index { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 14px; }
+  .information-prices .price-entry { padding-block: 12px 10px; }
+  .information-prices .price-description { grid-column: 1 / -1; }
+  .information-prices .price-entry-actions { grid-column: 1 / -1; justify-self: start; }
+}

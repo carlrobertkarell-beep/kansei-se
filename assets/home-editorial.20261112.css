@@ -18,14 +18,14 @@ body.clinic-site #main .clinic-home-intro .home-intro-grid {
 body.clinic-site #main .clinic-home-intro .landing-hero-copy {
   position: relative;
   z-index: 1;
-  justify-self: end;
+  justify-self: start;
   max-width: min(100%, 35rem);
-  text-align: right;
+  text-align: left;
 }
 
 body.clinic-site #main .clinic-home-intro h1 {
   max-width: 15ch;
-  margin: 0 0 0 auto;
+  margin: 0;
   color: #fff;
   font-size: clamp(2.65rem, 4.65vw, 4.85rem);
   line-height: 1.02;
@@ -35,7 +35,7 @@ body.clinic-site #main .clinic-home-intro h1 {
 
 body.clinic-site #main .clinic-home-intro .landing-hero-lead {
   max-width: 41ch;
-  margin: 16px 0 0 auto;
+  margin: 16px 0 0;
   color: #fff;
   font-size: clamp(1rem, 1.45vw, 1.2rem);
   line-height: 1.5;
@@ -45,7 +45,6 @@ body.clinic-site #main .clinic-home-intro .landing-hero-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-end;
   gap: 8px 22px;
   margin-top: 24px;
 }
@@ -90,7 +89,7 @@ body.clinic-site #main .clinic-home-intro .home-intro-image {
 body.clinic-site #main .clinic-home-intro .home-intro-image::after {
   content: "";
   inset: 0;
-  background: linear-gradient(90deg, transparent 37%, #0b10172b 49%, #0b1017b8 69%, #0b1017d9 100%),
+  background: linear-gradient(270deg, transparent 37%, #0b10172b 49%, #0b1017b8 69%, #0b1017d9 100%),
     linear-gradient(0deg, #0b101768, transparent 59%);
 }
 
@@ -326,7 +325,6 @@ body.clinic-site #main .home-reviews-stage { background: #edf5fb; }
 
 @media print {
   body.clinic-site #main .clinic-home-intro .home-intro-grid { min-height: 0; padding-block: 20px; }
-  body.clinic-site #main .clinic-home-intro .landing-hero-copy { justify-self: start; text-align: left; }
   body.clinic-site #main .clinic-home-intro .home-intro-image { display: none; }
   body.clinic-site #main .clinic-home-intro,
   body.clinic-site #main .clinic-home-intro :is(h1,.landing-hero-lead,.home-intro-secondary,.landing-hero-actions .button),

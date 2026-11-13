@@ -70,7 +70,7 @@ def check_home_hero(page, output, viewport):
                 raise AssertionError('A homepage booking or service action is hidden or too small for touch')
         if page.evaluate('document.documentElement.scrollWidth > innerWidth + 3'):
             raise AssertionError('Homepage hero causes horizontal overflow')
-        image_overlay = page.locator('link[href*="home-editorial.20261112.css?v=20261113-overlay"]').count() == 1
+        image_overlay = page.locator('link[href*="home-editorial.20261112.css?v=20261113-left"]').count() == 1
         if not photo.evaluate('''image => {
             const photo = image.getBoundingClientRect();
             const section = image.closest('.home-first-impression');
@@ -90,10 +90,10 @@ def check_home_hero(page, output, viewport):
             const copyBox = copy.getBoundingClientRect();
             return Math.abs(box.width - section.clientWidth) <= 1 && Math.abs(box.height - section.clientHeight) <= 1 &&
                 title.top >= box.top + box.height * .34 && title.bottom <= box.bottom &&
-                Math.abs(title.right - copyBox.right) <= 1 && getComputedStyle(copy).textAlign === 'right' &&
+                Math.abs(title.left - copyBox.left) <= 1 && getComputedStyle(copy).textAlign === 'left' &&
                 overlay.content !== 'none' && overlay.backgroundImage.includes('linear-gradient');
         }'''):
-            raise AssertionError('The hero needs full-bleed photography, a gradient and right-aligned text over its lower area')
+            raise AssertionError('The hero needs full-bleed photography, a gradient and left-aligned text over its lower area')
         feature = page.locator('.clinic-feature')
         if feature.locator('h2').inner_text() != 'Alla skador behöver inte opereras.' or \
                 feature.locator('a[href="/ultraljud/"]').count() != 1:

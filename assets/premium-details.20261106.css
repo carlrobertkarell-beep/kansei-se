@@ -617,3 +617,119 @@ body.clinic-site #main :is(.editorial-top, .article-main) .snabbsvar {
   background: transparent;
   box-shadow: none;
 }
+
+/* The header keeps its actions in the same visual and keyboard order. */
+body.clinic-site .site-header .header-icon-actions {
+  gap: 4px;
+}
+
+body.clinic-site .site-header .header-icon-actions :is(.header-book, .site-search-toggle, .site-menu-toggle),
+.site-search .site-search-close {
+  order: 0;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 6px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--clinic-ink);
+  box-shadow: none;
+  cursor: pointer;
+}
+
+body.clinic-site .site-header .header-icon-actions .header-book {
+  gap: 6px;
+  font-size: .9375rem;
+  font-weight: 500;
+}
+
+body.clinic-site .site-header .header-icon-actions :is(.site-search-toggle, .site-menu-toggle),
+.site-search .site-search-close {
+  display: inline-flex;
+  flex: 0 0 44px;
+  width: 44px;
+  min-width: 44px;
+}
+
+.header-action-icon {
+  display: block;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+body.clinic-site .site-header .header-icon-actions :is(.header-book, .site-search-toggle, .site-menu-toggle):is(:hover, :focus-visible),
+.site-search .site-search-close:is(:hover, :focus-visible) {
+  background: var(--clinic-tint);
+  color: var(--clinic-primary);
+  transform: none;
+}
+
+.header-icon-actions :is(a, button):focus-visible,
+.site-search :is(button, input, a):focus-visible {
+  outline: 2px solid var(--clinic-primary);
+  outline-offset: 2px;
+}
+
+body.clinic-site .site-search {
+  width: min(40rem, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: clamp(16px, 7vh, 72px) auto auto;
+  padding: clamp(16px, 4vw, 28px);
+  border: 1px solid var(--clinic-rule);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--clinic-ink);
+  overscroll-behavior: contain;
+}
+
+.site-search::backdrop { background: #012d6166; }
+
+.site-search-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.site-search-head h2 {
+  margin: 0;
+  font: 400 clamp(1.55rem, 5vw, 2rem)/1.2 var(--clinic-display);
+}
+
+.site-search-field input {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid var(--clinic-secondary);
+  border-radius: 4px;
+  color: inherit;
+  background: #fff;
+  font: 1rem/1.4 var(--sans);
+}
+
+.site-search-status { margin: 14px 0 8px; color: var(--clinic-secondary); font-size: .875rem; }
+.site-search-results { margin: 0; padding: 0; list-style: none; }
+.site-search-results li { padding: 3px 0 10px; border-top: 1px solid var(--clinic-rule); }
+.site-search-results p { margin: 0; color: var(--clinic-secondary); font-size: .875rem; }
+.site-search :is(.site-search-results a, .site-search-fallback) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--clinic-primary);
+  text-decoration: underline;
+  text-underline-offset: .17em;
+}
+
+@media (max-width: 360px) {
+  body.clinic-site .site-header:has(.header-icon-actions) .header-inner { gap: 6px; padding-inline: 12px; }
+  body.clinic-site .site-header:has(.header-icon-actions) .brand img { width: 96px; }
+  body.clinic-site .site-header .header-icon-actions { gap: 0; }
+}

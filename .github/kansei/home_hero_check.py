@@ -39,6 +39,8 @@ def check_home_hero(page, output, viewport):
             raise AssertionError('Hero photograph does not load or has no reserved space')
         if photo.get_attribute('loading') == 'lazy' or photo.get_attribute('fetchpriority') != 'high':
             raise AssertionError('The first hero photograph is delayed behind lazy or low-priority loading')
+        if photo.get_attribute('src') != '/bilder/k945944e614.webp' or 'knä' not in photo.get_attribute('alt'):
+            raise AssertionError('The homepage must show the authentic knee ultrasound photograph with descriptive alt text')
         introduction = (heading.inner_text() + " " + lead.inner_text()).casefold()
         if any(term not in introduction for term in ('naprapati', 'ultraljud', 'injektioner', 'hyaluron', 'prp', 'odenplan', 'stockholm')):
             raise AssertionError('Hero introduction no longer identifies services and local clinic')
@@ -69,13 +71,17 @@ def check_home_hero(page, output, viewport):
             raise AssertionError('Homepage hero causes horizontal overflow')
         if not photo.evaluate('''image => {
             const photo = image.getBoundingClientRect();
-            const hero = image.closest('.home-first-impression').getBoundingClientRect();
-            const heading = image.closest('.home-first-impression').querySelector('h1').getBoundingClientRect();
-            return Math.abs(photo.top - hero.top) <= 1 && Math.abs(photo.width - hero.width) <= 1 &&
-                Math.abs(photo.bottom - hero.bottom) <= 1 && photo.height >= 350 &&
-                heading.top >= photo.top && heading.bottom < photo.bottom;
+            const section = image.closest('.home-first-impression');
+            const hero = section.getBoundingClientRect();
+            const heading = section.querySelector('h1').getBoundingClientRect();
+            const mobile = matchMedia('(max-width: 760px)').matches;
+            if (Math.abs(photo.top - hero.top) > 1 || Math.abs(photo.right - hero.right) > 1) return false;
+            if (mobile) return Math.abs(photo.width - hero.width) <= 1 && photo.height >= 230 &&
+                heading.top - photo.top >= 185 && heading.top >= photo.bottom - 53;
+            return photo.width >= hero.width * .7 && Math.abs(photo.bottom - hero.bottom) <= 1 &&
+                heading.bottom < hero.bottom;
         }'''):
-            raise AssertionError('The homepage photograph must fill the hero behind its text')
+            raise AssertionError('The homepage needs a prominent right-aligned photograph, above its text on mobile')
         feature = page.locator('.clinic-feature')
         if feature.locator('h2').inner_text() != 'Alla skador behöver inte opereras.' or \
                 feature.locator('a[href="/ultraljud/"]').count() != 1:

@@ -35,18 +35,18 @@
 .hyaluron-page .treatment-prices > div + div { border-color: #b9cddb; }
 
 .hyaluron-page #main .treatment-offer .treatment-book {
-  background: #075d9d;
+  background: var(--clinic-primary, #0057b8);
   color: #fff;
 }
 
 .hyaluron-page #main .treatment-offer .treatment-book:hover {
-  background: #162735;
+  background: var(--clinic-hover, #00438e);
   color: #fff;
 }
 
 .hyaluron-page #main .treatment-offer .treatment-book:focus-visible,
 .hyaluron-page #main .treatment-offer .treatment-offer-links a:focus-visible {
-  outline-color: #075d9d;
+  outline-color: var(--clinic-primary, #0057b8);
 }
 
 .hyaluron-page #main .treatment-offer .treatment-offer-links :is(p, a) { color: #465a6b; }

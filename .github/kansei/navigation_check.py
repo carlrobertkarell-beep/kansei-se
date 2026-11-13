@@ -3,6 +3,7 @@
 from pathlib import Path
 from html.parser import HTMLParser
 from collections import defaultdict
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[2]
 ARROWS = set('←→↑↓↗↘↙↖⇐⇒⇑⇓↔↕➜➝➞➔⟶⟵⌃⌄‹›❯❮')
@@ -47,8 +48,10 @@ class Navigation(HTMLParser):
             self.clinic_page = 'clinic-site' in attrs.get('class', '').split()
         if tag == 'meta' and attrs.get('http-equiv', '').lower() == 'refresh':
             self.redirect = True
-        if tag == 'link' and attrs.get('href', '') == STYLESHEET:
-            self.stylesheet_count += 1
+        if tag == 'link' and 'stylesheet' in attrs.get('rel', '').lower().split():
+            resource = urlsplit(attrs.get('href', ''))
+            if not resource.scheme and not resource.netloc and resource.path == STYLESHEET:
+                self.stylesheet_count += 1
         if tag == 'use' and not self.excluded:
             href = attrs.get('href', attrs.get('xlink:href', ''))
             if href in ('#i-arrow', '#i-up', '#i-down', '#i-left', '#i-right'):

@@ -65,12 +65,12 @@
   min-height: 48px;
   padding-inline: 18px;
   border-radius: 9px;
-  background: #075d9d;
+  background: var(--clinic-primary, #0057b8);
   color: #fff;
 }
 
 .clinic-site #main :is(.clinical-landing-hero, .clinical-service-hero) .clinical-landing-booking .button:hover {
-  background: #162735;
+  background: var(--clinic-hover, #00438e);
 }
 
 .clinical-landing-identity {

@@ -3,7 +3,7 @@ body.clinic-site #main .clinic-home-intro {
   position: relative;
   isolation: isolate;
   padding: 0;
-  background: #102d46;
+  background: var(--clinic-midnight, #0d0d33);
   color: #fff;
 }
 
@@ -63,7 +63,7 @@ body.clinic-site #main .clinic-home-intro .landing-hero-actions .button {
 
 body.clinic-site #main .clinic-home-intro .landing-hero-actions .button:hover {
   background: #fff;
-  color: #102d46;
+  color: var(--clinic-midnight, #0d0d33);
   transform: none;
 }
 
@@ -88,17 +88,18 @@ body.clinic-site #main .clinic-home-intro .home-intro-image {
 body.clinic-site #main .clinic-home-intro .home-intro-image::after {
   content: "";
   inset: 0;
-  background: linear-gradient(90deg, rgba(9,25,40,.94), rgba(9,25,40,.8) 35%, rgba(9,25,40,.25) 62%, transparent 82%),
-    linear-gradient(0deg, rgba(9,25,40,.52), transparent 45%);
+  background: linear-gradient(90deg, #0d0d33 22%, #0d0d33e8 33%, #0d0d33ba 43%, #0d0d3329 64%, transparent 82%),
+    linear-gradient(0deg, #0d0d3366, transparent 42%);
 }
 
 body.clinic-site #main .clinic-home-intro .home-intro-image img {
   display: block;
-  width: 100%;
+  width: 78%;
   height: 100%;
+  margin-inline-start: auto;
   aspect-ratio: auto;
   object-fit: cover;
-  object-position: 65% 26%;
+  object-position: 52% 60%;
 }
 
 body.clinic-site #main .home-services {
@@ -150,9 +151,8 @@ body.clinic-site #main .home-services .home-visit-name p { font-size: .975rem; }
 
 body.clinic-site #main .clinic-feature {
   padding-block: clamp(38px, 6.2vw, 88px);
-  background: var(--clinic-tint);
-  border-block: 1px solid var(--clinic-rule);
-  color: var(--clinic-ink);
+  background: var(--clinic-midnight, #0d0d33);
+  color: #fff;
 }
 
 .clinic-feature .clinic-feature-layout {
@@ -165,7 +165,7 @@ body.clinic-site #main .clinic-feature {
 body.clinic-site #main .clinic-feature h2 {
   max-width: 18ch;
   margin: 0;
-  color: var(--clinic-ink);
+  color: inherit;
   font-size: clamp(2rem, 4.1vw, 3.75rem);
   line-height: 1.08;
 }
@@ -173,7 +173,7 @@ body.clinic-site #main .clinic-feature h2 {
 body.clinic-site #main .clinic-feature p {
   max-width: 45ch;
   margin: 16px 0 0;
-  color: var(--clinic-secondary);
+  color: #e4e9f6;
   font-size: clamp(1rem, 1.3vw, 1.15rem);
   line-height: 1.65;
 }
@@ -183,14 +183,14 @@ body.clinic-site #main .clinic-feature a {
   align-items: center;
   min-height: 44px;
   margin-top: 10px;
-  color: var(--clinic-primary);
+  color: #fff;
   text-decoration: underline;
   text-decoration-color: currentColor;
   text-underline-offset: .23em;
 }
 
 body.clinic-site #main .clinic-feature a:focus-visible {
-  outline: 2px solid var(--clinic-primary);
+  outline: 2px solid #fff;
   outline-offset: 3px;
 }
 
@@ -207,7 +207,7 @@ body.clinic-site #main .clinic-feature a:focus-visible {
 
 body.clinic-site #main .clinic-feature .clinic-feature-photo figcaption {
   margin-top: 8px;
-  color: var(--clinic-secondary);
+  color: #e4e9f6;
   font-size: .875rem;
 }
 
@@ -215,6 +215,17 @@ body.clinic-site #main :is(.home-human,.home-hyaluron,.home-arrival) {
   background: #fff;
   border-bottom: 1px solid #d6e2ec;
 }
+
+body.clinic-site #main .home-arrival-top {
+  padding: clamp(24px, 4vw, 54px);
+  border-radius: var(--clinic-control-radius);
+  background: var(--clinic-navy, #012d61);
+  color: #fff;
+}
+
+body.clinic-site #main .home-arrival-top :is(h2,p,a) { color: inherit; }
+body.clinic-site #main .home-arrival-top h2 { margin-top: 0; }
+body.clinic-site #main .home-arrival-top a:focus-visible { outline-color: #fff; }
 
 body.clinic-site #main .home-human .home-human-portrait,
 body.clinic-site #main .home-human .home-human-portrait img {
@@ -224,9 +235,11 @@ body.clinic-site #main .home-human .home-human-portrait img {
 body.clinic-site #main .home-reviews-stage { background: #edf5fb; }
 
 @media (max-width: 760px) {
+  body.clinic-site #main .clinic-home-intro { --hero-photo-space: clamp(190px, 33svh, 260px); }
+
   body.clinic-site #main .clinic-home-intro .home-intro-grid {
     min-height: clamp(430px, 75svh, 580px);
-    padding-block: clamp(156px, 27svh, 245px) 24px;
+    padding-block: var(--hero-photo-space) 24px;
   }
 
   body.clinic-site #main .clinic-home-intro h1 {
@@ -244,10 +257,18 @@ body.clinic-site #main .home-reviews-stage { background: #edf5fb; }
 
   body.clinic-site #main .clinic-home-intro .home-intro-secondary { justify-self: end; }
 
-  body.clinic-site #main .clinic-home-intro .home-intro-image img { object-position: 86% top; }
+  body.clinic-site #main .clinic-home-intro .home-intro-image {
+    bottom: auto;
+    height: calc(var(--hero-photo-space) + 52px);
+  }
+
+  body.clinic-site #main .clinic-home-intro .home-intro-image img {
+    width: 100%;
+    object-position: 54% 65%;
+  }
 
   body.clinic-site #main .clinic-home-intro .home-intro-image::after {
-    background: linear-gradient(0deg, #091928 3%, rgba(9,25,40,.9) 38%, rgba(9,25,40,.64) 59%, transparent 88%);
+    background: linear-gradient(180deg, transparent 58%, #0d0d33db calc(100% - 52px), #0d0d33 100%);
   }
 
   .clinic-feature .clinic-feature-layout {
@@ -260,7 +281,10 @@ body.clinic-site #main .home-reviews-stage { background: #edf5fb; }
   body.clinic-site #main .clinic-home-intro .home-intro-grid { min-height: 0; padding-block: 20px; }
   body.clinic-site #main .clinic-home-intro .home-intro-image { display: none; }
   body.clinic-site #main .clinic-home-intro,
-  body.clinic-site #main .clinic-home-intro :is(h1,.landing-hero-lead,.home-intro-secondary,.landing-hero-actions .button) {
+  body.clinic-site #main .clinic-home-intro :is(h1,.landing-hero-lead,.home-intro-secondary,.landing-hero-actions .button),
+  body.clinic-site #main .clinic-feature,
+  body.clinic-site #main .clinic-feature :is(p,a,figcaption),
+  body.clinic-site #main .home-arrival-top {
     color: #000;
     background: #fff;
   }

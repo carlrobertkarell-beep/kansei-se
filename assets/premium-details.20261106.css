@@ -130,7 +130,7 @@ body.clinic-site #main :is(.service-overview-details,.service-overview-disclosur
   align-items: center;
   min-height: 46px;
   padding: 9px 0;
-  color: #075d9d;
+  color: var(--clinic-primary);
   font-size: .9375rem;
   font-weight: 600;
   line-height: 1.45;
@@ -158,7 +158,7 @@ body.clinic-site #main .service-reading > nav a {
   align-items: center;
   min-height: 44px;
   padding-block: 8px;
-  color: #075d9d;
+  color: var(--clinic-primary);
   font-size: .9rem;
   line-height: 1.45;
   text-decoration: underline;
@@ -281,9 +281,10 @@ body.clinic-site .footer-cta .footer-book { min-height: 80px; padding: 16px 20px
 :is(body.clinic-site, body.clinic-heading-style) {
   --clinic-display: Georgia, "Times New Roman", serif;
   --clinic-ink: #162735;
-  --clinic-primary: #075d9d;
-  --clinic-navy: #102d46;
-  --clinic-hover: #064779;
+  --clinic-primary: #0057b8;
+  --clinic-navy: #012d61;
+  --clinic-midnight: #0d0d33;
+  --clinic-hover: #00438e;
   --clinic-secondary: #465a6b;
   --clinic-surface: #fff;
   --clinic-tint: #f0f6fb;
@@ -448,6 +449,11 @@ body.clinic-site #main
   line-height: 1.7;
 }
 
+body.clinic-site #main :is(.editorial-body, .article-main, .article-body, .us-area-article) :is(p, li) a.navigation-link,
+body.clinic-site.information-contact #main :is(.contact-actions, .contact-tasks) a.navigation-link {
+  color: var(--clinic-primary);
+}
+
 body.clinic-site #main :is(.clinical-landing-booking, .clinical-service-hero .treatment-offer) {
   border-color: var(--clinic-rule);
   border-radius: var(--clinic-control-radius);
@@ -506,8 +512,16 @@ body.clinic-site .footer-cta h2 {
 
 body.clinic-site .footer-cta .footer-book {
   min-height: 72px;
+  border: 1px solid #b9cddb;
   border-radius: var(--clinic-control-radius);
+  background: transparent;
+  color: #fff;
   box-shadow: none;
+}
+
+body.clinic-site .footer-cta .footer-book:hover {
+  border-color: #fff;
+  background: #ffffff14;
 }
 
 body.clinic-site .footer-book span {

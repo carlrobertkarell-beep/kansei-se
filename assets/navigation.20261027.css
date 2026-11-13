@@ -32,7 +32,8 @@ a.navigation-card.rel-row>span:first-child{text-decoration:underline;text-underl
 /* Minimal patient navigation: one calm first level, focused detail panes. */
 html:has(#site-menu.menu-minimal[open]) {scrollbar-gutter:auto}
 .clinic-site #site-menu.menu-refined.menu-minimal {
- --menu-ink:#162735;--menu-muted:#465a6b;--menu-line:#e4eef6;--menu-accent:#17364f;
+ --menu-ink:#162735;--menu-muted:#465a6b;--menu-line:#e4eef6;--menu-accent:#0057b8;
+ --menu-accent-hover:var(--clinic-hover,#00438e);
  width:min(560px,100%);max-width:100%;height:100dvh;max-height:100dvh;margin:0 0 0 auto;
  padding:0;border:0;overflow:hidden;background:#fff;color:var(--menu-ink);box-shadow:-20px 0 72px -28px #16273533;
 }
@@ -93,10 +94,10 @@ html:has(#site-menu.menu-minimal[open]) {scrollbar-gutter:auto}
 .clinic-site #site-menu.menu-minimal .menu-contact {margin:0;padding:16px 0 8px;border-top:1px solid var(--menu-line);font:400 13px/1.7 var(--sans);color:var(--menu-muted)}
 .clinic-site #site-menu.menu-minimal .menu-contact a {display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:4px}
 .clinic-site #site-menu.menu-minimal>.menu-bottom {position:relative;z-index:2;display:grid;margin:0;padding:14px 30px max(6px,env(safe-area-inset-bottom));border-top:1px solid #edf5fb;background:#fff;box-shadow:0 -14px 28px -26px #102d4633}
-.clinic-site #site-menu.menu-minimal .menu-bottom .button {display:flex;justify-content:center;width:100%;min-height:52px;padding:13px 18px;border:0;border-radius:9px;background:#17364f;color:#fff;font:600 15px/1.5 var(--sans);letter-spacing:0;transform:none}
-.clinic-site #site-menu.menu-minimal .menu-bottom .button:hover {background:#17364f;transform:none}
+.clinic-site #site-menu.menu-minimal .menu-bottom .button {display:flex;justify-content:center;width:100%;min-height:52px;padding:13px 18px;border:0;border-radius:9px;background:var(--menu-accent);color:#fff;font:600 15px/1.5 var(--sans);letter-spacing:0;transform:none}
+.clinic-site #site-menu.menu-minimal .menu-bottom .button:hover {background:var(--menu-accent-hover);transform:none}
 .clinic-site #site-menu.menu-minimal .menu-booking-help {display:flex;justify-content:center;align-items:center;min-height:44px;padding:5px 0;font:400 13px/1.5 var(--sans);color:#465a6b;text-decoration:underline;text-underline-offset:4px}
-.clinic-site #site-menu.menu-minimal :is(a,button,summary):focus-visible {outline:2px solid #17364f;outline-offset:4px;border-radius:3px}
+.clinic-site #site-menu.menu-minimal :is(a,button,summary):focus-visible {outline:2px solid var(--menu-accent);outline-offset:4px;border-radius:3px}
 @media(max-width:760px) {
  .clinic-site #site-menu.menu-refined.menu-minimal {width:100vw;max-width:100vw;margin:0;box-shadow:none}
  .clinic-site #site-menu.menu-minimal .site-menu-head {padding:18px 24px}
@@ -133,8 +134,8 @@ html:has(#site-menu.menu-minimal[open]) {scrollbar-gutter:auto}
 @media(max-width:760px) {
  .clinic-site #site-menu.menu-with-shortcuts {
   --menu-mobile-gutter:clamp(18px,6vw,26px);
-  --menu-tile:var(--clinic-primary,#075d9d);
-  --menu-tile-hover:var(--clinic-hover,#064779);
+  --menu-tile:var(--menu-accent);
+  --menu-tile-hover:var(--menu-accent-hover);
  }
  .clinic-site #site-menu.menu-with-shortcuts[open][data-menu-active="root"] {grid-template-rows:auto minmax(0,1fr)}
  .clinic-site #site-menu.menu-with-shortcuts .site-menu-head {padding:12px var(--menu-mobile-gutter)}

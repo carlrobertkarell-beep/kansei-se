@@ -449,7 +449,8 @@ body.clinic-site #main
   line-height: 1.7;
 }
 
-body.clinic-site #main :is(.editorial-body, .article-main, .article-body, .us-area-article) :is(p, li) a.navigation-link,
+body.clinic-site #main :is(.editorial-body, .article-main, .article-body, .us-area-article)
+  :is(p, li) a.navigation-link:not(:where(.booking-panel *, .art-cta *, #boka-cta *)),
 body.clinic-site.information-contact #main :is(.contact-actions, .contact-tasks) a.navigation-link {
   color: var(--clinic-primary);
 }

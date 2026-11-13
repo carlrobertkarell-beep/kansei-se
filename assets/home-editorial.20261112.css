@@ -3,7 +3,7 @@ body.clinic-site #main .clinic-home-intro {
   position: relative;
   isolation: isolate;
   padding: 0;
-  background: var(--clinic-midnight, #0d0d33);
+  background: #101522;
   color: #fff;
 }
 
@@ -88,8 +88,7 @@ body.clinic-site #main .clinic-home-intro .home-intro-image {
 body.clinic-site #main .clinic-home-intro .home-intro-image::after {
   content: "";
   inset: 0;
-  background: linear-gradient(90deg, #0d0d33 22%, #0d0d33e8 33%, #0d0d33ba 43%, #0d0d3329 64%, transparent 82%),
-    linear-gradient(0deg, #0d0d3366, transparent 42%);
+  background: linear-gradient(90deg, #101522 22%, #101522e8 31%, #101522c7 42%, #10152299 48%, #1015221a 63%, transparent 75%);
 }
 
 body.clinic-site #main .clinic-home-intro .home-intro-image img {
@@ -255,7 +254,7 @@ body.clinic-site #main .home-reviews-stage { background: #edf5fb; }
     margin-top: 15px;
   }
 
-  body.clinic-site #main .clinic-home-intro .home-intro-secondary { justify-self: end; }
+  body.clinic-site #main .clinic-home-intro .home-intro-secondary { justify-self: center; }
 
   body.clinic-site #main .clinic-home-intro .home-intro-image {
     bottom: auto;
@@ -268,7 +267,7 @@ body.clinic-site #main .home-reviews-stage { background: #edf5fb; }
   }
 
   body.clinic-site #main .clinic-home-intro .home-intro-image::after {
-    background: linear-gradient(180deg, transparent 58%, #0d0d33db calc(100% - 52px), #0d0d33 100%);
+    background: linear-gradient(180deg, transparent 67%, #101522df calc(100% - 52px), #101522 100%);
   }
 
   .clinic-feature .clinic-feature-layout {

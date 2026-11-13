@@ -13,6 +13,9 @@ def check_home_experience(page):
             "node => [...node.querySelectorAll('img')].every(img => img.complete && img.naturalWidth > 0)",
             arg=slider.element_handle(), timeout=15000)
         expect(slider).to_have_attribute('aria-disabled', 'false', timeout=15000)
+        if page.url.startswith('http://127.0.0.1:4173'):
+            expect(slider).to_have_attribute('aria-valuenow', '0')
+            expect(root.get_by_role('button', name='Ultraljud', exact=True)).to_have_attribute('aria-pressed', 'true')
         slider.press('End')
         expect(slider).to_have_attribute('aria-valuenow', '100')
         slider.press('Home')

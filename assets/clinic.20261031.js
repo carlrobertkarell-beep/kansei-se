@@ -243,8 +243,7 @@
   paths.forEach(d=>{const path=document.createElementNS(svg.namespaceURI,'path');path.setAttribute('d',d);svg.append(path);});return svg;
  }
  const calendarPaths=[
-  'M8 3v4m8-4v4M4 10h16M6 5h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z',
-  'M8 14h2m4 0h2m-8 3h2m4 0h2'
+  'M8 4v4m8-4v4M4 10h16M6 6h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z'
  ];
  const headerMenu=document.querySelector('.site-header [data-site-menu]');
  if(headerMenu && /^sv(?:-|$)/i.test(document.documentElement.lang) && 'showModal' in HTMLDialogElement.prototype){
@@ -343,8 +342,8 @@
   });
   input.addEventListener('input',render);
  }
- const logo=document.querySelector('.site-header .brand img[src="/assets/logo-dark.webp"]');
- if(logo)logo.src='/assets/kansei-logo-green.20261105.svg';
+ const logo=document.querySelector('.site-header .brand img');
+ if(logo?.getAttribute('src')==='/assets/logo-dark.webp')logo.src='/assets/kansei-logo-green.20261105.svg';
 
  const injectionNav=document.querySelector('.desktop-nav a[href="/hyaluronsyra/"]');
  if(injectionNav){
@@ -371,7 +370,12 @@
    sections.forEach(section=>section.querySelector('a[href="/reda/"]')?.remove());
    const contact=bottom.querySelector('p'),book=bottom.querySelector('.button'),help=existing.get('/hjalp-mig-boka/');
    const brand=dialog.querySelector('.site-menu-head>a');
-   if(brand){brand.replaceChildren(element('span','menu-brand-name','Kansei'),element('span','menu-brand-caption','Naprapati & Rehabcenter'));brand.setAttribute('aria-label','Kansei Naprapati & Rehabcenter, startsida');}
+   if(brand&&logo){
+    const menuLogo=logo.cloneNode(false);
+    menuLogo.alt='';menuLogo.removeAttribute('loading');
+    brand.replaceChildren(menuLogo);
+    brand.setAttribute('aria-label','Kansei Naprapati & Rehabcenter, startsida');
+   }
    const stage=element('div','menu-stage'),views=new Map(),choices=new Map();
    const root=element('section','menu-view menu-view-root');root.dataset.menuView='root';root.id='menu-view-root';root.setAttribute('aria-label','Meny');views.set('root',root);
    const navigation=element('nav','menu-root-nav');navigation.setAttribute('aria-label','Välj besök eller klinikinformation');

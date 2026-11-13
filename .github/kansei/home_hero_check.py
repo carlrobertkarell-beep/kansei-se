@@ -96,6 +96,13 @@ def check_home_hero(page, output, viewport):
                         box.left >= -1 && box.right <= innerWidth + 1;
                 }'''):
                     raise AssertionError('The 390px first view hides its heading, local service text or booking action')
+        if viewport in ('mobile', 'compact') and page.url.startswith('http://127.0.0.1:4173'):
+            if not help_link.evaluate('''link => {
+                const bounds = link.getBoundingClientRect();
+                const row = link.parentElement.getBoundingClientRect();
+                return Math.abs(bounds.left + bounds.width / 2 - row.left - row.width / 2) <= 1;
+            }'''):
+                raise AssertionError('The mobile booking helper must be centered below the booking action')
         page.screenshot(path=str(Path(output) / ('home-first-impression-' + viewport + '.png')),
                         full_page=False, animations='disabled')
         # The search is installed by the shared public header script.

@@ -62,7 +62,7 @@
   stage.addEventListener('pointerup',endPointer);stage.addEventListener('pointercancel',endPointer);
   stage.addEventListener('lostpointercapture',()=>{pointer=null;dragStart=null;dragging=false;stage.classList.remove('is-dragging');});
   root.querySelector('[data-diagnostic-ui]').hidden=false;render();
-  function enable(){if(ready||!image.naturalWidth)return;ready=true;root.classList.add('is-ready');stage.tabIndex=0;stage.setAttribute('aria-disabled','false');modes.forEach(button=>{button.disabled=false;});mode='compare';render();state.textContent='Dra direkt över bilden för att jämföra. Med tangentbord: använd piltangenterna.';}
+  function enable(){if(ready||!image.naturalWidth)return;ready=true;root.classList.add('is-ready');stage.tabIndex=0;stage.setAttribute('aria-disabled','false');modes.forEach(button=>{button.disabled=false;});render();}
   function failed(){if(!ready)state.textContent='Originalbilden visas. Läs hela undersökningen via länken till patientfallet.';}
   image.addEventListener('load',enable,{once:true});image.addEventListener('error',failed,{once:true});
   if(image.complete&&image.naturalWidth)enable();else{

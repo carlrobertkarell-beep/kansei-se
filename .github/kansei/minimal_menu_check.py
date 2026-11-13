@@ -140,6 +140,11 @@ def _uses_shortcuts(page):
 
 def _mobile_root(page):
     root = _active(page, 'root')
+    if page.url.startswith('http://127.0.0.1:4173'):
+        header_logo = page.locator('.site-header .brand img')
+        menu_logo = page.locator('#site-menu .site-menu-head a img')
+        if not menu_logo.is_visible() or menu_logo.get_attribute('src') != header_logo.get_attribute('src'):
+            raise AssertionError('The open menu must show the same Kansei logo as the header')
     layout = root.evaluate('''el => {
         const dialog = el.closest('dialog');
         const box = el.getBoundingClientRect();

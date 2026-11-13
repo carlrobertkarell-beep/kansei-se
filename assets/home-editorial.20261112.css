@@ -315,12 +315,13 @@ body.clinic-site #main .home-reviews-stage { background: #edf5fb; }
 
   body.clinic-site #main .clinic-home-intro .landing-hero-actions {
     display: grid;
+    justify-content: stretch;
+    grid-template-columns: minmax(0, 1fr);
     gap: 3px;
     margin-top: 15px;
   }
 
   body.clinic-site #main .clinic-home-intro .home-intro-secondary { justify-self: center; }
-
 }
 
 @media print {

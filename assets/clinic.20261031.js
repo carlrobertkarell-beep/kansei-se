@@ -332,6 +332,9 @@
    searchDialog.showModal();input.focus();loadIndex();render();
   });
   close.addEventListener('click',()=>searchDialog.close());
+  searchDialog.addEventListener('keydown',event=>{
+   if(event.key==='Escape'){event.preventDefault();searchDialog.close();}
+  });
   searchDialog.addEventListener('close',()=>opener.focus({preventScroll:true}));
   searchDialog.addEventListener('click',event=>{
    if(event.target!==searchDialog)return;

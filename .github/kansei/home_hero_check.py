@@ -1,5 +1,6 @@
 """Check the homepage's introduction without opening a booking service."""
 from pathlib import Path
+from playwright.sync_api import expect
 
 
 def check_home_hero(page, output, viewport):
@@ -97,7 +98,44 @@ def check_home_hero(page, output, viewport):
                     raise AssertionError('The 390px first view hides its heading, local service text or booking action')
         page.screenshot(path=str(Path(output) / ('home-first-impression-' + viewport + '.png')),
                         full_page=False, animations='disabled')
+        # The search is installed by the shared public header script.
+        # Push checks can briefly see the earlier live build while Pages publishes.
+        if page.url.startswith('http://127.0.0.1:4173'):
+            check_header_search(page, output, viewport)
         return 'Photograph, local service introduction, direct routes and accessible booking passed'
     finally:
         page.set_viewport_size(original_size)
         page.evaluate("window.scrollTo({top:0,behavior:'instant'})")
+
+
+def check_header_search(page, output, viewport):
+    header = page.locator('.site-header .header-icon-actions')
+    booking = header.locator('.header-book')
+    search = header.get_by_role('button', name='Sök på Kansei')
+    menu = header.get_by_role('button', name='Öppna meny')
+    boxes = [element.bounding_box() for element in (booking, search, menu)]
+    if not all(box and box['width'] >= 44 and box['height'] >= 44 for box in boxes):
+        raise AssertionError('The three header actions must have usable touch targets')
+    if not boxes[0]['x'] < boxes[1]['x'] < boxes[2]['x']:
+        raise AssertionError('Header action order must be booking, search, menu')
+    if booking.inner_text().strip() != 'Boka' or booking.locator('svg').count() != 1:
+        raise AssertionError('Header booking needs its calendar icon and short label')
+    if booking.evaluate('link => getComputedStyle(link).backgroundColor') != 'rgba(0, 0, 0, 0)':
+        raise AssertionError('Header booking must have no filled background')
+    search.focus()
+    page.keyboard.press('Enter')
+    dialog = page.get_by_role('dialog', name='Sök på Kansei')
+    query = dialog.get_by_role('searchbox', name='Sökord')
+    expect(query).to_be_focused()
+    query.fill('ultraljud kna')
+    first = dialog.locator('.site-search-results a').first
+    expect(first).to_have_attribute('href', '/ultraljud/kna/')
+    query.fill('hitta hit')
+    expect(first).to_have_attribute('href', '/kontakt/')
+    page.screenshot(path=str(Path(output) / f'home-header-search-{viewport}.png'), animations='disabled')
+    query.fill('zzzz-inte-ett-amne')
+    expect(dialog.get_by_role('status')).to_have_text('Inga träffar. Prova ett annat sökord.')
+    page.keyboard.press('Escape')
+    expect(dialog).to_be_hidden()
+    expect(search).to_be_focused()
+    page.mouse.move(0, 0)

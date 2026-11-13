@@ -236,10 +236,112 @@
 /* Native dialog with a short, cancellable transition; no layout jump or library. */
 (()=>{'use strict';
  const dialog=document.querySelector('#site-menu'),buttons=[...document.querySelectorAll('[data-site-menu]')];
- // Match the visible header order when navigating with a keyboard.
- for(const button of buttons){
-  const booking=button.parentElement?.querySelector('a.header-book');
-  if(booking?.nextElementSibling===button)button.after(booking);
+ const element=(tag,className,text)=>{const el=document.createElement(tag);if(className)el.className=className;if(text)el.textContent=text;return el;};
+ function graphic(paths,className,viewBox='0 0 24 24'){
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('viewBox',viewBox);svg.setAttribute('class',className);svg.setAttribute('aria-hidden','true');svg.setAttribute('focusable','false');
+  paths.forEach(d=>{const path=document.createElementNS(svg.namespaceURI,'path');path.setAttribute('d',d);svg.append(path);});return svg;
+ }
+ const calendarPaths=[
+  'M8 3v4m8-4v4M4 10h16M6 5h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z',
+  'M8 14h2m4 0h2m-8 3h2m4 0h2'
+ ];
+ const headerMenu=document.querySelector('.site-header [data-site-menu]');
+ if(headerMenu && /^sv(?:-|$)/i.test(document.documentElement.lang) && 'showModal' in HTMLDialogElement.prototype){
+  const actions=headerMenu.parentElement;
+  const booking=actions.querySelector('a.header-book');
+  if(booking){
+   booking.replaceChildren(graphic(calendarPaths,'header-action-icon'),element('span','','Boka'));
+   headerMenu.before(booking);
+  }
+  const searchButton=element('button','site-search-toggle');
+  searchButton.type='button';searchButton.setAttribute('aria-label','Sök på Kansei');
+  searchButton.setAttribute('aria-haspopup','dialog');searchButton.setAttribute('aria-controls','site-search');
+  searchButton.append(graphic(['M20 20l-4.1-4.1M18 11a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z'],'header-action-icon'));
+  headerMenu.replaceChildren(graphic(['M3 6h18M3 12h18M3 18h18'],'header-action-icon'));
+  headerMenu.before(searchButton);
+  actions.classList.add('header-icon-actions');
+  setupSiteSearch(searchButton);
+ }else{
+  for(const button of buttons){
+   const booking=button.parentElement?.querySelector('a.header-book');
+   if(booking?.nextElementSibling===button)button.after(booking);
+  }
+ }
+ function setupSiteSearch(opener){
+  const searchDialog=element('dialog','site-search');
+  searchDialog.id='site-search';searchDialog.setAttribute('aria-labelledby','site-search-title');
+  const heading=element('h2','','Sök på Kansei');heading.id='site-search-title';
+  const close=element('button','site-search-close');close.type='button';close.setAttribute('aria-label','Stäng sökning');
+  close.append(graphic(['M6 6l12 12M18 6 6 18'],'header-action-icon'));
+  const head=element('div','site-search-head');head.append(heading,close);
+  const search=element('div','site-search-field');search.setAttribute('role','search');
+  const label=element('label','sr-only','Sökord');label.htmlFor='site-search-query';
+  const input=element('input','');input.id='site-search-query';input.type='search';input.placeholder='Sök efter en tjänst eller ett besvär';
+  input.autocomplete='off';input.maxLength=120;input.setAttribute('autofocus','');
+  search.append(label,input);
+  const status=element('p','site-search-status');status.setAttribute('role','status');
+  const results=element('ul','site-search-results');results.setAttribute('aria-label','Sökresultat');
+  const fallback=element('a','site-search-fallback','Bläddra i kunskapsbanken');fallback.href='/kunskapsbank/#library-search';
+  searchDialog.append(head,search,status,results,fallback);document.body.append(searchDialog);
+
+  const normalize=value=>value.toLocaleLowerCase('sv').normalize('NFD').replace(/\p{Diacritic}/gu,'').replace(/[^a-z0-9]+/g,' ').trim();
+  let index=null,loading=null,loadFailed=false;
+  function render(){
+   results.replaceChildren();
+   const query=normalize(input.value);
+   if(loadFailed){status.textContent='Sökningen kunde inte laddas. Försök igen eller gå till kunskapsbanken.';return;}
+   if(!index){status.textContent='Laddar sökning …';return;}
+   if(query.length<2){status.textContent='Skriv minst två tecken.';return;}
+   const words=[...new Set(query.split(' '))];
+   const matches=[];
+   for(const entry of index){
+    const scores=words.map(word=>entry.titleWords.has(word)?10:
+     entry.titleKey.includes(word)?7:entry.pathKey.includes(word)?5:
+     entry.keywordKey.includes(word)?4:entry.descriptionKey.includes(word)?1:0);
+    if(scores.includes(0))continue;
+    const score=scores.reduce((sum,value)=>sum+value,0)+(entry.titleKey.includes(query)?6:0)+(entry.keywordPhrases.has(query)?16:0);
+    matches.push({entry,score});
+   }
+   matches.sort((a,b)=>b.score-a.score);
+   if(!matches.length){status.textContent='Inga träffar. Prova ett annat sökord.';return;}
+   status.textContent=matches.length===1?'1 träff':matches.length>8?`Visar 8 av ${matches.length} träffar`:`${matches.length} träffar`;
+   for(const {entry} of matches.slice(0,8)){
+    const row=element('li','');const link=element('a','',entry.title);link.href=entry.path;
+    row.append(link);
+    if(entry.description)row.append(element('p','',entry.description));
+    results.append(row);
+   }
+  }
+  function loadIndex(){
+   if(index||loading)return;
+   loadFailed=false;
+   loading=fetch('/assets/site-search-index.20261113.json').then(response=>{
+    if(!response.ok)throw new Error('Search index unavailable');
+    return response.json();
+   }).then(entries=>{
+    index=entries.filter(entry=>/^\/(?!\/)[a-z0-9_/-]*$/i.test(entry.path)).map(entry=>{
+     const titleKey=normalize(entry.title),keywords=entry.keywords.map(normalize);
+     return {...entry,titleKey,titleWords:new Set(titleKey.split(' ')),pathKey:normalize(entry.path),
+      keywordKey:keywords.join(' '),keywordPhrases:new Set(keywords),descriptionKey:normalize(entry.description)};
+    });
+   }).catch(()=>{loadFailed=true;}).finally(()=>{loading=null;render();});
+  }
+  opener.addEventListener('click',()=>{
+   if(searchDialog.open)return;
+   searchDialog.showModal();input.focus();loadIndex();render();
+  });
+  close.addEventListener('click',()=>searchDialog.close());
+  searchDialog.addEventListener('keydown',event=>{
+   if(event.key==='Escape'){event.preventDefault();searchDialog.close();}
+  });
+  searchDialog.addEventListener('close',()=>opener.focus({preventScroll:true}));
+  searchDialog.addEventListener('click',event=>{
+   if(event.target!==searchDialog)return;
+   const box=searchDialog.getBoundingClientRect();
+   if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)searchDialog.close();
+  });
+  input.addEventListener('input',render);
  }
  const logo=document.querySelector('.site-header .brand img[src="/assets/logo-dark.webp"]');
  if(logo)logo.src='/assets/kansei-logo-green.20261105.svg';
@@ -259,12 +361,6 @@
  if(dialog){
   const body=dialog.querySelector('.site-menu-body'),primary=dialog.querySelector('.menu-primary'),bottom=dialog.querySelector('.menu-bottom');
   if(body&&primary&&bottom){
-   const element=(tag,className,text)=>{const el=document.createElement(tag);if(className)el.className=className;if(text)el.textContent=text;return el;};
-   const graphic=(paths,className,viewBox='0 0 24 24')=>{
-    const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
-    svg.setAttribute('viewBox',viewBox);svg.setAttribute('class',className);svg.setAttribute('aria-hidden','true');svg.setAttribute('focusable','false');
-    paths.forEach(d=>{const path=document.createElementNS(svg.namespaceURI,'path');path.setAttribute('d',d);svg.append(path);});return svg;
-   };
    const chevron=()=>graphic(['m9 6 6 6-6 6'],'menu-chevron');
    const existing=new Map();dialog.querySelectorAll('a[href]').forEach(a=>{if(!existing.has(a.getAttribute('href')))existing.set(a.getAttribute('href'),a);});
    function route(href,label,copy=false){
@@ -327,10 +423,7 @@
     link.replaceChildren(graphic(paths,'menu-shortcut-icon'),element('span','',label));
     shortcuts.append(link);
    }
-   if(book)addShortcut(book.cloneNode(true),'Boka besök',[
-    'M8 3v4m8-4v4M4 10h16M6 5h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z',
-    'M8 14h2m4 0h2m-8 3h2m4 0h2'
-   ]);
+   if(book)addShortcut(book.cloneNode(true),'Boka besök',calendarPaths);
    addShortcut(route('/hjalp-mig-boka/','Hitta rätt besök',true),'Hitta rätt besök',[
     'M6 5h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-6l-5 4v-4H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z',
     'M10 9a2 2 0 1 1 3 1.73c-.5.3-1 .62-1 1.27m0 2h.01'

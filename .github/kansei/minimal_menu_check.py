@@ -343,12 +343,20 @@ def check_minimal_menu_motion(page, output):
 
     def arm(selector, label):
         probe.locator(selector).evaluate('''(el, label) => {
-            el.addEventListener('click', () => setTimeout(() => {
-                const d = document.querySelector('#site-menu');
-                window.__recordMinimalFrame({label, open:!!d?.open,
-                    opacity:d ? parseFloat(getComputedStyle(d).opacity) : null,
-                    path:location.pathname, reduced:matchMedia('(prefers-reduced-motion: reduce)').matches});
-            }, 80), {once:true});
+            el.addEventListener('click', () => {
+                const started = performance.now();
+                function capture(){
+                    const d = document.querySelector('#site-menu');
+                    const opacity = d ? parseFloat(getComputedStyle(d).opacity) : null;
+                    if (d?.open && (opacity === 0 || opacity === 1) && performance.now() - started < 240) {
+                        requestAnimationFrame(capture);
+                        return;
+                    }
+                    window.__recordMinimalFrame({label, open:!!d?.open, opacity,
+                        path:location.pathname, reduced:matchMedia('(prefers-reduced-motion: reduce)').matches});
+                }
+                requestAnimationFrame(capture);
+            }, {once:true});
         }''', label)
 
     def sample(label):

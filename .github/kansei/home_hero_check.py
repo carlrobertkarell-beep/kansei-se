@@ -70,19 +70,30 @@ def check_home_hero(page, output, viewport):
                 raise AssertionError('A homepage booking or service action is hidden or too small for touch')
         if page.evaluate('document.documentElement.scrollWidth > innerWidth + 3'):
             raise AssertionError('Homepage hero causes horizontal overflow')
+        new_layout = page.locator('link[href*="home-editorial.20261112.css?v=20261113-chapters"]').count() == 1
         if not photo.evaluate('''image => {
             const photo = image.getBoundingClientRect();
             const section = image.closest('.home-first-impression');
             const hero = section.getBoundingClientRect();
             const heading = section.querySelector('h1').getBoundingClientRect();
-            const mobile = matchMedia('(max-width: 760px)').matches;
-            if (Math.abs(photo.top - hero.top) > 1 || Math.abs(photo.right - hero.right) > 1) return false;
-            if (mobile) return Math.abs(photo.width - hero.width) <= 1 && photo.height >= 230 &&
-                heading.top - photo.top >= 185 && heading.top >= photo.bottom - 53;
-            return photo.width >= hero.width * .7 && Math.abs(photo.bottom - hero.bottom) <= 1 &&
-                heading.bottom < hero.bottom;
+            return Math.abs(photo.top - hero.top) <= 1 && photo.height >= 190 &&
+                (heading.top >= photo.bottom || heading.right <= photo.left || photo.width >= hero.width * .7);
         }'''):
-            raise AssertionError('The homepage needs a prominent right-aligned photograph, above its text on mobile')
+            raise AssertionError('The homepage needs a prominent photograph alongside or above its text')
+        if new_layout and not photo.evaluate('''image => {
+            const frame = image.parentElement;
+            const section = frame.closest('.home-first-impression');
+            const box = image.getBoundingClientRect();
+            const title = section.querySelector('h1').getBoundingClientRect();
+            const hasOverlay = getComputedStyle(frame, '::after').content !== 'none';
+            if (hasOverlay) return false;
+            if (matchMedia('(max-width: 860px)').matches) {
+                return Math.abs(box.width - section.clientWidth) <= 1 && title.top > box.bottom &&
+                    Math.abs(box.height - box.width * image.naturalHeight / image.naturalWidth) <= 1;
+            }
+            return title.right <= box.left && box.width >= section.clientWidth * .45;
+        }'''):
+            raise AssertionError('The hero photograph must show in its own space without a tint')
         feature = page.locator('.clinic-feature')
         if feature.locator('h2').inner_text() != 'Alla skador behöver inte opereras.' or \
                 feature.locator('a[href="/ultraljud/"]').count() != 1:
@@ -105,6 +116,8 @@ def check_home_hero(page, output, viewport):
                 raise AssertionError('The mobile booking helper must be centered below the booking action')
         page.screenshot(path=str(Path(output) / ('home-first-impression-' + viewport + '.png')),
                         full_page=False, animations='disabled')
+        if new_layout:
+            check_chapter_media(page, output, viewport)
         # The search is installed by the shared public header script.
         # Push checks can briefly see the earlier live build while Pages publishes.
         if page.url.startswith('http://127.0.0.1:4173'):
@@ -113,6 +126,34 @@ def check_home_hero(page, output, viewport):
     finally:
         page.set_viewport_size(original_size)
         page.evaluate("window.scrollTo({top:0,behavior:'instant'})")
+
+
+def check_chapter_media(page, output, viewport):
+    chapters = {
+        'undersokning': ('.clinic-feature', '.clinic-feature-photo img'),
+        'behandlare': ('.home-human', '.home-human-portrait img'),
+        'ultraljud': ('.home-diagnostic', '.hd-stage'),
+        'hyaluron': ('.home-hyaluron', '.home-hyaluron-film video'),
+    }
+    for name, (chapter, media) in chapters.items():
+        section = page.locator(chapter)
+        asset = section.locator(media)
+        if not asset.is_visible():
+            raise AssertionError(f'Homepage media is hidden in {name}')
+        if viewport in ('compact', 'mobile') and not asset.evaluate('''asset => {
+            const section = asset.closest('section');
+            const heading = section.querySelector('h2').getBoundingClientRect();
+            const bounds = asset.getBoundingClientRect();
+            return heading.bottom < bounds.top && Math.abs(bounds.width - section.clientWidth) <= 1;
+        }'''):
+            raise AssertionError(f'Homepage media must fill its chapter width below the heading in {name}')
+        if page.url.startswith('http://127.0.0.1:4173') and viewport in ('mobile', 'desktop'):
+            asset.scroll_into_view_if_needed()
+            for img in section.locator('img:visible').all():
+                img.evaluate('''async image => { if (!image.complete) await image.decode().catch(() => {}); }''')
+            section.screenshot(path=str(Path(output) / f'home-chapter-{name}-{viewport}.png'), animations='disabled',
+                               style='.site-header {visibility:hidden}')
+    page.evaluate("window.scrollTo({top:0,behavior:'instant'})")
 
 
 def check_header_search(page, output, viewport):

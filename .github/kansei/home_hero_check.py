@@ -128,9 +128,10 @@ def check_header_search(page, output, viewport):
     query = dialog.get_by_role('searchbox', name='Sökord')
     expect(query).to_be_focused()
     query.fill('ultraljud kna')
-    expect(dialog.locator('.site-search-results a[href="/ultraljud/kna/"]')).to_be_visible()
+    first = dialog.locator('.site-search-results a').first
+    expect(first).to_have_attribute('href', '/ultraljud/kna/')
     query.fill('hitta hit')
-    expect(dialog.locator('.site-search-results a[href="/kontakt/"]')).to_be_visible()
+    expect(first).to_have_attribute('href', '/kontakt/')
     page.screenshot(path=str(Path(output) / f'home-header-search-{viewport}.png'), animations='disabled')
     query.fill('zzzz-inte-ett-amne')
     expect(dialog.get_by_role('status')).to_have_text('Inga träffar. Prova ett annat sökord.')

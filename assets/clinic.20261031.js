@@ -300,7 +300,7 @@
      entry.titleKey.includes(word)?7:entry.pathKey.includes(word)?5:
      entry.keywordKey.includes(word)?4:entry.descriptionKey.includes(word)?1:0);
     if(scores.includes(0))continue;
-    const score=scores.reduce((sum,value)=>sum+value,0)+(entry.titleKey.includes(query)?6:0);
+    const score=scores.reduce((sum,value)=>sum+value,0)+(entry.titleKey.includes(query)?6:0)+(entry.keywordPhrases.has(query)?16:0);
     matches.push({entry,score});
    }
    matches.sort((a,b)=>b.score-a.score);
@@ -321,9 +321,9 @@
     return response.json();
    }).then(entries=>{
     index=entries.filter(entry=>/^\/(?!\/)[a-z0-9_/-]*$/i.test(entry.path)).map(entry=>{
-     const titleKey=normalize(entry.title);
+     const titleKey=normalize(entry.title),keywords=entry.keywords.map(normalize);
      return {...entry,titleKey,titleWords:new Set(titleKey.split(' ')),pathKey:normalize(entry.path),
-      keywordKey:normalize(entry.keywords.join(' ')),descriptionKey:normalize(entry.description)};
+      keywordKey:keywords.join(' '),keywordPhrases:new Set(keywords),descriptionKey:normalize(entry.description)};
     });
    }).catch(()=>{loadFailed=true;}).finally(()=>{loading=null;render();});
   }

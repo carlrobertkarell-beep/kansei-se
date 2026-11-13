@@ -733,3 +733,11 @@ body.clinic-site .site-search {
   body.clinic-site .site-header:has(.header-icon-actions) .brand img { width: 96px; }
   body.clinic-site .site-header .header-icon-actions { gap: 0; }
 }
+
+body.clinic-site .site-header .brand .clinic-outline-logo { width: clamp(112px, 11vw, 140px); }
+@media (max-width: 760px) {
+  body.clinic-site .site-header .brand .clinic-outline-logo { width: clamp(96px, 30vw, 120px); }
+}
+@media (max-width: 360px) {
+  body.clinic-site .site-header:has(.header-icon-actions) .brand .clinic-outline-logo { width: 90px; }
+}

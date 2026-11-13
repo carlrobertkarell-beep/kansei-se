@@ -70,7 +70,7 @@ def check_home_hero(page, output, viewport):
                 raise AssertionError('A homepage booking or service action is hidden or too small for touch')
         if page.evaluate('document.documentElement.scrollWidth > innerWidth + 3'):
             raise AssertionError('Homepage hero causes horizontal overflow')
-        new_layout = page.locator('link[href*="home-editorial.20261112.css?v=20261113-chapters"]').count() == 1
+        image_overlay = page.locator('link[href*="home-editorial.20261112.css?v=20261113-overlay"]').count() == 1
         if not photo.evaluate('''image => {
             const photo = image.getBoundingClientRect();
             const section = image.closest('.home-first-impression');
@@ -80,20 +80,20 @@ def check_home_hero(page, output, viewport):
                 (heading.top >= photo.bottom || heading.right <= photo.left || photo.width >= hero.width * .7);
         }'''):
             raise AssertionError('The homepage needs a prominent photograph alongside or above its text')
-        if new_layout and not photo.evaluate('''image => {
+        if image_overlay and not photo.evaluate('''image => {
             const frame = image.parentElement;
             const section = frame.closest('.home-first-impression');
+            const copy = section.querySelector('.landing-hero-copy');
             const box = image.getBoundingClientRect();
             const title = section.querySelector('h1').getBoundingClientRect();
-            const hasOverlay = getComputedStyle(frame, '::after').content !== 'none';
-            if (hasOverlay) return false;
-            if (matchMedia('(max-width: 860px)').matches) {
-                return Math.abs(box.width - section.clientWidth) <= 1 && title.top > box.bottom &&
-                    Math.abs(box.height - box.width * image.naturalHeight / image.naturalWidth) <= 1;
-            }
-            return title.right <= box.left && box.width >= section.clientWidth * .45;
+            const overlay = getComputedStyle(frame, '::after');
+            const copyBox = copy.getBoundingClientRect();
+            return Math.abs(box.width - section.clientWidth) <= 1 && Math.abs(box.height - section.clientHeight) <= 1 &&
+                title.top >= box.top + box.height * .34 && title.bottom <= box.bottom &&
+                Math.abs(title.right - copyBox.right) <= 1 && getComputedStyle(copy).textAlign === 'right' &&
+                overlay.content !== 'none' && overlay.backgroundImage.includes('linear-gradient');
         }'''):
-            raise AssertionError('The hero photograph must show in its own space without a tint')
+            raise AssertionError('The hero needs full-bleed photography, a gradient and right-aligned text over its lower area')
         feature = page.locator('.clinic-feature')
         if feature.locator('h2').inner_text() != 'Alla skador behöver inte opereras.' or \
                 feature.locator('a[href="/ultraljud/"]').count() != 1:
@@ -116,7 +116,7 @@ def check_home_hero(page, output, viewport):
                 raise AssertionError('The mobile booking helper must be centered below the booking action')
         page.screenshot(path=str(Path(output) / ('home-first-impression-' + viewport + '.png')),
                         full_page=False, animations='disabled')
-        if new_layout:
+        if image_overlay:
             check_chapter_media(page, output, viewport)
         # The search is installed by the shared public header script.
         # Push checks can briefly see the earlier live build while Pages publishes.

@@ -1,27 +1,32 @@
 /* Homepage composition. Shared typography and controls live in the clinic stylesheet. */
 body.clinic-site #main .clinic-home-intro {
+  position: relative;
+  isolation: isolate;
   padding: 0;
-  background: var(--clinic-surface);
-  color: var(--clinic-ink);
+  background: #101820;
+  color: #fff;
 }
 
 body.clinic-site #main .clinic-home-intro .home-intro-grid {
   display: grid;
-  grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
-  align-items: center;
-  gap: clamp(28px, 4.5vw, 72px);
-  max-width: 1600px;
-  padding-inline-end: 0;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: end;
+  min-height: clamp(510px, 72svh, 690px);
+  padding-block: 90px clamp(42px, 5vw, 78px);
 }
 
 body.clinic-site #main .clinic-home-intro .landing-hero-copy {
-  padding-block: clamp(26px, 5vw, 76px);
+  position: relative;
+  z-index: 1;
+  justify-self: end;
+  max-width: min(100%, 35rem);
+  text-align: right;
 }
 
 body.clinic-site #main .clinic-home-intro h1 {
   max-width: 15ch;
-  margin: 0;
-  color: var(--clinic-ink);
+  margin: 0 0 0 auto;
+  color: #fff;
   font-size: clamp(2.65rem, 4.65vw, 4.85rem);
   line-height: 1.02;
   letter-spacing: -.035em;
@@ -30,8 +35,8 @@ body.clinic-site #main .clinic-home-intro h1 {
 
 body.clinic-site #main .clinic-home-intro .landing-hero-lead {
   max-width: 41ch;
-  margin: 16px 0 0;
-  color: var(--clinic-secondary);
+  margin: 16px 0 0 auto;
+  color: #fff;
   font-size: clamp(1rem, 1.45vw, 1.2rem);
   line-height: 1.5;
 }
@@ -40,6 +45,7 @@ body.clinic-site #main .clinic-home-intro .landing-hero-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-end;
   gap: 8px 22px;
   margin-top: 24px;
 }
@@ -53,43 +59,48 @@ body.clinic-site #main .clinic-home-intro .landing-hero-actions .button {
   border: 1.5px solid currentColor;
   border-radius: 100px;
   background: transparent;
-  color: var(--clinic-primary);
+  color: #fff;
   box-shadow: none;
 }
 
 body.clinic-site #main .clinic-home-intro .landing-hero-actions .button:hover {
-  background: var(--clinic-primary);
-  color: #fff;
+  background: #fff;
+  color: var(--clinic-ink);
   transform: none;
 }
 
 body.clinic-site #main .clinic-home-intro .home-intro-secondary {
-  color: var(--clinic-primary);
+  color: #fff;
   font-size: .9375rem;
   text-underline-offset: .22em;
 }
 
 body.clinic-site #main .clinic-home-intro a:focus-visible {
-  outline: 2px solid var(--clinic-primary);
+  outline: 2px solid #fff;
   outline-offset: 4px;
 }
 
 body.clinic-site #main .clinic-home-intro .home-intro-image {
-  grid-column: 2;
-  align-self: stretch;
+  position: absolute;
+  inset: 0;
   border-radius: 0;
   background: transparent;
 }
 
-body.clinic-site #main .clinic-home-intro .home-intro-image::after { content: none; }
+body.clinic-site #main .clinic-home-intro .home-intro-image::after {
+  content: "";
+  inset: 0;
+  background: linear-gradient(90deg, transparent 37%, #0b10172b 49%, #0b1017b8 69%, #0b1017d9 100%),
+    linear-gradient(0deg, #0b101768, transparent 59%);
+}
 
 body.clinic-site #main .clinic-home-intro .home-intro-image img {
   display: block;
   width: 100%;
   height: 100%;
-  aspect-ratio: 1600 / 1067;
+  aspect-ratio: auto;
   object-fit: cover;
-  object-position: 54% 58%;
+  object-position: 50% 49%;
 }
 
 body.clinic-site #main .home-services {
@@ -247,23 +258,20 @@ body.clinic-site #main .home-reviews-stage { background: #edf5fb; }
 
 @media (max-width: 860px) {
   body.clinic-site #main .clinic-home-intro .home-intro-grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0;
-    padding: 0;
+    min-height: clamp(515px, 79svh, 635px);
+    padding-block: clamp(194px, 35svh, 290px) 22px;
   }
 
   body.clinic-site #main .clinic-home-intro .landing-hero-copy {
-    grid-row: 2;
-    padding: clamp(22px, 5vw, 34px) var(--gutter, 23px) 26px;
-  }
-
-  body.clinic-site #main .clinic-home-intro .home-intro-image {
-    grid-area: 1 / 1;
+    width: 100%;
   }
 
   body.clinic-site #main .clinic-home-intro .home-intro-image img {
-    height: auto;
-    object-fit: contain;
+    object-position: 63% center;
+  }
+
+  body.clinic-site #main .clinic-home-intro .home-intro-image::after {
+    background: linear-gradient(180deg, transparent 33%, #0b101765 44%, #0b1017be 55%, #0b1017d9 80%, #0b1017ec 100%);
   }
 
   body.clinic-site #main :is(.clinic-feature-layout, .home-human-grid, .home-hyaluron-grid) {
@@ -317,6 +325,7 @@ body.clinic-site #main .home-reviews-stage { background: #edf5fb; }
 
 @media print {
   body.clinic-site #main .clinic-home-intro .home-intro-grid { min-height: 0; padding-block: 20px; }
+  body.clinic-site #main .clinic-home-intro .landing-hero-copy { justify-self: start; text-align: left; }
   body.clinic-site #main .clinic-home-intro .home-intro-image { display: none; }
   body.clinic-site #main .clinic-home-intro,
   body.clinic-site #main .clinic-home-intro :is(h1,.landing-hero-lead,.home-intro-secondary,.landing-hero-actions .button),

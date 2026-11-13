@@ -343,7 +343,11 @@
   input.addEventListener('input',render);
  }
  const logo=document.querySelector('.site-header .brand img');
- if(logo?.getAttribute('src')==='/assets/logo-dark.webp')logo.src='/assets/kansei-logo-green.20261105.svg';
+ const logoSource=logo?.getAttribute('src');
+ if(logo&&['/assets/logo-dark.webp','/assets/kansei-logo-green.20261105.svg','/assets/kansei-logo-outline.20261113.svg'].includes(logoSource)){
+  logo.src='/assets/kansei-logo-outline.20261113.svg';
+  logo.classList.add('clinic-outline-logo');
+ }
 
  const injectionNav=document.querySelector('.desktop-nav a[href="/hyaluronsyra/"]');
  if(injectionNav){

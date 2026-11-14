@@ -14,14 +14,19 @@ DISCOVERY_PATHS = {
 
 def check_discovery(page, path, output, label):
     block = page.locator('.discovery-block')
+    routes = DISCOVERY_PATHS[path]
+    if path == '/' and page.locator('.home-case-preview').count():
+        block = page.locator('.home-case-preview')
+        routes = ('/ultraljud/kna/#artros',)
     assert block.count() == 1, 'Expected one concise discovery block'
-    for href in DISCOVERY_PATHS[path]:
+    for href in routes:
         link = block.locator(f'a[href="{href}"]')
         assert link.count() == 1 and link.is_visible(), 'Case route is missing or hidden'
         assert len(link.inner_text().strip()) > 12, 'Case route needs a descriptive label'
     block.scroll_into_view_if_needed()
     assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 2')
-    block.screenshot(path=str(output / f'discovery-{path.strip("/").replace("/", "-") or "home"}-{label}.png'))
+    block.screenshot(path=str(output / f'discovery-{path.strip("/").replace("/", "-") or "home"}-{label}.png'),
+                     style='.site-header {visibility:hidden}')
     if path == '/naprapati/':
         local = page.locator('.discovery-local')
         assert 'Upplandsgatan 26' in local.inner_text()

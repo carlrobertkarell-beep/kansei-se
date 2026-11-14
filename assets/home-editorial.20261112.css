@@ -337,7 +337,6 @@ body.clinic-site #main .home-case-link {
   justify-self: start;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   min-height: 44px;
   padding: 8px 16px;
   border: 1px solid currentColor;
@@ -346,8 +345,6 @@ body.clinic-site #main .home-case-link {
   font-size: .9375rem;
   text-decoration: none;
 }
-
-.home-case-link .icon { width: 1rem; height: 1rem; }
 
 body.clinic-site #main .home-case-link:hover { background: var(--clinic-tint, #edf5fb); }
 

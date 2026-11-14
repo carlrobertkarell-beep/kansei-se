@@ -15,7 +15,11 @@ DISCOVERY_PATHS = {
 def check_discovery(page, path, output, label):
     block = page.locator('.discovery-block')
     routes = DISCOVERY_PATHS[path]
-    if path == '/' and page.locator('.home-case-preview').count():
+    if path == '/' and page.locator('.home-symptoms').count():
+        block = page.locator('.home-symptoms')
+        routes = ('/blogg/ont-i-axeln-nar-du-lyfter-armen/', '/kunskapsbank/kna/ont-i-knat-i-trappor/',
+                  '/blogg/domningar-i-handen-pa-natten/', '/hjalp-mig-boka/')
+    elif path == '/' and page.locator('.home-case-preview').count():
         block = page.locator('.home-case-preview')
         routes = ('/ultraljud/kna/#artros',)
     assert block.count() == 1, 'Expected one concise discovery block'

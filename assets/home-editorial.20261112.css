@@ -255,6 +255,107 @@ body.clinic-site #main .home-hyaluron-film video { border-radius: 4px; }
 
 body.clinic-site #main .home-reviews-stage { background: #edf5fb; }
 
+.home-case-preview {
+  padding-block: clamp(44px, 6.2vw, 96px);
+  background: var(--clinic-surface, #fff);
+  color: var(--clinic-ink, #162735);
+}
+
+.home-case-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+  column-gap: clamp(24px, 6vw, 88px);
+  row-gap: 20px;
+}
+
+.home-case-copy {
+  grid-column: 1;
+  align-self: end;
+}
+
+.home-case-label {
+  margin-bottom: 10px;
+  color: var(--clinic-secondary, #465a6b);
+  font-size: .875rem;
+}
+
+body.clinic-site #main .home-case-copy h2 {
+  max-width: 20ch;
+  margin: 0;
+  color: inherit;
+  font-size: clamp(2rem, 4.1vw, 3.75rem);
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+body.clinic-site #main .home-case-copy p {
+  max-width: 43ch;
+  margin: 14px 0 0;
+  color: var(--clinic-secondary, #465a6b);
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  line-height: 1.6;
+}
+
+.home-case-figure {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  margin: 0;
+}
+
+.home-case-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #111820;
+}
+
+.home-case-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.home-case-image svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.home-case-figure figcaption {
+  margin-top: 8px;
+  color: var(--clinic-secondary, #465a6b);
+  font-size: .875rem;
+  line-height: 1.5;
+}
+
+body.clinic-site #main .home-case-link {
+  grid-column: 1;
+  align-self: start;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid currentColor;
+  border-radius: 100px;
+  color: var(--clinic-primary, #0057b8);
+  font-size: .9375rem;
+  text-decoration: none;
+}
+
+.home-case-link .icon { width: 1rem; height: 1rem; }
+
+body.clinic-site #main .home-case-link:hover { background: var(--clinic-tint, #edf5fb); }
+
+body.clinic-site #main .home-case-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
 @media (max-width: 860px) {
   body.clinic-site #main .clinic-home-intro .home-intro-grid {
     min-height: clamp(515px, 79svh, 635px);
@@ -278,13 +379,12 @@ body.clinic-site #main .home-reviews-stage { background: #edf5fb; }
     gap: 24px;
   }
 
-  body.clinic-site #main :is(.clinic-feature-layout, .home-human-grid, .home-hyaluron-grid, .home-diagnostic .hd-grid) {
+  body.clinic-site #main :is(.clinic-feature-layout, .home-human-grid, .home-hyaluron-grid) {
     padding-inline: 0;
   }
 
-  body.clinic-site #main :is(.clinic-feature-copy, .home-human-copy, .home-hyaluron-copy, .home-diagnostic .hd-copy),
-  body.clinic-site #main :is(.clinic-feature-photo, .home-hyaluron-film) figcaption,
-  body.clinic-site #main .home-diagnostic :is(.hd-instrument-head, .hd-ui, .hd-caption) {
+  body.clinic-site #main :is(.clinic-feature-copy, .home-human-copy, .home-hyaluron-copy),
+  body.clinic-site #main :is(.clinic-feature-photo, .home-hyaluron-film) figcaption {
     padding-inline: var(--gutter, 23px);
   }
 
@@ -297,11 +397,15 @@ body.clinic-site #main .home-reviews-stage { background: #edf5fb; }
 
   body.clinic-site #main .home-human .home-human-portrait img { aspect-ratio: 1; }
 
-  body.clinic-site #main :is(.home-hyaluron-film, .home-diagnostic .hd-instrument) { max-width: none; }
+  body.clinic-site #main .home-hyaluron-film { max-width: none; }
 
-  body.clinic-site #main :is(.clinic-feature-photo img, .home-human .home-human-portrait img, .home-hyaluron-film video, .home-diagnostic .hd-stage) {
+  body.clinic-site #main :is(.clinic-feature-photo img, .home-human .home-human-portrait img, .home-hyaluron-film video) {
     border-radius: 0;
   }
+
+  .home-case-layout { grid-template-columns: minmax(0, 1fr); }
+  .home-case-figure { grid-column: 1; grid-row: auto; }
+  body.clinic-site #main .home-case-link { justify-self: end; }
 }
 
 @media (max-width: 760px) {

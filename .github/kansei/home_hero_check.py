@@ -70,7 +70,7 @@ def check_home_hero(page, output, viewport):
                 raise AssertionError('A homepage booking or service action is hidden or too small for touch')
         if page.evaluate('document.documentElement.scrollWidth > innerWidth + 3'):
             raise AssertionError('Homepage hero causes horizontal overflow')
-        image_overlay = page.locator('link[href*="home-editorial.20261112.css?v=20261113-left"]').count() == 1
+        image_overlay = page.locator('link[href^="/assets/home-editorial.20261112.css"]').count() == 1
         if not photo.evaluate('''image => {
             const photo = image.getBoundingClientRect();
             const section = image.closest('.home-first-impression');
@@ -132,7 +132,6 @@ def check_chapter_media(page, output, viewport):
     chapters = {
         'undersokning': ('.clinic-feature', '.clinic-feature-photo img'),
         'behandlare': ('.home-human', '.home-human-portrait img'),
-        'ultraljud': ('.home-diagnostic', '.hd-stage'),
         'hyaluron': ('.home-hyaluron', '.home-hyaluron-film video'),
     }
     for name, (chapter, media) in chapters.items():

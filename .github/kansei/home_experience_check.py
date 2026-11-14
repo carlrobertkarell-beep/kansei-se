@@ -1,8 +1,41 @@
-"""Exercise the homepage's single image slider with real keyboard and mouse input."""
+"""Check the homepage patient case and allow the prior live build during rollout."""
 from playwright.sync_api import expect
 
 
 def check_home_experience(page):
+    preview = page.locator('.home-case-preview')
+    if not preview.count() and page.url.startswith('https://www.kansei.se/'):
+        return check_previous_home_experience(page)
+
+    try:
+        expect(preview.get_by_role('heading', level=2)).to_be_visible()
+        image = preview.get_by_role('img')
+        image.scroll_into_view_if_needed()
+        page.wait_for_function(
+            "img => img.complete && img.naturalWidth > 0",
+            arg=image.element_handle(), timeout=15000)
+        expect(image).to_have_attribute('src', '/bilder/ultraljud/kna/osteofyter-ultraljud.webp')
+        link = preview.get_by_role('link', name='Se patientfallet')
+        expect(link).to_have_attribute('href', '/ultraljud/kna/#artros')
+        expect(preview.get_by_role('link')).to_have_count(1)
+        expect(preview.get_by_role('button')).to_have_count(0)
+        expect(preview.get_by_role('slider')).to_have_count(0)
+        if page.viewport_size['width'] <= 860:
+            assert preview.evaluate("""section => {
+                const heading = section.querySelector('h2').getBoundingClientRect();
+                const image = section.querySelector('img').getBoundingClientRect();
+                const link = section.querySelector('a').getBoundingClientRect();
+                return heading.bottom < image.top && link.top >= image.bottom &&
+                    Math.abs(image.left - heading.left) <= 1 &&
+                    Math.abs(image.right - link.right) <= 1 && link.height >= 44;
+            }"""), 'Patient case must stack in reading order with aligned mobile margins'
+        return 'Original ultrasound, one case link and mobile layout passed'
+    finally:
+        page.evaluate("document.activeElement?.blur(); window.scrollTo({top:0,behavior:'instant'})")
+        page.wait_for_function('window.scrollY === 0')
+
+
+def check_previous_home_experience(page):
     root = page.locator('[data-home-diagnostic]')
     slider = page.get_by_role('slider', name='Andel illustrerad anatomi', exact=True)
     try:
@@ -13,9 +46,6 @@ def check_home_experience(page):
             "node => [...node.querySelectorAll('img')].every(img => img.complete && img.naturalWidth > 0)",
             arg=slider.element_handle(), timeout=15000)
         expect(slider).to_have_attribute('aria-disabled', 'false', timeout=15000)
-        if page.url.startswith('http://127.0.0.1:4173'):
-            expect(slider).to_have_attribute('aria-valuenow', '0')
-            expect(root.get_by_role('button', name='Ultraljud', exact=True)).to_have_attribute('aria-pressed', 'true')
         slider.press('End')
         expect(slider).to_have_attribute('aria-valuenow', '100')
         slider.press('Home')

@@ -255,89 +255,74 @@ body.clinic-site #main .home-hyaluron-film video { border-radius: 4px; }
 
 body.clinic-site #main .home-reviews-stage { background: #edf5fb; }
 
-.home-case-preview {
+.home-symptoms {
   padding-block: clamp(44px, 6.2vw, 96px);
-  background: var(--clinic-surface, #fff);
   color: var(--clinic-ink, #162735);
+  background: var(--clinic-surface, #fff);
 }
 
-.home-case-layout {
+.home-symptoms-layout {
   display: grid;
-  grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
-  column-gap: clamp(24px, 6vw, 88px);
-  row-gap: 20px;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+  align-items: center;
+  gap: clamp(26px, 6vw, 88px);
 }
 
-.home-case-copy {
-  grid-column: 1;
-  align-self: end;
-}
+.home-symptoms-copy { grid-column: 2; }
 
-.home-case-label {
-  margin-bottom: 10px;
-  color: var(--clinic-secondary, #465a6b);
-  font-size: .875rem;
-}
-
-body.clinic-site #main .home-case-copy h2 {
-  max-width: 20ch;
+body.clinic-site #main .home-symptoms h2 {
+  max-width: 18ch;
   margin: 0;
   color: inherit;
   font-size: clamp(2rem, 4.1vw, 3.75rem);
   line-height: 1.08;
-  text-wrap: balance;
 }
 
-body.clinic-site #main .home-case-copy p {
-  max-width: 43ch;
+body.clinic-site #main .home-symptoms p {
+  max-width: 44ch;
   margin: 14px 0 0;
   color: var(--clinic-secondary, #465a6b);
   font-size: clamp(1rem, 1.3vw, 1.15rem);
   line-height: 1.6;
 }
 
-.home-case-figure {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-  align-self: center;
-  margin: 0;
+.home-symptoms-list {
+  margin: 20px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--clinic-rule, #d6e2ec);
+  list-style: none;
 }
 
-.home-case-image {
-  position: relative;
-  overflow: hidden;
-  border-radius: 4px;
-  background: #111820;
-}
+.home-symptoms-list li { border-bottom: 1px solid var(--clinic-rule, #d6e2ec); }
 
-.home-case-image img {
+body.clinic-site #main .home-symptoms-list a {
   display: block;
-  width: 100%;
-  height: auto;
+  min-height: 44px;
+  padding-block: 10px;
+  color: var(--clinic-primary, #0057b8);
+  text-decoration: none;
 }
 
-.home-case-image svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+.home-symptoms-list strong {
+  display: block;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: .2em;
 }
 
-.home-case-figure figcaption {
-  margin-top: 8px;
+.home-symptoms-list span {
+  display: block;
+  margin-top: 3px;
   color: var(--clinic-secondary, #465a6b);
   font-size: .875rem;
   line-height: 1.5;
 }
 
-body.clinic-site #main .home-case-link {
-  grid-column: 1;
-  align-self: start;
-  justify-self: start;
+body.clinic-site #main .home-symptoms-booking {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
+  margin-top: 18px;
   padding: 8px 16px;
   border: 1px solid currentColor;
   border-radius: 100px;
@@ -346,11 +331,20 @@ body.clinic-site #main .home-case-link {
   text-decoration: none;
 }
 
-body.clinic-site #main .home-case-link:hover { background: var(--clinic-tint, #edf5fb); }
+body.clinic-site #main .home-symptoms a:hover { background: var(--clinic-tint, #edf5fb); }
 
-body.clinic-site #main .home-case-link:focus-visible {
+body.clinic-site #main .home-symptoms a:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 3px;
+}
+
+.home-symptoms-photo {
+  grid-column: 1;
+  grid-row: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
 }
 
 @media (max-width: 860px) {
@@ -400,9 +394,15 @@ body.clinic-site #main .home-case-link:focus-visible {
     border-radius: 0;
   }
 
-  .home-case-layout { grid-template-columns: minmax(0, 1fr); }
-  .home-case-figure { grid-column: 1; grid-row: auto; }
-  body.clinic-site #main .home-case-link { justify-self: end; }
+  .home-symptoms-layout { grid-template-columns: minmax(0, 1fr); }
+
+  .home-symptoms-copy {
+    grid-column: 1;
+    display: grid;
+  }
+
+  .home-symptoms-photo { grid-row: auto; }
+  body.clinic-site #main .home-symptoms-booking { justify-self: end; }
 }
 
 @media (max-width: 760px) {

@@ -156,3 +156,100 @@ body.clinic-site #main .service-first-hero :is(.landing-hero-media, .us-hero-pho
     margin-top: 0;
   }
 }
+
+/* Keep the facts needed to book together, with the room as the only hero media. */
+body.clinic-site #main .treatment-decision-hero .treatment-hero-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+  grid-template-areas: "copy visual";
+  align-items: center;
+}
+
+body.clinic-site #main .treatment-decision-hero .treatment-offer {
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 8px;
+}
+
+body.clinic-site #main .treatment-decision-hero .treatment-offer .service-overview-price strong {
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+}
+
+body.clinic-site #main .treatment-decision-hero .treatment-decision-inclusions {
+  margin: 0;
+  max-width: 37ch;
+  color: var(--service-first-copy);
+  line-height: 1.45;
+}
+
+body.clinic-site #main .treatment-decision-hero .treatment-offer .service-overview-booking-note {
+  margin: 0;
+}
+
+body.clinic-site #main .treatment-decision-hero .treatment-offer .treatment-book {
+  margin-top: 4px;
+}
+
+body.clinic-site #main .treatment-decision-hero .treatment-room-photo img {
+  aspect-ratio: 4 / 3;
+  object-position: center;
+}
+
+body.clinic-site #main .treatment-film-disclosure .treatment-detail-film {
+  max-width: 42rem;
+}
+
+body.clinic-site #main .treatment-detail-film [hidden] {
+  display: none;
+}
+
+body.clinic-site #main .service-first-hero .service-visit-summary {
+  max-width: 43ch;
+}
+
+body.clinic-site #main .service-proof {
+  margin-block: clamp(2rem, 6vw, 5rem);
+}
+
+body.clinic-site #main .service-proof-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: clamp(1rem, 5vw, 4rem);
+  align-items: center;
+}
+
+body.clinic-site #main .service-proof-media {
+  margin: 0;
+  min-width: 0;
+}
+
+body.clinic-site #main .service-proof-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+@media (max-width: 760px) {
+  body.clinic-site #main .treatment-decision-hero .treatment-hero-grid,
+  body.clinic-site #main .service-proof-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body.clinic-site #main .treatment-decision-hero .treatment-hero-grid {
+    grid-template-areas: "copy" "visual";
+    gap: 20px;
+  }
+
+  body.clinic-site #main .treatment-decision-hero .treatment-room-photo img {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+body.clinic-site #main .treatment-preparation-choice {
+  padding-block: clamp(1.25rem, 3vw, 2rem);
+}
+
+body.clinic-site #main .treatment-preparation-choice > div {
+  max-width: 64ch;
+  border-top: 1px solid var(--clinic-rule, #d6e2ec);
+  padding-top: 1rem;
+}

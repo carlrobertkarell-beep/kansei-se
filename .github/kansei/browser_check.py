@@ -316,8 +316,8 @@ def check(base, output):
                     if not baseline_only:
                         if path == '/':
                             model = clinic_reference(page)
-                            row['home_hero'] = check_home_hero(page, output, label)
                             row['home_experience'] = check_home_experience(page)
+                            row['home_hero'] = check_home_hero(page, output, label)
                         elif path in CASE_PATHS:
                             row['ultrasound_design'] = check_case(page, model)
                         elif path == '/ultraljud/':

@@ -256,12 +256,12 @@ def check(base, output):
                         row["errors"].append("Expected one H1")
                     if not page.title().strip():
                         row["errors"].append("Title missing")
+                    if base == "http://127.0.0.1:4173" and label == "desktop" and page.locator('.site-header button[data-site-menu]').count():
+                        check_desktop_navigation(page, resize=path == '/')
                     # A push also checks the live Pages site before the new
                     # styles necessarily reach it. Enforce them on the candidate.
                     if base == "http://127.0.0.1:4173" and path in DESIGN_PATHS:
                         row["site_design"] = check_site_design(page, path)
-                    if base == "http://127.0.0.1:4173" and label == "desktop" and page.locator('.site-header button[data-site-menu]').count():
-                        check_desktop_navigation(page, resize=path == '/')
                     dimensions = page.evaluate("({width:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth})")
                     row["overflow_px"] = max(0, dimensions["scroll"] - dimensions["width"])
                     if row["overflow_px"] > 3:

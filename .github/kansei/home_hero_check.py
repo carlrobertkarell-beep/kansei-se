@@ -131,7 +131,6 @@ def check_home_hero(page, output, viewport):
 def check_chapter_media(page, output, viewport):
     chapters = {
         'undersokning': ('.clinic-feature', '.clinic-feature-photo img'),
-        'behandlare': ('.home-human', '.home-human-portrait img'),
         'hyaluron': ('.home-hyaluron', '.home-hyaluron-film video'),
     }
     for name, (chapter, media) in chapters.items():

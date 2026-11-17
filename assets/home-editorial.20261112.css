@@ -247,8 +247,8 @@ body.clinic-site #main .home-arrival-top a:focus-visible { outline-color: #fff; 
 body.clinic-site #main .home-human-identity {
   display: grid;
   grid-template-columns: clamp(64px, 10vw, 96px) minmax(0, 1fr);
-  align-items: start;
-  gap: clamp(14px, 2.5vw, 26px);
+  align-items: center;
+  gap: 10px clamp(14px, 2.5vw, 26px);
   max-width: 39rem;
 }
 
@@ -262,13 +262,44 @@ body.clinic-site #main .home-human-avatar {
   border-radius: 4px;
 }
 
-body.clinic-site #main .home-human-intro { margin-block: 0 10px; }
+body.clinic-site #main .home-human .home-human-name {
+  margin: 0;
+  color: var(--clinic-ink);
+  font-size: 1.125rem;
+  line-height: 1.35;
+}
+
+body.clinic-site #main .home-human .home-human-role {
+  margin: 4px 0 0;
+  color: var(--clinic-secondary);
+  font-size: .9375rem;
+  line-height: 1.4;
+}
+
+body.clinic-site #main .home-human-intro { grid-column: 2; margin: 0; }
+body.clinic-site #main .home-human-identity .home-human-link {
+  grid-column: 2;
+  justify-self: start;
+  margin-top: 0;
+}
+
 body.clinic-site #main .home-human-visit { max-width: 39rem; margin-top: 16px; }
 
 body.clinic-site #main .home-human h2,
 body.clinic-site #main .home-hyaluron h2 { margin-top: 0; }
 
-body.clinic-site #main .home-hyaluron-film video { border-radius: 4px; }
+body.clinic-site #main .home-hyaluron-film :is(.landing-hero-film-poster, video) {
+  border-radius: 4px;
+}
+
+body.clinic-site #main .home-hyaluron-film .landing-hero-film-poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: inherit;
+}
+
+body.clinic-site #main .home-hyaluron-film [hidden] { display: none; }
 
 body.clinic-site #main .home-reviews-stage {
   background: #edf5fb;
@@ -451,18 +482,16 @@ body.clinic-site #main .home-symptoms a:focus-visible {
     gap: 24px;
   }
 
-  body.clinic-site #main :is(.clinic-feature-layout, .home-hyaluron-grid) {
+  body.clinic-site #main .clinic-feature-layout {
     padding-inline: 0;
   }
 
-  body.clinic-site #main :is(.clinic-feature-copy, .home-hyaluron-copy),
-  body.clinic-site #main :is(.clinic-feature-photo, .home-hyaluron-film) figcaption {
+  body.clinic-site #main .clinic-feature-copy,
+  body.clinic-site #main .clinic-feature-photo figcaption {
     padding-inline: var(--gutter, 23px);
   }
 
-  body.clinic-site #main .home-hyaluron-film { max-width: none; }
-
-  body.clinic-site #main :is(.clinic-feature-photo img, .home-hyaluron-film video) {
+  body.clinic-site #main .clinic-feature-photo img {
     border-radius: 0;
   }
 
@@ -473,7 +502,7 @@ body.clinic-site #main .home-symptoms a:focus-visible {
     display: grid;
   }
 
-  .home-symptoms-photo { grid-row: auto; }
+  .home-symptoms-photo { display: none; }
   body.clinic-site #main .home-symptoms-booking { justify-self: end; }
 }
 
@@ -497,6 +526,46 @@ body.clinic-site #main .home-symptoms a:focus-visible {
 
   body.clinic-site #main .home-reviews-stage .hr-quotes {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  body.clinic-site #main .clinic-feature { padding-block-end: 28px; }
+
+  body.clinic-site.home-chapters #main :is(.home-human, .home-hyaluron),
+  body.clinic-site #main .home-symptoms { padding-block: 32px; }
+
+  body.clinic-site #main :is(.home-human, .home-symptoms, .home-hyaluron) h2 {
+    font-size: clamp(1.875rem, 7.5vw, 2.375rem);
+    overflow-wrap: anywhere;
+  }
+
+  body.clinic-site #main .home-human h2 { margin-bottom: 14px; }
+
+  body.clinic-site #main .home-human-identity {
+    grid-template-columns: 60px minmax(0, 1fr);
+    row-gap: 12px;
+  }
+
+  body.clinic-site #main .home-human-identity :is(.home-human-intro, .home-human-link) {
+    grid-column: 1 / -1;
+  }
+
+  body.clinic-site #main .home-human-identity .home-human-link { justify-self: end; }
+
+  body.clinic-site #main .home-hyaluron-lead { margin-top: 10px; }
+
+  body.clinic-site #main .home-hyaluron-actions { justify-content: flex-end; }
+
+  body.clinic-site #main .home-hyaluron-actions a[data-service="hyaluron"] {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--clinic-primary);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  body.clinic-site #main .home-hyaluron-actions a[data-service="hyaluron"]:hover {
+    background: var(--clinic-hover, #00478f);
   }
 }
 

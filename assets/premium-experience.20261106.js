@@ -28,6 +28,16 @@
     sync();
   }
 
+  const desktopNav = header?.querySelector('.desktop-nav');
+  const menu = document.querySelector('#site-menu');
+  if (desktopNav && menu) {
+    addEventListener('resize', () => {
+      if (!menu.open || !desktopNav.getClientRects().length) return;
+      menu.close();
+      desktopNav.querySelector('a[href]')?.focus({ preventScroll: true });
+    }, { passive: true });
+  }
+
   if (document.body.classList.contains('home-scroll-site')) return;
   if (!('IntersectionObserver' in window) || !Element.prototype.animate) return;
   const seen = new WeakSet();

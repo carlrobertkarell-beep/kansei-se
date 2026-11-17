@@ -652,6 +652,13 @@ body.clinic-site .site-header .header-icon-actions :is(.site-search-toggle, .sit
   min-width: 44px;
 }
 
+/* Match the desktop navigation breakpoint in clinic-shared. */
+@media (width > 1240px) {
+  body.clinic-site .site-header .header-actions .site-menu-toggle {
+    display: none;
+  }
+}
+
 .header-action-icon {
   display: block;
   flex: 0 0 auto;

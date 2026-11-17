@@ -37,6 +37,26 @@ EXPLORE_PATH = "/ultraljud/bilder/"
 SIZES = (("mobile", 390, 844), ("desktop", 1440, 1000), ("compact", 320, 780))
 
 
+def check_desktop_navigation(page, resize=False):
+    nav = page.locator('.site-header .desktop-nav')
+    opener = page.locator('.site-header button[data-site-menu]')
+    assert nav.is_visible() and not opener.is_visible(), 'Desktop needs visible navigation and a hidden mobile menu button'
+    if resize:
+        size = page.viewport_size
+        page.set_viewport_size({'width': 390, 'height': 844})
+        opener.click(timeout=5000)
+        assert page.locator('#site-menu').evaluate('menu => menu.open'), 'Mobile menu did not open'
+        page.set_viewport_size(size)
+        page.wait_for_function('''() => {
+            const nav = document.querySelector('.site-header .desktop-nav');
+            const opener = document.querySelector('.site-header [data-site-menu]');
+            return !document.querySelector('#site-menu').open &&
+                !document.body.classList.contains('locked') &&
+                opener.getAttribute('aria-expanded') === 'false' &&
+                nav.contains(document.activeElement);
+        }''', timeout=5000)
+
+
 def check_mobile_menu(page, screenshot, keyboard=False, close_button=False, reduced_motion=False):
     """Exercise the shared clinic dialog; retain the older burger screenshot path."""
     if page.locator('#site-menu.menu-minimal').count():
@@ -236,6 +256,8 @@ def check(base, output):
                         row["errors"].append("Expected one H1")
                     if not page.title().strip():
                         row["errors"].append("Title missing")
+                    if base == "http://127.0.0.1:4173" and label == "desktop" and page.locator('.site-header button[data-site-menu]').count():
+                        check_desktop_navigation(page, resize=path == '/')
                     # A push also checks the live Pages site before the new
                     # styles necessarily reach it. Enforce them on the candidate.
                     if base == "http://127.0.0.1:4173" and path in DESIGN_PATHS:

@@ -23,8 +23,17 @@ def check_home_experience(page):
                 'href', 'https://www.bokadirekt.se/places/kansei-naprapati-rehabcenter-48847')
             avatar = page.locator('.home-human-avatar')
             expect(avatar).to_be_visible()
-            portrait_max_width = 112 if page.viewport_size['width'] <= 760 else 96
-            assert avatar.bounding_box()['width'] <= portrait_max_width, 'Practitioner portrait must fit its column'
+            mobile = page.viewport_size['width'] <= 760
+            if mobile:
+                assert avatar.evaluate("""image => {
+                    const box = image.getBoundingClientRect();
+                    const container = image.parentElement.getBoundingClientRect();
+                    const name = image.nextElementSibling.getBoundingClientRect();
+                    return Math.abs(box.width - container.width) <= 1 &&
+                        Math.abs(box.width / box.height - 4 / 5) < 0.01 && box.bottom <= name.top;
+                }"""), 'Mobile portrait must fill its column at the original proportions above the profile'
+            else:
+                assert avatar.bounding_box()['width'] <= 96, 'Desktop portrait must fit its column'
             player = page.locator('.home-hyaluron-film video')
             expect(player).to_have_attribute(
                 'poster', '/bilder/filmer/kansei-hyaluron-behandlingsrum.20261108.webp')
@@ -33,6 +42,12 @@ def check_home_experience(page):
                 expect(cover).to_be_visible()
                 expect(cover).to_have_attribute('href', '/hyaluronsyra/ultraljudsvagledd-injektion/')
                 expect(player).to_be_hidden()
+                if mobile:
+                    assert cover.evaluate("""link => {
+                        const button = link.querySelector('.landing-hero-film-play').getBoundingClientRect();
+                        const box = link.getBoundingClientRect();
+                        return Math.abs(box.right - button.right - 14) <= 1;
+                    }"""), 'Mobile film action must be aligned with the right edge'
 
         expect(section.get_by_role('heading', level=2)).to_be_visible()
         expect(section.locator('.home-symptoms-list').get_by_role('link')).to_have_count(3)

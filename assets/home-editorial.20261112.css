@@ -541,9 +541,11 @@ body.clinic-site #main .home-symptoms a:focus-visible {
   body.clinic-site #main .home-human h2 { margin-bottom: 14px; }
 
   body.clinic-site #main .home-human-identity {
-    grid-template-columns: 60px minmax(0, 1fr);
+    grid-template-columns: clamp(88px, 26vw, 112px) minmax(0, 1fr);
     row-gap: 12px;
   }
+
+  body.clinic-site #main .home-human-avatar { aspect-ratio: 4 / 5; }
 
   body.clinic-site #main .home-human-identity :is(.home-human-intro, .home-human-link) {
     grid-column: 1 / -1;
@@ -553,7 +555,9 @@ body.clinic-site #main .home-symptoms a:focus-visible {
 
   body.clinic-site #main .home-hyaluron-lead { margin-top: 10px; }
 
-  body.clinic-site #main .home-hyaluron-actions { justify-content: flex-end; }
+  body.clinic-site #main .home-hyaluron :is(.home-hyaluron-actions, .home-joint-links) {
+    justify-content: flex-end;
+  }
 
   body.clinic-site #main .home-hyaluron-actions a[data-service="hyaluron"] {
     padding: 6px 14px;

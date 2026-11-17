@@ -46,8 +46,8 @@ def check_home_experience(page):
                     assert cover.evaluate("""link => {
                         const button = link.querySelector('.landing-hero-film-play').getBoundingClientRect();
                         const box = link.getBoundingClientRect();
-                        return Math.abs(box.right - button.right - 14) <= 1;
-                    }"""), 'Mobile film action must be aligned with the right edge'
+                        return Math.abs(button.left - box.left - 14) <= 1;
+                    }"""), 'Mobile film action must be aligned with the left edge'
 
         expect(section.get_by_role('heading', level=2)).to_be_visible()
         expect(section.locator('.home-symptoms-list').get_by_role('link')).to_have_count(3)
@@ -62,7 +62,7 @@ def check_home_experience(page):
             assert section.evaluate("""section => {
                 const booking = section.querySelector('.home-symptoms-booking').getBoundingClientRect();
                 const line = section.querySelector('.home-symptoms-list').getBoundingClientRect();
-                return Math.abs(booking.right - line.right) <= 1 &&
+                return Math.abs(booking.left - line.left) <= 1 &&
                     [...section.querySelectorAll('a')].every(link => link.getBoundingClientRect().height >= 44);
             }"""), 'Mobile symptom links and booking must fit the content column'
         else:

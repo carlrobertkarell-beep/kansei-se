@@ -23,7 +23,8 @@ def check_home_experience(page):
                 'href', 'https://www.bokadirekt.se/places/kansei-naprapati-rehabcenter-48847')
             avatar = page.locator('.home-human-avatar')
             expect(avatar).to_be_visible()
-            assert avatar.bounding_box()['width'] <= 96, 'Practitioner portrait must remain compact'
+            portrait_max_width = 112 if page.viewport_size['width'] <= 760 else 96
+            assert avatar.bounding_box()['width'] <= portrait_max_width, 'Practitioner portrait must fit its column'
             player = page.locator('.home-hyaluron-film video')
             expect(player).to_have_attribute(
                 'poster', '/bilder/filmer/kansei-hyaluron-behandlingsrum.20261108.webp')

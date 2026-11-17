@@ -24,8 +24,14 @@ def check_home_experience(page):
             avatar = page.locator('.home-human-avatar')
             expect(avatar).to_be_visible()
             assert avatar.bounding_box()['width'] <= 96, 'Practitioner portrait must remain compact'
-            expect(page.locator('.home-hyaluron-film video')).to_have_attribute(
+            player = page.locator('.home-hyaluron-film video')
+            expect(player).to_have_attribute(
                 'poster', '/bilder/filmer/kansei-hyaluron-behandlingsrum.20261108.webp')
+            cover = page.locator('[data-home-film-play]')
+            if cover.count():
+                expect(cover).to_be_visible()
+                expect(cover).to_have_attribute('href', '/hyaluronsyra/ultraljudsvagledd-injektion/')
+                expect(player).to_be_hidden()
 
         expect(section.get_by_role('heading', level=2)).to_be_visible()
         expect(section.locator('.home-symptoms-list').get_by_role('link')).to_have_count(3)
@@ -33,11 +39,22 @@ def check_home_experience(page):
         expect(booking).to_have_attribute('href', '/hjalp-mig-boka/')
         expect(section.get_by_role('link')).to_have_count(4)
         image = section.get_by_role('img')
-        image.scroll_into_view_if_needed()
-        page.wait_for_function(
-            "img => img.complete && img.naturalWidth > 0",
-            arg=image.element_handle(), timeout=15000)
-        if page.viewport_size['width'] <= 860:
+        small_view = page.viewport_size['width'] <= 860
+        compact_layout = page.locator('.home-human-role').count() > 0
+        if small_view and compact_layout:
+            expect(section.locator('.home-symptoms-photo')).to_be_hidden()
+            assert section.evaluate("""section => {
+                const booking = section.querySelector('.home-symptoms-booking').getBoundingClientRect();
+                const line = section.querySelector('.home-symptoms-list').getBoundingClientRect();
+                return Math.abs(booking.right - line.right) <= 1 &&
+                    [...section.querySelectorAll('a')].every(link => link.getBoundingClientRect().height >= 44);
+            }"""), 'Mobile symptom links and booking must fit the content column'
+        else:
+            image.scroll_into_view_if_needed()
+            page.wait_for_function(
+                "img => img.complete && img.naturalWidth > 0",
+                arg=image.element_handle(), timeout=15000)
+        if small_view and not compact_layout:
             assert section.evaluate("""section => {
                 const heading = section.querySelector('h2').getBoundingClientRect();
                 const photo = section.querySelector('.home-symptoms-photo').getBoundingClientRect();

@@ -129,9 +129,10 @@ def check_home_hero(page, output, viewport):
 
 
 def check_chapter_media(page, output, viewport):
+    film_cover = page.locator('.home-hyaluron-film [data-home-film-play]').count()
     chapters = {
         'undersokning': ('.clinic-feature', '.clinic-feature-photo img'),
-        'hyaluron': ('.home-hyaluron', '.home-hyaluron-film video'),
+        'hyaluron': ('.home-hyaluron', '.home-hyaluron-film img' if film_cover else '.home-hyaluron-film video'),
     }
     for name, (chapter, media) in chapters.items():
         section = page.locator(chapter)
@@ -142,9 +143,11 @@ def check_chapter_media(page, output, viewport):
             const section = asset.closest('section');
             const heading = section.querySelector('h2').getBoundingClientRect();
             const bounds = asset.getBoundingClientRect();
-            return heading.bottom < bounds.top && Math.abs(bounds.width - section.clientWidth) <= 1;
+            const cover = asset.closest('[data-home-film-play]');
+            const target = cover ? cover.closest('.home-hyaluron-film') : section;
+            return heading.bottom < bounds.top && Math.abs(bounds.width - target.clientWidth) <= 1;
         }'''):
-            raise AssertionError(f'Homepage media must fill its chapter width below the heading in {name}')
+            raise AssertionError(f'Homepage media must fit below the heading in {name}')
         if page.url.startswith('http://127.0.0.1:4173') and viewport in ('mobile', 'desktop'):
             asset.scroll_into_view_if_needed()
             for img in section.locator('img:visible').all():

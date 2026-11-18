@@ -1,4 +1,38 @@
 /* Homepage composition. Shared typography and controls live in the clinic stylesheet. */
+@media screen and (scripting: enabled) {
+  body.home-scroll-site .site-header {
+    margin-block-end: calc(-1 * var(--clinic-header-height) - 1px);
+  }
+
+  body.home-scroll-site:not(:has(dialog[open])) .site-header:not(.is-scrolled) {
+    background: transparent;
+    border-color: transparent;
+    --clinic-ink: #fff;
+    --clinic-primary: #fff;
+    --clinic-tint: rgb(255 255 255 / 16%);
+  }
+
+  body.home-scroll-site:not(:has(dialog[open])) .site-header:not(.is-scrolled) .clinic-outline-logo {
+    filter: brightness(0) invert(1);
+  }
+
+  body.home-scroll-site .site-header .header-icon-actions { gap: 0; }
+  body.home-scroll-site .site-header :is(.desktop-nav > a, .header-icon-actions .header-book) { font-weight: 400; }
+  body.home-scroll-site .site-header .header-action-icon { stroke-width: 1.45; }
+  body.home-scroll-site .site-header .site-search-toggle .header-action-icon { transform: translateX(3px); }
+  body.home-scroll-site .site-header .site-menu-toggle .header-action-icon { transform: translateX(-2px); }
+
+  body.home-scroll-site .clinic-home-intro::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: calc(var(--clinic-header-height) + 90px);
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(to bottom, #09131fc9, #09131fa6 38%, #09131f26 77%, transparent);
+  }
+}
+
 body.clinic-site #main .clinic-home-intro {
   position: relative;
   isolation: isolate;
@@ -11,7 +45,7 @@ body.clinic-site #main .clinic-home-intro .home-intro-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-items: end;
-  min-height: clamp(510px, 72svh, 690px);
+  min-height: clamp(570px, 79svh, 770px);
   padding-block: 90px clamp(42px, 5vw, 78px);
 }
 
@@ -38,6 +72,7 @@ body.clinic-site #main .clinic-home-intro .landing-hero-lead {
   margin: 16px 0 0;
   color: #fff;
   font-size: clamp(1rem, 1.45vw, 1.2rem);
+  font-weight: 350;
   line-height: 1.5;
 }
 
@@ -57,13 +92,14 @@ body.clinic-site #main .clinic-home-intro .landing-hero-actions .button {
   padding-inline: 28px;
   border: 1.5px solid currentColor;
   border-radius: 100px;
-  background: transparent;
-  color: #fff;
+  background: #fff;
+  border-color: #fff;
+  color: var(--clinic-ink);
   box-shadow: none;
 }
 
 body.clinic-site #main .clinic-home-intro .landing-hero-actions .button:hover {
-  background: #fff;
+  background: #e3eef4;
   color: var(--clinic-ink);
   transform: none;
 }
@@ -74,26 +110,32 @@ body.clinic-site #main .clinic-home-intro .home-intro-secondary {
   text-underline-offset: .22em;
 }
 
-body.clinic-site #main .clinic-home-intro .home-intro-reviews {
+.home-intro-ratings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px clamp(16px, 4vw, 36px);
+  margin-top: 12px;
+}
+
+body.clinic-site #main .clinic-home-intro .home-review-link {
   display: inline-grid;
   gap: 4px;
   min-height: 44px;
-  margin-top: 10px;
   padding-block: 3px;
   color: #fff;
-  font-size: .875rem;
+  font-size: .8125rem;
   line-height: 1.3;
   text-decoration: none;
   text-underline-offset: .22em;
 }
 
-body.clinic-site #main .clinic-home-intro .home-intro-reviews:hover .home-intro-review-source {
+body.clinic-site #main .clinic-home-intro .home-review-link:hover .home-intro-review-source {
   text-decoration: underline;
 }
 
 .home-intro-review-source {
   font-size: .75rem;
-  font-weight: 650;
+  font-weight: 550;
   letter-spacing: .08em;
 }
 
@@ -114,6 +156,12 @@ body.clinic-site #main .clinic-home-intro .home-intro-reviews:hover .home-intro-
   font: 1rem/1 Arial, sans-serif;
   letter-spacing: .1em;
   white-space: nowrap;
+}
+
+.home-intro-review-stars.stars-4-8 {
+  background: linear-gradient(to right, #ffd15a 96%, #b6b4ad 96%);
+  background-clip: text;
+  color: transparent;
 }
 
 body.clinic-site #main .clinic-home-intro a:focus-visible {
@@ -538,8 +586,8 @@ body.clinic-site #main .home-symptoms a:focus-visible {
 
 @media (max-width: 760px) {
   body.clinic-site #main .clinic-home-intro .home-intro-grid {
-    min-height: calc(100svh - var(--clinic-header-height) - 1px);
-    min-height: calc(100dvh - var(--clinic-header-height) - 1px);
+    min-height: 100svh;
+    min-height: 100dvh;
     padding-block: clamp(125px, 30svh, 290px) 22px;
   }
 
@@ -618,7 +666,7 @@ body.clinic-site #main .home-symptoms a:focus-visible {
   body.clinic-site #main .clinic-home-intro .home-intro-grid { min-height: 0; padding-block: 20px; }
   body.clinic-site #main .clinic-home-intro .home-intro-image { display: none; }
   body.clinic-site #main .clinic-home-intro,
-  body.clinic-site #main .clinic-home-intro :is(h1,.landing-hero-lead,.home-intro-secondary,.home-intro-reviews,.landing-hero-actions .button),
+  body.clinic-site #main .clinic-home-intro :is(h1,.landing-hero-lead,.home-intro-secondary,.home-review-link,.landing-hero-actions .button),
   body.clinic-site #main .clinic-feature,
   body.clinic-site #main .clinic-feature :is(p,a,figcaption),
   body.clinic-site #main .home-arrival-top {

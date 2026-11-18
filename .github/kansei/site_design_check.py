@@ -13,10 +13,10 @@ DESIGN_PATHS = SERVICE_PATHS | {
 
 
 def check_site_design(page, path):
-    styles = page.evaluate("""checkBooking => {
-        const primary = checkBooking && document.querySelector(
-            'main a:is(.button-dark,.btn-teal)[href*="bokadirekt.se/"]'
-        );
+    primary_selector = ('main a[href="#vara-huvudtjanster"]' if path == '/' else
+                        'main a:is(.button-dark,.btn-teal)[href*="bokadirekt.se/"]')
+    styles = page.evaluate("""selector => {
+        const primary = selector && document.querySelector(selector);
         const headings = document.querySelectorAll(
             'main h1, main h2:not(:where(nav *, dialog *, [role="dialog"] *, .knowledge-result *)), ' +
             '.footer-cta h2, body.clinic-heading-style :is(h1, h2)'
@@ -35,7 +35,7 @@ def check_site_design(page, path):
             bodyFont: getComputedStyle(document.body).fontFamily,
             booking: bookingRect && {width: bookingRect.width, height: bookingRect.height},
         };
-    }""", path in SERVICE_PATHS)
+    }""", primary_selector if path in SERVICE_PATHS else None)
 
     mismatches = [
         heading for heading in styles['headings']

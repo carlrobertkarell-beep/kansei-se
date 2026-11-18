@@ -645,3 +645,25 @@
     transition: none;
   }
 }
+
+.booking-guide-page .guide-direct {
+  margin: 0 0 clamp(1.5rem, 4vw, 2.5rem);
+  border-block: 1px solid var(--booking-line);
+}
+.guide-direct summary {
+  width: fit-content;
+  padding-block: .9rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+.guide-direct ul {
+  margin: 0;
+  padding: 0 0 1.2rem;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: .6rem 1.5rem;
+}
+.guide-direct li { display: grid; align-content: start; }
+.guide-direct a { padding-block: .55rem; text-decoration: underline; text-underline-offset: .2em; }
+.guide-direct li span { color: var(--booking-muted); font-size: .875rem; }

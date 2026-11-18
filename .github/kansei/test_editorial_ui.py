@@ -16,10 +16,14 @@ class Reader(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.skip = 0
+        self.quote_depth = 0
+        self.quotations = []
         self.text = []
         self.labels = []
 
     def handle_starttag(self, tag, attrs):
+        if tag == 'blockquote':
+            self.quote_depth += 1
         if tag in ('script', 'style'):
             self.skip += 1
         if not self.skip:
@@ -28,12 +32,17 @@ class Reader(HTMLParser):
                     self.labels.append(value)
 
     def handle_endtag(self, tag):
+        if tag == 'blockquote':
+            self.quote_depth = max(0, self.quote_depth - 1)
         if tag in ('script', 'style'):
             self.skip = max(0, self.skip - 1)
 
     def handle_data(self, data):
         if not self.skip and data.strip():
-            self.text.append(data)
+            if self.quote_depth:
+                self.quotations.append(data)
+            else:
+                self.text.append(data)
 
 
 class EditorialUI(unittest.TestCase):
@@ -90,6 +99,11 @@ class EditorialUI(unittest.TestCase):
             reader = Reader()
             reader.feed(path.read_text())
             checked += 1
+            # Editorial punctuation rules apply to the clinic's own prose.
+            # Patient quotations keep their source punctuation.
+            for text in reader.quotations:
+                if ARROWS.search(text):
+                    problems.append(f'{relative}: {text.strip()[:160]}')
             for text in reader.text + reader.labels:
                 if ARROWS.search(text) or PROSE.search(text):
                     problems.append(f'{relative}: {text.strip()[:160]}')

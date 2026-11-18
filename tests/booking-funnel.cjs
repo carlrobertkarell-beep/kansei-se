@@ -114,6 +114,19 @@ for (const url of ['https://www.kansei.se/ultraljud/axel/', 'https://kansei.se/u
   assert.equal(page.events[0][2].placement, 'header');
   assert(page.events[0][2].page_location.startsWith('https://www.kansei.se/ultraljud/'));
 }
+const home = fixture({consent: true, url: 'https://www.kansei.se/'});
+home.click('#vara-huvudtjanster', 'hero');
+home.click('#vara-huvudtjanster', '', '.site-header');
+assert.deepEqual(home.events.map(event => [event[1], event[2].placement]), [
+  ['booking_options_open', 'hero'],
+  ['booking_options_open', 'header']
+]);
+home.click('#omdomen'); home.click('#boka');
+assert.equal(home.events.length, 2, 'Reading the reviews is independent of choosing a visit');
+home.window.KanseiMeasure = false;
+home.click('#vara-huvudtjanster', 'hero');
+assert.equal(home.events.length, 2);
+
 const unsupported = fixture({consent: true, observer: false});
 unsupported.tick(2000); unsupported.click();
 assert.equal(unsupported.events.length, 1); assert.equal(unsupported.events[0][1], 'booking_options_open');

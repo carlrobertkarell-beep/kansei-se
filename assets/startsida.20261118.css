@@ -1,0 +1,198 @@
+/* Homepage only. The navigation, dialogs and footer keep their shared controls. */
+body.home-scroll-site {
+  --home-ink: #203533;
+  --home-muted: #4b5d5a;
+  --home-deep: #172c2b;
+  --home-mist: #eef2eb;
+  --home-rule: #ccd4cd;
+  --home-gutter: clamp(22px, 5vw, 82px);
+}
+.home-shell { width: min(calc(100% - 2 * var(--home-gutter)), 1280px); margin-inline: auto; }
+.home-scroll-site #main { background: #fff; color: var(--home-ink); }
+.home-scroll-site #main * { overflow-wrap: break-word; }
+.home-scroll-site #main p { line-height: 1.57; }
+.home-scroll-site #main h2 { color: inherit; letter-spacing: -.045em; font-size: clamp(2.2rem, 4.1vw, 3.85rem); line-height: 1.055; }
+.home-scroll-site #main :is(a, summary):focus-visible { outline: 3px solid #c78d2a; outline-offset: 4px; }
+.home-scroll-site #main a { text-underline-offset: 4px; }
+.home-scroll-site #main section { scroll-margin: 0; }
+
+@media screen and (scripting: enabled) {
+  body.home-scroll-site .site-header { margin-block-end: calc(-1 * var(--clinic-header-height) - 1px); }
+  body.home-scroll-site:not(:has(dialog[open])) .site-header:not(.is-scrolled) {
+    background: transparent; border-color: transparent; box-shadow: none;
+    --clinic-ink: #fff; --clinic-primary: #fff; --clinic-tint: #ffffff21;
+    -webkit-backdrop-filter: none; backdrop-filter: none;
+  }
+  body.home-scroll-site:not(:has(dialog[open])) .site-header:not(.is-scrolled) .clinic-outline-logo { filter: brightness(0) invert(1); }
+  body.home-scroll-site .site-header .header-icon-actions { gap: 0; }
+  body.home-scroll-site .site-header :is(.desktop-nav > a, .header-icon-actions .header-book) { font-weight: 400; }
+  body.home-scroll-site .site-header .header-action-icon { stroke-width: 1.45; }
+  body.home-scroll-site .site-header .site-search-toggle .header-action-icon { transform: translateX(3px); }
+  body.home-scroll-site .site-header .site-menu-toggle .header-action-icon { transform: translateX(-2px); }
+}
+
+.home-first-impression {
+  position: relative; isolation: isolate; overflow: hidden; background: var(--home-deep); color: #fff;
+}
+.home-intro-image { position: absolute; inset: 0; z-index: -1; }
+.home-intro-image :is(picture,img) { width: 100%; height: 100%; display: block; }
+.home-intro-image img { object-fit: cover; object-position: center 33%; }
+.home-intro-image::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, #101f20ed 0%, #142725de 18%, #142725ae 34%, #14272546 48%, transparent 63%),
+              linear-gradient(180deg, #111d21a6, transparent 20%), linear-gradient(0deg, #16292538, transparent 34%);
+}
+.home-hero-inner { min-height: clamp(620px, 87svh, 850px); display: flex; align-items: center; padding-block: 130px 58px; }
+.landing-hero-copy { width: min(39%, 490px); min-width: 350px; }
+.home-scroll-site #main .home-byline { font-size: .875rem; font-weight: 500; line-height: 1.4; margin: 0 0 18px; letter-spacing: .012em; color: #fff; }
+.home-byline span { padding-inline: .14em; }
+body.home-scroll-site #main #home-title { margin: 0; color: #fff; font-size: clamp(2.9rem, 4.6vw, 5.15rem); line-height: .99; letter-spacing: -.047em; text-wrap: balance; }
+.home-scroll-site #main .landing-hero-lead { margin: 17px 0 0; color: #fff; font-size: clamp(1rem, 1.36vw, 1.18rem); line-height: 1.52; max-width: 37ch; }
+.landing-hero-actions { display: flex; gap: 8px 21px; align-items: center; flex-wrap: wrap; margin-top: 26px; }
+.home-cta, .home-service-book { display: inline-flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 46px; border-radius: 4px; padding: 9px 17px; font-weight: 600; line-height: 1.3; }
+.home-scroll-site #main .home-cta { color: var(--home-deep); background: #fff; text-decoration: none; }
+.home-scroll-site #main .home-cta:hover { background: #e8eee5; }
+.home-underlink, .home-meet-body .home-underlink { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; color: inherit; text-decoration: underline; text-decoration-thickness: 1px; }
+.home-underlink:hover, .home-featured-quote a:hover, .home-visit-actions a:hover { text-decoration-thickness: 2px; }
+.home-intro-ratings { display: flex; gap: 18px; margin-top: 31px; }
+.home-intro-ratings a { color: #fff; display: flex; align-items: start; justify-content: center; flex-direction: column; min-height: 44px; gap: 2px; border: none; }
+.home-intro-ratings a + a { padding-left: 18px; border-left: 1px solid #ffffff68; }
+.home-intro-ratings a:hover .home-rating-source { text-decoration: underline; }
+.home-rating-line { display: flex; align-items: center; gap: 8px; }
+.home-rating-line b { font-size: 1.09rem; font-weight: 650; line-height: 1.2; }
+.home-intro-review-stars { color: #f2c879; font: 400 .91rem/1.2 Arial, sans-serif; letter-spacing: 1px; }
+.home-intro-review-stars.partial { color: transparent; background: linear-gradient(90deg,#f2c879 0 95%,#9eaaa6 95%); background-clip: text; -webkit-background-clip: text; }
+.home-rating-source { font-size: .78rem; line-height: 1.4; }
+
+.home-voices { background: var(--home-mist); padding-block: clamp(38px, 6vw, 78px); }
+.home-voices-inner { display: grid; grid-template-columns: minmax(0, .70fr) minmax(0, 1.3fr); gap: clamp(24px, 5vw, 80px); }
+.home-scroll-site #main .home-voice-intro h2, .home-kicker { margin: 0; color: #405e53; font: 600 .79rem/1.5 var(--sans); letter-spacing: .09em; text-transform: uppercase; }
+.home-quotemark { display: block; height: 80px; margin-top: 18px; font: 7.1rem/.9 Georgia, serif; color: #8aa18d; }
+.home-featured-quote, .home-quote-pair figure { margin: 0; }
+.home-featured-quote blockquote { margin: 0; max-width: 28ch; font: 400 clamp(1.7rem, 2.8vw, 2.75rem)/1.19 var(--clinic-display); letter-spacing: -.028em; }
+.home-voice-body figcaption { margin-top: 15px; font-size: .82rem; color: var(--home-muted); }
+.home-featured-quote figcaption a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; text-decoration: underline; }
+.home-more-voices { margin-top: 16px; border-top: 1px solid #c5d0c4; }
+.home-more-voices summary, .home-hyaluron-details summary, .home-practical summary { display: list-item; cursor: pointer; padding-block: 11px; min-height: 44px; font-weight: 500; }
+.home-quote-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding-top: 12px; }
+.home-quote-pair blockquote { margin: 0; font: 400 1.25rem/1.4 var(--clinic-display); }
+.home-more-voices .home-underlink { font-size: .86rem; margin-top: 10px; }
+.home-decisions, .home-symptoms, .home-arrival { padding-block: clamp(58px, 7.4vw, 118px); }
+.home-split { display: grid; grid-template-columns: minmax(0,.76fr) minmax(0,1.24fr); gap: clamp(36px,7vw,120px); align-items: start; }
+.home-section-head h2 { max-width: 11.5ch; margin: 0; }
+.home-section-head p { color: var(--home-muted); font-size: 1.075rem; margin: 17px 0 0; max-width: 32ch; }
+.home-visit { padding-block: 24px 25px; border-top: 1px solid var(--home-rule); }
+.home-visit:last-of-type { border-bottom: 1px solid var(--home-rule); }
+.home-scroll-site #main .home-category { margin: 0 0 10px; display: flex; align-items: baseline; flex-wrap: wrap; gap: 3px 10px; color: #416457; font: 650 .85rem/1.5 var(--sans); }
+.home-category span { font-weight: 400; color: var(--home-muted); }
+.home-category span::before { content: "·"; margin-right: 10px; }
+.home-visit h3 { font: 400 clamp(1.55rem, 2.2vw, 2.05rem)/1.17 var(--clinic-display); letter-spacing: -.035em; margin: 0; color: var(--home-ink); text-wrap: pretty; }
+.home-visit > p:not(.home-category), .home-meet-body > p:not(.home-kicker,.home-human-role), .home-hyaluron-lead { color: var(--home-muted); font-size: 1.03rem; margin: 10px 0 0; max-width: 53ch; }
+.home-visit-actions, .home-hyaluron-actions { display: flex; gap: 4px 20px; flex-wrap: wrap; align-items: center; margin-top: 15px; }
+.home-visit-actions a, .home-hyaluron-actions a, .home-symptoms-booking, .home-arrival-actions a, .home-joint-links a { display: inline-flex; align-items: center; min-height: 44px; color: inherit; text-decoration: underline; }
+.home-scroll-site #main .home-service-book, .home-hyaluron-actions [data-service] { color: #fff; background: #22433b; padding: 9px 15px; border-radius: 4px; text-decoration: none; }
+.home-scroll-site #main .home-service-book:hover, .home-hyaluron-actions [data-service]:hover { background: #152f29; }
+.home-all-visits { margin-top: 12px; font-size: .9rem; }
+.home-meet { background: #f5f3ed; }
+.home-meet-inner { display: grid; grid-template-columns: 1.07fr .93fr; align-items: center; gap: clamp(36px,6vw,98px); padding-block: clamp(48px,6vw,82px); }
+.home-meet-scene { margin: 0; }
+.home-meet-scene img { width: 100%; height: auto; aspect-ratio: 1.06; object-fit: cover; object-position: 74% 40%; }
+.home-scroll-site #main .home-meet-body h2 { margin: 12px 0 0; font-size: clamp(2.3rem,3.7vw,3.65rem); }
+.home-human-role { color: var(--home-muted); margin-top: 4px; }
+.home-meet-body > p:not(.home-kicker,.home-human-role) { margin-top: 18px; }
+.home-meet-body .home-underlink { margin-right: 14px; font-size: .94rem; }
+.home-meet-body .home-underlink:first-of-type { margin-top: 12px; }
+.home-hyaluron { padding-block: clamp(54px,7vw,96px); background: #fff; }
+.home-hyaluron-grid { display: grid; grid-template-columns: .81fr 1.19fr; align-items: center; gap: clamp(34px,6vw,90px); }
+.home-hyaluron-copy h2 { margin: 12px 0 0; }
+.home-hyaluron .home-hyaluron-actions { margin-top: 16px; }
+.home-joint-links { display: flex; gap: 20px; margin-top: 6px; }
+.home-hyaluron-details { font-size: .91rem; border-top: 1px solid var(--home-rule); margin-top: 8px; max-width: 380px; }
+.home-hyaluron-film { margin: 0; }
+.home-hyaluron-film :is(img, video) { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.home-hyaluron-film [hidden] { display: none; }
+.home-hyaluron-film figcaption { color: var(--home-muted); margin-top: 9px; font-size: .8rem; }
+.home-symptoms { background: var(--home-mist); }
+.home-symptoms-list { list-style: none; padding: 0; margin: 0; border-bottom: 1px solid var(--home-rule); }
+.home-symptoms-list li { border-top: 1px solid var(--home-rule); }
+.home-symptoms-list a { display: grid; padding: 16px 34px 16px 0; position: relative; gap: 4px; }
+.home-symptoms-list strong { font-weight: 600; }
+.home-symptoms-list span { font-size: .94rem; color: var(--home-muted); }
+.home-symptoms-list a:hover strong { text-decoration: underline; }
+.home-symptoms-booking { margin-top: 9px; }
+.home-arrival-top, .home-practical { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,6vw,85px); }
+.home-arrival-location { margin-top: 14px; font-size: 1.17rem; }
+.home-arrival-note { align-self: center; color: var(--home-muted); }
+.home-arrival a { text-decoration: underline; }
+.home-practical { border-top: 1px solid var(--home-rule); padding-top: 33px; margin-top: 30px; }
+.home-practical h3 { font: 400 1.5rem/1.22 var(--clinic-display); margin-bottom: 12px; letter-spacing: -.025em; }
+.home-practical details { border-bottom: 1px solid var(--home-rule); }
+.home-practical details p { margin: 0 0 13px; color: var(--home-muted); }
+.home-knowledge-links { display: grid; gap: 1px; }
+.home-knowledge-links a, .home-area-links a, .home-knowledge-all { display: inline-flex; align-items: center; min-height: 44px; }
+.home-area-links { display: flex; flex-wrap: wrap; column-gap: 14px; margin-top: 6px; }
+body.home-scroll-site .footer { margin-top: 0; }
+
+@media (min-width: 761px) and (max-width: 1020px) {
+  .home-hero-inner { min-height: clamp(560px,78svh,710px); }
+  .landing-hero-copy { min-width: 305px; }
+  .home-intro-image img { object-position: 60% 28%; }
+}
+@media (max-width: 760px) {
+  .home-first-impression { display: flex; flex-direction: column; min-height: 100svh; min-height: 100dvh; }
+  .home-intro-image { position: relative; inset: auto; flex: 1 0 auto; min-height: clamp(220px,46svh,490px); overflow: hidden; }
+  .home-intro-image picture { position: absolute; inset: 0; }
+  .home-intro-image img { object-position: 50% 32%; }
+  .home-intro-image::after { background: linear-gradient(180deg,#10201fc9 0%, #10201f38 16%, transparent 34%, transparent 68%, #172c2b9c 88%, var(--home-deep)); }
+  .home-hero-inner { min-height: 0; padding-block: 2px max(22px,env(safe-area-inset-bottom)); flex: 0 0 auto; }
+  .landing-hero-copy { width: 100%; min-width: 0; }
+  body.home-scroll-site #main #home-title { max-width: 17ch; font-size: clamp(2.05rem, 8.7vw, 3.25rem); line-height: 1.03; text-wrap: pretty; }
+  .home-scroll-site #main .home-byline { margin-bottom: 7px; font-size: .82rem; }
+  .home-scroll-site #main .landing-hero-lead { max-width: 43ch; font-size: 1rem; line-height: 1.42; margin-top: 11px; }
+  .landing-hero-actions { margin-top: 15px; gap: 1px 17px; }
+  .landing-hero-actions .home-underlink { font-size: .93rem; }
+  .home-cta { font-size: .95rem; gap: 10px; }
+  .home-intro-ratings { margin-top: 15px; gap: 14px; }
+  .home-intro-ratings a + a { padding-left: 14px; }
+  .home-rating-source { font-size: .73rem; }
+  .home-rating-line { gap: 7px; }
+  .home-voices-inner, .home-split, .home-meet-inner, .home-hyaluron-grid, .home-arrival-top, .home-practical { grid-template-columns: minmax(0,1fr); }
+  .home-voices-inner { gap: 14px; }
+  .home-voice-intro { display: flex; align-items: center; gap: 11px; }
+  .home-quotemark { order: -1; height: 21px; margin: 0; font-size: 2.8rem; }
+  .home-featured-quote blockquote { max-width: 32ch; }
+  .home-featured-quote figcaption { margin-top: 5px; }
+  .home-more-voices { margin-top: 5px; }
+  .home-quote-pair { grid-template-columns: 1fr; gap: 20px; }
+  .home-voice-body figcaption { margin-top: 6px; }
+  .home-split { gap: 26px; }
+  .home-section-head h2 { max-width: 17ch; }
+  .home-section-head p { max-width: none; font-size: 1rem; margin-top: 12px; }
+  .home-visit { padding: 20px 0; }
+  .home-category span::before { margin-right: 4px; }
+  .home-scroll-site #main .home-category { gap: 2px 5px; }
+  .home-meet-inner { width: 100%; gap: 0; padding: 0; }
+  .home-meet-scene img { aspect-ratio: 1.38; object-position: 69% 40%; }
+  .home-meet-body { padding: 28px var(--home-gutter) 42px; }
+  .home-hyaluron-grid { gap: 23px; }
+  .home-hyaluron-film { grid-row: 1; }
+  .home-arrival-top, .home-practical { gap: 22px; }
+}
+@media (max-width: 390px) {
+  .home-hero-inner { padding-bottom: max(17px,env(safe-area-inset-bottom)); }
+  .home-intro-ratings { margin-top: 11px; }
+  .home-hero-inner .home-underlink { font-size: .85rem; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media print {
+  .home-first-impression { min-height: auto; background: #fff; color: #111; }
+  .home-first-impression .home-hero-inner { min-height: 0; padding-block: 12px; }
+  .home-intro-image, .landing-hero-actions { display: none; }
+  body.home-scroll-site #main .home-first-impression :is(h1,p,a) { color:#111; }
+}
+@media (min-width: 761px) {
+  .home-intro-image::after {
+    background: linear-gradient(90deg, #101f20ed 0%, #142725de 18%, #142725ae 34%, #14272546 48%, transparent 63%),
+                linear-gradient(180deg, #101c20cc 0, #101c2059 68px, transparent 150px), linear-gradient(0deg, #16292538, transparent 34%);
+  }
+}

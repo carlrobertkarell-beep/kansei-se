@@ -22,6 +22,20 @@ def check_discovery(page, path, output, label):
     elif path == '/' and page.locator('.home-case-preview').count():
         block = page.locator('.home-case-preview')
         routes = ('/ultraljud/kna/#artros',)
+    elif path in ('/ultraljud/kna/', '/ultraljud/axel/') and page.locator('details.visit-more').count():
+        # The patient example is visible early; complementary cases can be expanded.
+        knee = path == '/ultraljud/kna/'
+        featured = page.locator('#loparfall' if knee else '#bildexempel')
+        example = '/ultraljud/loparkna/' if knee else '/ultraljud/kalkaxel/#patientfall'
+        assert featured.locator(f'a[href="{example}"]').is_visible(), 'Featured case must be directly reachable'
+        block = page.locator('#besvar' if knee else '#bildexempel')
+        if knee:
+            routes = tuple(href for href in routes if href != example)
+        more = block.locator('details.visit-more')
+        assert more.count() == 1 and not more.evaluate('node => node.open')
+        more.locator('summary').focus()
+        page.keyboard.press('Enter')
+        assert more.evaluate('node => node.open'), 'Additional cases must open from the keyboard'
     assert block.count() == 1, 'Expected one concise discovery block'
     for href in routes:
         link = block.locator(f'a[href="{href}"]')
@@ -31,6 +45,9 @@ def check_discovery(page, path, output, label):
     assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 2')
     block.screenshot(path=str(output / f'discovery-{path.strip("/").replace("/", "-") or "home"}-{label}.png'),
                      style='.site-header {visibility:hidden}')
+    opened = block.locator('details.visit-more[open]')
+    if opened.count():
+        opened.locator('summary').click()
     if path == '/naprapati/':
         local = page.locator('.discovery-local')
         assert 'Upplandsgatan 26' in local.inner_text()

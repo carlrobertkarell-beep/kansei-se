@@ -1,0 +1,106 @@
+/* Patient experience accompanies the clinical photograph on service landing pages. */
+.visit-visual {
+  min-width: 0;
+}
+.treatment-hero-grid > .visit-visual {
+  grid-area: visual;
+}
+body.clinic-site #main .visit-visual > figure {
+  margin: 0;
+}
+body.clinic-site #main .visit-visual .visit-film-still img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  object-position: 50% 40%;
+}
+body.clinic-site #main .visit-visual .visit-experience {
+  padding: 18px 0 0;
+}
+body.clinic-site #main .visit-experience blockquote {
+  max-width: 40ch;
+  margin: 0 0 6px;
+  padding: 0;
+  border: 0;
+  color: #183443;
+  font-family: var(--serif, Georgia, serif);
+  font-size: clamp(1.15rem, 1.6vw, 1.55rem);
+  line-height: 1.35;
+  letter-spacing: -.015em;
+}
+body.clinic-site #main .visit-experience figcaption {
+  position: static;
+  padding: 0;
+  background: none;
+  color: #435764;
+  font-size: .83rem;
+  line-height: 1.5;
+}
+.visit-experience a {
+  color: inherit;
+  text-underline-offset: .18em;
+}
+body.clinic-site #main .visit-more {
+  margin-top: 22px;
+  border-block: 1px solid #d6e2ec;
+  padding: 0;
+}
+body.clinic-site #main .visit-more summary {
+  min-height: 44px;
+  padding: 12px 0;
+  color: #183443;
+  font-weight: 600;
+  cursor: pointer;
+}
+body.clinic-site #main .visit-more[open] {
+  padding-bottom: 12px;
+}
+.visit-resources {
+  line-height: 1.65;
+  padding-inline-start: 1.25em;
+}
+body.clinic-site #main .visit-expectation {
+  max-width: 65ch;
+  margin-top: 1.25rem;
+}
+body.clinic-site #main .visit-expectation a {
+  display: inline;
+  text-decoration: underline;
+}
+body.clinic-site #main .service-first-hero .visit-provider {
+  max-width: 45ch;
+  margin: 12px 0 0;
+  color: #2e4859;
+  font-size: .94rem;
+  line-height: 1.55;
+}
+.visit-provider a {
+  color: inherit;
+  font-weight: 600;
+  text-underline-offset: .18em;
+}
+body.clinic-site #main .service-first-hero :is(.clinical-landing-booking, .treatment-offer) .button {
+  justify-self: start;
+  margin-inline: 0;
+  background: #18384a;
+  color: #fff;
+  border-color: #18384a;
+  border-radius: 99px;
+}
+body.clinic-site #main .service-first-hero :is(.clinical-landing-booking, .treatment-offer) .button:hover,
+body.clinic-site #main .service-first-hero :is(.clinical-landing-booking, .treatment-offer) .button:focus-visible {
+  background: #234d63;
+}
+@media (max-width: 760px) {
+  body.clinic-site #main .service-first-hero .clinical-landing-booking {
+    display: grid;
+    gap: .7rem;
+    justify-content: start;
+  }
+  body.clinic-site #main .service-first-hero .clinical-landing-booking .landing-hero-actions {
+    justify-content: start;
+    justify-self: start;
+    margin: 0;
+  }
+}

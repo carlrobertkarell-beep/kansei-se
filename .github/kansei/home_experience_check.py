@@ -1,101 +1,94 @@
-"""Check the homepage's symptom routes, booking help and responsive layout."""
-from urllib.parse import parse_qs, urlparse
+"""Check the homepage decision paths, sourced patient voices, practitioner and film."""
+import re
+from urllib.parse import parse_qs, urlsplit
 
 from playwright.sync_api import expect
 
 
 def check_home_experience(page):
-    section = page.locator('.home-symptoms')
-    if not section.count() and page.url.startswith('https://www.kansei.se/'):
-        previous = page.locator('.home-case-preview')
-        expect(previous.get_by_role('link', name='Se patientfallet')).to_have_attribute('href', '/ultraljud/kna/#artros')
-        return 'Previous live homepage case still served during publication'
-
+    hero = page.locator('.home-first-impression')
+    reviews = page.locator('#omdomen')
+    choices = page.locator('#vara-huvudtjanster')
     try:
-        rating = page.locator('.home-intro-reviews')
-        if rating.count():
-            destination = rating.get_attribute('href')
-            if destination == '#omdomen':
-                assert not page.url.startswith('http://127.0.0.1:4173'), 'Candidate hero must link to Google reviews'
-            else:
-                reviews_url = urlparse(destination)
-                assert reviews_url.netloc == 'search.google.com' and reviews_url.path == '/local/reviews'
-                assert parse_qs(reviews_url.query).get('placeid') == ['ChIJA_rM2cSdX0YRF0Qnxqujcuw']
-                expect(rating.locator('.home-intro-review-source')).to_have_text('Google')
-                expect(rating.locator('.home-intro-review-stars')).to_be_visible()
-                if page.viewport_size['width'] <= 760:
-                    assert rating.evaluate("""link => {
-                        const hero = link.closest('.clinic-home-intro').getBoundingClientRect();
-                        return hero.bottom + window.scrollY >= window.innerHeight - 1;
-                    }"""), 'Mobile hero must reach the bottom of the first viewport'
-            reviews = page.locator('#omdomen')
-            assert reviews.evaluate("element => element.previousElementSibling.id === 'vara-huvudtjanster'")
-            quotes = reviews.locator('blockquote')
-            expect(quotes).to_have_count(3)
-            for quote in quotes.all():
-                expect(quote).to_be_visible()
-            expect(reviews.locator('.hr-footer a')).to_have_attribute(
-                'href', 'https://www.bokadirekt.se/places/kansei-naprapati-rehabcenter-48847')
-            avatar = page.locator('.home-human-avatar')
-            expect(avatar).to_be_visible()
-            mobile = page.viewport_size['width'] <= 760
-            if mobile:
-                assert avatar.evaluate("""image => {
-                    const box = image.getBoundingClientRect();
-                    const container = image.parentElement.getBoundingClientRect();
-                    const name = image.nextElementSibling.getBoundingClientRect();
-                    return Math.abs(box.width - container.width) <= 1 &&
-                        Math.abs(box.width / box.height - 4 / 5) < 0.01 && box.bottom <= name.top;
-                }"""), 'Mobile portrait must fill its column at the original proportions above the profile'
-            else:
-                assert avatar.bounding_box()['width'] <= 96, 'Desktop portrait must fit its column'
-            player = page.locator('.home-hyaluron-film video')
-            expect(player).to_have_attribute(
-                'poster', '/bilder/filmer/kansei-hyaluron-behandlingsrum.20261108.webp')
-            cover = page.locator('[data-home-film-play]')
-            if cover.count():
-                expect(cover).to_be_visible()
-                expect(cover).to_have_attribute('href', '/hyaluronsyra/ultraljudsvagledd-injektion/')
-                expect(player).to_be_hidden()
-                if mobile:
-                    assert cover.evaluate("""link => {
-                        const button = link.querySelector('.landing-hero-film-play').getBoundingClientRect();
-                        const box = link.getBoundingClientRect();
-                        return Math.abs(button.left - box.left - 14) <= 1;
-                    }"""), 'Mobile film action must be aligned with the left edge'
+        deny = page.locator('[data-statistics="no"]:visible')
+        if deny.count():
+            deny.click()
+        ratings = hero.get_by_role('link', name=re.compile('Google'))
+        expect(ratings).to_be_visible()
+        dest = urlsplit(ratings.get_attribute('href'))
+        assert dest.netloc == 'search.google.com' and dest.path == '/local/reviews'
+        assert parse_qs(dest.query).get('placeid') == ['ChIJA_rM2cSdX0YRF0Qnxqujcuw']
+        expect(hero.locator('a[href="#omdomen"]')).to_contain_text('Bokadirekt')
+        assert reviews.evaluate("el => el.previousElementSibling.classList.contains('home-first-impression')")
+        assert choices.evaluate("el => el.previousElementSibling.id === 'omdomen'")
+        quotes = reviews.locator('figure:has(blockquote)')
+        assert quotes.count() >= 2, 'Show patients speaking in their own words with both sources'
+        expect(reviews.locator('blockquote:visible').first).to_be_visible()
+        more = reviews.locator('details')
+        more.locator('summary').focus()
+        page.keyboard.press('Enter')
+        sources = set()
+        for quote in quotes.all():
+            expect(quote.locator('blockquote')).to_be_visible()
+            caption = quote.locator('figcaption')
+            expect(caption).to_be_visible()
+            if 'Google' in caption.inner_text():
+                source = urlsplit(caption.get_by_role('link').get_attribute('href'))
+                assert source.hostname == 'www.google.com' and source.path.startswith('/maps/reviews/')
+                sources.add('Google')
+            if 'Bokadirekt' in caption.inner_text():
+                sources.add('Bokadirekt')
+        assert sources == {'Google', 'Bokadirekt'}, 'Each review needs its actual source next to its quote'
+        expect(reviews.get_by_role('link', name=re.compile('Bokadirekt'))).to_have_attribute(
+            'href', 'https://www.bokadirekt.se/places/kansei-naprapati-rehabcenter-48847')
+        more.locator('summary').click()
+        expect(choices.locator('.home-visit')).to_have_count(3)
+        service_links = choices.locator('.home-visit a[href]')
+        links = service_links.evaluate_all('nodes => nodes.map(link => link.getAttribute("href"))')
+        for suffix in ('-3263299', '-1946824', '-3409516'):
+            assert any(link.startswith('https://www.bokadirekt.se/boka-tjanst/') and link.endswith(suffix)
+                       for link in links), f'Preselected booking missing: {suffix}'
+        for href in ('/naprapati/', '/ultraljud/', '/prp/'):
+            assert href in links, f'Visit choices must link to {href}'
+        normalized = ' '.join(choices.inner_text().split())
+        assert '1 290 kr' in normalized and '890 kr' in normalized
+        for link in service_links.all():
+            if not link.is_visible():
+                continue
+            bounds = link.bounding_box()
+            assert bounds and min(bounds['width'], bounds['height']) >= 44, 'Small visit-choice touch target'
 
-        expect(section.get_by_role('heading', level=2)).to_be_visible()
-        expect(section.locator('.home-symptoms-list').get_by_role('link')).to_have_count(3)
-        booking = section.get_by_role('link', name='Hjälp mig välja besök', exact=True)
-        expect(booking).to_have_attribute('href', '/hjalp-mig-boka/')
-        expect(section.get_by_role('link')).to_have_count(4)
-        image = section.get_by_role('img')
-        small_view = page.viewport_size['width'] <= 860
-        compact_layout = page.locator('.home-human-role').count() > 0
-        if small_view and compact_layout:
-            expect(section.locator('.home-symptoms-photo')).to_be_hidden()
-            assert section.evaluate("""section => {
-                const booking = section.querySelector('.home-symptoms-booking').getBoundingClientRect();
-                const line = section.querySelector('.home-symptoms-list').getBoundingClientRect();
-                return Math.abs(booking.left - line.left) <= 1 &&
-                    [...section.querySelectorAll('a')].every(link => link.getBoundingClientRect().height >= 44);
-            }"""), 'Mobile symptom links and booking must fit the content column'
-        else:
-            image.scroll_into_view_if_needed()
-            page.wait_for_function(
-                "img => img.complete && img.naturalWidth > 0",
-                arg=image.element_handle(), timeout=15000)
-        if small_view and not compact_layout:
-            assert section.evaluate("""section => {
-                const heading = section.querySelector('h2').getBoundingClientRect();
-                const photo = section.querySelector('.home-symptoms-photo').getBoundingClientRect();
-                const booking = section.querySelector('.home-symptoms-booking').getBoundingClientRect();
-                return heading.bottom < booking.top && booking.bottom < photo.top &&
-                    Math.abs(photo.left - heading.left) <= 1 &&
-                    Math.abs(photo.right - booking.right) <= 1 &&
-                    [...section.querySelectorAll('a')].every(link => link.getBoundingClientRect().height >= 44);
-            }"""), 'Symptom links and booking help must precede the image and fit the mobile layout'
-        return 'Symptom links, booking help, clinic photo and mobile layout passed'
+        profile = page.locator('#arbetssatt')
+        portrait = profile.locator('.home-human-avatar')
+        expect(portrait).to_be_visible()
+        portrait.scroll_into_view_if_needed()
+        assert portrait.evaluate("""async img => {
+            await img.decode();
+            const box = img.getBoundingClientRect();
+            return img.naturalWidth >= 700 && box.width >= Math.min(280, innerWidth * .82) && box.height >= 215;
+        }"""), 'The named clinician needs a substantial, loaded portrait on mobile and desktop'
+        assert 'carl-robert' in (portrait.get_attribute('alt') or '').lower()
+        assert portrait.get_attribute('src') != hero.locator('.home-intro-image img').get_attribute('src')
+        expect(profile.locator('a[href="/team/carl-robert-karell/"]')).to_be_visible()
+
+        cover = page.locator('[data-home-film-play]')
+        expect(cover).to_be_visible()
+        expect(cover).to_have_attribute('href', '/hyaluronsyra/film/')
+        player = page.locator('.home-hyaluron-film video')
+        expect(player).to_be_hidden()
+        poster = cover.locator('img')
+        expect(poster).to_be_visible()
+        assert poster.evaluate("async img => { await img.decode(); return img.naturalWidth > 0; }"), 'The educational film needs a usable poster'
+        assert player.get_attribute('poster') == poster.get_attribute('src')
+        assert player.get_attribute('controls') is not None
+        assert player.locator('track[kind="captions"][srclang="sv"], track[kind="subtitles"][srclang="sv"]').count() >= 1
+        if player.evaluate("video => !!video.canPlayType('video/mp4')"):
+            cover.click()
+            expect(player).to_be_visible()
+            player.evaluate('video => video.pause()')
+        symptoms = page.locator('#se-och-forsta')
+        expect(symptoms.get_by_role('heading', level=2)).to_be_visible()
+        expect(symptoms.locator('a[href="/hjalp-mig-boka/"]')).to_be_visible()
+        return 'Patient choices, two sourced voices, large clinician portrait and captioned film passed'
     finally:
         page.evaluate("document.activeElement?.blur(); window.scrollTo({top:0,behavior:'instant'})")
-        page.wait_for_function('window.scrollY === 0')

@@ -2,11 +2,13 @@
 (() => {
   'use strict';
   const titles = {
+    '/': 'Naprapati och ultraljud vid Odenplan',
     '/ultraljud/axel/': 'Ultraljud av axel i Stockholm',
     '/ultraljud/kna/': 'Ultraljud av knä i Stockholm',
     '/hyaluronsyra/kna/': 'Hyaluroninjektion i knä i Stockholm'
   };
   const path = location.pathname.replace(/\/?$/, '/');
+  const optionAnchors = path === '/' ? ['#vara-huvudtjanster'] : ['#boka', '#pris'];
   const id = document.querySelector('meta[name="kansei-ga4"]')?.content || '';
   if (!['kansei.se', 'www.kansei.se'].includes(location.hostname) ||
       !document.body.classList.contains('clinic-site') || !titles[path] ||
@@ -90,9 +92,9 @@
     try {
       const destination = new URL(anchor.getAttribute('href'), location.href);
       if (destination.origin !== location.origin || destination.pathname !== location.pathname ||
-          destination.search !== location.search || !['#boka', '#pris'].includes(destination.hash)) return;
+          destination.search !== location.search || !optionAnchors.includes(destination.hash)) return;
       const requested = anchor.dataset.placement;
-      const placement = ['header', 'footer', 'guide', 'menu', 'content', 'price_list', 'service_card'].includes(requested)
+      const placement = ['header', 'hero', 'footer', 'guide', 'menu', 'content', 'price_list', 'service_card'].includes(requested)
         ? requested : anchor.closest('.site-header') ? 'header'
           : anchor.closest('.footer') ? 'footer' : anchor.closest('#site-menu') ? 'menu' : 'content';
       send('booking_options_open', placement);

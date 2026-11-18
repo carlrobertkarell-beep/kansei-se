@@ -1,4 +1,6 @@
 """Check the homepage's symptom routes, booking help and responsive layout."""
+from urllib.parse import parse_qs, urlparse
+
 from playwright.sync_api import expect
 
 
@@ -12,7 +14,20 @@ def check_home_experience(page):
     try:
         rating = page.locator('.home-intro-reviews')
         if rating.count():
-            expect(rating).to_have_attribute('href', '#omdomen')
+            destination = rating.get_attribute('href')
+            if destination == '#omdomen':
+                assert not page.url.startswith('http://127.0.0.1:4173'), 'Candidate hero must link to Google reviews'
+            else:
+                reviews_url = urlparse(destination)
+                assert reviews_url.netloc == 'search.google.com' and reviews_url.path == '/local/reviews'
+                assert parse_qs(reviews_url.query).get('placeid') == ['ChIJA_rM2cSdX0YRF0Qnxqujcuw']
+                expect(rating.locator('.home-intro-review-source')).to_have_text('Google')
+                expect(rating.locator('.home-intro-review-stars')).to_be_visible()
+                if page.viewport_size['width'] <= 760:
+                    assert rating.evaluate("""link => {
+                        const hero = link.closest('.clinic-home-intro').getBoundingClientRect();
+                        return hero.bottom + window.scrollY >= window.innerHeight - 1;
+                    }"""), 'Mobile hero must reach the bottom of the first viewport'
             reviews = page.locator('#omdomen')
             assert reviews.evaluate("element => element.previousElementSibling.id === 'vara-huvudtjanster'")
             quotes = reviews.locator('blockquote')

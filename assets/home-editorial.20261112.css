@@ -75,15 +75,45 @@ body.clinic-site #main .clinic-home-intro .home-intro-secondary {
 }
 
 body.clinic-site #main .clinic-home-intro .home-intro-reviews {
-  display: inline-flex;
-  align-items: center;
-  gap: .35em;
+  display: inline-grid;
+  gap: 4px;
   min-height: 44px;
-  margin-top: 3px;
+  margin-top: 10px;
+  padding-block: 3px;
   color: #fff;
   font-size: .875rem;
-  text-decoration: underline;
+  line-height: 1.3;
+  text-decoration: none;
   text-underline-offset: .22em;
+}
+
+body.clinic-site #main .clinic-home-intro .home-intro-reviews:hover .home-intro-review-source {
+  text-decoration: underline;
+}
+
+.home-intro-review-source {
+  font-size: .75rem;
+  font-weight: 650;
+  letter-spacing: .08em;
+}
+
+.home-intro-review-rating {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px 9px;
+}
+
+.home-intro-review-rating strong {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.home-intro-review-stars {
+  color: #ffd15a;
+  font: 1rem/1 Arial, sans-serif;
+  letter-spacing: .1em;
+  white-space: nowrap;
 }
 
 body.clinic-site #main .clinic-home-intro a:focus-visible {
@@ -101,7 +131,7 @@ body.clinic-site #main .clinic-home-intro .home-intro-image {
 body.clinic-site #main .clinic-home-intro .home-intro-image::after {
   content: "";
   inset: 0;
-  background: linear-gradient(270deg, transparent 37%, #0b10172b 49%, #0b1017b8 69%, #0b1017d9 100%),
+  background: linear-gradient(270deg, transparent 35%, #0b101737 48%, #0b1017c2 69%, #0b1017d9 100%),
     linear-gradient(0deg, #0b101768, transparent 59%);
 }
 
@@ -474,7 +504,7 @@ body.clinic-site #main .home-symptoms a:focus-visible {
   }
 
   body.clinic-site #main .clinic-home-intro .home-intro-image::after {
-    background: linear-gradient(180deg, transparent 33%, #0b101765 44%, #0b1017be 55%, #0b1017d9 80%, #0b1017ec 100%);
+    background: linear-gradient(180deg, #0b101710 0%, #0b10172b 30%, #0b101791 43%, #0b1017b6 54%, #0b1017cf 76%, #0b1017e3 100%);
   }
 
   body.clinic-site #main :is(.clinic-feature-layout, .home-hyaluron-grid) {
@@ -507,6 +537,12 @@ body.clinic-site #main .home-symptoms a:focus-visible {
 }
 
 @media (max-width: 760px) {
+  body.clinic-site #main .clinic-home-intro .home-intro-grid {
+    min-height: calc(100svh - var(--clinic-header-height) - 1px);
+    min-height: calc(100dvh - var(--clinic-header-height) - 1px);
+    padding-block: clamp(125px, 30svh, 290px) 22px;
+  }
+
   body.clinic-site #main .clinic-home-intro h1 {
     max-width: 17ch;
     font-size: clamp(2rem, 9vw, 3.4rem);
@@ -565,6 +601,16 @@ body.clinic-site #main .home-symptoms a:focus-visible {
 
   body.clinic-site #main .home-hyaluron-actions a[data-service="hyaluron"]:hover {
     background: var(--clinic-hover, #00478f);
+  }
+}
+
+@media (max-width: 760px) and (max-height: 650px) {
+  body.clinic-site #main .clinic-home-intro .home-intro-grid {
+    padding-block-start: clamp(105px, 18svh, 160px);
+  }
+
+  body.clinic-site #main .clinic-home-intro .home-intro-image::after {
+    background: linear-gradient(180deg, #0b101710 0%, #0b10174d 12%, #0b101794 27%, #0b1017b6 43%, #0b1017cf 76%, #0b1017e3 100%);
   }
 }
 

@@ -140,7 +140,7 @@
   };
   document.addEventListener('kansei:booking-intent', e => {
     if (!granted || e.detail?.event !== 'booking_click') return;
-    const placement = ['header','footer','guide','menu','content','price_list','article_visit','case_card','service_card'].includes(e.detail.placement)
+    const placement = ['header','hero','footer','guide','menu','content','price_list','article_visit','case_card','service_card'].includes(e.detail.placement)
       ? e.detail.placement : 'content';
     rememberSource();
     // The existing key event is emitted exactly once. Service events are a separate breakdown,

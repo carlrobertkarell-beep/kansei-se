@@ -158,7 +158,7 @@
           const service=({'3263299':'naprapathy','1946824':'ultrasound','3409516':'hyaluron','3478216':'hyaluron','3409514':'prp','3409513':'consultation','1952697':'wellness'})[serviceId] || 'general';
           const placement=a.dataset.placement || (a.closest('.site-header')?'header':a.closest('.footer')?'footer':a.closest('#guide-dialog')?'guide':a.closest('#site-menu')?'menu':'content');
           // A fixed service category only; no raw URL, body area, symptom or booking outcome.
-          document.dispatchEvent(new CustomEvent('kansei:booking-intent',{detail:{event:'booking_click',service,audience:a.dataset.audience==='clinician'?'clinician':'visitor',placement:['header','footer','guide','menu','content','price_list','article_visit','case_card','service_card'].includes(placement)?placement:'content',version:'business-v3'}}));
+          document.dispatchEvent(new CustomEvent('kansei:booking-intent',{detail:{event:'booking_click',service,audience:a.dataset.audience==='clinician'?'clinician':'visitor',placement:['header','hero','footer','guide','menu','content','price_list','article_visit','case_card','service_card'].includes(placement)?placement:'content',version:'business-v3'}}));
         }
       }
       if(a.closest('dialog') && !a.closest('dialog').classList.contains('menu-minimal') && !a.hasAttribute('data-close'))closeDialog(a.closest('dialog'));

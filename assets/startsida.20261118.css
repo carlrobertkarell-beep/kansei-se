@@ -1,10 +1,10 @@
 /* Homepage only. The navigation, dialogs and footer keep their shared controls. */
 body.home-scroll-site {
-  --home-ink: #203533;
-  --home-muted: #4b5d5a;
-  --home-deep: #172c2b;
-  --home-mist: #eef2eb;
-  --home-rule: #ccd4cd;
+  --home-ink: var(--clinic-ink);
+  --home-muted: var(--clinic-secondary);
+  --home-deep: var(--clinic-navy);
+  --home-mist: var(--clinic-tint);
+  --home-rule: var(--clinic-rule);
   --home-gutter: clamp(22px, 5vw, 82px);
 }
 .home-shell { width: min(calc(100% - 2 * var(--home-gutter)), 1280px); margin-inline: auto; }
@@ -39,8 +39,8 @@ body.home-scroll-site {
 .home-intro-image img { object-fit: cover; object-position: center 33%; }
 .home-intro-image::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(90deg, #101f20ed 0%, #142725de 18%, #142725ae 34%, #14272546 48%, transparent 63%),
-              linear-gradient(180deg, #111d21a6, transparent 20%), linear-gradient(0deg, #16292538, transparent 34%);
+  background: linear-gradient(90deg, #0b203ced 0%, #122844de 18%, #122844ae 34%, #12284446 48%, transparent 63%),
+              linear-gradient(180deg, #0b203ca6, transparent 20%), linear-gradient(0deg, #012d6138, transparent 34%);
 }
 .home-hero-inner { min-height: clamp(620px, 87svh, 850px); display: flex; align-items: center; padding-block: 130px 58px; }
 .landing-hero-copy { width: min(39%, 490px); min-width: 350px; }
@@ -51,7 +51,7 @@ body.home-scroll-site #main #home-title { margin: 0; color: #fff; font-size: cla
 .landing-hero-actions { display: flex; gap: 8px 21px; align-items: center; flex-wrap: wrap; margin-top: 26px; }
 .home-cta, .home-service-book { display: inline-flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 46px; border-radius: 4px; padding: 9px 17px; font-weight: 600; line-height: 1.3; }
 .home-scroll-site #main .home-cta { color: var(--home-deep); background: #fff; text-decoration: none; }
-.home-scroll-site #main .home-cta:hover { background: #e8eee5; }
+.home-scroll-site #main .home-cta:hover { background: var(--home-mist); }
 .home-underlink, .home-meet-body .home-underlink { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; color: inherit; text-decoration: underline; text-decoration-thickness: 1px; }
 .home-underlink:hover, .home-featured-quote a:hover, .home-visit-actions a:hover { text-decoration-thickness: 2px; }
 .home-intro-ratings { display: flex; gap: 18px; margin-top: 31px; }
@@ -61,18 +61,18 @@ body.home-scroll-site #main #home-title { margin: 0; color: #fff; font-size: cla
 .home-rating-line { display: flex; align-items: center; gap: 8px; }
 .home-rating-line b { font-size: 1.09rem; font-weight: 650; line-height: 1.2; }
 .home-intro-review-stars { color: #f2c879; font: 400 .91rem/1.2 Arial, sans-serif; letter-spacing: 1px; }
-.home-intro-review-stars.partial { color: transparent; background: linear-gradient(90deg,#f2c879 0 95%,#9eaaa6 95%); background-clip: text; -webkit-background-clip: text; }
+.home-intro-review-stars.partial { color: transparent; background: linear-gradient(90deg,#f2c879 0 95%, #9cabb9 95%); background-clip: text; -webkit-background-clip: text; }
 .home-rating-source { font-size: .78rem; line-height: 1.4; }
 
 .home-voices { background: var(--home-mist); padding-block: clamp(38px, 6vw, 78px); }
 .home-voices-inner { display: grid; grid-template-columns: minmax(0, .70fr) minmax(0, 1.3fr); gap: clamp(24px, 5vw, 80px); }
-.home-scroll-site #main .home-voice-intro h2, .home-kicker { margin: 0; color: #405e53; font: 600 .79rem/1.5 var(--sans); letter-spacing: .09em; text-transform: uppercase; }
-.home-quotemark { display: block; height: 80px; margin-top: 18px; font: 7.1rem/.9 Georgia, serif; color: #8aa18d; }
+.home-scroll-site #main .home-voice-intro h2, .home-kicker { margin: 0; color: var(--clinic-navy); font: 600 .79rem/1.5 var(--sans); letter-spacing: .09em; text-transform: uppercase; }
+.home-quotemark { display: block; height: 80px; margin-top: 18px; font: 7.1rem/.9 Georgia, serif; color: #7197bc; }
 .home-featured-quote, .home-quote-pair figure { margin: 0; }
 .home-featured-quote blockquote { margin: 0; max-width: 28ch; font: 400 clamp(1.7rem, 2.8vw, 2.75rem)/1.19 var(--clinic-display); letter-spacing: -.028em; }
 .home-voice-body figcaption { margin-top: 15px; font-size: .82rem; color: var(--home-muted); }
 .home-featured-quote figcaption a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; text-decoration: underline; }
-.home-more-voices { margin-top: 16px; border-top: 1px solid #c5d0c4; }
+.home-more-voices { margin-top: 16px; border-top: 1px solid var(--home-rule); }
 .home-more-voices summary, .home-hyaluron-details summary, .home-practical summary { display: list-item; cursor: pointer; padding-block: 11px; min-height: 44px; font-weight: 500; }
 .home-quote-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding-top: 12px; }
 .home-quote-pair blockquote { margin: 0; font: 400 1.25rem/1.4 var(--clinic-display); }
@@ -83,15 +83,15 @@ body.home-scroll-site #main #home-title { margin: 0; color: #fff; font-size: cla
 .home-section-head p { color: var(--home-muted); font-size: 1.075rem; margin: 17px 0 0; max-width: 32ch; }
 .home-visit { padding-block: 24px 25px; border-top: 1px solid var(--home-rule); }
 .home-visit:last-of-type { border-bottom: 1px solid var(--home-rule); }
-.home-scroll-site #main .home-category { margin: 0 0 10px; display: flex; align-items: baseline; flex-wrap: wrap; gap: 3px 10px; color: #416457; font: 650 .85rem/1.5 var(--sans); }
+.home-scroll-site #main .home-category { margin: 0 0 10px; display: flex; align-items: baseline; flex-wrap: wrap; gap: 3px 10px; color: var(--clinic-navy); font: 650 .85rem/1.5 var(--sans); }
 .home-category span { font-weight: 400; color: var(--home-muted); }
 .home-category span::before { content: "·"; margin-right: 10px; }
 .home-visit h3 { font: 400 clamp(1.55rem, 2.2vw, 2.05rem)/1.17 var(--clinic-display); letter-spacing: -.035em; margin: 0; color: var(--home-ink); text-wrap: pretty; }
 .home-visit > p:not(.home-category), .home-meet-body > p:not(.home-kicker,.home-human-role), .home-hyaluron-lead { color: var(--home-muted); font-size: 1.03rem; margin: 10px 0 0; max-width: 53ch; }
 .home-visit-actions, .home-hyaluron-actions { display: flex; gap: 4px 20px; flex-wrap: wrap; align-items: center; margin-top: 15px; }
 .home-visit-actions a, .home-hyaluron-actions a, .home-symptoms-booking, .home-arrival-actions a, .home-joint-links a { display: inline-flex; align-items: center; min-height: 44px; color: inherit; text-decoration: underline; }
-.home-scroll-site #main .home-service-book, .home-hyaluron-actions [data-service] { color: #fff; background: #22433b; padding: 9px 15px; border-radius: 4px; text-decoration: none; }
-.home-scroll-site #main .home-service-book:hover, .home-hyaluron-actions [data-service]:hover { background: #152f29; }
+.home-scroll-site #main .home-service-book, .home-hyaluron-actions [data-service] { color: #fff; background: var(--clinic-primary); padding: 9px 15px; border-radius: 4px; text-decoration: none; }
+.home-scroll-site #main .home-service-book:hover, .home-hyaluron-actions [data-service]:hover { background: var(--clinic-hover); }
 .home-all-visits { margin-top: 12px; font-size: .9rem; }
 .home-meet { background: #f5f3ed; }
 .home-meet-inner { display: grid; grid-template-columns: 1.07fr .93fr; align-items: center; gap: clamp(36px,6vw,98px); padding-block: clamp(48px,6vw,82px); }
@@ -143,7 +143,7 @@ body.home-scroll-site .footer { margin-top: 0; }
   .home-intro-image { position: relative; inset: auto; flex: 1 0 auto; min-height: clamp(220px,46svh,490px); overflow: hidden; }
   .home-intro-image picture { position: absolute; inset: 0; }
   .home-intro-image img { object-position: 50% 32%; }
-  .home-intro-image::after { background: linear-gradient(180deg,#10201fc9 0%, #10201f38 16%, transparent 34%, transparent 68%, #172c2b9c 88%, var(--home-deep)); }
+  .home-intro-image::after { background: linear-gradient(180deg, #0b203cc9 0%, #0b203c38 16%, transparent 34%, transparent 68%, #012d619c 88%, var(--home-deep)); }
   .home-hero-inner { min-height: 0; padding-block: 2px max(22px,env(safe-area-inset-bottom)); flex: 0 0 auto; }
   .landing-hero-copy { width: 100%; min-width: 0; }
   body.home-scroll-site #main #home-title { max-width: 17ch; font-size: clamp(2.05rem, 8.7vw, 3.25rem); line-height: 1.03; text-wrap: pretty; }
@@ -192,7 +192,7 @@ body.home-scroll-site .footer { margin-top: 0; }
 }
 @media (min-width: 761px) {
   .home-intro-image::after {
-    background: linear-gradient(90deg, #101f20ed 0%, #142725de 18%, #142725ae 34%, #14272546 48%, transparent 63%),
-                linear-gradient(180deg, #101c20cc 0, #101c2059 68px, transparent 150px), linear-gradient(0deg, #16292538, transparent 34%);
+    background: linear-gradient(90deg, #0b203ced 0%, #122844de 18%, #122844ae 34%, #12284446 48%, transparent 63%),
+                linear-gradient(180deg, #0b203ccc 0, #0b203c59 68px, transparent 150px), linear-gradient(0deg, #012d6138, transparent 34%);
   }
 }

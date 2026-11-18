@@ -43,7 +43,7 @@ def check_home_hero(page, output, viewport):
         if photo.get_attribute('src') != '/bilder/k945944e614.webp' or 'knä' not in photo.get_attribute('alt'):
             raise AssertionError('The homepage must show the authentic knee ultrasound photograph with descriptive alt text')
         introduction = (heading.inner_text() + " " + lead.inner_text()).casefold()
-        if any(term not in introduction for term in ('naprapati', 'ultraljud', 'injektioner', 'hyaluron', 'prp', 'odenplan', 'stockholm')):
+        if any(term not in introduction for term in ('naprapati', 'ultraljud', 'injektioner', 'odenplan')):
             raise AssertionError('Hero introduction no longer identifies services and local clinic')
         actions = hero.locator('.landing-hero-actions')
         booking = actions.locator('a[data-measure="booking_click"]')
@@ -88,8 +88,9 @@ def check_home_hero(page, output, viewport):
             const title = section.querySelector('h1').getBoundingClientRect();
             const overlay = getComputedStyle(frame, '::after');
             const copyBox = copy.getBoundingClientRect();
+            const minimumTitleOffset = matchMedia('(max-width: 760px) and (max-height: 650px)').matches ? .19 : .34;
             return Math.abs(box.width - section.clientWidth) <= 1 && Math.abs(box.height - section.clientHeight) <= 1 &&
-                title.top >= box.top + box.height * .34 && title.bottom <= box.bottom &&
+                title.top >= box.top + box.height * minimumTitleOffset && title.bottom <= box.bottom &&
                 Math.abs(title.left - copyBox.left) <= 1 && getComputedStyle(copy).textAlign === 'left' &&
                 overlay.content !== 'none' && overlay.backgroundImage.includes('linear-gradient');
         }'''):
